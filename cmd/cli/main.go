@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json/v2"
 	"fmt"
+	"log/slog"
 	"os"
 
 	"example.com/brave-revival/src/proxy"
@@ -15,6 +16,8 @@ type Config struct {
 }
 
 func run() error {
+	slog.Info("Welcome")
+
 	f, err := os.Open(os.Args[1])
 	if err != nil {
 		return fmt.Errorf("failed to open config file: %w", err)

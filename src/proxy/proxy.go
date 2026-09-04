@@ -2,6 +2,7 @@ package proxy
 
 import (
 	"crypto/tls"
+	_ "embed"
 	"fmt"
 	"io"
 	"log/slog"
@@ -13,6 +14,12 @@ import (
 )
 
 const connectTimeout = 15 * time.Second
+
+//go:embed templates/proxy.pac
+var proxyPACTemplate string
+
+//go:embed templates/singbox.json
+var singBoxJSONTemplate string
 
 type Config struct {
 	Listen string `json:"listen"`
@@ -40,7 +47,7 @@ func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "/proxy.pac":
 		w.Header().Set("Content-Type", "application/x-ns-proxy-autoconfig")
 		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, `function FindProxyForURL(url,host){return host=="%s"?"PROXY %s":"DIRECT";}`, h.config.Domain, r.Host)
+		fmt.Fprintf(w, proxyPACTemplate, h.config.Domain, r.Host)
 
 	case "/ca.crt":
 		caBytes, err := cert.LoadCA(h.config.TLSDir, h.config.Domain)
@@ -53,6 +60,16 @@ func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Disposition", `attachment; filename="ca.crt"`)
 		w.WriteHeader(http.StatusOK)
 		w.Write(caBytes)
+
+	case "/singbox.json":
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		host, port, err := net.SplitHostPort(r.Host)
+		if err != nil || len(port) == 0 {
+			host = r.Host
+			port = "80"
+		}
+		fmt.Fprintf(w, singBoxJSONTemplate, h.config.Domain, host, port)
 
 	default:
 		w.WriteHeader(http.StatusNotFound)

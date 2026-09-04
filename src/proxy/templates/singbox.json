@@ -1,0 +1,66 @@
+{
+    "inbounds": [
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "address": "172.19.0.1/30",
+            "auto_route": true,
+            "stack": "gvisor",
+            "exclude_package": ["io.nekohasekai.sfa"]
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "http",
+            "tag": "proxy",
+            "server": "%[2]s",
+            "server_port": %[3]s
+        },
+        {
+            "type": "direct",
+            "tag": "direct"
+        }
+    ],
+    "dns": {
+        "servers": [
+            {
+                "type": "local",
+                "tag": "local"
+            },
+            {
+                "type": "fakeip",
+                "tag": "fakeip",
+                "inet4_range": "198.18.0.0/15"
+            }
+        ],
+        "rules": [
+            {
+                "domain": "%[1]s",
+                "query_type": ["AAAA", "HTTPS"],
+                "action": "predefined",
+                "rcode": "NOERROR"
+            },
+            {
+                "domain": "%[1]s",
+                "query_type": "A",
+                "action": "route",
+                "server": "fakeip"
+            }
+        ],
+        "final": "local",
+        "strategy": "ipv4_only"
+    },
+    "route": {
+        "default_domain_resolver": "local",
+        "rules": [
+            {
+                "domain": "%[1]s",
+                "action": "route",
+                "outbound": "proxy",
+                "override_address": "%[1]s",
+                "override_port": 443
+            }
+        ],
+        "final": "direct"
+    }
+}
