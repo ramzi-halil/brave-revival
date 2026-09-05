@@ -6,7 +6,7 @@
             "address": "172.19.0.1/30",
             "auto_route": true,
             "stack": "gvisor",
-            "exclude_package": ["io.nekohasekai.sfa"]
+            "include_package": ["jp.enish.shingekibo"]
         }
     ],
     "outbounds": [
