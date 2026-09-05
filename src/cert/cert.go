@@ -135,9 +135,18 @@ func LoadSelfSignedCert(cacheDir string, domain string) (tls.Certificate, error)
 		return tls.Certificate{}, fmt.Errorf("failed to generate self-signed certificate: %w", err)
 	}
 
-	if err := os.WriteFile(certPath, certBytes.cert, 0644); err != nil {
+	certFile, err := os.Create(certPath)
+	if err != nil {
+		return tls.Certificate{}, fmt.Errorf("failed to create certificate file: %w", err)
+	}
+	defer certFile.Close()
+	if _, err = certFile.Write(certBytes.cert); err != nil {
 		return tls.Certificate{}, fmt.Errorf("failed to write certificate file: %w", err)
 	}
+	if _, err = certFile.Write(certBytes.caCert); err != nil {
+		return tls.Certificate{}, fmt.Errorf("failed to write certificate file (root): %w", err)
+	}
+
 	if err := os.WriteFile(keyPath, certBytes.key, 0600); err != nil {
 		return tls.Certificate{}, fmt.Errorf("failed to write key file: %w", err)
 	}
