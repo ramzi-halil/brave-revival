@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-const certValidity = 3650 * 24 * time.Hour // 10 years
+const certValidity = 365 * 24 * time.Hour // 1 year (can't be significantly longer, see https://support.apple.com/en-us/102028)
 
 type cert struct {
 	caCert []byte
