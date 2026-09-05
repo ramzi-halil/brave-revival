@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"example.com/brave-revival/src/cert"
+	"example.com/brave-revival/src/www"
 )
 
 const connectTimeout = 15 * time.Second
@@ -30,6 +31,7 @@ type Config struct {
 type handler struct {
 	config  *Config
 	tlsCert tls.Certificate
+	www     *www.Handler
 }
 
 func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -100,11 +102,7 @@ func (h *handler) handleTLS(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	httpServer := &http.Server{
-		Handler: http.HandlerFunc(func(ww http.ResponseWriter, rr *http.Request) {
-			ww.Header().Set("Content-Type", "text/plain; charset=utf-8")
-			ww.WriteHeader(http.StatusOK)
-			fmt.Fprintf(ww, "Hello %q!\n", rr.URL.String())
-		}),
+		Handler: h.www,
 	}
 	if err := httpServer.Serve(&singleConnListener{conn: tlsConn}); err != nil && err != io.EOF {
 		return fmt.Errorf("failed to serve HTTPS connection: %w", err)
@@ -151,6 +149,7 @@ func Run(config *Config) error {
 		Handler: &handler{
 			config:  config,
 			tlsCert: tlsCert,
+			www:     www.NewHandler(),
 		},
 	}
 	return server.ListenAndServe()
