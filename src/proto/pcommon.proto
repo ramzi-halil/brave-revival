@@ -1,0 +1,14 @@
+syntax = "proto3";
+package Pcommon;
+
+option go_package = "example.com/brave-revival/src/proto/pcommon";
+
+message Error {
+    int64 code = 1;
+    int64 level = 2;
+    string msg = 3;
+    string payload = 4;
+    string detail = 5;
+    int64 ts = 6;
+    string store_url = 7;
+}
