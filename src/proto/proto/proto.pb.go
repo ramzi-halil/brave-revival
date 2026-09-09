@@ -8,6 +8,7 @@ package proto
 
 import (
 	pcommon "example.com/brave-revival/src/proto/pcommon"
+	pmaster "example.com/brave-revival/src/proto/pmaster"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -21,6 +22,50 @@ const (
 	// Verify that runtime/protoimpl is sufficiently up-to-date.
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
+
+type Empty struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Error         *pcommon.Error         `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Empty) Reset() {
+	*x = Empty{}
+	mi := &file_proto_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Empty) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Empty) ProtoMessage() {}
+
+func (x *Empty) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Empty.ProtoReflect.Descriptor instead.
+func (*Empty) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *Empty) GetError() *pcommon.Error {
+	if x != nil {
+		return x.Error
+	}
+	return nil
+}
 
 type PlayerSummary struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
@@ -41,7 +86,7 @@ type PlayerSummary struct {
 
 func (x *PlayerSummary) Reset() {
 	*x = PlayerSummary{}
-	mi := &file_proto_proto_msgTypes[0]
+	mi := &file_proto_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -53,7 +98,7 @@ func (x *PlayerSummary) String() string {
 func (*PlayerSummary) ProtoMessage() {}
 
 func (x *PlayerSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[0]
+	mi := &file_proto_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -66,7 +111,7 @@ func (x *PlayerSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayerSummary.ProtoReflect.Descriptor instead.
 func (*PlayerSummary) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{0}
+	return file_proto_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *PlayerSummary) GetPlayerId() uint64 {
@@ -157,7 +202,7 @@ type PlayerExist struct {
 
 func (x *PlayerExist) Reset() {
 	*x = PlayerExist{}
-	mi := &file_proto_proto_msgTypes[1]
+	mi := &file_proto_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -169,7 +214,7 @@ func (x *PlayerExist) String() string {
 func (*PlayerExist) ProtoMessage() {}
 
 func (x *PlayerExist) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[1]
+	mi := &file_proto_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -182,7 +227,7 @@ func (x *PlayerExist) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayerExist.ProtoReflect.Descriptor instead.
 func (*PlayerExist) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{1}
+	return file_proto_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *PlayerExist) GetError() *pcommon.Error {
@@ -206,11 +251,345 @@ func (x *PlayerExist) GetWorldDescription() string {
 	return ""
 }
 
+type AccountAuthorize struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	BanType       uint32                 `protobuf:"varint,2,opt,name=ban_type,json=banType,proto3" json:"ban_type,omitempty"`
+	BanInterval   uint64                 `protobuf:"varint,3,opt,name=ban_interval,json=banInterval,proto3" json:"ban_interval,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AccountAuthorize) Reset() {
+	*x = AccountAuthorize{}
+	mi := &file_proto_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AccountAuthorize) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AccountAuthorize) ProtoMessage() {}
+
+func (x *AccountAuthorize) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AccountAuthorize.ProtoReflect.Descriptor instead.
+func (*AccountAuthorize) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AccountAuthorize) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+func (x *AccountAuthorize) GetBanType() uint32 {
+	if x != nil {
+		return x.BanType
+	}
+	return 0
+}
+
+func (x *AccountAuthorize) GetBanInterval() uint64 {
+	if x != nil {
+		return x.BanInterval
+	}
+	return 0
+}
+
+type AccountCertificate struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Version       *pmaster.Version       `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AccountCertificate) Reset() {
+	*x = AccountCertificate{}
+	mi := &file_proto_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AccountCertificate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AccountCertificate) ProtoMessage() {}
+
+func (x *AccountCertificate) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AccountCertificate.ProtoReflect.Descriptor instead.
+func (*AccountCertificate) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *AccountCertificate) GetVersion() *pmaster.Version {
+	if x != nil {
+		return x.Version
+	}
+	return nil
+}
+
+type Host struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Photon        string                 `protobuf:"bytes,1,opt,name=photon,proto3" json:"photon,omitempty"`
+	Chat          string                 `protobuf:"bytes,2,opt,name=chat,proto3" json:"chat,omitempty"`
+	Party         string                 `protobuf:"bytes,3,opt,name=party,proto3" json:"party,omitempty"`
+	Notify        string                 `protobuf:"bytes,4,opt,name=notify,proto3" json:"notify,omitempty"`
+	Gvg           string                 `protobuf:"bytes,5,opt,name=gvg,proto3" json:"gvg,omitempty"`
+	Realtime      string                 `protobuf:"bytes,6,opt,name=realtime,proto3" json:"realtime,omitempty"`
+	GvgHosts      int32                  `protobuf:"varint,7,opt,name=gvg_hosts,json=gvgHosts,proto3" json:"gvg_hosts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Host) Reset() {
+	*x = Host{}
+	mi := &file_proto_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Host) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Host) ProtoMessage() {}
+
+func (x *Host) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Host.ProtoReflect.Descriptor instead.
+func (*Host) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Host) GetPhoton() string {
+	if x != nil {
+		return x.Photon
+	}
+	return ""
+}
+
+func (x *Host) GetChat() string {
+	if x != nil {
+		return x.Chat
+	}
+	return ""
+}
+
+func (x *Host) GetParty() string {
+	if x != nil {
+		return x.Party
+	}
+	return ""
+}
+
+func (x *Host) GetNotify() string {
+	if x != nil {
+		return x.Notify
+	}
+	return ""
+}
+
+func (x *Host) GetGvg() string {
+	if x != nil {
+		return x.Gvg
+	}
+	return ""
+}
+
+func (x *Host) GetRealtime() string {
+	if x != nil {
+		return x.Realtime
+	}
+	return ""
+}
+
+func (x *Host) GetGvgHosts() int32 {
+	if x != nil {
+		return x.GvgHosts
+	}
+	return 0
+}
+
+type Revision struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Terms         int32                  `protobuf:"varint,1,opt,name=terms,proto3" json:"terms,omitempty"`
+	PrivacyPolicy int32                  `protobuf:"varint,2,opt,name=privacy_policy,json=privacyPolicy,proto3" json:"privacy_policy,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Revision) Reset() {
+	*x = Revision{}
+	mi := &file_proto_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Revision) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Revision) ProtoMessage() {}
+
+func (x *Revision) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Revision.ProtoReflect.Descriptor instead.
+func (*Revision) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Revision) GetTerms() int32 {
+	if x != nil {
+		return x.Terms
+	}
+	return 0
+}
+
+func (x *Revision) GetPrivacyPolicy() int32 {
+	if x != nil {
+		return x.PrivacyPolicy
+	}
+	return 0
+}
+
+type Etc struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Host           *Host                  `protobuf:"bytes,1,opt,name=host,proto3" json:"host,omitempty"`
+	Language       string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	Environment    string                 `protobuf:"bytes,3,opt,name=environment,proto3" json:"environment,omitempty"`
+	Gmt            float32                `protobuf:"fixed32,4,opt,name=gmt,proto3" json:"gmt,omitempty"`
+	StoreReviewUrl string                 `protobuf:"bytes,5,opt,name=store_review_url,json=storeReviewUrl,proto3" json:"store_review_url,omitempty"`
+	Revision       *Revision              `protobuf:"bytes,6,opt,name=revision,proto3" json:"revision,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Etc) Reset() {
+	*x = Etc{}
+	mi := &file_proto_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Etc) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Etc) ProtoMessage() {}
+
+func (x *Etc) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Etc.ProtoReflect.Descriptor instead.
+func (*Etc) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *Etc) GetHost() *Host {
+	if x != nil {
+		return x.Host
+	}
+	return nil
+}
+
+func (x *Etc) GetLanguage() string {
+	if x != nil {
+		return x.Language
+	}
+	return ""
+}
+
+func (x *Etc) GetEnvironment() string {
+	if x != nil {
+		return x.Environment
+	}
+	return ""
+}
+
+func (x *Etc) GetGmt() float32 {
+	if x != nil {
+		return x.Gmt
+	}
+	return 0
+}
+
+func (x *Etc) GetStoreReviewUrl() string {
+	if x != nil {
+		return x.StoreReviewUrl
+	}
+	return ""
+}
+
+func (x *Etc) GetRevision() *Revision {
+	if x != nil {
+		return x.Revision
+	}
+	return nil
+}
+
 var File_proto_proto protoreflect.FileDescriptor
 
 const file_proto_proto_rawDesc = "" +
 	"\n" +
-	"\vproto.proto\x12\x05Proto\x1a\rpcommon.proto\"\xe1\x02\n" +
+	"\vproto.proto\x12\x05Proto\x1a\rpcommon.proto\x1a\rpmaster.proto\"-\n" +
+	"\x05Empty\x12$\n" +
+	"\x05error\x18\x01 \x01(\v2\x0e.Pcommon.ErrorR\x05error\"\xe1\x02\n" +
 	"\rPlayerSummary\x12\x1b\n" +
 	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x18\n" +
@@ -227,7 +606,31 @@ const file_proto_proto_rawDesc = "" +
 	"\vPlayerExist\x12$\n" +
 	"\x05error\x18\x01 \x01(\v2\x0e.Pcommon.ErrorR\x05error\x12;\n" +
 	"\x0eplayer_summary\x18\x02 \x01(\v2\x14.Proto.PlayerSummaryR\rplayerSummary\x12+\n" +
-	"\x11world_description\x18\x03 \x01(\tR\x10worldDescriptionB+Z)example.com/brave-revival/src/proto/protob\x06proto3"
+	"\x11world_description\x18\x03 \x01(\tR\x10worldDescription\"f\n" +
+	"\x10AccountAuthorize\x12\x14\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\x12\x19\n" +
+	"\bban_type\x18\x02 \x01(\rR\abanType\x12!\n" +
+	"\fban_interval\x18\x03 \x01(\x04R\vbanInterval\"@\n" +
+	"\x12AccountCertificate\x12*\n" +
+	"\aversion\x18\x01 \x01(\v2\x10.Pmaster.VersionR\aversion\"\xab\x01\n" +
+	"\x04Host\x12\x16\n" +
+	"\x06photon\x18\x01 \x01(\tR\x06photon\x12\x12\n" +
+	"\x04chat\x18\x02 \x01(\tR\x04chat\x12\x14\n" +
+	"\x05party\x18\x03 \x01(\tR\x05party\x12\x16\n" +
+	"\x06notify\x18\x04 \x01(\tR\x06notify\x12\x10\n" +
+	"\x03gvg\x18\x05 \x01(\tR\x03gvg\x12\x1a\n" +
+	"\brealtime\x18\x06 \x01(\tR\brealtime\x12\x1b\n" +
+	"\tgvg_hosts\x18\a \x01(\x05R\bgvgHosts\"G\n" +
+	"\bRevision\x12\x14\n" +
+	"\x05terms\x18\x01 \x01(\x05R\x05terms\x12%\n" +
+	"\x0eprivacy_policy\x18\x02 \x01(\x05R\rprivacyPolicy\"\xcd\x01\n" +
+	"\x03Etc\x12\x1f\n" +
+	"\x04host\x18\x01 \x01(\v2\v.Proto.HostR\x04host\x12\x1a\n" +
+	"\blanguage\x18\x02 \x01(\tR\blanguage\x12 \n" +
+	"\venvironment\x18\x03 \x01(\tR\venvironment\x12\x10\n" +
+	"\x03gmt\x18\x04 \x01(\x02R\x03gmt\x12(\n" +
+	"\x10store_review_url\x18\x05 \x01(\tR\x0estoreReviewUrl\x12+\n" +
+	"\brevision\x18\x06 \x01(\v2\x0f.Proto.RevisionR\brevisionB+Z)example.com/brave-revival/src/proto/protob\x06proto3"
 
 var (
 	file_proto_proto_rawDescOnce sync.Once
@@ -241,20 +644,31 @@ func file_proto_proto_rawDescGZIP() []byte {
 	return file_proto_proto_rawDescData
 }
 
-var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_proto_proto_goTypes = []any{
-	(*PlayerSummary)(nil), // 0: Proto.PlayerSummary
-	(*PlayerExist)(nil),   // 1: Proto.PlayerExist
-	(*pcommon.Error)(nil), // 2: Pcommon.Error
+	(*Empty)(nil),              // 0: Proto.Empty
+	(*PlayerSummary)(nil),      // 1: Proto.PlayerSummary
+	(*PlayerExist)(nil),        // 2: Proto.PlayerExist
+	(*AccountAuthorize)(nil),   // 3: Proto.AccountAuthorize
+	(*AccountCertificate)(nil), // 4: Proto.AccountCertificate
+	(*Host)(nil),               // 5: Proto.Host
+	(*Revision)(nil),           // 6: Proto.Revision
+	(*Etc)(nil),                // 7: Proto.Etc
+	(*pcommon.Error)(nil),      // 8: Pcommon.Error
+	(*pmaster.Version)(nil),    // 9: Pmaster.Version
 }
 var file_proto_proto_depIdxs = []int32{
-	2, // 0: Proto.PlayerExist.error:type_name -> Pcommon.Error
-	0, // 1: Proto.PlayerExist.player_summary:type_name -> Proto.PlayerSummary
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	8, // 0: Proto.Empty.error:type_name -> Pcommon.Error
+	8, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
+	1, // 2: Proto.PlayerExist.player_summary:type_name -> Proto.PlayerSummary
+	9, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
+	5, // 4: Proto.Etc.host:type_name -> Proto.Host
+	6, // 5: Proto.Etc.revision:type_name -> Proto.Revision
+	6, // [6:6] is the sub-list for method output_type
+	6, // [6:6] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_proto_proto_init() }
@@ -268,7 +682,7 @@ func file_proto_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_proto_rawDesc), len(file_proto_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

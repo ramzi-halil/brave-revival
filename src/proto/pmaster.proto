@@ -1,0 +1,24 @@
+syntax = "proto3";
+package Pmaster;
+
+option go_package = "example.com/brave-revival/src/proto/pmaster";
+
+message Resources {
+    map<uint32, ResourceInfo> resource = 1;
+}
+
+message ResourceInfo {
+    string hash = 1;
+    uint32 size = 2;
+}
+
+message All {
+    repeated Version version = 250;
+}
+
+message Version {
+    string platform = 1;
+    string application = 2;
+    uint32 resource = 3;
+    uint32 master = 4;
+}

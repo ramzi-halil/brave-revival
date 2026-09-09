@@ -2,8 +2,13 @@ syntax = "proto3";
 package Proto;
 
 import "pcommon.proto";
+import "pmaster.proto";
 
 option go_package = "example.com/brave-revival/src/proto/proto";
+
+message Empty {
+    Pcommon.Error error = 1;
+}
 
 message PlayerSummary {
     uint64 player_id = 1;
@@ -23,4 +28,39 @@ message PlayerExist {
     Pcommon.Error error = 1;
     PlayerSummary player_summary = 2;
     string world_description = 3;
+}
+
+message AccountAuthorize {
+    string token = 1;
+    uint32 ban_type = 2;
+    uint64 ban_interval = 3;
+}
+
+message AccountCertificate {
+    Pmaster.Version version = 1;
+}
+
+
+message Host {
+    string photon = 1;
+    string chat = 2;
+    string party = 3;
+    string notify = 4;
+    string gvg = 5;
+    string realtime = 6;
+    int32 gvg_hosts = 7;
+}
+
+message Revision {
+    int32 terms = 1;
+    int32 privacy_policy = 2;
+}
+
+message Etc {
+    Host host = 1;
+    string language = 2;
+    string environment = 3;
+    float gmt = 4;
+    string store_review_url = 5;
+    Revision revision = 6;
 }

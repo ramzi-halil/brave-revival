@@ -1,9 +1,13 @@
 package www
 
 import (
+	"fmt"
 	"net/http"
+	"os"
 
+	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/pcommon"
+	"example.com/brave-revival/src/proto/pmaster"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	pb "google.golang.org/protobuf/proto"
@@ -12,25 +16,67 @@ import (
 const protobufContentType = "application/x-protobuf"
 
 type Handler struct {
+	config *config.Config
 	router chi.Router
+
+	master    *pmaster.All
+	resources *pmaster.Resources
 }
 
-func NewHandler() *Handler {
+type handlerKey struct{}
+
+func NewHandler(config *config.Config) *Handler {
+	// TODO: Don't use pre-compiled master & resources.
+	masterBytes, err := os.ReadFile("./patched.pb")
+	if err != nil {
+		panic(err)
+	}
+	resourcesBytes, err := os.ReadFile("./v1_43_274-res.pb")
+	if err != nil {
+		panic(err)
+	}
+
+	var master pmaster.All
+	pb.Unmarshal(masterBytes, &master)
+	var resources pmaster.Resources
+	pb.Unmarshal(resourcesBytes, &resources)
+
 	router := chi.NewRouter()
+	handler := &Handler{
+		config:    config,
+		router:    router,
+		master:    &master,
+		resources: &resources,
+	}
+
+	router.Use(middleware.WithValue(handlerKey{}, handler))
+	router.Use(middleware.SetHeader("x-enish-app-version-master", fmt.Sprint(master.Version[0].Master)))
+	router.Use(middleware.SetHeader("x-enish-app-version-resource", fmt.Sprint(master.Version[0].Resource)))
 	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
 
 	router.Route("/v1_43_274", func(router chi.Router) {
+		router.Get("/etc", etc)
+		router.Get("/master/all", masterAll)
+		router.Get("/resource/list/{os}", resourceList)
+		router.Post("/actionlog/{action}/send", actionlog)
+
 		router.Post("/account/exist", accountExist)
+		router.Post("/account/authorize", accountAuthorize)
+		router.Post("/account/certificate", accountCertificate)
 	})
 	router.NotFound(notFound)
 	router.MethodNotAllowed(notFound)
 
-	return &Handler{router: router}
+	return handler
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	h.router.ServeHTTP(w, r)
+}
+
+func getHandler(r *http.Request) *Handler {
+	return r.Context().Value(handlerKey{}).(*Handler)
 }
 
 func notFound(w http.ResponseWriter, _ *http.Request) {

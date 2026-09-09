@@ -141,7 +141,7 @@ func Run(config *config.Config) error {
 		Handler: &handler{
 			config:  config,
 			tlsCert: tlsCert,
-			www:     www.NewHandler(),
+			www:     www.NewHandler(config),
 		},
 	}
 	return server.ListenAndServe()

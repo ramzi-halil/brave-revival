@@ -18,3 +18,15 @@ func accountExist(w http.ResponseWriter, _ *http.Request) {
 		WorldDescription: "Dummy World",
 	})
 }
+
+func accountAuthorize(w http.ResponseWriter, _ *http.Request) {
+	writeProto(w, http.StatusOK, &proto.AccountAuthorize{
+		Token: "eyJhbGciOiJub25lIn0.eyJleHAiOjk5OTk5OTk5OTk5fQ.",
+	})
+}
+
+func accountCertificate(w http.ResponseWriter, r *http.Request) {
+	writeProto(w, http.StatusOK, &proto.AccountCertificate{
+		Version: getHandler(r).master.Version[0],
+	})
+}
