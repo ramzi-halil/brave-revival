@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"example.com/brave-revival/src/proto/pcommon"
-	"example.com/brave-revival/src/proto/proto"
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	pb "google.golang.org/protobuf/proto"
 )
 
@@ -17,35 +17,23 @@ type Handler struct {
 
 func NewHandler() *Handler {
 	router := chi.NewRouter()
-	h := &Handler{router: router}
+	router.Use(middleware.Logger)
+	router.Use(middleware.Recoverer)
 
 	router.Route("/v1_43_274", func(router chi.Router) {
-		router.Post("/account/exist", h.accountExist)
+		router.Post("/account/exist", accountExist)
 	})
-	router.NotFound(h.notFound)
-	router.MethodNotAllowed(h.notFound)
+	router.NotFound(notFound)
+	router.MethodNotAllowed(notFound)
 
-	return h
+	return &Handler{router: router}
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	h.router.ServeHTTP(w, r)
 }
 
-func (h *Handler) accountExist(w http.ResponseWriter, _ *http.Request) {
-	writeProto(w, http.StatusOK, &proto.PlayerExist{
-		PlayerSummary: &proto.PlayerSummary{
-			PlayerId: 100,
-			Nickname: "Dummy Player",
-			JobId:    1,
-			JobLevel: 999,
-			Power:    99_999_999,
-		},
-		WorldDescription: "Dummy World",
-	})
-}
-
-func (h *Handler) notFound(w http.ResponseWriter, _ *http.Request) {
+func notFound(w http.ResponseWriter, _ *http.Request) {
 	writeProto(w, http.StatusNotFound, &pcommon.Error{
 		Code: 404,
 		Msg:  "Not Found",

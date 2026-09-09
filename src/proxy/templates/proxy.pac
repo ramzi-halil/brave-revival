@@ -1,1 +1,1 @@
-function FindProxyForURL(url,host){return host=="%[1]s"?"PROXY %[2]s":"DIRECT";}
+function FindProxyForURL(url,host){return dnsDomainIs(host,'.enish-games.com')?"PROXY %s":"DIRECT";}

@@ -48,7 +48,7 @@ func encodeCert(certDer []byte, key *ecdsa.PrivateKey) ([]byte, []byte, error) {
 	return certPEM, keyPEM, nil
 }
 
-func generateSelfSignedCert(domain string) (*cert, error) {
+func generateSelfSignedCert() (*cert, error) {
 	now := time.Now()
 
 	caKey, caSerial, err := generateKey()
@@ -57,7 +57,7 @@ func generateSelfSignedCert(domain string) (*cert, error) {
 	}
 	caTemplate := x509.Certificate{
 		SerialNumber:          caSerial,
-		Subject:               pkix.Name{CommonName: "CA/" + domain},
+		Subject:               pkix.Name{CommonName: "Brave Revival CA"},
 		NotBefore:             now,
 		NotAfter:              now.Add(certValidity + 1),
 		IsCA:                  true,
@@ -77,13 +77,13 @@ func generateSelfSignedCert(domain string) (*cert, error) {
 
 	template := x509.Certificate{
 		SerialNumber:          serial,
-		Subject:               pkix.Name{CommonName: domain},
+		Subject:               pkix.Name{CommonName: "*.enish-games.com"},
 		NotBefore:             now,
 		NotAfter:              now.Add(certValidity),
 		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment,
 		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
 		BasicConstraintsValid: true,
-		DNSNames:              []string{domain},
+		DNSNames:              []string{"*.enish-games.com"},
 	}
 
 	certDer, err := x509.CreateCertificate(rand.Reader, &template, &caTemplate, &key.PublicKey, caKey)
@@ -108,29 +108,29 @@ func generateSelfSignedCert(domain string) (*cert, error) {
 	}, nil
 }
 
-func LoadCA(cacheDir string, domain string) ([]byte, error) {
-	caCertPath := filepath.Join(cacheDir, domain+".ca.crt")
+func LoadCA(cacheDir string) ([]byte, error) {
+	caCertPath := filepath.Join(cacheDir, "ca.crt")
 	if content, err := os.ReadFile(caCertPath); err == nil {
 		return content, nil
 	}
 
-	_, err := LoadSelfSignedCert(cacheDir, domain)
+	_, err := LoadSelfSignedCert(cacheDir)
 	if err != nil {
 		return nil, fmt.Errorf("failed to load self-signed certificate: %w", err)
 	}
 	return os.ReadFile(caCertPath)
 }
 
-func LoadSelfSignedCert(cacheDir string, domain string) (tls.Certificate, error) {
-	certPath := filepath.Join(cacheDir, domain+".crt")
-	keyPath := filepath.Join(cacheDir, domain+".key")
+func LoadSelfSignedCert(cacheDir string) (tls.Certificate, error) {
+	certPath := filepath.Join(cacheDir, "cert.crt")
+	keyPath := filepath.Join(cacheDir, "cert.key")
 
 	tlsCert, err := tls.LoadX509KeyPair(certPath, keyPath)
 	if err == nil {
 		return tlsCert, nil
 	}
 
-	certBytes, err := generateSelfSignedCert(domain)
+	certBytes, err := generateSelfSignedCert()
 	if err != nil {
 		return tls.Certificate{}, fmt.Errorf("failed to generate self-signed certificate: %w", err)
 	}
@@ -150,10 +150,10 @@ func LoadSelfSignedCert(cacheDir string, domain string) (tls.Certificate, error)
 	if err := os.WriteFile(keyPath, certBytes.key, 0600); err != nil {
 		return tls.Certificate{}, fmt.Errorf("failed to write key file: %w", err)
 	}
-	if err := os.WriteFile(filepath.Join(cacheDir, domain+".ca.crt"), certBytes.caCert, 0644); err != nil {
+	if err := os.WriteFile(filepath.Join(cacheDir, "ca.crt"), certBytes.caCert, 0644); err != nil {
 		return tls.Certificate{}, fmt.Errorf("failed to write CA certificate file: %w", err)
 	}
-	if err := os.WriteFile(filepath.Join(cacheDir, domain+".ca.key"), certBytes.caKey, 0600); err != nil {
+	if err := os.WriteFile(filepath.Join(cacheDir, "ca.key"), certBytes.caKey, 0600); err != nil {
 		return tls.Certificate{}, fmt.Errorf("failed to write CA key file: %w", err)
 	}
 

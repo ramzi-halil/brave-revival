@@ -2,36 +2,30 @@ package main
 
 import (
 	"context"
-	"encoding/json/v2"
 	"fmt"
 	"log/slog"
 	"os"
 
+	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proxy"
 	"golang.org/x/sync/errgroup"
 )
 
-type Config struct {
-	Proxy proxy.Config `json:"proxy"`
-}
-
 func run() error {
 	slog.Info("Welcome")
 
-	f, err := os.Open(os.Args[1])
+	cfgBytes, err := os.ReadFile(os.Args[1])
 	if err != nil {
-		return fmt.Errorf("failed to open config file: %w", err)
+		return fmt.Errorf("failed to read config file: %w", err)
 	}
-	defer f.Close()
-
-	var config Config
-	if err := json.UnmarshalRead(f, &config); err != nil {
+	cfg, err := config.Parse(cfgBytes)
+	if err != nil {
 		return fmt.Errorf("failed to parse config file: %w", err)
 	}
 
 	eg, _ := errgroup.WithContext(context.Background())
 	eg.Go(func() error {
-		return proxy.Run(&config.Proxy)
+		return proxy.Run(cfg)
 	})
 	return eg.Wait()
 }

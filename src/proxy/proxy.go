@@ -8,9 +8,11 @@ import (
 	"log/slog"
 	"net"
 	"net/http"
+	"net/netip"
 	"time"
 
 	"example.com/brave-revival/src/cert"
+	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/www"
 )
 
@@ -22,21 +24,13 @@ var proxyPACTemplate string
 //go:embed templates/singbox.json
 var singBoxJSONTemplate string
 
-type Config struct {
-	Listen string `json:"listen"`
-	Domain string `json:"domain"`
-	TLSDir string `json:"tls_dir"`
-}
-
 type handler struct {
-	config  *Config
+	config  *config.Config
 	tlsCert tls.Certificate
 	www     *www.Handler
 }
 
 func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	slog.Info("received request", "method", r.Method, "url", r.URL.String(), "remote_addr", r.RemoteAddr)
-
 	if r.Method == http.MethodConnect {
 		if err := h.handleTLS(w, r); err != nil {
 			slog.Error("failed to handle TLS connection", "error", err)
@@ -45,14 +39,17 @@ func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	slog.Info("handling direct request", "method", r.Method, "url", &r.URL, "remote_addr", r.RemoteAddr)
+
 	switch r.URL.Path {
 	case "/proxy.pac":
 		w.Header().Set("Content-Type", "application/x-ns-proxy-autoconfig")
 		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, proxyPACTemplate, h.config.Domain, r.Host)
+		host := net.JoinHostPort(h.config.AdvertiseHost, fmt.Sprint(h.config.ProxyPort))
+		fmt.Fprintf(w, proxyPACTemplate, host)
 
 	case "/ca.crt":
-		caBytes, err := cert.LoadCA(h.config.TLSDir, h.config.Domain)
+		caBytes, err := cert.LoadCA(h.config.TLSDir)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			fmt.Fprintf(w, "Failed to load CA certificate: %v\n", err)
@@ -66,12 +63,7 @@ func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "/singbox.json":
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		host, port, err := net.SplitHostPort(r.Host)
-		if err != nil || len(port) == 0 {
-			host = r.Host
-			port = "80"
-		}
-		fmt.Fprintf(w, singBoxJSONTemplate, h.config.Domain, host, port)
+		fmt.Fprintf(w, singBoxJSONTemplate, h.config.AdvertiseHost, h.config.ProxyPort)
 
 	default:
 		w.WriteHeader(http.StatusNotFound)
@@ -138,14 +130,14 @@ func (l *singleConnListener) Addr() net.Addr {
 	return nil
 }
 
-func Run(config *Config) error {
-	tlsCert, err := cert.LoadSelfSignedCert(config.TLSDir, config.Domain)
+func Run(config *config.Config) error {
+	tlsCert, err := cert.LoadSelfSignedCert(config.TLSDir)
 	if err != nil {
 		return fmt.Errorf("failed to load self-signed certificate: %w", err)
 	}
 
 	server := http.Server{
-		Addr: config.Listen,
+		Addr: netip.AddrPortFrom(config.Host, config.ProxyPort).String(),
 		Handler: &handler{
 			config:  config,
 			tlsCert: tlsCert,

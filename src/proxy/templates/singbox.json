@@ -13,8 +13,8 @@
         {
             "type": "http",
             "tag": "proxy",
-            "server": "%[2]s",
-            "server_port": %[3]s
+            "server": "%[1]s",
+            "server_port": %[2]d
         },
         {
             "type": "direct",
@@ -35,13 +35,13 @@
         ],
         "rules": [
             {
-                "domain": "%[1]s",
+                "domain_suffix": "enish-games.com",
                 "query_type": ["AAAA", "HTTPS"],
                 "action": "predefined",
                 "rcode": "NOERROR"
             },
             {
-                "domain": "%[1]s",
+                "domain_suffix": "enish-games.com",
                 "query_type": "A",
                 "action": "route",
                 "server": "fakeip"
@@ -54,11 +54,9 @@
         "default_domain_resolver": "local",
         "rules": [
             {
-                "domain": "%[1]s",
+                "domain_suffix": "enish-games.com",
                 "action": "route",
-                "outbound": "proxy",
-                "override_address": "%[1]s",
-                "override_port": 443
+                "outbound": "proxy"
             }
         ],
         "final": "direct"
