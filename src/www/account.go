@@ -6,14 +6,15 @@ import (
 	"example.com/brave-revival/src/proto/proto"
 )
 
-func accountExist(w http.ResponseWriter, _ *http.Request) {
+func accountExist(w http.ResponseWriter, r *http.Request) {
+	player := getHandler(r).player
 	writeProto(w, http.StatusOK, &proto.PlayerExist{
 		PlayerSummary: &proto.PlayerSummary{
-			PlayerId: 100,
-			Nickname: "Dummy Player",
-			JobId:    1,
-			JobLevel: 999,
-			Power:    99_999_999,
+			PlayerId: player.Player.Id,
+			Nickname: player.Player.Nickname,
+			JobId:    player.Player.JobId,
+			JobLevel: player.CurrentJob.Level,
+			Power:    player.Power,
 		},
 		WorldDescription: "Dummy World",
 	})

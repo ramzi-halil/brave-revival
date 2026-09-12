@@ -8,6 +8,7 @@ import (
 	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/pcommon"
 	"example.com/brave-revival/src/proto/pmaster"
+	"example.com/brave-revival/src/proto/proto"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	pb "google.golang.org/protobuf/proto"
@@ -21,11 +22,12 @@ type Handler struct {
 
 	master    *pmaster.All
 	resources *pmaster.Resources
+	player    *proto.PlayerDetail
 }
 
 type handlerKey struct{}
 
-func NewHandler(config *config.Config) *Handler {
+func NewHandler(config *config.Config, player *proto.PlayerDetail) *Handler {
 	// TODO: Don't use pre-compiled master & resources.
 	masterBytes, err := os.ReadFile("./patched.pb")
 	if err != nil {
@@ -47,6 +49,7 @@ func NewHandler(config *config.Config) *Handler {
 		router:    router,
 		master:    &master,
 		resources: &resources,
+		player:    player,
 	}
 
 	router.Use(middleware.WithValue(handlerKey{}, handler))
@@ -64,7 +67,10 @@ func NewHandler(config *config.Config) *Handler {
 		router.Post("/account/exist", accountExist)
 		router.Post("/account/authorize", accountAuthorize)
 		router.Post("/account/certificate", accountCertificate)
+
+		router.Get("/player/list", playerList)
 	})
+	router.Get("/crow/Assets/{os}/{hash}", assets)
 	router.NotFound(notFound)
 	router.MethodNotAllowed(notFound)
 

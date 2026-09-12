@@ -130,18 +130,18 @@ func (l *singleConnListener) Addr() net.Addr {
 	return nil
 }
 
-func Run(config *config.Config) error {
-	tlsCert, err := cert.LoadSelfSignedCert(config.TLSDir)
+func Run(cfg *config.Config) error {
+	tlsCert, err := cert.LoadSelfSignedCert(cfg.TLSDir)
 	if err != nil {
 		return fmt.Errorf("failed to load self-signed certificate: %w", err)
 	}
 
 	server := http.Server{
-		Addr: netip.AddrPortFrom(config.Host, config.ProxyPort).String(),
+		Addr: netip.AddrPortFrom(cfg.Host, cfg.ProxyPort).String(),
 		Handler: &handler{
-			config:  config,
+			config:  cfg,
 			tlsCert: tlsCert,
-			www:     www.NewHandler(config),
+			www:     www.NewHandler(cfg, config.DummyPlayer),
 		},
 	}
 	return server.ListenAndServe()

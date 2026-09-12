@@ -42,6 +42,11 @@ type Config struct {
 
 	// TLSDir is the local directory path where the TLS certificate and key are stored.
 	TLSDir string `json:"tls_dir"`
+
+	// Assets is the local directory path where the Unity3D asset files are stored.
+	//
+	// The assets must be stored in the form `./ha/hash.unity3d`, where `ha` is the first two characters of the hash.
+	Assets string `json:"assets"`
 }
 
 func Parse(bytes []byte) (*Config, error) {

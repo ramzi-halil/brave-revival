@@ -3,6 +3,7 @@ package Proto;
 
 import "pcommon.proto";
 import "pmaster.proto";
+import "puser.proto";
 
 option go_package = "example.com/brave-revival/src/proto/proto";
 
@@ -40,6 +41,141 @@ message AccountCertificate {
     Pmaster.Version version = 1;
 }
 
+message BaseParameter {
+    uint32 hp = 1;
+    uint32 mp = 2;
+    uint32 phy_atk = 3;
+    uint32 mag_atk = 4;
+    uint32 heal = 5;
+    uint32 phy_def = 6;
+    uint32 mag_def = 7;
+    uint32 accuracy = 8;
+    uint32 dodge = 9;
+    uint32 critical = 10;
+    uint32 agility = 11;
+}
+
+message BattleClearParam {
+    uint32 power = 1;
+    uint32 job_level = 2;
+    uint64 job_level_exp = 3;
+    uint64 job_level_exp_max = 4;
+    uint64 job_total_exp = 5;
+    uint64 job_total_exp_max = 6;
+    uint32 job_point = 7;
+    BaseParameter job_parameter = 8;
+    uint32 arena_ranking = 9;
+    uint32 arena_rank = 10;
+    uint32 arena_rank_point = 11;
+    uint32 arena_rank_point_max = 12;
+    uint32 arena_total_point = 13;
+    uint32 arena_total_point_max = 14;
+    BaseParameter arena_parameter = 15;
+    uint32 crystal_level = 16;
+    uint32 crystal_skill_point = 17;
+    uint32 risk = 18;
+    uint32 fastest_clear_time = 19;
+    uint32 job_id = 20;
+}
+
+message RewardInfo {
+    uint32 target_type = 1;
+    uint32 target_id = 2;
+    uint32 quantity = 3;
+    uint32 equipment_rarity = 4;
+    uint32 equipment_level = 5;
+    uint32 enhancement = 6;
+    uint32 limit_break = 7;
+    uint32 is_protected = 8;
+    uint32 equipment_param_option1 = 9;
+    uint32 equipment_param_option2 = 10;
+    uint32 equipment_param_option3 = 11;
+}
+
+message BattleBackgroundReward {
+    uint64 lupi = 1;
+    repeated RewardInfo reward_list = 2;
+    uint32 win = 3;
+    uint32 total = 4;
+    BattleClearParam before = 5;
+    BattleClearParam after = 6;
+}
+
+message BackgroundStatus {
+    bool on_progress = 1;
+    uint64 start_ts = 2;
+    uint32 loop_cnt = 3;
+    BattleBackgroundReward reward = 4;
+}
+
+message GuildSummary {
+    uint64 guild_id = 1;
+    string name = 2;
+    uint32 symbol = 3;
+    uint32 symbol_frame = 4;
+    uint32 symbol_frame_color = 5;
+    uint32 member_count = 6;
+    uint32 member_max_count = 7;
+    uint32 lv = 8;
+    uint64 power = 9;
+    uint32 ranking_rank = 10;
+    uint32 ranking_score = 11;
+}
+
+message GuildMember {
+    uint64 guild_id = 1;
+    uint64 player_id = 2;
+    uint32 role = 3;
+    uint64 point = 4;
+    uint64 weekly_point = 5;
+    string last_joined_at = 6;
+    string login_reward_received_at = 7;
+    string updated_point_at = 8;
+    string training_completed_at = 9;
+}
+
+message PowerAssessment {
+    uint32 power_assessment_type = 1;
+    uint32 step = 2;
+}
+
+message PlayerDetail {
+    Puser.Player player = 1;
+    uint32 is_friend = 2;
+    uint32 is_friend_request = 3;
+    uint32 is_friend_approval = 4;
+    Puser.Job current_job = 5;
+    repeated Puser.Job jobs = 6;
+    Puser.JobDeck current_job_deck = 7;
+    repeated Puser.Equipment equipments = 8;
+    repeated Puser.Elixir elixirs = 9;
+    uint64 max_damage = 10;
+    uint64 weekly_guild_point = 11;
+    uint64 total_guild_point = 12;
+    uint64 total_yell = 13;
+    uint64 total_win = 14;
+    uint64 max_win_streak = 15;
+    BaseParameter base_parameter = 16;
+    uint32 floor_number = 17;
+    uint32 power = 18;
+    uint32 can_block = 19;
+    uint32 can_guild_invite = 20;
+    uint32 anima_user_achieve = 21;
+    uint32 arena_ranking = 22;
+    uint32 arena_total_point = 23;
+    bool is_blocked = 24;
+    GuildSummary guild_summary = 25;
+    GuildMember guild_member = 26;
+    repeated PowerAssessment power_assessment_list = 27;
+    uint32 power_assessment_rank = 28;
+}
+
+message PlayerList {
+    repeated Puser.Player players = 1;
+    uint32 highest_job_lv = 2;
+    Pcommon.Error error = 3;
+    BackgroundStatus background_status = 4;
+}
 
 message Host {
     string photon = 1;

@@ -9,6 +9,7 @@ package proto
 import (
 	pcommon "example.com/brave-revival/src/proto/pcommon"
 	pmaster "example.com/brave-revival/src/proto/pmaster"
+	puser "example.com/brave-revival/src/proto/puser"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -355,6 +356,1214 @@ func (x *AccountCertificate) GetVersion() *pmaster.Version {
 	return nil
 }
 
+type BaseParameter struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Hp            uint32                 `protobuf:"varint,1,opt,name=hp,proto3" json:"hp,omitempty"`
+	Mp            uint32                 `protobuf:"varint,2,opt,name=mp,proto3" json:"mp,omitempty"`
+	PhyAtk        uint32                 `protobuf:"varint,3,opt,name=phy_atk,json=phyAtk,proto3" json:"phy_atk,omitempty"`
+	MagAtk        uint32                 `protobuf:"varint,4,opt,name=mag_atk,json=magAtk,proto3" json:"mag_atk,omitempty"`
+	Heal          uint32                 `protobuf:"varint,5,opt,name=heal,proto3" json:"heal,omitempty"`
+	PhyDef        uint32                 `protobuf:"varint,6,opt,name=phy_def,json=phyDef,proto3" json:"phy_def,omitempty"`
+	MagDef        uint32                 `protobuf:"varint,7,opt,name=mag_def,json=magDef,proto3" json:"mag_def,omitempty"`
+	Accuracy      uint32                 `protobuf:"varint,8,opt,name=accuracy,proto3" json:"accuracy,omitempty"`
+	Dodge         uint32                 `protobuf:"varint,9,opt,name=dodge,proto3" json:"dodge,omitempty"`
+	Critical      uint32                 `protobuf:"varint,10,opt,name=critical,proto3" json:"critical,omitempty"`
+	Agility       uint32                 `protobuf:"varint,11,opt,name=agility,proto3" json:"agility,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BaseParameter) Reset() {
+	*x = BaseParameter{}
+	mi := &file_proto_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BaseParameter) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BaseParameter) ProtoMessage() {}
+
+func (x *BaseParameter) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BaseParameter.ProtoReflect.Descriptor instead.
+func (*BaseParameter) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *BaseParameter) GetHp() uint32 {
+	if x != nil {
+		return x.Hp
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetMp() uint32 {
+	if x != nil {
+		return x.Mp
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetPhyAtk() uint32 {
+	if x != nil {
+		return x.PhyAtk
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetMagAtk() uint32 {
+	if x != nil {
+		return x.MagAtk
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetHeal() uint32 {
+	if x != nil {
+		return x.Heal
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetPhyDef() uint32 {
+	if x != nil {
+		return x.PhyDef
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetMagDef() uint32 {
+	if x != nil {
+		return x.MagDef
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetAccuracy() uint32 {
+	if x != nil {
+		return x.Accuracy
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetDodge() uint32 {
+	if x != nil {
+		return x.Dodge
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetCritical() uint32 {
+	if x != nil {
+		return x.Critical
+	}
+	return 0
+}
+
+func (x *BaseParameter) GetAgility() uint32 {
+	if x != nil {
+		return x.Agility
+	}
+	return 0
+}
+
+type BattleClearParam struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Power              uint32                 `protobuf:"varint,1,opt,name=power,proto3" json:"power,omitempty"`
+	JobLevel           uint32                 `protobuf:"varint,2,opt,name=job_level,json=jobLevel,proto3" json:"job_level,omitempty"`
+	JobLevelExp        uint64                 `protobuf:"varint,3,opt,name=job_level_exp,json=jobLevelExp,proto3" json:"job_level_exp,omitempty"`
+	JobLevelExpMax     uint64                 `protobuf:"varint,4,opt,name=job_level_exp_max,json=jobLevelExpMax,proto3" json:"job_level_exp_max,omitempty"`
+	JobTotalExp        uint64                 `protobuf:"varint,5,opt,name=job_total_exp,json=jobTotalExp,proto3" json:"job_total_exp,omitempty"`
+	JobTotalExpMax     uint64                 `protobuf:"varint,6,opt,name=job_total_exp_max,json=jobTotalExpMax,proto3" json:"job_total_exp_max,omitempty"`
+	JobPoint           uint32                 `protobuf:"varint,7,opt,name=job_point,json=jobPoint,proto3" json:"job_point,omitempty"`
+	JobParameter       *BaseParameter         `protobuf:"bytes,8,opt,name=job_parameter,json=jobParameter,proto3" json:"job_parameter,omitempty"`
+	ArenaRanking       uint32                 `protobuf:"varint,9,opt,name=arena_ranking,json=arenaRanking,proto3" json:"arena_ranking,omitempty"`
+	ArenaRank          uint32                 `protobuf:"varint,10,opt,name=arena_rank,json=arenaRank,proto3" json:"arena_rank,omitempty"`
+	ArenaRankPoint     uint32                 `protobuf:"varint,11,opt,name=arena_rank_point,json=arenaRankPoint,proto3" json:"arena_rank_point,omitempty"`
+	ArenaRankPointMax  uint32                 `protobuf:"varint,12,opt,name=arena_rank_point_max,json=arenaRankPointMax,proto3" json:"arena_rank_point_max,omitempty"`
+	ArenaTotalPoint    uint32                 `protobuf:"varint,13,opt,name=arena_total_point,json=arenaTotalPoint,proto3" json:"arena_total_point,omitempty"`
+	ArenaTotalPointMax uint32                 `protobuf:"varint,14,opt,name=arena_total_point_max,json=arenaTotalPointMax,proto3" json:"arena_total_point_max,omitempty"`
+	ArenaParameter     *BaseParameter         `protobuf:"bytes,15,opt,name=arena_parameter,json=arenaParameter,proto3" json:"arena_parameter,omitempty"`
+	CrystalLevel       uint32                 `protobuf:"varint,16,opt,name=crystal_level,json=crystalLevel,proto3" json:"crystal_level,omitempty"`
+	CrystalSkillPoint  uint32                 `protobuf:"varint,17,opt,name=crystal_skill_point,json=crystalSkillPoint,proto3" json:"crystal_skill_point,omitempty"`
+	Risk               uint32                 `protobuf:"varint,18,opt,name=risk,proto3" json:"risk,omitempty"`
+	FastestClearTime   uint32                 `protobuf:"varint,19,opt,name=fastest_clear_time,json=fastestClearTime,proto3" json:"fastest_clear_time,omitempty"`
+	JobId              uint32                 `protobuf:"varint,20,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *BattleClearParam) Reset() {
+	*x = BattleClearParam{}
+	mi := &file_proto_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BattleClearParam) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BattleClearParam) ProtoMessage() {}
+
+func (x *BattleClearParam) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BattleClearParam.ProtoReflect.Descriptor instead.
+func (*BattleClearParam) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *BattleClearParam) GetPower() uint32 {
+	if x != nil {
+		return x.Power
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetJobLevel() uint32 {
+	if x != nil {
+		return x.JobLevel
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetJobLevelExp() uint64 {
+	if x != nil {
+		return x.JobLevelExp
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetJobLevelExpMax() uint64 {
+	if x != nil {
+		return x.JobLevelExpMax
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetJobTotalExp() uint64 {
+	if x != nil {
+		return x.JobTotalExp
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetJobTotalExpMax() uint64 {
+	if x != nil {
+		return x.JobTotalExpMax
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetJobPoint() uint32 {
+	if x != nil {
+		return x.JobPoint
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetJobParameter() *BaseParameter {
+	if x != nil {
+		return x.JobParameter
+	}
+	return nil
+}
+
+func (x *BattleClearParam) GetArenaRanking() uint32 {
+	if x != nil {
+		return x.ArenaRanking
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetArenaRank() uint32 {
+	if x != nil {
+		return x.ArenaRank
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetArenaRankPoint() uint32 {
+	if x != nil {
+		return x.ArenaRankPoint
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetArenaRankPointMax() uint32 {
+	if x != nil {
+		return x.ArenaRankPointMax
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetArenaTotalPoint() uint32 {
+	if x != nil {
+		return x.ArenaTotalPoint
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetArenaTotalPointMax() uint32 {
+	if x != nil {
+		return x.ArenaTotalPointMax
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetArenaParameter() *BaseParameter {
+	if x != nil {
+		return x.ArenaParameter
+	}
+	return nil
+}
+
+func (x *BattleClearParam) GetCrystalLevel() uint32 {
+	if x != nil {
+		return x.CrystalLevel
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetCrystalSkillPoint() uint32 {
+	if x != nil {
+		return x.CrystalSkillPoint
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetRisk() uint32 {
+	if x != nil {
+		return x.Risk
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetFastestClearTime() uint32 {
+	if x != nil {
+		return x.FastestClearTime
+	}
+	return 0
+}
+
+func (x *BattleClearParam) GetJobId() uint32 {
+	if x != nil {
+		return x.JobId
+	}
+	return 0
+}
+
+type RewardInfo struct {
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	TargetType            uint32                 `protobuf:"varint,1,opt,name=target_type,json=targetType,proto3" json:"target_type,omitempty"`
+	TargetId              uint32                 `protobuf:"varint,2,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
+	Quantity              uint32                 `protobuf:"varint,3,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	EquipmentRarity       uint32                 `protobuf:"varint,4,opt,name=equipment_rarity,json=equipmentRarity,proto3" json:"equipment_rarity,omitempty"`
+	EquipmentLevel        uint32                 `protobuf:"varint,5,opt,name=equipment_level,json=equipmentLevel,proto3" json:"equipment_level,omitempty"`
+	Enhancement           uint32                 `protobuf:"varint,6,opt,name=enhancement,proto3" json:"enhancement,omitempty"`
+	LimitBreak            uint32                 `protobuf:"varint,7,opt,name=limit_break,json=limitBreak,proto3" json:"limit_break,omitempty"`
+	IsProtected           uint32                 `protobuf:"varint,8,opt,name=is_protected,json=isProtected,proto3" json:"is_protected,omitempty"`
+	EquipmentParamOption1 uint32                 `protobuf:"varint,9,opt,name=equipment_param_option1,json=equipmentParamOption1,proto3" json:"equipment_param_option1,omitempty"`
+	EquipmentParamOption2 uint32                 `protobuf:"varint,10,opt,name=equipment_param_option2,json=equipmentParamOption2,proto3" json:"equipment_param_option2,omitempty"`
+	EquipmentParamOption3 uint32                 `protobuf:"varint,11,opt,name=equipment_param_option3,json=equipmentParamOption3,proto3" json:"equipment_param_option3,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *RewardInfo) Reset() {
+	*x = RewardInfo{}
+	mi := &file_proto_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RewardInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RewardInfo) ProtoMessage() {}
+
+func (x *RewardInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RewardInfo.ProtoReflect.Descriptor instead.
+func (*RewardInfo) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *RewardInfo) GetTargetType() uint32 {
+	if x != nil {
+		return x.TargetType
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetTargetId() uint32 {
+	if x != nil {
+		return x.TargetId
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetQuantity() uint32 {
+	if x != nil {
+		return x.Quantity
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetEquipmentRarity() uint32 {
+	if x != nil {
+		return x.EquipmentRarity
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetEquipmentLevel() uint32 {
+	if x != nil {
+		return x.EquipmentLevel
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetEnhancement() uint32 {
+	if x != nil {
+		return x.Enhancement
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetLimitBreak() uint32 {
+	if x != nil {
+		return x.LimitBreak
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetIsProtected() uint32 {
+	if x != nil {
+		return x.IsProtected
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetEquipmentParamOption1() uint32 {
+	if x != nil {
+		return x.EquipmentParamOption1
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetEquipmentParamOption2() uint32 {
+	if x != nil {
+		return x.EquipmentParamOption2
+	}
+	return 0
+}
+
+func (x *RewardInfo) GetEquipmentParamOption3() uint32 {
+	if x != nil {
+		return x.EquipmentParamOption3
+	}
+	return 0
+}
+
+type BattleBackgroundReward struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Lupi          uint64                 `protobuf:"varint,1,opt,name=lupi,proto3" json:"lupi,omitempty"`
+	RewardList    []*RewardInfo          `protobuf:"bytes,2,rep,name=reward_list,json=rewardList,proto3" json:"reward_list,omitempty"`
+	Win           uint32                 `protobuf:"varint,3,opt,name=win,proto3" json:"win,omitempty"`
+	Total         uint32                 `protobuf:"varint,4,opt,name=total,proto3" json:"total,omitempty"`
+	Before        *BattleClearParam      `protobuf:"bytes,5,opt,name=before,proto3" json:"before,omitempty"`
+	After         *BattleClearParam      `protobuf:"bytes,6,opt,name=after,proto3" json:"after,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BattleBackgroundReward) Reset() {
+	*x = BattleBackgroundReward{}
+	mi := &file_proto_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BattleBackgroundReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BattleBackgroundReward) ProtoMessage() {}
+
+func (x *BattleBackgroundReward) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BattleBackgroundReward.ProtoReflect.Descriptor instead.
+func (*BattleBackgroundReward) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *BattleBackgroundReward) GetLupi() uint64 {
+	if x != nil {
+		return x.Lupi
+	}
+	return 0
+}
+
+func (x *BattleBackgroundReward) GetRewardList() []*RewardInfo {
+	if x != nil {
+		return x.RewardList
+	}
+	return nil
+}
+
+func (x *BattleBackgroundReward) GetWin() uint32 {
+	if x != nil {
+		return x.Win
+	}
+	return 0
+}
+
+func (x *BattleBackgroundReward) GetTotal() uint32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *BattleBackgroundReward) GetBefore() *BattleClearParam {
+	if x != nil {
+		return x.Before
+	}
+	return nil
+}
+
+func (x *BattleBackgroundReward) GetAfter() *BattleClearParam {
+	if x != nil {
+		return x.After
+	}
+	return nil
+}
+
+type BackgroundStatus struct {
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	OnProgress    bool                    `protobuf:"varint,1,opt,name=on_progress,json=onProgress,proto3" json:"on_progress,omitempty"`
+	StartTs       uint64                  `protobuf:"varint,2,opt,name=start_ts,json=startTs,proto3" json:"start_ts,omitempty"`
+	LoopCnt       uint32                  `protobuf:"varint,3,opt,name=loop_cnt,json=loopCnt,proto3" json:"loop_cnt,omitempty"`
+	Reward        *BattleBackgroundReward `protobuf:"bytes,4,opt,name=reward,proto3" json:"reward,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BackgroundStatus) Reset() {
+	*x = BackgroundStatus{}
+	mi := &file_proto_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BackgroundStatus) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BackgroundStatus) ProtoMessage() {}
+
+func (x *BackgroundStatus) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BackgroundStatus.ProtoReflect.Descriptor instead.
+func (*BackgroundStatus) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *BackgroundStatus) GetOnProgress() bool {
+	if x != nil {
+		return x.OnProgress
+	}
+	return false
+}
+
+func (x *BackgroundStatus) GetStartTs() uint64 {
+	if x != nil {
+		return x.StartTs
+	}
+	return 0
+}
+
+func (x *BackgroundStatus) GetLoopCnt() uint32 {
+	if x != nil {
+		return x.LoopCnt
+	}
+	return 0
+}
+
+func (x *BackgroundStatus) GetReward() *BattleBackgroundReward {
+	if x != nil {
+		return x.Reward
+	}
+	return nil
+}
+
+type GuildSummary struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	GuildId          uint64                 `protobuf:"varint,1,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	Name             string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Symbol           uint32                 `protobuf:"varint,3,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	SymbolFrame      uint32                 `protobuf:"varint,4,opt,name=symbol_frame,json=symbolFrame,proto3" json:"symbol_frame,omitempty"`
+	SymbolFrameColor uint32                 `protobuf:"varint,5,opt,name=symbol_frame_color,json=symbolFrameColor,proto3" json:"symbol_frame_color,omitempty"`
+	MemberCount      uint32                 `protobuf:"varint,6,opt,name=member_count,json=memberCount,proto3" json:"member_count,omitempty"`
+	MemberMaxCount   uint32                 `protobuf:"varint,7,opt,name=member_max_count,json=memberMaxCount,proto3" json:"member_max_count,omitempty"`
+	Lv               uint32                 `protobuf:"varint,8,opt,name=lv,proto3" json:"lv,omitempty"`
+	Power            uint64                 `protobuf:"varint,9,opt,name=power,proto3" json:"power,omitempty"`
+	RankingRank      uint32                 `protobuf:"varint,10,opt,name=ranking_rank,json=rankingRank,proto3" json:"ranking_rank,omitempty"`
+	RankingScore     uint32                 `protobuf:"varint,11,opt,name=ranking_score,json=rankingScore,proto3" json:"ranking_score,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *GuildSummary) Reset() {
+	*x = GuildSummary{}
+	mi := &file_proto_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildSummary) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildSummary) ProtoMessage() {}
+
+func (x *GuildSummary) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildSummary.ProtoReflect.Descriptor instead.
+func (*GuildSummary) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GuildSummary) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *GuildSummary) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *GuildSummary) GetSymbol() uint32 {
+	if x != nil {
+		return x.Symbol
+	}
+	return 0
+}
+
+func (x *GuildSummary) GetSymbolFrame() uint32 {
+	if x != nil {
+		return x.SymbolFrame
+	}
+	return 0
+}
+
+func (x *GuildSummary) GetSymbolFrameColor() uint32 {
+	if x != nil {
+		return x.SymbolFrameColor
+	}
+	return 0
+}
+
+func (x *GuildSummary) GetMemberCount() uint32 {
+	if x != nil {
+		return x.MemberCount
+	}
+	return 0
+}
+
+func (x *GuildSummary) GetMemberMaxCount() uint32 {
+	if x != nil {
+		return x.MemberMaxCount
+	}
+	return 0
+}
+
+func (x *GuildSummary) GetLv() uint32 {
+	if x != nil {
+		return x.Lv
+	}
+	return 0
+}
+
+func (x *GuildSummary) GetPower() uint64 {
+	if x != nil {
+		return x.Power
+	}
+	return 0
+}
+
+func (x *GuildSummary) GetRankingRank() uint32 {
+	if x != nil {
+		return x.RankingRank
+	}
+	return 0
+}
+
+func (x *GuildSummary) GetRankingScore() uint32 {
+	if x != nil {
+		return x.RankingScore
+	}
+	return 0
+}
+
+type GuildMember struct {
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	GuildId               uint64                 `protobuf:"varint,1,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	PlayerId              uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Role                  uint32                 `protobuf:"varint,3,opt,name=role,proto3" json:"role,omitempty"`
+	Point                 uint64                 `protobuf:"varint,4,opt,name=point,proto3" json:"point,omitempty"`
+	WeeklyPoint           uint64                 `protobuf:"varint,5,opt,name=weekly_point,json=weeklyPoint,proto3" json:"weekly_point,omitempty"`
+	LastJoinedAt          string                 `protobuf:"bytes,6,opt,name=last_joined_at,json=lastJoinedAt,proto3" json:"last_joined_at,omitempty"`
+	LoginRewardReceivedAt string                 `protobuf:"bytes,7,opt,name=login_reward_received_at,json=loginRewardReceivedAt,proto3" json:"login_reward_received_at,omitempty"`
+	UpdatedPointAt        string                 `protobuf:"bytes,8,opt,name=updated_point_at,json=updatedPointAt,proto3" json:"updated_point_at,omitempty"`
+	TrainingCompletedAt   string                 `protobuf:"bytes,9,opt,name=training_completed_at,json=trainingCompletedAt,proto3" json:"training_completed_at,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *GuildMember) Reset() {
+	*x = GuildMember{}
+	mi := &file_proto_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildMember) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildMember) ProtoMessage() {}
+
+func (x *GuildMember) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildMember.ProtoReflect.Descriptor instead.
+func (*GuildMember) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GuildMember) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *GuildMember) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *GuildMember) GetRole() uint32 {
+	if x != nil {
+		return x.Role
+	}
+	return 0
+}
+
+func (x *GuildMember) GetPoint() uint64 {
+	if x != nil {
+		return x.Point
+	}
+	return 0
+}
+
+func (x *GuildMember) GetWeeklyPoint() uint64 {
+	if x != nil {
+		return x.WeeklyPoint
+	}
+	return 0
+}
+
+func (x *GuildMember) GetLastJoinedAt() string {
+	if x != nil {
+		return x.LastJoinedAt
+	}
+	return ""
+}
+
+func (x *GuildMember) GetLoginRewardReceivedAt() string {
+	if x != nil {
+		return x.LoginRewardReceivedAt
+	}
+	return ""
+}
+
+func (x *GuildMember) GetUpdatedPointAt() string {
+	if x != nil {
+		return x.UpdatedPointAt
+	}
+	return ""
+}
+
+func (x *GuildMember) GetTrainingCompletedAt() string {
+	if x != nil {
+		return x.TrainingCompletedAt
+	}
+	return ""
+}
+
+type PowerAssessment struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	PowerAssessmentType uint32                 `protobuf:"varint,1,opt,name=power_assessment_type,json=powerAssessmentType,proto3" json:"power_assessment_type,omitempty"`
+	Step                uint32                 `protobuf:"varint,2,opt,name=step,proto3" json:"step,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *PowerAssessment) Reset() {
+	*x = PowerAssessment{}
+	mi := &file_proto_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PowerAssessment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PowerAssessment) ProtoMessage() {}
+
+func (x *PowerAssessment) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PowerAssessment.ProtoReflect.Descriptor instead.
+func (*PowerAssessment) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *PowerAssessment) GetPowerAssessmentType() uint32 {
+	if x != nil {
+		return x.PowerAssessmentType
+	}
+	return 0
+}
+
+func (x *PowerAssessment) GetStep() uint32 {
+	if x != nil {
+		return x.Step
+	}
+	return 0
+}
+
+type PlayerDetail struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	Player              *puser.Player          `protobuf:"bytes,1,opt,name=player,proto3" json:"player,omitempty"`
+	IsFriend            uint32                 `protobuf:"varint,2,opt,name=is_friend,json=isFriend,proto3" json:"is_friend,omitempty"`
+	IsFriendRequest     uint32                 `protobuf:"varint,3,opt,name=is_friend_request,json=isFriendRequest,proto3" json:"is_friend_request,omitempty"`
+	IsFriendApproval    uint32                 `protobuf:"varint,4,opt,name=is_friend_approval,json=isFriendApproval,proto3" json:"is_friend_approval,omitempty"`
+	CurrentJob          *puser.Job             `protobuf:"bytes,5,opt,name=current_job,json=currentJob,proto3" json:"current_job,omitempty"`
+	Jobs                []*puser.Job           `protobuf:"bytes,6,rep,name=jobs,proto3" json:"jobs,omitempty"`
+	CurrentJobDeck      *puser.JobDeck         `protobuf:"bytes,7,opt,name=current_job_deck,json=currentJobDeck,proto3" json:"current_job_deck,omitempty"`
+	Equipments          []*puser.Equipment     `protobuf:"bytes,8,rep,name=equipments,proto3" json:"equipments,omitempty"`
+	Elixirs             []*puser.Elixir        `protobuf:"bytes,9,rep,name=elixirs,proto3" json:"elixirs,omitempty"`
+	MaxDamage           uint64                 `protobuf:"varint,10,opt,name=max_damage,json=maxDamage,proto3" json:"max_damage,omitempty"`
+	WeeklyGuildPoint    uint64                 `protobuf:"varint,11,opt,name=weekly_guild_point,json=weeklyGuildPoint,proto3" json:"weekly_guild_point,omitempty"`
+	TotalGuildPoint     uint64                 `protobuf:"varint,12,opt,name=total_guild_point,json=totalGuildPoint,proto3" json:"total_guild_point,omitempty"`
+	TotalYell           uint64                 `protobuf:"varint,13,opt,name=total_yell,json=totalYell,proto3" json:"total_yell,omitempty"`
+	TotalWin            uint64                 `protobuf:"varint,14,opt,name=total_win,json=totalWin,proto3" json:"total_win,omitempty"`
+	MaxWinStreak        uint64                 `protobuf:"varint,15,opt,name=max_win_streak,json=maxWinStreak,proto3" json:"max_win_streak,omitempty"`
+	BaseParameter       *BaseParameter         `protobuf:"bytes,16,opt,name=base_parameter,json=baseParameter,proto3" json:"base_parameter,omitempty"`
+	FloorNumber         uint32                 `protobuf:"varint,17,opt,name=floor_number,json=floorNumber,proto3" json:"floor_number,omitempty"`
+	Power               uint32                 `protobuf:"varint,18,opt,name=power,proto3" json:"power,omitempty"`
+	CanBlock            uint32                 `protobuf:"varint,19,opt,name=can_block,json=canBlock,proto3" json:"can_block,omitempty"`
+	CanGuildInvite      uint32                 `protobuf:"varint,20,opt,name=can_guild_invite,json=canGuildInvite,proto3" json:"can_guild_invite,omitempty"`
+	AnimaUserAchieve    uint32                 `protobuf:"varint,21,opt,name=anima_user_achieve,json=animaUserAchieve,proto3" json:"anima_user_achieve,omitempty"`
+	ArenaRanking        uint32                 `protobuf:"varint,22,opt,name=arena_ranking,json=arenaRanking,proto3" json:"arena_ranking,omitempty"`
+	ArenaTotalPoint     uint32                 `protobuf:"varint,23,opt,name=arena_total_point,json=arenaTotalPoint,proto3" json:"arena_total_point,omitempty"`
+	IsBlocked           bool                   `protobuf:"varint,24,opt,name=is_blocked,json=isBlocked,proto3" json:"is_blocked,omitempty"`
+	GuildSummary        *GuildSummary          `protobuf:"bytes,25,opt,name=guild_summary,json=guildSummary,proto3" json:"guild_summary,omitempty"`
+	GuildMember         *GuildMember           `protobuf:"bytes,26,opt,name=guild_member,json=guildMember,proto3" json:"guild_member,omitempty"`
+	PowerAssessmentList []*PowerAssessment     `protobuf:"bytes,27,rep,name=power_assessment_list,json=powerAssessmentList,proto3" json:"power_assessment_list,omitempty"`
+	PowerAssessmentRank uint32                 `protobuf:"varint,28,opt,name=power_assessment_rank,json=powerAssessmentRank,proto3" json:"power_assessment_rank,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *PlayerDetail) Reset() {
+	*x = PlayerDetail{}
+	mi := &file_proto_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PlayerDetail) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlayerDetail) ProtoMessage() {}
+
+func (x *PlayerDetail) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlayerDetail.ProtoReflect.Descriptor instead.
+func (*PlayerDetail) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *PlayerDetail) GetPlayer() *puser.Player {
+	if x != nil {
+		return x.Player
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetIsFriend() uint32 {
+	if x != nil {
+		return x.IsFriend
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetIsFriendRequest() uint32 {
+	if x != nil {
+		return x.IsFriendRequest
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetIsFriendApproval() uint32 {
+	if x != nil {
+		return x.IsFriendApproval
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetCurrentJob() *puser.Job {
+	if x != nil {
+		return x.CurrentJob
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetJobs() []*puser.Job {
+	if x != nil {
+		return x.Jobs
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetCurrentJobDeck() *puser.JobDeck {
+	if x != nil {
+		return x.CurrentJobDeck
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetEquipments() []*puser.Equipment {
+	if x != nil {
+		return x.Equipments
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetElixirs() []*puser.Elixir {
+	if x != nil {
+		return x.Elixirs
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetMaxDamage() uint64 {
+	if x != nil {
+		return x.MaxDamage
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetWeeklyGuildPoint() uint64 {
+	if x != nil {
+		return x.WeeklyGuildPoint
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetTotalGuildPoint() uint64 {
+	if x != nil {
+		return x.TotalGuildPoint
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetTotalYell() uint64 {
+	if x != nil {
+		return x.TotalYell
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetTotalWin() uint64 {
+	if x != nil {
+		return x.TotalWin
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetMaxWinStreak() uint64 {
+	if x != nil {
+		return x.MaxWinStreak
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetBaseParameter() *BaseParameter {
+	if x != nil {
+		return x.BaseParameter
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetFloorNumber() uint32 {
+	if x != nil {
+		return x.FloorNumber
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetPower() uint32 {
+	if x != nil {
+		return x.Power
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetCanBlock() uint32 {
+	if x != nil {
+		return x.CanBlock
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetCanGuildInvite() uint32 {
+	if x != nil {
+		return x.CanGuildInvite
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetAnimaUserAchieve() uint32 {
+	if x != nil {
+		return x.AnimaUserAchieve
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetArenaRanking() uint32 {
+	if x != nil {
+		return x.ArenaRanking
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetArenaTotalPoint() uint32 {
+	if x != nil {
+		return x.ArenaTotalPoint
+	}
+	return 0
+}
+
+func (x *PlayerDetail) GetIsBlocked() bool {
+	if x != nil {
+		return x.IsBlocked
+	}
+	return false
+}
+
+func (x *PlayerDetail) GetGuildSummary() *GuildSummary {
+	if x != nil {
+		return x.GuildSummary
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetGuildMember() *GuildMember {
+	if x != nil {
+		return x.GuildMember
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetPowerAssessmentList() []*PowerAssessment {
+	if x != nil {
+		return x.PowerAssessmentList
+	}
+	return nil
+}
+
+func (x *PlayerDetail) GetPowerAssessmentRank() uint32 {
+	if x != nil {
+		return x.PowerAssessmentRank
+	}
+	return 0
+}
+
+type PlayerList struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Players          []*puser.Player        `protobuf:"bytes,1,rep,name=players,proto3" json:"players,omitempty"`
+	HighestJobLv     uint32                 `protobuf:"varint,2,opt,name=highest_job_lv,json=highestJobLv,proto3" json:"highest_job_lv,omitempty"`
+	Error            *pcommon.Error         `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
+	BackgroundStatus *BackgroundStatus      `protobuf:"bytes,4,opt,name=background_status,json=backgroundStatus,proto3" json:"background_status,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *PlayerList) Reset() {
+	*x = PlayerList{}
+	mi := &file_proto_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PlayerList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlayerList) ProtoMessage() {}
+
+func (x *PlayerList) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlayerList.ProtoReflect.Descriptor instead.
+func (*PlayerList) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *PlayerList) GetPlayers() []*puser.Player {
+	if x != nil {
+		return x.Players
+	}
+	return nil
+}
+
+func (x *PlayerList) GetHighestJobLv() uint32 {
+	if x != nil {
+		return x.HighestJobLv
+	}
+	return 0
+}
+
+func (x *PlayerList) GetError() *pcommon.Error {
+	if x != nil {
+		return x.Error
+	}
+	return nil
+}
+
+func (x *PlayerList) GetBackgroundStatus() *BackgroundStatus {
+	if x != nil {
+		return x.BackgroundStatus
+	}
+	return nil
+}
+
 type Host struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Photon        string                 `protobuf:"bytes,1,opt,name=photon,proto3" json:"photon,omitempty"`
@@ -370,7 +1579,7 @@ type Host struct {
 
 func (x *Host) Reset() {
 	*x = Host{}
-	mi := &file_proto_proto_msgTypes[5]
+	mi := &file_proto_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -382,7 +1591,7 @@ func (x *Host) String() string {
 func (*Host) ProtoMessage() {}
 
 func (x *Host) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[5]
+	mi := &file_proto_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -395,7 +1604,7 @@ func (x *Host) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Host.ProtoReflect.Descriptor instead.
 func (*Host) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{5}
+	return file_proto_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *Host) GetPhoton() string {
@@ -457,7 +1666,7 @@ type Revision struct {
 
 func (x *Revision) Reset() {
 	*x = Revision{}
-	mi := &file_proto_proto_msgTypes[6]
+	mi := &file_proto_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -469,7 +1678,7 @@ func (x *Revision) String() string {
 func (*Revision) ProtoMessage() {}
 
 func (x *Revision) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[6]
+	mi := &file_proto_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -482,7 +1691,7 @@ func (x *Revision) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Revision.ProtoReflect.Descriptor instead.
 func (*Revision) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{6}
+	return file_proto_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *Revision) GetTerms() int32 {
@@ -513,7 +1722,7 @@ type Etc struct {
 
 func (x *Etc) Reset() {
 	*x = Etc{}
-	mi := &file_proto_proto_msgTypes[7]
+	mi := &file_proto_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -525,7 +1734,7 @@ func (x *Etc) String() string {
 func (*Etc) ProtoMessage() {}
 
 func (x *Etc) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[7]
+	mi := &file_proto_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -538,7 +1747,7 @@ func (x *Etc) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Etc.ProtoReflect.Descriptor instead.
 func (*Etc) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{7}
+	return file_proto_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *Etc) GetHost() *Host {
@@ -587,7 +1796,7 @@ var File_proto_proto protoreflect.FileDescriptor
 
 const file_proto_proto_rawDesc = "" +
 	"\n" +
-	"\vproto.proto\x12\x05Proto\x1a\rpcommon.proto\x1a\rpmaster.proto\"-\n" +
+	"\vproto.proto\x12\x05Proto\x1a\rpcommon.proto\x1a\rpmaster.proto\x1a\vpuser.proto\"-\n" +
 	"\x05Empty\x12$\n" +
 	"\x05error\x18\x01 \x01(\v2\x0e.Pcommon.ErrorR\x05error\"\xe1\x02\n" +
 	"\rPlayerSummary\x12\x1b\n" +
@@ -612,7 +1821,143 @@ const file_proto_proto_rawDesc = "" +
 	"\bban_type\x18\x02 \x01(\rR\abanType\x12!\n" +
 	"\fban_interval\x18\x03 \x01(\x04R\vbanInterval\"@\n" +
 	"\x12AccountCertificate\x12*\n" +
-	"\aversion\x18\x01 \x01(\v2\x10.Pmaster.VersionR\aversion\"\xab\x01\n" +
+	"\aversion\x18\x01 \x01(\v2\x10.Pmaster.VersionR\aversion\"\x8f\x02\n" +
+	"\rBaseParameter\x12\x0e\n" +
+	"\x02hp\x18\x01 \x01(\rR\x02hp\x12\x0e\n" +
+	"\x02mp\x18\x02 \x01(\rR\x02mp\x12\x17\n" +
+	"\aphy_atk\x18\x03 \x01(\rR\x06phyAtk\x12\x17\n" +
+	"\amag_atk\x18\x04 \x01(\rR\x06magAtk\x12\x12\n" +
+	"\x04heal\x18\x05 \x01(\rR\x04heal\x12\x17\n" +
+	"\aphy_def\x18\x06 \x01(\rR\x06phyDef\x12\x17\n" +
+	"\amag_def\x18\a \x01(\rR\x06magDef\x12\x1a\n" +
+	"\baccuracy\x18\b \x01(\rR\baccuracy\x12\x14\n" +
+	"\x05dodge\x18\t \x01(\rR\x05dodge\x12\x1a\n" +
+	"\bcritical\x18\n" +
+	" \x01(\rR\bcritical\x12\x18\n" +
+	"\aagility\x18\v \x01(\rR\aagility\"\xa6\x06\n" +
+	"\x10BattleClearParam\x12\x14\n" +
+	"\x05power\x18\x01 \x01(\rR\x05power\x12\x1b\n" +
+	"\tjob_level\x18\x02 \x01(\rR\bjobLevel\x12\"\n" +
+	"\rjob_level_exp\x18\x03 \x01(\x04R\vjobLevelExp\x12)\n" +
+	"\x11job_level_exp_max\x18\x04 \x01(\x04R\x0ejobLevelExpMax\x12\"\n" +
+	"\rjob_total_exp\x18\x05 \x01(\x04R\vjobTotalExp\x12)\n" +
+	"\x11job_total_exp_max\x18\x06 \x01(\x04R\x0ejobTotalExpMax\x12\x1b\n" +
+	"\tjob_point\x18\a \x01(\rR\bjobPoint\x129\n" +
+	"\rjob_parameter\x18\b \x01(\v2\x14.Proto.BaseParameterR\fjobParameter\x12#\n" +
+	"\rarena_ranking\x18\t \x01(\rR\farenaRanking\x12\x1d\n" +
+	"\n" +
+	"arena_rank\x18\n" +
+	" \x01(\rR\tarenaRank\x12(\n" +
+	"\x10arena_rank_point\x18\v \x01(\rR\x0earenaRankPoint\x12/\n" +
+	"\x14arena_rank_point_max\x18\f \x01(\rR\x11arenaRankPointMax\x12*\n" +
+	"\x11arena_total_point\x18\r \x01(\rR\x0farenaTotalPoint\x121\n" +
+	"\x15arena_total_point_max\x18\x0e \x01(\rR\x12arenaTotalPointMax\x12=\n" +
+	"\x0farena_parameter\x18\x0f \x01(\v2\x14.Proto.BaseParameterR\x0earenaParameter\x12#\n" +
+	"\rcrystal_level\x18\x10 \x01(\rR\fcrystalLevel\x12.\n" +
+	"\x13crystal_skill_point\x18\x11 \x01(\rR\x11crystalSkillPoint\x12\x12\n" +
+	"\x04risk\x18\x12 \x01(\rR\x04risk\x12,\n" +
+	"\x12fastest_clear_time\x18\x13 \x01(\rR\x10fastestClearTime\x12\x15\n" +
+	"\x06job_id\x18\x14 \x01(\rR\x05jobId\"\xc8\x03\n" +
+	"\n" +
+	"RewardInfo\x12\x1f\n" +
+	"\vtarget_type\x18\x01 \x01(\rR\n" +
+	"targetType\x12\x1b\n" +
+	"\ttarget_id\x18\x02 \x01(\rR\btargetId\x12\x1a\n" +
+	"\bquantity\x18\x03 \x01(\rR\bquantity\x12)\n" +
+	"\x10equipment_rarity\x18\x04 \x01(\rR\x0fequipmentRarity\x12'\n" +
+	"\x0fequipment_level\x18\x05 \x01(\rR\x0eequipmentLevel\x12 \n" +
+	"\venhancement\x18\x06 \x01(\rR\venhancement\x12\x1f\n" +
+	"\vlimit_break\x18\a \x01(\rR\n" +
+	"limitBreak\x12!\n" +
+	"\fis_protected\x18\b \x01(\rR\visProtected\x126\n" +
+	"\x17equipment_param_option1\x18\t \x01(\rR\x15equipmentParamOption1\x126\n" +
+	"\x17equipment_param_option2\x18\n" +
+	" \x01(\rR\x15equipmentParamOption2\x126\n" +
+	"\x17equipment_param_option3\x18\v \x01(\rR\x15equipmentParamOption3\"\xe8\x01\n" +
+	"\x16BattleBackgroundReward\x12\x12\n" +
+	"\x04lupi\x18\x01 \x01(\x04R\x04lupi\x122\n" +
+	"\vreward_list\x18\x02 \x03(\v2\x11.Proto.RewardInfoR\n" +
+	"rewardList\x12\x10\n" +
+	"\x03win\x18\x03 \x01(\rR\x03win\x12\x14\n" +
+	"\x05total\x18\x04 \x01(\rR\x05total\x12/\n" +
+	"\x06before\x18\x05 \x01(\v2\x17.Proto.BattleClearParamR\x06before\x12-\n" +
+	"\x05after\x18\x06 \x01(\v2\x17.Proto.BattleClearParamR\x05after\"\xa0\x01\n" +
+	"\x10BackgroundStatus\x12\x1f\n" +
+	"\von_progress\x18\x01 \x01(\bR\n" +
+	"onProgress\x12\x19\n" +
+	"\bstart_ts\x18\x02 \x01(\x04R\astartTs\x12\x19\n" +
+	"\bloop_cnt\x18\x03 \x01(\rR\aloopCnt\x125\n" +
+	"\x06reward\x18\x04 \x01(\v2\x1d.Proto.BattleBackgroundRewardR\x06reward\"\xe1\x02\n" +
+	"\fGuildSummary\x12\x19\n" +
+	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
+	"\x06symbol\x18\x03 \x01(\rR\x06symbol\x12!\n" +
+	"\fsymbol_frame\x18\x04 \x01(\rR\vsymbolFrame\x12,\n" +
+	"\x12symbol_frame_color\x18\x05 \x01(\rR\x10symbolFrameColor\x12!\n" +
+	"\fmember_count\x18\x06 \x01(\rR\vmemberCount\x12(\n" +
+	"\x10member_max_count\x18\a \x01(\rR\x0ememberMaxCount\x12\x0e\n" +
+	"\x02lv\x18\b \x01(\rR\x02lv\x12\x14\n" +
+	"\x05power\x18\t \x01(\x04R\x05power\x12!\n" +
+	"\franking_rank\x18\n" +
+	" \x01(\rR\vrankingRank\x12#\n" +
+	"\rranking_score\x18\v \x01(\rR\frankingScore\"\xcf\x02\n" +
+	"\vGuildMember\x12\x19\n" +
+	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x12\n" +
+	"\x04role\x18\x03 \x01(\rR\x04role\x12\x14\n" +
+	"\x05point\x18\x04 \x01(\x04R\x05point\x12!\n" +
+	"\fweekly_point\x18\x05 \x01(\x04R\vweeklyPoint\x12$\n" +
+	"\x0elast_joined_at\x18\x06 \x01(\tR\flastJoinedAt\x127\n" +
+	"\x18login_reward_received_at\x18\a \x01(\tR\x15loginRewardReceivedAt\x12(\n" +
+	"\x10updated_point_at\x18\b \x01(\tR\x0eupdatedPointAt\x122\n" +
+	"\x15training_completed_at\x18\t \x01(\tR\x13trainingCompletedAt\"Y\n" +
+	"\x0fPowerAssessment\x122\n" +
+	"\x15power_assessment_type\x18\x01 \x01(\rR\x13powerAssessmentType\x12\x12\n" +
+	"\x04step\x18\x02 \x01(\rR\x04step\"\xb5\t\n" +
+	"\fPlayerDetail\x12%\n" +
+	"\x06player\x18\x01 \x01(\v2\r.Puser.PlayerR\x06player\x12\x1b\n" +
+	"\tis_friend\x18\x02 \x01(\rR\bisFriend\x12*\n" +
+	"\x11is_friend_request\x18\x03 \x01(\rR\x0fisFriendRequest\x12,\n" +
+	"\x12is_friend_approval\x18\x04 \x01(\rR\x10isFriendApproval\x12+\n" +
+	"\vcurrent_job\x18\x05 \x01(\v2\n" +
+	".Puser.JobR\n" +
+	"currentJob\x12\x1e\n" +
+	"\x04jobs\x18\x06 \x03(\v2\n" +
+	".Puser.JobR\x04jobs\x128\n" +
+	"\x10current_job_deck\x18\a \x01(\v2\x0e.Puser.JobDeckR\x0ecurrentJobDeck\x120\n" +
+	"\n" +
+	"equipments\x18\b \x03(\v2\x10.Puser.EquipmentR\n" +
+	"equipments\x12'\n" +
+	"\aelixirs\x18\t \x03(\v2\r.Puser.ElixirR\aelixirs\x12\x1d\n" +
+	"\n" +
+	"max_damage\x18\n" +
+	" \x01(\x04R\tmaxDamage\x12,\n" +
+	"\x12weekly_guild_point\x18\v \x01(\x04R\x10weeklyGuildPoint\x12*\n" +
+	"\x11total_guild_point\x18\f \x01(\x04R\x0ftotalGuildPoint\x12\x1d\n" +
+	"\n" +
+	"total_yell\x18\r \x01(\x04R\ttotalYell\x12\x1b\n" +
+	"\ttotal_win\x18\x0e \x01(\x04R\btotalWin\x12$\n" +
+	"\x0emax_win_streak\x18\x0f \x01(\x04R\fmaxWinStreak\x12;\n" +
+	"\x0ebase_parameter\x18\x10 \x01(\v2\x14.Proto.BaseParameterR\rbaseParameter\x12!\n" +
+	"\ffloor_number\x18\x11 \x01(\rR\vfloorNumber\x12\x14\n" +
+	"\x05power\x18\x12 \x01(\rR\x05power\x12\x1b\n" +
+	"\tcan_block\x18\x13 \x01(\rR\bcanBlock\x12(\n" +
+	"\x10can_guild_invite\x18\x14 \x01(\rR\x0ecanGuildInvite\x12,\n" +
+	"\x12anima_user_achieve\x18\x15 \x01(\rR\x10animaUserAchieve\x12#\n" +
+	"\rarena_ranking\x18\x16 \x01(\rR\farenaRanking\x12*\n" +
+	"\x11arena_total_point\x18\x17 \x01(\rR\x0farenaTotalPoint\x12\x1d\n" +
+	"\n" +
+	"is_blocked\x18\x18 \x01(\bR\tisBlocked\x128\n" +
+	"\rguild_summary\x18\x19 \x01(\v2\x13.Proto.GuildSummaryR\fguildSummary\x125\n" +
+	"\fguild_member\x18\x1a \x01(\v2\x12.Proto.GuildMemberR\vguildMember\x12J\n" +
+	"\x15power_assessment_list\x18\x1b \x03(\v2\x16.Proto.PowerAssessmentR\x13powerAssessmentList\x122\n" +
+	"\x15power_assessment_rank\x18\x1c \x01(\rR\x13powerAssessmentRank\"\xc7\x01\n" +
+	"\n" +
+	"PlayerList\x12'\n" +
+	"\aplayers\x18\x01 \x03(\v2\r.Puser.PlayerR\aplayers\x12$\n" +
+	"\x0ehighest_job_lv\x18\x02 \x01(\rR\fhighestJobLv\x12$\n" +
+	"\x05error\x18\x03 \x01(\v2\x0e.Pcommon.ErrorR\x05error\x12D\n" +
+	"\x11background_status\x18\x04 \x01(\v2\x17.Proto.BackgroundStatusR\x10backgroundStatus\"\xab\x01\n" +
 	"\x04Host\x12\x16\n" +
 	"\x06photon\x18\x01 \x01(\tR\x06photon\x12\x12\n" +
 	"\x04chat\x18\x02 \x01(\tR\x04chat\x12\x14\n" +
@@ -644,31 +1989,65 @@ func file_proto_proto_rawDescGZIP() []byte {
 	return file_proto_proto_rawDescData
 }
 
-var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_proto_proto_goTypes = []any{
-	(*Empty)(nil),              // 0: Proto.Empty
-	(*PlayerSummary)(nil),      // 1: Proto.PlayerSummary
-	(*PlayerExist)(nil),        // 2: Proto.PlayerExist
-	(*AccountAuthorize)(nil),   // 3: Proto.AccountAuthorize
-	(*AccountCertificate)(nil), // 4: Proto.AccountCertificate
-	(*Host)(nil),               // 5: Proto.Host
-	(*Revision)(nil),           // 6: Proto.Revision
-	(*Etc)(nil),                // 7: Proto.Etc
-	(*pcommon.Error)(nil),      // 8: Pcommon.Error
-	(*pmaster.Version)(nil),    // 9: Pmaster.Version
+	(*Empty)(nil),                  // 0: Proto.Empty
+	(*PlayerSummary)(nil),          // 1: Proto.PlayerSummary
+	(*PlayerExist)(nil),            // 2: Proto.PlayerExist
+	(*AccountAuthorize)(nil),       // 3: Proto.AccountAuthorize
+	(*AccountCertificate)(nil),     // 4: Proto.AccountCertificate
+	(*BaseParameter)(nil),          // 5: Proto.BaseParameter
+	(*BattleClearParam)(nil),       // 6: Proto.BattleClearParam
+	(*RewardInfo)(nil),             // 7: Proto.RewardInfo
+	(*BattleBackgroundReward)(nil), // 8: Proto.BattleBackgroundReward
+	(*BackgroundStatus)(nil),       // 9: Proto.BackgroundStatus
+	(*GuildSummary)(nil),           // 10: Proto.GuildSummary
+	(*GuildMember)(nil),            // 11: Proto.GuildMember
+	(*PowerAssessment)(nil),        // 12: Proto.PowerAssessment
+	(*PlayerDetail)(nil),           // 13: Proto.PlayerDetail
+	(*PlayerList)(nil),             // 14: Proto.PlayerList
+	(*Host)(nil),                   // 15: Proto.Host
+	(*Revision)(nil),               // 16: Proto.Revision
+	(*Etc)(nil),                    // 17: Proto.Etc
+	(*pcommon.Error)(nil),          // 18: Pcommon.Error
+	(*pmaster.Version)(nil),        // 19: Pmaster.Version
+	(*puser.Player)(nil),           // 20: Puser.Player
+	(*puser.Job)(nil),              // 21: Puser.Job
+	(*puser.JobDeck)(nil),          // 22: Puser.JobDeck
+	(*puser.Equipment)(nil),        // 23: Puser.Equipment
+	(*puser.Elixir)(nil),           // 24: Puser.Elixir
 }
 var file_proto_proto_depIdxs = []int32{
-	8, // 0: Proto.Empty.error:type_name -> Pcommon.Error
-	8, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
-	1, // 2: Proto.PlayerExist.player_summary:type_name -> Proto.PlayerSummary
-	9, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
-	5, // 4: Proto.Etc.host:type_name -> Proto.Host
-	6, // 5: Proto.Etc.revision:type_name -> Proto.Revision
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	18, // 0: Proto.Empty.error:type_name -> Pcommon.Error
+	18, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
+	1,  // 2: Proto.PlayerExist.player_summary:type_name -> Proto.PlayerSummary
+	19, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
+	5,  // 4: Proto.BattleClearParam.job_parameter:type_name -> Proto.BaseParameter
+	5,  // 5: Proto.BattleClearParam.arena_parameter:type_name -> Proto.BaseParameter
+	7,  // 6: Proto.BattleBackgroundReward.reward_list:type_name -> Proto.RewardInfo
+	6,  // 7: Proto.BattleBackgroundReward.before:type_name -> Proto.BattleClearParam
+	6,  // 8: Proto.BattleBackgroundReward.after:type_name -> Proto.BattleClearParam
+	8,  // 9: Proto.BackgroundStatus.reward:type_name -> Proto.BattleBackgroundReward
+	20, // 10: Proto.PlayerDetail.player:type_name -> Puser.Player
+	21, // 11: Proto.PlayerDetail.current_job:type_name -> Puser.Job
+	21, // 12: Proto.PlayerDetail.jobs:type_name -> Puser.Job
+	22, // 13: Proto.PlayerDetail.current_job_deck:type_name -> Puser.JobDeck
+	23, // 14: Proto.PlayerDetail.equipments:type_name -> Puser.Equipment
+	24, // 15: Proto.PlayerDetail.elixirs:type_name -> Puser.Elixir
+	5,  // 16: Proto.PlayerDetail.base_parameter:type_name -> Proto.BaseParameter
+	10, // 17: Proto.PlayerDetail.guild_summary:type_name -> Proto.GuildSummary
+	11, // 18: Proto.PlayerDetail.guild_member:type_name -> Proto.GuildMember
+	12, // 19: Proto.PlayerDetail.power_assessment_list:type_name -> Proto.PowerAssessment
+	20, // 20: Proto.PlayerList.players:type_name -> Puser.Player
+	18, // 21: Proto.PlayerList.error:type_name -> Pcommon.Error
+	9,  // 22: Proto.PlayerList.background_status:type_name -> Proto.BackgroundStatus
+	15, // 23: Proto.Etc.host:type_name -> Proto.Host
+	16, // 24: Proto.Etc.revision:type_name -> Proto.Revision
+	25, // [25:25] is the sub-list for method output_type
+	25, // [25:25] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_proto_proto_init() }
@@ -682,7 +2061,7 @@ func file_proto_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_proto_rawDesc), len(file_proto_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
