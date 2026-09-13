@@ -11,7 +11,7 @@ import (
 
 func assets(w http.ResponseWriter, r *http.Request) {
 	hash := chi.URLParam(r, "hash")
-	assetsDir := getHandler(r).config.Assets
+	assetsDir := getHandler(r).config.AssetsDir
 	filePath := filepath.Join(assetsDir, hash[:2], hash+".unity3d")
 	file, err := os.Open(filePath)
 	if err != nil {
