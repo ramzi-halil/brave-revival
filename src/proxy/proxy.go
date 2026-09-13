@@ -136,12 +136,17 @@ func Run(cfg *config.Config) error {
 		return fmt.Errorf("failed to load self-signed certificate: %w", err)
 	}
 
+	wwwHandler, err := www.NewHandler(cfg, config.DummyPlayer)
+	if err != nil {
+		return fmt.Errorf("failed to create www handler: %w", err)
+	}
+
 	server := http.Server{
 		Addr: netip.AddrPortFrom(cfg.Host, cfg.ProxyPort).String(),
 		Handler: &handler{
 			config:  cfg,
 			tlsCert: tlsCert,
-			www:     www.NewHandler(cfg, config.DummyPlayer),
+			www:     wwwHandler,
 		},
 	}
 	return server.ListenAndServe()

@@ -1,6 +1,12 @@
 package config
 
 import (
+	"encoding/csv"
+	"fmt"
+	"io"
+	"strconv"
+
+	"example.com/brave-revival/src/proto/pmaster"
 	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/puser"
 )
@@ -46,4 +52,49 @@ var DummyPlayer = &proto.PlayerDetail{
 	CurrentJob: DummyJob,
 	Jobs:       []*puser.Job{DummyJob},
 	Power:      99_999_999,
+}
+
+type Resources = map[string]*pmaster.Resources
+
+func LoadResources(f io.Reader) (Resources, error) {
+	reader := csv.NewReader(f)
+	reader.FieldsPerRecord = 3
+
+	header, err := reader.Read()
+	if err != nil {
+		return nil, fmt.Errorf("cannot read resources CSV: %w", err)
+	}
+
+	m := make([]*pmaster.Resources, len(header)-1)
+	for i := range m {
+		m[i] = &pmaster.Resources{
+			Resource: make(map[uint32]*pmaster.ResourceInfo),
+		}
+	}
+
+	reader.ReuseRecord = true
+
+	for {
+		record, err := reader.Read()
+		switch err {
+		case nil:
+			id, err := strconv.ParseUint(record[0], 10, 32)
+			if err != nil {
+				return nil, fmt.Errorf("resource CSV contains invalid ID: %w", err)
+			}
+			for i, hash := range record[1:] {
+				m[i].Resource[uint32(id)] = &pmaster.ResourceInfo{Hash: hash}
+			}
+
+		case io.EOF:
+			result := make(Resources, len(header)-1)
+			for i, res := range m {
+				result[header[i+1]] = res
+			}
+			return result, nil
+
+		default:
+			return nil, fmt.Errorf("cannot read resources CSV: %w", err)
+		}
+	}
 }

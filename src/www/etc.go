@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"example.com/brave-revival/src/proto/proto"
+	"github.com/go-chi/chi/v5"
 )
 
 func actionlog(w http.ResponseWriter, _ *http.Request) {
@@ -41,7 +42,8 @@ func masterAll(w http.ResponseWriter, r *http.Request) {
 }
 
 func resourceList(w http.ResponseWriter, r *http.Request) {
-	res := getHandler(r).resources
+	platform := chi.URLParam(r, "os")
+	res := getHandler(r).resources[platform]
 	w.Header().Set("x-enish-app-resource-cnt", fmt.Sprint(len(res.Resource)))
 	writeProto(w, http.StatusOK, res)
 }

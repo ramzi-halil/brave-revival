@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"path/filepath"
 
 	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/pcommon"
@@ -21,34 +22,37 @@ type Handler struct {
 	router chi.Router
 
 	master    *pmaster.All
-	resources *pmaster.Resources
+	resources config.Resources
 	player    *proto.PlayerDetail
 }
 
 type handlerKey struct{}
 
-func NewHandler(config *config.Config, player *proto.PlayerDetail) *Handler {
+func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error) {
 	// TODO: Don't use pre-compiled master & resources.
 	masterBytes, err := os.ReadFile("./patched.pb")
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
-	resourcesBytes, err := os.ReadFile("./v1_43_274-res.pb")
-	if err != nil {
-		panic(err)
-	}
-
 	var master pmaster.All
 	pb.Unmarshal(masterBytes, &master)
-	var resources pmaster.Resources
-	pb.Unmarshal(resourcesBytes, &resources)
+
+	resourcesFile, err := os.Open(filepath.Join(cfg.DBDir, "res.csv"))
+	if err != nil {
+		return nil, err
+	}
+	defer resourcesFile.Close()
+	resources, err := config.LoadResources(resourcesFile)
+	if err != nil {
+		return nil, err
+	}
 
 	router := chi.NewRouter()
 	handler := &Handler{
-		config:    config,
+		config:    cfg,
 		router:    router,
 		master:    &master,
-		resources: &resources,
+		resources: resources,
 		player:    player,
 	}
 
@@ -74,7 +78,7 @@ func NewHandler(config *config.Config, player *proto.PlayerDetail) *Handler {
 	router.NotFound(notFound)
 	router.MethodNotAllowed(notFound)
 
-	return handler
+	return handler, nil
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
