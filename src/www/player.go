@@ -15,3 +15,9 @@ func playerList(w http.ResponseWriter, r *http.Request) {
 		BackgroundStatus: &proto.BackgroundStatus{},
 	})
 }
+
+func playerLoad(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/x-protobuf")
+	w.Header().Set("proto-type", "Proto.Nocontent")
+	http.ServeFile(w, r, "./load-sample.pb")
+}

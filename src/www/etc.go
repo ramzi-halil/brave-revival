@@ -9,10 +9,6 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func actionlog(w http.ResponseWriter, _ *http.Request) {
-	writeProto(w, http.StatusOK, &proto.Empty{})
-}
-
 func etc(w http.ResponseWriter, r *http.Request) {
 	config := getHandler(r).config
 	chatHost := net.JoinHostPort(config.AdvertiseHost, fmt.Sprint(config.ChatPort))

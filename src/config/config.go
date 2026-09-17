@@ -49,7 +49,7 @@ type Config struct {
 	AssetsDir string `json:"assets_dir"`
 
 	// DBDir is the local directory path where the decoded game data are stored.
-	DBDir string `json:"db_dir`
+	DBDir string `json:"db_dir"`
 }
 
 func Parse(bytes []byte) (*Config, error) {

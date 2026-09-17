@@ -66,13 +66,17 @@ func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error
 		router.Get("/etc", etc)
 		router.Get("/master/all", masterAll)
 		router.Get("/resource/list/{os}", resourceList)
-		router.Post("/actionlog/{action}/send", actionlog)
+		router.Post("/actionlog/{action}/send", empty("Proto.Empty"))
 
 		router.Post("/account/exist", accountExist)
 		router.Post("/account/authorize", accountAuthorize)
 		router.Post("/account/certificate", accountCertificate)
 
 		router.Get("/player/list", playerList)
+		router.Get("/player/load", playerLoad)
+
+		router.Get("/mission/guild/personal/list", empty("Proto.GuildPersonalMissionResult"))
+		router.Get("/mission/guild/shared/list", empty("Proto.GuildSharedMissionResult"))
 	})
 	router.Get("/crow/Assets/{os}/{hash}", assets)
 	router.NotFound(notFound)
@@ -107,4 +111,12 @@ func writeProto(w http.ResponseWriter, status int, message pb.Message) {
 
 	w.WriteHeader(status)
 	_, _ = w.Write(payload)
+}
+
+func empty(protoType string) func(w http.ResponseWriter, _ *http.Request) {
+	return func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Content-Type", protobufContentType)
+		w.Header().Set("proto-type", protoType)
+		w.WriteHeader(http.StatusOK)
+	}
 }
