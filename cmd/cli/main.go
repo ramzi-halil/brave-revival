@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"example.com/brave-revival/src/config"
+	"example.com/brave-revival/src/photon"
 	"example.com/brave-revival/src/proxy"
 	"golang.org/x/sync/errgroup"
 )
@@ -27,10 +28,15 @@ func run() error {
 	eg.Go(func() error {
 		return proxy.Run(cfg)
 	})
+	eg.Go(func() error {
+		return photon.RunLobby(cfg)
+	})
 	return eg.Wait()
 }
 
 func main() {
+	slog.SetLogLoggerLevel(slog.LevelDebug)
+
 	if len(os.Args) < 2 {
 		fmt.Println("Usage: brave-revival <config.json>")
 		os.Exit(1)
