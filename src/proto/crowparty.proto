@@ -1,0 +1,242 @@
+syntax = "proto3";
+package CrowParty;
+
+option go_package = "example.com/brave-revival/src/proto/crowparty";
+
+service CrowParty {
+    rpc Connect(stream PartyRequest) returns (stream PartyResponse);
+    rpc IsPartyMember(IsPartyMemberRequest) returns (IsPartyMemberResponse);
+    rpc SearchRooms(PartySearchRequest) returns (PartySearchResponse);
+}
+
+message PartyRequest {
+    int32 message_id = 1;
+
+    oneof request {
+        ResumeRoom resume_room = 2;
+        JoinRoom apply_room_request = 3;
+        RoomRequest cancel_room_request = 4;
+        uint64 accept_room_request = 5;
+        uint64 reject_room_request = 6;
+        JoinRoom join_room = 7;
+        bool leave_room = 8;
+        uint64 kick_room = 9;
+        bool disband_room = 10;
+        uint64 change_leader = 11;
+        CustomProperty change_room_property = 12;
+        CustomProperty change_player_property = 13;
+        AutoMatchingStart auto_matching_start = 14;
+        AutoMatchingStage auto_matching_start_stage = 15;
+        AutoMatchingStage auto_matching_cancel_stage = 16;
+        uint64 auto_matching_cancel_all = 17;
+        bool auto_matching_room_break = 18;
+        InviteRoom invite_room = 19;
+        RaiseEvent raise_event = 20;
+    }
+}
+
+message PartyResponse {
+    int32 message_id = 1;
+    uint64 sender_player_id = 2;
+
+    oneof response {
+        Error error = 3;
+        Room join_room = 4;
+        bool disband_room = 5;
+        uint64 change_leader = 6;
+        CustomProperty change_room_property = 7;
+        string apply_room_request = 8;
+        bool cancel_room_request = 9;
+        string accept_room_request = 10;
+        string reject_room_request = 11;
+        Player join_player = 12;
+        Player leave_player = 13;
+        bool kick_player = 14;
+        CustomProperty change_player_property = 15;
+        int32 kill = 16;
+        AutoMatchingInfo auto_matching_start_stage = 17;
+        uint32 auto_matching_cancel_stage = 18;
+        bool auto_matching_cancel_all = 19;
+        AutoMatchingSuccess auto_matching_success = 20;
+        int32 invite_room = 21;
+        RaiseEvent raise_event = 22;
+    }
+}
+
+message IsPartyMemberRequest {
+    uint64 player_id = 1;
+    string room_id = 2;
+}
+
+message IsPartyMemberResponse {
+    bool is_member = 1;
+}
+
+message PartySearchRequest {
+    PlayerInfo player = 1;
+    uint32 stage_id = 2;
+    uint64 guild_id = 3;
+    bool is_guild_member_only = 4;
+    int32 max_player_count = 5;
+}
+
+message PartySearchResponse {
+    repeated RoomInfo rooms = 1;
+}
+
+message CustomProperty {
+    map<string, string> map = 1;
+}
+
+message Player {
+    uint64 id = 1;
+    CustomProperty property = 2;
+    bool is_inactive = 3;
+}
+
+message Room {
+    string id = 1;
+    CustomProperty property = 2;
+    uint64 leader_player_id = 3;
+    repeated Player players = 4;
+}
+
+message ResumeRoom {
+    uint64 player_id = 1;
+    CustomProperty player_property = 2;
+}
+
+message RoomRequest {
+    uint64 player_id = 1;
+    string room_id = 2;
+}
+
+message JoinRoom {
+    JoinType.Enum type = 1;
+    string room_id = 2;
+    CustomProperty room_property = 3;
+    uint64 player_id = 4;
+    CustomProperty player_property = 5;
+    uint32 raid_id = 6;
+}
+
+message InviteRoom {
+    repeated uint64 player_ids = 1;
+}
+
+message AutoMatchingStart {
+    uint64 player_id = 1;
+    uint32 role = 2;
+    uint32 power = 3;
+}
+
+message AutoMatchingStage {
+    uint64 player_id = 1;
+    uint32 stage_id = 2;
+    uint32 timeout_second = 3;
+    uint32 risk = 4;
+    uint32 contents_type = 5;
+}
+
+message AutoMatchingInfo {
+    uint32 stage_id = 1;
+    int64 start_at = 2;
+}
+
+message AutoMatchingSuccess {
+    string room_id = 1;
+    uint32 stage_id = 2;
+    int32 total = 3;
+    bool timeout = 4;
+}
+
+message PlayerInfo {
+    uint64 id = 1;
+    uint32 power = 2;
+    uint32 job_level = 3;
+}
+
+message RoomInfo {
+    string id = 1;
+    string name = 2;
+    uint64 leader_player_id = 3;
+    int32 max_players = 4;
+    bool approval = 5;
+    uint32 stage_id = 6;
+    uint32 auto_battle_count = 7;
+    repeated PlayerInfo players = 8;
+}
+
+message RaiseEvent {
+    ReceiverGroup.Enum group = 1;
+    int32 code = 2;
+
+    oneof data {
+        uint32 stage_id = 3;
+        string message = 4;
+    }
+}
+
+message Error {
+    ErrorCode.Enum code = 1;
+    ErrorLevel.Enum level = 2;
+    string message = 3;
+}
+
+message JoinType {
+    enum Enum {
+        CREATE = 0;
+        JOIN = 1;
+        ACCEPT = 2;
+        REJOIN = 3;
+        AUTO = 4;
+        INTRUDE = 5;
+        RESCUE = 6;
+    }
+}
+
+message RoomVisibility {
+    enum Enum {
+        PUBLIC = 0;
+        GUILD = 1;
+        PRIVATE = 2;
+    }
+}
+
+message ReceiverGroup {
+    enum Enum {
+        OTHERS = 0;
+        ALL = 1;
+        LEADER = 2;
+    }
+}
+
+message ErrorCode {
+    enum Enum {
+        UNKNOWN = 0;
+        ROOM_ALREADY_EXISTS = 1;
+        ALREADY_IN_ROOM = 2;
+        NOT_IN_ROOM = 3;
+        ROOM_NOT_FOUND = 4;
+        ROOM_CONDITION = 5;
+        ROOM_IS_FULL = 6;
+        ROOM_REQUEST_NOT_FOUND = 7;
+        ROOM_IDMISMATCH = 8;
+        NOT_LEADER = 9;
+        PLAYER_NOT_FOUND = 10;
+        PLAYER_IS_INACTIVE = 11;
+        AUTO_MATCHING_ALREADY_STARTED = 12;
+        AUTO_MATCHING_NOT_STARTED = 13;
+        AUTO_MATCHING_RUNNNING = 14;
+        AUTO_MATCHING_ROOM = 15;
+        NOT_AUTO_MATCHING_ROOM = 16;
+        IN_BATTLE = 17;
+    }
+}
+
+message ErrorLevel {
+    enum Enum {
+        ERROR = 0;
+        WARN = 1;
+    }
+}

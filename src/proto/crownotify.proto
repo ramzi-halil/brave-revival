@@ -1,0 +1,195 @@
+syntax = "proto3";
+package CrowNotify;
+
+option go_package = "example.com/brave-revival/src/proto/crownotify";
+
+service CrowNotify {
+    rpc Notify(NotifyRequest) returns (stream NotifyEvent);
+    rpc CloseNotify(CloseNotifyRequest) returns (CloseNotifyResult);
+    rpc GetAnnounce(NullRequest) returns (Announce);
+    rpc GetMaintenance(NullRequest) returns (Maintenance);
+    rpc GetNotifierCount(GetNotifierCountRequest) returns (GetNotifierCountResult);
+    rpc GetNotifierList(GetNotifierListRequest) returns (GetNotifierListResult);
+    rpc SetAnnounce(AnnounceRequest) returns (NullResponse);
+    rpc SetMaintenance(MaintenanceRequest) returns (NullResponse);
+    rpc SendNotify(SendNotifyRequest) returns (NullResponse);
+    rpc SendTicker(SendTickerRequest) returns (NullResponse);
+}
+
+enum Store {
+    STORE_UNKNOWN = 0;
+    STORE_ITUNES = 1;
+    STORE_GOOGLE_PLAY = 2;
+}
+
+enum AnnounceType {
+    ANNOUNCE_TYPE_UNKNOWN = 0;
+    ANNOUNCE_TYPE_ANNOUNCE_1 = 1;
+    ANNOUNCE_TYPE_ANNOUNCE_2 = 2;
+    ANNOUNCE_TYPE_ANNOUNCE_3 = 3;
+}
+
+enum BattleStatus {
+    BATTLE_STATUS_BEFORE_BATTLE = 0;
+    BATTLE_STATUS_ENTERING_BATTLE = 1;
+    BATTLE_STATUS_IN_BATTLE = 2;
+}
+
+enum PlayerActivity {
+    PLAYER_ACTIVITY_ACTIVITY_UNKNOWN = 0;
+    PLAYER_ACTIVITY_ACTIVITY_OK = 1;
+    PLAYER_ACTIVITY_ACTIVITY_PREPARING = 2;
+}
+
+message NotifyRequest {
+    string user_id = 1;
+    Store store = 2;
+    string registration_token = 3;
+}
+
+message NotifyEvent {
+    oneof event {
+        JoinRequest invited = 1;
+        string generic = 2;
+        InviteGroup invite_group = 3;
+        AddedGroup added_group = 4;
+        string ticker = 5;
+        Announce announce = 6;
+        string maintenance = 7;
+    }
+}
+
+message CloseNotifyRequest {
+    string user_id = 1;
+}
+
+message CloseNotifyResult {
+}
+
+message NullRequest {
+}
+
+message NullResponse {
+}
+
+message AnnounceRequest {
+    string password = 1;
+    string title = 2;
+    string message = 3;
+    string url = 4;
+    AnnounceType announce_type = 5;
+    int64 start_at = 6;
+    int64 end_at = 7;
+}
+
+message Announce {
+    string title = 1;
+    string message = 2;
+    string url = 3;
+    AnnounceType announce_type = 4;
+    int64 start_at = 5;
+    int64 end_at = 6;
+}
+
+message MaintenanceRequest {
+    string password = 1;
+    int64 start_at = 2;
+    int64 end_at = 3;
+}
+
+message Maintenance {
+    int64 start_at = 1;
+    int64 end_at = 2;
+}
+
+message GetNotifierCountRequest {
+    string password = 1;
+}
+
+message GetNotifierCountResult {
+    uint64 notifier_count = 1;
+}
+
+message GetNotifierListRequest {
+}
+
+message GetNotifierListResult {
+    string notifiers = 1;
+}
+
+message SendNotifyRequest {
+    repeated string toUserIDs = 1;
+    NotifyEvent event = 2;
+    string password = 3;
+    bool all = 4;
+}
+
+message SendTickerRequest {
+    string ticker = 1;
+    uint32 score = 2;
+    string password = 3;
+}
+
+message JoinRequest {
+    string user_id = 1;
+    string party_id = 2;
+    string stage_id = 3;
+}
+
+message InviteGroup {
+    string room_id = 1;
+    string room_name = 2;
+    string invited_by = 3;
+}
+
+message AddedGroup {
+    string room_id = 1;
+    string room_name = 2;
+    string addUser_id = 3;
+}
+
+message Matching {
+    string party_id = 1;
+    string stage_id = 2;
+}
+
+message Online {
+    string user_id = 1;
+    bool is_online = 2;
+}
+
+message UpdateMember {
+    string targetUser_id = 1;
+    Party party = 2;
+}
+
+message NewBattle_id {
+    string party_id = 1;
+    string battle_id = 2;
+}
+
+message Party {
+    string party_id = 1;
+    string name = 2;
+    BattleStatus is_in_battle = 3;
+    string leaderUser_id = 4;
+    bool approval = 5;
+    string stage_id = 6;
+    uint32 jobLV = 7;
+    uint64 power = 8;
+    string battle_id = 9;
+    uint32 raid_id = 10;
+    uint32 guild_id = 11;
+    bool is_created_by_matching = 12;
+    repeated PartyMember members = 13;
+    bool private = 14;
+}
+
+message PartyMember {
+    string user_id = 1;
+    PlayerActivity activity = 2;
+    uint64 power = 3;
+    uint32 jobLV = 4;
+    bool in_lobby = 5;
+    bool can_play = 6;
+}
