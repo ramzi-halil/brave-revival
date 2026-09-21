@@ -1,0 +1,12 @@
+syntax = "proto3";
+package Prealtime;
+
+option go_package = "example.com/brave-revival/src/proto/prealtime";
+
+message Channel {
+    repeated string channels = 1;
+}
+
+message StatNumSub {
+    map<string, int32> nums = 1;
+}

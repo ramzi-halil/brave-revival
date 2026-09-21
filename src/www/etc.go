@@ -19,7 +19,7 @@ func etc(w http.ResponseWriter, r *http.Request) {
 			Party:    net.JoinHostPort(config.AdvertiseHost, fmt.Sprint(config.PartyPort)),
 			Notify:   net.JoinHostPort(config.AdvertiseHost, fmt.Sprint(config.NotifyPort)),
 			Gvg:      config.AdvertiseHost,
-			Realtime: "wss://" + chatHost,
+			Realtime: "ws://" + chatHost,
 			GvgHosts: 1,
 		},
 		Language:       "ja",
