@@ -4,6 +4,7 @@ package Proto;
 import "pcommon.proto";
 import "pmaster.proto";
 import "puser.proto";
+import "pmisc.proto";
 
 option go_package = "example.com/brave-revival/src/proto/proto";
 
@@ -199,4 +200,19 @@ message Etc {
     float gmt = 4;
     string store_review_url = 5;
     Revision revision = 6;
+}
+
+message GuildPersonalMissionResult {
+    Pmisc.GuildPersonalMissionList list = 1;
+    // StoredData stored_data = 2;
+    // repeated RewardInfo receive_reward_list = 3;
+}
+
+message GuildSharedMissionResult {
+    Pmisc.GuildSharedMissionList list = 1;
+    Pmisc.GuildSharedMissionRankingList ranking = 2;
+    Pmisc.Guild guild = 3;
+    // StoredData stored_data = 4;
+    // repeated RewardInfo receive_reward_list_personal = 5;
+    // repeated RewardInfo receive_reward_list_guild = 6;
 }

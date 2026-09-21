@@ -9,6 +9,7 @@ package proto
 import (
 	pcommon "example.com/brave-revival/src/proto/pcommon"
 	pmaster "example.com/brave-revival/src/proto/pmaster"
+	pmisc "example.com/brave-revival/src/proto/pmisc"
 	puser "example.com/brave-revival/src/proto/puser"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -1792,11 +1793,115 @@ func (x *Etc) GetRevision() *Revision {
 	return nil
 }
 
+type GuildPersonalMissionResult struct {
+	state         protoimpl.MessageState          `protogen:"open.v1"`
+	List          *pmisc.GuildPersonalMissionList `protobuf:"bytes,1,opt,name=list,proto3" json:"list,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuildPersonalMissionResult) Reset() {
+	*x = GuildPersonalMissionResult{}
+	mi := &file_proto_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildPersonalMissionResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildPersonalMissionResult) ProtoMessage() {}
+
+func (x *GuildPersonalMissionResult) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildPersonalMissionResult.ProtoReflect.Descriptor instead.
+func (*GuildPersonalMissionResult) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GuildPersonalMissionResult) GetList() *pmisc.GuildPersonalMissionList {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+type GuildSharedMissionResult struct {
+	state         protoimpl.MessageState               `protogen:"open.v1"`
+	List          *pmisc.GuildSharedMissionList        `protobuf:"bytes,1,opt,name=list,proto3" json:"list,omitempty"`
+	Ranking       *pmisc.GuildSharedMissionRankingList `protobuf:"bytes,2,opt,name=ranking,proto3" json:"ranking,omitempty"`
+	Guild         *pmisc.Guild                         `protobuf:"bytes,3,opt,name=guild,proto3" json:"guild,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuildSharedMissionResult) Reset() {
+	*x = GuildSharedMissionResult{}
+	mi := &file_proto_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildSharedMissionResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildSharedMissionResult) ProtoMessage() {}
+
+func (x *GuildSharedMissionResult) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildSharedMissionResult.ProtoReflect.Descriptor instead.
+func (*GuildSharedMissionResult) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GuildSharedMissionResult) GetList() *pmisc.GuildSharedMissionList {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+func (x *GuildSharedMissionResult) GetRanking() *pmisc.GuildSharedMissionRankingList {
+	if x != nil {
+		return x.Ranking
+	}
+	return nil
+}
+
+func (x *GuildSharedMissionResult) GetGuild() *pmisc.Guild {
+	if x != nil {
+		return x.Guild
+	}
+	return nil
+}
+
 var File_proto_proto protoreflect.FileDescriptor
 
 const file_proto_proto_rawDesc = "" +
 	"\n" +
-	"\vproto.proto\x12\x05Proto\x1a\rpcommon.proto\x1a\rpmaster.proto\x1a\vpuser.proto\"-\n" +
+	"\vproto.proto\x12\x05Proto\x1a\rpcommon.proto\x1a\rpmaster.proto\x1a\vpuser.proto\x1a\vpmisc.proto\"-\n" +
 	"\x05Empty\x12$\n" +
 	"\x05error\x18\x01 \x01(\v2\x0e.Pcommon.ErrorR\x05error\"\xe1\x02\n" +
 	"\rPlayerSummary\x12\x1b\n" +
@@ -1975,7 +2080,13 @@ const file_proto_proto_rawDesc = "" +
 	"\venvironment\x18\x03 \x01(\tR\venvironment\x12\x10\n" +
 	"\x03gmt\x18\x04 \x01(\x02R\x03gmt\x12(\n" +
 	"\x10store_review_url\x18\x05 \x01(\tR\x0estoreReviewUrl\x12+\n" +
-	"\brevision\x18\x06 \x01(\v2\x0f.Proto.RevisionR\brevisionB+Z)example.com/brave-revival/src/proto/protob\x06proto3"
+	"\brevision\x18\x06 \x01(\v2\x0f.Proto.RevisionR\brevision\"Q\n" +
+	"\x1aGuildPersonalMissionResult\x123\n" +
+	"\x04list\x18\x01 \x01(\v2\x1f.Pmisc.GuildPersonalMissionListR\x04list\"\xb1\x01\n" +
+	"\x18GuildSharedMissionResult\x121\n" +
+	"\x04list\x18\x01 \x01(\v2\x1d.Pmisc.GuildSharedMissionListR\x04list\x12>\n" +
+	"\aranking\x18\x02 \x01(\v2$.Pmisc.GuildSharedMissionRankingListR\aranking\x12\"\n" +
+	"\x05guild\x18\x03 \x01(\v2\f.Pmisc.GuildR\x05guildB+Z)example.com/brave-revival/src/proto/protob\x06proto3"
 
 var (
 	file_proto_proto_rawDescOnce sync.Once
@@ -1989,65 +2100,75 @@ func file_proto_proto_rawDescGZIP() []byte {
 	return file_proto_proto_rawDescData
 }
 
-var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_proto_proto_goTypes = []any{
-	(*Empty)(nil),                  // 0: Proto.Empty
-	(*PlayerSummary)(nil),          // 1: Proto.PlayerSummary
-	(*PlayerExist)(nil),            // 2: Proto.PlayerExist
-	(*AccountAuthorize)(nil),       // 3: Proto.AccountAuthorize
-	(*AccountCertificate)(nil),     // 4: Proto.AccountCertificate
-	(*BaseParameter)(nil),          // 5: Proto.BaseParameter
-	(*BattleClearParam)(nil),       // 6: Proto.BattleClearParam
-	(*RewardInfo)(nil),             // 7: Proto.RewardInfo
-	(*BattleBackgroundReward)(nil), // 8: Proto.BattleBackgroundReward
-	(*BackgroundStatus)(nil),       // 9: Proto.BackgroundStatus
-	(*GuildSummary)(nil),           // 10: Proto.GuildSummary
-	(*GuildMember)(nil),            // 11: Proto.GuildMember
-	(*PowerAssessment)(nil),        // 12: Proto.PowerAssessment
-	(*PlayerDetail)(nil),           // 13: Proto.PlayerDetail
-	(*PlayerList)(nil),             // 14: Proto.PlayerList
-	(*Host)(nil),                   // 15: Proto.Host
-	(*Revision)(nil),               // 16: Proto.Revision
-	(*Etc)(nil),                    // 17: Proto.Etc
-	(*pcommon.Error)(nil),          // 18: Pcommon.Error
-	(*pmaster.Version)(nil),        // 19: Pmaster.Version
-	(*puser.Player)(nil),           // 20: Puser.Player
-	(*puser.Job)(nil),              // 21: Puser.Job
-	(*puser.JobDeck)(nil),          // 22: Puser.JobDeck
-	(*puser.Equipment)(nil),        // 23: Puser.Equipment
-	(*puser.Elixir)(nil),           // 24: Puser.Elixir
+	(*Empty)(nil),                               // 0: Proto.Empty
+	(*PlayerSummary)(nil),                       // 1: Proto.PlayerSummary
+	(*PlayerExist)(nil),                         // 2: Proto.PlayerExist
+	(*AccountAuthorize)(nil),                    // 3: Proto.AccountAuthorize
+	(*AccountCertificate)(nil),                  // 4: Proto.AccountCertificate
+	(*BaseParameter)(nil),                       // 5: Proto.BaseParameter
+	(*BattleClearParam)(nil),                    // 6: Proto.BattleClearParam
+	(*RewardInfo)(nil),                          // 7: Proto.RewardInfo
+	(*BattleBackgroundReward)(nil),              // 8: Proto.BattleBackgroundReward
+	(*BackgroundStatus)(nil),                    // 9: Proto.BackgroundStatus
+	(*GuildSummary)(nil),                        // 10: Proto.GuildSummary
+	(*GuildMember)(nil),                         // 11: Proto.GuildMember
+	(*PowerAssessment)(nil),                     // 12: Proto.PowerAssessment
+	(*PlayerDetail)(nil),                        // 13: Proto.PlayerDetail
+	(*PlayerList)(nil),                          // 14: Proto.PlayerList
+	(*Host)(nil),                                // 15: Proto.Host
+	(*Revision)(nil),                            // 16: Proto.Revision
+	(*Etc)(nil),                                 // 17: Proto.Etc
+	(*GuildPersonalMissionResult)(nil),          // 18: Proto.GuildPersonalMissionResult
+	(*GuildSharedMissionResult)(nil),            // 19: Proto.GuildSharedMissionResult
+	(*pcommon.Error)(nil),                       // 20: Pcommon.Error
+	(*pmaster.Version)(nil),                     // 21: Pmaster.Version
+	(*puser.Player)(nil),                        // 22: Puser.Player
+	(*puser.Job)(nil),                           // 23: Puser.Job
+	(*puser.JobDeck)(nil),                       // 24: Puser.JobDeck
+	(*puser.Equipment)(nil),                     // 25: Puser.Equipment
+	(*puser.Elixir)(nil),                        // 26: Puser.Elixir
+	(*pmisc.GuildPersonalMissionList)(nil),      // 27: Pmisc.GuildPersonalMissionList
+	(*pmisc.GuildSharedMissionList)(nil),        // 28: Pmisc.GuildSharedMissionList
+	(*pmisc.GuildSharedMissionRankingList)(nil), // 29: Pmisc.GuildSharedMissionRankingList
+	(*pmisc.Guild)(nil),                         // 30: Pmisc.Guild
 }
 var file_proto_proto_depIdxs = []int32{
-	18, // 0: Proto.Empty.error:type_name -> Pcommon.Error
-	18, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
+	20, // 0: Proto.Empty.error:type_name -> Pcommon.Error
+	20, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
 	1,  // 2: Proto.PlayerExist.player_summary:type_name -> Proto.PlayerSummary
-	19, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
+	21, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
 	5,  // 4: Proto.BattleClearParam.job_parameter:type_name -> Proto.BaseParameter
 	5,  // 5: Proto.BattleClearParam.arena_parameter:type_name -> Proto.BaseParameter
 	7,  // 6: Proto.BattleBackgroundReward.reward_list:type_name -> Proto.RewardInfo
 	6,  // 7: Proto.BattleBackgroundReward.before:type_name -> Proto.BattleClearParam
 	6,  // 8: Proto.BattleBackgroundReward.after:type_name -> Proto.BattleClearParam
 	8,  // 9: Proto.BackgroundStatus.reward:type_name -> Proto.BattleBackgroundReward
-	20, // 10: Proto.PlayerDetail.player:type_name -> Puser.Player
-	21, // 11: Proto.PlayerDetail.current_job:type_name -> Puser.Job
-	21, // 12: Proto.PlayerDetail.jobs:type_name -> Puser.Job
-	22, // 13: Proto.PlayerDetail.current_job_deck:type_name -> Puser.JobDeck
-	23, // 14: Proto.PlayerDetail.equipments:type_name -> Puser.Equipment
-	24, // 15: Proto.PlayerDetail.elixirs:type_name -> Puser.Elixir
+	22, // 10: Proto.PlayerDetail.player:type_name -> Puser.Player
+	23, // 11: Proto.PlayerDetail.current_job:type_name -> Puser.Job
+	23, // 12: Proto.PlayerDetail.jobs:type_name -> Puser.Job
+	24, // 13: Proto.PlayerDetail.current_job_deck:type_name -> Puser.JobDeck
+	25, // 14: Proto.PlayerDetail.equipments:type_name -> Puser.Equipment
+	26, // 15: Proto.PlayerDetail.elixirs:type_name -> Puser.Elixir
 	5,  // 16: Proto.PlayerDetail.base_parameter:type_name -> Proto.BaseParameter
 	10, // 17: Proto.PlayerDetail.guild_summary:type_name -> Proto.GuildSummary
 	11, // 18: Proto.PlayerDetail.guild_member:type_name -> Proto.GuildMember
 	12, // 19: Proto.PlayerDetail.power_assessment_list:type_name -> Proto.PowerAssessment
-	20, // 20: Proto.PlayerList.players:type_name -> Puser.Player
-	18, // 21: Proto.PlayerList.error:type_name -> Pcommon.Error
+	22, // 20: Proto.PlayerList.players:type_name -> Puser.Player
+	20, // 21: Proto.PlayerList.error:type_name -> Pcommon.Error
 	9,  // 22: Proto.PlayerList.background_status:type_name -> Proto.BackgroundStatus
 	15, // 23: Proto.Etc.host:type_name -> Proto.Host
 	16, // 24: Proto.Etc.revision:type_name -> Proto.Revision
-	25, // [25:25] is the sub-list for method output_type
-	25, // [25:25] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	27, // 25: Proto.GuildPersonalMissionResult.list:type_name -> Pmisc.GuildPersonalMissionList
+	28, // 26: Proto.GuildSharedMissionResult.list:type_name -> Pmisc.GuildSharedMissionList
+	29, // 27: Proto.GuildSharedMissionResult.ranking:type_name -> Pmisc.GuildSharedMissionRankingList
+	30, // 28: Proto.GuildSharedMissionResult.guild:type_name -> Pmisc.Guild
+	29, // [29:29] is the sub-list for method output_type
+	29, // [29:29] is the sub-list for method input_type
+	29, // [29:29] is the sub-list for extension type_name
+	29, // [29:29] is the sub-list for extension extendee
+	0,  // [0:29] is the sub-list for field type_name
 }
 
 func init() { file_proto_proto_init() }
@@ -2061,7 +2182,7 @@ func file_proto_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_proto_rawDesc), len(file_proto_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

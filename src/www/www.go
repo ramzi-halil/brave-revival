@@ -75,8 +75,8 @@ func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error
 		router.Get("/player/list", playerList)
 		router.Get("/player/load", playerLoad)
 
-		router.Get("/mission/guild/personal/list", empty("Proto.GuildPersonalMissionResult"))
-		router.Get("/mission/guild/shared/list", empty("Proto.GuildSharedMissionResult"))
+		router.Get("/mission/guild/personal/list", missionGuildPersonalList)
+		router.Get("/mission/guild/shared/list", missionGuildSharedList)
 	})
 	router.Get("/crow/Assets/{os}/{hash}", assets)
 	router.NotFound(notFound)

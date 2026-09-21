@@ -1,0 +1,19 @@
+syntax = "proto3";
+package Pmisc;
+
+option go_package = "example.com/brave-revival/src/proto/pmisc";
+
+message GuildPersonalMissionList {
+    // repeated GuildPersonalMission list = 1;
+}
+
+message GuildSharedMissionList {
+    // repeated GuildSharedMission list = 1;
+}
+
+message GuildSharedMissionRankingList {
+    // repeated GuildSharedMissionRanking list = 1;
+}
+
+message Guild {
+}
