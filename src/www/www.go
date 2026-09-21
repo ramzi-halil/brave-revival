@@ -67,6 +67,7 @@ func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error
 		router.Get("/master/all", masterAll)
 		router.Get("/resource/list/{os}", resourceList)
 		router.Post("/actionlog/{action}/send", empty("Proto.Empty"))
+		router.Post("/fcm/token/add", empty("Proto.Nocontent"))
 
 		router.Post("/account/exist", accountExist)
 		router.Post("/account/authorize", accountAuthorize)
@@ -74,9 +75,12 @@ func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error
 
 		router.Get("/player/list", playerList)
 		router.Get("/player/load", playerLoad)
+		router.Post("/field/top", fieldTop)
 
 		router.Get("/mission/guild/personal/list", missionGuildPersonalList)
 		router.Get("/mission/guild/shared/list", missionGuildSharedList)
+
+		router.Get("/guild/facility/list", empty("Proto.GuildFacilityList"))
 	})
 	router.Get("/crow/Assets/{os}/{hash}", assets)
 	router.NotFound(notFound)

@@ -202,17 +202,27 @@ message Etc {
     Revision revision = 6;
 }
 
+message GuildFacilityList {
+}
+
 message GuildPersonalMissionResult {
     Pmisc.GuildPersonalMissionList list = 1;
-    // StoredData stored_data = 2;
-    // repeated RewardInfo receive_reward_list = 3;
 }
 
 message GuildSharedMissionResult {
     Pmisc.GuildSharedMissionList list = 1;
     Pmisc.GuildSharedMissionRankingList ranking = 2;
     Pmisc.Guild guild = 3;
-    // StoredData stored_data = 4;
-    // repeated RewardInfo receive_reward_list_personal = 5;
-    // repeated RewardInfo receive_reward_list_guild = 6;
+}
+
+message AgitoVisitorReturn {
+}
+
+message FieldTopResponse {
+    Pmisc.GuildSharedMissionList shared_mission_list = 13;
+    Pmisc.GuildPersonalMissionList personal_mission_list = 14;
+    Pmisc.GuildWeeklyMissionRewardList weekly_mission_reward = 16;
+    GuildFacilityList facility_list = 17;
+    BattleBackgroundReward background_battle_reward = 18;
+    AgitoVisitorReturn agito_visitor_return = 20;
 }

@@ -129,6 +129,42 @@ func (*GuildSharedMissionRankingList) Descriptor() ([]byte, []int) {
 	return file_pmisc_proto_rawDescGZIP(), []int{2}
 }
 
+type GuildWeeklyMissionRewardList struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuildWeeklyMissionRewardList) Reset() {
+	*x = GuildWeeklyMissionRewardList{}
+	mi := &file_pmisc_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildWeeklyMissionRewardList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildWeeklyMissionRewardList) ProtoMessage() {}
+
+func (x *GuildWeeklyMissionRewardList) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildWeeklyMissionRewardList.ProtoReflect.Descriptor instead.
+func (*GuildWeeklyMissionRewardList) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{3}
+}
+
 type Guild struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -137,7 +173,7 @@ type Guild struct {
 
 func (x *Guild) Reset() {
 	*x = Guild{}
-	mi := &file_pmisc_proto_msgTypes[3]
+	mi := &file_pmisc_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -149,7 +185,7 @@ func (x *Guild) String() string {
 func (*Guild) ProtoMessage() {}
 
 func (x *Guild) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[3]
+	mi := &file_pmisc_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,7 +198,7 @@ func (x *Guild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Guild.ProtoReflect.Descriptor instead.
 func (*Guild) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{3}
+	return file_pmisc_proto_rawDescGZIP(), []int{4}
 }
 
 var File_pmisc_proto protoreflect.FileDescriptor
@@ -172,7 +208,8 @@ const file_pmisc_proto_rawDesc = "" +
 	"\vpmisc.proto\x12\x05Pmisc\"\x1a\n" +
 	"\x18GuildPersonalMissionList\"\x18\n" +
 	"\x16GuildSharedMissionList\"\x1f\n" +
-	"\x1dGuildSharedMissionRankingList\"\a\n" +
+	"\x1dGuildSharedMissionRankingList\"\x1e\n" +
+	"\x1cGuildWeeklyMissionRewardList\"\a\n" +
 	"\x05GuildB+Z)example.com/brave-revival/src/proto/pmiscb\x06proto3"
 
 var (
@@ -187,12 +224,13 @@ func file_pmisc_proto_rawDescGZIP() []byte {
 	return file_pmisc_proto_rawDescData
 }
 
-var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_pmisc_proto_goTypes = []any{
 	(*GuildPersonalMissionList)(nil),      // 0: Pmisc.GuildPersonalMissionList
 	(*GuildSharedMissionList)(nil),        // 1: Pmisc.GuildSharedMissionList
 	(*GuildSharedMissionRankingList)(nil), // 2: Pmisc.GuildSharedMissionRankingList
-	(*Guild)(nil),                         // 3: Pmisc.Guild
+	(*GuildWeeklyMissionRewardList)(nil),  // 3: Pmisc.GuildWeeklyMissionRewardList
+	(*Guild)(nil),                         // 4: Pmisc.Guild
 }
 var file_pmisc_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -213,7 +251,7 @@ func file_pmisc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pmisc_proto_rawDesc), len(file_pmisc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

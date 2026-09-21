@@ -1793,6 +1793,42 @@ func (x *Etc) GetRevision() *Revision {
 	return nil
 }
 
+type GuildFacilityList struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuildFacilityList) Reset() {
+	*x = GuildFacilityList{}
+	mi := &file_proto_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildFacilityList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildFacilityList) ProtoMessage() {}
+
+func (x *GuildFacilityList) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildFacilityList.ProtoReflect.Descriptor instead.
+func (*GuildFacilityList) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{18}
+}
+
 type GuildPersonalMissionResult struct {
 	state         protoimpl.MessageState          `protogen:"open.v1"`
 	List          *pmisc.GuildPersonalMissionList `protobuf:"bytes,1,opt,name=list,proto3" json:"list,omitempty"`
@@ -1802,7 +1838,7 @@ type GuildPersonalMissionResult struct {
 
 func (x *GuildPersonalMissionResult) Reset() {
 	*x = GuildPersonalMissionResult{}
-	mi := &file_proto_proto_msgTypes[18]
+	mi := &file_proto_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1814,7 +1850,7 @@ func (x *GuildPersonalMissionResult) String() string {
 func (*GuildPersonalMissionResult) ProtoMessage() {}
 
 func (x *GuildPersonalMissionResult) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[18]
+	mi := &file_proto_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1827,7 +1863,7 @@ func (x *GuildPersonalMissionResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuildPersonalMissionResult.ProtoReflect.Descriptor instead.
 func (*GuildPersonalMissionResult) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{18}
+	return file_proto_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GuildPersonalMissionResult) GetList() *pmisc.GuildPersonalMissionList {
@@ -1848,7 +1884,7 @@ type GuildSharedMissionResult struct {
 
 func (x *GuildSharedMissionResult) Reset() {
 	*x = GuildSharedMissionResult{}
-	mi := &file_proto_proto_msgTypes[19]
+	mi := &file_proto_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1860,7 +1896,7 @@ func (x *GuildSharedMissionResult) String() string {
 func (*GuildSharedMissionResult) ProtoMessage() {}
 
 func (x *GuildSharedMissionResult) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[19]
+	mi := &file_proto_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1873,7 +1909,7 @@ func (x *GuildSharedMissionResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuildSharedMissionResult.ProtoReflect.Descriptor instead.
 func (*GuildSharedMissionResult) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{19}
+	return file_proto_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GuildSharedMissionResult) GetList() *pmisc.GuildSharedMissionList {
@@ -1893,6 +1929,175 @@ func (x *GuildSharedMissionResult) GetRanking() *pmisc.GuildSharedMissionRanking
 func (x *GuildSharedMissionResult) GetGuild() *pmisc.Guild {
 	if x != nil {
 		return x.Guild
+	}
+	return nil
+}
+
+type AgitoVisitorReturn struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AgitoVisitorReturn) Reset() {
+	*x = AgitoVisitorReturn{}
+	mi := &file_proto_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgitoVisitorReturn) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgitoVisitorReturn) ProtoMessage() {}
+
+func (x *AgitoVisitorReturn) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgitoVisitorReturn.ProtoReflect.Descriptor instead.
+func (*AgitoVisitorReturn) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{21}
+}
+
+type FieldTopResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// StoredData stored_data = 1;
+	GuildId                uint64                              `protobuf:"varint,3,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	GuildName              string                              `protobuf:"bytes,4,opt,name=guild_name,json=guildName,proto3" json:"guild_name,omitempty"`
+	GuildSymbol            uint32                              `protobuf:"varint,5,opt,name=guild_symbol,json=guildSymbol,proto3" json:"guild_symbol,omitempty"`
+	GuildSymbolFrame       uint32                              `protobuf:"varint,6,opt,name=guild_symbol_frame,json=guildSymbolFrame,proto3" json:"guild_symbol_frame,omitempty"`
+	GuildSymbolFrameColor  uint32                              `protobuf:"varint,7,opt,name=guild_symbol_frame_color,json=guildSymbolFrameColor,proto3" json:"guild_symbol_frame_color,omitempty"`
+	GuildMemberRole        uint32                              `protobuf:"varint,8,opt,name=guild_member_role,json=guildMemberRole,proto3" json:"guild_member_role,omitempty"`
+	SharedMissionList      *pmisc.GuildSharedMissionList       `protobuf:"bytes,13,opt,name=shared_mission_list,json=sharedMissionList,proto3" json:"shared_mission_list,omitempty"`
+	PersonalMissionList    *pmisc.GuildPersonalMissionList     `protobuf:"bytes,14,opt,name=personal_mission_list,json=personalMissionList,proto3" json:"personal_mission_list,omitempty"`
+	WeeklyMissionReward    *pmisc.GuildWeeklyMissionRewardList `protobuf:"bytes,16,opt,name=weekly_mission_reward,json=weeklyMissionReward,proto3" json:"weekly_mission_reward,omitempty"`
+	FacilityList           *GuildFacilityList                  `protobuf:"bytes,17,opt,name=facility_list,json=facilityList,proto3" json:"facility_list,omitempty"`
+	BackgroundBattleReward *BattleBackgroundReward             `protobuf:"bytes,18,opt,name=background_battle_reward,json=backgroundBattleReward,proto3" json:"background_battle_reward,omitempty"`
+	AgitoVisitorReturn     *AgitoVisitorReturn                 `protobuf:"bytes,20,opt,name=agito_visitor_return,json=agitoVisitorReturn,proto3" json:"agito_visitor_return,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *FieldTopResponse) Reset() {
+	*x = FieldTopResponse{}
+	mi := &file_proto_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FieldTopResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FieldTopResponse) ProtoMessage() {}
+
+func (x *FieldTopResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FieldTopResponse.ProtoReflect.Descriptor instead.
+func (*FieldTopResponse) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *FieldTopResponse) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetGuildName() string {
+	if x != nil {
+		return x.GuildName
+	}
+	return ""
+}
+
+func (x *FieldTopResponse) GetGuildSymbol() uint32 {
+	if x != nil {
+		return x.GuildSymbol
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetGuildSymbolFrame() uint32 {
+	if x != nil {
+		return x.GuildSymbolFrame
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetGuildSymbolFrameColor() uint32 {
+	if x != nil {
+		return x.GuildSymbolFrameColor
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetGuildMemberRole() uint32 {
+	if x != nil {
+		return x.GuildMemberRole
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetSharedMissionList() *pmisc.GuildSharedMissionList {
+	if x != nil {
+		return x.SharedMissionList
+	}
+	return nil
+}
+
+func (x *FieldTopResponse) GetPersonalMissionList() *pmisc.GuildPersonalMissionList {
+	if x != nil {
+		return x.PersonalMissionList
+	}
+	return nil
+}
+
+func (x *FieldTopResponse) GetWeeklyMissionReward() *pmisc.GuildWeeklyMissionRewardList {
+	if x != nil {
+		return x.WeeklyMissionReward
+	}
+	return nil
+}
+
+func (x *FieldTopResponse) GetFacilityList() *GuildFacilityList {
+	if x != nil {
+		return x.FacilityList
+	}
+	return nil
+}
+
+func (x *FieldTopResponse) GetBackgroundBattleReward() *BattleBackgroundReward {
+	if x != nil {
+		return x.BackgroundBattleReward
+	}
+	return nil
+}
+
+func (x *FieldTopResponse) GetAgitoVisitorReturn() *AgitoVisitorReturn {
+	if x != nil {
+		return x.AgitoVisitorReturn
 	}
 	return nil
 }
@@ -2080,13 +2285,29 @@ const file_proto_proto_rawDesc = "" +
 	"\venvironment\x18\x03 \x01(\tR\venvironment\x12\x10\n" +
 	"\x03gmt\x18\x04 \x01(\x02R\x03gmt\x12(\n" +
 	"\x10store_review_url\x18\x05 \x01(\tR\x0estoreReviewUrl\x12+\n" +
-	"\brevision\x18\x06 \x01(\v2\x0f.Proto.RevisionR\brevision\"Q\n" +
+	"\brevision\x18\x06 \x01(\v2\x0f.Proto.RevisionR\brevision\"\x13\n" +
+	"\x11GuildFacilityList\"Q\n" +
 	"\x1aGuildPersonalMissionResult\x123\n" +
 	"\x04list\x18\x01 \x01(\v2\x1f.Pmisc.GuildPersonalMissionListR\x04list\"\xb1\x01\n" +
 	"\x18GuildSharedMissionResult\x121\n" +
 	"\x04list\x18\x01 \x01(\v2\x1d.Pmisc.GuildSharedMissionListR\x04list\x12>\n" +
 	"\aranking\x18\x02 \x01(\v2$.Pmisc.GuildSharedMissionRankingListR\aranking\x12\"\n" +
-	"\x05guild\x18\x03 \x01(\v2\f.Pmisc.GuildR\x05guildB+Z)example.com/brave-revival/src/proto/protob\x06proto3"
+	"\x05guild\x18\x03 \x01(\v2\f.Pmisc.GuildR\x05guild\"\x14\n" +
+	"\x12AgitoVisitorReturn\"\xe4\x05\n" +
+	"\x10FieldTopResponse\x12\x19\n" +
+	"\bguild_id\x18\x03 \x01(\x04R\aguildId\x12\x1d\n" +
+	"\n" +
+	"guild_name\x18\x04 \x01(\tR\tguildName\x12!\n" +
+	"\fguild_symbol\x18\x05 \x01(\rR\vguildSymbol\x12,\n" +
+	"\x12guild_symbol_frame\x18\x06 \x01(\rR\x10guildSymbolFrame\x127\n" +
+	"\x18guild_symbol_frame_color\x18\a \x01(\rR\x15guildSymbolFrameColor\x12*\n" +
+	"\x11guild_member_role\x18\b \x01(\rR\x0fguildMemberRole\x12M\n" +
+	"\x13shared_mission_list\x18\r \x01(\v2\x1d.Pmisc.GuildSharedMissionListR\x11sharedMissionList\x12S\n" +
+	"\x15personal_mission_list\x18\x0e \x01(\v2\x1f.Pmisc.GuildPersonalMissionListR\x13personalMissionList\x12W\n" +
+	"\x15weekly_mission_reward\x18\x10 \x01(\v2#.Pmisc.GuildWeeklyMissionRewardListR\x13weeklyMissionReward\x12=\n" +
+	"\rfacility_list\x18\x11 \x01(\v2\x18.Proto.GuildFacilityListR\ffacilityList\x12W\n" +
+	"\x18background_battle_reward\x18\x12 \x01(\v2\x1d.Proto.BattleBackgroundRewardR\x16backgroundBattleReward\x12K\n" +
+	"\x14agito_visitor_return\x18\x14 \x01(\v2\x19.Proto.AgitoVisitorReturnR\x12agitoVisitorReturnB+Z)example.com/brave-revival/src/proto/protob\x06proto3"
 
 var (
 	file_proto_proto_rawDescOnce sync.Once
@@ -2100,7 +2321,7 @@ func file_proto_proto_rawDescGZIP() []byte {
 	return file_proto_proto_rawDescData
 }
 
-var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_proto_proto_goTypes = []any{
 	(*Empty)(nil),                               // 0: Proto.Empty
 	(*PlayerSummary)(nil),                       // 1: Proto.PlayerSummary
@@ -2120,55 +2341,65 @@ var file_proto_proto_goTypes = []any{
 	(*Host)(nil),                                // 15: Proto.Host
 	(*Revision)(nil),                            // 16: Proto.Revision
 	(*Etc)(nil),                                 // 17: Proto.Etc
-	(*GuildPersonalMissionResult)(nil),          // 18: Proto.GuildPersonalMissionResult
-	(*GuildSharedMissionResult)(nil),            // 19: Proto.GuildSharedMissionResult
-	(*pcommon.Error)(nil),                       // 20: Pcommon.Error
-	(*pmaster.Version)(nil),                     // 21: Pmaster.Version
-	(*puser.Player)(nil),                        // 22: Puser.Player
-	(*puser.Job)(nil),                           // 23: Puser.Job
-	(*puser.JobDeck)(nil),                       // 24: Puser.JobDeck
-	(*puser.Equipment)(nil),                     // 25: Puser.Equipment
-	(*puser.Elixir)(nil),                        // 26: Puser.Elixir
-	(*pmisc.GuildPersonalMissionList)(nil),      // 27: Pmisc.GuildPersonalMissionList
-	(*pmisc.GuildSharedMissionList)(nil),        // 28: Pmisc.GuildSharedMissionList
-	(*pmisc.GuildSharedMissionRankingList)(nil), // 29: Pmisc.GuildSharedMissionRankingList
-	(*pmisc.Guild)(nil),                         // 30: Pmisc.Guild
+	(*GuildFacilityList)(nil),                   // 18: Proto.GuildFacilityList
+	(*GuildPersonalMissionResult)(nil),          // 19: Proto.GuildPersonalMissionResult
+	(*GuildSharedMissionResult)(nil),            // 20: Proto.GuildSharedMissionResult
+	(*AgitoVisitorReturn)(nil),                  // 21: Proto.AgitoVisitorReturn
+	(*FieldTopResponse)(nil),                    // 22: Proto.FieldTopResponse
+	(*pcommon.Error)(nil),                       // 23: Pcommon.Error
+	(*pmaster.Version)(nil),                     // 24: Pmaster.Version
+	(*puser.Player)(nil),                        // 25: Puser.Player
+	(*puser.Job)(nil),                           // 26: Puser.Job
+	(*puser.JobDeck)(nil),                       // 27: Puser.JobDeck
+	(*puser.Equipment)(nil),                     // 28: Puser.Equipment
+	(*puser.Elixir)(nil),                        // 29: Puser.Elixir
+	(*pmisc.GuildPersonalMissionList)(nil),      // 30: Pmisc.GuildPersonalMissionList
+	(*pmisc.GuildSharedMissionList)(nil),        // 31: Pmisc.GuildSharedMissionList
+	(*pmisc.GuildSharedMissionRankingList)(nil), // 32: Pmisc.GuildSharedMissionRankingList
+	(*pmisc.Guild)(nil),                         // 33: Pmisc.Guild
+	(*pmisc.GuildWeeklyMissionRewardList)(nil),  // 34: Pmisc.GuildWeeklyMissionRewardList
 }
 var file_proto_proto_depIdxs = []int32{
-	20, // 0: Proto.Empty.error:type_name -> Pcommon.Error
-	20, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
+	23, // 0: Proto.Empty.error:type_name -> Pcommon.Error
+	23, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
 	1,  // 2: Proto.PlayerExist.player_summary:type_name -> Proto.PlayerSummary
-	21, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
+	24, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
 	5,  // 4: Proto.BattleClearParam.job_parameter:type_name -> Proto.BaseParameter
 	5,  // 5: Proto.BattleClearParam.arena_parameter:type_name -> Proto.BaseParameter
 	7,  // 6: Proto.BattleBackgroundReward.reward_list:type_name -> Proto.RewardInfo
 	6,  // 7: Proto.BattleBackgroundReward.before:type_name -> Proto.BattleClearParam
 	6,  // 8: Proto.BattleBackgroundReward.after:type_name -> Proto.BattleClearParam
 	8,  // 9: Proto.BackgroundStatus.reward:type_name -> Proto.BattleBackgroundReward
-	22, // 10: Proto.PlayerDetail.player:type_name -> Puser.Player
-	23, // 11: Proto.PlayerDetail.current_job:type_name -> Puser.Job
-	23, // 12: Proto.PlayerDetail.jobs:type_name -> Puser.Job
-	24, // 13: Proto.PlayerDetail.current_job_deck:type_name -> Puser.JobDeck
-	25, // 14: Proto.PlayerDetail.equipments:type_name -> Puser.Equipment
-	26, // 15: Proto.PlayerDetail.elixirs:type_name -> Puser.Elixir
+	25, // 10: Proto.PlayerDetail.player:type_name -> Puser.Player
+	26, // 11: Proto.PlayerDetail.current_job:type_name -> Puser.Job
+	26, // 12: Proto.PlayerDetail.jobs:type_name -> Puser.Job
+	27, // 13: Proto.PlayerDetail.current_job_deck:type_name -> Puser.JobDeck
+	28, // 14: Proto.PlayerDetail.equipments:type_name -> Puser.Equipment
+	29, // 15: Proto.PlayerDetail.elixirs:type_name -> Puser.Elixir
 	5,  // 16: Proto.PlayerDetail.base_parameter:type_name -> Proto.BaseParameter
 	10, // 17: Proto.PlayerDetail.guild_summary:type_name -> Proto.GuildSummary
 	11, // 18: Proto.PlayerDetail.guild_member:type_name -> Proto.GuildMember
 	12, // 19: Proto.PlayerDetail.power_assessment_list:type_name -> Proto.PowerAssessment
-	22, // 20: Proto.PlayerList.players:type_name -> Puser.Player
-	20, // 21: Proto.PlayerList.error:type_name -> Pcommon.Error
+	25, // 20: Proto.PlayerList.players:type_name -> Puser.Player
+	23, // 21: Proto.PlayerList.error:type_name -> Pcommon.Error
 	9,  // 22: Proto.PlayerList.background_status:type_name -> Proto.BackgroundStatus
 	15, // 23: Proto.Etc.host:type_name -> Proto.Host
 	16, // 24: Proto.Etc.revision:type_name -> Proto.Revision
-	27, // 25: Proto.GuildPersonalMissionResult.list:type_name -> Pmisc.GuildPersonalMissionList
-	28, // 26: Proto.GuildSharedMissionResult.list:type_name -> Pmisc.GuildSharedMissionList
-	29, // 27: Proto.GuildSharedMissionResult.ranking:type_name -> Pmisc.GuildSharedMissionRankingList
-	30, // 28: Proto.GuildSharedMissionResult.guild:type_name -> Pmisc.Guild
-	29, // [29:29] is the sub-list for method output_type
-	29, // [29:29] is the sub-list for method input_type
-	29, // [29:29] is the sub-list for extension type_name
-	29, // [29:29] is the sub-list for extension extendee
-	0,  // [0:29] is the sub-list for field type_name
+	30, // 25: Proto.GuildPersonalMissionResult.list:type_name -> Pmisc.GuildPersonalMissionList
+	31, // 26: Proto.GuildSharedMissionResult.list:type_name -> Pmisc.GuildSharedMissionList
+	32, // 27: Proto.GuildSharedMissionResult.ranking:type_name -> Pmisc.GuildSharedMissionRankingList
+	33, // 28: Proto.GuildSharedMissionResult.guild:type_name -> Pmisc.Guild
+	31, // 29: Proto.FieldTopResponse.shared_mission_list:type_name -> Pmisc.GuildSharedMissionList
+	30, // 30: Proto.FieldTopResponse.personal_mission_list:type_name -> Pmisc.GuildPersonalMissionList
+	34, // 31: Proto.FieldTopResponse.weekly_mission_reward:type_name -> Pmisc.GuildWeeklyMissionRewardList
+	18, // 32: Proto.FieldTopResponse.facility_list:type_name -> Proto.GuildFacilityList
+	8,  // 33: Proto.FieldTopResponse.background_battle_reward:type_name -> Proto.BattleBackgroundReward
+	21, // 34: Proto.FieldTopResponse.agito_visitor_return:type_name -> Proto.AgitoVisitorReturn
+	35, // [35:35] is the sub-list for method output_type
+	35, // [35:35] is the sub-list for method input_type
+	35, // [35:35] is the sub-list for extension type_name
+	35, // [35:35] is the sub-list for extension extendee
+	0,  // [0:35] is the sub-list for field type_name
 }
 
 func init() { file_proto_proto_init() }
@@ -2182,7 +2413,7 @@ func file_proto_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_proto_rawDesc), len(file_proto_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
