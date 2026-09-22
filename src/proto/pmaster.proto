@@ -1,6 +1,8 @@
 syntax = "proto3";
 package Pmaster;
 
+import "options.proto";
+
 option go_package = "example.com/brave-revival/src/proto/pmaster";
 
 message Resources {
@@ -13,7 +15,3265 @@ message ResourceInfo {
 }
 
 message All {
+    repeated Achievement achievement = 1;
+    repeated AchievementCategory achievement_category = 2;
+    repeated AchievementEquipment achievement_equipment = 3;
+    repeated AchievementRank achievement_rank = 4;
+    repeated ActiveSkill active_skill = 5;
+    repeated ActiveSkillGroup active_skill_group = 6;
+    repeated ActiveSkillMetaTag active_skill_meta_tag = 7;
+    repeated Advertising advertising = 8;
+    repeated AdvertisingMission advertising_mission = 9;
+    repeated AgitoApItem agito_ap_item = 10;
+    repeated AgitoFurniture agito_furniture = 11;
+    repeated AgitoItem agito_item = 12;
+    repeated AgitoItemArea agito_item_area = 13;
+    repeated AgitoRoomPreset agito_room_preset = 14;
+    repeated AgitoRoomPresetArea agito_room_preset_area = 15;
+    repeated AgitoVisitor agito_visitor = 16;
+    repeated AgitoVisitorCountReward agito_visitor_count_reward = 17;
+    repeated AgitoVisitorLineup agito_visitor_lineup = 18;
+    repeated AgitoVisitorPointReward agito_visitor_point_reward = 19;
+    repeated AgitoVisitorVoice agito_visitor_voice = 20;
+    repeated AncientTowerConfig ancient_tower_config = 21;
+    repeated AncientTowerExConfig ancient_tower_ex_config = 22;
+    repeated AngelBattleReward angel_battle_reward = 23;
+    repeated AngelBattleWeeklyReward angel_battle_weekly_reward = 24;
+    repeated AnimaArea anima_area = 25;
+    repeated AnimaCategory anima_category = 26;
+    repeated AnimaPage anima_page = 27;
+    repeated AnimaPageLevel anima_page_level = 28;
+    repeated AprilFool april_fool = 29;
+    repeated AprilFoolMember april_fool_member = 30;
+    repeated Area area = 31;
+    repeated ArenaPointReward arena_point_reward = 32;
+    repeated ArenaRank arena_rank = 33;
+    repeated Banner banner = 34;
+    repeated Behavior behavior = 35;
+    repeated Boost boost = 36;
+    repeated BoostGroup boost_group = 37;
+    repeated Chapter chapter = 38;
+    repeated Combo combo = 39;
+    repeated ConditionCategory condition_category = 40;
+    repeated ConditionGroup condition_group = 41;
+    repeated Conditions conditions = 42;
+    repeated Constant constant = 43;
+    repeated Contents contents = 44;
+    repeated ContentsAncientTowerEx contents_ancient_tower_ex = 45;
+    repeated ContentsCost contents_cost = 46;
+    repeated ContentsRanking contents_ranking = 47;
+    repeated ContentsResource contents_resource = 48;
+    repeated DailyMission daily_mission = 49;
+    repeated DailyMissionReward daily_mission_reward = 50;
+    repeated EffectStatusGroup effect_status_group = 51;
+    repeated Elixir elixir = 52;
+    repeated EnhancementBonus enhancement_bonus = 53;
+    repeated EnhancementRank enhancement_rank = 54;
+    repeated Episode episode = 55;
+    repeated Equipment equipment = 56;
+    repeated EquipmentAwakening equipment_awakening = 57;
+    repeated EquipmentAwakeningRecipe equipment_awakening_recipe = 58;
+    repeated EquipmentAwakeningReset equipment_awakening_reset = 59;
+    repeated EquipmentCharacter equipment_character = 60;
+    repeated EquipmentDungeonConfig equipment_dungeon_config = 61;
+    repeated EquipmentDungeonReward equipment_dungeon_reward = 62;
+    repeated EquipmentLiberation equipment_liberation = 63;
+    repeated EquipmentLvGroup equipment_lv_group = 64;
+    repeated EquipmentPassiveSkill equipment_passive_skill = 65;
+    repeated EquipmentRarity equipment_rarity = 66;
+    repeated EquipmentRecycle equipment_recycle = 67;
+    repeated EquipmentSelling equipment_selling = 68;
+    repeated EquipmentSpecialEffectArea equipment_special_effect_area = 69;
+    repeated EquipmentSpecialEffectEnhanceGroup equipment_special_effect_enhance_group = 70;
+    repeated EquipmentVariationColor equipment_variation_color = 71;
+    repeated Event event = 72;
+    repeated EventContentsGroup event_contents_group = 73;
+    repeated EventExchange event_exchange = 74;
+    repeated EventGroup event_group = 75;
+    repeated EventMission event_mission = 76;
+    repeated EventMissionGroup event_mission_group = 77;
+    repeated EventMissionReward event_mission_reward = 78;
+    repeated EventRoulette event_roulette = 79;
+    repeated EventRouletteReward event_roulette_reward = 80;
+    repeated EventSugoroku event_sugoroku = 81;
+    repeated EventSugorokuReward event_sugoroku_reward = 82;
+    repeated Evolution evolution = 83;
+    repeated EvolutionRecipe evolution_recipe = 84;
+    repeated Exchange exchange = 85;
+    repeated ExchangeGroup exchange_group = 86;
+    repeated FcmMessage fcm_message = 87;
+    repeated FunctionalTutorial functional_tutorial = 88;
+    repeated FunctionalUnlock functional_unlock = 89;
+    repeated Gacha gacha = 90;
+    repeated GachaExchange gacha_exchange = 91;
+    repeated GachaOption gacha_option = 92;
+    repeated GachaPickup gacha_pickup = 93;
+    repeated GachaPool gacha_pool = 94;
+    repeated GlobalMenuCampaignIcon global_menu_campaign_icon = 95;
+    repeated GuildContributionRewardGuild guild_contribution_reward_guild = 96;
+    repeated GuildContributionRewardPersonal guild_contribution_reward_personal = 97;
+    repeated GuildDungeon guild_dungeon = 98;
+    repeated GuildDungeonReward guild_dungeon_reward = 99;
+    repeated GuildFacility guild_facility = 100;
+    repeated GuildFacilityLv guild_facility_lv = 101;
+    repeated GuildHistory guild_history = 102;
+    repeated GuildLoginReward guild_login_reward = 103;
+    repeated GuildLv guild_lv = 104;
+    repeated GuildPersonalMission guild_personal_mission = 105;
+    repeated GuildSharedMission guild_shared_mission = 106;
+    repeated GuildSymbol guild_symbol = 107;
+    repeated GuildSymbolFrame guild_symbol_frame = 108;
+    repeated GuildWarehouseRewardLimit guild_warehouse_reward_limit = 109;
+    repeated GuildWeeklyMission guild_weekly_mission = 110;
+    repeated GuildWeeklyMissionGroup guild_weekly_mission_group = 111;
+    repeated Gve gve = 112;
+    repeated GveClearTimeBonus gve_clear_time_bonus = 113;
+    repeated GveMonsterSubjugation gve_monster_subjugation = 114;
+    repeated GveRoundReward gve_round_reward = 115;
+    repeated Gvg gvg = 116;
+    repeated GvgBaseBonus gvg_base_bonus = 117;
+    repeated GvgBattleField gvg_battle_field = 118;
+    repeated GvgBattleFieldContents gvg_battle_field_contents = 119;
+    repeated GvgBattleMap gvg_battle_map = 120;
+    repeated GvgBattleScore gvg_battle_score = 121;
+    repeated GvgBid gvg_bid = 122;
+    repeated GvgBuilding gvg_building = 123;
+    repeated GvgBuildingGroup gvg_building_group = 124;
+    repeated GvgBuildingVisibilityBonus gvg_building_visibility_bonus = 125;
+    repeated GvgCheering gvg_cheering = 126;
+    repeated GvgFacilityBonusArtillery gvg_facility_bonus_artillery = 127;
+    repeated GvgFacilityBonusDormitory gvg_facility_bonus_dormitory = 128;
+    repeated GvgFacilityBonusMarket gvg_facility_bonus_market = 129;
+    repeated GvgFacilityBonusTemple gvg_facility_bonus_temple = 130;
+    repeated GvgFirstAttackBonus gvg_first_attack_bonus = 131;
+    repeated GvgFortressBoostBonus gvg_fortress_boost_bonus = 132;
+    repeated GvgInitBuildingInfo gvg_init_building_info = 133;
+    repeated GvgJob gvg_job = 134;
+    repeated GvgJobCorrection gvg_job_correction = 135;
+    repeated GvgLiveCommentary gvg_live_commentary = 136;
+    repeated GvgMob gvg_mob = 137;
+    repeated GvgOccupationVisiblitilyBonus gvg_occupation_visiblitily_bonus = 138;
+    repeated GvgPracticeSchedule gvg_practice_schedule = 139;
+    repeated GvgRespawnPenalty gvg_respawn_penalty = 140;
+    repeated GvgSkillCastor gvg_skill_castor = 141;
+    repeated HateBehaviorGroup hate_behavior_group = 142;
+    repeated Help help = 143;
+    repeated HolyBeastReward holy_beast_reward = 144;
+    repeated ImportantMission important_mission = 145;
+    repeated ImportantMissionGroup important_mission_group = 146;
+    repeated Item item = 147;
+    repeated Job job = 148;
+    repeated JobLvGroup job_lv_group = 149;
+    repeated JobParameter job_parameter = 150;
+    repeated JobSkill job_skill = 151;
+    repeated JobSkillLv job_skill_lv = 152;
+    repeated JobSkillLvGroup job_skill_lv_group = 153;
+    repeated LabelGroup label_group = 154;
+    repeated LoginBonus login_bonus = 155;
+    repeated LoginBonusGroup login_bonus_group = 156;
+    repeated MaxJobLv max_job_lv = 157;
+    repeated Member member = 158;
+    repeated Mercenary mercenary = 159;
+    repeated Monster monster = 160;
+    repeated MonsterBreakSetting monster_break_setting = 161;
+    repeated MonsterModelVariation monster_model_variation = 162;
+    repeated Movie movie = 163;
+    repeated NgWord ng_word = 164;
+    repeated Npc npc = 165;
+    repeated NpcLv npc_lv = 166;
+    repeated NpcParameter npc_parameter = 167;
+    repeated OfferWall offer_wall = 168;
+    repeated OrderMission order_mission = 169;
+    repeated OrderMissionPool order_mission_pool = 170;
+    repeated OrderMissionRank order_mission_rank = 171;
+    repeated OrderMissionReward order_mission_reward = 172;
+    repeated OrderMissionType order_mission_type = 173;
+    repeated PassiveSkill passive_skill = 174;
+    repeated PassiveSkillCondition passive_skill_condition = 175;
+    repeated PlayableTime playable_time = 176;
+    repeated PopupScenario popup_scenario = 177;
+    repeated PopupScenarioGroup popup_scenario_group = 178;
+    repeated PossessionSkill possession_skill = 179;
+    repeated PowerAssessment power_assessment = 180;
+    repeated PowerAssessmentRank power_assessment_rank = 181;
+    repeated PowerAssessmentStep power_assessment_step = 182;
+    repeated PresetEquipment preset_equipment = 183;
+    repeated PresetJob preset_job = 184;
+    repeated PresetLine preset_line = 185;
+    repeated PresetPassiveSkill preset_passive_skill = 186;
+    repeated PresetPc preset_pc = 187;
+    repeated PresetPotion preset_potion = 188;
+    repeated PresetPotionSetting preset_potion_setting = 189;
+    repeated PresetSkill preset_skill = 190;
+    repeated PvpSpecialEffectArea pvp_special_effect_area = 191;
+    repeated Quest quest = 192;
+    repeated Ranking ranking = 193;
+    repeated RankingReward ranking_reward = 194;
+    repeated Region region = 195;
+    repeated ReliefPointReward relief_point_reward = 196;
+    repeated Reward reward = 197;
+    repeated RewardConfig reward_config = 198;
+    repeated RewardGroup reward_group = 199;
+    repeated RiskDungeon risk_dungeon = 200;
+    repeated RiskDungeonConfig risk_dungeon_config = 201;
+    repeated RiskDungeonTimeBonus risk_dungeon_time_bonus = 202;
+    repeated Rune rune = 203;
+    repeated RuneLv rune_lv = 204;
+    repeated RunePassiveSkill rune_passive_skill = 205;
+    repeated RuneRarity rune_rarity = 206;
+    repeated RuneSlot rune_slot = 207;
+    repeated SeasonPass season_pass = 208;
+    repeated SeasonPassDailyMission season_pass_daily_mission = 209;
+    repeated SeasonPassLevel season_pass_level = 210;
+    repeated SeasonPassWeeklyMission season_pass_weekly_mission = 211;
+    repeated SerialCode serial_code = 212;
+    repeated Shop shop = 213;
+    repeated ShopItem shop_item = 214;
+    repeated ShopMission shop_mission = 215;
+    repeated ShopPayment shop_payment = 216;
+    repeated ShopPickup shop_pickup = 217;
+    repeated ShopSpecialSale shop_special_sale = 218;
+    repeated SkillAi skill_ai = 219;
+    repeated SkillModule skill_module = 220;
+    repeated SkillModuleAddEffectChase skill_module_add_effect_chase = 221;
+    repeated SkillModuleDependenceParamGroup skill_module_dependence_param_group = 222;
+    repeated SkillModuleStatusAilmentGroup skill_module_status_ailment_group = 223;
+    repeated SkillModuleTargetParamGroup skill_module_target_param_group = 224;
+    repeated SkillState skill_state = 225;
+    repeated SpecialEffectRaceBonus special_effect_race_bonus = 226;
+    repeated SpecialItemConfig special_item_config = 227;
+    repeated Stage stage = 228;
+    repeated StageGroup stage_group = 229;
+    repeated StageSequence stage_sequence = 230;
+    repeated StageSkip stage_skip = 231;
+    repeated StampRewardStep stamp_reward_step = 232;
+    repeated StatusAilment status_ailment = 233;
+    repeated StatusAilmentCancellationType status_ailment_cancellation_type = 234;
+    repeated StatusAilmentGroup status_ailment_group = 235;
+    repeated StatusAilmentTriggerType status_ailment_trigger_type = 236;
+    repeated Survey survey = 237;
+    repeated SurveyAnswer survey_answer = 238;
+    repeated SurveyQuestions survey_questions = 239;
+    repeated TargetParam target_param = 240;
+    repeated TargetParamOption target_param_option = 241;
+    repeated TextLang text_lang = 242;
+    repeated Ticker ticker = 243;
+    repeated Tips tips = 244;
+    repeated Title title = 245;
+    repeated TitleCategory title_category = 246;
+    repeated TreasureBattleReward treasure_battle_reward = 247;
+    repeated UnlockAchievementGroup unlock_achievement_group = 248;
+    repeated UnlockCondition unlock_condition = 249;
     repeated Version version = 250;
+    repeated Vip vip = 251;
+    repeated Voice voice = 252;
+    repeated Wave wave = 253;
+    repeated WaveMonster wave_monster = 254;
+    repeated WaveMonsterReward wave_monster_reward = 255;
+    repeated WeaponSkillLv weapon_skill_lv = 256;
+    repeated WeaponSkillLvEnhance weapon_skill_lv_enhance = 257;
+}
+
+message Achievement {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 text_name = 3;
+    uint32 achievement_category_id = 4;
+    uint32 achievement_point = 5;
+    uint32 preview_achievement_id = 6;
+    uint32 type_value = 7;
+    uint32 display_priority = 8;
+    uint32 reward_group_id = 9;
+    string open_date = 10;
+}
+
+message AchievementCategory {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 resource_id = 3;
+}
+
+message AchievementEquipment {
+    uint32 id = 1;
+    uint32 seq = 2;
+    uint32 priority = 3;
+    uint32 type = 4;
+    uint32 type_value = 5;
+    uint32 target_equipment_job_id = 6;
+    uint32 target_equipment_category = 7;
+    uint32 target_equipment_part = 8;
+    uint32 category = 9;
+    string category_value = 10;
+    uint32 passive_skill_id_1 = 11;
+    uint32 passive_skill_id_2 = 12;
+    uint32 passive_skill_id_3 = 13;
+    uint32 stamp_point = 14;
+    string open_date = 15;
+}
+
+message AchievementRank {
+    uint32 id = 1;
+    uint32 achievement_point = 2;
+    uint32 passive_skill_id_1 = 3;
+    uint32 passive_skill_id_2 = 4;
+    uint32 passive_skill_id_3 = 5;
+    uint32 passive_skill_id_4 = 6;
+    uint32 passive_skill_id_5 = 7;
+    uint32 passive_skill_id_6 = 8;
+    uint32 passive_skill_id_7 = 9;
+    uint32 reward_group_id = 10;
+}
+
+message ActiveSkill {
+    uint32 id = 1;
+    uint32 active_skill_group_id = 2;
+    uint32 mp = 3;
+    float min_cast_time = 4;
+    float max_cast_time = 5;
+    float min_cool_time = 6;
+    float max_cool_time = 7;
+    float initial_min_cool_time = 8;
+    float initial_max_cool_time = 9;
+    uint32 meta_tag_id_1 = 10;
+    uint32 meta_tag_id_2 = 11;
+    uint32 meta_tag_id_3 = 12;
+}
+
+message ActiveSkillGroup {
+    uint32 id = 1;
+    uint32 skill_type = 2;
+    uint32 text_name = 3;
+    uint32 skill_ai_group_id = 4;
+    uint32 resource_id = 5;
+    uint32 balloon_priority = 6;
+    uint32 state_num = 7;
+    uint32 cast_circle_type = 8;
+    uint32 range = 9;
+}
+
+message ActiveSkillMetaTag {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 color_type = 3;
+}
+
+message Advertising {
+    uint32 id = 1;
+    uint32 ad_type = 2;
+    uint32 view_count_limit = 3;
+    uint32 reset_type = 4;
+    string open_date = 5;
+    string end_date = 6;
+}
+
+message AdvertisingMission {
+    uint32 advertising_id = 1;
+    uint32 text_name = 2;
+    uint32 text_description = 3;
+    uint32 reward_group_id = 4;
+}
+
+message AgitoApItem {
+    uint32 item_id = 1;
+    uint32 ap = 2;
+    uint32 lot_cost = 3;
+    uint32 lot_interval = 4;
+    uint32 lot_count = 5;
+    uint32 boost_group_id_1 = 6;
+    uint32 boost_group_id_2 = 7;
+    uint32 boost_group_id_3 = 8;
+    uint32 infinite_flag = 9;
+}
+
+message AgitoFurniture {
+    uint32 item_id = 1;
+    uint32 type = 2;
+    uint32 thumbnail_resource_id = 3;
+    uint32 resource_id = 4;
+}
+
+message AgitoItem {
+    uint32 item_id = 1;
+    uint32 agito_visitor_lineup_id_1 = 2;
+    uint32 agito_visitor_lineup_id_2 = 3;
+    uint32 agito_visitor_lineup_id_3 = 4;
+    uint32 type = 5;
+    uint32 group_id_1_weight = 6;
+    uint32 group_id_2_weight = 7;
+    uint32 group_id_3_weight = 8;
+    uint32 resource_id = 9;
+}
+
+message AgitoItemArea {
+    uint32 id = 1;
+    uint32 agito_item_type = 2;
+    uint32 except_agito_item_area_id_1 = 3;
+    uint32 except_agito_item_area_id_2 = 4;
+    uint32 except_agito_item_area_id_3 = 5;
+}
+
+message AgitoRoomPreset {
+    uint32 id = 1;
+    uint32 agito_room_preset_group_id = 2;
+    uint32 favorite_equipment_id_1 = 3;
+    uint32 favorite_equipment_id_2 = 4;
+    uint32 favorite_equipment_id_3 = 5;
+    uint32 wall_paper_item_id = 6;
+    uint32 floor_board_item_id = 7;
+    uint32 table_set_item_id = 8;
+    uint32 special_floor_item_id = 9;
+    uint32 wall_medium_item_id_1 = 10;
+    uint32 wall_medium_item_id_2 = 11;
+    uint32 wall_medium_item_id_3 = 12;
+    uint32 wall_medium_item_id_4 = 13;
+    uint32 wall_medium_item_id_5 = 14;
+    uint32 wall_small_item_id_1 = 15;
+    uint32 wall_small_item_id_2 = 16;
+    uint32 wall_small_item_id_3 = 17;
+    uint32 wall_small_item_id_4 = 18;
+    uint32 wall_small_item_id_5 = 19;
+    uint32 wall_small_item_id_6 = 20;
+}
+
+message AgitoRoomPresetArea {
+    uint32 group_id = 1;
+    uint32 seq = 2;
+    uint32 agito_item_area_id = 3;
+    uint32 item_id = 4;
+    uint32 agito_visitor_lineup_id_1 = 5;
+    uint32 agito_visitor_lineup_id_2 = 6;
+    uint32 agito_visitor_lineup_id_3 = 7;
+}
+
+message AgitoVisitor {
+    uint32 equipment_id = 1;
+    uint32 base_visitor_point = 2;
+    uint32 max_visitor_point = 3;
+    uint32 stay_interval = 4;
+    uint32 relottery_interval = 5;
+    uint32 text_description_id_1 = 6;
+    uint32 text_description_id_2 = 7;
+    uint32 text_flavor = 8;
+    uint32 agito_visitor_point_reward_id = 9;
+    uint32 resource_id = 10;
+    uint32 agito_visitor_voice_id = 11;
+    string open_date = 12;
+}
+
+message AgitoVisitorCountReward {
+    uint32 seq = 1;
+    uint32 type = 2;
+    uint32 value = 3;
+    uint32 reward_group_id = 4;
+    uint32 passive_skill_id_1 = 5;
+    uint32 passive_skill_id_2 = 6;
+}
+
+message AgitoVisitorLineup {
+    uint32 id = 1;
+    uint32 lineup_id = 2;
+    uint32 group_id = 3;
+    uint32 seq = 4;
+    uint32 equipment_id = 5;
+    uint32 motion_pattern = 6;
+    uint32 reward_group_id = 7;
+    uint32 weight = 8;
+}
+
+message AgitoVisitorPointReward {
+    uint32 id = 1;
+    uint32 seq = 2;
+    uint32 value = 3;
+    uint32 reward_group_id = 4;
+}
+
+message AgitoVisitorVoice {
+    uint32 id = 1;
+    string voice_name1 = 2;
+    string voice_name2 = 3;
+    string voice_name3 = 4;
+    string voice_name4 = 5;
+    string voice_name5 = 6;
+    string voice_name6 = 7;
+    uint32 text_voice1 = 8;
+    uint32 text_voice2 = 9;
+    uint32 text_voice3 = 10;
+    uint32 text_voice4 = 11;
+    uint32 text_voice5 = 12;
+    uint32 text_voice6 = 13;
+    string summon_voice_name1 = 14;
+    string summon_voice_name2 = 15;
+    string summon_voice_name3 = 16;
+}
+
+message AncientTowerConfig {
+    uint32 stage_id = 1;
+    uint32 floor_no = 2;
+    uint32 exp = 3;
+    uint32 reward_group_id = 4;
+}
+
+message AncientTowerExConfig {
+    uint32 contents_id = 1;
+    uint32 stage_id = 2;
+    uint32 floor_no = 3;
+    uint32 provisional_clear_time = 4;
+}
+
+message AngelBattleReward {
+    uint32 stage_id = 1;
+    uint32 join_reward_group_id = 2;
+    uint32 clear_reward_group_id = 3;
+    uint32 damage_ranking_reward_id = 4;
+}
+
+message AngelBattleWeeklyReward {
+    uint32 stage_id = 1;
+    uint32 weekly_reward_group_id = 2;
+    uint32 assist_reward_group_id = 3;
+    uint32 assist_reward_limit = 4;
+}
+
+message AnimaArea {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 anima_category_id = 3;
+    uint32 area_reward = 4;
+    uint32 reward_group_id_20 = 5;
+    uint32 reward_group_id_40 = 6;
+    uint32 reward_group_id_60 = 7;
+    uint32 reward_group_id_80 = 8;
+    uint32 reward_group_id_100 = 9;
+}
+
+message AnimaCategory {
+    uint32 id = 1;
+    uint32 text_name = 2;
+}
+
+message AnimaPage {
+    uint32 id = 1;
+    uint32 type = 2;
+    uint32 monster_id = 3;
+    uint32 ordinary = 4;
+    uint32 item_id = 5;
+    uint32 anima_area_id = 6;
+    uint32 stage_id = 7;
+    uint32 trigger_quest_stage_id = 8;
+    string open_date = 9;
+}
+
+message AnimaPageLevel {
+    uint32 anima_page_id = 1;
+    uint32 level = 2;
+    uint32 require = 3;
+    uint32 passive_skill_id_1 = 4;
+    uint32 passive_skill_id_2 = 5;
+    uint32 passive_skill_id_3 = 6;
+}
+
+message AprilFool {
+    uint32 id = 1;
+    uint32 april_fool_member_group_id = 2;
+    uint32 agito_room_preset_id = 3;
+    string open_date = 4;
+    string close_date = 5;
+}
+
+message AprilFoolMember {
+    uint32 group_id = 1;
+    uint32 member_id = 2;
+    uint32 equipment_character_id = 3;
+}
+
+message Area {
+    uint32 id = 1;
+    uint32 contents_id = 2;
+    uint32 text_name = 3;
+    uint32 text_description1 = 4;
+    uint32 text_description2 = 5;
+    uint32 unlock_story_stage_id = 6;
+    uint32 resource_id_1 = 7;
+    uint32 resource_id_2 = 8;
+    uint32 playable_time_group_id = 9;
+    uint32 weekday = 10;
+    uint32 event_id = 11;
+    uint32 button_resource_id = 12;
+    uint32 designation_attribute = 13;
+    string open_date = 14;
+    string close_date = 15;
+}
+
+message ArenaPointReward {
+    uint32 id = 1;
+    uint32 required_pt = 2;
+    uint32 reward_group_id = 3;
+}
+
+message ArenaRank {
+    uint32 id = 1;
+    uint32 required_pt = 2;
+    uint32 win_exp = 3;
+    uint32 lose_exp = 4;
+    uint32 hp = 5;
+    uint32 mp = 6;
+    uint32 phy_atk = 7;
+    uint32 mag_atk = 8;
+    uint32 heal = 9;
+    uint32 phy_def = 10;
+    uint32 mag_def = 11;
+    uint32 accuracy = 12;
+    uint32 dodge = 13;
+    uint32 critical = 14;
+    uint32 agility = 15;
+}
+
+message Banner {
+    uint32 id = 1;
+    uint32 resource_id = 2;
+    uint32 display_priority = 3;
+    string target = 4;
+    string open_date = 5;
+    string close_date = 6;
+}
+
+message Behavior {
+    uint32 id = 1;
+    uint32 type = 2;
+    uint32 parameter = 3;
+    uint32 target = 4;
+}
+
+message Boost {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 text_description = 3;
+    uint32 resource_id = 4;
+    uint32 effect_target = 5;
+    uint32 source_type = 6;
+    uint32 source_main = 7;
+    uint32 source_sub1 = 8;
+    uint32 source_sub2 = 9;
+    uint32 group_id = 10;
+    uint32 op_type = 11;
+    float op_value = 12;
+    uint32 effect_time = 13;
+    uint32 max_effect_time = 14;
+    uint32 limit_job_lv = 15;
+    uint32 date_display_flag = 16;
+    string open_date = 17;
+    string close_date = 18;
+}
+
+message BoostGroup {
+    uint32 id = 1;
+    uint32 seq = 2;
+    uint32 boost_id = 3;
+}
+
+message Chapter {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    string open_date = 3;
+    string close_date = 4;
+}
+
+message Combo {
+    uint32 id = 1;
+    uint32 lv = 2;
+    uint32 combo_count = 3;
+    uint32 passive_skill_id_1 = 4;
+    uint32 passive_skill_id_2 = 5;
+    uint32 text_effect_label1 = 6;
+    uint32 text_effect_label2 = 7;
+}
+
+message ConditionCategory {
+    uint32 id = 1;
+    uint32 condition_type_id = 2;
+    uint32 text_category = 3;
+    uint32 text_description = 4;
+    uint32 condition_group_id = 5;
+}
+
+message ConditionGroup {
+    uint32 id = 1;
+    uint32 condition_id = 2;
+}
+
+message Conditions {
+    uint32 id = 1;
+    uint32 target = 2;
+    uint32 value = 3;
+}
+
+message Constant {
+    uint32 id = 1;
+    string key = 2;
+    string value = 3;
+    uint32 type = 4;
+    uint32 priority = 5;
+    string open_date = 6;
+    string close_date = 7;
+    string open_time = 8;
+    string close_time = 9;
+}
+
+message Contents {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 text_description1 = 3;
+    uint32 text_description2 = 4;
+    uint32 display_priority = 5;
+    uint32 resource_id = 6;
+    uint32 type = 7;
+    uint32 cost_consume_type = 8;
+    uint32 challenge_unit = 9;
+    int32 free_count = 10;
+    uint32 cost_group_id = 11;
+    uint32 special_cost_group_id = 12;
+    int32 challenge_max_num = 13;
+    int32 special_challenge_max_num = 14;
+    uint32 contents_resource_id = 15;
+    uint32 playable_time_group_id = 16;
+    uint32 battle_time_limit = 17;
+    uint32 bgm_id = 18;
+    uint32 event_badge_flag = 19;
+    string open_date = 20;
+    string close_date = 21;
+}
+
+message ContentsAncientTowerEx {
+    uint32 contents_id = 1;
+    uint32 unlock_stage_id = 2;
+    uint32 background_resource_id = 3;
+    uint32 min_job_lv = 4;
+    uint32 max_job_lv = 5;
+    uint32 min_cp = 6;
+    uint32 max_cp = 7;
+    uint32 contents_ranking_id = 8;
+}
+
+message ContentsCost {
+    uint32 group_id = 1;
+    uint32 num = 2;
+    uint32 payment_type = 3;
+    uint32 item_id = 4;
+    uint32 cost = 5;
+}
+
+message ContentsRanking {
+    uint32 id = 1;
+    uint32 asc_order_flag = 2;
+    uint32 score_decimal_place = 3;
+    string open_date = 4;
+    string close_date = 5;
+    uint32 ranking_reward_id = 6;
+}
+
+message ContentsResource {
+    uint32 id = 1;
+    uint32 target_id = 2;
+    uint32 type = 3;
+    uint32 item_id = 4;
+    uint32 cost = 5;
+}
+
+message DailyMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 text_name = 3;
+    uint32 point = 4;
+    uint32 type_value = 5;
+    uint32 display_priority = 6;
+    string target = 7;
+    uint32 reward_group_id = 8;
+}
+
+message DailyMissionReward {
+    uint32 id = 1;
+    uint32 point = 2;
+    uint32 reward_group_id = 3;
+}
+
+message EffectStatusGroup {
+    uint32 id = 1;
+    uint32 sub_id = 2;
+    uint32 effect_status = 3;
+    float effect_status_value = 4;
+    uint32 effect_status_operand = 5;
+    uint32 effect_status_operator = 6;
+}
+
+message Elixir {
+    uint32 id = 1;
+    uint32 rank = 2;
+    uint32 text_name = 3;
+    uint32 max_lv = 4;
+    uint32 unlock_total_job_lv = 5;
+    uint32 essence_item_id = 6;
+    uint32 essence_count = 7;
+    uint32 bean_item_id_1 = 8;
+    uint32 bean_item_id_2 = 9;
+    uint32 bean_item_id_3 = 10;
+    uint32 bean_item_id_4 = 11;
+    uint32 bean_count1 = 12;
+    uint32 bean_count2 = 13;
+    uint32 bean_count3 = 14;
+    uint32 bean_count4 = 15;
+    uint32 required_lupi = 16;
+    uint32 passive_skill_id_1 = 17;
+    uint32 passive_skill_id_2 = 18;
+    uint32 passive_skill_id_3 = 19;
+    uint32 passive_skill_id_4 = 20;
+}
+
+message EnhancementBonus {
+    uint32 enhancement_value = 1;
+    float bonus_value = 2;
+}
+
+message EnhancementRank {
+    uint32 equipment_category = 1;
+    uint32 rank = 2;
+    uint32 material_id = 3;
+    uint32 blessing_material_id = 4;
+    uint32 required_material_quantity = 5;
+    uint32 required_boost_quantity = 6;
+    float success_rate = 7;
+    float growth_rate = 8;
+    float bonus_rate1 = 9;
+    float bonus_rate2 = 10;
+    float bonus_rate3 = 11;
+    uint32 enhancement_cost = 12;
+    float pity_timer_rate = 13;
+}
+
+message Episode {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 chapter_id = 3;
+    uint32 unlock_lv = 4;
+    uint32 reward_group_id = 5;
+    string open_date = 6;
+    string close_date = 7;
+}
+
+message Equipment {
+    uint32 id = 1;
+    uint32 gender = 2;
+    uint32 member_id = 3;
+    uint32 equipment_character_id = 4;
+    uint32 text_name = 5;
+    uint32 icon_m = 6;
+    uint32 icon_l = 7;
+    uint32 icon_ll = 8;
+    uint32 icon_xl = 9;
+    string bg_rgb = 10;
+    uint32 special_effect_monster_category = 11;
+    uint32 special_effect_race = 12;
+    uint32 equipment_group_id = 13;
+    uint32 job_id = 14;
+    uint32 equipment_category = 15;
+    uint32 normal_active_skill_id = 16;
+    uint32 target_param_option_group_id = 17;
+    uint32 limit_break_item_id = 18;
+    uint32 equipment_awakening_id = 19;
+    uint32 awakening_resource_id = 20;
+    uint32 hair_type = 21;
+    uint32 rune_slot_id_1 = 22;
+    uint32 rune_slot_id_2 = 23;
+    uint32 rune_slot_id_3 = 24;
+    uint32 rune_slot_id_4 = 25;
+    uint32 rune_slot_id_5 = 26;
+    uint32 rune_slot_id_6 = 27;
+    uint32 rune_slot_id_7 = 28;
+    uint32 rune_slot_id_8 = 29;
+    uint32 rune_slot_id_9 = 30;
+    uint32 rune_slot_id_10 = 31;
+    uint32 rune_slot_id_11 = 32;
+    uint32 rune_slot_id_12 = 33;
+    uint32 rune_slot_id_ex = 34;
+    uint32 rune_slot_id_ex2 = 35;
+    uint32 evolution_lot_weight_rarity1 = 36;
+    uint32 evolution_lot_weight_rarity2 = 37;
+    uint32 evolution_lot_weight_rarity3 = 38;
+    uint32 evolution_lot_weight_rarity4 = 39;
+    uint32 evolution_lot_weight_rarity5 = 40;
+    uint32 event_id = 41;
+    uint32 max_rarity = 42;
+    uint32 type = 43;
+    uint32 weapon_effect_type = 44;
+    uint32 display_skin_icon_flag = 45;
+    uint32 equipment_recycle_id = 46;
+    uint32 trying_on_base_equipment_character_id = 47;
+    string open_date = 48;
+    uint32 release_flag = 49;
+}
+
+message EquipmentAwakening {
+    uint32 id = 1;
+    uint32 lv = 2;
+    uint32 recipe_id = 3;
+    uint32 unlock_limit_break = 4;
+    uint32 hp = 5;
+    uint32 attack = 6;
+    uint32 heal = 7;
+    uint32 defence = 8;
+    uint32 accuracy = 9;
+    uint32 dodge = 10;
+    uint32 critical = 11;
+    uint32 agility = 12;
+    uint32 passive_skill_id_1 = 13;
+    uint32 passive_skill_id_2 = 14;
+    uint32 passive_skill_id_3 = 15;
+    uint32 passive_skill_id_4 = 16;
+    uint32 passive_skill_id_5 = 17;
+}
+
+message EquipmentAwakeningRecipe {
+    uint32 id = 1;
+    uint32 item_id_1 = 2;
+    uint32 item_count1 = 3;
+    uint32 item_id_2 = 4;
+    uint32 item_count2 = 5;
+    uint32 item_id_3 = 6;
+    uint32 item_count3 = 7;
+    uint32 item_id_4 = 8;
+    uint32 item_count4 = 9;
+    uint32 item_id_5 = 10;
+    uint32 item_count5 = 11;
+    uint32 item_id_6 = 12;
+    uint32 item_count6 = 13;
+    uint32 lupi = 14;
+}
+
+message EquipmentAwakeningReset {
+    uint32 id = 1;
+    uint32 level = 2;
+    uint32 required_material_quantity = 3;
+    float return_rate = 4;
+}
+
+message EquipmentCharacter {
+    uint32 id = 1;
+    uint32 weapon_model_id = 2;
+    uint32 hair_model_id = 3;
+    uint32 face_model_id = 4;
+    uint32 head_model_id = 5;
+    uint32 upper_body_model_id = 6;
+    uint32 lower_body_model_id = 7;
+    uint32 device_model_id = 8;
+    string default_skin_rgb = 9;
+    uint32 move_type = 10;
+    uint32 weapon_type = 11;
+    uint32 weapon_timeline_type = 12;
+    uint32 voice_index = 13;
+}
+
+message EquipmentDungeonConfig {
+    uint32 difficulty = 1;
+    uint32 hp = 2;
+    uint32 round_time = 3;
+}
+
+message EquipmentDungeonReward {
+    uint32 difficulty = 1;
+    uint32 rank = 2;
+    uint32 clear_time_upper = 3;
+    uint32 clear_time_lower = 4;
+    uint32 battle_result = 5;
+    uint32 reward_group_id = 6;
+}
+
+message EquipmentLiberation {
+    uint32 equipment_id = 1;
+    uint32 rarity = 2;
+    uint32 seq_id = 3;
+    uint32 item_id = 4;
+    uint32 item_value = 5;
+    uint32 passive_skill_id_1 = 6;
+    uint32 passive_skill_id_2 = 7;
+}
+
+message EquipmentLvGroup {
+    uint32 equipment_category = 1;
+    uint32 rarity = 2;
+    uint32 lv = 3;
+    uint32 limit_break = 4;
+    uint32 required_exp = 5;
+    uint32 enhance_exp = 6;
+}
+
+message EquipmentPassiveSkill {
+    uint32 equipment_id = 1;
+    uint32 rarity = 2;
+    uint32 limit_break = 3;
+    uint32 passive_skill_id_1 = 4;
+    uint32 passive_skill_id_2 = 5;
+    uint32 passive_skill_id_3 = 6;
+}
+
+message EquipmentRarity {
+    uint32 equipment_id = 1;
+    uint32 rarity = 2;
+    uint32 hp_min = 3;
+    uint32 hp_max = 4;
+    uint32 mp_min = 5;
+    uint32 mp_max = 6;
+    uint32 phy_atk_min = 7;
+    uint32 phy_atk_max = 8;
+    uint32 mag_atk_min = 9;
+    uint32 mag_atk_max = 10;
+    uint32 heal_min = 11;
+    uint32 heal_max = 12;
+    uint32 phy_def_min = 13;
+    uint32 phy_def_max = 14;
+    uint32 mag_def_min = 15;
+    uint32 mag_def_max = 16;
+    uint32 accuracy_min = 17;
+    uint32 accuracy_max = 18;
+    uint32 dodge_min = 19;
+    uint32 dodge_max = 20;
+    uint32 critical_min = 21;
+    uint32 critical_max = 22;
+    uint32 agility_min = 23;
+    uint32 agility_max = 24;
+    float fire_min = 25;
+    float fire_max = 26;
+    float water_min = 27;
+    float water_max = 28;
+    float earth_min = 29;
+    float earth_max = 30;
+    float wind_min = 31;
+    float wind_max = 32;
+    float thunder_min = 33;
+    float thunder_max = 34;
+    float light_min = 35;
+    float light_max = 36;
+    float darkness_min = 37;
+    float darkness_max = 38;
+    float special_effect_monter_category_min = 39;
+    float special_effect_monter_category_max = 40;
+    float special_effect_race_min = 41;
+    float special_effect_race_max = 42;
+    float fire_resist_min = 43;
+    float fire_resist_max = 44;
+    float water_resist_min = 45;
+    float water_resist_max = 46;
+    float earth_resist_min = 47;
+    float earth_resist_max = 48;
+    float wind_resist_min = 49;
+    float wind_resist_max = 50;
+    float thunder_resist_min = 51;
+    float thunder_resist_max = 52;
+    float light_resist_min = 53;
+    float light_resist_max = 54;
+    float darkness_resist_min = 55;
+    float darkness_resist_max = 56;
+    float phy_resist_min = 57;
+    float phy_resist_max = 58;
+    float mag_resist_min = 59;
+    float mag_resist_max = 60;
+    float death_resist_min = 61;
+    float death_resist_max = 62;
+    float stone_resist_min = 63;
+    float stone_resist_max = 64;
+    float sleep_resist_min = 65;
+    float sleep_resist_max = 66;
+    float poison_resist_min = 67;
+    float poison_resist_max = 68;
+    float confusion_resist_min = 69;
+    float confusion_resist_max = 70;
+    float paralysis_resist_min = 71;
+    float paralysis_resist_max = 72;
+    float blind_resist_min = 73;
+    float blind_resist_max = 74;
+    float sealed_resist_min = 75;
+    float sealed_resist_max = 76;
+    float stun_resist_min = 77;
+    float stun_resist_max = 78;
+    float weakness_resist_min = 79;
+    float weakness_resist_max = 80;
+    float curse_resist_min = 81;
+    float curse_resist_max = 82;
+    float frozen_resist_min = 83;
+    float frozen_resist_max = 84;
+    float dotparalysis_resist_min = 85;
+    float dotparalysis_resist_max = 86;
+    float phy_taken_damage_increase_blind_resist_min = 87;
+    float phy_taken_damage_increase_blind_resist_max = 88;
+    float normal_resist_min = 89;
+    float normal_resist_max = 90;
+    float elite_resist_min = 91;
+    float elite_resist_max = 92;
+    float boss_resist_min = 93;
+    float boss_resist_max = 94;
+    float dragon_resist_min = 95;
+    float dragon_resist_max = 96;
+    float beast_resist_min = 97;
+    float beast_resist_max = 98;
+    float devil_resist_min = 99;
+    float devil_resist_max = 100;
+    float saint_resist_min = 101;
+    float saint_resist_max = 102;
+    float human_resist_min = 103;
+    float human_resist_max = 104;
+    float pvp_resist_min = 105;
+    float pvp_resist_max = 106;
+    float heaven_resist_min = 107;
+    float heaven_resist_max = 108;
+    float hazy_resist_min = 109;
+    float hazy_resist_max = 110;
+    float fury_resist_min = 111;
+    float fury_resist_max = 112;
+    float muddiness_resist_min = 113;
+    float muddiness_resist_max = 114;
+    float xp_up_min = 115;
+    float xp_up_max = 116;
+    float lupi_up_min = 117;
+    float lupi_up_max = 118;
+    float cat_short_min = 119;
+    float cat_short_max = 120;
+    float cot_short_min = 121;
+    float cot_short_max = 122;
+    float hp_absorption_min = 123;
+    float hp_absorption_max = 124;
+    float mp_absorption_min = 125;
+    float mp_absorption_max = 126;
+    float critical_damage_up_min = 127;
+    float critical_damage_up_max = 128;
+    float mp_cost_down_min = 129;
+    float mp_cost_down_max = 130;
+    uint32 fixed_damage_up_min = 131;
+    uint32 fixed_damage_up_max = 132;
+    uint32 fixed_damage_down_min = 133;
+    uint32 fixed_damage_down_max = 134;
+    float critical_resist_min = 135;
+    float critical_resist_max = 136;
+    float attr_dmg_min = 137;
+    float attr_dmg_max = 138;
+    float attr_taken_dmg_min = 139;
+    float attr_taken_dmg_max = 140;
+    float hate_min = 141;
+    float hate_max = 142;
+    float armor_ignore_min = 143;
+    float armor_ignore_max = 144;
+    float mp_no_cost_min = 145;
+    float mp_no_cost_max = 146;
+    float anima_drop_up_min = 147;
+    float anima_drop_up_max = 148;
+    float combo_bonus_min = 149;
+    float combo_bonus_max = 150;
+    float combo_time_min = 151;
+    float combo_time_max = 152;
+}
+
+message EquipmentRecycle {
+    uint32 id = 1;
+    uint32 rarity = 2;
+    uint32 reward_group_id = 3;
+}
+
+message EquipmentSelling {
+    uint32 equipment_category = 1;
+    uint32 rarity = 2;
+    uint32 sell_price = 3;
+}
+
+message EquipmentSpecialEffectArea {
+    uint32 equipment_id = 1;
+    uint32 limit = 2;
+    uint32 area_id = 3;
+    uint32 seq = 4;
+    uint32 passive_skill_id_1 = 5;
+    uint32 passive_skill_id_2 = 6;
+    string open_date = 7;
+    string close_date = 8;
+}
+
+message EquipmentSpecialEffectEnhanceGroup {
+    uint32 equipment_id = 1;
+    uint32 lv = 2;
+    uint32 series_text_id = 3;
+    uint32 passive_skill_id_1 = 4;
+    uint32 passive_skill_id_2 = 5;
+    uint32 passive_skill_id_3 = 6;
+    uint32 passive_skill_id_4 = 7;
+    uint32 lv_up_require_lupi = 8;
+    float lv_up_success_rate = 9;
+    uint32 limit_job_lv = 10;
+}
+
+message EquipmentVariationColor {
+    uint32 equipment_id = 1;
+    uint32 gender = 2;
+    uint32 color_id = 3;
+    uint32 name = 4;
+    uint32 priority = 5;
+    uint32 texture = 6;
+    uint32 lupi = 7;
+    uint32 item1 = 8;
+    uint32 cost1 = 9;
+    uint32 item2 = 10;
+    uint32 cost2 = 11;
+    uint32 item3 = 12;
+    uint32 cost3 = 13;
+    string rgb1 = 14;
+    string rgb2 = 15;
+}
+
+message Event {
+    uint32 id = 1;
+    uint32 event_group_id = 2;
+    uint32 text_name = 3;
+    uint32 display_flag = 4;
+    uint32 target_type = 5;
+    uint32 target_id = 6;
+    uint32 event_contents_group_id = 7;
+    uint32 resource_id = 8;
+    string prefab_name = 9;
+    string open_date = 10;
+    string close_date = 11;
+}
+
+message EventContentsGroup {
+    uint32 id = 1;
+    uint32 contents_id = 2;
+}
+
+message EventExchange {
+    uint32 event_id = 1;
+    uint32 reset_type = 2;
+    uint32 badge_display = 3;
+}
+
+message EventGroup {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 portal_flag = 3;
+    uint32 display_priority = 4;
+    uint32 portal_resource_id = 5;
+    uint32 banner_resource_id = 6;
+    uint32 notice_resource_id = 7;
+    uint32 notice_banner_resource_id = 8;
+    uint32 home_text1 = 9;
+    uint32 home_text2 = 10;
+    uint32 home_button_resource_id = 11;
+    uint32 gacha_id = 12;
+    string news_id = 13;
+    string portal_open_date = 14;
+    string portal_close_date = 15;
+    string open_date = 16;
+    string close_date = 17;
+}
+
+message EventMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 text_name = 3;
+    uint32 type_value = 4;
+    uint32 inherit_progress = 5;
+    uint32 event_mission_group_id = 6;
+    uint32 preview_mission_id = 7;
+    uint32 point = 8;
+    uint32 daily_reset = 9;
+    string target = 10;
+    uint32 reward_group_id = 11;
+}
+
+message EventMissionGroup {
+    uint32 id = 1;
+    uint32 event_id = 2;
+    uint32 guild_mission = 3;
+    string open_date = 4;
+    string close_date = 5;
+}
+
+message EventMissionReward {
+    uint32 id = 1;
+    uint32 event_mission_group_id = 2;
+    uint32 point = 3;
+    uint32 reward_group_id = 4;
+}
+
+message EventRoulette {
+    uint32 event_id = 1;
+    uint32 event_item_id = 2;
+    uint32 require_item_count = 3;
+    uint32 max_try_count = 4;
+    uint32 free_count = 5;
+    string bg_rgb = 6;
+    int32 is_ex_flag = 7;
+}
+
+message EventRouletteReward {
+    uint32 event_id = 1;
+    uint32 type = 2;
+    uint32 seq_id = 3;
+    uint32 reward_group_id = 4;
+}
+
+message EventSugoroku {
+    uint32 event_id = 1;
+    uint32 event_item_id = 2;
+    uint32 require_item_count = 3;
+    uint32 max_try_count = 4;
+    uint32 free_count = 5;
+    string bg_rgb = 6;
+}
+
+message EventSugorokuReward {
+    uint32 event_id = 1;
+    uint32 type = 2;
+    uint32 seq_id = 3;
+    uint32 reward_group_id = 4;
+}
+
+message Evolution {
+    uint32 equipment_category = 1;
+    uint32 rarity = 2;
+    uint32 evolution_recipe_group1 = 3;
+    uint32 material_quantity = 4;
+    uint32 evolution_recipe_group2 = 5;
+    uint32 material_quantity2 = 6;
+    uint32 synthesis_cost = 7;
+    uint32 material_cost = 8;
+}
+
+message EvolutionRecipe {
+    uint32 recipe_group = 1;
+    uint32 item_id = 2;
+}
+
+message Exchange {
+    uint32 id = 1;
+    uint32 exchange_material_group_id = 2;
+    uint32 exchange_result_group_id = 3;
+    uint32 count_limit = 4;
+    uint32 event_id = 5;
+    uint32 display_priority = 6;
+    uint32 pickup_flag = 7;
+    string open_date = 8;
+    string close_date = 9;
+}
+
+message ExchangeGroup {
+    uint32 id = 1;
+    uint32 seq_id = 2;
+    uint32 target_type = 3;
+    uint32 target_id = 4;
+    uint32 equipment_rarity = 5;
+    uint32 level = 6;
+    uint32 enhancement = 7;
+    uint32 is_protected = 8;
+    uint32 quantity = 9;
+}
+
+message FcmMessage {
+    uint32 push_notification_type = 1;
+    uint32 text_message = 2;
+}
+
+message FunctionalTutorial {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 priority = 3;
+    uint32 type = 4;
+    uint32 value1 = 5;
+    uint32 resource_id_1 = 6;
+    uint32 resource_id_2 = 7;
+    uint32 resource_id_3 = 8;
+    uint32 resource_id_4 = 9;
+    uint32 resource_id_5 = 10;
+    string help_query = 11;
+}
+
+message FunctionalUnlock {
+    uint32 id = 1;
+    uint32 job_lv = 2;
+    uint32 stage_id = 3;
+}
+
+message Gacha {
+    uint32 id = 1;
+    uint32 text_title = 2;
+    uint32 text_description = 3;
+    uint32 text_introduce = 4;
+    uint32 text_notice = 5;
+    uint32 tab_resource_id = 6;
+    uint32 logo_resource_id = 7;
+    uint32 movie_resource_id = 8;
+    uint32 option_id = 9;
+    uint32 advertising_id = 10;
+    uint32 priority = 11;
+    uint32 payment_type = 12;
+    uint32 loop_step = 13;
+    uint32 limit_reset = 14;
+    uint32 lump_limit_count = 15;
+    uint32 ticket_item_id = 16;
+    uint32 single_price = 17;
+    uint32 single_paid_price = 18;
+    uint32 lump_first_discount = 19;
+    uint32 single_free = 20;
+    uint32 lump_free = 21;
+    uint32 daily_free = 22;
+    uint32 single_bonus_reward = 23;
+    uint32 gacha_exchange_id = 24;
+    string start_date = 25;
+    string end_date = 26;
+}
+
+message GachaExchange {
+    uint32 id = 1;
+    uint32 exchange_add_point = 2;
+}
+
+message GachaOption {
+    uint32 id = 1;
+    uint32 step = 2;
+    uint32 lump_num = 3;
+    uint32 lump_price = 4;
+    uint32 lump_bonus_reward = 5;
+    uint32 gacha_pool_id = 6;
+    uint32 group1_weight = 7;
+    uint32 group2_weight = 8;
+    uint32 group3_weight = 9;
+    uint32 group4_weight = 10;
+    uint32 fixed_lot_type = 11;
+    uint32 fixed_lot_group = 12;
+}
+
+message GachaPickup {
+    uint32 gacha_id = 1;
+    uint32 priority = 2;
+    uint32 equipment_id = 3;
+    uint32 reward_group_id = 4;
+}
+
+message GachaPool {
+    uint32 id = 1;
+    uint32 group_id = 2;
+    uint32 seq = 3;
+    uint32 equipment_id = 4;
+    uint32 rarity = 5;
+    uint32 weight = 6;
+    uint32 equipment_lv = 7;
+    uint32 equipment_enhancement = 8;
+    uint32 equipment_limit_break = 9;
+    uint32 exchange_point = 10;
+}
+
+message GlobalMenuCampaignIcon {
+    uint32 id = 1;
+    uint32 function_unlock_id = 2;
+    uint32 campaign_icon_id = 3;
+    string open_date = 4;
+    string close_date = 5;
+}
+
+message GuildContributionRewardGuild {
+    uint32 id = 1;
+    uint32 lower = 2;
+    uint32 upper = 3;
+    uint32 reward_group_id = 4;
+}
+
+message GuildContributionRewardPersonal {
+    uint32 id = 1;
+    uint32 lower = 2;
+    uint32 upper = 3;
+    uint32 reward_group_id = 4;
+}
+
+message GuildDungeon {
+    uint32 id = 1;
+    uint32 area_id = 2;
+    uint32 difficulty = 3;
+    uint32 reset_price = 4;
+    uint32 guild_lv = 5;
+    uint32 guild_tower_lv = 6;
+    uint32 previous_dungeon_id = 7;
+    uint32 time_limit = 8;
+}
+
+message GuildDungeonReward {
+    uint32 stage_id = 1;
+    uint32 guild_exp = 2;
+    uint32 guild_lupi = 3;
+    uint32 ranking_reward_id = 4;
+    uint32 battle_reward_group_id = 5;
+    uint32 guild_contribution = 6;
+    uint32 clear_reward_group_id = 7;
+    uint32 absent_reward_group_id = 8;
+    uint32 help_reward_group_id = 9;
+}
+
+message GuildFacility {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 lv = 3;
+}
+
+message GuildFacilityLv {
+    uint32 id = 1;
+    uint32 guild_facility_id = 2;
+    uint32 lv = 3;
+    uint32 hp = 4;
+    uint32 wood_quantity = 5;
+    uint32 stone_quantity = 6;
+    uint32 iron_quantity = 7;
+    uint32 crystal_quantity = 8;
+    uint32 required_lupi = 9;
+    uint32 build_time = 10;
+    uint32 member_num = 11;
+    uint32 blue_skill_point_time = 12;
+    uint32 blue_skill_point_max = 13;
+    float ancient_tower_sweep_boost = 14;
+    uint32 passive_skill_id_1 = 15;
+    uint32 passive_skill_id_2 = 16;
+    uint32 passive_skill_id_3 = 17;
+    uint32 battle_type1 = 18;
+    uint32 battle_type2 = 19;
+    uint32 battle_type3 = 20;
+    float battle_value1 = 21;
+    float battle_value2 = 22;
+    float battle_value3 = 23;
+    uint32 weekly_warehouse_reward_count_max = 24;
+}
+
+message GuildHistory {
+    uint32 id = 1;
+    uint32 category = 2;
+    uint32 text_name = 3;
+    uint32 text_description = 4;
+}
+
+message GuildLoginReward {
+    uint32 id = 1;
+    uint32 login_num = 2;
+    uint32 reward_group_id = 3;
+}
+
+message GuildLv {
+    uint32 id = 1;
+    uint32 lv = 2;
+    uint32 exp = 3;
+    uint32 warehouse_limit = 4;
+    uint32 reward_group_id = 5;
+}
+
+message GuildPersonalMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 text_name = 3;
+    uint32 lv = 4;
+    uint32 rank = 5;
+    uint32 contribution = 6;
+    uint32 type_value = 7;
+    uint32 display_priority = 8;
+    string target = 9;
+    uint32 reward_group_id = 10;
+    uint32 guild_exp = 11;
+    uint32 skip_item_id = 12;
+    uint32 skip_quantity = 13;
+}
+
+message GuildSharedMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 text_name = 3;
+    uint32 lv = 4;
+    uint32 contribution = 5;
+    uint32 type_value = 6;
+    uint32 display_priority = 7;
+    string target = 8;
+    uint32 reward_group_id_personal = 9;
+    uint32 reward_group_id_guild = 10;
+    uint32 guild_exp = 11;
+}
+
+message GuildSymbol {
+    uint32 id = 1;
+    int32 resource = 2;
+}
+
+message GuildSymbolFrame {
+    uint32 id = 1;
+    int32 resource = 2;
+}
+
+message GuildWarehouseRewardLimit {
+    uint32 item_type = 1;
+    uint32 count = 2;
+}
+
+message GuildWeeklyMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 group_id = 3;
+    uint32 text_name = 4;
+    uint32 lv = 5;
+    uint32 type_value = 6;
+    uint32 reward_group_id_personal = 7;
+    uint32 reward_group_id_guild = 8;
+}
+
+message GuildWeeklyMissionGroup {
+    uint32 id = 1;
+    uint32 weight = 2;
+    uint32 resource_id = 3;
+    uint32 unlock_guild_obelisk_lv = 4;
+}
+
+message Gve {
+    uint32 id = 1;
+    string open_date = 2;
+    string start_date = 3;
+    string close_date = 4;
+    string round_start_time = 5;
+    string round_end_time = 6;
+    uint32 total_round = 7;
+    uint32 contents_id = 8;
+    uint32 event_id = 9;
+}
+
+message GveClearTimeBonus {
+    uint32 area_id = 1;
+    uint32 clear_time = 2;
+    float boost_rate = 3;
+}
+
+message GveMonsterSubjugation {
+    uint32 contents_id = 1;
+    uint32 monster_id = 2;
+    uint32 score = 3;
+}
+
+message GveRoundReward {
+    uint32 gve_id = 1;
+    uint32 type = 2;
+    uint32 round = 3;
+    uint32 result = 4;
+    uint32 seq = 5;
+    uint32 threshold_ep_individual = 6;
+    uint32 threshold_ep_guild = 7;
+    uint32 reward_group_id = 8;
+}
+
+message Gvg {
+    uint32 id = 1;
+    uint32 type = 2;
+    uint32 gvg_bid_id = 3;
+    uint32 start_battle_day = 4;
+    string start_battle_time = 5;
+    uint32 battle_period_minutes = 6;
+    uint32 pvp_time_limit = 7;
+    uint32 pvm_time_limit = 8;
+    uint32 pve_time_limit = 9;
+    string open_date = 10;
+    string close_date = 11;
+}
+
+message GvgBaseBonus {
+    uint32 guildhole_lv = 1;
+    uint32 target_param = 2;
+    uint32 target_value = 3;
+}
+
+message GvgBattleField {
+    uint32 id = 1;
+    uint32 gvg_id = 2;
+    uint32 battle_field_contents_id = 3;
+    uint32 text_name = 4;
+    uint32 fileld_bgm_id = 5;
+    uint32 battle_bgm_id = 6;
+}
+
+message GvgBattleFieldContents {
+    uint32 id = 1;
+    uint32 resource_id = 2;
+    uint32 rarity = 3;
+    uint32 min_bid_value = 4;
+    uint32 min_admission_lv = 5;
+    uint32 max_admission_lv = 6;
+    uint32 max_admission_member_num = 7;
+    uint32 map_id = 8;
+    uint32 fortress_boost_time = 9;
+    uint32 gvg_fortress_boost_bonus_group_id = 10;
+    uint32 fortress_visiblitily_bonus = 11;
+    uint32 fortress_move_speed_bonus = 12;
+    uint32 entry_reward_group_id = 13;
+    uint32 contribution_ranking_reward_id = 14;
+    uint32 territory_occupation_reward_group_id = 15;
+    uint32 guild_master_title_id = 16;
+    uint32 guild_sub_master_title_id = 17;
+    uint32 guild_member_title_id = 18;
+    uint32 winner_login_bonus_id = 19;
+    uint32 conditions_limit_cp = 20;
+}
+
+message GvgBattleMap {
+    uint32 gvg_battle_fileld_id = 1;
+    uint32 gvg_building_category = 2;
+    uint32 battle_map_id = 3;
+    uint32 position_no = 4;
+}
+
+message GvgBattleScore {
+    uint32 gvg_id = 1;
+    uint32 score_default = 2;
+    uint32 kill_bonus = 3;
+    uint32 score_construction_castle = 4;
+    uint32 score_construction_tower = 5;
+    uint32 score_construction_battery = 6;
+    uint32 score_construction_barrier = 7;
+    uint32 score_destroy_castle = 8;
+    uint32 score_destroy_tower = 9;
+    uint32 score_destroy_battery = 10;
+    uint32 score_destroy_barrier = 11;
+    uint32 score_get_shrine = 12;
+    uint32 score_get_sawmill = 13;
+    uint32 score_get_quarry = 14;
+    uint32 score_get_ironworks = 15;
+    uint32 score_occupation_shrine = 16;
+    uint32 score_occupation_sawmill = 17;
+    uint32 score_occupation_quarry = 18;
+    uint32 score_occupation_ironworks = 19;
+    uint32 score_penalty_dismantle_castle = 20;
+    uint32 score_penalty_dismantle_tower = 21;
+    uint32 score_penalty_dismantle_battery = 22;
+    uint32 score_penalty_dismantle_barrier = 23;
+    uint32 score_pvp = 24;
+    uint32 score_pvm = 25;
+    uint32 score_pve = 26;
+    uint32 score_withdraw = 27;
+    uint32 kill_score_expr = 28;
+}
+
+message GvgBid {
+    uint32 id = 1;
+    uint32 start_bid_day = 2;
+    string start_bid_time = 3;
+    uint32 bid_period_minutes = 4;
+}
+
+message GvgBuilding {
+    uint32 id = 1;
+    uint32 lv = 2;
+    uint32 gvg_building_category = 3;
+    uint32 building_type = 4;
+    uint32 text_name = 5;
+    uint32 resource_id = 6;
+    uint32 defense_wave_id = 7;
+    float heal_speed = 8;
+    uint32 neutral_mob_wave_id = 9;
+    uint32 gvg_occupation_visiblitily_bonus_id = 10;
+    uint32 invi_time = 11;
+    uint32 reset_time = 12;
+    uint32 require_stone = 13;
+    uint32 require_mineral = 14;
+    uint32 require_wood = 15;
+    uint32 require_a = 16;
+    uint32 require_b = 17;
+    uint32 require_c = 18;
+    uint32 return_stone = 19;
+    uint32 return_mineral = 20;
+    uint32 return_wood = 21;
+    uint32 return_a = 22;
+    uint32 return_b = 23;
+    uint32 return_c = 24;
+    uint32 production_resource_type = 25;
+    float production_resource_speed = 26;
+}
+
+message GvgBuildingGroup {
+    uint32 gvg_id = 1;
+    uint32 gvg_building_id = 2;
+    uint32 build_limit = 3;
+}
+
+message GvgBuildingVisibilityBonus {
+    uint32 guild_facility_id = 1;
+    uint32 lv = 2;
+    uint32 target_param = 3;
+    uint32 target_value = 4;
+}
+
+message GvgCheering {
+    uint32 job_id = 1;
+    uint32 lv = 2;
+    uint32 active_skill_id_1 = 3;
+    uint32 active_skill_id_2 = 4;
+    uint32 active_skill_id_3 = 5;
+    uint32 weight1 = 6;
+    uint32 weight2 = 7;
+    uint32 weight3 = 8;
+}
+
+message GvgFacilityBonusArtillery {
+    uint32 gvg_id = 1;
+    uint32 lv = 2;
+    uint32 limit_num = 3;
+    uint32 interval_time = 4;
+    uint32 active_skill_id = 5;
+}
+
+message GvgFacilityBonusDormitory {
+    uint32 gvg_id = 1;
+    uint32 lv = 2;
+    float heal_speed25 = 3;
+    float heal_speed50 = 4;
+    float heal_speed75 = 5;
+    float heal_speed100 = 6;
+    float heal_hp_value = 7;
+    float heal_mp_value = 8;
+}
+
+message GvgFacilityBonusMarket {
+    uint32 gvg_id = 1;
+    uint32 lv = 2;
+    float bonus = 3;
+}
+
+message GvgFacilityBonusTemple {
+    uint32 gvg_id = 1;
+    uint32 lv = 2;
+    float bonus = 3;
+}
+
+message GvgFirstAttackBonus {
+    uint32 gvg_id = 1;
+    uint32 target_param = 2;
+    uint32 target_value = 3;
+}
+
+message GvgFortressBoostBonus {
+    uint32 group_id = 1;
+    uint32 guild_lv = 2;
+    uint32 target_param = 3;
+    uint32 target_value = 4;
+}
+
+message GvgInitBuildingInfo {
+    uint32 gvg_battle_field_contents_id = 1;
+    uint32 gvg_building_category = 2;
+    uint32 pos_x = 3;
+    uint32 pos_y = 4;
+    uint32 team = 5;
+    uint32 rotation = 6;
+}
+
+message GvgJob {
+    uint32 job_id = 1;
+    uint32 move_speed = 2;
+    uint32 visiblitily_size = 3;
+    uint32 special_gift_type = 4;
+    double special_gift_value = 5;
+}
+
+message GvgJobCorrection {
+    uint32 job_id = 1;
+    uint32 target_param = 2;
+    float target_rate = 3;
+}
+
+message GvgLiveCommentary {
+    uint32 id = 1;
+    uint32 text_message = 2;
+    uint32 time_line_flag = 3;
+}
+
+message GvgMob {
+    uint32 id = 1;
+    uint32 battle_field_contents_id = 2;
+    uint32 wave_id = 3;
+    uint32 drop_item_type = 4;
+    uint32 drop_item_quantity = 5;
+    uint32 appear_time = 6;
+    uint32 appear_pos_x = 7;
+    uint32 appear_pos_y = 8;
+    uint32 cool_time = 9;
+    uint32 appear_count = 10;
+}
+
+message GvgOccupationVisiblitilyBonus {
+    uint32 id = 1;
+    uint32 type = 2;
+    uint32 size_a = 3;
+    uint32 size_b = 4;
+    uint32 offset_x = 5;
+    uint32 offset_y = 6;
+    float lotate = 7;
+}
+
+message GvgPracticeSchedule {
+    uint32 id = 1;
+    uint32 gvg_id = 2;
+    uint32 day = 3;
+    uint32 start_time = 4;
+    uint32 end_time = 5;
+    string open_date = 6;
+    string close_date = 7;
+}
+
+message GvgRespawnPenalty {
+    uint32 gvg_id = 1;
+    uint32 count = 2;
+    uint32 time = 3;
+    uint32 require_red_orb = 4;
+    uint32 ticket_item_id = 5;
+    uint32 require_ticket = 6;
+}
+
+message GvgSkillCastor {
+    uint32 guild_lv = 1;
+    uint32 psy_atk = 2;
+    uint32 heal = 3;
+    uint32 critical = 4;
+    uint32 agility = 5;
+}
+
+message HateBehaviorGroup {
+    uint32 id = 1;
+    uint32 behavior_id = 2;
+    float effect_rate = 3;
+}
+
+message Help {
+    uint32 id = 1;
+    uint32 text_category = 2;
+    uint32 text_sub_category = 3;
+    uint32 text_title = 4;
+    uint32 text_body = 5;
+}
+
+message HolyBeastReward {
+    uint32 stage_id = 1;
+    uint32 guild_exp = 2;
+    uint32 guild_lupi = 3;
+    uint32 guild_contribution = 4;
+    uint32 ranking_reward_id = 5;
+    uint32 summon_reward_group_id = 6;
+    uint32 clear_reward_group_id = 7;
+    uint32 help_reward_group_id = 8;
+}
+
+message ImportantMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 important_mission_group_id = 3;
+    uint32 text_name = 4;
+    uint32 type_value = 5;
+    uint32 inherit_progress = 6;
+    uint32 reward_group_id = 7;
+    uint32 exp = 8;
+    string target = 9;
+}
+
+message ImportantMissionGroup {
+    uint32 id = 1;
+    uint32 next_important_mission_group_id = 2;
+    uint32 text_description = 3;
+    uint32 reward_group_id = 4;
+    uint32 introduce_character_resource_id = 5;
+    uint32 equipment_id = 6;
+    string voice_num = 7;
+    string open_date = 8;
+}
+
+message Item {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 text_description = 3;
+    uint32 text_label = 4;
+    uint32 rarity = 5;
+    uint32 max_stack = 6;
+    uint32 max_possession_quantity = 7;
+    uint32 type = 8;
+    uint32 sub_category = 9;
+    uint32 sub_category2 = 10;
+    uint32 sub_category3 = 11;
+    uint32 rank = 12;
+    float value = 13;
+    uint32 sell_price = 14;
+    uint32 can_use = 15;
+    uint32 resource_id = 16;
+    uint32 effect_resource_id = 17;
+    string bg_rgb = 18;
+    uint32 reward_group_id = 19;
+    uint32 event_id = 20;
+}
+
+message Job {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 text_short_name = 3;
+    uint32 text_description = 4;
+    uint32 job_rank = 5;
+    uint32 role_id = 6;
+    uint32 unlock_job_id_1 = 7;
+    uint32 unlock_job_lv1 = 8;
+    uint32 unlock_job_id_2 = 9;
+    uint32 unlock_job_lv2 = 10;
+    uint32 max_lv = 11;
+    uint32 job_lv_group_id = 12;
+    string open_date = 13;
+}
+
+message JobLvGroup {
+    uint32 id = 1;
+    uint32 lv = 2;
+    uint32 required_exp = 3;
+    float gained_exp_rate = 4;
+    uint32 base_power = 5;
+    uint32 line1_front_slot_num = 6;
+    uint32 line2_front_slot_num = 7;
+    uint32 line3_front_slot_num = 8;
+    uint32 line1_rear_slot_num = 9;
+    uint32 line2_rear_slot_num = 10;
+    uint32 line3_rear_slot_num = 11;
+    uint32 line1_accessory1_slot_num = 12;
+    uint32 line2_accessory1_slot_num = 13;
+    uint32 line3_accessory1_slot_num = 14;
+    uint32 line1_accessory2_slot_num = 15;
+    uint32 line2_accessory2_slot_num = 16;
+    uint32 line3_accessory2_slot_num = 17;
+    uint32 jp = 18;
+}
+
+message JobParameter {
+    uint32 job_id = 1;
+    uint32 min_lv = 2;
+    uint32 max_lv = 3;
+    uint32 hp_min = 4;
+    uint32 hp_max = 5;
+    uint32 mp_min = 6;
+    uint32 mp_max = 7;
+    uint32 phy_atk_min = 8;
+    uint32 phy_atk_max = 9;
+    uint32 mag_atk_min = 10;
+    uint32 mag_atk_max = 11;
+    uint32 heal_min = 12;
+    uint32 heal_max = 13;
+    uint32 phy_def_min = 14;
+    uint32 phy_def_max = 15;
+    uint32 mag_def_min = 16;
+    uint32 mag_def_max = 17;
+    uint32 accuracy_min = 18;
+    uint32 accuracy_max = 19;
+    uint32 dodge_min = 20;
+    uint32 dodge_max = 21;
+    uint32 critical_min = 22;
+    uint32 critical_max = 23;
+    uint32 agility_min = 24;
+    uint32 agility_max = 25;
+    uint32 fixed_break_damage = 26;
+}
+
+message JobSkill {
+    uint32 id = 1;
+    uint32 job_id = 2;
+    uint32 text_name = 3;
+    uint32 icon_type = 4;
+    uint32 rank = 5;
+    float position_x = 6;
+    float position_y = 7;
+    uint32 job_point = 8;
+    uint32 unlock_job_skill_id_1 = 9;
+    uint32 unlock_job_skill_id_2 = 10;
+    uint32 unlock_job_skill_id_3 = 11;
+}
+
+message JobSkillLv {
+    uint32 job_skill_id = 1;
+    uint32 lv = 2;
+    uint32 job_skill_lv_group_id = 3;
+    uint32 passive_skill_id = 4;
+    uint32 active_skill_id = 5;
+}
+
+message JobSkillLvGroup {
+    uint32 id = 1;
+    uint32 blue_skill_point = 2;
+    uint32 red_skill_point = 3;
+    uint32 required_lupi = 4;
+    float success_rate = 5;
+    uint32 unlock_job_lv = 6;
+}
+
+message LabelGroup {
+    uint32 id = 1;
+    uint32 type = 2;
+    string open_date = 3;
+    string close_date = 4;
+}
+
+message LoginBonus {
+    uint32 login_bonus_group_id = 1;
+    uint32 sequence = 2;
+    uint32 reward_group_id = 3;
+}
+
+message LoginBonusGroup {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 type = 3;
+    uint32 order_num = 4;
+    uint32 repeat_flag = 5;
+    uint32 text_description = 6;
+    string image = 7;
+    uint32 display_flag = 8;
+    string open_date = 9;
+    string close_date = 10;
+}
+
+message MaxJobLv {
+    uint32 job_lv = 1;
+    uint32 friend_count = 2;
+}
+
+message Member {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 label_text = 3;
+    uint32 is_voice = 4;
+}
+
+message Mercenary {
+    uint32 id = 1;
+    uint32 hire_duration = 2;
+    uint32 hire_cost = 3;
+}
+
+message Monster {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 category_id = 3;
+    uint32 race_id = 4;
+    uint32 rarity = 5;
+    uint32 lv = 6;
+    uint32 role_id = 7;
+    uint32 size = 8;
+    uint32 damage_target_position_type = 9;
+    uint32 step_back = 10;
+    uint32 character_type = 11;
+    uint32 model_id = 12;
+    float model_scale = 13;
+    float effect_scale = 14;
+    uint64 hp = 15;
+    uint32 mp = 16;
+    uint32 bp = 17;
+    uint32 phy_atk = 18;
+    uint32 mag_atk = 19;
+    uint32 heal = 20;
+    uint32 phy_def = 21;
+    uint32 mag_def = 22;
+    uint32 accuracy = 23;
+    uint32 dodge = 24;
+    uint32 critical = 25;
+    uint32 agility = 26;
+    float all_status_debuff_resist = 27;
+    float critical_all_status_debuff_resist = 28;
+    float fire_resist = 29;
+    float water_resist = 30;
+    float earth_resist = 31;
+    float wind_resist = 32;
+    float thunder_resist = 33;
+    float light_resist = 34;
+    float darkness_resist = 35;
+    float phy_resist = 36;
+    float mag_resist = 37;
+    float all_attribute_debuff_resist = 38;
+    float critical_all_attribute_debuff_resist = 39;
+    float death_resist = 40;
+    float critical_death_resist = 41;
+    float stone_resist = 42;
+    float critical_stone_resist = 43;
+    float sleep_resist = 44;
+    float critical_sleep_resist = 45;
+    float poison_resist = 46;
+    float critical_poison_resist = 47;
+    float confusion_resist = 48;
+    float critical_confusion_resist = 49;
+    float paralysis_resist = 50;
+    float critical_paralysis_resist = 51;
+    float blind_resist = 52;
+    float critical_blind_resist = 53;
+    float sealed_resist = 54;
+    float critical_sealed_resist = 55;
+    float stun_resist = 56;
+    float critical_stun_resist = 57;
+    float weakness_resist = 58;
+    float critical_weakness_resist = 59;
+    float curse_resist = 60;
+    float critical_curse_resist = 61;
+    float frozen_resist = 62;
+    float critical_frozen_resist = 63;
+    float dotparalysis_resist = 64;
+    float critical_dotparalysis_resist = 65;
+    float phy_taken_damage_increase_blind_resist = 66;
+    float critical_phy_taken_damage_increase_blind_resist = 67;
+    float fury_resist = 68;
+    float critical_fury_resist = 69;
+    float muddiness_resist = 70;
+    float critical_muddiness_resist = 71;
+    float stagger_damage_rate = 72;
+    float hate_attenuation_rate = 73;
+    uint32 hate_behavior_group_id = 74;
+    uint32 damage_limit = 75;
+    uint32 is_metal = 76;
+    uint32 normal_active_skill_id = 77;
+    uint32 skill_id_1 = 78;
+    uint32 skill_id_2 = 79;
+    uint32 skill_id_3 = 80;
+    uint32 skill_id_4 = 81;
+    uint32 skill_id_5 = 82;
+    uint32 skill_id_6 = 83;
+    uint32 skill_id_7 = 84;
+    uint32 skill_id_8 = 85;
+    uint32 skill_id_9 = 86;
+    uint32 skill_id_10 = 87;
+    uint32 skill_id_11 = 88;
+    uint32 skill_id_12 = 89;
+    uint32 skill_id_13 = 90;
+    uint32 skill_id_14 = 91;
+    uint32 skill_id_15 = 92;
+    uint32 skill_id_16 = 93;
+    uint32 skill_id_17 = 94;
+    uint32 skill_id_18 = 95;
+    uint32 skill_id_19 = 96;
+    uint32 skill_id_20 = 97;
+    uint32 lupi = 98;
+    uint32 exp = 99;
+    uint32 parent_monster_id = 100;
+    uint32 dead_type = 101;
+    uint32 manual_flag = 102;
+    uint32 event_id = 103;
+    uint32 hp_split = 104;
+    uint32 monster_break_id = 105;
+}
+
+message MonsterBreakSetting {
+    uint32 id = 1;
+    float hp_damage_reduction_rate = 2;
+    uint32 break_damage_cap = 3;
+    float break_gauge_recovery_time = 4;
+    uint32 break_monster_status_ailment_group_id = 5;
+    uint32 break_player_status_ailment_group_id = 6;
+    uint32 break_monster_target_param_group = 7;
+    uint32 break_player_target_param_group = 8;
+}
+
+message MonsterModelVariation {
+    uint32 model_id = 1;
+    uint32 variation = 2;
+}
+
+message Movie {
+    uint32 id = 1;
+    uint32 view_type = 2;
+    uint32 resource_id = 3;
+}
+
+message NgWord {
+    uint32 id = 1;
+    string word = 2;
+}
+
+message Npc {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 rank = 3;
+    uint32 job_id = 4;
+    uint32 role_id = 5;
+    uint32 normal_active_skill_id = 6;
+    uint32 combo_id = 7;
+    float combo_continue_limit = 8;
+    uint32 character_type = 9;
+    uint32 model_id = 10;
+    float ally_near_radius = 11;
+    float enemy_near_short_axis = 12;
+    float enemy_near_long_axis = 13;
+    float stagger_damage_rate = 14;
+}
+
+message NpcLv {
+    uint32 npc_id = 1;
+    uint32 lv = 2;
+    uint32 active_skill_id_1 = 3;
+    uint32 active_skill_id_2 = 4;
+    uint32 active_skill_id_3 = 5;
+    uint32 active_skill_id_4 = 6;
+    uint32 active_skill_id_5 = 7;
+    uint32 active_skill_id_6 = 8;
+    uint32 active_skill_id_7 = 9;
+    uint32 active_skill_id_8 = 10;
+    uint32 active_skill_id_9 = 11;
+    uint32 active_skill_id_10 = 12;
+    uint32 active_skill_id_11 = 13;
+    uint32 active_skill_id_12 = 14;
+}
+
+message NpcParameter {
+    uint32 npc_id = 1;
+    uint32 min_lv = 2;
+    uint32 max_lv = 3;
+    uint32 hp_min = 4;
+    uint32 hp_max = 5;
+    uint32 mp_min = 6;
+    uint32 mp_max = 7;
+    uint32 phy_atk_min = 8;
+    uint32 phy_atk_max = 9;
+    uint32 mag_atk_min = 10;
+    uint32 mag_atk_max = 11;
+    uint32 heal_min = 12;
+    uint32 heal_max = 13;
+    uint32 phy_def_min = 14;
+    uint32 phy_def_max = 15;
+    uint32 mag_def_min = 16;
+    uint32 mag_def_max = 17;
+    uint32 accuracy_min = 18;
+    uint32 accuracy_max = 19;
+    uint32 dodge_min = 20;
+    uint32 dodge_max = 21;
+    uint32 critical_min = 22;
+    uint32 critical_max = 23;
+    uint32 agility_min = 24;
+    uint32 agility_max = 25;
+    float fire_resist = 26;
+    float water_resist = 27;
+    float earth_resist = 28;
+    float wind_resist = 29;
+    float thunder_resist = 30;
+    float light_resist = 31;
+    float darkness_resist = 32;
+    float phy_resist = 33;
+    float mag_resist = 34;
+    float death_resist = 35;
+    float stone_resist = 36;
+    float sleep_resist = 37;
+    float poison_resist = 38;
+    float confusion_resist = 39;
+    float paralysis_resist = 40;
+    float blind_resist = 41;
+    float sealed_resist = 42;
+    float stun_resist = 43;
+    float weakness_resist = 44;
+    float curse_resist = 45;
+    float frozen_resist = 46;
+    float dotparalysis_resist = 47;
+    float phy_taken_damage_increase_blind_resist = 48;
+    float fury_resist = 49;
+    float muddiness_resist = 50;
+    float dragon_resist = 51;
+    float beast_resist = 52;
+    float devil_resist = 53;
+    float saint_resist = 54;
+    float human_resist = 55;
+    float heaven_resist = 56;
+    float hazy_resist = 57;
+    uint32 fixed_break_damage = 58;
+}
+
+message OfferWall {
+    uint32 id = 1;
+    uint32 priority = 2;
+    uint32 resource_id = 3;
+    uint32 interval = 4;
+    string target_scene_name = 5;
+    uint32 conditions_type = 6;
+    uint32 conditions_value = 7;
+    uint32 conditions_type2 = 8;
+    uint32 conditions_value2 = 9;
+    string open_date = 10;
+    string close_date = 11;
+}
+
+message OrderMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 text_name = 3;
+    uint32 order_mission_type = 4;
+    uint32 rank = 5;
+    uint32 weight = 6;
+    uint32 type_value = 7;
+    string target = 8;
+}
+
+message OrderMissionPool {
+    uint32 id = 1;
+    uint32 order_mission_id = 2;
+    uint32 min_job_lv = 3;
+    uint32 max_job_lv = 4;
+    uint32 reward_group_id = 5;
+}
+
+message OrderMissionRank {
+    uint32 id = 1;
+    uint32 rank_label = 2;
+    uint32 auto_clear_time = 3;
+    uint32 clear_point = 4;
+    uint32 weight = 5;
+    uint32 weight_reroll = 6;
+}
+
+message OrderMissionReward {
+    uint32 id = 1;
+    uint32 count = 2;
+    uint32 reward_group_id = 3;
+}
+
+message OrderMissionType {
+    uint32 id = 1;
+    uint32 type = 2;
+    uint32 weight = 3;
+}
+
+message PassiveSkill {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 event_id = 3;
+    uint32 type = 4;
+    uint32 effect_type = 5;
+    uint32 effect_type_id = 6;
+    uint32 equipment_effect_race = 7;
+    uint32 target_param = 8;
+    uint32 op_type = 9;
+    float op_value = 10;
+    uint32 equipment_sub_category = 11;
+    uint32 job_id = 12;
+    uint32 equipment_job_id = 13;
+    uint32 skill_module_target_param_group_id = 14;
+    uint32 effect_target = 15;
+    uint32 effect_range = 16;
+    float probability = 17;
+    float force_hit_rate = 18;
+    uint32 passive_skill_condition_id = 19;
+    uint32 skill_module_status_ailment_group_id = 20;
+    uint32 resource_id = 21;
+}
+
+message PassiveSkillCondition {
+    uint32 id = 1;
+    uint32 type = 2;
+    uint32 sub_type = 3;
+    uint32 value = 4;
+    uint32 count = 5;
+    float cool_time = 6;
+}
+
+message PlayableTime {
+    uint32 id = 1;
+    uint32 group_id = 2;
+    string start_time = 3;
+    string end_time = 4;
+}
+
+message PopupScenario {
+    uint32 id = 1;
+    uint32 popup_scenario_group_id = 2;
+    uint32 character_id = 3;
+    uint32 appear_position = 4;
+    uint32 text_word = 5;
+    string voice_id = 6;
+}
+
+message PopupScenarioGroup {
+    uint32 id = 1;
+    uint32 stage_sequence_id = 2;
+    uint32 start_type = 3;
+    float elapsed_time = 4;
+    uint32 monster_id = 5;
+    float monster_hp_rate = 6;
+    uint32 monster_active_skill = 7;
+}
+
+message PossessionSkill {
+    uint32 id = 1;
+    uint32 type1 = 2;
+    uint32 type2 = 3;
+    uint32 type3 = 4;
+    uint32 threshold_lv = 5;
+    uint32 skill_module_id = 6;
+}
+
+message PowerAssessment {
+    uint32 type = 1;
+    uint32 text_name = 2;
+    string target = 3;
+    uint32 power_assessment_step_id = 4;
+}
+
+message PowerAssessmentRank {
+    uint32 rank = 1;
+    uint32 text_name = 2;
+    uint32 require_percent = 3;
+}
+
+message PowerAssessmentStep {
+    uint32 id = 1;
+    uint32 require_percent2 = 2;
+    uint32 require_percent3 = 3;
+    uint32 require_percent4 = 4;
+    uint32 require_percent5 = 5;
+    uint32 require_percent6 = 6;
+    uint32 require_percent7 = 7;
+    uint32 require_percent8 = 8;
+    uint32 require_percent9 = 9;
+    uint32 require_percent10 = 10;
+}
+
+message PresetEquipment {
+    uint32 id = 1;
+    uint32 equipment_id = 2;
+    uint32 rarity = 3;
+    uint32 level = 4;
+    uint32 enhancement = 5;
+    uint32 limit_break = 6;
+}
+
+message PresetJob {
+    uint32 id = 1;
+    uint32 job_id = 2;
+    uint32 job_level = 3;
+}
+
+message PresetLine {
+    uint32 id = 1;
+    uint32 front = 2;
+    uint32 rear = 3;
+    uint32 accessory1 = 4;
+    uint32 accessory2 = 5;
+    uint32 preset_skill_id = 6;
+    uint32 preset_passive_skill_id = 7;
+}
+
+message PresetPassiveSkill {
+    uint32 id = 1;
+    uint32 passive_skill_id = 2;
+}
+
+message PresetPc {
+    uint32 id = 1;
+    string label = 2;
+    uint32 preset_line1_id = 3;
+    uint32 preset_line2_id = 4;
+    uint32 preset_line3_id = 5;
+    uint32 preset_job_id = 6;
+    uint32 preset_passive_skill_id = 7;
+    uint32 preset_potion_id = 8;
+    uint32 preset_potion_setting_id = 9;
+    int32 default_setting = 10;
+}
+
+message PresetPotion {
+    uint32 id = 1;
+    uint32 item_id = 2;
+    uint32 num = 3;
+}
+
+message PresetPotionSetting {
+    uint32 id = 1;
+    uint32 hp_rank = 2;
+    float hp_rate = 3;
+    uint32 mp_rank = 4;
+    float mp_rate = 5;
+}
+
+message PresetSkill {
+    uint32 id = 1;
+    uint32 active_skill_id = 2;
+}
+
+message PvpSpecialEffectArea {
+    uint32 equipment_id = 1;
+    uint32 limit = 2;
+    uint32 passive_skill_id_1 = 3;
+    uint32 passive_skill_id_2 = 4;
+    string open_date = 5;
+    string close_date = 6;
+}
+
+message Quest {
+    uint32 id = 1;
+    uint32 episode_id = 2;
+    uint32 ordinal = 3;
+    uint32 bgm_id = 4;
+}
+
+message Ranking {
+    uint32 id = 1;
+    uint32 resource_id = 2;
+    uint32 text_name = 3;
+    uint32 ranking_type = 4;
+    uint32 priority = 5;
+    uint32 limit = 6;
+    uint32 ranking_category_id = 7;
+    uint32 text_ranking_category_name = 8;
+    uint32 ranking_category_priority = 9;
+    uint32 text_score_name = 10;
+}
+
+message RankingReward {
+    uint32 id = 1;
+    uint32 seq_id = 2;
+    uint32 upper = 3;
+    uint32 lower = 4;
+    uint32 event_id = 5;
+    uint32 gve_id = 6;
+    uint32 ranking_type = 7;
+    uint32 condition_type_id = 8;
+    uint32 reward_group_id = 9;
+}
+
+message Region {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    float position_x = 3;
+    float position_y = 4;
+}
+
+message ReliefPointReward {
+    uint32 id = 1;
+    uint32 point = 2;
+    uint32 reward_group_id = 3;
+}
+
+message Reward {
+    uint32 id = 1;
+    uint32 seq_id = 2;
+    uint32 target_type = 3;
+    uint32 target_id = 4;
+    uint32 quantity = 5;
+    uint32 weight = 6;
+}
+
+message RewardConfig {
+    uint32 reward_group_id = 1;
+    uint32 sender_category = 2;
+    uint32 text_present_title = 3;
+    uint32 text_present_description = 4;
+    uint32 delivery_type = 5;
+}
+
+message RewardGroup {
+    uint32 id = 1;
+    uint32 reward_id = 2;
+    uint32 boost_type = 3;
+    uint32 equipment_rarity = 4;
+    uint32 enhancement = 5;
+    uint32 is_protected = 6;
+    uint32 lot_type = 7;
+    uint32 weight = 8;
+}
+
+message RiskDungeon {
+    uint32 area_id = 1;
+    uint32 risk = 2;
+    uint32 stage_sequence_id = 3;
+    uint32 power = 4;
+    float param_rate_hp = 5;
+    float param_rate_attack = 6;
+    float param_rate_heal = 7;
+    float param_rate_defence = 8;
+    float param_rate_accuracy = 9;
+    float param_rate_dodge = 10;
+    float param_rate_critical = 11;
+    float param_rate_agility = 12;
+    float single_param_rate_hp = 13;
+    float single_param_rate_attack = 14;
+    float single_param_rate_heal = 15;
+    float single_param_rate_defence = 16;
+    float single_param_rate_accuracy = 17;
+    float single_param_rate_dodge = 18;
+    float single_param_rate_critical = 19;
+    float single_param_rate_agility = 20;
+    float boost_rate = 21;
+    uint32 clear_exp = 22;
+    uint32 clear_reward_group_id = 23;
+    uint32 point = 24;
+    string open_date = 25;
+}
+
+message RiskDungeonConfig {
+    uint32 area_id = 1;
+    uint32 reset_type = 2;
+    uint32 risk_subtraction = 3;
+    uint32 event_id = 4;
+    uint32 op_type = 5;
+    float boost_rate = 6;
+    uint32 ranking_reward_id = 7;
+}
+
+message RiskDungeonTimeBonus {
+    uint32 area_id = 1;
+    uint32 clear_time = 2;
+    uint32 op_type = 3;
+    float boost_rate = 4;
+}
+
+message Rune {
+    uint32 id = 1;
+    uint32 group_id = 2;
+    uint32 type = 3;
+    uint32 rarity = 4;
+    uint32 text_name = 5;
+    uint32 text_label = 6;
+    uint32 target_param_option_group_id = 7;
+    uint32 removal_cost = 8;
+    uint32 sell_price = 9;
+    uint32 icon_resource_id = 10;
+    uint32 use_material_type = 11;
+    uint32 member_id = 12;
+}
+
+message RuneLv {
+    uint32 rarity = 1;
+    uint32 lv = 2;
+    float success_rate = 3;
+    uint32 protect_item_quantity = 4;
+    uint32 lv_down_item_quantity = 5;
+    uint32 lv_up_cost = 6;
+}
+
+message RunePassiveSkill {
+    uint32 rune_id = 1;
+    uint32 min_lv = 2;
+    uint32 max_lv = 3;
+    uint32 passive_skill_id_1 = 4;
+    uint32 passive_skill_id_2 = 5;
+    uint32 passive_skill_id_3 = 6;
+}
+
+message RuneRarity {
+    uint32 rarity = 1;
+    uint32 rarity_up_required_material_quantity = 2;
+    float rarity_up_success_rate = 3;
+    uint32 rarity_up_cost = 4;
+    uint32 required_material_quantity = 5;
+    uint32 protect_item_id = 6;
+    uint32 lv_down_item_id = 7;
+    uint32 bonus_option_slot0_weight = 8;
+    uint32 bonus_option_slot1_weight = 9;
+    uint32 bonus_option_slot2_weight = 10;
+    uint32 bonus_option_slot3_weight = 11;
+}
+
+message RuneSlot {
+    uint32 id = 1;
+    uint32 rune_type = 2;
+}
+
+message SeasonPass {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 text_introduce = 3;
+    uint32 premium_price = 4;
+    uint32 resource_id = 5;
+    string open_date = 6;
+    string close_date = 7;
+}
+
+message SeasonPassDailyMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 text_name = 3;
+    uint32 season_pass_id = 4;
+    uint32 type_value = 5;
+    uint32 exp = 6;
+    uint32 weight = 7;
+    string target = 8;
+}
+
+message SeasonPassLevel {
+    uint32 season_pass_id = 1;
+    uint32 level = 2;
+    uint32 exp = 3;
+    uint32 price = 4;
+    uint32 pickup = 5;
+    uint32 normal_reward_group_id = 6;
+    uint32 premium_reward_group_id = 7;
+}
+
+message SeasonPassWeeklyMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 text_name = 3;
+    uint32 season_pass_id = 4;
+    uint32 type_value = 5;
+    uint32 exp = 6;
+    uint32 start_week = 7;
+    string target = 8;
+}
+
+message SerialCode {
+    uint32 id = 1;
+    string serial_code = 2;
+    uint32 reward_group_id = 3;
+    string open_date = 4;
+    string close_date = 5;
+}
+
+message Shop {
+    uint32 id = 1;
+    uint32 type = 2;
+    uint32 tab_type = 3;
+    uint32 text_type = 4;
+    uint32 priority = 5;
+    uint32 main_category = 6;
+    uint32 text_main_category = 7;
+    uint32 sub_category = 8;
+    uint32 text_sub_category = 9;
+    uint32 quantity_input_dialog_flg = 10;
+}
+
+message ShopItem {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 text_description = 3;
+    uint32 type = 4;
+    string product_id = 5;
+    uint32 reward_group_id = 6;
+    uint32 guild_reward_group_id = 7;
+    uint32 special_reward_group_id = 8;
+    uint32 bonus_reward_group_id = 9;
+    uint32 first_buy_reward_group_id = 10;
+    uint32 advertising_id = 11;
+    uint32 bonus_mileage = 12;
+    uint32 shop_id = 13;
+    uint32 display_primary_num = 14;
+    uint32 release_condition_type = 15;
+    uint32 release_condition_value = 16;
+    uint32 release_condition_id = 17;
+    uint32 limit_type = 18;
+    uint32 guild_shop_rule = 19;
+    uint32 job_id = 20;
+    uint32 limit_count = 21;
+    uint32 free_count = 22;
+    uint32 free_interval = 23;
+    uint32 beginner_limit_hour = 24;
+    string open_date = 25;
+    string close_date = 26;
+    string sales_stop_date = 27;
+    uint32 open_job_lv = 28;
+    uint32 open_shop_mission_id = 29;
+    int32 resource_id = 30;
+    string effect = 31;
+    uint32 label_group_id = 32;
+    uint32 display_rate_flag = 33;
+    uint32 display_random_box_rate_flag = 34;
+    uint32 display_select_box_flag = 35;
+}
+
+message ShopMission {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 type_value = 3;
+}
+
+message ShopPayment {
+    uint32 shop_item_id = 1;
+    uint32 priority = 2;
+    uint32 type = 3;
+    uint32 item_id = 4;
+    uint32 price = 5;
+}
+
+message ShopPickup {
+    uint32 id = 1;
+    uint32 shop_item_id = 2;
+    uint32 priority = 3;
+    string target = 4;
+    int32 resource_id = 5;
+    string open_date = 6;
+    string close_date = 7;
+}
+
+message ShopSpecialSale {
+    uint32 id = 1;
+    uint32 shop_item_id = 2;
+    uint32 release_stage_id = 3;
+    uint32 limit_minute = 4;
+    uint32 lower_vip_rank = 5;
+    uint32 upper_vip_rank = 6;
+    uint32 display_primary_num = 7;
+    uint32 resource_id = 8;
+    string open_date = 9;
+    string close_date = 10;
+}
+
+message SkillAi {
+    uint32 id = 1;
+    uint32 group_id = 2;
+    uint32 priority = 3;
+    uint32 trun_start = 4;
+    uint32 time_start = 5;
+    uint32 time_start_type = 6;
+    uint32 turn_interval = 7;
+    uint32 num_times = 8;
+    uint32 invoke_target_type = 9;
+    uint32 invoke_operator = 10;
+    uint32 invoke_target_num = 11;
+    uint32 invoke_target_monster_id = 12;
+    uint32 invoke_param_operand_type1 = 13;
+    uint32 invoke_param_operator1 = 14;
+    uint32 invoke_param_operand_value1 = 15;
+    uint32 invoke_param_operand_type2 = 16;
+    uint32 invoke_param_operator2 = 17;
+    uint32 invoke_param_operand_value2 = 18;
+    uint32 invoke_type = 19;
+    uint32 effect_target = 20;
+    uint32 effect_target_operator = 21;
+    uint32 effect_target_operand_value = 22;
+    uint32 effect_target_monster_id = 23;
+    uint32 effect_target_param_operator = 24;
+    uint32 effect_target_param_operand_type = 25;
+    uint32 effect_target_param_operand_value = 26;
+    uint32 effect_target_status_group_id = 27;
+    uint32 effect_target_role_id = 28;
+    uint32 effect_target_job_id = 29;
+    uint32 effect_param = 30;
+    uint32 effect_param_operator = 31;
+    uint32 effect_param_value = 32;
+    uint32 effect_resist = 33;
+    uint32 effect_resist_operator = 34;
+    float effect_resist_value = 35;
+    uint32 effect_status_group_id = 36;
+}
+
+message SkillModule {
+    uint32 id = 1;
+    uint32 active_skill_id = 2;
+    uint32 combo_continuous_target = 3;
+    uint32 effect_target = 4;
+    uint32 effect_range = 5;
+    uint32 dependence_param_group_id = 6;
+    float power_corr_value = 7;
+    float power_corr_magnification = 8;
+    uint32 skill_fixed_power = 9;
+    float break_damage_skill_rate = 10;
+    uint32 atk_type = 11;
+    uint32 dmg_target = 12;
+    uint32 atk_attr_id = 13;
+    float atk_attr_rate = 14;
+    uint32 special_effect_category_id = 15;
+    float special_effect_category_rate = 16;
+    uint32 special_effect_race_id = 17;
+    float special_effect_race_rate = 18;
+    uint32 chase_status_ailment_group_id = 19;
+    float chase_status_ailment_group_rate = 20;
+    uint32 atk_times = 21;
+    uint32 def_ignored = 22;
+    uint32 dodge_ignored = 23;
+    float crit_rate_corr_magnification = 24;
+    float force_hit_rate = 25;
+    uint32 absorption_target = 26;
+    float absorption_rate = 27;
+    float hp_consumption_rate = 28;
+    float hate_floating_rate = 29;
+    float base_succ_rate = 30;
+    uint32 succ_rate_dependency_param = 31;
+    float succ_rate_corr_constant = 32;
+    uint32 recovery_type = 33;
+    float sub_recovery_rate = 34;
+    float sub_damate_rate = 35;
+    uint32 grant_status_ailment_group_id = 36;
+    uint32 recovery_status_ailment_group_id = 37;
+    uint32 buff_debuff_target_param_group_id = 38;
+    uint32 recovery_buff_debuff_target_param_group_id = 39;
+    float skill_hate_correction_value = 40;
+    uint32 special_skill_type = 41;
+    uint32 special_skill_value = 42;
+    uint32 chase_target_param_buff_id = 43;
+    float chase_target_param_buff_rate = 44;
+    uint32 chase_target_param_debuff_id = 45;
+    float chase_target_param_debuff_rate = 46;
+    uint32 add_effect_id = 47;
+}
+
+message SkillModuleAddEffectChase {
+    uint32 id = 1;
+    uint32 effected_race_id = 2;
+    uint32 effected_target_param_buff_id = 3;
+    uint32 effected_target_param_debuff_id = 4;
+    uint32 effected_status_ailment_group_id = 5;
+    uint32 effected_break_condition = 6;
+    float add_effect_chase_rate = 7;
+    float add_effect_recovery_rate = 8;
+    float add_effect_sub_recovery_rate = 9;
+    float add_effect_base_succ_rate = 10;
+    uint32 add_effect_grant_status_ailment_group_id = 11;
+    uint32 add_effect_buff_debuff_target_param_group_id = 12;
+}
+
+message SkillModuleDependenceParamGroup {
+    uint32 id = 1;
+    uint32 param = 2;
+    uint32 equipment_sub_category = 3;
+}
+
+message SkillModuleStatusAilmentGroup {
+    uint32 id = 1;
+    uint32 status_ailment_id = 2;
+}
+
+message SkillModuleTargetParamGroup {
+    uint32 id = 1;
+    uint32 target_param = 2;
+    uint32 group_id = 3;
+    float target_magnification = 4;
+    float effect_time = 5;
+    uint32 accumulation_count = 6;
+}
+
+message SkillState {
+    uint32 id = 1;
+    float duration = 2;
+    uint32 hit_count = 3;
+    float switch_cancel_time = 4;
+}
+
+message SpecialEffectRaceBonus {
+    uint32 special_effect_race = 1;
+    uint32 equipment_count = 2;
+    uint32 passive_skill_id_1 = 3;
+}
+
+message SpecialItemConfig {
+    uint32 shop_item_id = 1;
+    uint32 seq_id = 2;
+    uint32 stepup_text = 3;
+    uint32 condition_type = 4;
+    uint32 param1 = 5;
+    uint32 param2 = 6;
+    uint32 param3 = 7;
+    uint32 param4 = 8;
+    uint32 reward_group_id = 9;
+    uint32 price = 10;
+}
+
+message Stage {
+    uint32 id = 1;
+    uint32 area_id = 2;
+    uint32 quest_id = 3;
+    uint32 region_id = 4;
+    uint32 text_name = 5;
+    uint32 scenario_id = 6;
+    uint32 map_id = 7;
+    uint32 bgm_id = 8;
+    uint32 model_id = 9;
+    uint32 narration_type = 10;
+    uint32 text_narration = 11;
+    uint32 character_resource_id = 12;
+    uint32 background_resource_id = 13;
+    uint32 type = 14;
+    uint32 difficulty = 15;
+    uint32 power = 16;
+    uint32 previous_stage_id = 17;
+    uint32 min_job_lv = 18;
+    uint32 clear_exp = 19;
+    uint32 first_clear_exp = 20;
+    uint32 clear_reward_group_id = 21;
+    uint32 first_clear_reward_group_id = 22;
+    uint32 play_flag = 23;
+    uint32 party_type = 24;
+    uint32 boss = 25;
+    uint32 boss_hp_rate = 26;
+    uint32 move_direction = 27;
+    uint32 stage_gimmick = 28;
+    uint32 wave_count = 29;
+    uint32 minimum_num = 30;
+    uint32 continue_flag = 31;
+    uint32 continue_count = 32;
+    uint32 npc_id_1 = 33;
+    uint32 npc_id_2 = 34;
+    uint32 npc_id_3 = 35;
+    uint32 npc_lv1 = 36;
+    uint32 npc_lv2 = 37;
+    uint32 npc_lv3 = 38;
+    uint32 intrude_wave_count = 39;
+    uint32 intrude_dead_count = 40;
+    uint32 is_equipment_record = 41;
+    uint32 winning_point = 42;
+    uint32 lap_flag = 43;
+    string open_date = 44;
+    string close_date = 45;
+}
+
+message StageGroup {
+    uint32 id = 1;
+    uint32 stage_id = 2;
+}
+
+message StageSequence {
+    uint32 id = 1;
+    uint32 stage_id = 2;
+    uint32 wave_id = 3;
+    uint32 round_no = 4;
+    uint32 position_no = 5;
+}
+
+message StageSkip {
+    uint32 stage_id = 1;
+    uint32 item_id = 2;
+    uint32 item_num = 3;
+    uint32 reward_id_1 = 4;
+    uint32 reward_id_2 = 5;
+    uint32 exp = 6;
+}
+
+message StampRewardStep {
+    uint32 id = 1;
+    uint32 target_value = 2;
+    uint32 reward_group_id = 3;
+    string open_date = 4;
+}
+
+message StatusAilment {
+    uint32 id = 1;
+    uint32 status_ailment_group_id = 2;
+    uint32 rank = 3;
+    float duration = 4;
+    float param1 = 5;
+    float param2 = 6;
+    float param3 = 7;
+    float param4 = 8;
+    float param5 = 9;
+}
+
+message StatusAilmentCancellationType {
+    uint32 id = 1;
+    float param1 = 2;
+    float param2 = 3;
+}
+
+message StatusAilmentGroup {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 resist_type = 3;
+    uint32 tired_motion_flag = 4;
+    uint32 effect = 5;
+    uint32 effect_trigger = 6;
+    int32 effect_stop_trigger = 7;
+    uint32 effect_location_type = 8;
+    uint32 effect_priority = 9;
+    uint32 effect_appear_type = 10;
+    uint32 stop_act_flag = 11;
+    uint32 status_ailment_start_id = 12;
+    uint32 status_ailment_cancel_id = 13;
+}
+
+message StatusAilmentTriggerType {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    float param1 = 3;
+}
+
+message Survey {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 text_detail = 3;
+    uint32 reward_group_id = 4;
+    uint32 resource_id = 5;
+    string open_date = 6;
+    string close_date = 7;
+}
+
+message SurveyAnswer {
+    uint32 questions_id = 1;
+    uint32 idx_no = 2;
+    uint32 text_name = 3;
+}
+
+message SurveyQuestions {
+    uint32 id = 1;
+    uint32 survey_id = 2;
+    uint32 idx_no = 3;
+    uint32 type = 4;
+    uint32 etc_answer_no = 5;
+    uint32 max_strlen = 6;
+    uint32 text_name = 7;
+    uint32 require_flag = 8;
+}
+
+message TargetParam {
+    uint32 id = 1;
+    uint32 op_type = 2;
+}
+
+message TargetParamOption {
+    uint32 id = 1;
+    uint32 group_id = 2;
+    uint32 passive_skill_id = 3;
+    uint32 weight = 4;
+    uint32 type = 5;
+}
+
+message TextLang {
+    uint32 id = 1;
+    string text = 2;
+}
+
+message Ticker {
+    uint32 id = 1;
+    uint32 group_id = 2;
+    uint32 category_id = 3;
+    uint32 score = 4;
+}
+
+message Tips {
+    uint32 id = 1;
+    uint32 view_type = 2;
+    uint32 resource_id = 3;
+}
+
+message Title {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 text_name = 3;
+    uint32 type_value = 4;
+    uint32 display_priority = 5;
+    uint32 lifetime = 6;
+    uint32 title_category_id = 7;
+    uint32 resource_id = 8;
+    uint32 passive_skill_id_1 = 9;
+    uint32 passive_skill_id_2 = 10;
+    uint32 passive_skill_id_3 = 11;
+    uint32 passive_skill_id_4 = 12;
+    uint32 passive_skill_id_5 = 13;
+    string target = 14;
+    string open_date = 15;
+}
+
+message TitleCategory {
+    uint32 id = 1;
+    uint32 text_name = 2;
+    uint32 resource_id = 3;
+}
+
+message TreasureBattleReward {
+    uint32 difficulty = 1;
+    uint32 max_rank_clear_lupi = 2;
+    uint32 boss_monster_damage_lupi = 3;
+    uint32 normal_monster_defeat_lupi = 4;
+    uint32 critical_lupi = 5;
+    uint32 critical_count_limit = 6;
+}
+
+message UnlockAchievementGroup {
+    uint32 id = 1;
+    uint32 stage_id = 2;
+    uint32 achievement_id = 3;
+}
+
+message UnlockCondition {
+    uint32 id = 1;
+    uint32 condition_category_id = 2;
+    uint32 type_value = 3;
+    uint32 notify_flag = 4;
+    uint32 text_notify = 5;
+    string scene_request_param = 6;
 }
 
 message Version {
@@ -21,4 +3281,83 @@ message Version {
     string application = 2;
     uint32 resource = 3;
     uint32 master = 4;
+}
+
+message Vip {
+    uint32 rank = 1;
+    uint32 point = 2;
+    uint32 daily_reward_group_id = 3;
+    int32 resource_id = 4;
+    uint32 itembox = 5;
+    uint32 auto_battle_count_limit = 6;
+    uint32 arena_limit = 7;
+    uint32 ancient_tower_limit = 8;
+    uint32 friend_limit = 9;
+    uint32 continue = 10;
+    float exp_boost_rate = 11;
+    float ancient_tower_boost = 12;
+    uint32 shop_item_id_1 = 13;
+    uint32 shop_item_id_2 = 14;
+}
+
+message Voice {
+    uint32 id = 1;
+    uint32 gender = 2;
+    uint32 type = 3;
+    uint32 text_name = 4;
+    int32 is_default = 5;
+}
+
+message Wave {
+    uint32 id = 1;
+    uint32 sub_id = 2;
+    uint32 wave_type = 3;
+    uint32 weight = 4;
+    uint32 boss_start_id = 5;
+    uint32 camera_id = 6;
+    uint32 bgm_id = 7;
+    uint32 enemy_pattern_num = 8;
+    uint32 ally_pattern_num = 9;
+    float monster_position_z = 10;
+    uint32 event_id = 11;
+}
+
+message WaveMonster {
+    uint32 wave_id = 1;
+    uint32 sub_id = 2;
+    uint32 seq_id = 3;
+    uint32 monster_id = 4;
+    uint32 wave_monster_reward_id = 5;
+    uint32 boss_type = 6;
+    uint32 dead_camera_type = 7;
+    uint32 raid = 8;
+}
+
+message WaveMonsterReward {
+    uint32 id = 1;
+    uint32 seq_id = 2;
+    uint32 reward_group_id = 3;
+    uint32 box_color = 4;
+    float probability = 5;
+}
+
+message WeaponSkillLv {
+    uint32 equipment_id = 1;
+    uint32 active_skill_id = 2;
+    uint32 active_skill_id_slot1 = 3;
+    uint32 active_skill_id_slot2 = 4;
+    uint32 active_skill_id_slot3 = 5;
+    uint32 lv = 6;
+}
+
+message WeaponSkillLvEnhance {
+    uint32 lv = 1;
+    uint32 rarity = 2;
+    uint32 item_id = 3;
+    uint32 blue_skill_point = 4;
+    uint32 red_skill_point = 5;
+    float success_rate = 6;
+    float bonus_rate = 7;
+    uint32 enhancement_cost = 8;
+    float pity_timer_rate = 9;
 }

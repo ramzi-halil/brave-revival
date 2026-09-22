@@ -1,6 +1,8 @@
 syntax = "proto3";
 package Puser;
 
+import "options.proto";
+
 option go_package = "example.com/brave-revival/src/proto/puser";
 
 message Player {
@@ -42,11 +44,11 @@ message Player {
     uint64 max_damage = 36;
     uint64 total_yell = 37;
     uint64 total_login = 38;
-    string last_login_at = 39;
-    string name_changed_at = 40;
-    string newbie_shop_opened_at = 41;
-    string come_back_expired_at = 42;
-    string opened_at = 43;
+    string last_login_at = 39 [(options.datetime) = true];
+    string name_changed_at = 40 [(options.datetime) = true];
+    string newbie_shop_opened_at = 41 [(options.datetime) = true];
+    string come_back_expired_at = 42 [(options.datetime) = true];
+    string opened_at = 43 [(options.datetime) = true];
 }
 
 message Job {
@@ -646,7 +648,7 @@ message Equipment {
     float weapon_skill_correction_rate3 = 40;
     float stylish_correction_rate = 41;
     uint32 is_protected = 42;
-    string acquired_at = 43;
+    string acquired_at = 43 [(options.datetime) = true];
 }
 
 message Elixir {
@@ -654,5 +656,5 @@ message Elixir {
     uint32 elixir_id = 2;
     uint32 rank = 3;
     uint32 level = 4;
-    string acquired_at = 5;
+    string acquired_at = 5 [(options.datetime) = true];
 }

@@ -1,0 +1,14 @@
+syntax = "proto3";
+package options;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "example.com/brave-revival/src/proto/options";
+
+extend google.protobuf.FieldOptions {
+    // Used on a string field to indicate it is a datetime which should be parsed with the `ParseTime` function.
+    bool datetime = 50001;
+
+    // Used in integer fields to specify foreign-key relationship. The value should be the full name of the targeted message type.
+    string fk = 50002;
+}

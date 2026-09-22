@@ -7,6 +7,7 @@
 package proto
 
 import (
+	_ "example.com/brave-revival/src/proto/options"
 	pcommon "example.com/brave-revival/src/proto/pcommon"
 	pmaster "example.com/brave-revival/src/proto/pmaster"
 	pmisc "example.com/brave-revival/src/proto/pmisc"
@@ -1970,14 +1971,7 @@ func (*AgitoVisitorReturn) Descriptor() ([]byte, []int) {
 }
 
 type FieldTopResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// StoredData stored_data = 1;
-	GuildId                uint64                              `protobuf:"varint,3,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
-	GuildName              string                              `protobuf:"bytes,4,opt,name=guild_name,json=guildName,proto3" json:"guild_name,omitempty"`
-	GuildSymbol            uint32                              `protobuf:"varint,5,opt,name=guild_symbol,json=guildSymbol,proto3" json:"guild_symbol,omitempty"`
-	GuildSymbolFrame       uint32                              `protobuf:"varint,6,opt,name=guild_symbol_frame,json=guildSymbolFrame,proto3" json:"guild_symbol_frame,omitempty"`
-	GuildSymbolFrameColor  uint32                              `protobuf:"varint,7,opt,name=guild_symbol_frame_color,json=guildSymbolFrameColor,proto3" json:"guild_symbol_frame_color,omitempty"`
-	GuildMemberRole        uint32                              `protobuf:"varint,8,opt,name=guild_member_role,json=guildMemberRole,proto3" json:"guild_member_role,omitempty"`
+	state                  protoimpl.MessageState              `protogen:"open.v1"`
 	SharedMissionList      *pmisc.GuildSharedMissionList       `protobuf:"bytes,13,opt,name=shared_mission_list,json=sharedMissionList,proto3" json:"shared_mission_list,omitempty"`
 	PersonalMissionList    *pmisc.GuildPersonalMissionList     `protobuf:"bytes,14,opt,name=personal_mission_list,json=personalMissionList,proto3" json:"personal_mission_list,omitempty"`
 	WeeklyMissionReward    *pmisc.GuildWeeklyMissionRewardList `protobuf:"bytes,16,opt,name=weekly_mission_reward,json=weeklyMissionReward,proto3" json:"weekly_mission_reward,omitempty"`
@@ -2016,48 +2010,6 @@ func (x *FieldTopResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use FieldTopResponse.ProtoReflect.Descriptor instead.
 func (*FieldTopResponse) Descriptor() ([]byte, []int) {
 	return file_proto_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *FieldTopResponse) GetGuildId() uint64 {
-	if x != nil {
-		return x.GuildId
-	}
-	return 0
-}
-
-func (x *FieldTopResponse) GetGuildName() string {
-	if x != nil {
-		return x.GuildName
-	}
-	return ""
-}
-
-func (x *FieldTopResponse) GetGuildSymbol() uint32 {
-	if x != nil {
-		return x.GuildSymbol
-	}
-	return 0
-}
-
-func (x *FieldTopResponse) GetGuildSymbolFrame() uint32 {
-	if x != nil {
-		return x.GuildSymbolFrame
-	}
-	return 0
-}
-
-func (x *FieldTopResponse) GetGuildSymbolFrameColor() uint32 {
-	if x != nil {
-		return x.GuildSymbolFrameColor
-	}
-	return 0
-}
-
-func (x *FieldTopResponse) GetGuildMemberRole() uint32 {
-	if x != nil {
-		return x.GuildMemberRole
-	}
-	return 0
 }
 
 func (x *FieldTopResponse) GetSharedMissionList() *pmisc.GuildSharedMissionList {
@@ -2106,9 +2058,9 @@ var File_proto_proto protoreflect.FileDescriptor
 
 const file_proto_proto_rawDesc = "" +
 	"\n" +
-	"\vproto.proto\x12\x05Proto\x1a\rpcommon.proto\x1a\rpmaster.proto\x1a\vpuser.proto\x1a\vpmisc.proto\"-\n" +
+	"\vproto.proto\x12\x05Proto\x1a\rpcommon.proto\x1a\rpmaster.proto\x1a\vpuser.proto\x1a\vpmisc.proto\x1a\roptions.proto\"-\n" +
 	"\x05Empty\x12$\n" +
-	"\x05error\x18\x01 \x01(\v2\x0e.Pcommon.ErrorR\x05error\"\xe1\x02\n" +
+	"\x05error\x18\x01 \x01(\v2\x0e.Pcommon.ErrorR\x05error\"\xe7\x02\n" +
 	"\rPlayerSummary\x12\x1b\n" +
 	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1a\n" +
 	"\bnickname\x18\x02 \x01(\tR\bnickname\x12\x18\n" +
@@ -2118,9 +2070,9 @@ const file_proto_proto_rawDesc = "" +
 	"\x05power\x18\x06 \x01(\rR\x05power\x12\x19\n" +
 	"\bguild_id\x18\a \x01(\x04R\aguildId\x12*\n" +
 	"\x11guild_member_type\x18\b \x01(\rR\x0fguildMemberType\x12-\n" +
-	"\x12favorite_equipment\x18\t \x01(\rR\x11favoriteEquipment\x12\x19\n" +
+	"\x12favorite_equipment\x18\t \x01(\rR\x11favoriteEquipment\x12\x1f\n" +
 	"\blogin_at\x18\n" +
-	" \x01(\tR\aloginAt\x12\"\n" +
+	" \x01(\tB\x04\x88\xb5\x18\x01R\aloginAt\x12\"\n" +
 	"\rmax_job_level\x18\v \x01(\rR\vmaxJobLevel\"\x9d\x01\n" +
 	"\vPlayerExist\x12$\n" +
 	"\x05error\x18\x01 \x01(\v2\x0e.Pcommon.ErrorR\x05error\x12;\n" +
@@ -2210,17 +2162,17 @@ const file_proto_proto_rawDesc = "" +
 	"\x05power\x18\t \x01(\x04R\x05power\x12!\n" +
 	"\franking_rank\x18\n" +
 	" \x01(\rR\vrankingRank\x12#\n" +
-	"\rranking_score\x18\v \x01(\rR\frankingScore\"\xcf\x02\n" +
+	"\rranking_score\x18\v \x01(\rR\frankingScore\"\xe7\x02\n" +
 	"\vGuildMember\x12\x19\n" +
 	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12\x1b\n" +
 	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x12\n" +
 	"\x04role\x18\x03 \x01(\rR\x04role\x12\x14\n" +
 	"\x05point\x18\x04 \x01(\x04R\x05point\x12!\n" +
-	"\fweekly_point\x18\x05 \x01(\x04R\vweeklyPoint\x12$\n" +
-	"\x0elast_joined_at\x18\x06 \x01(\tR\flastJoinedAt\x127\n" +
-	"\x18login_reward_received_at\x18\a \x01(\tR\x15loginRewardReceivedAt\x12(\n" +
-	"\x10updated_point_at\x18\b \x01(\tR\x0eupdatedPointAt\x122\n" +
-	"\x15training_completed_at\x18\t \x01(\tR\x13trainingCompletedAt\"Y\n" +
+	"\fweekly_point\x18\x05 \x01(\x04R\vweeklyPoint\x12*\n" +
+	"\x0elast_joined_at\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\flastJoinedAt\x12=\n" +
+	"\x18login_reward_received_at\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\x15loginRewardReceivedAt\x12.\n" +
+	"\x10updated_point_at\x18\b \x01(\tB\x04\x88\xb5\x18\x01R\x0eupdatedPointAt\x128\n" +
+	"\x15training_completed_at\x18\t \x01(\tB\x04\x88\xb5\x18\x01R\x13trainingCompletedAt\"Y\n" +
 	"\x0fPowerAssessment\x122\n" +
 	"\x15power_assessment_type\x18\x01 \x01(\rR\x13powerAssessmentType\x12\x12\n" +
 	"\x04step\x18\x02 \x01(\rR\x04step\"\xb5\t\n" +
@@ -2293,15 +2245,8 @@ const file_proto_proto_rawDesc = "" +
 	"\x04list\x18\x01 \x01(\v2\x1d.Pmisc.GuildSharedMissionListR\x04list\x12>\n" +
 	"\aranking\x18\x02 \x01(\v2$.Pmisc.GuildSharedMissionRankingListR\aranking\x12\"\n" +
 	"\x05guild\x18\x03 \x01(\v2\f.Pmisc.GuildR\x05guild\"\x14\n" +
-	"\x12AgitoVisitorReturn\"\xe4\x05\n" +
-	"\x10FieldTopResponse\x12\x19\n" +
-	"\bguild_id\x18\x03 \x01(\x04R\aguildId\x12\x1d\n" +
-	"\n" +
-	"guild_name\x18\x04 \x01(\tR\tguildName\x12!\n" +
-	"\fguild_symbol\x18\x05 \x01(\rR\vguildSymbol\x12,\n" +
-	"\x12guild_symbol_frame\x18\x06 \x01(\rR\x10guildSymbolFrame\x127\n" +
-	"\x18guild_symbol_frame_color\x18\a \x01(\rR\x15guildSymbolFrameColor\x12*\n" +
-	"\x11guild_member_role\x18\b \x01(\rR\x0fguildMemberRole\x12M\n" +
+	"\x12AgitoVisitorReturn\"\xf4\x03\n" +
+	"\x10FieldTopResponse\x12M\n" +
 	"\x13shared_mission_list\x18\r \x01(\v2\x1d.Pmisc.GuildSharedMissionListR\x11sharedMissionList\x12S\n" +
 	"\x15personal_mission_list\x18\x0e \x01(\v2\x1f.Pmisc.GuildPersonalMissionListR\x13personalMissionList\x12W\n" +
 	"\x15weekly_mission_reward\x18\x10 \x01(\v2#.Pmisc.GuildWeeklyMissionRewardListR\x13weeklyMissionReward\x12=\n" +

@@ -7,6 +7,7 @@
 package puser
 
 import (
+	_ "example.com/brave-revival/src/proto/options"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -5317,7 +5318,7 @@ var File_puser_proto protoreflect.FileDescriptor
 
 const file_puser_proto_rawDesc = "" +
 	"\n" +
-	"\vpuser.proto\x12\x05Puser\"\xd6\x0e\n" +
+	"\vpuser.proto\x12\x05Puser\x1a\roptions.proto\"\xf4\x0e\n" +
 	"\x06Player\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1b\n" +
 	"\twallet_id\x18\x02 \x01(\tR\bwalletId\x12\x1d\n" +
@@ -5363,12 +5364,12 @@ const file_puser_proto_rawDesc = "" +
 	"\n" +
 	"total_yell\x18% \x01(\x04R\ttotalYell\x12\x1f\n" +
 	"\vtotal_login\x18& \x01(\x04R\n" +
-	"totalLogin\x12\"\n" +
-	"\rlast_login_at\x18' \x01(\tR\vlastLoginAt\x12&\n" +
-	"\x0fname_changed_at\x18( \x01(\tR\rnameChangedAt\x121\n" +
-	"\x15newbie_shop_opened_at\x18) \x01(\tR\x12newbieShopOpenedAt\x12/\n" +
-	"\x14come_back_expired_at\x18* \x01(\tR\x11comeBackExpiredAt\x12\x1b\n" +
-	"\topened_at\x18+ \x01(\tR\bopenedAt\"\xc6\x01\n" +
+	"totalLogin\x12(\n" +
+	"\rlast_login_at\x18' \x01(\tB\x04\x88\xb5\x18\x01R\vlastLoginAt\x12,\n" +
+	"\x0fname_changed_at\x18( \x01(\tB\x04\x88\xb5\x18\x01R\rnameChangedAt\x127\n" +
+	"\x15newbie_shop_opened_at\x18) \x01(\tB\x04\x88\xb5\x18\x01R\x12newbieShopOpenedAt\x125\n" +
+	"\x14come_back_expired_at\x18* \x01(\tB\x04\x88\xb5\x18\x01R\x11comeBackExpiredAt\x12!\n" +
+	"\topened_at\x18+ \x01(\tB\x04\x88\xb5\x18\x01R\bopenedAt\"\xc6\x01\n" +
 	"\x03Job\x12\x1b\n" +
 	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x15\n" +
 	"\x06job_id\x18\x02 \x01(\rR\x05jobId\x12\x14\n" +
@@ -5921,7 +5922,7 @@ const file_puser_proto_rawDesc = "" +
 	"\x16line3_sub40_accessory2\x18\x9b\x04 \x01(\x04R\x14line3Sub40Accessory2\x12\x1b\n" +
 	"\thp_use_at\x18\x9c\x04 \x01(\rR\ahpUseAt\x12!\n" +
 	"\fhp_use_order\x18\x9d\x04 \x01(\rR\n" +
-	"hpUseOrder\"\xdb\f\n" +
+	"hpUseOrder\"\xe1\f\n" +
 	"\tEquipment\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1b\n" +
 	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12!\n" +
@@ -5966,15 +5967,15 @@ const file_puser_proto_rawDesc = "" +
 	"\x13weapon_skill_level3\x18' \x01(\rR\x11weaponSkillLevel3\x12A\n" +
 	"\x1dweapon_skill_correction_rate3\x18( \x01(\x02R\x1aweaponSkillCorrectionRate3\x126\n" +
 	"\x17stylish_correction_rate\x18) \x01(\x02R\x15stylishCorrectionRate\x12!\n" +
-	"\fis_protected\x18* \x01(\rR\visProtected\x12\x1f\n" +
-	"\vacquired_at\x18+ \x01(\tR\n" +
-	"acquiredAt\"\x8d\x01\n" +
+	"\fis_protected\x18* \x01(\rR\visProtected\x12%\n" +
+	"\vacquired_at\x18+ \x01(\tB\x04\x88\xb5\x18\x01R\n" +
+	"acquiredAt\"\x93\x01\n" +
 	"\x06Elixir\x12\x1b\n" +
 	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1b\n" +
 	"\telixir_id\x18\x02 \x01(\rR\belixirId\x12\x12\n" +
 	"\x04rank\x18\x03 \x01(\rR\x04rank\x12\x14\n" +
-	"\x05level\x18\x04 \x01(\rR\x05level\x12\x1f\n" +
-	"\vacquired_at\x18\x05 \x01(\tR\n" +
+	"\x05level\x18\x04 \x01(\rR\x05level\x12%\n" +
+	"\vacquired_at\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\n" +
 	"acquiredAtB+Z)example.com/brave-revival/src/proto/puserb\x06proto3"
 
 var (

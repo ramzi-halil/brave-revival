@@ -5,6 +5,7 @@ import "pcommon.proto";
 import "pmaster.proto";
 import "puser.proto";
 import "pmisc.proto";
+import "options.proto";
 
 option go_package = "example.com/brave-revival/src/proto/proto";
 
@@ -22,7 +23,7 @@ message PlayerSummary {
     uint64 guild_id = 7;
     uint32 guild_member_type = 8;
     uint32 favorite_equipment = 9;
-    string login_at = 10;
+    string login_at = 10 [(options.datetime) = true];
     uint32 max_job_level = 11;
 }
 
@@ -129,10 +130,10 @@ message GuildMember {
     uint32 role = 3;
     uint64 point = 4;
     uint64 weekly_point = 5;
-    string last_joined_at = 6;
-    string login_reward_received_at = 7;
-    string updated_point_at = 8;
-    string training_completed_at = 9;
+    string last_joined_at = 6 [(options.datetime) = true];
+    string login_reward_received_at = 7 [(options.datetime) = true];
+    string updated_point_at = 8 [(options.datetime) = true];
+    string training_completed_at = 9 [(options.datetime) = true];
 }
 
 message PowerAssessment {
