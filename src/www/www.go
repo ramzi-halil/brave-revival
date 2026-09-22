@@ -29,15 +29,12 @@ type Handler struct {
 type handlerKey struct{}
 
 func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error) {
-	// TODO: Don't use pre-compiled master & resources.
-	masterBytes, err := os.ReadFile("./patched.pb")
+	master, err := config.LoadMaster(cfg.DBDir)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to load master: %w", err)
 	}
-	var master pmaster.All
-	pb.Unmarshal(masterBytes, &master)
 
-	resourcesFile, err := os.Open(filepath.Join(cfg.DBDir, "res.csv"))
+	resourcesFile, err := os.Open(filepath.Join(cfg.DBDir, "resources.csv"))
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +48,7 @@ func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error
 	handler := &Handler{
 		config:    cfg,
 		router:    router,
-		master:    &master,
+		master:    master,
 		resources: resources,
 		player:    player,
 	}

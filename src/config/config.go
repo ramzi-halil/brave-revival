@@ -3,6 +3,7 @@ package config
 import (
 	"encoding/json/v2"
 	"fmt"
+	"os"
 	"net/netip"
 )
 
@@ -52,7 +53,12 @@ type Config struct {
 	DBDir string `json:"db_dir"`
 }
 
-func Parse(bytes []byte) (*Config, error) {
+func ReadFile(path string) (*Config, error) {
+	bytes, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read config file: %w", err)
+	}
+
 	var cfg Config
 	if err := json.Unmarshal(bytes, &cfg); err != nil {
 		return nil, fmt.Errorf("failed to parse config file: %w", err)
@@ -60,6 +66,18 @@ func Parse(bytes []byte) (*Config, error) {
 
 	if cfg.AdvertiseHost == "" {
 		cfg.AdvertiseHost = cfg.Host.String()
+	}
+	if cfg.ChatPort == 0 {
+		cfg.ChatPort = 10000
+	}
+	if cfg.PartyPort == 0 {
+		cfg.PartyPort = 10002
+	}
+	if cfg.NotifyPort == 0 {
+		cfg.NotifyPort = 10004
+	}
+	if cfg.PhotonPort == 0 {
+		cfg.PhotonPort = 5056
 	}
 
 	return &cfg, nil

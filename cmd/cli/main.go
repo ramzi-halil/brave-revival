@@ -17,11 +17,7 @@ import (
 func run() error {
 	slog.Info("Welcome")
 
-	cfgBytes, err := os.ReadFile(os.Args[1])
-	if err != nil {
-		return fmt.Errorf("failed to read config file: %w", err)
-	}
-	cfg, err := config.Parse(cfgBytes)
+	cfg, err := config.ReadFile(os.Args[1])
 	if err != nil {
 		return fmt.Errorf("failed to parse config file: %w", err)
 	}
@@ -46,7 +42,7 @@ func run() error {
 }
 
 func main() {
-	slog.SetLogLoggerLevel(slog.LevelDebug)
+	slog.SetLogLoggerLevel(slog.LevelInfo)
 
 	if len(os.Args) < 2 {
 		fmt.Println("Usage: brave-revival <config.json>")

@@ -1,4 +1,4 @@
-package proto
+package config
 
 import (
 	"fmt"
