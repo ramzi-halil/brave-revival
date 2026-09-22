@@ -1,0 +1,6 @@
+job_id,move_speed,visiblitily_size,special_gift_type,special_gift_value
+1,50,17,8,1
+2,45,17,2,0.6
+3,45,17,3,4
+4,60,25,1,1.2
+5,60,15,9,7.0005401e+07

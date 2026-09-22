@@ -30295,7 +30295,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\fwave_monster\x18\xfe\x01 \x03(\v2\x14.Pmaster.WaveMonsterR\vwaveMonster\x12K\n" +
 	"\x13wave_monster_reward\x18\xff\x01 \x03(\v2\x1a.Pmaster.WaveMonsterRewardR\x11waveMonsterReward\x12?\n" +
 	"\x0fweapon_skill_lv\x18\x80\x02 \x03(\v2\x16.Pmaster.WeaponSkillLvR\rweaponSkillLv\x12U\n" +
-	"\x17weapon_skill_lv_enhance\x18\x81\x02 \x03(\v2\x1d.Pmaster.WeaponSkillLvEnhanceR\x14weaponSkillLvEnhance\"\x98\x03\n" +
+	"\x17weapon_skill_lv_enhance\x18\x81\x02 \x03(\v2\x1d.Pmaster.WeaponSkillLvEnhanceR\x14weaponSkillLvEnhance\"\x9e\x03\n" +
 	"\vAchievement\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
 	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
@@ -30306,14 +30306,14 @@ const file_pmaster_proto_rawDesc = "" +
 	"\n" +
 	"type_value\x18\a \x01(\rR\ttypeValue\x12)\n" +
 	"\x10display_priority\x18\b \x01(\rR\x0fdisplayPriority\x12&\n" +
-	"\x0freward_group_id\x18\t \x01(\rR\rrewardGroupId\x12\x1b\n" +
+	"\x0freward_group_id\x18\t \x01(\rR\rrewardGroupId\x12!\n" +
 	"\topen_date\x18\n" +
-	" \x01(\tR\bopenDate\"c\n" +
+	" \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"c\n" +
 	"\x13AchievementCategory\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1f\n" +
 	"\vresource_id\x18\x03 \x01(\rR\n" +
-	"resourceId\"\xb6\x04\n" +
+	"resourceId\"\xbc\x04\n" +
 	"\x14AchievementEquipment\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x10\n" +
 	"\x03seq\x18\x02 \x01(\rR\x03seq\x12\x1a\n" +
@@ -30331,8 +30331,8 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12passive_skill_id_2\x18\f \x01(\rR\x0fpassiveSkillId2\x12+\n" +
 	"\x12passive_skill_id_3\x18\r \x01(\rR\x0fpassiveSkillId3\x12\x1f\n" +
 	"\vstamp_point\x18\x0e \x01(\rR\n" +
-	"stampPoint\x12\x1b\n" +
-	"\topen_date\x18\x0f \x01(\tR\bopenDate\"\xb1\x03\n" +
+	"stampPoint\x12!\n" +
+	"\topen_date\x18\x0f \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"\xb1\x03\n" +
 	"\x0fAchievementRank\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12+\n" +
 	"\x11achievement_point\x18\x02 \x01(\rR\x10achievementPoint\x12+\n" +
@@ -30378,15 +30378,15 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1d\n" +
 	"\n" +
-	"color_type\x18\x03 \x01(\rR\tcolorType\"\xb7\x01\n" +
+	"color_type\x18\x03 \x01(\rR\tcolorType\"\xc3\x01\n" +
 	"\vAdvertising\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x17\n" +
 	"\aad_type\x18\x02 \x01(\rR\x06adType\x12(\n" +
 	"\x10view_count_limit\x18\x03 \x01(\rR\x0eviewCountLimit\x12\x1d\n" +
 	"\n" +
-	"reset_type\x18\x04 \x01(\rR\tresetType\x12\x1b\n" +
-	"\topen_date\x18\x05 \x01(\tR\bopenDate\x12\x19\n" +
-	"\bend_date\x18\x06 \x01(\tR\aendDate\"\xab\x01\n" +
+	"reset_type\x18\x04 \x01(\rR\tresetType\x12!\n" +
+	"\topen_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12\x1f\n" +
+	"\bend_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\aendDate\"\xab\x01\n" +
 	"\x12AdvertisingMission\x12%\n" +
 	"\x0eadvertising_id\x18\x01 \x01(\rR\radvertisingId\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12)\n" +
@@ -30454,7 +30454,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\aitem_id\x18\x04 \x01(\rR\x06itemId\x128\n" +
 	"\x19agito_visitor_lineup_id_1\x18\x05 \x01(\rR\x15agitoVisitorLineupId1\x128\n" +
 	"\x19agito_visitor_lineup_id_2\x18\x06 \x01(\rR\x15agitoVisitorLineupId2\x128\n" +
-	"\x19agito_visitor_lineup_id_3\x18\a \x01(\rR\x15agitoVisitorLineupId3\"\x9b\x04\n" +
+	"\x19agito_visitor_lineup_id_3\x18\a \x01(\rR\x15agitoVisitorLineupId3\"\xa1\x04\n" +
 	"\fAgitoVisitor\x12!\n" +
 	"\fequipment_id\x18\x01 \x01(\rR\vequipmentId\x12,\n" +
 	"\x12base_visitor_point\x18\x02 \x01(\rR\x10baseVisitorPoint\x12*\n" +
@@ -30469,8 +30469,8 @@ const file_pmaster_proto_rawDesc = "" +
 	"\vresource_id\x18\n" +
 	" \x01(\rR\n" +
 	"resourceId\x123\n" +
-	"\x16agito_visitor_voice_id\x18\v \x01(\rR\x13agitoVisitorVoiceId\x12\x1b\n" +
-	"\topen_date\x18\f \x01(\tR\bopenDate\"\xd7\x01\n" +
+	"\x16agito_visitor_voice_id\x18\v \x01(\rR\x13agitoVisitorVoiceId\x12!\n" +
+	"\topen_date\x18\f \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"\xd7\x01\n" +
 	"\x17AgitoVisitorCountReward\x12\x10\n" +
 	"\x03seq\x18\x01 \x01(\rR\x03seq\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\rR\x04type\x12\x14\n" +
@@ -30556,7 +30556,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x13reward_group_id_100\x18\t \x01(\rR\x10rewardGroupId100\"<\n" +
 	"\rAnimaCategory\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\"\x94\x02\n" +
+	"\ttext_name\x18\x02 \x01(\rR\btextName\"\x9a\x02\n" +
 	"\tAnimaPage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\rR\x04type\x12\x1d\n" +
@@ -30566,26 +30566,26 @@ const file_pmaster_proto_rawDesc = "" +
 	"\aitem_id\x18\x05 \x01(\rR\x06itemId\x12\"\n" +
 	"\ranima_area_id\x18\x06 \x01(\rR\vanimaAreaId\x12\x19\n" +
 	"\bstage_id\x18\a \x01(\rR\astageId\x123\n" +
-	"\x16trigger_quest_stage_id\x18\b \x01(\rR\x13triggerQuestStageId\x12\x1b\n" +
-	"\topen_date\x18\t \x01(\tR\bopenDate\"\xeb\x01\n" +
+	"\x16trigger_quest_stage_id\x18\b \x01(\rR\x13triggerQuestStageId\x12!\n" +
+	"\topen_date\x18\t \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"\xeb\x01\n" +
 	"\x0eAnimaPageLevel\x12\"\n" +
 	"\ranima_page_id\x18\x01 \x01(\rR\vanimaPageId\x12\x14\n" +
 	"\x05level\x18\x02 \x01(\rR\x05level\x12\x18\n" +
 	"\arequire\x18\x03 \x01(\rR\arequire\x12+\n" +
 	"\x12passive_skill_id_1\x18\x04 \x01(\rR\x0fpassiveSkillId1\x12+\n" +
 	"\x12passive_skill_id_2\x18\x05 \x01(\rR\x0fpassiveSkillId2\x12+\n" +
-	"\x12passive_skill_id_3\x18\x06 \x01(\rR\x0fpassiveSkillId3\"\xc4\x01\n" +
+	"\x12passive_skill_id_3\x18\x06 \x01(\rR\x0fpassiveSkillId3\"\xd0\x01\n" +
 	"\tAprilFool\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12:\n" +
 	"\x1aapril_fool_member_group_id\x18\x02 \x01(\rR\x16aprilFoolMemberGroupId\x12/\n" +
-	"\x14agito_room_preset_id\x18\x03 \x01(\rR\x11agitoRoomPresetId\x12\x1b\n" +
-	"\topen_date\x18\x04 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x14agito_room_preset_id\x18\x03 \x01(\rR\x11agitoRoomPresetId\x12!\n" +
+	"\topen_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x05 \x01(\tR\tcloseDate\"\x7f\n" +
+	"close_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x7f\n" +
 	"\x0fAprilFoolMember\x12\x19\n" +
 	"\bgroup_id\x18\x01 \x01(\rR\agroupId\x12\x1b\n" +
 	"\tmember_id\x18\x02 \x01(\rR\bmemberId\x124\n" +
-	"\x16equipment_character_id\x18\x03 \x01(\rR\x14equipmentCharacterId\"\xb2\x04\n" +
+	"\x16equipment_character_id\x18\x03 \x01(\rR\x14equipmentCharacterId\"\xbe\x04\n" +
 	"\x04Area\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
 	"\vcontents_id\x18\x02 \x01(\rR\n" +
@@ -30601,10 +30601,10 @@ const file_pmaster_proto_rawDesc = "" +
 	" \x01(\rR\aweekday\x12\x19\n" +
 	"\bevent_id\x18\v \x01(\rR\aeventId\x12,\n" +
 	"\x12button_resource_id\x18\f \x01(\rR\x10buttonResourceId\x123\n" +
-	"\x15designation_attribute\x18\r \x01(\rR\x14designationAttribute\x12\x1b\n" +
-	"\topen_date\x18\x0e \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x15designation_attribute\x18\r \x01(\rR\x14designationAttribute\x12!\n" +
+	"\topen_date\x18\x0e \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x0f \x01(\tR\tcloseDate\"k\n" +
+	"close_date\x18\x0f \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"k\n" +
 	"\x10ArenaPointReward\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
 	"\vrequired_pt\x18\x02 \x01(\rR\n" +
@@ -30627,21 +30627,21 @@ const file_pmaster_proto_rawDesc = "" +
 	"\baccuracy\x18\f \x01(\rR\baccuracy\x12\x14\n" +
 	"\x05dodge\x18\r \x01(\rR\x05dodge\x12\x1a\n" +
 	"\bcritical\x18\x0e \x01(\rR\bcritical\x12\x18\n" +
-	"\aagility\x18\x0f \x01(\rR\aagility\"\xb8\x01\n" +
+	"\aagility\x18\x0f \x01(\rR\aagility\"\xc4\x01\n" +
 	"\x06Banner\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
 	"\vresource_id\x18\x02 \x01(\rR\n" +
 	"resourceId\x12)\n" +
 	"\x10display_priority\x18\x03 \x01(\rR\x0fdisplayPriority\x12\x16\n" +
-	"\x06target\x18\x04 \x01(\tR\x06target\x12\x1b\n" +
-	"\topen_date\x18\x05 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x06target\x18\x04 \x01(\tR\x06target\x12!\n" +
+	"\topen_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x06 \x01(\tR\tcloseDate\"d\n" +
+	"close_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"d\n" +
 	"\bBehavior\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\rR\x04type\x12\x1c\n" +
 	"\tparameter\x18\x03 \x01(\rR\tparameter\x12\x16\n" +
-	"\x06target\x18\x04 \x01(\rR\x06target\"\xcb\x04\n" +
+	"\x06target\x18\x04 \x01(\rR\x06target\"\xd7\x04\n" +
 	"\x05Boost\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12)\n" +
@@ -30666,21 +30666,21 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0fmax_effect_time\x18\x0e \x01(\rR\rmaxEffectTime\x12 \n" +
 	"\flimit_job_lv\x18\x0f \x01(\rR\n" +
 	"limitJobLv\x12*\n" +
-	"\x11date_display_flag\x18\x10 \x01(\rR\x0fdateDisplayFlag\x12\x1b\n" +
-	"\topen_date\x18\x11 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x11date_display_flag\x18\x10 \x01(\rR\x0fdateDisplayFlag\x12!\n" +
+	"\topen_date\x18\x11 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x12 \x01(\tR\tcloseDate\"I\n" +
+	"close_date\x18\x12 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"I\n" +
 	"\n" +
 	"BoostGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x10\n" +
 	"\x03seq\x18\x02 \x01(\rR\x03seq\x12\x19\n" +
-	"\bboost_id\x18\x03 \x01(\rR\aboostId\"r\n" +
+	"\bboost_id\x18\x03 \x01(\rR\aboostId\"~\n" +
 	"\aChapter\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1b\n" +
-	"\topen_date\x18\x03 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\ttext_name\x18\x02 \x01(\rR\btextName\x12!\n" +
+	"\topen_date\x18\x03 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x04 \x01(\tR\tcloseDate\"\xfe\x01\n" +
+	"close_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xfe\x01\n" +
 	"\x05Combo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x0e\n" +
 	"\x02lv\x18\x02 \x01(\rR\x02lv\x12\x1f\n" +
@@ -30703,19 +30703,19 @@ const file_pmaster_proto_rawDesc = "" +
 	"Conditions\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
 	"\x06target\x18\x02 \x01(\rR\x06target\x12\x14\n" +
-	"\x05value\x18\x03 \x01(\rR\x05value\"\xea\x01\n" +
+	"\x05value\x18\x03 \x01(\rR\x05value\"\xf6\x01\n" +
 	"\bConstant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x03 \x01(\tR\x05value\x12\x12\n" +
 	"\x04type\x18\x04 \x01(\rR\x04type\x12\x1a\n" +
-	"\bpriority\x18\x05 \x01(\rR\bpriority\x12\x1b\n" +
-	"\topen_date\x18\x06 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\bpriority\x18\x05 \x01(\rR\bpriority\x12!\n" +
+	"\topen_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\a \x01(\tR\tcloseDate\x12\x1b\n" +
+	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\x12\x1b\n" +
 	"\topen_time\x18\b \x01(\tR\bopenTime\x12\x1d\n" +
 	"\n" +
-	"close_time\x18\t \x01(\tR\tcloseTime\"\xb1\x06\n" +
+	"close_time\x18\t \x01(\tR\tcloseTime\"\xbd\x06\n" +
 	"\bContents\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12+\n" +
@@ -30738,10 +30738,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x16playable_time_group_id\x18\x10 \x01(\rR\x13playableTimeGroupId\x12*\n" +
 	"\x11battle_time_limit\x18\x11 \x01(\rR\x0fbattleTimeLimit\x12\x15\n" +
 	"\x06bgm_id\x18\x12 \x01(\rR\x05bgmId\x12(\n" +
-	"\x10event_badge_flag\x18\x13 \x01(\rR\x0eeventBadgeFlag\x12\x1b\n" +
-	"\topen_date\x18\x14 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x10event_badge_flag\x18\x13 \x01(\rR\x0eeventBadgeFlag\x12!\n" +
+	"\topen_date\x18\x14 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x15 \x01(\tR\tcloseDate\"\xb1\x02\n" +
+	"close_date\x18\x15 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xb1\x02\n" +
 	"\x16ContentsAncientTowerEx\x12\x1f\n" +
 	"\vcontents_id\x18\x01 \x01(\rR\n" +
 	"contentsId\x12&\n" +
@@ -30759,14 +30759,14 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x03num\x18\x02 \x01(\rR\x03num\x12!\n" +
 	"\fpayment_type\x18\x03 \x01(\rR\vpaymentType\x12\x17\n" +
 	"\aitem_id\x18\x04 \x01(\rR\x06itemId\x12\x12\n" +
-	"\x04cost\x18\x05 \x01(\rR\x04cost\"\xdf\x01\n" +
+	"\x04cost\x18\x05 \x01(\rR\x04cost\"\xeb\x01\n" +
 	"\x0fContentsRanking\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12$\n" +
 	"\x0easc_order_flag\x18\x02 \x01(\rR\fascOrderFlag\x12.\n" +
-	"\x13score_decimal_place\x18\x03 \x01(\rR\x11scoreDecimalPlace\x12\x1b\n" +
-	"\topen_date\x18\x04 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x13score_decimal_place\x18\x03 \x01(\rR\x11scoreDecimalPlace\x12!\n" +
+	"\topen_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x05 \x01(\tR\tcloseDate\x12*\n" +
+	"close_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\x12*\n" +
 	"\x11ranking_reward_id\x18\x06 \x01(\rR\x0frankingRewardId\"\x80\x01\n" +
 	"\x10ContentsResource\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
@@ -30844,17 +30844,17 @@ const file_pmaster_proto_rawDesc = "" +
 	"\vbonus_rate3\x18\v \x01(\x02R\n" +
 	"bonusRate3\x12)\n" +
 	"\x10enhancement_cost\x18\f \x01(\rR\x0fenhancementCost\x12&\n" +
-	"\x0fpity_timer_rate\x18\r \x01(\x02R\rpityTimerRate\"\xd6\x01\n" +
+	"\x0fpity_timer_rate\x18\r \x01(\x02R\rpityTimerRate\"\xe2\x01\n" +
 	"\aEpisode\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1d\n" +
 	"\n" +
 	"chapter_id\x18\x03 \x01(\rR\tchapterId\x12\x1b\n" +
 	"\tunlock_lv\x18\x04 \x01(\rR\bunlockLv\x12&\n" +
-	"\x0freward_group_id\x18\x05 \x01(\rR\rrewardGroupId\x12\x1b\n" +
-	"\topen_date\x18\x06 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x0freward_group_id\x18\x05 \x01(\rR\rrewardGroupId\x12!\n" +
+	"\topen_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\a \x01(\tR\tcloseDate\"\xfb\x0f\n" +
+	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x81\x10\n" +
 	"\tEquipment\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
 	"\x06gender\x18\x02 \x01(\rR\x06gender\x12\x1b\n" +
@@ -30904,8 +30904,8 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12weapon_effect_type\x18, \x01(\rR\x10weaponEffectType\x123\n" +
 	"\x16display_skin_icon_flag\x18- \x01(\rR\x13displaySkinIconFlag\x120\n" +
 	"\x14equipment_recycle_id\x18. \x01(\rR\x12equipmentRecycleId\x12O\n" +
-	"%trying_on_base_equipment_character_id\x18/ \x01(\rR tryingOnBaseEquipmentCharacterId\x12\x1b\n" +
-	"\topen_date\x180 \x01(\tR\bopenDate\x12!\n" +
+	"%trying_on_base_equipment_character_id\x18/ \x01(\rR tryingOnBaseEquipmentCharacterId\x12!\n" +
+	"\topen_date\x180 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12!\n" +
 	"\frelease_flag\x181 \x01(\rR\vreleaseFlag\"\x9e\x04\n" +
 	"\x12EquipmentAwakening\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x0e\n" +
@@ -31181,17 +31181,17 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12equipment_category\x18\x01 \x01(\rR\x11equipmentCategory\x12\x16\n" +
 	"\x06rarity\x18\x02 \x01(\rR\x06rarity\x12\x1d\n" +
 	"\n" +
-	"sell_price\x18\x03 \x01(\rR\tsellPrice\"\x96\x02\n" +
+	"sell_price\x18\x03 \x01(\rR\tsellPrice\"\xa2\x02\n" +
 	"\x1aEquipmentSpecialEffectArea\x12!\n" +
 	"\fequipment_id\x18\x01 \x01(\rR\vequipmentId\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\rR\x05limit\x12\x17\n" +
 	"\aarea_id\x18\x03 \x01(\rR\x06areaId\x12\x10\n" +
 	"\x03seq\x18\x04 \x01(\rR\x03seq\x12+\n" +
 	"\x12passive_skill_id_1\x18\x05 \x01(\rR\x0fpassiveSkillId1\x12+\n" +
-	"\x12passive_skill_id_2\x18\x06 \x01(\rR\x0fpassiveSkillId2\x12\x1b\n" +
-	"\topen_date\x18\a \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x12passive_skill_id_2\x18\x06 \x01(\rR\x0fpassiveSkillId2\x12!\n" +
+	"\topen_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\b \x01(\tR\tcloseDate\"\xad\x03\n" +
+	"close_date\x18\b \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xad\x03\n" +
 	"\"EquipmentSpecialEffectEnhanceGroup\x12!\n" +
 	"\fequipment_id\x18\x01 \x01(\rR\vequipmentId\x12\x0e\n" +
 	"\x02lv\x18\x02 \x01(\rR\x02lv\x12$\n" +
@@ -31221,7 +31221,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x05item3\x18\f \x01(\rR\x05item3\x12\x14\n" +
 	"\x05cost3\x18\r \x01(\rR\x05cost3\x12\x12\n" +
 	"\x04rgb1\x18\x0e \x01(\tR\x04rgb1\x12\x12\n" +
-	"\x04rgb2\x18\x0f \x01(\tR\x04rgb2\"\xf0\x02\n" +
+	"\x04rgb2\x18\x0f \x01(\tR\x04rgb2\"\xfc\x02\n" +
 	"\x05Event\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12$\n" +
 	"\x0eevent_group_id\x18\x02 \x01(\rR\feventGroupId\x12\x1b\n" +
@@ -31234,11 +31234,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\vresource_id\x18\b \x01(\rR\n" +
 	"resourceId\x12\x1f\n" +
 	"\vprefab_name\x18\t \x01(\tR\n" +
-	"prefabName\x12\x1b\n" +
+	"prefabName\x12!\n" +
 	"\topen_date\x18\n" +
-	" \x01(\tR\bopenDate\x12\x1d\n" +
+	" \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\v \x01(\tR\tcloseDate\"E\n" +
+	"close_date\x18\v \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"E\n" +
 	"\x12EventContentsGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
 	"\vcontents_id\x18\x02 \x01(\rR\n" +
@@ -31247,7 +31247,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\bevent_id\x18\x01 \x01(\rR\aeventId\x12\x1d\n" +
 	"\n" +
 	"reset_type\x18\x02 \x01(\rR\tresetType\x12#\n" +
-	"\rbadge_display\x18\x03 \x01(\rR\fbadgeDisplay\"\x85\x05\n" +
+	"\rbadge_display\x18\x03 \x01(\rR\fbadgeDisplay\"\x9d\x05\n" +
 	"\n" +
 	"EventGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
@@ -31266,12 +31266,12 @@ const file_pmaster_proto_rawDesc = "" +
 	" \x01(\rR\thomeText2\x125\n" +
 	"\x17home_button_resource_id\x18\v \x01(\rR\x14homeButtonResourceId\x12\x19\n" +
 	"\bgacha_id\x18\f \x01(\rR\agachaId\x12\x17\n" +
-	"\anews_id\x18\r \x01(\tR\x06newsId\x12(\n" +
-	"\x10portal_open_date\x18\x0e \x01(\tR\x0eportalOpenDate\x12*\n" +
-	"\x11portal_close_date\x18\x0f \x01(\tR\x0fportalCloseDate\x12\x1b\n" +
-	"\topen_date\x18\x10 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\anews_id\x18\r \x01(\tR\x06newsId\x12.\n" +
+	"\x10portal_open_date\x18\x0e \x01(\tB\x04\x88\xb5\x18\x01R\x0eportalOpenDate\x120\n" +
+	"\x11portal_close_date\x18\x0f \x01(\tB\x04\x88\xb5\x18\x01R\x0fportalCloseDate\x12!\n" +
+	"\topen_date\x18\x10 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x11 \x01(\tR\tcloseDate\"\x93\x03\n" +
+	"close_date\x18\x11 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x93\x03\n" +
 	"\fEventMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
 	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
@@ -31286,14 +31286,14 @@ const file_pmaster_proto_rawDesc = "" +
 	"dailyReset\x12\x16\n" +
 	"\x06target\x18\n" +
 	" \x01(\tR\x06target\x12&\n" +
-	"\x0freward_group_id\x18\v \x01(\rR\rrewardGroupId\"\x9f\x01\n" +
+	"\x0freward_group_id\x18\v \x01(\rR\rrewardGroupId\"\xab\x01\n" +
 	"\x11EventMissionGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x19\n" +
 	"\bevent_id\x18\x02 \x01(\rR\aeventId\x12#\n" +
-	"\rguild_mission\x18\x03 \x01(\rR\fguildMission\x12\x1b\n" +
-	"\topen_date\x18\x04 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\rguild_mission\x18\x03 \x01(\rR\fguildMission\x12!\n" +
+	"\topen_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x05 \x01(\tR\tcloseDate\"\x97\x01\n" +
+	"close_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x97\x01\n" +
 	"\x12EventMissionReward\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x123\n" +
 	"\x16event_mission_group_id\x18\x02 \x01(\rR\x13eventMissionGroupId\x12\x14\n" +
@@ -31338,7 +31338,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\rmaterial_cost\x18\b \x01(\rR\fmaterialCost\"M\n" +
 	"\x0fEvolutionRecipe\x12!\n" +
 	"\frecipe_group\x18\x01 \x01(\rR\vrecipeGroup\x12\x17\n" +
-	"\aitem_id\x18\x02 \x01(\rR\x06itemId\"\xd4\x02\n" +
+	"\aitem_id\x18\x02 \x01(\rR\x06itemId\"\xe0\x02\n" +
 	"\bExchange\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12;\n" +
 	"\x1aexchange_material_group_id\x18\x02 \x01(\rR\x17exchangeMaterialGroupId\x127\n" +
@@ -31348,10 +31348,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\bevent_id\x18\x05 \x01(\rR\aeventId\x12)\n" +
 	"\x10display_priority\x18\x06 \x01(\rR\x0fdisplayPriority\x12\x1f\n" +
 	"\vpickup_flag\x18\a \x01(\rR\n" +
-	"pickupFlag\x12\x1b\n" +
-	"\topen_date\x18\b \x01(\tR\bopenDate\x12\x1d\n" +
+	"pickupFlag\x12!\n" +
+	"\topen_date\x18\b \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\t \x01(\tR\tcloseDate\"\x96\x02\n" +
+	"close_date\x18\t \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x96\x02\n" +
 	"\rExchangeGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x15\n" +
 	"\x06seq_id\x18\x02 \x01(\rR\x05seqId\x12\x1f\n" +
@@ -31384,7 +31384,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x10FunctionalUnlock\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x15\n" +
 	"\x06job_lv\x18\x02 \x01(\rR\x05jobLv\x12\x19\n" +
-	"\bstage_id\x18\x03 \x01(\rR\astageId\"\xaa\a\n" +
+	"\bstage_id\x18\x03 \x01(\rR\astageId\"\xb6\a\n" +
 	"\x05Gacha\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1d\n" +
 	"\n" +
@@ -31415,10 +31415,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\n" +
 	"daily_free\x18\x16 \x01(\rR\tdailyFree\x12.\n" +
 	"\x13single_bonus_reward\x18\x17 \x01(\rR\x11singleBonusReward\x12*\n" +
-	"\x11gacha_exchange_id\x18\x18 \x01(\rR\x0fgachaExchangeId\x12\x1d\n" +
+	"\x11gacha_exchange_id\x18\x18 \x01(\rR\x0fgachaExchangeId\x12#\n" +
 	"\n" +
-	"start_date\x18\x19 \x01(\tR\tstartDate\x12\x19\n" +
-	"\bend_date\x18\x1a \x01(\tR\aendDate\"M\n" +
+	"start_date\x18\x19 \x01(\tB\x04\x88\xb5\x18\x01R\tstartDate\x12\x1f\n" +
+	"\bend_date\x18\x1a \x01(\tB\x04\x88\xb5\x18\x01R\aendDate\"M\n" +
 	"\rGachaExchange\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12,\n" +
 	"\x12exchange_add_point\x18\x02 \x01(\rR\x10exchangeAddPoint\"\x9d\x03\n" +
@@ -31453,14 +31453,14 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x15equipment_enhancement\x18\b \x01(\rR\x14equipmentEnhancement\x122\n" +
 	"\x15equipment_limit_break\x18\t \x01(\rR\x13equipmentLimitBreak\x12%\n" +
 	"\x0eexchange_point\x18\n" +
-	" \x01(\rR\rexchangePoint\"\xbc\x01\n" +
+	" \x01(\rR\rexchangePoint\"\xc8\x01\n" +
 	"\x16GlobalMenuCampaignIcon\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12,\n" +
 	"\x12function_unlock_id\x18\x02 \x01(\rR\x10functionUnlockId\x12(\n" +
-	"\x10campaign_icon_id\x18\x03 \x01(\rR\x0ecampaignIconId\x12\x1b\n" +
-	"\topen_date\x18\x04 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x10campaign_icon_id\x18\x03 \x01(\rR\x0ecampaignIconId\x12!\n" +
+	"\topen_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x05 \x01(\tR\tcloseDate\"\x82\x01\n" +
+	"close_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x82\x01\n" +
 	"\x1cGuildContributionRewardGuild\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x14\n" +
 	"\x05lower\x18\x02 \x01(\rR\x05lower\x12\x14\n" +
@@ -31597,14 +31597,14 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x06weight\x18\x02 \x01(\rR\x06weight\x12\x1f\n" +
 	"\vresource_id\x18\x03 \x01(\rR\n" +
 	"resourceId\x125\n" +
-	"\x17unlock_guild_obelisk_lv\x18\x04 \x01(\rR\x14unlockGuildObeliskLv\"\x9d\x02\n" +
+	"\x17unlock_guild_obelisk_lv\x18\x04 \x01(\rR\x14unlockGuildObeliskLv\"\xaf\x02\n" +
 	"\x03Gve\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\topen_date\x18\x02 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12!\n" +
+	"\topen_date\x18\x02 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"start_date\x18\x03 \x01(\tR\tstartDate\x12\x1d\n" +
+	"start_date\x18\x03 \x01(\tB\x04\x88\xb5\x18\x01R\tstartDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x04 \x01(\tR\tcloseDate\x12(\n" +
+	"close_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\x12(\n" +
 	"\x10round_start_time\x18\x05 \x01(\tR\x0eroundStartTime\x12$\n" +
 	"\x0eround_end_time\x18\x06 \x01(\tR\froundEndTime\x12\x1f\n" +
 	"\vtotal_round\x18\a \x01(\rR\n" +
@@ -31632,7 +31632,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x03seq\x18\x05 \x01(\rR\x03seq\x126\n" +
 	"\x17threshold_ep_individual\x18\x06 \x01(\rR\x15thresholdEpIndividual\x12,\n" +
 	"\x12threshold_ep_guild\x18\a \x01(\rR\x10thresholdEpGuild\x12&\n" +
-	"\x0freward_group_id\x18\b \x01(\rR\rrewardGroupId\"\xff\x02\n" +
+	"\x0freward_group_id\x18\b \x01(\rR\rrewardGroupId\"\x8b\x03\n" +
 	"\x03Gvg\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\rR\x04type\x12\x1c\n" +
@@ -31643,11 +31643,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x15battle_period_minutes\x18\x06 \x01(\rR\x13battlePeriodMinutes\x12$\n" +
 	"\x0epvp_time_limit\x18\a \x01(\rR\fpvpTimeLimit\x12$\n" +
 	"\x0epvm_time_limit\x18\b \x01(\rR\fpvmTimeLimit\x12$\n" +
-	"\x0epve_time_limit\x18\t \x01(\rR\fpveTimeLimit\x12\x1b\n" +
+	"\x0epve_time_limit\x18\t \x01(\rR\fpveTimeLimit\x12!\n" +
 	"\topen_date\x18\n" +
-	" \x01(\tR\bopenDate\x12\x1d\n" +
+	" \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\v \x01(\tR\tcloseDate\"w\n" +
+	"close_date\x18\v \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"w\n" +
 	"\fGvgBaseBonus\x12!\n" +
 	"\fguildhole_lv\x18\x01 \x01(\rR\vguildholeLv\x12!\n" +
 	"\ftarget_param\x18\x02 \x01(\rR\vtargetParam\x12!\n" +
@@ -31853,17 +31853,17 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x06size_b\x18\x04 \x01(\rR\x05sizeB\x12\x19\n" +
 	"\boffset_x\x18\x05 \x01(\rR\aoffsetX\x12\x19\n" +
 	"\boffset_y\x18\x06 \x01(\rR\aoffsetY\x12\x16\n" +
-	"\x06lotate\x18\a \x01(\x02R\x06lotate\"\xc4\x01\n" +
+	"\x06lotate\x18\a \x01(\x02R\x06lotate\"\xd0\x01\n" +
 	"\x13GvgPracticeSchedule\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x15\n" +
 	"\x06gvg_id\x18\x02 \x01(\rR\x05gvgId\x12\x10\n" +
 	"\x03day\x18\x03 \x01(\rR\x03day\x12\x1d\n" +
 	"\n" +
 	"start_time\x18\x04 \x01(\rR\tstartTime\x12\x19\n" +
-	"\bend_time\x18\x05 \x01(\rR\aendTime\x12\x1b\n" +
-	"\topen_date\x18\x06 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\bend_time\x18\x05 \x01(\rR\aendTime\x12!\n" +
+	"\topen_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\a \x01(\tR\tcloseDate\"\xc9\x01\n" +
+	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xc9\x01\n" +
 	"\x11GvgRespawnPenalty\x12\x15\n" +
 	"\x06gvg_id\x18\x01 \x01(\rR\x05gvgId\x12\x14\n" +
 	"\x05count\x18\x02 \x01(\rR\x05count\x12\x12\n" +
@@ -31910,7 +31910,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x10inherit_progress\x18\x06 \x01(\rR\x0finheritProgress\x12&\n" +
 	"\x0freward_group_id\x18\a \x01(\rR\rrewardGroupId\x12\x10\n" +
 	"\x03exp\x18\b \x01(\rR\x03exp\x12\x16\n" +
-	"\x06target\x18\t \x01(\tR\x06target\"\xe4\x02\n" +
+	"\x06target\x18\t \x01(\tR\x06target\"\xea\x02\n" +
 	"\x15ImportantMissionGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12D\n" +
 	"\x1fnext_important_mission_group_id\x18\x02 \x01(\rR\x1bnextImportantMissionGroupId\x12)\n" +
@@ -31918,8 +31918,8 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0freward_group_id\x18\x04 \x01(\rR\rrewardGroupId\x12E\n" +
 	"\x1fintroduce_character_resource_id\x18\x05 \x01(\rR\x1cintroduceCharacterResourceId\x12!\n" +
 	"\fequipment_id\x18\x06 \x01(\rR\vequipmentId\x12\x1b\n" +
-	"\tvoice_num\x18\a \x01(\tR\bvoiceNum\x12\x1b\n" +
-	"\topen_date\x18\b \x01(\tR\bopenDate\"\xf6\x04\n" +
+	"\tvoice_num\x18\a \x01(\tR\bvoiceNum\x12!\n" +
+	"\topen_date\x18\b \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"\xf6\x04\n" +
 	"\x04Item\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12)\n" +
@@ -31944,7 +31944,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12effect_resource_id\x18\x11 \x01(\rR\x10effectResourceId\x12\x15\n" +
 	"\x06bg_rgb\x18\x12 \x01(\tR\x05bgRgb\x12&\n" +
 	"\x0freward_group_id\x18\x13 \x01(\rR\rrewardGroupId\x12\x19\n" +
-	"\bevent_id\x18\x14 \x01(\rR\aeventId\"\xae\x03\n" +
+	"\bevent_id\x18\x14 \x01(\rR\aeventId\"\xb4\x03\n" +
 	"\x03Job\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12&\n" +
@@ -31958,8 +31958,8 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0eunlock_job_lv2\x18\n" +
 	" \x01(\rR\funlockJobLv2\x12\x15\n" +
 	"\x06max_lv\x18\v \x01(\rR\x05maxLv\x12%\n" +
-	"\x0fjob_lv_group_id\x18\f \x01(\rR\fjobLvGroupId\x12\x1b\n" +
-	"\topen_date\x18\r \x01(\tR\bopenDate\"\xa8\x06\n" +
+	"\x0fjob_lv_group_id\x18\f \x01(\rR\fjobLvGroupId\x12!\n" +
+	"\topen_date\x18\r \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"\xa8\x06\n" +
 	"\n" +
 	"JobLvGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x0e\n" +
@@ -32041,19 +32041,19 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0fred_skill_point\x18\x03 \x01(\rR\rredSkillPoint\x12#\n" +
 	"\rrequired_lupi\x18\x04 \x01(\rR\frequiredLupi\x12!\n" +
 	"\fsuccess_rate\x18\x05 \x01(\x02R\vsuccessRate\x12\"\n" +
-	"\runlock_job_lv\x18\x06 \x01(\rR\vunlockJobLv\"l\n" +
+	"\runlock_job_lv\x18\x06 \x01(\rR\vunlockJobLv\"x\n" +
 	"\n" +
 	"LabelGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
-	"\x04type\x18\x02 \x01(\rR\x04type\x12\x1b\n" +
-	"\topen_date\x18\x03 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x04type\x18\x02 \x01(\rR\x04type\x12!\n" +
+	"\topen_date\x18\x03 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x04 \x01(\tR\tcloseDate\"\x81\x01\n" +
+	"close_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x81\x01\n" +
 	"\n" +
 	"LoginBonus\x12/\n" +
 	"\x14login_bonus_group_id\x18\x01 \x01(\rR\x11loginBonusGroupId\x12\x1a\n" +
 	"\bsequence\x18\x02 \x01(\rR\bsequence\x12&\n" +
-	"\x0freward_group_id\x18\x03 \x01(\rR\rrewardGroupId\"\xb0\x02\n" +
+	"\x0freward_group_id\x18\x03 \x01(\rR\rrewardGroupId\"\xbc\x02\n" +
 	"\x0fLoginBonusGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x12\n" +
@@ -32063,11 +32063,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"repeatFlag\x12)\n" +
 	"\x10text_description\x18\x06 \x01(\rR\x0ftextDescription\x12\x14\n" +
 	"\x05image\x18\a \x01(\tR\x05image\x12!\n" +
-	"\fdisplay_flag\x18\b \x01(\rR\vdisplayFlag\x12\x1b\n" +
-	"\topen_date\x18\t \x01(\tR\bopenDate\x12\x1d\n" +
+	"\fdisplay_flag\x18\b \x01(\rR\vdisplayFlag\x12!\n" +
+	"\topen_date\x18\t \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
 	"close_date\x18\n" +
-	" \x01(\tR\tcloseDate\"D\n" +
+	" \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"D\n" +
 	"\bMaxJobLv\x12\x15\n" +
 	"\x06job_lv\x18\x01 \x01(\rR\x05jobLv\x12!\n" +
 	"\ffriend_count\x18\x02 \x01(\rR\vfriendCount\"o\n" +
@@ -32326,7 +32326,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\rheaven_resist\x188 \x01(\x02R\fheavenResist\x12\x1f\n" +
 	"\vhazy_resist\x189 \x01(\x02R\n" +
 	"hazyResist\x12,\n" +
-	"\x12fixed_break_damage\x18: \x01(\rR\x10fixedBreakDamage\"\x88\x03\n" +
+	"\x12fixed_break_damage\x18: \x01(\rR\x10fixedBreakDamage\"\x94\x03\n" +
 	"\tOfferWall\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1a\n" +
 	"\bpriority\x18\x02 \x01(\rR\bpriority\x12\x1f\n" +
@@ -32337,11 +32337,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0fconditions_type\x18\x06 \x01(\rR\x0econditionsType\x12)\n" +
 	"\x10conditions_value\x18\a \x01(\rR\x0fconditionsValue\x12)\n" +
 	"\x10conditions_type2\x18\b \x01(\rR\x0fconditionsType2\x12+\n" +
-	"\x11conditions_value2\x18\t \x01(\rR\x10conditionsValue2\x12\x1b\n" +
+	"\x11conditions_value2\x18\t \x01(\rR\x10conditionsValue2\x12!\n" +
 	"\topen_date\x18\n" +
-	" \x01(\tR\bopenDate\x12\x1d\n" +
+	" \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\v \x01(\tR\tcloseDate\"\x80\x02\n" +
+	"close_date\x18\v \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x80\x02\n" +
 	"\fOrderMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
 	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
@@ -32512,15 +32512,15 @@ const file_pmaster_proto_rawDesc = "" +
 	"\amp_rate\x18\x05 \x01(\x02R\x06mpRate\"E\n" +
 	"\vPresetSkill\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12&\n" +
-	"\x0factive_skill_id\x18\x02 \x01(\rR\ractiveSkillId\"\xe5\x01\n" +
+	"\x0factive_skill_id\x18\x02 \x01(\rR\ractiveSkillId\"\xf1\x01\n" +
 	"\x14PvpSpecialEffectArea\x12!\n" +
 	"\fequipment_id\x18\x01 \x01(\rR\vequipmentId\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\rR\x05limit\x12+\n" +
 	"\x12passive_skill_id_1\x18\x03 \x01(\rR\x0fpassiveSkillId1\x12+\n" +
-	"\x12passive_skill_id_2\x18\x04 \x01(\rR\x0fpassiveSkillId2\x12\x1b\n" +
-	"\topen_date\x18\x05 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x12passive_skill_id_2\x18\x04 \x01(\rR\x0fpassiveSkillId2\x12!\n" +
+	"\topen_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x06 \x01(\tR\tcloseDate\"g\n" +
+	"close_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"g\n" +
 	"\x05Quest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1d\n" +
 	"\n" +
@@ -32584,7 +32584,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\venhancement\x18\x05 \x01(\rR\venhancement\x12!\n" +
 	"\fis_protected\x18\x06 \x01(\rR\visProtected\x12\x19\n" +
 	"\blot_type\x18\a \x01(\rR\alotType\x12\x16\n" +
-	"\x06weight\x18\b \x01(\rR\x06weight\"\xc2\b\n" +
+	"\x06weight\x18\b \x01(\rR\x06weight\"\xc8\b\n" +
 	"\vRiskDungeon\x12\x17\n" +
 	"\aarea_id\x18\x01 \x01(\rR\x06areaId\x12\x12\n" +
 	"\x04risk\x18\x02 \x01(\rR\x04risk\x12*\n" +
@@ -32611,8 +32611,8 @@ const file_pmaster_proto_rawDesc = "" +
 	"boost_rate\x18\x15 \x01(\x02R\tboostRate\x12\x1b\n" +
 	"\tclear_exp\x18\x16 \x01(\rR\bclearExp\x121\n" +
 	"\x15clear_reward_group_id\x18\x17 \x01(\rR\x12clearRewardGroupId\x12\x14\n" +
-	"\x05point\x18\x18 \x01(\rR\x05point\x12\x1b\n" +
-	"\topen_date\x18\x19 \x01(\tR\bopenDate\"\xf5\x01\n" +
+	"\x05point\x18\x18 \x01(\rR\x05point\x12!\n" +
+	"\topen_date\x18\x19 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"\xf5\x01\n" +
 	"\x11RiskDungeonConfig\x12\x17\n" +
 	"\aarea_id\x18\x01 \x01(\rR\x06areaId\x12\x1d\n" +
 	"\n" +
@@ -32677,7 +32677,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x19bonus_option_slot3_weight\x18\v \x01(\rR\x16bonusOptionSlot3Weight\"7\n" +
 	"\bRuneSlot\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\trune_type\x18\x02 \x01(\rR\bruneType\"\xe2\x01\n" +
+	"\trune_type\x18\x02 \x01(\rR\bruneType\"\xee\x01\n" +
 	"\n" +
 	"SeasonPass\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
@@ -32685,10 +32685,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0etext_introduce\x18\x03 \x01(\rR\rtextIntroduce\x12#\n" +
 	"\rpremium_price\x18\x04 \x01(\rR\fpremiumPrice\x12\x1f\n" +
 	"\vresource_id\x18\x05 \x01(\rR\n" +
-	"resourceId\x12\x1b\n" +
-	"\topen_date\x18\x06 \x01(\tR\bopenDate\x12\x1d\n" +
+	"resourceId\x12!\n" +
+	"\topen_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\a \x01(\tR\tcloseDate\"\x80\x02\n" +
+	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x80\x02\n" +
 	"\x16SeasonPassDailyMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
 	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
@@ -32717,16 +32717,16 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x03exp\x18\x06 \x01(\rR\x03exp\x12\x1d\n" +
 	"\n" +
 	"start_week\x18\a \x01(\rR\tstartWeek\x12\x16\n" +
-	"\x06target\x18\b \x01(\tR\x06target\"\xa1\x01\n" +
+	"\x06target\x18\b \x01(\tR\x06target\"\xad\x01\n" +
 	"\n" +
 	"SerialCode\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
 	"\vserial_code\x18\x02 \x01(\tR\n" +
 	"serialCode\x12&\n" +
-	"\x0freward_group_id\x18\x03 \x01(\rR\rrewardGroupId\x12\x1b\n" +
-	"\topen_date\x18\x04 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x0freward_group_id\x18\x03 \x01(\rR\rrewardGroupId\x12!\n" +
+	"\topen_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x05 \x01(\tR\tcloseDate\"\xdb\x02\n" +
+	"close_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xdb\x02\n" +
 	"\x04Shop\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\rR\x04type\x12\x19\n" +
@@ -32738,8 +32738,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\fsub_category\x18\b \x01(\rR\vsubCategory\x12*\n" +
 	"\x11text_sub_category\x18\t \x01(\rR\x0ftextSubCategory\x129\n" +
 	"\x19quantity_input_dialog_flg\x18\n" +
-	" \x01(\rR\x16quantityInputDialogFlg\"\xf3\n" +
-	"\n" +
+	" \x01(\rR\x16quantityInputDialogFlg\"\x85\v\n" +
 	"\bShopItem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12)\n" +
@@ -32769,11 +32768,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\n" +
 	"free_count\x18\x16 \x01(\rR\tfreeCount\x12#\n" +
 	"\rfree_interval\x18\x17 \x01(\rR\ffreeInterval\x12.\n" +
-	"\x13beginner_limit_hour\x18\x18 \x01(\rR\x11beginnerLimitHour\x12\x1b\n" +
-	"\topen_date\x18\x19 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\x13beginner_limit_hour\x18\x18 \x01(\rR\x11beginnerLimitHour\x12!\n" +
+	"\topen_date\x18\x19 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x1a \x01(\tR\tcloseDate\x12&\n" +
-	"\x0fsales_stop_date\x18\x1b \x01(\tR\rsalesStopDate\x12\x1e\n" +
+	"close_date\x18\x1a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\x12,\n" +
+	"\x0fsales_stop_date\x18\x1b \x01(\tB\x04\x88\xb5\x18\x01R\rsalesStopDate\x12\x1e\n" +
 	"\vopen_job_lv\x18\x1c \x01(\rR\topenJobLv\x12/\n" +
 	"\x14open_shop_mission_id\x18\x1d \x01(\rR\x11openShopMissionId\x12\x1f\n" +
 	"\vresource_id\x18\x1e \x01(\x05R\n" +
@@ -32794,7 +32793,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\bpriority\x18\x02 \x01(\rR\bpriority\x12\x12\n" +
 	"\x04type\x18\x03 \x01(\rR\x04type\x12\x17\n" +
 	"\aitem_id\x18\x04 \x01(\rR\x06itemId\x12\x14\n" +
-	"\x05price\x18\x05 \x01(\rR\x05price\"\xcf\x01\n" +
+	"\x05price\x18\x05 \x01(\rR\x05price\"\xdb\x01\n" +
 	"\n" +
 	"ShopPickup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12 \n" +
@@ -32803,10 +32802,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\bpriority\x18\x03 \x01(\rR\bpriority\x12\x16\n" +
 	"\x06target\x18\x04 \x01(\tR\x06target\x12\x1f\n" +
 	"\vresource_id\x18\x05 \x01(\x05R\n" +
-	"resourceId\x12\x1b\n" +
-	"\topen_date\x18\x06 \x01(\tR\bopenDate\x12\x1d\n" +
+	"resourceId\x12!\n" +
+	"\topen_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\a \x01(\tR\tcloseDate\"\xe9\x02\n" +
+	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xf5\x02\n" +
 	"\x0fShopSpecialSale\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12 \n" +
 	"\fshop_item_id\x18\x02 \x01(\rR\n" +
@@ -32817,11 +32816,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0eupper_vip_rank\x18\x06 \x01(\rR\fupperVipRank\x12.\n" +
 	"\x13display_primary_num\x18\a \x01(\rR\x11displayPrimaryNum\x12\x1f\n" +
 	"\vresource_id\x18\b \x01(\rR\n" +
-	"resourceId\x12\x1b\n" +
-	"\topen_date\x18\t \x01(\tR\bopenDate\x12\x1d\n" +
+	"resourceId\x12!\n" +
+	"\topen_date\x18\t \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
 	"close_date\x18\n" +
-	" \x01(\tR\tcloseDate\"\xca\r\n" +
+	" \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xca\r\n" +
 	"\aSkillAi\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\rR\agroupId\x12\x1a\n" +
@@ -32966,7 +32965,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x06param4\x18\b \x01(\rR\x06param4\x12&\n" +
 	"\x0freward_group_id\x18\t \x01(\rR\rrewardGroupId\x12\x14\n" +
 	"\x05price\x18\n" +
-	" \x01(\rR\x05price\"\xdc\v\n" +
+	" \x01(\rR\x05price\"\xe8\v\n" +
 	"\x05Stage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x17\n" +
 	"\aarea_id\x18\x02 \x01(\rR\x06areaId\x12\x19\n" +
@@ -33019,10 +33018,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12intrude_dead_count\x18( \x01(\rR\x10intrudeDeadCount\x12.\n" +
 	"\x13is_equipment_record\x18) \x01(\rR\x11isEquipmentRecord\x12#\n" +
 	"\rwinning_point\x18* \x01(\rR\fwinningPoint\x12\x19\n" +
-	"\blap_flag\x18+ \x01(\rR\alapFlag\x12\x1b\n" +
-	"\topen_date\x18, \x01(\tR\bopenDate\x12\x1d\n" +
+	"\blap_flag\x18+ \x01(\rR\alapFlag\x12!\n" +
+	"\topen_date\x18, \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18- \x01(\tR\tcloseDate\"7\n" +
+	"close_date\x18- \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"7\n" +
 	"\n" +
 	"StageGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x19\n" +
@@ -33040,12 +33039,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"\bitem_num\x18\x03 \x01(\rR\aitemNum\x12\x1e\n" +
 	"\vreward_id_1\x18\x04 \x01(\rR\trewardId1\x12\x1e\n" +
 	"\vreward_id_2\x18\x05 \x01(\rR\trewardId2\x12\x10\n" +
-	"\x03exp\x18\x06 \x01(\rR\x03exp\"\x89\x01\n" +
+	"\x03exp\x18\x06 \x01(\rR\x03exp\"\x8f\x01\n" +
 	"\x0fStampRewardStep\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12!\n" +
 	"\ftarget_value\x18\x02 \x01(\rR\vtargetValue\x12&\n" +
-	"\x0freward_group_id\x18\x03 \x01(\rR\rrewardGroupId\x12\x1b\n" +
-	"\topen_date\x18\x04 \x01(\tR\bopenDate\"\xfe\x01\n" +
+	"\x0freward_group_id\x18\x03 \x01(\rR\rrewardGroupId\x12!\n" +
+	"\topen_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"\xfe\x01\n" +
 	"\rStatusAilment\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x125\n" +
 	"\x17status_ailment_group_id\x18\x02 \x01(\rR\x14statusAilmentGroupId\x12\x12\n" +
@@ -33079,7 +33078,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x18StatusAilmentTriggerType\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x16\n" +
-	"\x06param1\x18\x03 \x01(\x02R\x06param1\"\xdb\x01\n" +
+	"\x06param1\x18\x03 \x01(\x02R\x06param1\"\xe7\x01\n" +
 	"\x06Survey\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1f\n" +
@@ -33087,10 +33086,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"textDetail\x12&\n" +
 	"\x0freward_group_id\x18\x04 \x01(\rR\rrewardGroupId\x12\x1f\n" +
 	"\vresource_id\x18\x05 \x01(\rR\n" +
-	"resourceId\x12\x1b\n" +
-	"\topen_date\x18\x06 \x01(\tR\bopenDate\x12\x1d\n" +
+	"resourceId\x12!\n" +
+	"\topen_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\a \x01(\tR\tcloseDate\"e\n" +
+	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"e\n" +
 	"\fSurveyAnswer\x12!\n" +
 	"\fquestions_id\x18\x01 \x01(\rR\vquestionsId\x12\x15\n" +
 	"\x06idx_no\x18\x02 \x01(\rR\x05idxNo\x12\x1b\n" +
@@ -33127,7 +33126,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\tview_type\x18\x02 \x01(\rR\bviewType\x12\x1f\n" +
 	"\vresource_id\x18\x03 \x01(\rR\n" +
-	"resourceId\"\xb1\x04\n" +
+	"resourceId\"\xb7\x04\n" +
 	"\x05Title\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
 	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
@@ -33145,8 +33144,8 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12passive_skill_id_3\x18\v \x01(\rR\x0fpassiveSkillId3\x12+\n" +
 	"\x12passive_skill_id_4\x18\f \x01(\rR\x0fpassiveSkillId4\x12+\n" +
 	"\x12passive_skill_id_5\x18\r \x01(\rR\x0fpassiveSkillId5\x12\x16\n" +
-	"\x06target\x18\x0e \x01(\tR\x06target\x12\x1b\n" +
-	"\topen_date\x18\x0f \x01(\tR\bopenDate\"]\n" +
+	"\x06target\x18\x0e \x01(\tR\x06target\x12!\n" +
+	"\topen_date\x18\x0f \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"]\n" +
 	"\rTitleCategory\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1f\n" +

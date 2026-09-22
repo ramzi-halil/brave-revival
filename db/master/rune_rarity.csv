@@ -1,0 +1,7 @@
+rarity,rarity_up_required_material_quantity,rarity_up_success_rate,rarity_up_cost,required_material_quantity,protect_item_id,lv_down_item_id,bonus_option_slot0_weight,bonus_option_slot1_weight,bonus_option_slot2_weight,bonus_option_slot3_weight
+1,6,1,0,10,50001,50001,1000,100,10,1
+2,6,1,0,8,50001,50001,1000,100,10,1
+3,6,1,0,6,50001,50001,1000,100,10,1
+4,6,1,0,5,50001,50001,1000,100,10,1
+5,6,1,0,4,50001,50001,1000,100,10,1
+6,0,0,0,3,50001,50001,1000,100,10,1

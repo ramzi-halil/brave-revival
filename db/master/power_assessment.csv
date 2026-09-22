@@ -1,0 +1,6 @@
+type,text_name,target,power_assessment_step_id
+2,21400001,anima,1002
+3,21400002,achievement,1003
+4,21400003,field_normal#ui_mode=Agito,1004
+5,21400004,character_elixir,1005
+6,21400005,character_deck,1006
