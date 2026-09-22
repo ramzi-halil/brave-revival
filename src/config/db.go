@@ -62,7 +62,14 @@ var DummyPlayer = &proto.PlayerDetail{
 
 type Resources = map[string]*pmaster.Resources
 
-func LoadResources(f io.Reader) (Resources, error) {
+func LoadResources(dbDir string) (Resources, error) {
+	path := filepath.Join(dbDir, "resources.csv")
+	f, err := os.Open(path)
+	if err != nil {
+		return nil, fmt.Errorf("cannot open resources CSV %q: %w", path, err)
+	}
+	defer f.Close()
+
 	reader := csv.NewReader(f)
 	reader.FieldsPerRecord = 3
 

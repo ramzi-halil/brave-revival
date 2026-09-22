@@ -1,7 +1,8 @@
 package config_test
 
 import (
-	"strings"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"example.com/brave-revival/src/config"
@@ -16,8 +17,9 @@ const sampleResources = `id,ios,android
 `
 
 func TestLoadResources(t *testing.T) {
-	f := strings.NewReader(sampleResources)
-	actual, err := config.LoadResources(f)
+	dbDir := t.TempDir()
+	require.NoError(t, os.WriteFile(filepath.Join(dbDir, "resources.csv"), []byte(sampleResources), 0o600))
+	actual, err := config.LoadResources(dbDir)
 
 	require.NoError(t, err)
 	require.Equal(t, config.Resources{

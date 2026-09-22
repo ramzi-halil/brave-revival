@@ -3,8 +3,6 @@ package www
 import (
 	"fmt"
 	"net/http"
-	"os"
-	"path/filepath"
 
 	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/pcommon"
@@ -34,12 +32,7 @@ func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error
 		return nil, fmt.Errorf("failed to load master: %w", err)
 	}
 
-	resourcesFile, err := os.Open(filepath.Join(cfg.DBDir, "resources.csv"))
-	if err != nil {
-		return nil, err
-	}
-	defer resourcesFile.Close()
-	resources, err := config.LoadResources(resourcesFile)
+	resources, err := config.LoadResources(cfg.DBDir)
 	if err != nil {
 		return nil, err
 	}
