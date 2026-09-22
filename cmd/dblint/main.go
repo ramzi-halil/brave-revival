@@ -57,13 +57,27 @@ func getInteger(message protoreflect.Message, field protoreflect.FieldDescriptor
 type foreignKey struct {
 	sourceTable protoreflect.FieldDescriptor
 	sourceField protoreflect.FieldDescriptor
-	targetName  string
+	target      string
 	targetIDs   map[integerValue]struct{}
 }
 
-func collectForeignKeys(master protoreflect.Message) ([]foreignKey, error) {
+func collectResourceIDs(resources config.Resources) map[integerValue]struct{} {
+	ids := make(map[integerValue]struct{})
+	for _, catalog := range resources {
+		if catalog == nil {
+			continue
+		}
+		for id := range catalog.Resource {
+			ids[integerValue{magnitude: uint64(id)}] = struct{}{}
+		}
+	}
+	return ids
+}
+
+func collectForeignKeys(master protoreflect.Message, resources config.Resources) ([]foreignKey, error) {
 	allFields := master.Descriptor().Fields()
 	targets := make(map[string]map[integerValue]struct{})
+	resourceIDs := collectResourceIDs(resources)
 	var foreignKeys []foreignKey
 
 	for i := range allFields.Len() {
@@ -72,6 +86,19 @@ func collectForeignKeys(master protoreflect.Message) ([]foreignKey, error) {
 		for j := range sourceFields.Len() {
 			sourceField := sourceFields.Get(j)
 			fk := proto.GetExtension(sourceField.Options(), options.E_Fk).(string)
+			if fk == "resources" {
+				if !isIntegerKind(sourceField.Kind()) {
+					return nil, fmt.Errorf("field %s is %s, not an integer", sourceField.FullName(), sourceField.Kind())
+				}
+				foreignKeys = append(foreignKeys, foreignKey{
+					sourceTable: sourceTable,
+					sourceField: sourceField,
+					target:      fk,
+					targetIDs:   resourceIDs,
+				})
+				continue
+			}
+
 			targetName, ok := strings.CutPrefix(fk, "master/")
 			if !ok {
 				continue
@@ -106,7 +133,7 @@ func collectForeignKeys(master protoreflect.Message) ([]foreignKey, error) {
 			foreignKeys = append(foreignKeys, foreignKey{
 				sourceTable: sourceTable,
 				sourceField: sourceField,
-				targetName:  targetName,
+				target:      fk,
 				targetIDs:   targetIDs,
 			})
 		}
@@ -122,9 +149,9 @@ type missingReference struct {
 	firstRow   int
 }
 
-func lintMaster(all *pmaster.All) error {
+func lintMaster(all *pmaster.All, resources config.Resources) error {
 	master := all.ProtoReflect()
-	foreignKeys, err := collectForeignKeys(master)
+	foreignKeys, err := collectForeignKeys(master, resources)
 	if err != nil {
 		return err
 	}
@@ -163,9 +190,9 @@ func lintMaster(all *pmaster.All) error {
 	lines := make([]string, len(missing))
 	for i, entry := range missing {
 		lines[i] = fmt.Sprintf(
-			"master/%s.%s references missing id %s in master/%s (%d row(s), first at row %d)",
+			"master/%s.%s references missing id %s in %s (%d row(s), first at row %d)",
 			entry.foreignKey.sourceTable.Name(), entry.foreignKey.sourceField.Name(), entry.value.String(),
-			entry.foreignKey.targetName, entry.count, entry.firstRow,
+			entry.foreignKey.target, entry.count, entry.firstRow,
 		)
 	}
 	return fmt.Errorf("found %d missing foreign key value(s):\n%s", len(missing), strings.Join(lines, "\n"))
@@ -184,8 +211,13 @@ func run() error {
 		return fmt.Errorf("failed to load master: %w", err)
 	}
 
-	if err = lintMaster(master); err != nil {
-		return nil
+	resources, err := config.LoadResources(cfg.DBDir)
+	if err != nil {
+		return fmt.Errorf("failed to load resources: %w", err)
+	}
+
+	if err = lintMaster(master, resources); err != nil {
+		return err
 	}
 
 	slog.Info("Success!")
@@ -200,7 +232,7 @@ func main() {
 		os.Exit(1)
 	}
 	if err := run(); err != nil {
-		slog.Error("Error", "err", err)
+		fmt.Println("Error", err)
 		os.Exit(1)
 	}
 }

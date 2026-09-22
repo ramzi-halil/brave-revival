@@ -276,21 +276,21 @@ message All {
 
 message Achievement {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
-    uint32 achievement_category_id = 4;
+    uint32 achievement_category_id = 4 [(options.fk) = "master/achievement_category"];
     uint32 achievement_point = 5;
-    uint32 preview_achievement_id = 6;
+    uint32 preview_achievement_id = 6 [(options.fk) = "master/achievement"];
     uint32 type_value = 7;
     uint32 display_priority = 8;
-    uint32 reward_group_id = 9;
+    uint32 reward_group_id = 9 [(options.fk) = "master/reward_group"];
     string open_date = 10 [(options.datetime) = true];
 }
 
 message AchievementCategory {
     uint32 id = 1;
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
-    uint32 resource_id = 3;
+    uint32 resource_id = 3 [(options.fk) = "resources"];
 }
 
 message AchievementEquipment {
@@ -299,14 +299,14 @@ message AchievementEquipment {
     uint32 priority = 3;
     uint32 type = 4;
     uint32 type_value = 5;
-    uint32 target_equipment_job_id = 6;
+    uint32 target_equipment_job_id = 6 [(options.fk) = "master/job"];
     uint32 target_equipment_category = 7;
     uint32 target_equipment_part = 8;
     uint32 category = 9;
     string category_value = 10;
-    uint32 passive_skill_id_1 = 11;
-    uint32 passive_skill_id_2 = 12;
-    uint32 passive_skill_id_3 = 13;
+    uint32 passive_skill_id_1 = 11 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 12 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 13 [(options.fk) = "master/passive_skill"];
     uint32 stamp_point = 14;
     string open_date = 15 [(options.datetime) = true];
 }
@@ -314,19 +314,19 @@ message AchievementEquipment {
 message AchievementRank {
     uint32 id = 1;
     uint32 achievement_point = 2;
-    uint32 passive_skill_id_1 = 3;
-    uint32 passive_skill_id_2 = 4;
-    uint32 passive_skill_id_3 = 5;
-    uint32 passive_skill_id_4 = 6;
-    uint32 passive_skill_id_5 = 7;
-    uint32 passive_skill_id_6 = 8;
-    uint32 passive_skill_id_7 = 9;
-    uint32 reward_group_id = 10;
+    uint32 passive_skill_id_1 = 3 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 4 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 5 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_4 = 6 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_5 = 7 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_6 = 8 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_7 = 9 [(options.fk) = "master/passive_skill"];
+    uint32 reward_group_id = 10 [(options.fk) = "master/reward_group"];
 }
 
 message ActiveSkill {
     uint32 id = 1;
-    uint32 active_skill_group_id = 2;
+    uint32 active_skill_group_id = 2 [(options.fk) = "master/active_skill_group"];
     uint32 mp = 3;
     float min_cast_time = 4;
     float max_cast_time = 5;
@@ -334,9 +334,9 @@ message ActiveSkill {
     float max_cool_time = 7;
     float initial_min_cool_time = 8;
     float initial_max_cool_time = 9;
-    uint32 meta_tag_id_1 = 10;
-    uint32 meta_tag_id_2 = 11;
-    uint32 meta_tag_id_3 = 12;
+    uint32 meta_tag_id_1 = 10 [(options.fk) = "master/active_skill_meta_tag"];
+    uint32 meta_tag_id_2 = 11 [(options.fk) = "master/active_skill_meta_tag"];
+    uint32 meta_tag_id_3 = 12 [(options.fk) = "master/active_skill_meta_tag"];
 }
 
 message ActiveSkillGroup {
@@ -344,7 +344,7 @@ message ActiveSkillGroup {
     uint32 skill_type = 2;
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 skill_ai_group_id = 4;
-    uint32 resource_id = 5;
+    uint32 resource_id = 5 [(options.fk) = "resources"];
     uint32 balloon_priority = 6;
     uint32 state_num = 7;
     uint32 cast_circle_type = 8;
@@ -367,14 +367,14 @@ message Advertising {
 }
 
 message AdvertisingMission {
-    uint32 advertising_id = 1;
+    uint32 advertising_id = 1 [(options.fk) = "master/advertising"];
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
     uint32 text_description = 3 [(options.fk) = "master/text_lang"];
-    uint32 reward_group_id = 4;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
 }
 
 message AgitoApItem {
-    uint32 item_id = 1;
+    uint32 item_id = 1 [(options.fk) = "master/item"];
     uint32 ap = 2;
     uint32 lot_cost = 3;
     uint32 lot_interval = 4;
@@ -386,14 +386,14 @@ message AgitoApItem {
 }
 
 message AgitoFurniture {
-    uint32 item_id = 1;
+    uint32 item_id = 1 [(options.fk) = "master/item"];
     uint32 type = 2;
-    uint32 thumbnail_resource_id = 3;
-    uint32 resource_id = 4;
+    uint32 thumbnail_resource_id = 3 [(options.fk) = "resources"];
+    uint32 resource_id = 4 [(options.fk) = "resources"];
 }
 
 message AgitoItem {
-    uint32 item_id = 1;
+    uint32 item_id = 1 [(options.fk) = "master/item"];
     uint32 agito_visitor_lineup_id_1 = 2;
     uint32 agito_visitor_lineup_id_2 = 3;
     uint32 agito_visitor_lineup_id_3 = 4;
@@ -401,52 +401,52 @@ message AgitoItem {
     uint32 group_id_1_weight = 6;
     uint32 group_id_2_weight = 7;
     uint32 group_id_3_weight = 8;
-    uint32 resource_id = 9;
+    uint32 resource_id = 9 [(options.fk) = "resources"];
 }
 
 message AgitoItemArea {
     uint32 id = 1;
     uint32 agito_item_type = 2;
-    uint32 except_agito_item_area_id_1 = 3;
-    uint32 except_agito_item_area_id_2 = 4;
-    uint32 except_agito_item_area_id_3 = 5;
+    uint32 except_agito_item_area_id_1 = 3 [(options.fk) = "master/agito_item_area"];
+    uint32 except_agito_item_area_id_2 = 4 [(options.fk) = "master/agito_item_area"];
+    uint32 except_agito_item_area_id_3 = 5 [(options.fk) = "master/agito_item_area"];
 }
 
 message AgitoRoomPreset {
     uint32 id = 1;
     uint32 agito_room_preset_group_id = 2;
-    uint32 favorite_equipment_id_1 = 3;
-    uint32 favorite_equipment_id_2 = 4;
-    uint32 favorite_equipment_id_3 = 5;
-    uint32 wall_paper_item_id = 6;
-    uint32 floor_board_item_id = 7;
-    uint32 table_set_item_id = 8;
-    uint32 special_floor_item_id = 9;
-    uint32 wall_medium_item_id_1 = 10;
-    uint32 wall_medium_item_id_2 = 11;
-    uint32 wall_medium_item_id_3 = 12;
-    uint32 wall_medium_item_id_4 = 13;
-    uint32 wall_medium_item_id_5 = 14;
-    uint32 wall_small_item_id_1 = 15;
-    uint32 wall_small_item_id_2 = 16;
-    uint32 wall_small_item_id_3 = 17;
-    uint32 wall_small_item_id_4 = 18;
-    uint32 wall_small_item_id_5 = 19;
-    uint32 wall_small_item_id_6 = 20;
+    uint32 favorite_equipment_id_1 = 3 [(options.fk) = "master/equipment"];
+    uint32 favorite_equipment_id_2 = 4 [(options.fk) = "master/equipment"];
+    uint32 favorite_equipment_id_3 = 5 [(options.fk) = "master/equipment"];
+    uint32 wall_paper_item_id = 6 [(options.fk) = "master/item"];
+    uint32 floor_board_item_id = 7 [(options.fk) = "master/item"];
+    uint32 table_set_item_id = 8 [(options.fk) = "master/item"];
+    uint32 special_floor_item_id = 9 [(options.fk) = "master/item"];
+    uint32 wall_medium_item_id_1 = 10 [(options.fk) = "master/item"];
+    uint32 wall_medium_item_id_2 = 11 [(options.fk) = "master/item"];
+    uint32 wall_medium_item_id_3 = 12 [(options.fk) = "master/item"];
+    uint32 wall_medium_item_id_4 = 13 [(options.fk) = "master/item"];
+    uint32 wall_medium_item_id_5 = 14 [(options.fk) = "master/item"];
+    uint32 wall_small_item_id_1 = 15 [(options.fk) = "master/item"];
+    uint32 wall_small_item_id_2 = 16 [(options.fk) = "master/item"];
+    uint32 wall_small_item_id_3 = 17 [(options.fk) = "master/item"];
+    uint32 wall_small_item_id_4 = 18 [(options.fk) = "master/item"];
+    uint32 wall_small_item_id_5 = 19 [(options.fk) = "master/item"];
+    uint32 wall_small_item_id_6 = 20 [(options.fk) = "master/item"];
 }
 
 message AgitoRoomPresetArea {
     uint32 group_id = 1;
     uint32 seq = 2;
-    uint32 agito_item_area_id = 3;
-    uint32 item_id = 4;
-    uint32 agito_visitor_lineup_id_1 = 5;
-    uint32 agito_visitor_lineup_id_2 = 6;
-    uint32 agito_visitor_lineup_id_3 = 7;
+    uint32 agito_item_area_id = 3 [(options.fk) = "master/agito_item_area"];
+    uint32 item_id = 4 [(options.fk) = "master/item"];
+    uint32 agito_visitor_lineup_id_1 = 5 [(options.fk) = "master/agito_visitor_lineup"];
+    uint32 agito_visitor_lineup_id_2 = 6 [(options.fk) = "master/agito_visitor_lineup"];
+    uint32 agito_visitor_lineup_id_3 = 7 [(options.fk) = "master/agito_visitor_lineup"];
 }
 
 message AgitoVisitor {
-    uint32 equipment_id = 1;
+    uint32 equipment_id = 1 [(options.fk) = "master/equipment"];
     uint32 base_visitor_point = 2;
     uint32 max_visitor_point = 3;
     uint32 stay_interval = 4;
@@ -454,9 +454,9 @@ message AgitoVisitor {
     uint32 text_description_id_1 = 6 [(options.fk) = "master/text_lang"];
     uint32 text_description_id_2 = 7 [(options.fk) = "master/text_lang"];
     uint32 text_flavor = 8 [(options.fk) = "master/text_lang"];
-    uint32 agito_visitor_point_reward_id = 9;
-    uint32 resource_id = 10;
-    uint32 agito_visitor_voice_id = 11;
+    uint32 agito_visitor_point_reward_id = 9 [(options.fk) = "master/agito_visitor_point_reward"];
+    uint32 resource_id = 10 [(options.fk) = "resources"];
+    uint32 agito_visitor_voice_id = 11 [(options.fk) = "master/agito_visitor_voice"];
     string open_date = 12 [(options.datetime) = true];
 }
 
@@ -464,9 +464,9 @@ message AgitoVisitorCountReward {
     uint32 seq = 1;
     uint32 type = 2;
     uint32 value = 3;
-    uint32 reward_group_id = 4;
-    uint32 passive_skill_id_1 = 5;
-    uint32 passive_skill_id_2 = 6;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
+    uint32 passive_skill_id_1 = 5 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 6 [(options.fk) = "master/passive_skill"];
 }
 
 message AgitoVisitorLineup {
@@ -474,9 +474,9 @@ message AgitoVisitorLineup {
     uint32 lineup_id = 2;
     uint32 group_id = 3;
     uint32 seq = 4;
-    uint32 equipment_id = 5;
+    uint32 equipment_id = 5 [(options.fk) = "master/equipment"];
     uint32 motion_pattern = 6;
-    uint32 reward_group_id = 7;
+    uint32 reward_group_id = 7 [(options.fk) = "master/reward_group"];
     uint32 weight = 8;
 }
 
@@ -484,7 +484,7 @@ message AgitoVisitorPointReward {
     uint32 id = 1;
     uint32 seq = 2;
     uint32 value = 3;
-    uint32 reward_group_id = 4;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
 }
 
 message AgitoVisitorVoice {
@@ -507,43 +507,43 @@ message AgitoVisitorVoice {
 }
 
 message AncientTowerConfig {
-    uint32 stage_id = 1;
+    uint32 stage_id = 1 [(options.fk) = "master/stage"];
     uint32 floor_no = 2;
     uint32 exp = 3;
-    uint32 reward_group_id = 4;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
 }
 
 message AncientTowerExConfig {
-    uint32 contents_id = 1;
-    uint32 stage_id = 2;
+    uint32 contents_id = 1 [(options.fk) = "master/contents"];
+    uint32 stage_id = 2 [(options.fk) = "master/stage"];
     uint32 floor_no = 3;
     uint32 provisional_clear_time = 4;
 }
 
 message AngelBattleReward {
-    uint32 stage_id = 1;
-    uint32 join_reward_group_id = 2;
-    uint32 clear_reward_group_id = 3;
-    uint32 damage_ranking_reward_id = 4;
+    uint32 stage_id = 1 [(options.fk) = "master/stage"];
+    uint32 join_reward_group_id = 2 [(options.fk) = "master/reward_group"];
+    uint32 clear_reward_group_id = 3 [(options.fk) = "master/reward_group"];
+    uint32 damage_ranking_reward_id = 4 [(options.fk) = "master/ranking_reward"];
 }
 
 message AngelBattleWeeklyReward {
     uint32 stage_id = 1;
-    uint32 weekly_reward_group_id = 2;
-    uint32 assist_reward_group_id = 3;
+    uint32 weekly_reward_group_id = 2 [(options.fk) = "master/reward_group"];
+    uint32 assist_reward_group_id = 3 [(options.fk) = "master/reward_group"];
     uint32 assist_reward_limit = 4;
 }
 
 message AnimaArea {
     uint32 id = 1;
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
-    uint32 anima_category_id = 3;
+    uint32 anima_category_id = 3 [(options.fk) = "master/anima_category"];
     uint32 area_reward = 4;
-    uint32 reward_group_id_20 = 5;
-    uint32 reward_group_id_40 = 6;
-    uint32 reward_group_id_60 = 7;
-    uint32 reward_group_id_80 = 8;
-    uint32 reward_group_id_100 = 9;
+    uint32 reward_group_id_20 = 5 [(options.fk) = "master/reward_group"];
+    uint32 reward_group_id_40 = 6 [(options.fk) = "master/reward_group"];
+    uint32 reward_group_id_60 = 7 [(options.fk) = "master/reward_group"];
+    uint32 reward_group_id_80 = 8 [(options.fk) = "master/reward_group"];
+    uint32 reward_group_id_100 = 9 [(options.fk) = "master/reward_group"];
 }
 
 message AnimaCategory {
@@ -554,51 +554,51 @@ message AnimaCategory {
 message AnimaPage {
     uint32 id = 1;
     uint32 type = 2;
-    uint32 monster_id = 3;
+    uint32 monster_id = 3 [(options.fk) = "master/monster"];
     uint32 ordinary = 4;
-    uint32 item_id = 5;
-    uint32 anima_area_id = 6;
-    uint32 stage_id = 7;
-    uint32 trigger_quest_stage_id = 8;
+    uint32 item_id = 5 [(options.fk) = "master/item"];
+    uint32 anima_area_id = 6 [(options.fk) = "master/anima_area"];
+    uint32 stage_id = 7 [(options.fk) = "master/stage"];
+    uint32 trigger_quest_stage_id = 8 [(options.fk) = "master/stage"];
     string open_date = 9 [(options.datetime) = true];
 }
 
 message AnimaPageLevel {
-    uint32 anima_page_id = 1;
+    uint32 anima_page_id = 1 [(options.fk) = "master/anima_page"];
     uint32 level = 2;
     uint32 require = 3;
-    uint32 passive_skill_id_1 = 4;
-    uint32 passive_skill_id_2 = 5;
-    uint32 passive_skill_id_3 = 6;
+    uint32 passive_skill_id_1 = 4 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 5 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 6 [(options.fk) = "master/passive_skill"];
 }
 
 message AprilFool {
     uint32 id = 1;
     uint32 april_fool_member_group_id = 2;
-    uint32 agito_room_preset_id = 3;
+    uint32 agito_room_preset_id = 3 [(options.fk) = "master/agito_room_preset"];
     string open_date = 4 [(options.datetime) = true];
     string close_date = 5 [(options.datetime) = true];
 }
 
 message AprilFoolMember {
     uint32 group_id = 1;
-    uint32 member_id = 2;
-    uint32 equipment_character_id = 3;
+    uint32 member_id = 2 [(options.fk) = "master/member"];
+    uint32 equipment_character_id = 3 [(options.fk) = "master/equipment_character"];
 }
 
 message Area {
     uint32 id = 1;
-    uint32 contents_id = 2;
+    uint32 contents_id = 2 [(options.fk) = "master/contents"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 text_description1 = 4 [(options.fk) = "master/text_lang"];
     uint32 text_description2 = 5 [(options.fk) = "master/text_lang"];
-    uint32 unlock_story_stage_id = 6;
-    uint32 resource_id_1 = 7;
-    uint32 resource_id_2 = 8;
+    uint32 unlock_story_stage_id = 6 [(options.fk) = "master/stage"];
+    uint32 resource_id_1 = 7 [(options.fk) = "resources"];
+    uint32 resource_id_2 = 8 [(options.fk) = "resources"];
     uint32 playable_time_group_id = 9;
     uint32 weekday = 10;
-    uint32 event_id = 11;
-    uint32 button_resource_id = 12;
+    uint32 event_id = 11 [(options.fk) = "master/event"];
+    uint32 button_resource_id = 12 [(options.fk) = "resources"];
     uint32 designation_attribute = 13;
     string open_date = 14 [(options.datetime) = true];
     string close_date = 15 [(options.datetime) = true];
@@ -607,7 +607,7 @@ message Area {
 message ArenaPointReward {
     uint32 id = 1;
     uint32 required_pt = 2;
-    uint32 reward_group_id = 3;
+    uint32 reward_group_id = 3 [(options.fk) = "master/reward_group"];
 }
 
 message ArenaRank {
@@ -630,7 +630,7 @@ message ArenaRank {
 
 message Banner {
     uint32 id = 1;
-    uint32 resource_id = 2;
+    uint32 resource_id = 2 [(options.fk) = "resources"];
     uint32 display_priority = 3;
     string target = 4;
     string open_date = 5 [(options.datetime) = true];
@@ -648,7 +648,7 @@ message Boost {
     uint32 id = 1;
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
     uint32 text_description = 3 [(options.fk) = "master/text_lang"];
-    uint32 resource_id = 4;
+    uint32 resource_id = 4 [(options.fk) = "resources"];
     uint32 effect_target = 5;
     uint32 source_type = 6;
     uint32 source_main = 7;
@@ -668,7 +668,7 @@ message Boost {
 message BoostGroup {
     uint32 id = 1;
     uint32 seq = 2;
-    uint32 boost_id = 3;
+    uint32 boost_id = 3 [(options.fk) = "master/boost"];
 }
 
 message Chapter {
@@ -682,8 +682,8 @@ message Combo {
     uint32 id = 1;
     uint32 lv = 2;
     uint32 combo_count = 3;
-    uint32 passive_skill_id_1 = 4;
-    uint32 passive_skill_id_2 = 5;
+    uint32 passive_skill_id_1 = 4 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 5 [(options.fk) = "master/passive_skill"];
     uint32 text_effect_label1 = 6 [(options.fk) = "master/text_lang"];
     uint32 text_effect_label2 = 7 [(options.fk) = "master/text_lang"];
 }
@@ -693,12 +693,12 @@ message ConditionCategory {
     uint32 condition_type_id = 2;
     uint32 text_category = 3 [(options.fk) = "master/text_lang"];
     uint32 text_description = 4 [(options.fk) = "master/text_lang"];
-    uint32 condition_group_id = 5;
+    uint32 condition_group_id = 5 [(options.fk) = "master/condition_group"];
 }
 
 message ConditionGroup {
     uint32 id = 1;
-    uint32 condition_id = 2;
+    uint32 condition_id = 2 [(options.fk) = "master/conditions"];
 }
 
 message Conditions {
@@ -725,7 +725,7 @@ message Contents {
     uint32 text_description1 = 3 [(options.fk) = "master/text_lang"];
     uint32 text_description2 = 4 [(options.fk) = "master/text_lang"];
     uint32 display_priority = 5;
-    uint32 resource_id = 6;
+    uint32 resource_id = 6 [(options.fk) = "resources"];
     uint32 type = 7;
     uint32 cost_consume_type = 8;
     uint32 challenge_unit = 9;
@@ -734,7 +734,7 @@ message Contents {
     uint32 special_cost_group_id = 12;
     int32 challenge_max_num = 13;
     int32 special_challenge_max_num = 14;
-    uint32 contents_resource_id = 15;
+    uint32 contents_resource_id = 15 [(options.fk) = "master/contents_resource"];
     uint32 playable_time_group_id = 16;
     uint32 battle_time_limit = 17;
     uint32 bgm_id = 18;
@@ -744,21 +744,21 @@ message Contents {
 }
 
 message ContentsAncientTowerEx {
-    uint32 contents_id = 1;
-    uint32 unlock_stage_id = 2;
-    uint32 background_resource_id = 3;
+    uint32 contents_id = 1 [(options.fk) = "master/contents"];
+    uint32 unlock_stage_id = 2 [(options.fk) = "master/stage"];
+    uint32 background_resource_id = 3 [(options.fk) = "resources"];
     uint32 min_job_lv = 4;
     uint32 max_job_lv = 5;
     uint32 min_cp = 6;
     uint32 max_cp = 7;
-    uint32 contents_ranking_id = 8;
+    uint32 contents_ranking_id = 8 [(options.fk) = "master/contents_ranking"];
 }
 
 message ContentsCost {
     uint32 group_id = 1;
     uint32 num = 2;
     uint32 payment_type = 3;
-    uint32 item_id = 4;
+    uint32 item_id = 4 [(options.fk) = "master/item"];
     uint32 cost = 5;
 }
 
@@ -768,32 +768,32 @@ message ContentsRanking {
     uint32 score_decimal_place = 3;
     string open_date = 4 [(options.datetime) = true];
     string close_date = 5 [(options.datetime) = true];
-    uint32 ranking_reward_id = 6;
+    uint32 ranking_reward_id = 6 [(options.fk) = "master/ranking_reward"];
 }
 
 message ContentsResource {
     uint32 id = 1;
-    uint32 target_id = 2;
+    uint32 target_id = 2 [(options.fk) = "master/stage"];
     uint32 type = 3;
-    uint32 item_id = 4;
+    uint32 item_id = 4 [(options.fk) = "master/item"];
     uint32 cost = 5;
 }
 
 message DailyMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 point = 4;
     uint32 type_value = 5;
     uint32 display_priority = 6;
     string target = 7;
-    uint32 reward_group_id = 8;
+    uint32 reward_group_id = 8 [(options.fk) = "master/reward_group"];
 }
 
 message DailyMissionReward {
     uint32 id = 1;
     uint32 point = 2;
-    uint32 reward_group_id = 3;
+    uint32 reward_group_id = 3 [(options.fk) = "master/reward_group"];
 }
 
 message EffectStatusGroup {
@@ -811,21 +811,21 @@ message Elixir {
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 max_lv = 4;
     uint32 unlock_total_job_lv = 5;
-    uint32 essence_item_id = 6;
+    uint32 essence_item_id = 6 [(options.fk) = "master/item"];
     uint32 essence_count = 7;
-    uint32 bean_item_id_1 = 8;
-    uint32 bean_item_id_2 = 9;
-    uint32 bean_item_id_3 = 10;
-    uint32 bean_item_id_4 = 11;
+    uint32 bean_item_id_1 = 8 [(options.fk) = "master/item"];
+    uint32 bean_item_id_2 = 9 [(options.fk) = "master/item"];
+    uint32 bean_item_id_3 = 10 [(options.fk) = "master/item"];
+    uint32 bean_item_id_4 = 11 [(options.fk) = "master/item"];
     uint32 bean_count1 = 12;
     uint32 bean_count2 = 13;
     uint32 bean_count3 = 14;
     uint32 bean_count4 = 15;
     uint32 required_lupi = 16;
-    uint32 passive_skill_id_1 = 17;
-    uint32 passive_skill_id_2 = 18;
-    uint32 passive_skill_id_3 = 19;
-    uint32 passive_skill_id_4 = 20;
+    uint32 passive_skill_id_1 = 17 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 18 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 19 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_4 = 20 [(options.fk) = "master/passive_skill"];
 }
 
 message EnhancementBonus {
@@ -836,8 +836,8 @@ message EnhancementBonus {
 message EnhancementRank {
     uint32 equipment_category = 1;
     uint32 rank = 2;
-    uint32 material_id = 3;
-    uint32 blessing_material_id = 4;
+    uint32 material_id = 3 [(options.fk) = "master/item"];
+    uint32 blessing_material_id = 4 [(options.fk) = "master/item"];
     uint32 required_material_quantity = 5;
     uint32 required_boost_quantity = 6;
     float success_rate = 7;
@@ -852,9 +852,9 @@ message EnhancementRank {
 message Episode {
     uint32 id = 1;
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
-    uint32 chapter_id = 3;
+    uint32 chapter_id = 3 [(options.fk) = "master/chapter"];
     uint32 unlock_lv = 4;
-    uint32 reward_group_id = 5;
+    uint32 reward_group_id = 5 [(options.fk) = "master/reward_group"];
     string open_date = 6 [(options.datetime) = true];
     string close_date = 7 [(options.datetime) = true];
 }
@@ -862,51 +862,51 @@ message Episode {
 message Equipment {
     uint32 id = 1;
     uint32 gender = 2;
-    uint32 member_id = 3;
-    uint32 equipment_character_id = 4;
+    uint32 member_id = 3 [(options.fk) = "master/member"];
+    uint32 equipment_character_id = 4 [(options.fk) = "master/equipment_character"];
     uint32 text_name = 5 [(options.fk) = "master/text_lang"];
-    uint32 icon_m = 6;
-    uint32 icon_l = 7;
-    uint32 icon_ll = 8;
-    uint32 icon_xl = 9;
+    uint32 icon_m = 6 [(options.fk) = "resources"];
+    uint32 icon_l = 7 [(options.fk) = "resources"];
+    uint32 icon_ll = 8 [(options.fk) = "resources"];
+    uint32 icon_xl = 9 [(options.fk) = "resources"];
     string bg_rgb = 10;
     uint32 special_effect_monster_category = 11;
     uint32 special_effect_race = 12;
     uint32 equipment_group_id = 13;
-    uint32 job_id = 14;
+    uint32 job_id = 14 [(options.fk) = "master/job"];
     uint32 equipment_category = 15;
-    uint32 normal_active_skill_id = 16;
+    uint32 normal_active_skill_id = 16 [(options.fk) = "master/active_skill"];
     uint32 target_param_option_group_id = 17;
-    uint32 limit_break_item_id = 18;
-    uint32 equipment_awakening_id = 19;
-    uint32 awakening_resource_id = 20;
+    uint32 limit_break_item_id = 18 [(options.fk) = "master/item"];
+    uint32 equipment_awakening_id = 19 [(options.fk) = "master/equipment_awakening"];
+    uint32 awakening_resource_id = 20 [(options.fk) = "resources"];
     uint32 hair_type = 21;
-    uint32 rune_slot_id_1 = 22;
-    uint32 rune_slot_id_2 = 23;
-    uint32 rune_slot_id_3 = 24;
-    uint32 rune_slot_id_4 = 25;
-    uint32 rune_slot_id_5 = 26;
-    uint32 rune_slot_id_6 = 27;
-    uint32 rune_slot_id_7 = 28;
-    uint32 rune_slot_id_8 = 29;
-    uint32 rune_slot_id_9 = 30;
-    uint32 rune_slot_id_10 = 31;
-    uint32 rune_slot_id_11 = 32;
-    uint32 rune_slot_id_12 = 33;
-    uint32 rune_slot_id_ex = 34;
-    uint32 rune_slot_id_ex2 = 35;
+    uint32 rune_slot_id_1 = 22 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_2 = 23 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_3 = 24 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_4 = 25 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_5 = 26 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_6 = 27 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_7 = 28 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_8 = 29 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_9 = 30 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_10 = 31 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_11 = 32 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_12 = 33 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_ex = 34 [(options.fk) = "master/rune_slot"];
+    uint32 rune_slot_id_ex2 = 35 [(options.fk) = "master/rune_slot"];
     uint32 evolution_lot_weight_rarity1 = 36;
     uint32 evolution_lot_weight_rarity2 = 37;
     uint32 evolution_lot_weight_rarity3 = 38;
     uint32 evolution_lot_weight_rarity4 = 39;
     uint32 evolution_lot_weight_rarity5 = 40;
-    uint32 event_id = 41;
+    uint32 event_id = 41 [(options.fk) = "master/event"];
     uint32 max_rarity = 42;
     uint32 type = 43;
     uint32 weapon_effect_type = 44;
     uint32 display_skin_icon_flag = 45;
-    uint32 equipment_recycle_id = 46;
-    uint32 trying_on_base_equipment_character_id = 47;
+    uint32 equipment_recycle_id = 46 [(options.fk) = "master/equipment_recycle"];
+    uint32 trying_on_base_equipment_character_id = 47 [(options.fk) = "master/equipment_character"];
     string open_date = 48 [(options.datetime) = true];
     uint32 release_flag = 49;
 }
@@ -914,7 +914,7 @@ message Equipment {
 message EquipmentAwakening {
     uint32 id = 1;
     uint32 lv = 2;
-    uint32 recipe_id = 3;
+    uint32 recipe_id = 3 [(options.fk) = "master/equipment_awakening_recipe"];
     uint32 unlock_limit_break = 4;
     uint32 hp = 5;
     uint32 attack = 6;
@@ -924,26 +924,26 @@ message EquipmentAwakening {
     uint32 dodge = 10;
     uint32 critical = 11;
     uint32 agility = 12;
-    uint32 passive_skill_id_1 = 13;
-    uint32 passive_skill_id_2 = 14;
-    uint32 passive_skill_id_3 = 15;
-    uint32 passive_skill_id_4 = 16;
-    uint32 passive_skill_id_5 = 17;
+    uint32 passive_skill_id_1 = 13 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 14 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 15 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_4 = 16 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_5 = 17 [(options.fk) = "master/passive_skill"];
 }
 
 message EquipmentAwakeningRecipe {
     uint32 id = 1;
-    uint32 item_id_1 = 2;
+    uint32 item_id_1 = 2 [(options.fk) = "master/item"];
     uint32 item_count1 = 3;
-    uint32 item_id_2 = 4;
+    uint32 item_id_2 = 4 [(options.fk) = "master/item"];
     uint32 item_count2 = 5;
-    uint32 item_id_3 = 6;
+    uint32 item_id_3 = 6 [(options.fk) = "master/item"];
     uint32 item_count3 = 7;
-    uint32 item_id_4 = 8;
+    uint32 item_id_4 = 8 [(options.fk) = "master/item"];
     uint32 item_count4 = 9;
-    uint32 item_id_5 = 10;
+    uint32 item_id_5 = 10 [(options.fk) = "master/item"];
     uint32 item_count5 = 11;
-    uint32 item_id_6 = 12;
+    uint32 item_id_6 = 12 [(options.fk) = "master/item"];
     uint32 item_count6 = 13;
     uint32 lupi = 14;
 }
@@ -957,13 +957,13 @@ message EquipmentAwakeningReset {
 
 message EquipmentCharacter {
     uint32 id = 1;
-    uint32 weapon_model_id = 2;
-    uint32 hair_model_id = 3;
-    uint32 face_model_id = 4;
-    uint32 head_model_id = 5;
-    uint32 upper_body_model_id = 6;
-    uint32 lower_body_model_id = 7;
-    uint32 device_model_id = 8;
+    uint32 weapon_model_id = 2 [(options.fk) = "resources"];
+    uint32 hair_model_id = 3 [(options.fk) = "resources"];
+    uint32 face_model_id = 4 [(options.fk) = "resources"];
+    uint32 head_model_id = 5 [(options.fk) = "resources"];
+    uint32 upper_body_model_id = 6 [(options.fk) = "resources"];
+    uint32 lower_body_model_id = 7 [(options.fk) = "resources"];
+    uint32 device_model_id = 8 [(options.fk) = "resources"];
     string default_skin_rgb = 9;
     uint32 move_type = 10;
     uint32 weapon_type = 11;
@@ -983,17 +983,17 @@ message EquipmentDungeonReward {
     uint32 clear_time_upper = 3;
     uint32 clear_time_lower = 4;
     uint32 battle_result = 5;
-    uint32 reward_group_id = 6;
+    uint32 reward_group_id = 6 [(options.fk) = "master/reward_group"];
 }
 
 message EquipmentLiberation {
     uint32 equipment_id = 1;
     uint32 rarity = 2;
     uint32 seq_id = 3;
-    uint32 item_id = 4;
+    uint32 item_id = 4 [(options.fk) = "master/item"];
     uint32 item_value = 5;
-    uint32 passive_skill_id_1 = 6;
-    uint32 passive_skill_id_2 = 7;
+    uint32 passive_skill_id_1 = 6 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 7 [(options.fk) = "master/passive_skill"];
 }
 
 message EquipmentLvGroup {
@@ -1006,16 +1006,16 @@ message EquipmentLvGroup {
 }
 
 message EquipmentPassiveSkill {
-    uint32 equipment_id = 1;
+    uint32 equipment_id = 1 [(options.fk) = "master/equipment"];
     uint32 rarity = 2;
     uint32 limit_break = 3;
-    uint32 passive_skill_id_1 = 4;
-    uint32 passive_skill_id_2 = 5;
-    uint32 passive_skill_id_3 = 6;
+    uint32 passive_skill_id_1 = 4 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 5 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 6 [(options.fk) = "master/passive_skill"];
 }
 
 message EquipmentRarity {
-    uint32 equipment_id = 1;
+    uint32 equipment_id = 1 [(options.fk) = "master/equipment"];
     uint32 rarity = 2;
     uint32 hp_min = 3;
     uint32 hp_max = 4;
@@ -1172,7 +1172,7 @@ message EquipmentRarity {
 message EquipmentRecycle {
     uint32 id = 1;
     uint32 rarity = 2;
-    uint32 reward_group_id = 3;
+    uint32 reward_group_id = 3 [(options.fk) = "master/reward_group"];
 }
 
 message EquipmentSelling {
@@ -1182,31 +1182,31 @@ message EquipmentSelling {
 }
 
 message EquipmentSpecialEffectArea {
-    uint32 equipment_id = 1;
+    uint32 equipment_id = 1 [(options.fk) = "master/equipment"];
     uint32 limit = 2;
-    uint32 area_id = 3;
+    uint32 area_id = 3 [(options.fk) = "master/area"];
     uint32 seq = 4;
-    uint32 passive_skill_id_1 = 5;
-    uint32 passive_skill_id_2 = 6;
+    uint32 passive_skill_id_1 = 5 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 6 [(options.fk) = "master/passive_skill"];
     string open_date = 7 [(options.datetime) = true];
     string close_date = 8 [(options.datetime) = true];
 }
 
 message EquipmentSpecialEffectEnhanceGroup {
-    uint32 equipment_id = 1;
+    uint32 equipment_id = 1 [(options.fk) = "master/equipment"];
     uint32 lv = 2;
     uint32 series_text_id = 3;
-    uint32 passive_skill_id_1 = 4;
-    uint32 passive_skill_id_2 = 5;
-    uint32 passive_skill_id_3 = 6;
-    uint32 passive_skill_id_4 = 7;
+    uint32 passive_skill_id_1 = 4 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 5 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 6 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_4 = 7 [(options.fk) = "master/passive_skill"];
     uint32 lv_up_require_lupi = 8;
     float lv_up_success_rate = 9;
     uint32 limit_job_lv = 10;
 }
 
 message EquipmentVariationColor {
-    uint32 equipment_id = 1;
+    uint32 equipment_id = 1 [(options.fk) = "master/equipment"];
     uint32 gender = 2;
     uint32 color_id = 3;
     uint32 name = 4 [(options.fk) = "master/text_lang"];
@@ -1225,13 +1225,13 @@ message EquipmentVariationColor {
 
 message Event {
     uint32 id = 1;
-    uint32 event_group_id = 2;
+    uint32 event_group_id = 2 [(options.fk) = "master/event_group"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 display_flag = 4;
     uint32 target_type = 5;
     uint32 target_id = 6;
-    uint32 event_contents_group_id = 7;
-    uint32 resource_id = 8;
+    uint32 event_contents_group_id = 7 [(options.fk) = "master/event_contents_group"];
+    uint32 resource_id = 8 [(options.fk) = "resources"];
     string prefab_name = 9;
     string open_date = 10 [(options.datetime) = true];
     string close_date = 11 [(options.datetime) = true];
@@ -1239,11 +1239,11 @@ message Event {
 
 message EventContentsGroup {
     uint32 id = 1;
-    uint32 contents_id = 2;
+    uint32 contents_id = 2 [(options.fk) = "master/contents"];
 }
 
 message EventExchange {
-    uint32 event_id = 1;
+    uint32 event_id = 1 [(options.fk) = "master/event"];
     uint32 reset_type = 2;
     uint32 badge_display = 3;
 }
@@ -1253,14 +1253,14 @@ message EventGroup {
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
     uint32 portal_flag = 3;
     uint32 display_priority = 4;
-    uint32 portal_resource_id = 5;
-    uint32 banner_resource_id = 6;
-    uint32 notice_resource_id = 7;
-    uint32 notice_banner_resource_id = 8;
+    uint32 portal_resource_id = 5 [(options.fk) = "resources"];
+    uint32 banner_resource_id = 6 [(options.fk) = "resources"];
+    uint32 notice_resource_id = 7 [(options.fk) = "resources"];
+    uint32 notice_banner_resource_id = 8 [(options.fk) = "resources"];
     uint32 home_text1 = 9 [(options.fk) = "master/text_lang"];
     uint32 home_text2 = 10 [(options.fk) = "master/text_lang"];
-    uint32 home_button_resource_id = 11;
-    uint32 gacha_id = 12;
+    uint32 home_button_resource_id = 11 [(options.fk) = "resources"];
+    uint32 gacha_id = 12 [(options.fk) = "master/gacha"];
     string news_id = 13;
     string portal_open_date = 14 [(options.datetime) = true];
     string portal_close_date = 15 [(options.datetime) = true];
@@ -1270,21 +1270,21 @@ message EventGroup {
 
 message EventMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 type_value = 4;
     uint32 inherit_progress = 5;
-    uint32 event_mission_group_id = 6;
-    uint32 preview_mission_id = 7;
+    uint32 event_mission_group_id = 6 [(options.fk) = "master/event_mission_group"];
+    uint32 preview_mission_id = 7 [(options.fk) = "master/event_mission"];
     uint32 point = 8;
     uint32 daily_reset = 9;
     string target = 10;
-    uint32 reward_group_id = 11;
+    uint32 reward_group_id = 11 [(options.fk) = "master/reward_group"];
 }
 
 message EventMissionGroup {
     uint32 id = 1;
-    uint32 event_id = 2;
+    uint32 event_id = 2 [(options.fk) = "master/event"];
     uint32 guild_mission = 3;
     string open_date = 4 [(options.datetime) = true];
     string close_date = 5 [(options.datetime) = true];
@@ -1292,14 +1292,14 @@ message EventMissionGroup {
 
 message EventMissionReward {
     uint32 id = 1;
-    uint32 event_mission_group_id = 2;
+    uint32 event_mission_group_id = 2 [(options.fk) = "master/event_mission_group"];
     uint32 point = 3;
-    uint32 reward_group_id = 4;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
 }
 
 message EventRoulette {
-    uint32 event_id = 1;
-    uint32 event_item_id = 2;
+    uint32 event_id = 1 [(options.fk) = "master/event"];
+    uint32 event_item_id = 2 [(options.fk) = "master/item"];
     uint32 require_item_count = 3;
     uint32 max_try_count = 4;
     uint32 free_count = 5;
@@ -1308,15 +1308,15 @@ message EventRoulette {
 }
 
 message EventRouletteReward {
-    uint32 event_id = 1;
+    uint32 event_id = 1 [(options.fk) = "master/event"];
     uint32 type = 2;
     uint32 seq_id = 3;
-    uint32 reward_group_id = 4;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
 }
 
 message EventSugoroku {
-    uint32 event_id = 1;
-    uint32 event_item_id = 2;
+    uint32 event_id = 1 [(options.fk) = "master/event"];
+    uint32 event_item_id = 2 [(options.fk) = "master/item"];
     uint32 require_item_count = 3;
     uint32 max_try_count = 4;
     uint32 free_count = 5;
@@ -1324,10 +1324,10 @@ message EventSugoroku {
 }
 
 message EventSugorokuReward {
-    uint32 event_id = 1;
+    uint32 event_id = 1 [(options.fk) = "master/event"];
     uint32 type = 2;
     uint32 seq_id = 3;
-    uint32 reward_group_id = 4;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
 }
 
 message Evolution {
@@ -1343,15 +1343,15 @@ message Evolution {
 
 message EvolutionRecipe {
     uint32 recipe_group = 1;
-    uint32 item_id = 2;
+    uint32 item_id = 2 [(options.fk) = "master/item"];
 }
 
 message Exchange {
     uint32 id = 1;
-    uint32 exchange_material_group_id = 2;
-    uint32 exchange_result_group_id = 3;
+    uint32 exchange_material_group_id = 2 [(options.fk) = "master/exchange_group"];
+    uint32 exchange_result_group_id = 3 [(options.fk) = "master/exchange_group"];
     uint32 count_limit = 4;
-    uint32 event_id = 5;
+    uint32 event_id = 5 [(options.fk) = "master/event"];
     uint32 display_priority = 6;
     uint32 pickup_flag = 7;
     string open_date = 8 [(options.datetime) = true];
@@ -1381,18 +1381,18 @@ message FunctionalTutorial {
     uint32 priority = 3;
     uint32 type = 4;
     uint32 value1 = 5;
-    uint32 resource_id_1 = 6;
-    uint32 resource_id_2 = 7;
-    uint32 resource_id_3 = 8;
-    uint32 resource_id_4 = 9;
-    uint32 resource_id_5 = 10;
+    uint32 resource_id_1 = 6 [(options.fk) = "resources"];
+    uint32 resource_id_2 = 7 [(options.fk) = "resources"];
+    uint32 resource_id_3 = 8 [(options.fk) = "resources"];
+    uint32 resource_id_4 = 9 [(options.fk) = "resources"];
+    uint32 resource_id_5 = 10 [(options.fk) = "resources"];
     string help_query = 11;
 }
 
 message FunctionalUnlock {
     uint32 id = 1;
     uint32 job_lv = 2;
-    uint32 stage_id = 3;
+    uint32 stage_id = 3 [(options.fk) = "master/stage"];
 }
 
 message Gacha {
@@ -1401,17 +1401,17 @@ message Gacha {
     uint32 text_description = 3 [(options.fk) = "master/text_lang"];
     uint32 text_introduce = 4 [(options.fk) = "master/text_lang"];
     uint32 text_notice = 5 [(options.fk) = "master/text_lang"];
-    uint32 tab_resource_id = 6;
-    uint32 logo_resource_id = 7;
-    uint32 movie_resource_id = 8;
-    uint32 option_id = 9;
-    uint32 advertising_id = 10;
+    uint32 tab_resource_id = 6 [(options.fk) = "resources"];
+    uint32 logo_resource_id = 7 [(options.fk) = "resources"];
+    uint32 movie_resource_id = 8 [(options.fk) = "resources"];
+    uint32 option_id = 9 [(options.fk) = "master/gacha_option"];
+    uint32 advertising_id = 10 [(options.fk) = "master/advertising"];
     uint32 priority = 11;
     uint32 payment_type = 12;
     uint32 loop_step = 13;
     uint32 limit_reset = 14;
     uint32 lump_limit_count = 15;
-    uint32 ticket_item_id = 16;
+    uint32 ticket_item_id = 16 [(options.fk) = "master/item"];
     uint32 single_price = 17;
     uint32 single_paid_price = 18;
     uint32 lump_first_discount = 19;
@@ -1419,7 +1419,7 @@ message Gacha {
     uint32 lump_free = 21;
     uint32 daily_free = 22;
     uint32 single_bonus_reward = 23;
-    uint32 gacha_exchange_id = 24;
+    uint32 gacha_exchange_id = 24 [(options.fk) = "master/gacha_exchange"];
     string start_date = 25 [(options.datetime) = true];
     string end_date = 26 [(options.datetime) = true];
 }
@@ -1435,7 +1435,7 @@ message GachaOption {
     uint32 lump_num = 3;
     uint32 lump_price = 4;
     uint32 lump_bonus_reward = 5;
-    uint32 gacha_pool_id = 6;
+    uint32 gacha_pool_id = 6 [(options.fk) = "master/gacha_pool"];
     uint32 group1_weight = 7;
     uint32 group2_weight = 8;
     uint32 group3_weight = 9;
@@ -1445,17 +1445,17 @@ message GachaOption {
 }
 
 message GachaPickup {
-    uint32 gacha_id = 1;
+    uint32 gacha_id = 1 [(options.fk) = "master/gacha"];
     uint32 priority = 2;
-    uint32 equipment_id = 3;
-    uint32 reward_group_id = 4;
+    uint32 equipment_id = 3 [(options.fk) = "master/equipment"];
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
 }
 
 message GachaPool {
     uint32 id = 1;
     uint32 group_id = 2;
     uint32 seq = 3;
-    uint32 equipment_id = 4;
+    uint32 equipment_id = 4 [(options.fk) = "master/equipment"];
     uint32 rarity = 5;
     uint32 weight = 6;
     uint32 equipment_lv = 7;
@@ -1476,37 +1476,37 @@ message GuildContributionRewardGuild {
     uint32 id = 1;
     uint32 lower = 2;
     uint32 upper = 3;
-    uint32 reward_group_id = 4;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
 }
 
 message GuildContributionRewardPersonal {
     uint32 id = 1;
     uint32 lower = 2;
     uint32 upper = 3;
-    uint32 reward_group_id = 4;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
 }
 
 message GuildDungeon {
     uint32 id = 1;
-    uint32 area_id = 2;
+    uint32 area_id = 2 [(options.fk) = "master/area"];
     uint32 difficulty = 3;
     uint32 reset_price = 4;
-    uint32 guild_lv = 5;
+    uint32 guild_lv = 5 [(options.fk) = "master/guild_lv"];
     uint32 guild_tower_lv = 6;
-    uint32 previous_dungeon_id = 7;
+    uint32 previous_dungeon_id = 7 [(options.fk) = "master/guild_dungeon"];
     uint32 time_limit = 8;
 }
 
 message GuildDungeonReward {
-    uint32 stage_id = 1;
+    uint32 stage_id = 1 [(options.fk) = "master/stage"];
     uint32 guild_exp = 2;
     uint32 guild_lupi = 3;
-    uint32 ranking_reward_id = 4;
-    uint32 battle_reward_group_id = 5;
+    uint32 ranking_reward_id = 4 [(options.fk) = "master/ranking_reward"];
+    uint32 battle_reward_group_id = 5 [(options.fk) = "master/reward_group"];
     uint32 guild_contribution = 6;
-    uint32 clear_reward_group_id = 7;
-    uint32 absent_reward_group_id = 8;
-    uint32 help_reward_group_id = 9;
+    uint32 clear_reward_group_id = 7 [(options.fk) = "master/reward_group"];
+    uint32 absent_reward_group_id = 8 [(options.fk) = "master/reward_group"];
+    uint32 help_reward_group_id = 9 [(options.fk) = "master/reward_group"];
 }
 
 message GuildFacility {
@@ -1517,7 +1517,7 @@ message GuildFacility {
 
 message GuildFacilityLv {
     uint32 id = 1;
-    uint32 guild_facility_id = 2;
+    uint32 guild_facility_id = 2 [(options.fk) = "master/guild_facility"];
     uint32 lv = 3;
     uint32 hp = 4;
     uint32 wood_quantity = 5;
@@ -1530,9 +1530,9 @@ message GuildFacilityLv {
     uint32 blue_skill_point_time = 12;
     uint32 blue_skill_point_max = 13;
     float ancient_tower_sweep_boost = 14;
-    uint32 passive_skill_id_1 = 15;
-    uint32 passive_skill_id_2 = 16;
-    uint32 passive_skill_id_3 = 17;
+    uint32 passive_skill_id_1 = 15 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 16 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 17 [(options.fk) = "master/passive_skill"];
     uint32 battle_type1 = 18;
     uint32 battle_type2 = 19;
     uint32 battle_type3 = 20;
@@ -1552,7 +1552,7 @@ message GuildHistory {
 message GuildLoginReward {
     uint32 id = 1;
     uint32 login_num = 2;
-    uint32 reward_group_id = 3;
+    uint32 reward_group_id = 3 [(options.fk) = "master/reward_group"];
 }
 
 message GuildLv {
@@ -1560,12 +1560,12 @@ message GuildLv {
     uint32 lv = 2;
     uint32 exp = 3;
     uint32 warehouse_limit = 4;
-    uint32 reward_group_id = 5;
+    uint32 reward_group_id = 5 [(options.fk) = "master/reward_group"];
 }
 
 message GuildPersonalMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 lv = 4;
     uint32 rank = 5;
@@ -1573,34 +1573,34 @@ message GuildPersonalMission {
     uint32 type_value = 7;
     uint32 display_priority = 8;
     string target = 9;
-    uint32 reward_group_id = 10;
+    uint32 reward_group_id = 10 [(options.fk) = "master/reward_group"];
     uint32 guild_exp = 11;
-    uint32 skip_item_id = 12;
+    uint32 skip_item_id = 12 [(options.fk) = "master/item"];
     uint32 skip_quantity = 13;
 }
 
 message GuildSharedMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 lv = 4;
     uint32 contribution = 5;
     uint32 type_value = 6;
     uint32 display_priority = 7;
     string target = 8;
-    uint32 reward_group_id_personal = 9;
-    uint32 reward_group_id_guild = 10;
+    uint32 reward_group_id_personal = 9 [(options.fk) = "master/reward_group"];
+    uint32 reward_group_id_guild = 10 [(options.fk) = "master/reward_group"];
     uint32 guild_exp = 11;
 }
 
 message GuildSymbol {
     uint32 id = 1;
-    int32 resource = 2;
+    int32 resource = 2 [(options.fk) = "resources"];
 }
 
 message GuildSymbolFrame {
     uint32 id = 1;
-    int32 resource = 2;
+    int32 resource = 2 [(options.fk) = "resources"];
 }
 
 message GuildWarehouseRewardLimit {
@@ -1610,13 +1610,13 @@ message GuildWarehouseRewardLimit {
 
 message GuildWeeklyMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
-    uint32 group_id = 3;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
+    uint32 group_id = 3 [(options.fk) = "master/guild_weekly_mission_group"];
     uint32 text_name = 4 [(options.fk) = "master/text_lang"];
     uint32 lv = 5;
     uint32 type_value = 6;
-    uint32 reward_group_id_personal = 7;
-    uint32 reward_group_id_guild = 8;
+    uint32 reward_group_id_personal = 7 [(options.fk) = "master/reward_group"];
+    uint32 reward_group_id_guild = 8 [(options.fk) = "master/reward_group"];
 }
 
 message GuildWeeklyMissionGroup {
@@ -1634,37 +1634,37 @@ message Gve {
     string round_start_time = 5;
     string round_end_time = 6;
     uint32 total_round = 7;
-    uint32 contents_id = 8;
-    uint32 event_id = 9;
+    uint32 contents_id = 8 [(options.fk) = "master/contents"];
+    uint32 event_id = 9 [(options.fk) = "master/event"];
 }
 
 message GveClearTimeBonus {
-    uint32 area_id = 1;
+    uint32 area_id = 1 [(options.fk) = "master/area"];
     uint32 clear_time = 2;
     float boost_rate = 3;
 }
 
 message GveMonsterSubjugation {
-    uint32 contents_id = 1;
-    uint32 monster_id = 2;
+    uint32 contents_id = 1 [(options.fk) = "master/contents"];
+    uint32 monster_id = 2 [(options.fk) = "master/monster"];
     uint32 score = 3;
 }
 
 message GveRoundReward {
-    uint32 gve_id = 1;
+    uint32 gve_id = 1 [(options.fk) = "master/gve"];
     uint32 type = 2;
     uint32 round = 3;
     uint32 result = 4;
     uint32 seq = 5;
     uint32 threshold_ep_individual = 6;
     uint32 threshold_ep_guild = 7;
-    uint32 reward_group_id = 8;
+    uint32 reward_group_id = 8 [(options.fk) = "master/reward_group"];
 }
 
 message Gvg {
     uint32 id = 1;
     uint32 type = 2;
-    uint32 gvg_bid_id = 3;
+    uint32 gvg_bid_id = 3 [(options.fk) = "master/gvg_bid"];
     uint32 start_battle_day = 4;
     string start_battle_time = 5;
     uint32 battle_period_minutes = 6;
@@ -1677,14 +1677,14 @@ message Gvg {
 
 message GvgBaseBonus {
     uint32 guildhole_lv = 1;
-    uint32 target_param = 2;
+    uint32 target_param = 2 [(options.fk) = "master/target_param"];
     uint32 target_value = 3;
 }
 
 message GvgBattleField {
     uint32 id = 1;
-    uint32 gvg_id = 2;
-    uint32 battle_field_contents_id = 3;
+    uint32 gvg_id = 2 [(options.fk) = "master/gvg"];
+    uint32 battle_field_contents_id = 3 [(options.fk) = "master/gvg_battle_field_contents"];
     uint32 text_name = 4 [(options.fk) = "master/text_lang"];
     uint32 fileld_bgm_id = 5;
     uint32 battle_bgm_id = 6;
@@ -1692,36 +1692,36 @@ message GvgBattleField {
 
 message GvgBattleFieldContents {
     uint32 id = 1;
-    uint32 resource_id = 2;
+    uint32 resource_id = 2 [(options.fk) = "resources"];
     uint32 rarity = 3;
     uint32 min_bid_value = 4;
     uint32 min_admission_lv = 5;
     uint32 max_admission_lv = 6;
     uint32 max_admission_member_num = 7;
-    uint32 map_id = 8;
+    uint32 map_id = 8 [(options.fk) = "resources"];
     uint32 fortress_boost_time = 9;
     uint32 gvg_fortress_boost_bonus_group_id = 10;
     uint32 fortress_visiblitily_bonus = 11;
     uint32 fortress_move_speed_bonus = 12;
-    uint32 entry_reward_group_id = 13;
-    uint32 contribution_ranking_reward_id = 14;
-    uint32 territory_occupation_reward_group_id = 15;
-    uint32 guild_master_title_id = 16;
-    uint32 guild_sub_master_title_id = 17;
-    uint32 guild_member_title_id = 18;
-    uint32 winner_login_bonus_id = 19;
+    uint32 entry_reward_group_id = 13 [(options.fk) = "master/reward_group"];
+    uint32 contribution_ranking_reward_id = 14 [(options.fk) = "master/ranking_reward"];
+    uint32 territory_occupation_reward_group_id = 15 [(options.fk) = "master/reward_group"];
+    uint32 guild_master_title_id = 16 [(options.fk) = "master/title"];
+    uint32 guild_sub_master_title_id = 17 [(options.fk) = "master/title"];
+    uint32 guild_member_title_id = 18 [(options.fk) = "master/title"];
+    uint32 winner_login_bonus_id = 19 [(options.fk) = "master/login_bonus_group"];
     uint32 conditions_limit_cp = 20;
 }
 
 message GvgBattleMap {
-    uint32 gvg_battle_fileld_id = 1;
+    uint32 gvg_battle_fileld_id = 1 [(options.fk) = "master/gvg_battle_field"];
     uint32 gvg_building_category = 2;
-    uint32 battle_map_id = 3;
+    uint32 battle_map_id = 3 [(options.fk) = "resources"];
     uint32 position_no = 4;
 }
 
 message GvgBattleScore {
-    uint32 gvg_id = 1;
+    uint32 gvg_id = 1 [(options.fk) = "master/gvg"];
     uint32 score_default = 2;
     uint32 kill_bonus = 3;
     uint32 score_construction_castle = 4;
@@ -1764,11 +1764,11 @@ message GvgBuilding {
     uint32 gvg_building_category = 3;
     uint32 building_type = 4;
     uint32 text_name = 5 [(options.fk) = "master/text_lang"];
-    uint32 resource_id = 6;
-    uint32 defense_wave_id = 7;
+    uint32 resource_id = 6 [(options.fk) = "resources"];
+    uint32 defense_wave_id = 7 [(options.fk) = "master/wave"];
     float heal_speed = 8;
-    uint32 neutral_mob_wave_id = 9;
-    uint32 gvg_occupation_visiblitily_bonus_id = 10;
+    uint32 neutral_mob_wave_id = 9 [(options.fk) = "master/wave"];
+    uint32 gvg_occupation_visiblitily_bonus_id = 10 [(options.fk) = "master/gvg_occupation_visiblitily_bonus"];
     uint32 invi_time = 11;
     uint32 reset_time = 12;
     uint32 require_stone = 13;
@@ -1788,39 +1788,39 @@ message GvgBuilding {
 }
 
 message GvgBuildingGroup {
-    uint32 gvg_id = 1;
-    uint32 gvg_building_id = 2;
+    uint32 gvg_id = 1 [(options.fk) = "master/gvg"];
+    uint32 gvg_building_id = 2 [(options.fk) = "master/gvg_building"];
     uint32 build_limit = 3;
 }
 
 message GvgBuildingVisibilityBonus {
-    uint32 guild_facility_id = 1;
+    uint32 guild_facility_id = 1 [(options.fk) = "master/guild_facility"];
     uint32 lv = 2;
-    uint32 target_param = 3;
+    uint32 target_param = 3 [(options.fk) = "master/target_param"];
     uint32 target_value = 4;
 }
 
 message GvgCheering {
-    uint32 job_id = 1;
+    uint32 job_id = 1 [(options.fk) = "master/job"];
     uint32 lv = 2;
-    uint32 active_skill_id_1 = 3;
-    uint32 active_skill_id_2 = 4;
-    uint32 active_skill_id_3 = 5;
+    uint32 active_skill_id_1 = 3 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_2 = 4 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_3 = 5 [(options.fk) = "master/active_skill"];
     uint32 weight1 = 6;
     uint32 weight2 = 7;
     uint32 weight3 = 8;
 }
 
 message GvgFacilityBonusArtillery {
-    uint32 gvg_id = 1;
+    uint32 gvg_id = 1 [(options.fk) = "master/gvg"];
     uint32 lv = 2;
     uint32 limit_num = 3;
     uint32 interval_time = 4;
-    uint32 active_skill_id = 5;
+    uint32 active_skill_id = 5 [(options.fk) = "master/active_skill"];
 }
 
 message GvgFacilityBonusDormitory {
-    uint32 gvg_id = 1;
+    uint32 gvg_id = 1 [(options.fk) = "master/gvg"];
     uint32 lv = 2;
     float heal_speed25 = 3;
     float heal_speed50 = 4;
@@ -1831,32 +1831,32 @@ message GvgFacilityBonusDormitory {
 }
 
 message GvgFacilityBonusMarket {
-    uint32 gvg_id = 1;
+    uint32 gvg_id = 1 [(options.fk) = "master/gvg"];
     uint32 lv = 2;
     float bonus = 3;
 }
 
 message GvgFacilityBonusTemple {
-    uint32 gvg_id = 1;
+    uint32 gvg_id = 1 [(options.fk) = "master/gvg"];
     uint32 lv = 2;
     float bonus = 3;
 }
 
 message GvgFirstAttackBonus {
-    uint32 gvg_id = 1;
-    uint32 target_param = 2;
+    uint32 gvg_id = 1 [(options.fk) = "master/gvg"];
+    uint32 target_param = 2 [(options.fk) = "master/target_param"];
     uint32 target_value = 3;
 }
 
 message GvgFortressBoostBonus {
     uint32 group_id = 1;
-    uint32 guild_lv = 2;
-    uint32 target_param = 3;
+    uint32 guild_lv = 2 [(options.fk) = "master/guild_lv"];
+    uint32 target_param = 3 [(options.fk) = "master/target_param"];
     uint32 target_value = 4;
 }
 
 message GvgInitBuildingInfo {
-    uint32 gvg_battle_field_contents_id = 1;
+    uint32 gvg_battle_field_contents_id = 1 [(options.fk) = "master/gvg_battle_field_contents"];
     uint32 gvg_building_category = 2;
     uint32 pos_x = 3;
     uint32 pos_y = 4;
@@ -1865,7 +1865,7 @@ message GvgInitBuildingInfo {
 }
 
 message GvgJob {
-    uint32 job_id = 1;
+    uint32 job_id = 1 [(options.fk) = "master/job"];
     uint32 move_speed = 2;
     uint32 visiblitily_size = 3;
     uint32 special_gift_type = 4;
@@ -1873,8 +1873,8 @@ message GvgJob {
 }
 
 message GvgJobCorrection {
-    uint32 job_id = 1;
-    uint32 target_param = 2;
+    uint32 job_id = 1 [(options.fk) = "master/job"];
+    uint32 target_param = 2 [(options.fk) = "master/target_param"];
     float target_rate = 3;
 }
 
@@ -1886,8 +1886,8 @@ message GvgLiveCommentary {
 
 message GvgMob {
     uint32 id = 1;
-    uint32 battle_field_contents_id = 2;
-    uint32 wave_id = 3;
+    uint32 battle_field_contents_id = 2 [(options.fk) = "master/gvg_battle_field_contents"];
+    uint32 wave_id = 3 [(options.fk) = "master/wave"];
     uint32 drop_item_type = 4;
     uint32 drop_item_quantity = 5;
     uint32 appear_time = 6;
@@ -1909,7 +1909,7 @@ message GvgOccupationVisiblitilyBonus {
 
 message GvgPracticeSchedule {
     uint32 id = 1;
-    uint32 gvg_id = 2;
+    uint32 gvg_id = 2 [(options.fk) = "master/gvg"];
     uint32 day = 3;
     uint32 start_time = 4;
     uint32 end_time = 5;
@@ -1918,16 +1918,16 @@ message GvgPracticeSchedule {
 }
 
 message GvgRespawnPenalty {
-    uint32 gvg_id = 1;
+    uint32 gvg_id = 1 [(options.fk) = "master/gvg"];
     uint32 count = 2;
     uint32 time = 3;
     uint32 require_red_orb = 4;
-    uint32 ticket_item_id = 5;
+    uint32 ticket_item_id = 5 [(options.fk) = "master/item"];
     uint32 require_ticket = 6;
 }
 
 message GvgSkillCastor {
-    uint32 guild_lv = 1;
+    uint32 guild_lv = 1 [(options.fk) = "master/guild_lv"];
     uint32 psy_atk = 2;
     uint32 heal = 3;
     uint32 critical = 4;
@@ -1936,7 +1936,7 @@ message GvgSkillCastor {
 
 message HateBehaviorGroup {
     uint32 id = 1;
-    uint32 behavior_id = 2;
+    uint32 behavior_id = 2 [(options.fk) = "master/behavior"];
     float effect_rate = 3;
 }
 
@@ -1949,35 +1949,35 @@ message Help {
 }
 
 message HolyBeastReward {
-    uint32 stage_id = 1;
+    uint32 stage_id = 1 [(options.fk) = "master/stage"];
     uint32 guild_exp = 2;
     uint32 guild_lupi = 3;
     uint32 guild_contribution = 4;
-    uint32 ranking_reward_id = 5;
-    uint32 summon_reward_group_id = 6;
-    uint32 clear_reward_group_id = 7;
-    uint32 help_reward_group_id = 8;
+    uint32 ranking_reward_id = 5 [(options.fk) = "master/ranking_reward"];
+    uint32 summon_reward_group_id = 6 [(options.fk) = "master/reward_group"];
+    uint32 clear_reward_group_id = 7 [(options.fk) = "master/reward_group"];
+    uint32 help_reward_group_id = 8 [(options.fk) = "master/reward_group"];
 }
 
 message ImportantMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
-    uint32 important_mission_group_id = 3;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
+    uint32 important_mission_group_id = 3 [(options.fk) = "master/important_mission_group"];
     uint32 text_name = 4 [(options.fk) = "master/text_lang"];
     uint32 type_value = 5;
     uint32 inherit_progress = 6;
-    uint32 reward_group_id = 7;
+    uint32 reward_group_id = 7 [(options.fk) = "master/reward_group"];
     uint32 exp = 8;
     string target = 9;
 }
 
 message ImportantMissionGroup {
     uint32 id = 1;
-    uint32 next_important_mission_group_id = 2;
+    uint32 next_important_mission_group_id = 2 [(options.fk) = "master/important_mission_group"];
     uint32 text_description = 3 [(options.fk) = "master/text_lang"];
-    uint32 reward_group_id = 4;
-    uint32 introduce_character_resource_id = 5;
-    uint32 equipment_id = 6;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
+    uint32 introduce_character_resource_id = 5 [(options.fk) = "resources"];
+    uint32 equipment_id = 6 [(options.fk) = "master/equipment"];
     string voice_num = 7;
     string open_date = 8 [(options.datetime) = true];
 }
@@ -1998,11 +1998,11 @@ message Item {
     float value = 13;
     uint32 sell_price = 14;
     uint32 can_use = 15;
-    uint32 resource_id = 16;
-    uint32 effect_resource_id = 17;
+    uint32 resource_id = 16 [(options.fk) = "resources"];
+    uint32 effect_resource_id = 17 [(options.fk) = "resources"];
     string bg_rgb = 18;
-    uint32 reward_group_id = 19;
-    uint32 event_id = 20;
+    uint32 reward_group_id = 19 [(options.fk) = "master/reward_group"];
+    uint32 event_id = 20 [(options.fk) = "master/event"];
 }
 
 message Job {
@@ -2012,12 +2012,12 @@ message Job {
     uint32 text_description = 4 [(options.fk) = "master/text_lang"];
     uint32 job_rank = 5;
     uint32 role_id = 6;
-    uint32 unlock_job_id_1 = 7;
+    uint32 unlock_job_id_1 = 7 [(options.fk) = "master/job"];
     uint32 unlock_job_lv1 = 8;
-    uint32 unlock_job_id_2 = 9;
+    uint32 unlock_job_id_2 = 9 [(options.fk) = "master/job"];
     uint32 unlock_job_lv2 = 10;
     uint32 max_lv = 11;
-    uint32 job_lv_group_id = 12;
+    uint32 job_lv_group_id = 12 [(options.fk) = "master/job_lv_group"];
     string open_date = 13 [(options.datetime) = true];
 }
 
@@ -2043,7 +2043,7 @@ message JobLvGroup {
 }
 
 message JobParameter {
-    uint32 job_id = 1;
+    uint32 job_id = 1 [(options.fk) = "master/job"];
     uint32 min_lv = 2;
     uint32 max_lv = 3;
     uint32 hp_min = 4;
@@ -2073,24 +2073,24 @@ message JobParameter {
 
 message JobSkill {
     uint32 id = 1;
-    uint32 job_id = 2;
+    uint32 job_id = 2 [(options.fk) = "master/job"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 icon_type = 4;
     uint32 rank = 5;
     float position_x = 6;
     float position_y = 7;
     uint32 job_point = 8;
-    uint32 unlock_job_skill_id_1 = 9;
-    uint32 unlock_job_skill_id_2 = 10;
-    uint32 unlock_job_skill_id_3 = 11;
+    uint32 unlock_job_skill_id_1 = 9 [(options.fk) = "master/job_skill"];
+    uint32 unlock_job_skill_id_2 = 10 [(options.fk) = "master/job_skill"];
+    uint32 unlock_job_skill_id_3 = 11 [(options.fk) = "master/job_skill"];
 }
 
 message JobSkillLv {
-    uint32 job_skill_id = 1;
+    uint32 job_skill_id = 1 [(options.fk) = "master/job_skill"];
     uint32 lv = 2;
-    uint32 job_skill_lv_group_id = 3;
-    uint32 passive_skill_id = 4;
-    uint32 active_skill_id = 5;
+    uint32 job_skill_lv_group_id = 3 [(options.fk) = "master/job_skill_lv_group"];
+    uint32 passive_skill_id = 4 [(options.fk) = "master/passive_skill"];
+    uint32 active_skill_id = 5 [(options.fk) = "master/active_skill"];
 }
 
 message JobSkillLvGroup {
@@ -2110,9 +2110,9 @@ message LabelGroup {
 }
 
 message LoginBonus {
-    uint32 login_bonus_group_id = 1;
+    uint32 login_bonus_group_id = 1 [(options.fk) = "master/login_bonus_group"];
     uint32 sequence = 2;
-    uint32 reward_group_id = 3;
+    uint32 reward_group_id = 3 [(options.fk) = "master/reward_group"];
 }
 
 message LoginBonusGroup {
@@ -2220,38 +2220,38 @@ message Monster {
     float critical_muddiness_resist = 71;
     float stagger_damage_rate = 72;
     float hate_attenuation_rate = 73;
-    uint32 hate_behavior_group_id = 74;
+    uint32 hate_behavior_group_id = 74 [(options.fk) = "master/hate_behavior_group"];
     uint32 damage_limit = 75;
     uint32 is_metal = 76;
-    uint32 normal_active_skill_id = 77;
-    uint32 skill_id_1 = 78;
-    uint32 skill_id_2 = 79;
-    uint32 skill_id_3 = 80;
-    uint32 skill_id_4 = 81;
-    uint32 skill_id_5 = 82;
-    uint32 skill_id_6 = 83;
-    uint32 skill_id_7 = 84;
-    uint32 skill_id_8 = 85;
-    uint32 skill_id_9 = 86;
-    uint32 skill_id_10 = 87;
-    uint32 skill_id_11 = 88;
-    uint32 skill_id_12 = 89;
-    uint32 skill_id_13 = 90;
-    uint32 skill_id_14 = 91;
-    uint32 skill_id_15 = 92;
-    uint32 skill_id_16 = 93;
-    uint32 skill_id_17 = 94;
-    uint32 skill_id_18 = 95;
-    uint32 skill_id_19 = 96;
-    uint32 skill_id_20 = 97;
+    uint32 normal_active_skill_id = 77 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_1 = 78 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_2 = 79 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_3 = 80 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_4 = 81 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_5 = 82 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_6 = 83 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_7 = 84 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_8 = 85 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_9 = 86 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_10 = 87 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_11 = 88 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_12 = 89 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_13 = 90 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_14 = 91 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_15 = 92 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_16 = 93 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_17 = 94 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_18 = 95 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_19 = 96 [(options.fk) = "master/active_skill"];
+    uint32 skill_id_20 = 97 [(options.fk) = "master/active_skill"];
     uint32 lupi = 98;
     uint32 exp = 99;
-    uint32 parent_monster_id = 100;
+    uint32 parent_monster_id = 100 [(options.fk) = "master/monster"];
     uint32 dead_type = 101;
     uint32 manual_flag = 102;
-    uint32 event_id = 103;
+    uint32 event_id = 103 [(options.fk) = "master/event"];
     uint32 hp_split = 104;
-    uint32 monster_break_id = 105;
+    uint32 monster_break_id = 105 [(options.fk) = "master/monster_break_setting"];
 }
 
 message MonsterBreakSetting {
@@ -2273,7 +2273,7 @@ message MonsterModelVariation {
 message Movie {
     uint32 id = 1;
     uint32 view_type = 2;
-    uint32 resource_id = 3;
+    uint32 resource_id = 3 [(options.fk) = "resources"];
 }
 
 message NgWord {
@@ -2285,10 +2285,10 @@ message Npc {
     uint32 id = 1;
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
     uint32 rank = 3;
-    uint32 job_id = 4;
+    uint32 job_id = 4 [(options.fk) = "master/job"];
     uint32 role_id = 5;
-    uint32 normal_active_skill_id = 6;
-    uint32 combo_id = 7;
+    uint32 normal_active_skill_id = 6 [(options.fk) = "master/active_skill"];
+    uint32 combo_id = 7 [(options.fk) = "master/combo"];
     float combo_continue_limit = 8;
     uint32 character_type = 9;
     uint32 model_id = 10;
@@ -2299,24 +2299,24 @@ message Npc {
 }
 
 message NpcLv {
-    uint32 npc_id = 1;
+    uint32 npc_id = 1 [(options.fk) = "master/npc"];
     uint32 lv = 2;
-    uint32 active_skill_id_1 = 3;
-    uint32 active_skill_id_2 = 4;
-    uint32 active_skill_id_3 = 5;
-    uint32 active_skill_id_4 = 6;
-    uint32 active_skill_id_5 = 7;
-    uint32 active_skill_id_6 = 8;
-    uint32 active_skill_id_7 = 9;
-    uint32 active_skill_id_8 = 10;
-    uint32 active_skill_id_9 = 11;
-    uint32 active_skill_id_10 = 12;
-    uint32 active_skill_id_11 = 13;
-    uint32 active_skill_id_12 = 14;
+    uint32 active_skill_id_1 = 3 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_2 = 4 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_3 = 5 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_4 = 6 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_5 = 7 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_6 = 8 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_7 = 9 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_8 = 10 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_9 = 11 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_10 = 12 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_11 = 13 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_12 = 14 [(options.fk) = "master/active_skill"];
 }
 
 message NpcParameter {
-    uint32 npc_id = 1;
+    uint32 npc_id = 1 [(options.fk) = "master/npc"];
     uint32 min_lv = 2;
     uint32 max_lv = 3;
     uint32 hp_min = 4;
@@ -2379,7 +2379,7 @@ message NpcParameter {
 message OfferWall {
     uint32 id = 1;
     uint32 priority = 2;
-    uint32 resource_id = 3;
+    uint32 resource_id = 3 [(options.fk) = "resources"];
     uint32 interval = 4;
     string target_scene_name = 5;
     uint32 conditions_type = 6;
@@ -2392,9 +2392,9 @@ message OfferWall {
 
 message OrderMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
-    uint32 order_mission_type = 4;
+    uint32 order_mission_type = 4 [(options.fk) = "master/order_mission_type"];
     uint32 rank = 5;
     uint32 weight = 6;
     uint32 type_value = 7;
@@ -2403,10 +2403,10 @@ message OrderMission {
 
 message OrderMissionPool {
     uint32 id = 1;
-    uint32 order_mission_id = 2;
+    uint32 order_mission_id = 2 [(options.fk) = "master/order_mission"];
     uint32 min_job_lv = 3;
     uint32 max_job_lv = 4;
-    uint32 reward_group_id = 5;
+    uint32 reward_group_id = 5 [(options.fk) = "master/reward_group"];
 }
 
 message OrderMissionRank {
@@ -2421,7 +2421,7 @@ message OrderMissionRank {
 message OrderMissionReward {
     uint32 id = 1;
     uint32 count = 2;
-    uint32 reward_group_id = 3;
+    uint32 reward_group_id = 3 [(options.fk) = "master/reward_group"];
 }
 
 message OrderMissionType {
@@ -2433,12 +2433,12 @@ message OrderMissionType {
 message PassiveSkill {
     uint32 id = 1;
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
-    uint32 event_id = 3;
+    uint32 event_id = 3 [(options.fk) = "master/event"];
     uint32 type = 4;
     uint32 effect_type = 5;
     uint32 effect_type_id = 6;
     uint32 equipment_effect_race = 7;
-    uint32 target_param = 8;
+    uint32 target_param = 8 [(options.fk) = "master/target_param"];
     uint32 op_type = 9;
     float op_value = 10;
     uint32 equipment_sub_category = 11;
@@ -2449,9 +2449,9 @@ message PassiveSkill {
     uint32 effect_range = 16;
     float probability = 17;
     float force_hit_rate = 18;
-    uint32 passive_skill_condition_id = 19;
-    uint32 skill_module_status_ailment_group_id = 20;
-    uint32 resource_id = 21;
+    uint32 passive_skill_condition_id = 19 [(options.fk) = "master/passive_skill_condition"];
+    uint32 skill_module_status_ailment_group_id = 20 [(options.fk) = "master/skill_module_status_ailment_group"];
+    uint32 resource_id = 21 [(options.fk) = "resources"];
 }
 
 message PassiveSkillCondition {
@@ -2472,7 +2472,7 @@ message PlayableTime {
 
 message PopupScenario {
     uint32 id = 1;
-    uint32 popup_scenario_group_id = 2;
+    uint32 popup_scenario_group_id = 2 [(options.fk) = "master/popup_scenario_group"];
     uint32 character_id = 3;
     uint32 appear_position = 4;
     uint32 text_word = 5 [(options.fk) = "master/text_lang"];
@@ -2481,10 +2481,10 @@ message PopupScenario {
 
 message PopupScenarioGroup {
     uint32 id = 1;
-    uint32 stage_sequence_id = 2;
+    uint32 stage_sequence_id = 2 [(options.fk) = "master/stage_sequence"];
     uint32 start_type = 3;
     float elapsed_time = 4;
-    uint32 monster_id = 5;
+    uint32 monster_id = 5 [(options.fk) = "master/monster"];
     float monster_hp_rate = 6;
     uint32 monster_active_skill = 7;
 }
@@ -2502,7 +2502,7 @@ message PowerAssessment {
     uint32 type = 1;
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
     string target = 3;
-    uint32 power_assessment_step_id = 4;
+    uint32 power_assessment_step_id = 4 [(options.fk) = "master/power_assessment_step"];
 }
 
 message PowerAssessmentRank {
@@ -2526,7 +2526,7 @@ message PowerAssessmentStep {
 
 message PresetEquipment {
     uint32 id = 1;
-    uint32 equipment_id = 2;
+    uint32 equipment_id = 2 [(options.fk) = "master/equipment"];
     uint32 rarity = 3;
     uint32 level = 4;
     uint32 enhancement = 5;
@@ -2535,7 +2535,7 @@ message PresetEquipment {
 
 message PresetJob {
     uint32 id = 1;
-    uint32 job_id = 2;
+    uint32 job_id = 2 [(options.fk) = "master/job"];
     uint32 job_level = 3;
 }
 
@@ -2545,31 +2545,31 @@ message PresetLine {
     uint32 rear = 3;
     uint32 accessory1 = 4;
     uint32 accessory2 = 5;
-    uint32 preset_skill_id = 6;
-    uint32 preset_passive_skill_id = 7;
+    uint32 preset_skill_id = 6 [(options.fk) = "master/preset_skill"];
+    uint32 preset_passive_skill_id = 7 [(options.fk) = "master/preset_passive_skill"];
 }
 
 message PresetPassiveSkill {
     uint32 id = 1;
-    uint32 passive_skill_id = 2;
+    uint32 passive_skill_id = 2 [(options.fk) = "master/passive_skill"];
 }
 
 message PresetPc {
     uint32 id = 1;
     string label = 2;
-    uint32 preset_line1_id = 3;
-    uint32 preset_line2_id = 4;
-    uint32 preset_line3_id = 5;
-    uint32 preset_job_id = 6;
-    uint32 preset_passive_skill_id = 7;
-    uint32 preset_potion_id = 8;
-    uint32 preset_potion_setting_id = 9;
+    uint32 preset_line1_id = 3 [(options.fk) = "master/preset_line"];
+    uint32 preset_line2_id = 4 [(options.fk) = "master/preset_line"];
+    uint32 preset_line3_id = 5 [(options.fk) = "master/preset_line"];
+    uint32 preset_job_id = 6 [(options.fk) = "master/preset_job"];
+    uint32 preset_passive_skill_id = 7 [(options.fk) = "master/preset_passive_skill"];
+    uint32 preset_potion_id = 8 [(options.fk) = "master/preset_potion"];
+    uint32 preset_potion_setting_id = 9 [(options.fk) = "master/preset_potion_setting"];
     int32 default_setting = 10;
 }
 
 message PresetPotion {
     uint32 id = 1;
-    uint32 item_id = 2;
+    uint32 item_id = 2 [(options.fk) = "master/item"];
     uint32 num = 3;
 }
 
@@ -2583,28 +2583,28 @@ message PresetPotionSetting {
 
 message PresetSkill {
     uint32 id = 1;
-    uint32 active_skill_id = 2;
+    uint32 active_skill_id = 2 [(options.fk) = "master/active_skill"];
 }
 
 message PvpSpecialEffectArea {
-    uint32 equipment_id = 1;
+    uint32 equipment_id = 1 [(options.fk) = "master/equipment"];
     uint32 limit = 2;
-    uint32 passive_skill_id_1 = 3;
-    uint32 passive_skill_id_2 = 4;
+    uint32 passive_skill_id_1 = 3 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 4 [(options.fk) = "master/passive_skill"];
     string open_date = 5 [(options.datetime) = true];
     string close_date = 6 [(options.datetime) = true];
 }
 
 message Quest {
     uint32 id = 1;
-    uint32 episode_id = 2;
+    uint32 episode_id = 2 [(options.fk) = "master/episode"];
     uint32 ordinal = 3;
     uint32 bgm_id = 4;
 }
 
 message Ranking {
     uint32 id = 1;
-    uint32 resource_id = 2;
+    uint32 resource_id = 2 [(options.fk) = "resources"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 ranking_type = 4;
     uint32 priority = 5;
@@ -2620,11 +2620,11 @@ message RankingReward {
     uint32 seq_id = 2;
     uint32 upper = 3;
     uint32 lower = 4;
-    uint32 event_id = 5;
-    uint32 gve_id = 6;
+    uint32 event_id = 5 [(options.fk) = "master/event"];
+    uint32 gve_id = 6 [(options.fk) = "master/gve"];
     uint32 ranking_type = 7;
     uint32 condition_type_id = 8;
-    uint32 reward_group_id = 9;
+    uint32 reward_group_id = 9 [(options.fk) = "master/reward_group"];
 }
 
 message Region {
@@ -2637,7 +2637,7 @@ message Region {
 message ReliefPointReward {
     uint32 id = 1;
     uint32 point = 2;
-    uint32 reward_group_id = 3;
+    uint32 reward_group_id = 3 [(options.fk) = "master/reward_group"];
 }
 
 message Reward {
@@ -2650,7 +2650,7 @@ message Reward {
 }
 
 message RewardConfig {
-    uint32 reward_group_id = 1;
+    uint32 reward_group_id = 1 [(options.fk) = "master/reward_group"];
     uint32 sender_category = 2;
     uint32 text_present_title = 3 [(options.fk) = "master/text_lang"];
     uint32 text_present_description = 4 [(options.fk) = "master/text_lang"];
@@ -2659,7 +2659,7 @@ message RewardConfig {
 
 message RewardGroup {
     uint32 id = 1;
-    uint32 reward_id = 2;
+    uint32 reward_id = 2 [(options.fk) = "master/reward"];
     uint32 boost_type = 3;
     uint32 equipment_rarity = 4;
     uint32 enhancement = 5;
@@ -2669,9 +2669,9 @@ message RewardGroup {
 }
 
 message RiskDungeon {
-    uint32 area_id = 1;
+    uint32 area_id = 1 [(options.fk) = "master/area"];
     uint32 risk = 2;
-    uint32 stage_sequence_id = 3;
+    uint32 stage_sequence_id = 3 [(options.fk) = "master/stage_sequence"];
     uint32 power = 4;
     float param_rate_hp = 5;
     float param_rate_attack = 6;
@@ -2691,23 +2691,23 @@ message RiskDungeon {
     float single_param_rate_agility = 20;
     float boost_rate = 21;
     uint32 clear_exp = 22;
-    uint32 clear_reward_group_id = 23;
+    uint32 clear_reward_group_id = 23 [(options.fk) = "master/reward_group"];
     uint32 point = 24;
     string open_date = 25 [(options.datetime) = true];
 }
 
 message RiskDungeonConfig {
-    uint32 area_id = 1;
+    uint32 area_id = 1 [(options.fk) = "master/area"];
     uint32 reset_type = 2;
     uint32 risk_subtraction = 3;
-    uint32 event_id = 4;
+    uint32 event_id = 4 [(options.fk) = "master/event"];
     uint32 op_type = 5;
     float boost_rate = 6;
-    uint32 ranking_reward_id = 7;
+    uint32 ranking_reward_id = 7 [(options.fk) = "master/ranking_reward"];
 }
 
 message RiskDungeonTimeBonus {
-    uint32 area_id = 1;
+    uint32 area_id = 1 [(options.fk) = "master/area"];
     uint32 clear_time = 2;
     uint32 op_type = 3;
     float boost_rate = 4;
@@ -2723,9 +2723,9 @@ message Rune {
     uint32 target_param_option_group_id = 7;
     uint32 removal_cost = 8;
     uint32 sell_price = 9;
-    uint32 icon_resource_id = 10;
+    uint32 icon_resource_id = 10 [(options.fk) = "resources"];
     uint32 use_material_type = 11;
-    uint32 member_id = 12;
+    uint32 member_id = 12 [(options.fk) = "master/member"];
 }
 
 message RuneLv {
@@ -2738,12 +2738,12 @@ message RuneLv {
 }
 
 message RunePassiveSkill {
-    uint32 rune_id = 1;
+    uint32 rune_id = 1 [(options.fk) = "master/rune"];
     uint32 min_lv = 2;
     uint32 max_lv = 3;
-    uint32 passive_skill_id_1 = 4;
-    uint32 passive_skill_id_2 = 5;
-    uint32 passive_skill_id_3 = 6;
+    uint32 passive_skill_id_1 = 4 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 5 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 6 [(options.fk) = "master/passive_skill"];
 }
 
 message RuneRarity {
@@ -2752,8 +2752,8 @@ message RuneRarity {
     float rarity_up_success_rate = 3;
     uint32 rarity_up_cost = 4;
     uint32 required_material_quantity = 5;
-    uint32 protect_item_id = 6;
-    uint32 lv_down_item_id = 7;
+    uint32 protect_item_id = 6 [(options.fk) = "master/item"];
+    uint32 lv_down_item_id = 7 [(options.fk) = "master/item"];
     uint32 bonus_option_slot0_weight = 8;
     uint32 bonus_option_slot1_weight = 9;
     uint32 bonus_option_slot2_weight = 10;
@@ -2770,16 +2770,16 @@ message SeasonPass {
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
     uint32 text_introduce = 3 [(options.fk) = "master/text_lang"];
     uint32 premium_price = 4;
-    uint32 resource_id = 5;
+    uint32 resource_id = 5 [(options.fk) = "resources"];
     string open_date = 6 [(options.datetime) = true];
     string close_date = 7 [(options.datetime) = true];
 }
 
 message SeasonPassDailyMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
-    uint32 season_pass_id = 4;
+    uint32 season_pass_id = 4 [(options.fk) = "master/season_pass"];
     uint32 type_value = 5;
     uint32 exp = 6;
     uint32 weight = 7;
@@ -2787,20 +2787,20 @@ message SeasonPassDailyMission {
 }
 
 message SeasonPassLevel {
-    uint32 season_pass_id = 1;
+    uint32 season_pass_id = 1 [(options.fk) = "master/season_pass"];
     uint32 level = 2;
     uint32 exp = 3;
     uint32 price = 4;
     uint32 pickup = 5;
-    uint32 normal_reward_group_id = 6;
-    uint32 premium_reward_group_id = 7;
+    uint32 normal_reward_group_id = 6 [(options.fk) = "master/reward_group"];
+    uint32 premium_reward_group_id = 7 [(options.fk) = "master/reward_group"];
 }
 
 message SeasonPassWeeklyMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
-    uint32 season_pass_id = 4;
+    uint32 season_pass_id = 4 [(options.fk) = "master/season_pass"];
     uint32 type_value = 5;
     uint32 exp = 6;
     uint32 start_week = 7;
@@ -2810,7 +2810,7 @@ message SeasonPassWeeklyMission {
 message SerialCode {
     uint32 id = 1;
     string serial_code = 2;
-    uint32 reward_group_id = 3;
+    uint32 reward_group_id = 3 [(options.fk) = "master/reward_group"];
     string open_date = 4 [(options.datetime) = true];
     string close_date = 5 [(options.datetime) = true];
 }
@@ -2834,21 +2834,21 @@ message ShopItem {
     uint32 text_description = 3 [(options.fk) = "master/text_lang"];
     uint32 type = 4;
     string product_id = 5;
-    uint32 reward_group_id = 6;
-    uint32 guild_reward_group_id = 7;
-    uint32 special_reward_group_id = 8;
-    uint32 bonus_reward_group_id = 9;
-    uint32 first_buy_reward_group_id = 10;
-    uint32 advertising_id = 11;
+    uint32 reward_group_id = 6 [(options.fk) = "master/reward_group"];
+    uint32 guild_reward_group_id = 7 [(options.fk) = "master/reward_group"];
+    uint32 special_reward_group_id = 8 [(options.fk) = "master/reward_group"];
+    uint32 bonus_reward_group_id = 9 [(options.fk) = "master/reward_group"];
+    uint32 first_buy_reward_group_id = 10 [(options.fk) = "master/reward_group"];
+    uint32 advertising_id = 11 [(options.fk) = "master/advertising"];
     uint32 bonus_mileage = 12;
-    uint32 shop_id = 13;
+    uint32 shop_id = 13 [(options.fk) = "master/shop"];
     uint32 display_primary_num = 14;
     uint32 release_condition_type = 15;
     uint32 release_condition_value = 16;
     uint32 release_condition_id = 17;
     uint32 limit_type = 18;
     uint32 guild_shop_rule = 19;
-    uint32 job_id = 20;
+    uint32 job_id = 20 [(options.fk) = "master/job"];
     uint32 limit_count = 21;
     uint32 free_count = 22;
     uint32 free_interval = 23;
@@ -2857,10 +2857,10 @@ message ShopItem {
     string close_date = 26 [(options.datetime) = true];
     string sales_stop_date = 27 [(options.datetime) = true];
     uint32 open_job_lv = 28;
-    uint32 open_shop_mission_id = 29;
-    int32 resource_id = 30;
+    uint32 open_shop_mission_id = 29 [(options.fk) = "master/shop_mission"];
+    int32 resource_id = 30 [(options.fk) = "resources"];
     string effect = 31;
-    uint32 label_group_id = 32;
+    uint32 label_group_id = 32 [(options.fk) = "master/label_group"];
     uint32 display_rate_flag = 33;
     uint32 display_random_box_rate_flag = 34;
     uint32 display_select_box_flag = 35;
@@ -2868,37 +2868,37 @@ message ShopItem {
 
 message ShopMission {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 type_value = 3;
 }
 
 message ShopPayment {
-    uint32 shop_item_id = 1;
+    uint32 shop_item_id = 1 [(options.fk) = "master/shop_item"];
     uint32 priority = 2;
     uint32 type = 3;
-    uint32 item_id = 4;
+    uint32 item_id = 4 [(options.fk) = "master/item"];
     uint32 price = 5;
 }
 
 message ShopPickup {
     uint32 id = 1;
-    uint32 shop_item_id = 2;
+    uint32 shop_item_id = 2 [(options.fk) = "master/shop_item"];
     uint32 priority = 3;
     string target = 4;
-    int32 resource_id = 5;
+    int32 resource_id = 5 [(options.fk) = "resources"];
     string open_date = 6 [(options.datetime) = true];
     string close_date = 7 [(options.datetime) = true];
 }
 
 message ShopSpecialSale {
     uint32 id = 1;
-    uint32 shop_item_id = 2;
-    uint32 release_stage_id = 3;
+    uint32 shop_item_id = 2 [(options.fk) = "master/shop_item"];
+    uint32 release_stage_id = 3 [(options.fk) = "master/stage"];
     uint32 limit_minute = 4;
     uint32 lower_vip_rank = 5;
     uint32 upper_vip_rank = 6;
     uint32 display_primary_num = 7;
-    uint32 resource_id = 8;
+    uint32 resource_id = 8 [(options.fk) = "resources"];
     string open_date = 9 [(options.datetime) = true];
     string close_date = 10 [(options.datetime) = true];
 }
@@ -2915,7 +2915,7 @@ message SkillAi {
     uint32 invoke_target_type = 9;
     uint32 invoke_operator = 10;
     uint32 invoke_target_num = 11;
-    uint32 invoke_target_monster_id = 12;
+    uint32 invoke_target_monster_id = 12 [(options.fk) = "master/monster"];
     uint32 invoke_param_operand_type1 = 13;
     uint32 invoke_param_operator1 = 14;
     uint32 invoke_param_operand_value1 = 15;
@@ -2926,29 +2926,29 @@ message SkillAi {
     uint32 effect_target = 20;
     uint32 effect_target_operator = 21;
     uint32 effect_target_operand_value = 22;
-    uint32 effect_target_monster_id = 23;
+    uint32 effect_target_monster_id = 23 [(options.fk) = "master/monster"];
     uint32 effect_target_param_operator = 24;
     uint32 effect_target_param_operand_type = 25;
     uint32 effect_target_param_operand_value = 26;
-    uint32 effect_target_status_group_id = 27;
+    uint32 effect_target_status_group_id = 27 [(options.fk) = "master/effect_status_group"];
     uint32 effect_target_role_id = 28;
-    uint32 effect_target_job_id = 29;
+    uint32 effect_target_job_id = 29 [(options.fk) = "master/job"];
     uint32 effect_param = 30;
     uint32 effect_param_operator = 31;
     uint32 effect_param_value = 32;
     uint32 effect_resist = 33;
     uint32 effect_resist_operator = 34;
     float effect_resist_value = 35;
-    uint32 effect_status_group_id = 36;
+    uint32 effect_status_group_id = 36 [(options.fk) = "master/effect_status_group"];
 }
 
 message SkillModule {
     uint32 id = 1;
-    uint32 active_skill_id = 2;
+    uint32 active_skill_id = 2 [(options.fk) = "master/active_skill"];
     uint32 combo_continuous_target = 3;
     uint32 effect_target = 4;
     uint32 effect_range = 5;
-    uint32 dependence_param_group_id = 6;
+    uint32 dependence_param_group_id = 6 [(options.fk) = "master/skill_module_dependence_param_group"];
     float power_corr_value = 7;
     float power_corr_magnification = 8;
     uint32 skill_fixed_power = 9;
@@ -2961,7 +2961,7 @@ message SkillModule {
     float special_effect_category_rate = 16;
     uint32 special_effect_race_id = 17;
     float special_effect_race_rate = 18;
-    uint32 chase_status_ailment_group_id = 19;
+    uint32 chase_status_ailment_group_id = 19 [(options.fk) = "master/skill_module_status_ailment_group"];
     float chase_status_ailment_group_rate = 20;
     uint32 atk_times = 21;
     uint32 def_ignored = 22;
@@ -2978,49 +2978,49 @@ message SkillModule {
     uint32 recovery_type = 33;
     float sub_recovery_rate = 34;
     float sub_damate_rate = 35;
-    uint32 grant_status_ailment_group_id = 36;
-    uint32 recovery_status_ailment_group_id = 37;
-    uint32 buff_debuff_target_param_group_id = 38;
-    uint32 recovery_buff_debuff_target_param_group_id = 39;
+    uint32 grant_status_ailment_group_id = 36 [(options.fk) = "master/skill_module_status_ailment_group"];
+    uint32 recovery_status_ailment_group_id = 37 [(options.fk) = "master/skill_module_status_ailment_group"];
+    uint32 buff_debuff_target_param_group_id = 38 [(options.fk) = "master/skill_module_target_param_group"];
+    uint32 recovery_buff_debuff_target_param_group_id = 39 [(options.fk) = "master/skill_module_target_param_group"];
     float skill_hate_correction_value = 40;
     uint32 special_skill_type = 41;
     uint32 special_skill_value = 42;
-    uint32 chase_target_param_buff_id = 43;
+    uint32 chase_target_param_buff_id = 43 [(options.fk) = "master/target_param"];
     float chase_target_param_buff_rate = 44;
-    uint32 chase_target_param_debuff_id = 45;
+    uint32 chase_target_param_debuff_id = 45 [(options.fk) = "master/target_param"];
     float chase_target_param_debuff_rate = 46;
-    uint32 add_effect_id = 47;
+    uint32 add_effect_id = 47 [(options.fk) = "master/skill_module_add_effect_chase"];
 }
 
 message SkillModuleAddEffectChase {
     uint32 id = 1;
     uint32 effected_race_id = 2;
-    uint32 effected_target_param_buff_id = 3;
-    uint32 effected_target_param_debuff_id = 4;
-    uint32 effected_status_ailment_group_id = 5;
+    uint32 effected_target_param_buff_id = 3 [(options.fk) = "master/target_param"];
+    uint32 effected_target_param_debuff_id = 4 [(options.fk) = "master/target_param"];
+    uint32 effected_status_ailment_group_id = 5 [(options.fk) = "master/skill_module_status_ailment_group"];
     uint32 effected_break_condition = 6;
     float add_effect_chase_rate = 7;
     float add_effect_recovery_rate = 8;
     float add_effect_sub_recovery_rate = 9;
     float add_effect_base_succ_rate = 10;
-    uint32 add_effect_grant_status_ailment_group_id = 11;
-    uint32 add_effect_buff_debuff_target_param_group_id = 12;
+    uint32 add_effect_grant_status_ailment_group_id = 11 [(options.fk) = "master/skill_module_status_ailment_group"];
+    uint32 add_effect_buff_debuff_target_param_group_id = 12 [(options.fk) = "master/skill_module_target_param_group"];
 }
 
 message SkillModuleDependenceParamGroup {
     uint32 id = 1;
-    uint32 param = 2;
+    uint32 param = 2 [(options.fk) = "master/target_param"];
     uint32 equipment_sub_category = 3;
 }
 
 message SkillModuleStatusAilmentGroup {
     uint32 id = 1;
-    uint32 status_ailment_id = 2;
+    uint32 status_ailment_id = 2 [(options.fk) = "master/status_ailment"];
 }
 
 message SkillModuleTargetParamGroup {
     uint32 id = 1;
-    uint32 target_param = 2;
+    uint32 target_param = 2 [(options.fk) = "master/target_param"];
     uint32 group_id = 3;
     float target_magnification = 4;
     float effect_time = 5;
@@ -3037,11 +3037,11 @@ message SkillState {
 message SpecialEffectRaceBonus {
     uint32 special_effect_race = 1;
     uint32 equipment_count = 2;
-    uint32 passive_skill_id_1 = 3;
+    uint32 passive_skill_id_1 = 3 [(options.fk) = "master/passive_skill"];
 }
 
 message SpecialItemConfig {
-    uint32 shop_item_id = 1;
+    uint32 shop_item_id = 1 [(options.fk) = "master/shop_item"];
     uint32 seq_id = 2;
     uint32 stepup_text = 3 [(options.fk) = "master/text_lang"];
     uint32 condition_type = 4;
@@ -3049,33 +3049,33 @@ message SpecialItemConfig {
     uint32 param2 = 6;
     uint32 param3 = 7;
     uint32 param4 = 8;
-    uint32 reward_group_id = 9;
+    uint32 reward_group_id = 9 [(options.fk) = "master/reward_group"];
     uint32 price = 10;
 }
 
 message Stage {
     uint32 id = 1;
-    uint32 area_id = 2;
-    uint32 quest_id = 3;
-    uint32 region_id = 4;
+    uint32 area_id = 2 [(options.fk) = "master/area"];
+    uint32 quest_id = 3 [(options.fk) = "master/quest"];
+    uint32 region_id = 4 [(options.fk) = "master/region"];
     uint32 text_name = 5 [(options.fk) = "master/text_lang"];
-    uint32 scenario_id = 6;
-    uint32 map_id = 7;
+    uint32 scenario_id = 6 [(options.fk) = "resources"];
+    uint32 map_id = 7 [(options.fk) = "resources"];
     uint32 bgm_id = 8;
     uint32 model_id = 9;
     uint32 narration_type = 10;
     uint32 text_narration = 11 [(options.fk) = "master/text_lang"];
-    uint32 character_resource_id = 12;
-    uint32 background_resource_id = 13;
+    uint32 character_resource_id = 12 [(options.fk) = "resources"];
+    uint32 background_resource_id = 13 [(options.fk) = "resources"];
     uint32 type = 14;
     uint32 difficulty = 15;
     uint32 power = 16;
-    uint32 previous_stage_id = 17;
+    uint32 previous_stage_id = 17 [(options.fk) = "master/stage"];
     uint32 min_job_lv = 18;
     uint32 clear_exp = 19;
     uint32 first_clear_exp = 20;
-    uint32 clear_reward_group_id = 21;
-    uint32 first_clear_reward_group_id = 22;
+    uint32 clear_reward_group_id = 21 [(options.fk) = "master/reward_group"];
+    uint32 first_clear_reward_group_id = 22 [(options.fk) = "master/reward_group"];
     uint32 play_flag = 23;
     uint32 party_type = 24;
     uint32 boss = 25;
@@ -3086,9 +3086,9 @@ message Stage {
     uint32 minimum_num = 30;
     uint32 continue_flag = 31;
     uint32 continue_count = 32;
-    uint32 npc_id_1 = 33;
-    uint32 npc_id_2 = 34;
-    uint32 npc_id_3 = 35;
+    uint32 npc_id_1 = 33 [(options.fk) = "master/npc"];
+    uint32 npc_id_2 = 34 [(options.fk) = "master/npc"];
+    uint32 npc_id_3 = 35 [(options.fk) = "master/npc"];
     uint32 npc_lv1 = 36;
     uint32 npc_lv2 = 37;
     uint32 npc_lv3 = 38;
@@ -3103,23 +3103,23 @@ message Stage {
 
 message StageGroup {
     uint32 id = 1;
-    uint32 stage_id = 2;
+    uint32 stage_id = 2 [(options.fk) = "master/stage"];
 }
 
 message StageSequence {
     uint32 id = 1;
-    uint32 stage_id = 2;
-    uint32 wave_id = 3;
+    uint32 stage_id = 2 [(options.fk) = "master/stage"];
+    uint32 wave_id = 3 [(options.fk) = "master/wave"];
     uint32 round_no = 4;
     uint32 position_no = 5;
 }
 
 message StageSkip {
-    uint32 stage_id = 1;
-    uint32 item_id = 2;
+    uint32 stage_id = 1 [(options.fk) = "master/stage"];
+    uint32 item_id = 2 [(options.fk) = "master/item"];
     uint32 item_num = 3;
-    uint32 reward_id_1 = 4;
-    uint32 reward_id_2 = 5;
+    uint32 reward_id_1 = 4 [(options.fk) = "master/reward_group"];
+    uint32 reward_id_2 = 5 [(options.fk) = "master/reward_group"];
     uint32 exp = 6;
 }
 
@@ -3132,7 +3132,7 @@ message StampRewardStep {
 
 message StatusAilment {
     uint32 id = 1;
-    uint32 status_ailment_group_id = 2;
+    uint32 status_ailment_group_id = 2 [(options.fk) = "master/status_ailment_group"];
     uint32 rank = 3;
     float duration = 4;
     float param1 = 5;
@@ -3160,8 +3160,8 @@ message StatusAilmentGroup {
     uint32 effect_priority = 9;
     uint32 effect_appear_type = 10;
     uint32 stop_act_flag = 11;
-    uint32 status_ailment_start_id = 12;
-    uint32 status_ailment_cancel_id = 13;
+    uint32 status_ailment_start_id = 12 [(options.fk) = "master/status_ailment_trigger_type"];
+    uint32 status_ailment_cancel_id = 13 [(options.fk) = "master/status_ailment_cancellation_type"];
 }
 
 message StatusAilmentTriggerType {
@@ -3174,21 +3174,21 @@ message Survey {
     uint32 id = 1;
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
     uint32 text_detail = 3 [(options.fk) = "master/text_lang"];
-    uint32 reward_group_id = 4;
-    uint32 resource_id = 5;
+    uint32 reward_group_id = 4 [(options.fk) = "master/reward_group"];
+    uint32 resource_id = 5 [(options.fk) = "resources"];
     string open_date = 6 [(options.datetime) = true];
     string close_date = 7 [(options.datetime) = true];
 }
 
 message SurveyAnswer {
-    uint32 questions_id = 1;
+    uint32 questions_id = 1 [(options.fk) = "master/survey_questions"];
     uint32 idx_no = 2;
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
 }
 
 message SurveyQuestions {
     uint32 id = 1;
-    uint32 survey_id = 2;
+    uint32 survey_id = 2 [(options.fk) = "master/survey"];
     uint32 idx_no = 3;
     uint32 type = 4;
     uint32 etc_answer_no = 5;
@@ -3205,7 +3205,7 @@ message TargetParam {
 message TargetParamOption {
     uint32 id = 1;
     uint32 group_id = 2;
-    uint32 passive_skill_id = 3;
+    uint32 passive_skill_id = 3 [(options.fk) = "master/passive_skill"];
     uint32 weight = 4;
     uint32 type = 5;
 }
@@ -3225,23 +3225,23 @@ message Ticker {
 message Tips {
     uint32 id = 1;
     uint32 view_type = 2;
-    uint32 resource_id = 3;
+    uint32 resource_id = 3 [(options.fk) = "resources"];
 }
 
 message Title {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 text_name = 3 [(options.fk) = "master/text_lang"];
     uint32 type_value = 4;
     uint32 display_priority = 5;
     uint32 lifetime = 6;
-    uint32 title_category_id = 7;
-    uint32 resource_id = 8;
-    uint32 passive_skill_id_1 = 9;
-    uint32 passive_skill_id_2 = 10;
-    uint32 passive_skill_id_3 = 11;
-    uint32 passive_skill_id_4 = 12;
-    uint32 passive_skill_id_5 = 13;
+    uint32 title_category_id = 7 [(options.fk) = "master/title_category"];
+    uint32 resource_id = 8 [(options.fk) = "resources"];
+    uint32 passive_skill_id_1 = 9 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_2 = 10 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_3 = 11 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_4 = 12 [(options.fk) = "master/passive_skill"];
+    uint32 passive_skill_id_5 = 13 [(options.fk) = "master/passive_skill"];
     string target = 14;
     string open_date = 15 [(options.datetime) = true];
 }
@@ -3249,7 +3249,7 @@ message Title {
 message TitleCategory {
     uint32 id = 1;
     uint32 text_name = 2 [(options.fk) = "master/text_lang"];
-    uint32 resource_id = 3;
+    uint32 resource_id = 3 [(options.fk) = "resources"];
 }
 
 message TreasureBattleReward {
@@ -3263,13 +3263,13 @@ message TreasureBattleReward {
 
 message UnlockAchievementGroup {
     uint32 id = 1;
-    uint32 stage_id = 2;
-    uint32 achievement_id = 3;
+    uint32 stage_id = 2 [(options.fk) = "master/stage"];
+    uint32 achievement_id = 3 [(options.fk) = "master/achievement"];
 }
 
 message UnlockCondition {
     uint32 id = 1;
-    uint32 condition_category_id = 2;
+    uint32 condition_category_id = 2 [(options.fk) = "master/condition_category"];
     uint32 type_value = 3;
     uint32 notify_flag = 4;
     uint32 text_notify = 5 [(options.fk) = "master/text_lang"];
@@ -3286,8 +3286,8 @@ message Version {
 message Vip {
     uint32 rank = 1;
     uint32 point = 2;
-    uint32 daily_reward_group_id = 3;
-    int32 resource_id = 4;
+    uint32 daily_reward_group_id = 3 [(options.fk) = "master/reward_group"];
+    int32 resource_id = 4 [(options.fk) = "resources"];
     uint32 itembox = 5;
     uint32 auto_battle_count_limit = 6;
     uint32 arena_limit = 7;
@@ -3296,8 +3296,8 @@ message Vip {
     uint32 continue = 10;
     float exp_boost_rate = 11;
     float ancient_tower_boost = 12;
-    uint32 shop_item_id_1 = 13;
-    uint32 shop_item_id_2 = 14;
+    uint32 shop_item_id_1 = 13 [(options.fk) = "master/shop_item"];
+    uint32 shop_item_id_2 = 14 [(options.fk) = "master/shop_item"];
 }
 
 message Voice {
@@ -3319,15 +3319,15 @@ message Wave {
     uint32 enemy_pattern_num = 8;
     uint32 ally_pattern_num = 9;
     float monster_position_z = 10;
-    uint32 event_id = 11;
+    uint32 event_id = 11 [(options.fk) = "master/event"];
 }
 
 message WaveMonster {
-    uint32 wave_id = 1;
+    uint32 wave_id = 1 [(options.fk) = "master/wave"];
     uint32 sub_id = 2;
     uint32 seq_id = 3;
-    uint32 monster_id = 4;
-    uint32 wave_monster_reward_id = 5;
+    uint32 monster_id = 4 [(options.fk) = "master/monster"];
+    uint32 wave_monster_reward_id = 5 [(options.fk) = "master/wave_monster_reward"];
     uint32 boss_type = 6;
     uint32 dead_camera_type = 7;
     uint32 raid = 8;
@@ -3336,24 +3336,24 @@ message WaveMonster {
 message WaveMonsterReward {
     uint32 id = 1;
     uint32 seq_id = 2;
-    uint32 reward_group_id = 3;
+    uint32 reward_group_id = 3 [(options.fk) = "master/reward_group"];
     uint32 box_color = 4;
     float probability = 5;
 }
 
 message WeaponSkillLv {
-    uint32 equipment_id = 1;
-    uint32 active_skill_id = 2;
-    uint32 active_skill_id_slot1 = 3;
-    uint32 active_skill_id_slot2 = 4;
-    uint32 active_skill_id_slot3 = 5;
+    uint32 equipment_id = 1 [(options.fk) = "master/equipment"];
+    uint32 active_skill_id = 2 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_slot1 = 3 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_slot2 = 4 [(options.fk) = "master/active_skill"];
+    uint32 active_skill_id_slot3 = 5 [(options.fk) = "master/active_skill"];
     uint32 lv = 6;
 }
 
 message WeaponSkillLvEnhance {
     uint32 lv = 1;
     uint32 rarity = 2;
-    uint32 item_id = 3;
+    uint32 item_id = 3 [(options.fk) = "master/item"];
     uint32 blue_skill_point = 4;
     uint32 red_skill_point = 5;
     float success_rate = 6;
