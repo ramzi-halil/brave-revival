@@ -46,7 +46,9 @@ var (
 	//
 	// optional bool datetime = 50001;
 	E_Datetime = &file_options_proto_extTypes[0]
-	// Used in integer fields to specify foreign-key relationship. The value should be the full name of the targeted message type.
+	// Used in integer fields to specify foreign-key relationship. The value should be one of the followings:
+	//   - master/<field>: it should be an existing `id` row under <field>.csv.
+	//   - resources     : it should be an existing `id` row under resources.csv.
 	//
 	// optional string fk = 50002;
 	E_Fk = &file_options_proto_extTypes[1]

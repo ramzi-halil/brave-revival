@@ -30295,11 +30295,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\fwave_monster\x18\xfe\x01 \x03(\v2\x14.Pmaster.WaveMonsterR\vwaveMonster\x12K\n" +
 	"\x13wave_monster_reward\x18\xff\x01 \x03(\v2\x1a.Pmaster.WaveMonsterRewardR\x11waveMonsterReward\x12?\n" +
 	"\x0fweapon_skill_lv\x18\x80\x02 \x03(\v2\x16.Pmaster.WeaponSkillLvR\rweaponSkillLv\x12U\n" +
-	"\x17weapon_skill_lv_enhance\x18\x81\x02 \x03(\v2\x1d.Pmaster.WeaponSkillLvEnhanceR\x14weaponSkillLvEnhance\"\x9e\x03\n" +
+	"\x17weapon_skill_lv_enhance\x18\x81\x02 \x03(\v2\x1d.Pmaster.WeaponSkillLvEnhanceR\x14weaponSkillLvEnhance\"\xb4\x03\n" +
 	"\vAchievement\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
-	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x126\n" +
+	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x126\n" +
 	"\x17achievement_category_id\x18\x04 \x01(\rR\x15achievementCategoryId\x12+\n" +
 	"\x11achievement_point\x18\x05 \x01(\rR\x10achievementPoint\x124\n" +
 	"\x16preview_achievement_id\x18\x06 \x01(\rR\x14previewAchievementId\x12\x1d\n" +
@@ -30308,10 +30308,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x10display_priority\x18\b \x01(\rR\x0fdisplayPriority\x12&\n" +
 	"\x0freward_group_id\x18\t \x01(\rR\rrewardGroupId\x12!\n" +
 	"\topen_date\x18\n" +
-	" \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"c\n" +
+	" \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"y\n" +
 	"\x13AchievementCategory\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1f\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1f\n" +
 	"\vresource_id\x18\x03 \x01(\rR\n" +
 	"resourceId\"\xbc\x04\n" +
 	"\x14AchievementEquipment\x12\x0e\n" +
@@ -30361,22 +30361,22 @@ const file_pmaster_proto_rawDesc = "" +
 	"\rmeta_tag_id_2\x18\v \x01(\rR\n" +
 	"metaTagId2\x12!\n" +
 	"\rmeta_tag_id_3\x18\f \x01(\rR\n" +
-	"metaTagId3\"\xb2\x02\n" +
+	"metaTagId3\"\xc8\x02\n" +
 	"\x10ActiveSkillGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1d\n" +
 	"\n" +
-	"skill_type\x18\x02 \x01(\rR\tskillType\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12)\n" +
+	"skill_type\x18\x02 \x01(\rR\tskillType\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12)\n" +
 	"\x11skill_ai_group_id\x18\x04 \x01(\rR\x0eskillAiGroupId\x12\x1f\n" +
 	"\vresource_id\x18\x05 \x01(\rR\n" +
 	"resourceId\x12)\n" +
 	"\x10balloon_priority\x18\x06 \x01(\rR\x0fballoonPriority\x12\x1b\n" +
 	"\tstate_num\x18\a \x01(\rR\bstateNum\x12(\n" +
 	"\x10cast_circle_type\x18\b \x01(\rR\x0ecastCircleType\x12\x14\n" +
-	"\x05range\x18\t \x01(\rR\x05range\"`\n" +
+	"\x05range\x18\t \x01(\rR\x05range\"v\n" +
 	"\x12ActiveSkillMetaTag\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1d\n" +
 	"\n" +
 	"color_type\x18\x03 \x01(\rR\tcolorType\"\xc3\x01\n" +
 	"\vAdvertising\x12\x0e\n" +
@@ -30386,11 +30386,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\n" +
 	"reset_type\x18\x04 \x01(\rR\tresetType\x12!\n" +
 	"\topen_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12\x1f\n" +
-	"\bend_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\aendDate\"\xab\x01\n" +
+	"\bend_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\aendDate\"\xd7\x01\n" +
 	"\x12AdvertisingMission\x12%\n" +
-	"\x0eadvertising_id\x18\x01 \x01(\rR\radvertisingId\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12)\n" +
-	"\x10text_description\x18\x03 \x01(\rR\x0ftextDescription\x12&\n" +
+	"\x0eadvertising_id\x18\x01 \x01(\rR\radvertisingId\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12?\n" +
+	"\x10text_description\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\x12&\n" +
 	"\x0freward_group_id\x18\x04 \x01(\rR\rrewardGroupId\"\xb1\x02\n" +
 	"\vAgitoApItem\x12\x17\n" +
 	"\aitem_id\x18\x01 \x01(\rR\x06itemId\x12\x0e\n" +
@@ -30454,16 +30454,16 @@ const file_pmaster_proto_rawDesc = "" +
 	"\aitem_id\x18\x04 \x01(\rR\x06itemId\x128\n" +
 	"\x19agito_visitor_lineup_id_1\x18\x05 \x01(\rR\x15agitoVisitorLineupId1\x128\n" +
 	"\x19agito_visitor_lineup_id_2\x18\x06 \x01(\rR\x15agitoVisitorLineupId2\x128\n" +
-	"\x19agito_visitor_lineup_id_3\x18\a \x01(\rR\x15agitoVisitorLineupId3\"\xa1\x04\n" +
+	"\x19agito_visitor_lineup_id_3\x18\a \x01(\rR\x15agitoVisitorLineupId3\"\xe3\x04\n" +
 	"\fAgitoVisitor\x12!\n" +
 	"\fequipment_id\x18\x01 \x01(\rR\vequipmentId\x12,\n" +
 	"\x12base_visitor_point\x18\x02 \x01(\rR\x10baseVisitorPoint\x12*\n" +
 	"\x11max_visitor_point\x18\x03 \x01(\rR\x0fmaxVisitorPoint\x12#\n" +
 	"\rstay_interval\x18\x04 \x01(\rR\fstayInterval\x12-\n" +
-	"\x12relottery_interval\x18\x05 \x01(\rR\x11relotteryInterval\x121\n" +
-	"\x15text_description_id_1\x18\x06 \x01(\rR\x12textDescriptionId1\x121\n" +
-	"\x15text_description_id_2\x18\a \x01(\rR\x12textDescriptionId2\x12\x1f\n" +
-	"\vtext_flavor\x18\b \x01(\rR\n" +
+	"\x12relottery_interval\x18\x05 \x01(\rR\x11relotteryInterval\x12G\n" +
+	"\x15text_description_id_1\x18\x06 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x12textDescriptionId1\x12G\n" +
+	"\x15text_description_id_2\x18\a \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x12textDescriptionId2\x125\n" +
+	"\vtext_flavor\x18\b \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
 	"textFlavor\x12@\n" +
 	"\x1dagito_visitor_point_reward_id\x18\t \x01(\rR\x19agitoVisitorPointRewardId\x12\x1f\n" +
 	"\vresource_id\x18\n" +
@@ -30491,7 +30491,7 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x10\n" +
 	"\x03seq\x18\x02 \x01(\rR\x03seq\x12\x14\n" +
 	"\x05value\x18\x03 \x01(\rR\x05value\x12&\n" +
-	"\x0freward_group_id\x18\x04 \x01(\rR\rrewardGroupId\"\xb9\x04\n" +
+	"\x0freward_group_id\x18\x04 \x01(\rR\rrewardGroupId\"\xbd\x05\n" +
 	"\x11AgitoVisitorVoice\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
 	"\vvoice_name1\x18\x02 \x01(\tR\n" +
@@ -30505,19 +30505,19 @@ const file_pmaster_proto_rawDesc = "" +
 	"\vvoice_name5\x18\x06 \x01(\tR\n" +
 	"voiceName5\x12\x1f\n" +
 	"\vvoice_name6\x18\a \x01(\tR\n" +
-	"voiceName6\x12\x1f\n" +
-	"\vtext_voice1\x18\b \x01(\rR\n" +
-	"textVoice1\x12\x1f\n" +
-	"\vtext_voice2\x18\t \x01(\rR\n" +
-	"textVoice2\x12\x1f\n" +
+	"voiceName6\x125\n" +
+	"\vtext_voice1\x18\b \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
+	"textVoice1\x125\n" +
+	"\vtext_voice2\x18\t \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
+	"textVoice2\x125\n" +
 	"\vtext_voice3\x18\n" +
-	" \x01(\rR\n" +
-	"textVoice3\x12\x1f\n" +
-	"\vtext_voice4\x18\v \x01(\rR\n" +
-	"textVoice4\x12\x1f\n" +
-	"\vtext_voice5\x18\f \x01(\rR\n" +
-	"textVoice5\x12\x1f\n" +
-	"\vtext_voice6\x18\r \x01(\rR\n" +
+	" \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
+	"textVoice3\x125\n" +
+	"\vtext_voice4\x18\v \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
+	"textVoice4\x125\n" +
+	"\vtext_voice5\x18\f \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
+	"textVoice5\x125\n" +
+	"\vtext_voice6\x18\r \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
 	"textVoice6\x12,\n" +
 	"\x12summon_voice_name1\x18\x0e \x01(\tR\x10summonVoiceName1\x12,\n" +
 	"\x12summon_voice_name2\x18\x0f \x01(\tR\x10summonVoiceName2\x12,\n" +
@@ -30542,10 +30542,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\bstage_id\x18\x01 \x01(\rR\astageId\x123\n" +
 	"\x16weekly_reward_group_id\x18\x02 \x01(\rR\x13weeklyRewardGroupId\x123\n" +
 	"\x16assist_reward_group_id\x18\x03 \x01(\rR\x13assistRewardGroupId\x12.\n" +
-	"\x13assist_reward_limit\x18\x04 \x01(\rR\x11assistRewardLimit\"\xe8\x02\n" +
+	"\x13assist_reward_limit\x18\x04 \x01(\rR\x11assistRewardLimit\"\xfe\x02\n" +
 	"\tAnimaArea\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12*\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12*\n" +
 	"\x11anima_category_id\x18\x03 \x01(\rR\x0fanimaCategoryId\x12\x1f\n" +
 	"\varea_reward\x18\x04 \x01(\rR\n" +
 	"areaReward\x12+\n" +
@@ -30553,10 +30553,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12reward_group_id_40\x18\x06 \x01(\rR\x0frewardGroupId40\x12+\n" +
 	"\x12reward_group_id_60\x18\a \x01(\rR\x0frewardGroupId60\x12+\n" +
 	"\x12reward_group_id_80\x18\b \x01(\rR\x0frewardGroupId80\x12-\n" +
-	"\x13reward_group_id_100\x18\t \x01(\rR\x10rewardGroupId100\"<\n" +
+	"\x13reward_group_id_100\x18\t \x01(\rR\x10rewardGroupId100\"R\n" +
 	"\rAnimaCategory\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\"\x9a\x02\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\"\x9a\x02\n" +
 	"\tAnimaPage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\rR\x04type\x12\x1d\n" +
@@ -30585,14 +30585,14 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0fAprilFoolMember\x12\x19\n" +
 	"\bgroup_id\x18\x01 \x01(\rR\agroupId\x12\x1b\n" +
 	"\tmember_id\x18\x02 \x01(\rR\bmemberId\x124\n" +
-	"\x16equipment_character_id\x18\x03 \x01(\rR\x14equipmentCharacterId\"\xbe\x04\n" +
+	"\x16equipment_character_id\x18\x03 \x01(\rR\x14equipmentCharacterId\"\x80\x05\n" +
 	"\x04Area\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
 	"\vcontents_id\x18\x02 \x01(\rR\n" +
-	"contentsId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12+\n" +
-	"\x11text_description1\x18\x04 \x01(\rR\x10textDescription1\x12+\n" +
-	"\x11text_description2\x18\x05 \x01(\rR\x10textDescription2\x121\n" +
+	"contentsId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12A\n" +
+	"\x11text_description1\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x10textDescription1\x12A\n" +
+	"\x11text_description2\x18\x05 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x10textDescription2\x121\n" +
 	"\x15unlock_story_stage_id\x18\x06 \x01(\rR\x12unlockStoryStageId\x12\"\n" +
 	"\rresource_id_1\x18\a \x01(\rR\vresourceId1\x12\"\n" +
 	"\rresource_id_2\x18\b \x01(\rR\vresourceId2\x123\n" +
@@ -30641,11 +30641,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\rR\x04type\x12\x1c\n" +
 	"\tparameter\x18\x03 \x01(\rR\tparameter\x12\x16\n" +
-	"\x06target\x18\x04 \x01(\rR\x06target\"\xd7\x04\n" +
+	"\x06target\x18\x04 \x01(\rR\x06target\"\x83\x05\n" +
 	"\x05Boost\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12)\n" +
-	"\x10text_description\x18\x03 \x01(\rR\x0ftextDescription\x12\x1f\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12?\n" +
+	"\x10text_description\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\x12\x1f\n" +
 	"\vresource_id\x18\x04 \x01(\rR\n" +
 	"resourceId\x12#\n" +
 	"\reffect_target\x18\x05 \x01(\rR\feffectTarget\x12\x1f\n" +
@@ -30674,27 +30674,27 @@ const file_pmaster_proto_rawDesc = "" +
 	"BoostGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x10\n" +
 	"\x03seq\x18\x02 \x01(\rR\x03seq\x12\x19\n" +
-	"\bboost_id\x18\x03 \x01(\rR\aboostId\"~\n" +
+	"\bboost_id\x18\x03 \x01(\rR\aboostId\"\x94\x01\n" +
 	"\aChapter\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12!\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12!\n" +
 	"\topen_date\x18\x03 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xfe\x01\n" +
+	"close_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xaa\x02\n" +
 	"\x05Combo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x0e\n" +
 	"\x02lv\x18\x02 \x01(\rR\x02lv\x12\x1f\n" +
 	"\vcombo_count\x18\x03 \x01(\rR\n" +
 	"comboCount\x12+\n" +
 	"\x12passive_skill_id_1\x18\x04 \x01(\rR\x0fpassiveSkillId1\x12+\n" +
-	"\x12passive_skill_id_2\x18\x05 \x01(\rR\x0fpassiveSkillId2\x12,\n" +
-	"\x12text_effect_label1\x18\x06 \x01(\rR\x10textEffectLabel1\x12,\n" +
-	"\x12text_effect_label2\x18\a \x01(\rR\x10textEffectLabel2\"\xcd\x01\n" +
+	"\x12passive_skill_id_2\x18\x05 \x01(\rR\x0fpassiveSkillId2\x12B\n" +
+	"\x12text_effect_label1\x18\x06 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x10textEffectLabel1\x12B\n" +
+	"\x12text_effect_label2\x18\a \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x10textEffectLabel2\"\xf9\x01\n" +
 	"\x11ConditionCategory\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12*\n" +
-	"\x11condition_type_id\x18\x02 \x01(\rR\x0fconditionTypeId\x12#\n" +
-	"\rtext_category\x18\x03 \x01(\rR\ftextCategory\x12)\n" +
-	"\x10text_description\x18\x04 \x01(\rR\x0ftextDescription\x12,\n" +
+	"\x11condition_type_id\x18\x02 \x01(\rR\x0fconditionTypeId\x129\n" +
+	"\rtext_category\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\ftextCategory\x12?\n" +
+	"\x10text_description\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\x12,\n" +
 	"\x12condition_group_id\x18\x05 \x01(\rR\x10conditionGroupId\"C\n" +
 	"\x0eConditionGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12!\n" +
@@ -30715,12 +30715,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\x12\x1b\n" +
 	"\topen_time\x18\b \x01(\tR\bopenTime\x12\x1d\n" +
 	"\n" +
-	"close_time\x18\t \x01(\tR\tcloseTime\"\xbd\x06\n" +
+	"close_time\x18\t \x01(\tR\tcloseTime\"\xff\x06\n" +
 	"\bContents\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12+\n" +
-	"\x11text_description1\x18\x03 \x01(\rR\x10textDescription1\x12+\n" +
-	"\x11text_description2\x18\x04 \x01(\rR\x10textDescription2\x12)\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12A\n" +
+	"\x11text_description1\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x10textDescription1\x12A\n" +
+	"\x11text_description2\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x10textDescription2\x12)\n" +
 	"\x10display_priority\x18\x05 \x01(\rR\x0fdisplayPriority\x12\x1f\n" +
 	"\vresource_id\x18\x06 \x01(\rR\n" +
 	"resourceId\x12\x12\n" +
@@ -30773,11 +30773,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\ttarget_id\x18\x02 \x01(\rR\btargetId\x12\x12\n" +
 	"\x04type\x18\x03 \x01(\rR\x04type\x12\x17\n" +
 	"\aitem_id\x18\x04 \x01(\rR\x06itemId\x12\x12\n" +
-	"\x04cost\x18\x05 \x01(\rR\x04cost\"\x8f\x02\n" +
+	"\x04cost\x18\x05 \x01(\rR\x04cost\"\xa5\x02\n" +
 	"\fDailyMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
-	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12\x14\n" +
+	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x14\n" +
 	"\x05point\x18\x04 \x01(\rR\x05point\x12\x1d\n" +
 	"\n" +
 	"type_value\x18\x05 \x01(\rR\ttypeValue\x12)\n" +
@@ -30794,11 +30794,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\reffect_status\x18\x03 \x01(\rR\feffectStatus\x12.\n" +
 	"\x13effect_status_value\x18\x04 \x01(\x02R\x11effectStatusValue\x122\n" +
 	"\x15effect_status_operand\x18\x05 \x01(\rR\x13effectStatusOperand\x124\n" +
-	"\x16effect_status_operator\x18\x06 \x01(\rR\x14effectStatusOperator\"\xcd\x05\n" +
+	"\x16effect_status_operator\x18\x06 \x01(\rR\x14effectStatusOperator\"\xe3\x05\n" +
 	"\x06Elixir\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
-	"\x04rank\x18\x02 \x01(\rR\x04rank\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12\x15\n" +
+	"\x04rank\x18\x02 \x01(\rR\x04rank\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x15\n" +
 	"\x06max_lv\x18\x04 \x01(\rR\x05maxLv\x12-\n" +
 	"\x13unlock_total_job_lv\x18\x05 \x01(\rR\x10unlockTotalJobLv\x12&\n" +
 	"\x0fessence_item_id\x18\x06 \x01(\rR\ressenceItemId\x12#\n" +
@@ -30844,23 +30844,23 @@ const file_pmaster_proto_rawDesc = "" +
 	"\vbonus_rate3\x18\v \x01(\x02R\n" +
 	"bonusRate3\x12)\n" +
 	"\x10enhancement_cost\x18\f \x01(\rR\x0fenhancementCost\x12&\n" +
-	"\x0fpity_timer_rate\x18\r \x01(\x02R\rpityTimerRate\"\xe2\x01\n" +
+	"\x0fpity_timer_rate\x18\r \x01(\x02R\rpityTimerRate\"\xf8\x01\n" +
 	"\aEpisode\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1d\n" +
 	"\n" +
 	"chapter_id\x18\x03 \x01(\rR\tchapterId\x12\x1b\n" +
 	"\tunlock_lv\x18\x04 \x01(\rR\bunlockLv\x12&\n" +
 	"\x0freward_group_id\x18\x05 \x01(\rR\rrewardGroupId\x12!\n" +
 	"\topen_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x81\x10\n" +
+	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x97\x10\n" +
 	"\tEquipment\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
 	"\x06gender\x18\x02 \x01(\rR\x06gender\x12\x1b\n" +
 	"\tmember_id\x18\x03 \x01(\rR\bmemberId\x124\n" +
-	"\x16equipment_character_id\x18\x04 \x01(\rR\x14equipmentCharacterId\x12\x1b\n" +
-	"\ttext_name\x18\x05 \x01(\rR\btextName\x12\x15\n" +
+	"\x16equipment_character_id\x18\x04 \x01(\rR\x14equipmentCharacterId\x121\n" +
+	"\ttext_name\x18\x05 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x15\n" +
 	"\x06icon_m\x18\x06 \x01(\rR\x05iconM\x12\x15\n" +
 	"\x06icon_l\x18\a \x01(\rR\x05iconL\x12\x17\n" +
 	"\aicon_ll\x18\b \x01(\rR\x06iconLl\x12\x17\n" +
@@ -31204,12 +31204,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12lv_up_success_rate\x18\t \x01(\x02R\x0flvUpSuccessRate\x12 \n" +
 	"\flimit_job_lv\x18\n" +
 	" \x01(\rR\n" +
-	"limitJobLv\"\xf9\x02\n" +
+	"limitJobLv\"\x8f\x03\n" +
 	"\x17EquipmentVariationColor\x12!\n" +
 	"\fequipment_id\x18\x01 \x01(\rR\vequipmentId\x12\x16\n" +
 	"\x06gender\x18\x02 \x01(\rR\x06gender\x12\x19\n" +
-	"\bcolor_id\x18\x03 \x01(\rR\acolorId\x12\x12\n" +
-	"\x04name\x18\x04 \x01(\rR\x04name\x12\x1a\n" +
+	"\bcolor_id\x18\x03 \x01(\rR\acolorId\x12(\n" +
+	"\x04name\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x04name\x12\x1a\n" +
 	"\bpriority\x18\x05 \x01(\rR\bpriority\x12\x18\n" +
 	"\atexture\x18\x06 \x01(\rR\atexture\x12\x12\n" +
 	"\x04lupi\x18\a \x01(\rR\x04lupi\x12\x14\n" +
@@ -31221,11 +31221,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x05item3\x18\f \x01(\rR\x05item3\x12\x14\n" +
 	"\x05cost3\x18\r \x01(\rR\x05cost3\x12\x12\n" +
 	"\x04rgb1\x18\x0e \x01(\tR\x04rgb1\x12\x12\n" +
-	"\x04rgb2\x18\x0f \x01(\tR\x04rgb2\"\xfc\x02\n" +
+	"\x04rgb2\x18\x0f \x01(\tR\x04rgb2\"\x92\x03\n" +
 	"\x05Event\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12$\n" +
-	"\x0eevent_group_id\x18\x02 \x01(\rR\feventGroupId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12!\n" +
+	"\x0eevent_group_id\x18\x02 \x01(\rR\feventGroupId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12!\n" +
 	"\fdisplay_flag\x18\x04 \x01(\rR\vdisplayFlag\x12\x1f\n" +
 	"\vtarget_type\x18\x05 \x01(\rR\n" +
 	"targetType\x12\x1b\n" +
@@ -31247,23 +31247,23 @@ const file_pmaster_proto_rawDesc = "" +
 	"\bevent_id\x18\x01 \x01(\rR\aeventId\x12\x1d\n" +
 	"\n" +
 	"reset_type\x18\x02 \x01(\rR\tresetType\x12#\n" +
-	"\rbadge_display\x18\x03 \x01(\rR\fbadgeDisplay\"\x9d\x05\n" +
+	"\rbadge_display\x18\x03 \x01(\rR\fbadgeDisplay\"\xdf\x05\n" +
 	"\n" +
 	"EventGroup\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1f\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1f\n" +
 	"\vportal_flag\x18\x03 \x01(\rR\n" +
 	"portalFlag\x12)\n" +
 	"\x10display_priority\x18\x04 \x01(\rR\x0fdisplayPriority\x12,\n" +
 	"\x12portal_resource_id\x18\x05 \x01(\rR\x10portalResourceId\x12,\n" +
 	"\x12banner_resource_id\x18\x06 \x01(\rR\x10bannerResourceId\x12,\n" +
 	"\x12notice_resource_id\x18\a \x01(\rR\x10noticeResourceId\x129\n" +
-	"\x19notice_banner_resource_id\x18\b \x01(\rR\x16noticeBannerResourceId\x12\x1d\n" +
+	"\x19notice_banner_resource_id\x18\b \x01(\rR\x16noticeBannerResourceId\x123\n" +
 	"\n" +
-	"home_text1\x18\t \x01(\rR\thomeText1\x12\x1d\n" +
+	"home_text1\x18\t \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\thomeText1\x123\n" +
 	"\n" +
 	"home_text2\x18\n" +
-	" \x01(\rR\thomeText2\x125\n" +
+	" \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\thomeText2\x125\n" +
 	"\x17home_button_resource_id\x18\v \x01(\rR\x14homeButtonResourceId\x12\x19\n" +
 	"\bgacha_id\x18\f \x01(\rR\agachaId\x12\x17\n" +
 	"\anews_id\x18\r \x01(\tR\x06newsId\x12.\n" +
@@ -31271,11 +31271,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x11portal_close_date\x18\x0f \x01(\tB\x04\x88\xb5\x18\x01R\x0fportalCloseDate\x12!\n" +
 	"\topen_date\x18\x10 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x11 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x93\x03\n" +
+	"close_date\x18\x11 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xa9\x03\n" +
 	"\fEventMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
-	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12\x1d\n" +
+	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1d\n" +
 	"\n" +
 	"type_value\x18\x04 \x01(\rR\ttypeValue\x12)\n" +
 	"\x10inherit_progress\x18\x05 \x01(\rR\x0finheritProgress\x123\n" +
@@ -31362,14 +31362,14 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x05level\x18\x06 \x01(\rR\x05level\x12 \n" +
 	"\venhancement\x18\a \x01(\rR\venhancement\x12!\n" +
 	"\fis_protected\x18\b \x01(\rR\visProtected\x12\x1a\n" +
-	"\bquantity\x18\t \x01(\rR\bquantity\"e\n" +
+	"\bquantity\x18\t \x01(\rR\bquantity\"{\n" +
 	"\n" +
 	"FcmMessage\x124\n" +
-	"\x16push_notification_type\x18\x01 \x01(\rR\x14pushNotificationType\x12!\n" +
-	"\ftext_message\x18\x02 \x01(\rR\vtextMessage\"\xdc\x02\n" +
+	"\x16push_notification_type\x18\x01 \x01(\rR\x14pushNotificationType\x127\n" +
+	"\ftext_message\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\vtextMessage\"\xf2\x02\n" +
 	"\x12FunctionalTutorial\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1a\n" +
 	"\bpriority\x18\x03 \x01(\rR\bpriority\x12\x12\n" +
 	"\x04type\x18\x04 \x01(\rR\x04type\x12\x16\n" +
 	"\x06value1\x18\x05 \x01(\rR\x06value1\x12\"\n" +
@@ -31384,14 +31384,14 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x10FunctionalUnlock\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x15\n" +
 	"\x06job_lv\x18\x02 \x01(\rR\x05jobLv\x12\x19\n" +
-	"\bstage_id\x18\x03 \x01(\rR\astageId\"\xb6\a\n" +
+	"\bstage_id\x18\x03 \x01(\rR\astageId\"\x8e\b\n" +
 	"\x05Gacha\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x123\n" +
 	"\n" +
-	"text_title\x18\x02 \x01(\rR\ttextTitle\x12)\n" +
-	"\x10text_description\x18\x03 \x01(\rR\x0ftextDescription\x12%\n" +
-	"\x0etext_introduce\x18\x04 \x01(\rR\rtextIntroduce\x12\x1f\n" +
-	"\vtext_notice\x18\x05 \x01(\rR\n" +
+	"text_title\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\ttextTitle\x12?\n" +
+	"\x10text_description\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\x12;\n" +
+	"\x0etext_introduce\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\rtextIntroduce\x125\n" +
+	"\vtext_notice\x18\x05 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
 	"textNotice\x12&\n" +
 	"\x0ftab_resource_id\x18\x06 \x01(\rR\rtabResourceId\x12(\n" +
 	"\x10logo_resource_id\x18\a \x01(\rR\x0elogoResourceId\x12*\n" +
@@ -31494,10 +31494,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12guild_contribution\x18\x06 \x01(\rR\x11guildContribution\x121\n" +
 	"\x15clear_reward_group_id\x18\a \x01(\rR\x12clearRewardGroupId\x123\n" +
 	"\x16absent_reward_group_id\x18\b \x01(\rR\x13absentRewardGroupId\x12/\n" +
-	"\x14help_reward_group_id\x18\t \x01(\rR\x11helpRewardGroupId\"L\n" +
+	"\x14help_reward_group_id\x18\t \x01(\rR\x11helpRewardGroupId\"b\n" +
 	"\rGuildFacility\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x0e\n" +
 	"\x02lv\x18\x03 \x01(\rR\x02lv\"\xb4\a\n" +
 	"\x0fGuildFacilityLv\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12*\n" +
@@ -31526,12 +31526,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"\rbattle_value1\x18\x15 \x01(\x02R\fbattleValue1\x12#\n" +
 	"\rbattle_value2\x18\x16 \x01(\x02R\fbattleValue2\x12#\n" +
 	"\rbattle_value3\x18\x17 \x01(\x02R\fbattleValue3\x12H\n" +
-	"!weekly_warehouse_reward_count_max\x18\x18 \x01(\rR\x1dweeklyWarehouseRewardCountMax\"\x82\x01\n" +
+	"!weekly_warehouse_reward_count_max\x18\x18 \x01(\rR\x1dweeklyWarehouseRewardCountMax\"\xae\x01\n" +
 	"\fGuildHistory\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1a\n" +
-	"\bcategory\x18\x02 \x01(\rR\bcategory\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12)\n" +
-	"\x10text_description\x18\x04 \x01(\rR\x0ftextDescription\"g\n" +
+	"\bcategory\x18\x02 \x01(\rR\bcategory\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12?\n" +
+	"\x10text_description\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\"g\n" +
 	"\x10GuildLoginReward\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\tlogin_num\x18\x02 \x01(\rR\bloginNum\x12&\n" +
@@ -31541,11 +31541,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x02lv\x18\x02 \x01(\rR\x02lv\x12\x10\n" +
 	"\x03exp\x18\x03 \x01(\rR\x03exp\x12'\n" +
 	"\x0fwarehouse_limit\x18\x04 \x01(\rR\x0ewarehouseLimit\x12&\n" +
-	"\x0freward_group_id\x18\x05 \x01(\rR\rrewardGroupId\"\xad\x03\n" +
+	"\x0freward_group_id\x18\x05 \x01(\rR\rrewardGroupId\"\xc3\x03\n" +
 	"\x14GuildPersonalMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
-	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12\x0e\n" +
+	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x0e\n" +
 	"\x02lv\x18\x04 \x01(\rR\x02lv\x12\x12\n" +
 	"\x04rank\x18\x05 \x01(\rR\x04rank\x12\"\n" +
 	"\fcontribution\x18\x06 \x01(\rR\fcontribution\x12\x1d\n" +
@@ -31558,11 +31558,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\tguild_exp\x18\v \x01(\rR\bguildExp\x12 \n" +
 	"\fskip_item_id\x18\f \x01(\rR\n" +
 	"skipItemId\x12#\n" +
-	"\rskip_quantity\x18\r \x01(\rR\fskipQuantity\"\x94\x03\n" +
+	"\rskip_quantity\x18\r \x01(\rR\fskipQuantity\"\xaa\x03\n" +
 	"\x12GuildSharedMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
-	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12\x0e\n" +
+	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x0e\n" +
 	"\x02lv\x18\x04 \x01(\rR\x02lv\x12\"\n" +
 	"\fcontribution\x18\x05 \x01(\rR\fcontribution\x12\x1d\n" +
 	"\n" +
@@ -31581,12 +31581,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"\bresource\x18\x02 \x01(\x05R\bresource\"N\n" +
 	"\x19GuildWarehouseRewardLimit\x12\x1b\n" +
 	"\titem_type\x18\x01 \x01(\rR\bitemType\x12\x14\n" +
-	"\x05count\x18\x02 \x01(\rR\x05count\"\xab\x02\n" +
+	"\x05count\x18\x02 \x01(\rR\x05count\"\xc1\x02\n" +
 	"\x12GuildWeeklyMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
 	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x19\n" +
-	"\bgroup_id\x18\x03 \x01(\rR\agroupId\x12\x1b\n" +
-	"\ttext_name\x18\x04 \x01(\rR\btextName\x12\x0e\n" +
+	"\bgroup_id\x18\x03 \x01(\rR\agroupId\x121\n" +
+	"\ttext_name\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x0e\n" +
 	"\x02lv\x18\x05 \x01(\rR\x02lv\x12\x1d\n" +
 	"\n" +
 	"type_value\x18\x06 \x01(\rR\ttypeValue\x127\n" +
@@ -31651,12 +31651,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"\fGvgBaseBonus\x12!\n" +
 	"\fguildhole_lv\x18\x01 \x01(\rR\vguildholeLv\x12!\n" +
 	"\ftarget_param\x18\x02 \x01(\rR\vtargetParam\x12!\n" +
-	"\ftarget_value\x18\x03 \x01(\rR\vtargetValue\"\xd5\x01\n" +
+	"\ftarget_value\x18\x03 \x01(\rR\vtargetValue\"\xeb\x01\n" +
 	"\x0eGvgBattleField\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x15\n" +
 	"\x06gvg_id\x18\x02 \x01(\rR\x05gvgId\x127\n" +
-	"\x18battle_field_contents_id\x18\x03 \x01(\rR\x15battleFieldContentsId\x12\x1b\n" +
-	"\ttext_name\x18\x04 \x01(\rR\btextName\x12\"\n" +
+	"\x18battle_field_contents_id\x18\x03 \x01(\rR\x15battleFieldContentsId\x121\n" +
+	"\ttext_name\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\"\n" +
 	"\rfileld_bgm_id\x18\x05 \x01(\rR\vfileldBgmId\x12\"\n" +
 	"\rbattle_bgm_id\x18\x06 \x01(\rR\vbattleBgmId\"\xe6\a\n" +
 	"\x16GvgBattleFieldContents\x12\x0e\n" +
@@ -31724,13 +31724,13 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\"\n" +
 	"\rstart_bid_day\x18\x02 \x01(\rR\vstartBidDay\x12$\n" +
 	"\x0estart_bid_time\x18\x03 \x01(\tR\fstartBidTime\x12,\n" +
-	"\x12bid_period_minutes\x18\x04 \x01(\rR\x10bidPeriodMinutes\"\xbe\a\n" +
+	"\x12bid_period_minutes\x18\x04 \x01(\rR\x10bidPeriodMinutes\"\xd4\a\n" +
 	"\vGvgBuilding\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x0e\n" +
 	"\x02lv\x18\x02 \x01(\rR\x02lv\x122\n" +
 	"\x15gvg_building_category\x18\x03 \x01(\rR\x13gvgBuildingCategory\x12#\n" +
-	"\rbuilding_type\x18\x04 \x01(\rR\fbuildingType\x12\x1b\n" +
-	"\ttext_name\x18\x05 \x01(\rR\btextName\x12\x1f\n" +
+	"\rbuilding_type\x18\x04 \x01(\rR\fbuildingType\x121\n" +
+	"\ttext_name\x18\x05 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1f\n" +
 	"\vresource_id\x18\x06 \x01(\rR\n" +
 	"resourceId\x12&\n" +
 	"\x0fdefense_wave_id\x18\a \x01(\rR\rdefenseWaveId\x12\x1d\n" +
@@ -31826,10 +31826,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x06job_id\x18\x01 \x01(\rR\x05jobId\x12!\n" +
 	"\ftarget_param\x18\x02 \x01(\rR\vtargetParam\x12\x1f\n" +
 	"\vtarget_rate\x18\x03 \x01(\x02R\n" +
-	"targetRate\"l\n" +
+	"targetRate\"\x82\x01\n" +
 	"\x11GvgLiveCommentary\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12!\n" +
-	"\ftext_message\x18\x02 \x01(\rR\vtextMessage\x12$\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x127\n" +
+	"\ftext_message\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\vtextMessage\x12$\n" +
 	"\x0etime_line_flag\x18\x03 \x01(\rR\ftimeLineFlag\"\xe3\x02\n" +
 	"\x06GvgMob\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x127\n" +
@@ -31882,14 +31882,14 @@ const file_pmaster_proto_rawDesc = "" +
 	"\vbehavior_id\x18\x02 \x01(\rR\n" +
 	"behaviorId\x12\x1f\n" +
 	"\veffect_rate\x18\x03 \x01(\x02R\n" +
-	"effectRate\"\xa3\x01\n" +
+	"effectRate\"\xfb\x01\n" +
 	"\x04Help\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12#\n" +
-	"\rtext_category\x18\x02 \x01(\rR\ftextCategory\x12*\n" +
-	"\x11text_sub_category\x18\x03 \x01(\rR\x0ftextSubCategory\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x129\n" +
+	"\rtext_category\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\ftextCategory\x12@\n" +
+	"\x11text_sub_category\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextSubCategory\x123\n" +
 	"\n" +
-	"text_title\x18\x04 \x01(\rR\ttextTitle\x12\x1b\n" +
-	"\ttext_body\x18\x05 \x01(\rR\btextBody\"\xdc\x02\n" +
+	"text_title\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\ttextTitle\x121\n" +
+	"\ttext_body\x18\x05 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextBody\"\xdc\x02\n" +
 	"\x0fHolyBeastReward\x12\x19\n" +
 	"\bstage_id\x18\x01 \x01(\rR\astageId\x12\x1b\n" +
 	"\tguild_exp\x18\x02 \x01(\rR\bguildExp\x12\x1d\n" +
@@ -31899,33 +31899,33 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x11ranking_reward_id\x18\x05 \x01(\rR\x0frankingRewardId\x123\n" +
 	"\x16summon_reward_group_id\x18\x06 \x01(\rR\x13summonRewardGroupId\x121\n" +
 	"\x15clear_reward_group_id\x18\a \x01(\rR\x12clearRewardGroupId\x12/\n" +
-	"\x14help_reward_group_id\x18\b \x01(\rR\x11helpRewardGroupId\"\xcc\x02\n" +
+	"\x14help_reward_group_id\x18\b \x01(\rR\x11helpRewardGroupId\"\xe2\x02\n" +
 	"\x10ImportantMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
 	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12;\n" +
-	"\x1aimportant_mission_group_id\x18\x03 \x01(\rR\x17importantMissionGroupId\x12\x1b\n" +
-	"\ttext_name\x18\x04 \x01(\rR\btextName\x12\x1d\n" +
+	"\x1aimportant_mission_group_id\x18\x03 \x01(\rR\x17importantMissionGroupId\x121\n" +
+	"\ttext_name\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1d\n" +
 	"\n" +
 	"type_value\x18\x05 \x01(\rR\ttypeValue\x12)\n" +
 	"\x10inherit_progress\x18\x06 \x01(\rR\x0finheritProgress\x12&\n" +
 	"\x0freward_group_id\x18\a \x01(\rR\rrewardGroupId\x12\x10\n" +
 	"\x03exp\x18\b \x01(\rR\x03exp\x12\x16\n" +
-	"\x06target\x18\t \x01(\tR\x06target\"\xea\x02\n" +
+	"\x06target\x18\t \x01(\tR\x06target\"\x80\x03\n" +
 	"\x15ImportantMissionGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12D\n" +
-	"\x1fnext_important_mission_group_id\x18\x02 \x01(\rR\x1bnextImportantMissionGroupId\x12)\n" +
-	"\x10text_description\x18\x03 \x01(\rR\x0ftextDescription\x12&\n" +
+	"\x1fnext_important_mission_group_id\x18\x02 \x01(\rR\x1bnextImportantMissionGroupId\x12?\n" +
+	"\x10text_description\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\x12&\n" +
 	"\x0freward_group_id\x18\x04 \x01(\rR\rrewardGroupId\x12E\n" +
 	"\x1fintroduce_character_resource_id\x18\x05 \x01(\rR\x1cintroduceCharacterResourceId\x12!\n" +
 	"\fequipment_id\x18\x06 \x01(\rR\vequipmentId\x12\x1b\n" +
 	"\tvoice_num\x18\a \x01(\tR\bvoiceNum\x12!\n" +
-	"\topen_date\x18\b \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"\xf6\x04\n" +
+	"\topen_date\x18\b \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"\xb8\x05\n" +
 	"\x04Item\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12)\n" +
-	"\x10text_description\x18\x03 \x01(\rR\x0ftextDescription\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12?\n" +
+	"\x10text_description\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\x123\n" +
 	"\n" +
-	"text_label\x18\x04 \x01(\rR\ttextLabel\x12\x16\n" +
+	"text_label\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\ttextLabel\x12\x16\n" +
 	"\x06rarity\x18\x05 \x01(\rR\x06rarity\x12\x1b\n" +
 	"\tmax_stack\x18\x06 \x01(\rR\bmaxStack\x126\n" +
 	"\x17max_possession_quantity\x18\a \x01(\rR\x15maxPossessionQuantity\x12\x12\n" +
@@ -31944,12 +31944,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12effect_resource_id\x18\x11 \x01(\rR\x10effectResourceId\x12\x15\n" +
 	"\x06bg_rgb\x18\x12 \x01(\tR\x05bgRgb\x12&\n" +
 	"\x0freward_group_id\x18\x13 \x01(\rR\rrewardGroupId\x12\x19\n" +
-	"\bevent_id\x18\x14 \x01(\rR\aeventId\"\xb4\x03\n" +
+	"\bevent_id\x18\x14 \x01(\rR\aeventId\"\xf6\x03\n" +
 	"\x03Job\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12&\n" +
-	"\x0ftext_short_name\x18\x03 \x01(\rR\rtextShortName\x12)\n" +
-	"\x10text_description\x18\x04 \x01(\rR\x0ftextDescription\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12<\n" +
+	"\x0ftext_short_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\rtextShortName\x12?\n" +
+	"\x10text_description\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\x12\x19\n" +
 	"\bjob_rank\x18\x05 \x01(\rR\ajobRank\x12\x17\n" +
 	"\arole_id\x18\x06 \x01(\rR\x06roleId\x12%\n" +
 	"\x0funlock_job_id_1\x18\a \x01(\rR\funlockJobId1\x12$\n" +
@@ -32011,11 +32011,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"agilityMin\x12\x1f\n" +
 	"\vagility_max\x18\x19 \x01(\rR\n" +
 	"agilityMax\x12,\n" +
-	"\x12fixed_break_damage\x18\x1a \x01(\rR\x10fixedBreakDamage\"\xf0\x02\n" +
+	"\x12fixed_break_damage\x18\x1a \x01(\rR\x10fixedBreakDamage\"\x86\x03\n" +
 	"\bJobSkill\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x15\n" +
-	"\x06job_id\x18\x02 \x01(\rR\x05jobId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12\x1b\n" +
+	"\x06job_id\x18\x02 \x01(\rR\x05jobId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1b\n" +
 	"\ticon_type\x18\x04 \x01(\rR\biconType\x12\x12\n" +
 	"\x04rank\x18\x05 \x01(\rR\x04rank\x12\x1d\n" +
 	"\n" +
@@ -32053,15 +32053,15 @@ const file_pmaster_proto_rawDesc = "" +
 	"LoginBonus\x12/\n" +
 	"\x14login_bonus_group_id\x18\x01 \x01(\rR\x11loginBonusGroupId\x12\x1a\n" +
 	"\bsequence\x18\x02 \x01(\rR\bsequence\x12&\n" +
-	"\x0freward_group_id\x18\x03 \x01(\rR\rrewardGroupId\"\xbc\x02\n" +
+	"\x0freward_group_id\x18\x03 \x01(\rR\rrewardGroupId\"\xe8\x02\n" +
 	"\x0fLoginBonusGroup\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x12\n" +
 	"\x04type\x18\x03 \x01(\rR\x04type\x12\x1b\n" +
 	"\torder_num\x18\x04 \x01(\rR\borderNum\x12\x1f\n" +
 	"\vrepeat_flag\x18\x05 \x01(\rR\n" +
-	"repeatFlag\x12)\n" +
-	"\x10text_description\x18\x06 \x01(\rR\x0ftextDescription\x12\x14\n" +
+	"repeatFlag\x12?\n" +
+	"\x10text_description\x18\x06 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\x12\x14\n" +
 	"\x05image\x18\a \x01(\tR\x05image\x12!\n" +
 	"\fdisplay_flag\x18\b \x01(\rR\vdisplayFlag\x12!\n" +
 	"\topen_date\x18\t \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
@@ -32070,20 +32070,20 @@ const file_pmaster_proto_rawDesc = "" +
 	" \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"D\n" +
 	"\bMaxJobLv\x12\x15\n" +
 	"\x06job_lv\x18\x01 \x01(\rR\x05jobLv\x12!\n" +
-	"\ffriend_count\x18\x02 \x01(\rR\vfriendCount\"o\n" +
+	"\ffriend_count\x18\x02 \x01(\rR\vfriendCount\"\x9b\x01\n" +
 	"\x06Member\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x123\n" +
 	"\n" +
-	"label_text\x18\x03 \x01(\rR\tlabelText\x12\x19\n" +
+	"label_text\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\tlabelText\x12\x19\n" +
 	"\bis_voice\x18\x04 \x01(\rR\aisVoice\"]\n" +
 	"\tMercenary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12#\n" +
 	"\rhire_duration\x18\x02 \x01(\rR\fhireDuration\x12\x1b\n" +
-	"\thire_cost\x18\x03 \x01(\rR\bhireCost\"\x98\x1f\n" +
+	"\thire_cost\x18\x03 \x01(\rR\bhireCost\"\xae\x1f\n" +
 	"\aMonster\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1f\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1f\n" +
 	"\vcategory_id\x18\x03 \x01(\rR\n" +
 	"categoryId\x12\x17\n" +
 	"\arace_id\x18\x04 \x01(\rR\x06raceId\x12\x16\n" +
@@ -32225,10 +32225,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"resourceId\",\n" +
 	"\x06NgWord\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
-	"\x04word\x18\x02 \x01(\tR\x04word\"\xf8\x03\n" +
+	"\x04word\x18\x02 \x01(\tR\x04word\"\x8e\x04\n" +
 	"\x03Npc\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x12\n" +
 	"\x04rank\x18\x03 \x01(\rR\x04rank\x12\x15\n" +
 	"\x06job_id\x18\x04 \x01(\rR\x05jobId\x12\x17\n" +
 	"\arole_id\x18\x05 \x01(\rR\x06roleId\x123\n" +
@@ -32341,11 +32341,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\topen_date\x18\n" +
 	" \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\v \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x80\x02\n" +
+	"close_date\x18\v \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x96\x02\n" +
 	"\fOrderMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
-	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12,\n" +
+	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12,\n" +
 	"\x12order_mission_type\x18\x04 \x01(\rR\x10orderMissionType\x12\x12\n" +
 	"\x04rank\x18\x05 \x01(\rR\x04rank\x12\x16\n" +
 	"\x06weight\x18\x06 \x01(\rR\x06weight\x12\x1d\n" +
@@ -32376,10 +32376,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x10OrderMissionType\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\rR\x04type\x12\x16\n" +
-	"\x06weight\x18\x03 \x01(\rR\x06weight\"\xbb\x06\n" +
+	"\x06weight\x18\x03 \x01(\rR\x06weight\"\xd1\x06\n" +
 	"\fPassiveSkill\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x19\n" +
 	"\bevent_id\x18\x03 \x01(\rR\aeventId\x12\x12\n" +
 	"\x04type\x18\x04 \x01(\rR\x04type\x12\x1f\n" +
 	"\veffect_type\x18\x05 \x01(\rR\n" +
@@ -32414,13 +32414,13 @@ const file_pmaster_proto_rawDesc = "" +
 	"\bgroup_id\x18\x02 \x01(\rR\agroupId\x12\x1d\n" +
 	"\n" +
 	"start_time\x18\x03 \x01(\tR\tstartTime\x12\x19\n" +
-	"\bend_time\x18\x04 \x01(\tR\aendTime\"\xda\x01\n" +
+	"\bend_time\x18\x04 \x01(\tR\aendTime\"\xf0\x01\n" +
 	"\rPopupScenario\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x125\n" +
 	"\x17popup_scenario_group_id\x18\x02 \x01(\rR\x14popupScenarioGroupId\x12!\n" +
 	"\fcharacter_id\x18\x03 \x01(\rR\vcharacterId\x12'\n" +
-	"\x0fappear_position\x18\x04 \x01(\rR\x0eappearPosition\x12\x1b\n" +
-	"\ttext_word\x18\x05 \x01(\rR\btextWord\x12\x19\n" +
+	"\x0fappear_position\x18\x04 \x01(\rR\x0eappearPosition\x121\n" +
+	"\ttext_word\x18\x05 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextWord\x12\x19\n" +
 	"\bvoice_id\x18\x06 \x01(\tR\avoiceId\"\x8b\x02\n" +
 	"\x12PopupScenarioGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12*\n" +
@@ -32438,15 +32438,15 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x05type2\x18\x03 \x01(\rR\x05type2\x12\x14\n" +
 	"\x05type3\x18\x04 \x01(\rR\x05type3\x12!\n" +
 	"\fthreshold_lv\x18\x05 \x01(\rR\vthresholdLv\x12&\n" +
-	"\x0fskill_module_id\x18\x06 \x01(\rR\rskillModuleId\"\x93\x01\n" +
+	"\x0fskill_module_id\x18\x06 \x01(\rR\rskillModuleId\"\xa9\x01\n" +
 	"\x0fPowerAssessment\x12\x12\n" +
-	"\x04type\x18\x01 \x01(\rR\x04type\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x16\n" +
+	"\x04type\x18\x01 \x01(\rR\x04type\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x16\n" +
 	"\x06target\x18\x03 \x01(\tR\x06target\x127\n" +
-	"\x18power_assessment_step_id\x18\x04 \x01(\rR\x15powerAssessmentStepId\"o\n" +
+	"\x18power_assessment_step_id\x18\x04 \x01(\rR\x15powerAssessmentStepId\"\x85\x01\n" +
 	"\x13PowerAssessmentRank\x12\x12\n" +
-	"\x04rank\x18\x01 \x01(\rR\x04rank\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12'\n" +
+	"\x04rank\x18\x01 \x01(\rR\x04rank\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12'\n" +
 	"\x0frequire_percent\x18\x03 \x01(\rR\x0erequirePercent\"\xaa\x03\n" +
 	"\x13PowerAssessmentStep\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12)\n" +
@@ -32526,20 +32526,20 @@ const file_pmaster_proto_rawDesc = "" +
 	"\n" +
 	"episode_id\x18\x02 \x01(\rR\tepisodeId\x12\x18\n" +
 	"\aordinal\x18\x03 \x01(\rR\aordinal\x12\x15\n" +
-	"\x06bgm_id\x18\x04 \x01(\rR\x05bgmId\"\xfd\x02\n" +
+	"\x06bgm_id\x18\x04 \x01(\rR\x05bgmId\"\xbf\x03\n" +
 	"\aRanking\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1f\n" +
 	"\vresource_id\x18\x02 \x01(\rR\n" +
-	"resourceId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12!\n" +
+	"resourceId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12!\n" +
 	"\franking_type\x18\x04 \x01(\rR\vrankingType\x12\x1a\n" +
 	"\bpriority\x18\x05 \x01(\rR\bpriority\x12\x14\n" +
 	"\x05limit\x18\x06 \x01(\rR\x05limit\x12.\n" +
-	"\x13ranking_category_id\x18\a \x01(\rR\x11rankingCategoryId\x12;\n" +
-	"\x1atext_ranking_category_name\x18\b \x01(\rR\x17textRankingCategoryName\x12:\n" +
-	"\x19ranking_category_priority\x18\t \x01(\rR\x17rankingCategoryPriority\x12&\n" +
+	"\x13ranking_category_id\x18\a \x01(\rR\x11rankingCategoryId\x12Q\n" +
+	"\x1atext_ranking_category_name\x18\b \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x17textRankingCategoryName\x12:\n" +
+	"\x19ranking_category_priority\x18\t \x01(\rR\x17rankingCategoryPriority\x12<\n" +
 	"\x0ftext_score_name\x18\n" +
-	" \x01(\rR\rtextScoreName\"\x8b\x02\n" +
+	" \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\rtextScoreName\"\x8b\x02\n" +
 	"\rRankingReward\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x15\n" +
 	"\x06seq_id\x18\x02 \x01(\rR\x05seqId\x12\x14\n" +
@@ -32549,10 +32549,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x06gve_id\x18\x06 \x01(\rR\x05gveId\x12!\n" +
 	"\franking_type\x18\a \x01(\rR\vrankingType\x12*\n" +
 	"\x11condition_type_id\x18\b \x01(\rR\x0fconditionTypeId\x12&\n" +
-	"\x0freward_group_id\x18\t \x01(\rR\rrewardGroupId\"s\n" +
+	"\x0freward_group_id\x18\t \x01(\rR\rrewardGroupId\"\x89\x01\n" +
 	"\x06Region\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1d\n" +
 	"\n" +
 	"position_x\x18\x03 \x01(\x02R\tpositionX\x12\x1d\n" +
 	"\n" +
@@ -32568,12 +32568,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"targetType\x12\x1b\n" +
 	"\ttarget_id\x18\x04 \x01(\rR\btargetId\x12\x1a\n" +
 	"\bquantity\x18\x05 \x01(\rR\bquantity\x12\x16\n" +
-	"\x06weight\x18\x06 \x01(\rR\x06weight\"\xec\x01\n" +
+	"\x06weight\x18\x06 \x01(\rR\x06weight\"\x98\x02\n" +
 	"\fRewardConfig\x12&\n" +
 	"\x0freward_group_id\x18\x01 \x01(\rR\rrewardGroupId\x12'\n" +
-	"\x0fsender_category\x18\x02 \x01(\rR\x0esenderCategory\x12,\n" +
-	"\x12text_present_title\x18\x03 \x01(\rR\x10textPresentTitle\x128\n" +
-	"\x18text_present_description\x18\x04 \x01(\rR\x16textPresentDescription\x12#\n" +
+	"\x0fsender_category\x18\x02 \x01(\rR\x0esenderCategory\x12B\n" +
+	"\x12text_present_title\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x10textPresentTitle\x12N\n" +
+	"\x18text_present_description\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x16textPresentDescription\x12#\n" +
 	"\rdelivery_type\x18\x05 \x01(\rR\fdeliveryType\"\xfc\x01\n" +
 	"\vRewardGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
@@ -32629,15 +32629,15 @@ const file_pmaster_proto_rawDesc = "" +
 	"clear_time\x18\x02 \x01(\rR\tclearTime\x12\x17\n" +
 	"\aop_type\x18\x03 \x01(\rR\x06opType\x12\x1d\n" +
 	"\n" +
-	"boost_rate\x18\x04 \x01(\x02R\tboostRate\"\x8e\x03\n" +
+	"boost_rate\x18\x04 \x01(\x02R\tboostRate\"\xba\x03\n" +
 	"\x04Rune\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\rR\agroupId\x12\x12\n" +
 	"\x04type\x18\x03 \x01(\rR\x04type\x12\x16\n" +
-	"\x06rarity\x18\x04 \x01(\rR\x06rarity\x12\x1b\n" +
-	"\ttext_name\x18\x05 \x01(\rR\btextName\x12\x1d\n" +
+	"\x06rarity\x18\x04 \x01(\rR\x06rarity\x121\n" +
+	"\ttext_name\x18\x05 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x123\n" +
 	"\n" +
-	"text_label\x18\x06 \x01(\rR\ttextLabel\x12>\n" +
+	"text_label\x18\x06 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\ttextLabel\x12>\n" +
 	"\x1ctarget_param_option_group_id\x18\a \x01(\rR\x18targetParamOptionGroupId\x12!\n" +
 	"\fremoval_cost\x18\b \x01(\rR\vremovalCost\x12\x1d\n" +
 	"\n" +
@@ -32677,22 +32677,22 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x19bonus_option_slot3_weight\x18\v \x01(\rR\x16bonusOptionSlot3Weight\"7\n" +
 	"\bRuneSlot\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\trune_type\x18\x02 \x01(\rR\bruneType\"\xee\x01\n" +
+	"\trune_type\x18\x02 \x01(\rR\bruneType\"\x9a\x02\n" +
 	"\n" +
 	"SeasonPass\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12%\n" +
-	"\x0etext_introduce\x18\x03 \x01(\rR\rtextIntroduce\x12#\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12;\n" +
+	"\x0etext_introduce\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\rtextIntroduce\x12#\n" +
 	"\rpremium_price\x18\x04 \x01(\rR\fpremiumPrice\x12\x1f\n" +
 	"\vresource_id\x18\x05 \x01(\rR\n" +
 	"resourceId\x12!\n" +
 	"\topen_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x80\x02\n" +
+	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x96\x02\n" +
 	"\x16SeasonPassDailyMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
-	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12$\n" +
+	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12$\n" +
 	"\x0eseason_pass_id\x18\x04 \x01(\rR\fseasonPassId\x12\x1d\n" +
 	"\n" +
 	"type_value\x18\x05 \x01(\rR\ttypeValue\x12\x10\n" +
@@ -32706,11 +32706,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x05price\x18\x04 \x01(\rR\x05price\x12\x16\n" +
 	"\x06pickup\x18\x05 \x01(\rR\x06pickup\x123\n" +
 	"\x16normal_reward_group_id\x18\x06 \x01(\rR\x13normalRewardGroupId\x125\n" +
-	"\x17premium_reward_group_id\x18\a \x01(\rR\x14premiumRewardGroupId\"\x88\x02\n" +
+	"\x17premium_reward_group_id\x18\a \x01(\rR\x14premiumRewardGroupId\"\x9e\x02\n" +
 	"\x17SeasonPassWeeklyMission\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
-	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12$\n" +
+	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12$\n" +
 	"\x0eseason_pass_id\x18\x04 \x01(\rR\fseasonPassId\x12\x1d\n" +
 	"\n" +
 	"type_value\x18\x05 \x01(\rR\ttypeValue\x12\x10\n" +
@@ -32726,23 +32726,23 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0freward_group_id\x18\x03 \x01(\rR\rrewardGroupId\x12!\n" +
 	"\topen_date\x18\x04 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\xdb\x02\n" +
+	"close_date\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"\x9d\x03\n" +
 	"\x04Shop\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\rR\x04type\x12\x19\n" +
-	"\btab_type\x18\x03 \x01(\rR\atabType\x12\x1b\n" +
-	"\ttext_type\x18\x04 \x01(\rR\btextType\x12\x1a\n" +
+	"\btab_type\x18\x03 \x01(\rR\atabType\x121\n" +
+	"\ttext_type\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextType\x12\x1a\n" +
 	"\bpriority\x18\x05 \x01(\rR\bpriority\x12#\n" +
-	"\rmain_category\x18\x06 \x01(\rR\fmainCategory\x12,\n" +
-	"\x12text_main_category\x18\a \x01(\rR\x10textMainCategory\x12!\n" +
-	"\fsub_category\x18\b \x01(\rR\vsubCategory\x12*\n" +
-	"\x11text_sub_category\x18\t \x01(\rR\x0ftextSubCategory\x129\n" +
+	"\rmain_category\x18\x06 \x01(\rR\fmainCategory\x12B\n" +
+	"\x12text_main_category\x18\a \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x10textMainCategory\x12!\n" +
+	"\fsub_category\x18\b \x01(\rR\vsubCategory\x12@\n" +
+	"\x11text_sub_category\x18\t \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextSubCategory\x129\n" +
 	"\x19quantity_input_dialog_flg\x18\n" +
-	" \x01(\rR\x16quantityInputDialogFlg\"\x85\v\n" +
+	" \x01(\rR\x16quantityInputDialogFlg\"\xb1\v\n" +
 	"\bShopItem\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12)\n" +
-	"\x10text_description\x18\x03 \x01(\rR\x0ftextDescription\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12?\n" +
+	"\x10text_description\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\x0ftextDescription\x12\x12\n" +
 	"\x04type\x18\x04 \x01(\rR\x04type\x12\x1d\n" +
 	"\n" +
 	"product_id\x18\x05 \x01(\tR\tproductId\x12&\n" +
@@ -32951,12 +32951,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x16SpecialEffectRaceBonus\x12.\n" +
 	"\x13special_effect_race\x18\x01 \x01(\rR\x11specialEffectRace\x12'\n" +
 	"\x0fequipment_count\x18\x02 \x01(\rR\x0eequipmentCount\x12+\n" +
-	"\x12passive_skill_id_1\x18\x03 \x01(\rR\x0fpassiveSkillId1\"\xb2\x02\n" +
+	"\x12passive_skill_id_1\x18\x03 \x01(\rR\x0fpassiveSkillId1\"\xc8\x02\n" +
 	"\x11SpecialItemConfig\x12 \n" +
 	"\fshop_item_id\x18\x01 \x01(\rR\n" +
 	"shopItemId\x12\x15\n" +
-	"\x06seq_id\x18\x02 \x01(\rR\x05seqId\x12\x1f\n" +
-	"\vstepup_text\x18\x03 \x01(\rR\n" +
+	"\x06seq_id\x18\x02 \x01(\rR\x05seqId\x125\n" +
+	"\vstepup_text\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
 	"stepupText\x12%\n" +
 	"\x0econdition_type\x18\x04 \x01(\rR\rconditionType\x12\x16\n" +
 	"\x06param1\x18\x05 \x01(\rR\x06param1\x12\x16\n" +
@@ -32965,21 +32965,21 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x06param4\x18\b \x01(\rR\x06param4\x12&\n" +
 	"\x0freward_group_id\x18\t \x01(\rR\rrewardGroupId\x12\x14\n" +
 	"\x05price\x18\n" +
-	" \x01(\rR\x05price\"\xe8\v\n" +
+	" \x01(\rR\x05price\"\x94\f\n" +
 	"\x05Stage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x17\n" +
 	"\aarea_id\x18\x02 \x01(\rR\x06areaId\x12\x19\n" +
 	"\bquest_id\x18\x03 \x01(\rR\aquestId\x12\x1b\n" +
-	"\tregion_id\x18\x04 \x01(\rR\bregionId\x12\x1b\n" +
-	"\ttext_name\x18\x05 \x01(\rR\btextName\x12\x1f\n" +
+	"\tregion_id\x18\x04 \x01(\rR\bregionId\x121\n" +
+	"\ttext_name\x18\x05 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1f\n" +
 	"\vscenario_id\x18\x06 \x01(\rR\n" +
 	"scenarioId\x12\x15\n" +
 	"\x06map_id\x18\a \x01(\rR\x05mapId\x12\x15\n" +
 	"\x06bgm_id\x18\b \x01(\rR\x05bgmId\x12\x19\n" +
 	"\bmodel_id\x18\t \x01(\rR\amodelId\x12%\n" +
 	"\x0enarration_type\x18\n" +
-	" \x01(\rR\rnarrationType\x12%\n" +
-	"\x0etext_narration\x18\v \x01(\rR\rtextNarration\x122\n" +
+	" \x01(\rR\rnarrationType\x12;\n" +
+	"\x0etext_narration\x18\v \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\rtextNarration\x122\n" +
 	"\x15character_resource_id\x18\f \x01(\rR\x13characterResourceId\x124\n" +
 	"\x16background_resource_id\x18\r \x01(\rR\x14backgroundResourceId\x12\x12\n" +
 	"\x04type\x18\x0e \x01(\rR\x04type\x12\x1e\n" +
@@ -33058,10 +33058,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x1dStatusAilmentCancellationType\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
 	"\x06param1\x18\x02 \x01(\x02R\x06param1\x12\x16\n" +
-	"\x06param2\x18\x03 \x01(\x02R\x06param2\"\x9a\x04\n" +
+	"\x06param2\x18\x03 \x01(\x02R\x06param2\"\xb0\x04\n" +
 	"\x12StatusAilmentGroup\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1f\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1f\n" +
 	"\vresist_type\x18\x03 \x01(\rR\n" +
 	"resistType\x12*\n" +
 	"\x11tired_motion_flag\x18\x04 \x01(\rR\x0ftiredMotionFlag\x12\x16\n" +
@@ -33074,26 +33074,26 @@ const file_pmaster_proto_rawDesc = "" +
 	" \x01(\rR\x10effectAppearType\x12\"\n" +
 	"\rstop_act_flag\x18\v \x01(\rR\vstopActFlag\x125\n" +
 	"\x17status_ailment_start_id\x18\f \x01(\rR\x14statusAilmentStartId\x127\n" +
-	"\x18status_ailment_cancel_id\x18\r \x01(\rR\x15statusAilmentCancelId\"_\n" +
+	"\x18status_ailment_cancel_id\x18\r \x01(\rR\x15statusAilmentCancelId\"u\n" +
 	"\x18StatusAilmentTriggerType\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x16\n" +
-	"\x06param1\x18\x03 \x01(\x02R\x06param1\"\xe7\x01\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x16\n" +
+	"\x06param1\x18\x03 \x01(\x02R\x06param1\"\x93\x02\n" +
 	"\x06Survey\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1f\n" +
-	"\vtext_detail\x18\x03 \x01(\rR\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x125\n" +
+	"\vtext_detail\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
 	"textDetail\x12&\n" +
 	"\x0freward_group_id\x18\x04 \x01(\rR\rrewardGroupId\x12\x1f\n" +
 	"\vresource_id\x18\x05 \x01(\rR\n" +
 	"resourceId\x12!\n" +
 	"\topen_date\x18\x06 \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\x12#\n" +
 	"\n" +
-	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"e\n" +
+	"close_date\x18\a \x01(\tB\x04\x88\xb5\x18\x01R\tcloseDate\"{\n" +
 	"\fSurveyAnswer\x12!\n" +
 	"\fquestions_id\x18\x01 \x01(\rR\vquestionsId\x12\x15\n" +
-	"\x06idx_no\x18\x02 \x01(\rR\x05idxNo\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\"\xec\x01\n" +
+	"\x06idx_no\x18\x02 \x01(\rR\x05idxNo\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\"\x82\x02\n" +
 	"\x0fSurveyQuestions\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\tsurvey_id\x18\x02 \x01(\rR\bsurveyId\x12\x15\n" +
@@ -33101,8 +33101,8 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x04type\x18\x04 \x01(\rR\x04type\x12\"\n" +
 	"\retc_answer_no\x18\x05 \x01(\rR\vetcAnswerNo\x12\x1d\n" +
 	"\n" +
-	"max_strlen\x18\x06 \x01(\rR\tmaxStrlen\x12\x1b\n" +
-	"\ttext_name\x18\a \x01(\rR\btextName\x12!\n" +
+	"max_strlen\x18\x06 \x01(\rR\tmaxStrlen\x121\n" +
+	"\ttext_name\x18\a \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12!\n" +
 	"\frequire_flag\x18\b \x01(\rR\vrequireFlag\"6\n" +
 	"\vTargetParam\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x17\n" +
@@ -33126,11 +33126,11 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\tview_type\x18\x02 \x01(\rR\bviewType\x12\x1f\n" +
 	"\vresource_id\x18\x03 \x01(\rR\n" +
-	"resourceId\"\xb7\x04\n" +
+	"resourceId\"\xcd\x04\n" +
 	"\x05Title\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
-	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1b\n" +
-	"\ttext_name\x18\x03 \x01(\rR\btextName\x12\x1d\n" +
+	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x121\n" +
+	"\ttext_name\x18\x03 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1d\n" +
 	"\n" +
 	"type_value\x18\x04 \x01(\rR\ttypeValue\x12)\n" +
 	"\x10display_priority\x18\x05 \x01(\rR\x0fdisplayPriority\x12\x1a\n" +
@@ -33145,10 +33145,10 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x12passive_skill_id_4\x18\f \x01(\rR\x0fpassiveSkillId4\x12+\n" +
 	"\x12passive_skill_id_5\x18\r \x01(\rR\x0fpassiveSkillId5\x12\x16\n" +
 	"\x06target\x18\x0e \x01(\tR\x06target\x12!\n" +
-	"\topen_date\x18\x0f \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"]\n" +
+	"\topen_date\x18\x0f \x01(\tB\x04\x88\xb5\x18\x01R\bopenDate\"s\n" +
 	"\rTitleCategory\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
-	"\ttext_name\x18\x02 \x01(\rR\btextName\x12\x1f\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
+	"\ttext_name\x18\x02 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1f\n" +
 	"\vresource_id\x18\x03 \x01(\rR\n" +
 	"resourceId\"\xb2\x02\n" +
 	"\x14TreasureBattleReward\x12\x1e\n" +
@@ -33163,15 +33163,15 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x16UnlockAchievementGroup\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x19\n" +
 	"\bstage_id\x18\x02 \x01(\rR\astageId\x12%\n" +
-	"\x0eachievement_id\x18\x03 \x01(\rR\rachievementId\"\xe6\x01\n" +
+	"\x0eachievement_id\x18\x03 \x01(\rR\rachievementId\"\xfc\x01\n" +
 	"\x0fUnlockCondition\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x122\n" +
 	"\x15condition_category_id\x18\x02 \x01(\rR\x13conditionCategoryId\x12\x1d\n" +
 	"\n" +
 	"type_value\x18\x03 \x01(\rR\ttypeValue\x12\x1f\n" +
 	"\vnotify_flag\x18\x04 \x01(\rR\n" +
-	"notifyFlag\x12\x1f\n" +
-	"\vtext_notify\x18\x05 \x01(\rR\n" +
+	"notifyFlag\x125\n" +
+	"\vtext_notify\x18\x05 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\n" +
 	"textNotify\x12.\n" +
 	"\x13scene_request_param\x18\x06 \x01(\tR\x11sceneRequestParam\"{\n" +
 	"\aVersion\x12\x1a\n" +
@@ -33196,12 +33196,12 @@ const file_pmaster_proto_rawDesc = "" +
 	"\x0eexp_boost_rate\x18\v \x01(\x02R\fexpBoostRate\x12.\n" +
 	"\x13ancient_tower_boost\x18\f \x01(\x02R\x11ancientTowerBoost\x12#\n" +
 	"\x0eshop_item_id_1\x18\r \x01(\rR\vshopItemId1\x12#\n" +
-	"\x0eshop_item_id_2\x18\x0e \x01(\rR\vshopItemId2\"\x7f\n" +
+	"\x0eshop_item_id_2\x18\x0e \x01(\rR\vshopItemId2\"\x95\x01\n" +
 	"\x05Voice\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x16\n" +
 	"\x06gender\x18\x02 \x01(\rR\x06gender\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\rR\x04type\x12\x1b\n" +
-	"\ttext_name\x18\x04 \x01(\rR\btextName\x12\x1d\n" +
+	"\x04type\x18\x03 \x01(\rR\x04type\x121\n" +
+	"\ttext_name\x18\x04 \x01(\rB\x14\x92\xb5\x18\x10master/text_langR\btextName\x12\x1d\n" +
 	"\n" +
 	"is_default\x18\x05 \x01(\x05R\tisDefault\"\xd9\x02\n" +
 	"\x04Wave\x12\x0e\n" +
