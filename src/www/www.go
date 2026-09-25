@@ -21,12 +21,12 @@ type Handler struct {
 
 	master    *pmaster.All
 	resources config.Resources
-	player    *proto.PlayerDetail
+	player    *proto.StoredData
 }
 
 type handlerKey struct{}
 
-func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error) {
+func NewHandler(cfg *config.Config) (*Handler, error) {
 	master, err := config.LoadMaster(cfg.DBDir)
 	if err != nil {
 		return nil, fmt.Errorf("failed to load master: %w", err)
@@ -43,7 +43,7 @@ func NewHandler(cfg *config.Config, player *proto.PlayerDetail) (*Handler, error
 		router:    router,
 		master:    master,
 		resources: resources,
-		player:    player,
+		player:    config.GenerateDefaultPlayer(master),
 	}
 
 	router.Use(middleware.WithValue(handlerKey{}, handler))

@@ -136,7 +136,7 @@ func Run(cfg *config.Config) error {
 		return fmt.Errorf("failed to load self-signed certificate: %w", err)
 	}
 
-	wwwHandler, err := www.NewHandler(cfg, config.DummyPlayer)
+	wwwHandler, err := www.NewHandler(cfg)
 	if err != nil {
 		return fmt.Errorf("failed to create www handler: %w", err)
 	}

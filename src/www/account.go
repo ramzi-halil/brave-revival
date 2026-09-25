@@ -13,10 +13,10 @@ func accountExist(w http.ResponseWriter, r *http.Request) {
 			PlayerId: player.Player.Id,
 			Nickname: player.Player.Nickname,
 			JobId:    player.Player.JobId,
-			JobLevel: player.CurrentJob.Level,
-			Power:    player.Power,
+			JobLevel: 999,
+			Power:    999,
 		},
-		WorldDescription: "Dummy World",
+		WorldDescription: "Brave Revival",
 	})
 }
 

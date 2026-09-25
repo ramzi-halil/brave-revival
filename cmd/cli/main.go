@@ -6,11 +6,11 @@ import (
 	"log/slog"
 	"os"
 
+	"example.com/brave-revival/src/chat"
 	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/crow"
 	"example.com/brave-revival/src/photon"
 	"example.com/brave-revival/src/proxy"
-	"example.com/brave-revival/src/chat"
 	"golang.org/x/sync/errgroup"
 )
 

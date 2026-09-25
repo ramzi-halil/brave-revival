@@ -3,8 +3,8 @@ package www
 import (
 	"net/http"
 
-	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/pmisc"
+	"example.com/brave-revival/src/proto/proto"
 )
 
 func missionGuildPersonalList(w http.ResponseWriter, r *http.Request) {

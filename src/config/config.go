@@ -3,8 +3,8 @@ package config
 import (
 	"encoding/json/v2"
 	"fmt"
-	"os"
 	"net/netip"
+	"os"
 )
 
 type Config struct {
