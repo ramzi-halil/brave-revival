@@ -494,6 +494,90 @@ func (x *Job) GetIsNew() uint32 {
 	return 0
 }
 
+type JobSkill struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	JobId         uint32                 `protobuf:"varint,3,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	SkillId       uint32                 `protobuf:"varint,4,opt,name=skill_id,json=skillId,proto3" json:"skill_id,omitempty"`
+	Level         uint32                 `protobuf:"varint,5,opt,name=level,proto3" json:"level,omitempty"`
+	Status        uint32                 `protobuf:"varint,6,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *JobSkill) Reset() {
+	*x = JobSkill{}
+	mi := &file_puser_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *JobSkill) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*JobSkill) ProtoMessage() {}
+
+func (x *JobSkill) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use JobSkill.ProtoReflect.Descriptor instead.
+func (*JobSkill) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *JobSkill) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *JobSkill) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *JobSkill) GetJobId() uint32 {
+	if x != nil {
+		return x.JobId
+	}
+	return 0
+}
+
+func (x *JobSkill) GetSkillId() uint32 {
+	if x != nil {
+		return x.SkillId
+	}
+	return 0
+}
+
+func (x *JobSkill) GetLevel() uint32 {
+	if x != nil {
+		return x.Level
+	}
+	return 0
+}
+
+func (x *JobSkill) GetStatus() uint32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
 type JobDeck struct {
 	state                  protoimpl.MessageState `protogen:"open.v1"`
 	Id                     uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -1043,7 +1127,7 @@ type JobDeck struct {
 
 func (x *JobDeck) Reset() {
 	*x = JobDeck{}
-	mi := &file_puser_proto_msgTypes[2]
+	mi := &file_puser_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1055,7 +1139,7 @@ func (x *JobDeck) String() string {
 func (*JobDeck) ProtoMessage() {}
 
 func (x *JobDeck) ProtoReflect() protoreflect.Message {
-	mi := &file_puser_proto_msgTypes[2]
+	mi := &file_puser_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1068,7 +1152,7 @@ func (x *JobDeck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use JobDeck.ProtoReflect.Descriptor instead.
 func (*JobDeck) Descriptor() ([]byte, []int) {
-	return file_puser_proto_rawDescGZIP(), []int{2}
+	return file_puser_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *JobDeck) GetId() uint64 {
@@ -4909,7 +4993,7 @@ type Equipment struct {
 
 func (x *Equipment) Reset() {
 	*x = Equipment{}
-	mi := &file_puser_proto_msgTypes[3]
+	mi := &file_puser_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4921,7 +5005,7 @@ func (x *Equipment) String() string {
 func (*Equipment) ProtoMessage() {}
 
 func (x *Equipment) ProtoReflect() protoreflect.Message {
-	mi := &file_puser_proto_msgTypes[3]
+	mi := &file_puser_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4934,7 +5018,7 @@ func (x *Equipment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Equipment.ProtoReflect.Descriptor instead.
 func (*Equipment) Descriptor() ([]byte, []int) {
-	return file_puser_proto_rawDescGZIP(), []int{3}
+	return file_puser_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Equipment) GetId() uint64 {
@@ -5251,7 +5335,7 @@ type Elixir struct {
 
 func (x *Elixir) Reset() {
 	*x = Elixir{}
-	mi := &file_puser_proto_msgTypes[4]
+	mi := &file_puser_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5263,7 +5347,7 @@ func (x *Elixir) String() string {
 func (*Elixir) ProtoMessage() {}
 
 func (x *Elixir) ProtoReflect() protoreflect.Message {
-	mi := &file_puser_proto_msgTypes[4]
+	mi := &file_puser_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5276,7 +5360,7 @@ func (x *Elixir) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Elixir.ProtoReflect.Descriptor instead.
 func (*Elixir) Descriptor() ([]byte, []int) {
-	return file_puser_proto_rawDescGZIP(), []int{4}
+	return file_puser_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Elixir) GetPlayerId() uint64 {
@@ -5310,6 +5394,4910 @@ func (x *Elixir) GetLevel() uint32 {
 func (x *Elixir) GetAcquiredAt() string {
 	if x != nil {
 		return x.AcquiredAt
+	}
+	return ""
+}
+
+type Setting struct {
+	state                           protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId                        uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Language                        uint32                 `protobuf:"varint,2,opt,name=language,proto3" json:"language,omitempty"`
+	PushAll                         uint32                 `protobuf:"varint,3,opt,name=push_all,json=pushAll,proto3" json:"push_all,omitempty"`
+	PushFriendRequest               uint32                 `protobuf:"varint,4,opt,name=push_friend_request,json=pushFriendRequest,proto3" json:"push_friend_request,omitempty"`
+	PushGuildMember                 uint32                 `protobuf:"varint,5,opt,name=push_guild_member,json=pushGuildMember,proto3" json:"push_guild_member,omitempty"`
+	PushGuildRoleChange             uint32                 `protobuf:"varint,6,opt,name=push_guild_role_change,json=pushGuildRoleChange,proto3" json:"push_guild_role_change,omitempty"`
+	PushMercenaryContractExpiration uint32                 `protobuf:"varint,7,opt,name=push_mercenary_contract_expiration,json=pushMercenaryContractExpiration,proto3" json:"push_mercenary_contract_expiration,omitempty"`
+	PushAgitoApShortage             uint32                 `protobuf:"varint,8,opt,name=push_agito_ap_shortage,json=pushAgitoApShortage,proto3" json:"push_agito_ap_shortage,omitempty"`
+	PushGuildDungeon                uint32                 `protobuf:"varint,9,opt,name=push_guild_dungeon,json=pushGuildDungeon,proto3" json:"push_guild_dungeon,omitempty"`
+	PushGuildAchievement            uint32                 `protobuf:"varint,10,opt,name=push_guild_achievement,json=pushGuildAchievement,proto3" json:"push_guild_achievement,omitempty"`
+	PushParty                       uint32                 `protobuf:"varint,11,opt,name=push_party,json=pushParty,proto3" json:"push_party,omitempty"`
+	PushGroupChat                   uint32                 `protobuf:"varint,12,opt,name=push_group_chat,json=pushGroupChat,proto3" json:"push_group_chat,omitempty"`
+	PushNewChatGuild                uint32                 `protobuf:"varint,13,opt,name=push_new_chat_guild,json=pushNewChatGuild,proto3" json:"push_new_chat_guild,omitempty"`
+	PushNewChatGroup                uint32                 `protobuf:"varint,14,opt,name=push_new_chat_group,json=pushNewChatGroup,proto3" json:"push_new_chat_group,omitempty"`
+	PushNewChatDirect               uint32                 `protobuf:"varint,15,opt,name=push_new_chat_direct,json=pushNewChatDirect,proto3" json:"push_new_chat_direct,omitempty"`
+	PushNewChatRecruitParty         uint32                 `protobuf:"varint,16,opt,name=push_new_chat_recruit_party,json=pushNewChatRecruitParty,proto3" json:"push_new_chat_recruit_party,omitempty"`
+	GachaAutoSellWeaponRarity1      uint32                 `protobuf:"varint,17,opt,name=gacha_auto_sell_weapon_rarity1,json=gachaAutoSellWeaponRarity1,proto3" json:"gacha_auto_sell_weapon_rarity1,omitempty"`
+	GachaAutoSellWeaponRarity2      uint32                 `protobuf:"varint,18,opt,name=gacha_auto_sell_weapon_rarity2,json=gachaAutoSellWeaponRarity2,proto3" json:"gacha_auto_sell_weapon_rarity2,omitempty"`
+	GachaAutoSellWeaponRarity3      uint32                 `protobuf:"varint,19,opt,name=gacha_auto_sell_weapon_rarity3,json=gachaAutoSellWeaponRarity3,proto3" json:"gacha_auto_sell_weapon_rarity3,omitempty"`
+	GachaAutoSellArmorRarity1       uint32                 `protobuf:"varint,20,opt,name=gacha_auto_sell_armor_rarity1,json=gachaAutoSellArmorRarity1,proto3" json:"gacha_auto_sell_armor_rarity1,omitempty"`
+	GachaAutoSellArmorRarity2       uint32                 `protobuf:"varint,21,opt,name=gacha_auto_sell_armor_rarity2,json=gachaAutoSellArmorRarity2,proto3" json:"gacha_auto_sell_armor_rarity2,omitempty"`
+	GachaAutoSellArmorRarity3       uint32                 `protobuf:"varint,22,opt,name=gacha_auto_sell_armor_rarity3,json=gachaAutoSellArmorRarity3,proto3" json:"gacha_auto_sell_armor_rarity3,omitempty"`
+	unknownFields                   protoimpl.UnknownFields
+	sizeCache                       protoimpl.SizeCache
+}
+
+func (x *Setting) Reset() {
+	*x = Setting{}
+	mi := &file_puser_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Setting) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Setting) ProtoMessage() {}
+
+func (x *Setting) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Setting.ProtoReflect.Descriptor instead.
+func (*Setting) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Setting) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Setting) GetLanguage() uint32 {
+	if x != nil {
+		return x.Language
+	}
+	return 0
+}
+
+func (x *Setting) GetPushAll() uint32 {
+	if x != nil {
+		return x.PushAll
+	}
+	return 0
+}
+
+func (x *Setting) GetPushFriendRequest() uint32 {
+	if x != nil {
+		return x.PushFriendRequest
+	}
+	return 0
+}
+
+func (x *Setting) GetPushGuildMember() uint32 {
+	if x != nil {
+		return x.PushGuildMember
+	}
+	return 0
+}
+
+func (x *Setting) GetPushGuildRoleChange() uint32 {
+	if x != nil {
+		return x.PushGuildRoleChange
+	}
+	return 0
+}
+
+func (x *Setting) GetPushMercenaryContractExpiration() uint32 {
+	if x != nil {
+		return x.PushMercenaryContractExpiration
+	}
+	return 0
+}
+
+func (x *Setting) GetPushAgitoApShortage() uint32 {
+	if x != nil {
+		return x.PushAgitoApShortage
+	}
+	return 0
+}
+
+func (x *Setting) GetPushGuildDungeon() uint32 {
+	if x != nil {
+		return x.PushGuildDungeon
+	}
+	return 0
+}
+
+func (x *Setting) GetPushGuildAchievement() uint32 {
+	if x != nil {
+		return x.PushGuildAchievement
+	}
+	return 0
+}
+
+func (x *Setting) GetPushParty() uint32 {
+	if x != nil {
+		return x.PushParty
+	}
+	return 0
+}
+
+func (x *Setting) GetPushGroupChat() uint32 {
+	if x != nil {
+		return x.PushGroupChat
+	}
+	return 0
+}
+
+func (x *Setting) GetPushNewChatGuild() uint32 {
+	if x != nil {
+		return x.PushNewChatGuild
+	}
+	return 0
+}
+
+func (x *Setting) GetPushNewChatGroup() uint32 {
+	if x != nil {
+		return x.PushNewChatGroup
+	}
+	return 0
+}
+
+func (x *Setting) GetPushNewChatDirect() uint32 {
+	if x != nil {
+		return x.PushNewChatDirect
+	}
+	return 0
+}
+
+func (x *Setting) GetPushNewChatRecruitParty() uint32 {
+	if x != nil {
+		return x.PushNewChatRecruitParty
+	}
+	return 0
+}
+
+func (x *Setting) GetGachaAutoSellWeaponRarity1() uint32 {
+	if x != nil {
+		return x.GachaAutoSellWeaponRarity1
+	}
+	return 0
+}
+
+func (x *Setting) GetGachaAutoSellWeaponRarity2() uint32 {
+	if x != nil {
+		return x.GachaAutoSellWeaponRarity2
+	}
+	return 0
+}
+
+func (x *Setting) GetGachaAutoSellWeaponRarity3() uint32 {
+	if x != nil {
+		return x.GachaAutoSellWeaponRarity3
+	}
+	return 0
+}
+
+func (x *Setting) GetGachaAutoSellArmorRarity1() uint32 {
+	if x != nil {
+		return x.GachaAutoSellArmorRarity1
+	}
+	return 0
+}
+
+func (x *Setting) GetGachaAutoSellArmorRarity2() uint32 {
+	if x != nil {
+		return x.GachaAutoSellArmorRarity2
+	}
+	return 0
+}
+
+func (x *Setting) GetGachaAutoSellArmorRarity3() uint32 {
+	if x != nil {
+		return x.GachaAutoSellArmorRarity3
+	}
+	return 0
+}
+
+type AgitoItemArea struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId               uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	RoomNumber             uint32                 `protobuf:"varint,2,opt,name=room_number,json=roomNumber,proto3" json:"room_number,omitempty"`
+	AgitoItemAreaId        uint32                 `protobuf:"varint,3,opt,name=agito_item_area_id,json=agitoItemAreaId,proto3" json:"agito_item_area_id,omitempty"`
+	ItemId                 uint32                 `protobuf:"varint,4,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	AgitoVisitorLineupId_1 uint32                 `protobuf:"varint,5,opt,name=agito_visitor_lineup_id_1,json=agitoVisitorLineupId1,proto3" json:"agito_visitor_lineup_id_1,omitempty"`
+	AgitoVisitorLineupId_2 uint32                 `protobuf:"varint,6,opt,name=agito_visitor_lineup_id_2,json=agitoVisitorLineupId2,proto3" json:"agito_visitor_lineup_id_2,omitempty"`
+	AgitoVisitorLineupId_3 uint32                 `protobuf:"varint,7,opt,name=agito_visitor_lineup_id_3,json=agitoVisitorLineupId3,proto3" json:"agito_visitor_lineup_id_3,omitempty"`
+	ReceivedFlag1          uint32                 `protobuf:"varint,8,opt,name=received_flag1,json=receivedFlag1,proto3" json:"received_flag1,omitempty"`
+	ReceivedFlag2          uint32                 `protobuf:"varint,9,opt,name=received_flag2,json=receivedFlag2,proto3" json:"received_flag2,omitempty"`
+	ReceivedFlag3          uint32                 `protobuf:"varint,10,opt,name=received_flag3,json=receivedFlag3,proto3" json:"received_flag3,omitempty"`
+	LineupReturnAt1        string                 `protobuf:"bytes,11,opt,name=lineup_return_at1,json=lineupReturnAt1,proto3" json:"lineup_return_at1,omitempty"`
+	LineupReturnAt2        string                 `protobuf:"bytes,12,opt,name=lineup_return_at2,json=lineupReturnAt2,proto3" json:"lineup_return_at2,omitempty"`
+	LineupReturnAt3        string                 `protobuf:"bytes,13,opt,name=lineup_return_at3,json=lineupReturnAt3,proto3" json:"lineup_return_at3,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *AgitoItemArea) Reset() {
+	*x = AgitoItemArea{}
+	mi := &file_puser_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgitoItemArea) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgitoItemArea) ProtoMessage() {}
+
+func (x *AgitoItemArea) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgitoItemArea.ProtoReflect.Descriptor instead.
+func (*AgitoItemArea) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *AgitoItemArea) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetRoomNumber() uint32 {
+	if x != nil {
+		return x.RoomNumber
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetAgitoItemAreaId() uint32 {
+	if x != nil {
+		return x.AgitoItemAreaId
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetItemId() uint32 {
+	if x != nil {
+		return x.ItemId
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetAgitoVisitorLineupId_1() uint32 {
+	if x != nil {
+		return x.AgitoVisitorLineupId_1
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetAgitoVisitorLineupId_2() uint32 {
+	if x != nil {
+		return x.AgitoVisitorLineupId_2
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetAgitoVisitorLineupId_3() uint32 {
+	if x != nil {
+		return x.AgitoVisitorLineupId_3
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetReceivedFlag1() uint32 {
+	if x != nil {
+		return x.ReceivedFlag1
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetReceivedFlag2() uint32 {
+	if x != nil {
+		return x.ReceivedFlag2
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetReceivedFlag3() uint32 {
+	if x != nil {
+		return x.ReceivedFlag3
+	}
+	return 0
+}
+
+func (x *AgitoItemArea) GetLineupReturnAt1() string {
+	if x != nil {
+		return x.LineupReturnAt1
+	}
+	return ""
+}
+
+func (x *AgitoItemArea) GetLineupReturnAt2() string {
+	if x != nil {
+		return x.LineupReturnAt2
+	}
+	return ""
+}
+
+func (x *AgitoItemArea) GetLineupReturnAt3() string {
+	if x != nil {
+		return x.LineupReturnAt3
+	}
+	return ""
+}
+
+type AbyssFever struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	RemainTime    uint32                 `protobuf:"varint,2,opt,name=remain_time,json=remainTime,proto3" json:"remain_time,omitempty"`
+	ChargeCount   uint32                 `protobuf:"varint,3,opt,name=charge_count,json=chargeCount,proto3" json:"charge_count,omitempty"`
+	UsedAt        string                 `protobuf:"bytes,4,opt,name=used_at,json=usedAt,proto3" json:"used_at,omitempty"`
+	ChargedAt     string                 `protobuf:"bytes,5,opt,name=charged_at,json=chargedAt,proto3" json:"charged_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AbyssFever) Reset() {
+	*x = AbyssFever{}
+	mi := &file_puser_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AbyssFever) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AbyssFever) ProtoMessage() {}
+
+func (x *AbyssFever) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AbyssFever.ProtoReflect.Descriptor instead.
+func (*AbyssFever) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *AbyssFever) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AbyssFever) GetRemainTime() uint32 {
+	if x != nil {
+		return x.RemainTime
+	}
+	return 0
+}
+
+func (x *AbyssFever) GetChargeCount() uint32 {
+	if x != nil {
+		return x.ChargeCount
+	}
+	return 0
+}
+
+func (x *AbyssFever) GetUsedAt() string {
+	if x != nil {
+		return x.UsedAt
+	}
+	return ""
+}
+
+func (x *AbyssFever) GetChargedAt() string {
+	if x != nil {
+		return x.ChargedAt
+	}
+	return ""
+}
+
+type Achievement struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Achievement) Reset() {
+	*x = Achievement{}
+	mi := &file_puser_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Achievement) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Achievement) ProtoMessage() {}
+
+func (x *Achievement) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Achievement.ProtoReflect.Descriptor instead.
+func (*Achievement) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *Achievement) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Achievement) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+type AchievementEquipment struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId          uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Type              uint32                 `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"`
+	EquipmentJobId    uint32                 `protobuf:"varint,3,opt,name=equipment_job_id,json=equipmentJobId,proto3" json:"equipment_job_id,omitempty"`
+	EquipmentCategory uint32                 `protobuf:"varint,4,opt,name=equipment_category,json=equipmentCategory,proto3" json:"equipment_category,omitempty"`
+	EquipmentPart     uint32                 `protobuf:"varint,5,opt,name=equipment_part,json=equipmentPart,proto3" json:"equipment_part,omitempty"`
+	Category          uint32                 `protobuf:"varint,6,opt,name=category,proto3" json:"category,omitempty"`
+	CategoryValue     string                 `protobuf:"bytes,7,opt,name=category_value,json=categoryValue,proto3" json:"category_value,omitempty"`
+	Value             uint32                 `protobuf:"varint,8,opt,name=value,proto3" json:"value,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *AchievementEquipment) Reset() {
+	*x = AchievementEquipment{}
+	mi := &file_puser_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AchievementEquipment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AchievementEquipment) ProtoMessage() {}
+
+func (x *AchievementEquipment) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AchievementEquipment.ProtoReflect.Descriptor instead.
+func (*AchievementEquipment) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *AchievementEquipment) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AchievementEquipment) GetType() uint32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *AchievementEquipment) GetEquipmentJobId() uint32 {
+	if x != nil {
+		return x.EquipmentJobId
+	}
+	return 0
+}
+
+func (x *AchievementEquipment) GetEquipmentCategory() uint32 {
+	if x != nil {
+		return x.EquipmentCategory
+	}
+	return 0
+}
+
+func (x *AchievementEquipment) GetEquipmentPart() uint32 {
+	if x != nil {
+		return x.EquipmentPart
+	}
+	return 0
+}
+
+func (x *AchievementEquipment) GetCategory() uint32 {
+	if x != nil {
+		return x.Category
+	}
+	return 0
+}
+
+func (x *AchievementEquipment) GetCategoryValue() string {
+	if x != nil {
+		return x.CategoryValue
+	}
+	return ""
+}
+
+func (x *AchievementEquipment) GetValue() uint32 {
+	if x != nil {
+		return x.Value
+	}
+	return 0
+}
+
+type AchievementEquipmentReceive struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId               uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	AchievementEquipmentId uint32                 `protobuf:"varint,2,opt,name=achievement_equipment_id,json=achievementEquipmentId,proto3" json:"achievement_equipment_id,omitempty"`
+	Seq                    uint32                 `protobuf:"varint,3,opt,name=seq,proto3" json:"seq,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *AchievementEquipmentReceive) Reset() {
+	*x = AchievementEquipmentReceive{}
+	mi := &file_puser_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AchievementEquipmentReceive) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AchievementEquipmentReceive) ProtoMessage() {}
+
+func (x *AchievementEquipmentReceive) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AchievementEquipmentReceive.ProtoReflect.Descriptor instead.
+func (*AchievementEquipmentReceive) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *AchievementEquipmentReceive) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AchievementEquipmentReceive) GetAchievementEquipmentId() uint32 {
+	if x != nil {
+		return x.AchievementEquipmentId
+	}
+	return 0
+}
+
+func (x *AchievementEquipmentReceive) GetSeq() uint32 {
+	if x != nil {
+		return x.Seq
+	}
+	return 0
+}
+
+type AchievementEquipmentStamp struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId          uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	StampRewardStepId uint32                 `protobuf:"varint,2,opt,name=stamp_reward_step_id,json=stampRewardStepId,proto3" json:"stamp_reward_step_id,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *AchievementEquipmentStamp) Reset() {
+	*x = AchievementEquipmentStamp{}
+	mi := &file_puser_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AchievementEquipmentStamp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AchievementEquipmentStamp) ProtoMessage() {}
+
+func (x *AchievementEquipmentStamp) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AchievementEquipmentStamp.ProtoReflect.Descriptor instead.
+func (*AchievementEquipmentStamp) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *AchievementEquipmentStamp) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AchievementEquipmentStamp) GetStampRewardStepId() uint32 {
+	if x != nil {
+		return x.StampRewardStepId
+	}
+	return 0
+}
+
+type AchievementReward struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	AcquiredAt    string                 `protobuf:"bytes,2,opt,name=acquired_at,json=acquiredAt,proto3" json:"acquired_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AchievementReward) Reset() {
+	*x = AchievementReward{}
+	mi := &file_puser_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AchievementReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AchievementReward) ProtoMessage() {}
+
+func (x *AchievementReward) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AchievementReward.ProtoReflect.Descriptor instead.
+func (*AchievementReward) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *AchievementReward) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AchievementReward) GetAcquiredAt() string {
+	if x != nil {
+		return x.AcquiredAt
+	}
+	return ""
+}
+
+type Advertising struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	AdvertisingId uint32                 `protobuf:"varint,2,opt,name=advertising_id,json=advertisingId,proto3" json:"advertising_id,omitempty"`
+	ViewCount     uint32                 `protobuf:"varint,3,opt,name=view_count,json=viewCount,proto3" json:"view_count,omitempty"`
+	LastViewedAt  string                 `protobuf:"bytes,4,opt,name=last_viewed_at,json=lastViewedAt,proto3" json:"last_viewed_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Advertising) Reset() {
+	*x = Advertising{}
+	mi := &file_puser_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Advertising) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Advertising) ProtoMessage() {}
+
+func (x *Advertising) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Advertising.ProtoReflect.Descriptor instead.
+func (*Advertising) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *Advertising) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Advertising) GetAdvertisingId() uint32 {
+	if x != nil {
+		return x.AdvertisingId
+	}
+	return 0
+}
+
+func (x *Advertising) GetViewCount() uint32 {
+	if x != nil {
+		return x.ViewCount
+	}
+	return 0
+}
+
+func (x *Advertising) GetLastViewedAt() string {
+	if x != nil {
+		return x.LastViewedAt
+	}
+	return ""
+}
+
+type Agito struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId       uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	TotalGoodCount uint32                 `protobuf:"varint,2,opt,name=total_good_count,json=totalGoodCount,proto3" json:"total_good_count,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Agito) Reset() {
+	*x = Agito{}
+	mi := &file_puser_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Agito) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Agito) ProtoMessage() {}
+
+func (x *Agito) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Agito.ProtoReflect.Descriptor instead.
+func (*Agito) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *Agito) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Agito) GetTotalGoodCount() uint32 {
+	if x != nil {
+		return x.TotalGoodCount
+	}
+	return 0
+}
+
+type AgitoAp struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	RoomNumber    uint32                 `protobuf:"varint,2,opt,name=room_number,json=roomNumber,proto3" json:"room_number,omitempty"`
+	ItemId        uint32                 `protobuf:"varint,3,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	Ap            uint32                 `protobuf:"varint,4,opt,name=ap,proto3" json:"ap,omitempty"`
+	NextLotteryAt string                 `protobuf:"bytes,5,opt,name=next_lottery_at,json=nextLotteryAt,proto3" json:"next_lottery_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AgitoAp) Reset() {
+	*x = AgitoAp{}
+	mi := &file_puser_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgitoAp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgitoAp) ProtoMessage() {}
+
+func (x *AgitoAp) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgitoAp.ProtoReflect.Descriptor instead.
+func (*AgitoAp) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *AgitoAp) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AgitoAp) GetRoomNumber() uint32 {
+	if x != nil {
+		return x.RoomNumber
+	}
+	return 0
+}
+
+func (x *AgitoAp) GetItemId() uint32 {
+	if x != nil {
+		return x.ItemId
+	}
+	return 0
+}
+
+func (x *AgitoAp) GetAp() uint32 {
+	if x != nil {
+		return x.Ap
+	}
+	return 0
+}
+
+func (x *AgitoAp) GetNextLotteryAt() string {
+	if x != nil {
+		return x.NextLotteryAt
+	}
+	return ""
+}
+
+type AgitoCountReward struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId          uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Type              uint32                 `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"`
+	Count             uint32                 `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`
+	ReceivedCountSeq  uint64                 `protobuf:"varint,4,opt,name=received_count_seq,json=receivedCountSeq,proto3" json:"received_count_seq,omitempty"`
+	ReceivedCountSeq2 uint64                 `protobuf:"varint,5,opt,name=received_count_seq2,json=receivedCountSeq2,proto3" json:"received_count_seq2,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *AgitoCountReward) Reset() {
+	*x = AgitoCountReward{}
+	mi := &file_puser_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgitoCountReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgitoCountReward) ProtoMessage() {}
+
+func (x *AgitoCountReward) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgitoCountReward.ProtoReflect.Descriptor instead.
+func (*AgitoCountReward) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *AgitoCountReward) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AgitoCountReward) GetType() uint32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *AgitoCountReward) GetCount() uint32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+func (x *AgitoCountReward) GetReceivedCountSeq() uint64 {
+	if x != nil {
+		return x.ReceivedCountSeq
+	}
+	return 0
+}
+
+func (x *AgitoCountReward) GetReceivedCountSeq2() uint64 {
+	if x != nil {
+		return x.ReceivedCountSeq2
+	}
+	return 0
+}
+
+type AgitoFurnitureSetting struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId           uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	RoomNumber         uint32                 `protobuf:"varint,2,opt,name=room_number,json=roomNumber,proto3" json:"room_number,omitempty"`
+	WallPaperItemId    uint32                 `protobuf:"varint,3,opt,name=wall_paper_item_id,json=wallPaperItemId,proto3" json:"wall_paper_item_id,omitempty"`
+	FloorBoardItemId   uint32                 `protobuf:"varint,4,opt,name=floor_board_item_id,json=floorBoardItemId,proto3" json:"floor_board_item_id,omitempty"`
+	TableSetItemId     uint32                 `protobuf:"varint,5,opt,name=table_set_item_id,json=tableSetItemId,proto3" json:"table_set_item_id,omitempty"`
+	SpecialFloorItemId uint32                 `protobuf:"varint,6,opt,name=special_floor_item_id,json=specialFloorItemId,proto3" json:"special_floor_item_id,omitempty"`
+	WallMediumItemId_1 uint32                 `protobuf:"varint,7,opt,name=wall_medium_item_id_1,json=wallMediumItemId1,proto3" json:"wall_medium_item_id_1,omitempty"`
+	WallMediumItemId_2 uint32                 `protobuf:"varint,8,opt,name=wall_medium_item_id_2,json=wallMediumItemId2,proto3" json:"wall_medium_item_id_2,omitempty"`
+	WallMediumItemId_3 uint32                 `protobuf:"varint,9,opt,name=wall_medium_item_id_3,json=wallMediumItemId3,proto3" json:"wall_medium_item_id_3,omitempty"`
+	WallMediumItemId_4 uint32                 `protobuf:"varint,10,opt,name=wall_medium_item_id_4,json=wallMediumItemId4,proto3" json:"wall_medium_item_id_4,omitempty"`
+	WallMediumItemId_5 uint32                 `protobuf:"varint,11,opt,name=wall_medium_item_id_5,json=wallMediumItemId5,proto3" json:"wall_medium_item_id_5,omitempty"`
+	WallSmallItemId_1  uint32                 `protobuf:"varint,12,opt,name=wall_small_item_id_1,json=wallSmallItemId1,proto3" json:"wall_small_item_id_1,omitempty"`
+	WallSmallItemId_2  uint32                 `protobuf:"varint,13,opt,name=wall_small_item_id_2,json=wallSmallItemId2,proto3" json:"wall_small_item_id_2,omitempty"`
+	WallSmallItemId_3  uint32                 `protobuf:"varint,14,opt,name=wall_small_item_id_3,json=wallSmallItemId3,proto3" json:"wall_small_item_id_3,omitempty"`
+	WallSmallItemId_4  uint32                 `protobuf:"varint,15,opt,name=wall_small_item_id_4,json=wallSmallItemId4,proto3" json:"wall_small_item_id_4,omitempty"`
+	WallSmallItemId_5  uint32                 `protobuf:"varint,16,opt,name=wall_small_item_id_5,json=wallSmallItemId5,proto3" json:"wall_small_item_id_5,omitempty"`
+	WallSmallItemId_6  uint32                 `protobuf:"varint,17,opt,name=wall_small_item_id_6,json=wallSmallItemId6,proto3" json:"wall_small_item_id_6,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *AgitoFurnitureSetting) Reset() {
+	*x = AgitoFurnitureSetting{}
+	mi := &file_puser_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgitoFurnitureSetting) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgitoFurnitureSetting) ProtoMessage() {}
+
+func (x *AgitoFurnitureSetting) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgitoFurnitureSetting.ProtoReflect.Descriptor instead.
+func (*AgitoFurnitureSetting) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *AgitoFurnitureSetting) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetRoomNumber() uint32 {
+	if x != nil {
+		return x.RoomNumber
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallPaperItemId() uint32 {
+	if x != nil {
+		return x.WallPaperItemId
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetFloorBoardItemId() uint32 {
+	if x != nil {
+		return x.FloorBoardItemId
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetTableSetItemId() uint32 {
+	if x != nil {
+		return x.TableSetItemId
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetSpecialFloorItemId() uint32 {
+	if x != nil {
+		return x.SpecialFloorItemId
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallMediumItemId_1() uint32 {
+	if x != nil {
+		return x.WallMediumItemId_1
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallMediumItemId_2() uint32 {
+	if x != nil {
+		return x.WallMediumItemId_2
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallMediumItemId_3() uint32 {
+	if x != nil {
+		return x.WallMediumItemId_3
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallMediumItemId_4() uint32 {
+	if x != nil {
+		return x.WallMediumItemId_4
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallMediumItemId_5() uint32 {
+	if x != nil {
+		return x.WallMediumItemId_5
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallSmallItemId_1() uint32 {
+	if x != nil {
+		return x.WallSmallItemId_1
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallSmallItemId_2() uint32 {
+	if x != nil {
+		return x.WallSmallItemId_2
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallSmallItemId_3() uint32 {
+	if x != nil {
+		return x.WallSmallItemId_3
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallSmallItemId_4() uint32 {
+	if x != nil {
+		return x.WallSmallItemId_4
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallSmallItemId_5() uint32 {
+	if x != nil {
+		return x.WallSmallItemId_5
+	}
+	return 0
+}
+
+func (x *AgitoFurnitureSetting) GetWallSmallItemId_6() uint32 {
+	if x != nil {
+		return x.WallSmallItemId_6
+	}
+	return 0
+}
+
+type AgitoGoodHistory struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Id              uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PlayerId        uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	GoodPlayerId    uint64                 `protobuf:"varint,3,opt,name=good_player_id,json=goodPlayerId,proto3" json:"good_player_id,omitempty"`
+	ApRecoveredFlag uint32                 `protobuf:"varint,4,opt,name=ap_recovered_flag,json=apRecoveredFlag,proto3" json:"ap_recovered_flag,omitempty"`
+	GoodAt          string                 `protobuf:"bytes,5,opt,name=good_at,json=goodAt,proto3" json:"good_at,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *AgitoGoodHistory) Reset() {
+	*x = AgitoGoodHistory{}
+	mi := &file_puser_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgitoGoodHistory) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgitoGoodHistory) ProtoMessage() {}
+
+func (x *AgitoGoodHistory) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgitoGoodHistory.ProtoReflect.Descriptor instead.
+func (*AgitoGoodHistory) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *AgitoGoodHistory) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *AgitoGoodHistory) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AgitoGoodHistory) GetGoodPlayerId() uint64 {
+	if x != nil {
+		return x.GoodPlayerId
+	}
+	return 0
+}
+
+func (x *AgitoGoodHistory) GetApRecoveredFlag() uint32 {
+	if x != nil {
+		return x.ApRecoveredFlag
+	}
+	return 0
+}
+
+func (x *AgitoGoodHistory) GetGoodAt() string {
+	if x != nil {
+		return x.GoodAt
+	}
+	return ""
+}
+
+type AgitoRelotteryInterval struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId         uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	EquipmentId      uint32                 `protobuf:"varint,2,opt,name=equipment_id,json=equipmentId,proto3" json:"equipment_id,omitempty"`
+	RelotteryStartAt string                 `protobuf:"bytes,3,opt,name=relottery_start_at,json=relotteryStartAt,proto3" json:"relottery_start_at,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *AgitoRelotteryInterval) Reset() {
+	*x = AgitoRelotteryInterval{}
+	mi := &file_puser_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgitoRelotteryInterval) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgitoRelotteryInterval) ProtoMessage() {}
+
+func (x *AgitoRelotteryInterval) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgitoRelotteryInterval.ProtoReflect.Descriptor instead.
+func (*AgitoRelotteryInterval) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *AgitoRelotteryInterval) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AgitoRelotteryInterval) GetEquipmentId() uint32 {
+	if x != nil {
+		return x.EquipmentId
+	}
+	return 0
+}
+
+func (x *AgitoRelotteryInterval) GetRelotteryStartAt() string {
+	if x != nil {
+		return x.RelotteryStartAt
+	}
+	return ""
+}
+
+type AgitoVisitor struct {
+	state                   protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId                uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	EquipmentId             uint32                 `protobuf:"varint,2,opt,name=equipment_id,json=equipmentId,proto3" json:"equipment_id,omitempty"`
+	VisitCount              uint32                 `protobuf:"varint,3,opt,name=visit_count,json=visitCount,proto3" json:"visit_count,omitempty"`
+	VisitorPoint            uint32                 `protobuf:"varint,4,opt,name=visitor_point,json=visitorPoint,proto3" json:"visitor_point,omitempty"`
+	ReceivedVisitorPointSeq uint32                 `protobuf:"varint,5,opt,name=received_visitor_point_seq,json=receivedVisitorPointSeq,proto3" json:"received_visitor_point_seq,omitempty"`
+	FirstVisitedAt          string                 `protobuf:"bytes,6,opt,name=first_visited_at,json=firstVisitedAt,proto3" json:"first_visited_at,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
+}
+
+func (x *AgitoVisitor) Reset() {
+	*x = AgitoVisitor{}
+	mi := &file_puser_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgitoVisitor) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgitoVisitor) ProtoMessage() {}
+
+func (x *AgitoVisitor) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgitoVisitor.ProtoReflect.Descriptor instead.
+func (*AgitoVisitor) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *AgitoVisitor) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AgitoVisitor) GetEquipmentId() uint32 {
+	if x != nil {
+		return x.EquipmentId
+	}
+	return 0
+}
+
+func (x *AgitoVisitor) GetVisitCount() uint32 {
+	if x != nil {
+		return x.VisitCount
+	}
+	return 0
+}
+
+func (x *AgitoVisitor) GetVisitorPoint() uint32 {
+	if x != nil {
+		return x.VisitorPoint
+	}
+	return 0
+}
+
+func (x *AgitoVisitor) GetReceivedVisitorPointSeq() uint32 {
+	if x != nil {
+		return x.ReceivedVisitorPointSeq
+	}
+	return 0
+}
+
+func (x *AgitoVisitor) GetFirstVisitedAt() string {
+	if x != nil {
+		return x.FirstVisitedAt
+	}
+	return ""
+}
+
+type AngelBattleWeeklyReward struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId               uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	StageId                uint32                 `protobuf:"varint,2,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`
+	RoomId                 string                 `protobuf:"bytes,3,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
+	LastRewardReceiveAt    string                 `protobuf:"bytes,4,opt,name=last_reward_receive_at,json=lastRewardReceiveAt,proto3" json:"last_reward_receive_at,omitempty"`
+	AssistRewardReceiveCnt uint32                 `protobuf:"varint,5,opt,name=assist_reward_receive_cnt,json=assistRewardReceiveCnt,proto3" json:"assist_reward_receive_cnt,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *AngelBattleWeeklyReward) Reset() {
+	*x = AngelBattleWeeklyReward{}
+	mi := &file_puser_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AngelBattleWeeklyReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AngelBattleWeeklyReward) ProtoMessage() {}
+
+func (x *AngelBattleWeeklyReward) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AngelBattleWeeklyReward.ProtoReflect.Descriptor instead.
+func (*AngelBattleWeeklyReward) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *AngelBattleWeeklyReward) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AngelBattleWeeklyReward) GetStageId() uint32 {
+	if x != nil {
+		return x.StageId
+	}
+	return 0
+}
+
+func (x *AngelBattleWeeklyReward) GetRoomId() string {
+	if x != nil {
+		return x.RoomId
+	}
+	return ""
+}
+
+func (x *AngelBattleWeeklyReward) GetLastRewardReceiveAt() string {
+	if x != nil {
+		return x.LastRewardReceiveAt
+	}
+	return ""
+}
+
+func (x *AngelBattleWeeklyReward) GetAssistRewardReceiveCnt() uint32 {
+	if x != nil {
+		return x.AssistRewardReceiveCnt
+	}
+	return 0
+}
+
+type Anima struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Put           uint32                 `protobuf:"varint,3,opt,name=put,proto3" json:"put,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Anima) Reset() {
+	*x = Anima{}
+	mi := &file_puser_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Anima) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Anima) ProtoMessage() {}
+
+func (x *Anima) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Anima.ProtoReflect.Descriptor instead.
+func (*Anima) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *Anima) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Anima) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Anima) GetPut() uint32 {
+	if x != nil {
+		return x.Put
+	}
+	return 0
+}
+
+type AnimaArea struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AnimaAreaId   uint32                 `protobuf:"varint,1,opt,name=anima_area_id,json=animaAreaId,proto3" json:"anima_area_id,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Acquired      uint32                 `protobuf:"varint,3,opt,name=acquired,proto3" json:"acquired,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AnimaArea) Reset() {
+	*x = AnimaArea{}
+	mi := &file_puser_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AnimaArea) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AnimaArea) ProtoMessage() {}
+
+func (x *AnimaArea) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AnimaArea.ProtoReflect.Descriptor instead.
+func (*AnimaArea) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *AnimaArea) GetAnimaAreaId() uint32 {
+	if x != nil {
+		return x.AnimaAreaId
+	}
+	return 0
+}
+
+func (x *AnimaArea) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *AnimaArea) GetAcquired() uint32 {
+	if x != nil {
+		return x.Acquired
+	}
+	return 0
+}
+
+type Arena struct {
+	state                    protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId                 uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	JobDeckId                uint64                 `protobuf:"varint,2,opt,name=job_deck_id,json=jobDeckId,proto3" json:"job_deck_id,omitempty"`
+	TotalWin                 uint32                 `protobuf:"varint,3,opt,name=total_win,json=totalWin,proto3" json:"total_win,omitempty"`
+	TotalLose                uint32                 `protobuf:"varint,4,opt,name=total_lose,json=totalLose,proto3" json:"total_lose,omitempty"`
+	ConsecutiveWin           uint32                 `protobuf:"varint,5,opt,name=consecutive_win,json=consecutiveWin,proto3" json:"consecutive_win,omitempty"`
+	MaxConsecutiveWin        uint32                 `protobuf:"varint,6,opt,name=max_consecutive_win,json=maxConsecutiveWin,proto3" json:"max_consecutive_win,omitempty"`
+	TotalPoint               uint32                 `protobuf:"varint,7,opt,name=total_point,json=totalPoint,proto3" json:"total_point,omitempty"`
+	DailyPoint               uint32                 `protobuf:"varint,8,opt,name=daily_point,json=dailyPoint,proto3" json:"daily_point,omitempty"`
+	WeeklyPoint              uint32                 `protobuf:"varint,9,opt,name=weekly_point,json=weeklyPoint,proto3" json:"weekly_point,omitempty"`
+	DailyAcquiredAt          string                 `protobuf:"bytes,10,opt,name=daily_acquired_at,json=dailyAcquiredAt,proto3" json:"daily_acquired_at,omitempty"`
+	WeeklyAcquiredAt         string                 `protobuf:"bytes,11,opt,name=weekly_acquired_at,json=weeklyAcquiredAt,proto3" json:"weekly_acquired_at,omitempty"`
+	DailyRewardReceivedPoint uint32                 `protobuf:"varint,12,opt,name=daily_reward_received_point,json=dailyRewardReceivedPoint,proto3" json:"daily_reward_received_point,omitempty"`
+	DailyRewardReceivedAt    string                 `protobuf:"bytes,13,opt,name=daily_reward_received_at,json=dailyRewardReceivedAt,proto3" json:"daily_reward_received_at,omitempty"`
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
+}
+
+func (x *Arena) Reset() {
+	*x = Arena{}
+	mi := &file_puser_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Arena) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Arena) ProtoMessage() {}
+
+func (x *Arena) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Arena.ProtoReflect.Descriptor instead.
+func (*Arena) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *Arena) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Arena) GetJobDeckId() uint64 {
+	if x != nil {
+		return x.JobDeckId
+	}
+	return 0
+}
+
+func (x *Arena) GetTotalWin() uint32 {
+	if x != nil {
+		return x.TotalWin
+	}
+	return 0
+}
+
+func (x *Arena) GetTotalLose() uint32 {
+	if x != nil {
+		return x.TotalLose
+	}
+	return 0
+}
+
+func (x *Arena) GetConsecutiveWin() uint32 {
+	if x != nil {
+		return x.ConsecutiveWin
+	}
+	return 0
+}
+
+func (x *Arena) GetMaxConsecutiveWin() uint32 {
+	if x != nil {
+		return x.MaxConsecutiveWin
+	}
+	return 0
+}
+
+func (x *Arena) GetTotalPoint() uint32 {
+	if x != nil {
+		return x.TotalPoint
+	}
+	return 0
+}
+
+func (x *Arena) GetDailyPoint() uint32 {
+	if x != nil {
+		return x.DailyPoint
+	}
+	return 0
+}
+
+func (x *Arena) GetWeeklyPoint() uint32 {
+	if x != nil {
+		return x.WeeklyPoint
+	}
+	return 0
+}
+
+func (x *Arena) GetDailyAcquiredAt() string {
+	if x != nil {
+		return x.DailyAcquiredAt
+	}
+	return ""
+}
+
+func (x *Arena) GetWeeklyAcquiredAt() string {
+	if x != nil {
+		return x.WeeklyAcquiredAt
+	}
+	return ""
+}
+
+func (x *Arena) GetDailyRewardReceivedPoint() uint32 {
+	if x != nil {
+		return x.DailyRewardReceivedPoint
+	}
+	return 0
+}
+
+func (x *Arena) GetDailyRewardReceivedAt() string {
+	if x != nil {
+		return x.DailyRewardReceivedAt
+	}
+	return ""
+}
+
+type BackgroundBattle struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	RoomId        string                 `protobuf:"bytes,2,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	Win           uint32                 `protobuf:"varint,4,opt,name=win,proto3" json:"win,omitempty"`
+	Total         uint32                 `protobuf:"varint,5,opt,name=total,proto3" json:"total,omitempty"`
+	LoopCnt       uint32                 `protobuf:"varint,6,opt,name=loop_cnt,json=loopCnt,proto3" json:"loop_cnt,omitempty"`
+	IsResult      uint32                 `protobuf:"varint,7,opt,name=is_result,json=isResult,proto3" json:"is_result,omitempty"`
+	Summary       string                 `protobuf:"bytes,8,opt,name=summary,proto3" json:"summary,omitempty"`
+	StartedAt     string                 `protobuf:"bytes,9,opt,name=started_at,json=startedAt,proto3" json:"started_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BackgroundBattle) Reset() {
+	*x = BackgroundBattle{}
+	mi := &file_puser_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BackgroundBattle) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BackgroundBattle) ProtoMessage() {}
+
+func (x *BackgroundBattle) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BackgroundBattle.ProtoReflect.Descriptor instead.
+func (*BackgroundBattle) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *BackgroundBattle) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *BackgroundBattle) GetRoomId() string {
+	if x != nil {
+		return x.RoomId
+	}
+	return ""
+}
+
+func (x *BackgroundBattle) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *BackgroundBattle) GetWin() uint32 {
+	if x != nil {
+		return x.Win
+	}
+	return 0
+}
+
+func (x *BackgroundBattle) GetTotal() uint32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *BackgroundBattle) GetLoopCnt() uint32 {
+	if x != nil {
+		return x.LoopCnt
+	}
+	return 0
+}
+
+func (x *BackgroundBattle) GetIsResult() uint32 {
+	if x != nil {
+		return x.IsResult
+	}
+	return 0
+}
+
+func (x *BackgroundBattle) GetSummary() string {
+	if x != nil {
+		return x.Summary
+	}
+	return ""
+}
+
+func (x *BackgroundBattle) GetStartedAt() string {
+	if x != nil {
+		return x.StartedAt
+	}
+	return ""
+}
+
+type Boost struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	BoostId       uint32                 `protobuf:"varint,2,opt,name=boost_id,json=boostId,proto3" json:"boost_id,omitempty"`
+	ExpiredAt     string                 `protobuf:"bytes,3,opt,name=expired_at,json=expiredAt,proto3" json:"expired_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Boost) Reset() {
+	*x = Boost{}
+	mi := &file_puser_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Boost) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Boost) ProtoMessage() {}
+
+func (x *Boost) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Boost.ProtoReflect.Descriptor instead.
+func (*Boost) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *Boost) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Boost) GetBoostId() uint32 {
+	if x != nil {
+		return x.BoostId
+	}
+	return 0
+}
+
+func (x *Boost) GetExpiredAt() string {
+	if x != nil {
+		return x.ExpiredAt
+	}
+	return ""
+}
+
+type Contents struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ContentsId    uint32                 `protobuf:"varint,2,opt,name=contents_id,json=contentsId,proto3" json:"contents_id,omitempty"`
+	StageId       uint32                 `protobuf:"varint,3,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`
+	LastSweptAt   string                 `protobuf:"bytes,4,opt,name=last_swept_at,json=lastSweptAt,proto3" json:"last_swept_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Contents) Reset() {
+	*x = Contents{}
+	mi := &file_puser_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Contents) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Contents) ProtoMessage() {}
+
+func (x *Contents) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Contents.ProtoReflect.Descriptor instead.
+func (*Contents) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *Contents) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Contents) GetContentsId() uint32 {
+	if x != nil {
+		return x.ContentsId
+	}
+	return 0
+}
+
+func (x *Contents) GetStageId() uint32 {
+	if x != nil {
+		return x.StageId
+	}
+	return 0
+}
+
+func (x *Contents) GetLastSweptAt() string {
+	if x != nil {
+		return x.LastSweptAt
+	}
+	return ""
+}
+
+type ContentsClearAncientTowerEx struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId         uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ContentsId       uint32                 `protobuf:"varint,2,opt,name=contents_id,json=contentsId,proto3" json:"contents_id,omitempty"`
+	StageId          uint32                 `protobuf:"varint,3,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`
+	FastestClearTime uint32                 `protobuf:"varint,4,opt,name=fastest_clear_time,json=fastestClearTime,proto3" json:"fastest_clear_time,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ContentsClearAncientTowerEx) Reset() {
+	*x = ContentsClearAncientTowerEx{}
+	mi := &file_puser_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ContentsClearAncientTowerEx) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ContentsClearAncientTowerEx) ProtoMessage() {}
+
+func (x *ContentsClearAncientTowerEx) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ContentsClearAncientTowerEx.ProtoReflect.Descriptor instead.
+func (*ContentsClearAncientTowerEx) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *ContentsClearAncientTowerEx) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ContentsClearAncientTowerEx) GetContentsId() uint32 {
+	if x != nil {
+		return x.ContentsId
+	}
+	return 0
+}
+
+func (x *ContentsClearAncientTowerEx) GetStageId() uint32 {
+	if x != nil {
+		return x.StageId
+	}
+	return 0
+}
+
+func (x *ContentsClearAncientTowerEx) GetFastestClearTime() uint32 {
+	if x != nil {
+		return x.FastestClearTime
+	}
+	return 0
+}
+
+type ContentsCondition struct {
+	state                         protoimpl.MessageState `protogen:"open.v1"`
+	Id                            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PlayerId                      uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ContentsId                    uint32                 `protobuf:"varint,3,opt,name=contents_id,json=contentsId,proto3" json:"contents_id,omitempty"`
+	TargetType                    uint32                 `protobuf:"varint,4,opt,name=target_type,json=targetType,proto3" json:"target_type,omitempty"`
+	TargetId                      uint32                 `protobuf:"varint,5,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
+	FreeCount                     uint32                 `protobuf:"varint,6,opt,name=free_count,json=freeCount,proto3" json:"free_count,omitempty"`
+	ChallengeCount                uint32                 `protobuf:"varint,7,opt,name=challenge_count,json=challengeCount,proto3" json:"challenge_count,omitempty"`
+	ChallengePurchaseCount        uint32                 `protobuf:"varint,8,opt,name=challenge_purchase_count,json=challengePurchaseCount,proto3" json:"challenge_purchase_count,omitempty"`
+	SpecialChallengeCount         uint32                 `protobuf:"varint,9,opt,name=special_challenge_count,json=specialChallengeCount,proto3" json:"special_challenge_count,omitempty"`
+	SpecialChallengePurchaseCount uint32                 `protobuf:"varint,10,opt,name=special_challenge_purchase_count,json=specialChallengePurchaseCount,proto3" json:"special_challenge_purchase_count,omitempty"`
+	LastUpdateAt                  string                 `protobuf:"bytes,11,opt,name=last_update_at,json=lastUpdateAt,proto3" json:"last_update_at,omitempty"`
+	unknownFields                 protoimpl.UnknownFields
+	sizeCache                     protoimpl.SizeCache
+}
+
+func (x *ContentsCondition) Reset() {
+	*x = ContentsCondition{}
+	mi := &file_puser_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ContentsCondition) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ContentsCondition) ProtoMessage() {}
+
+func (x *ContentsCondition) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ContentsCondition.ProtoReflect.Descriptor instead.
+func (*ContentsCondition) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *ContentsCondition) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetContentsId() uint32 {
+	if x != nil {
+		return x.ContentsId
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetTargetType() uint32 {
+	if x != nil {
+		return x.TargetType
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetTargetId() uint32 {
+	if x != nil {
+		return x.TargetId
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetFreeCount() uint32 {
+	if x != nil {
+		return x.FreeCount
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetChallengeCount() uint32 {
+	if x != nil {
+		return x.ChallengeCount
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetChallengePurchaseCount() uint32 {
+	if x != nil {
+		return x.ChallengePurchaseCount
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetSpecialChallengeCount() uint32 {
+	if x != nil {
+		return x.SpecialChallengeCount
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetSpecialChallengePurchaseCount() uint32 {
+	if x != nil {
+		return x.SpecialChallengePurchaseCount
+	}
+	return 0
+}
+
+func (x *ContentsCondition) GetLastUpdateAt() string {
+	if x != nil {
+		return x.LastUpdateAt
+	}
+	return ""
+}
+
+type ContentsHero struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	AreaId        uint32                 `protobuf:"varint,3,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
+	UsedPaid      uint32                 `protobuf:"varint,4,opt,name=used_paid,json=usedPaid,proto3" json:"used_paid,omitempty"`
+	TotalPaid     uint32                 `protobuf:"varint,5,opt,name=total_paid,json=totalPaid,proto3" json:"total_paid,omitempty"`
+	DailyPaid     uint32                 `protobuf:"varint,6,opt,name=daily_paid,json=dailyPaid,proto3" json:"daily_paid,omitempty"`
+	FreeUsedAt    string                 `protobuf:"bytes,7,opt,name=free_used_at,json=freeUsedAt,proto3" json:"free_used_at,omitempty"`
+	LastPaidAt    string                 `protobuf:"bytes,8,opt,name=last_paid_at,json=lastPaidAt,proto3" json:"last_paid_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ContentsHero) Reset() {
+	*x = ContentsHero{}
+	mi := &file_puser_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ContentsHero) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ContentsHero) ProtoMessage() {}
+
+func (x *ContentsHero) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ContentsHero.ProtoReflect.Descriptor instead.
+func (*ContentsHero) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *ContentsHero) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ContentsHero) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ContentsHero) GetAreaId() uint32 {
+	if x != nil {
+		return x.AreaId
+	}
+	return 0
+}
+
+func (x *ContentsHero) GetUsedPaid() uint32 {
+	if x != nil {
+		return x.UsedPaid
+	}
+	return 0
+}
+
+func (x *ContentsHero) GetTotalPaid() uint32 {
+	if x != nil {
+		return x.TotalPaid
+	}
+	return 0
+}
+
+func (x *ContentsHero) GetDailyPaid() uint32 {
+	if x != nil {
+		return x.DailyPaid
+	}
+	return 0
+}
+
+func (x *ContentsHero) GetFreeUsedAt() string {
+	if x != nil {
+		return x.FreeUsedAt
+	}
+	return ""
+}
+
+func (x *ContentsHero) GetLastPaidAt() string {
+	if x != nil {
+		return x.LastPaidAt
+	}
+	return ""
+}
+
+type ContentsRiskDungeon struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	AreaId        uint32                 `protobuf:"varint,2,opt,name=area_id,json=areaId,proto3" json:"area_id,omitempty"`
+	Risk          uint32                 `protobuf:"varint,3,opt,name=risk,proto3" json:"risk,omitempty"`
+	LastUpdatedAt string                 `protobuf:"bytes,4,opt,name=last_updated_at,json=lastUpdatedAt,proto3" json:"last_updated_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ContentsRiskDungeon) Reset() {
+	*x = ContentsRiskDungeon{}
+	mi := &file_puser_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ContentsRiskDungeon) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ContentsRiskDungeon) ProtoMessage() {}
+
+func (x *ContentsRiskDungeon) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ContentsRiskDungeon.ProtoReflect.Descriptor instead.
+func (*ContentsRiskDungeon) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *ContentsRiskDungeon) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ContentsRiskDungeon) GetAreaId() uint32 {
+	if x != nil {
+		return x.AreaId
+	}
+	return 0
+}
+
+func (x *ContentsRiskDungeon) GetRisk() uint32 {
+	if x != nil {
+		return x.Risk
+	}
+	return 0
+}
+
+func (x *ContentsRiskDungeon) GetLastUpdatedAt() string {
+	if x != nil {
+		return x.LastUpdatedAt
+	}
+	return ""
+}
+
+type ContentsTreasure struct {
+	state                     protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId                  uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	StageId                   uint32                 `protobuf:"varint,2,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`
+	MaxRank                   uint32                 `protobuf:"varint,3,opt,name=max_rank,json=maxRank,proto3" json:"max_rank,omitempty"`
+	MaxTreasureLupi           uint64                 `protobuf:"varint,4,opt,name=max_treasure_lupi,json=maxTreasureLupi,proto3" json:"max_treasure_lupi,omitempty"`
+	MaxTreasureAdditionalLupi uint64                 `protobuf:"varint,5,opt,name=max_treasure_additional_lupi,json=maxTreasureAdditionalLupi,proto3" json:"max_treasure_additional_lupi,omitempty"`
+	unknownFields             protoimpl.UnknownFields
+	sizeCache                 protoimpl.SizeCache
+}
+
+func (x *ContentsTreasure) Reset() {
+	*x = ContentsTreasure{}
+	mi := &file_puser_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ContentsTreasure) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ContentsTreasure) ProtoMessage() {}
+
+func (x *ContentsTreasure) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ContentsTreasure.ProtoReflect.Descriptor instead.
+func (*ContentsTreasure) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *ContentsTreasure) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ContentsTreasure) GetStageId() uint32 {
+	if x != nil {
+		return x.StageId
+	}
+	return 0
+}
+
+func (x *ContentsTreasure) GetMaxRank() uint32 {
+	if x != nil {
+		return x.MaxRank
+	}
+	return 0
+}
+
+func (x *ContentsTreasure) GetMaxTreasureLupi() uint64 {
+	if x != nil {
+		return x.MaxTreasureLupi
+	}
+	return 0
+}
+
+func (x *ContentsTreasure) GetMaxTreasureAdditionalLupi() uint64 {
+	if x != nil {
+		return x.MaxTreasureAdditionalLupi
+	}
+	return 0
+}
+
+type ContentsWeekMonster struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	StageId       uint32                 `protobuf:"varint,2,opt,name=stage_id,json=stageId,proto3" json:"stage_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ContentsWeekMonster) Reset() {
+	*x = ContentsWeekMonster{}
+	mi := &file_puser_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ContentsWeekMonster) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ContentsWeekMonster) ProtoMessage() {}
+
+func (x *ContentsWeekMonster) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ContentsWeekMonster.ProtoReflect.Descriptor instead.
+func (*ContentsWeekMonster) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *ContentsWeekMonster) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ContentsWeekMonster) GetStageId() uint32 {
+	if x != nil {
+		return x.StageId
+	}
+	return 0
+}
+
+type DailyMission struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	MissionId     uint32                 `protobuf:"varint,2,opt,name=mission_id,json=missionId,proto3" json:"mission_id,omitempty"`
+	Complete      uint32                 `protobuf:"varint,3,opt,name=complete,proto3" json:"complete,omitempty"`
+	Day           string                 `protobuf:"bytes,4,opt,name=day,proto3" json:"day,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DailyMission) Reset() {
+	*x = DailyMission{}
+	mi := &file_puser_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DailyMission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DailyMission) ProtoMessage() {}
+
+func (x *DailyMission) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DailyMission.ProtoReflect.Descriptor instead.
+func (*DailyMission) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *DailyMission) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *DailyMission) GetMissionId() uint32 {
+	if x != nil {
+		return x.MissionId
+	}
+	return 0
+}
+
+func (x *DailyMission) GetComplete() uint32 {
+	if x != nil {
+		return x.Complete
+	}
+	return 0
+}
+
+func (x *DailyMission) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+type DailyMissionReward struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId             uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	DailyMissionRewardId uint32                 `protobuf:"varint,2,opt,name=daily_mission_reward_id,json=dailyMissionRewardId,proto3" json:"daily_mission_reward_id,omitempty"`
+	Day                  string                 `protobuf:"bytes,3,opt,name=day,proto3" json:"day,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *DailyMissionReward) Reset() {
+	*x = DailyMissionReward{}
+	mi := &file_puser_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DailyMissionReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DailyMissionReward) ProtoMessage() {}
+
+func (x *DailyMissionReward) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DailyMissionReward.ProtoReflect.Descriptor instead.
+func (*DailyMissionReward) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *DailyMissionReward) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *DailyMissionReward) GetDailyMissionRewardId() uint32 {
+	if x != nil {
+		return x.DailyMissionRewardId
+	}
+	return 0
+}
+
+func (x *DailyMissionReward) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+type EquipmentLiberation struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EquipmentId   uint64                 `protobuf:"varint,1,opt,name=equipment_id,json=equipmentId,proto3" json:"equipment_id,omitempty"`
+	Rarity        uint32                 `protobuf:"varint,2,opt,name=rarity,proto3" json:"rarity,omitempty"`
+	SeqId         uint32                 `protobuf:"varint,3,opt,name=seq_id,json=seqId,proto3" json:"seq_id,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,4,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EquipmentLiberation) Reset() {
+	*x = EquipmentLiberation{}
+	mi := &file_puser_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EquipmentLiberation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EquipmentLiberation) ProtoMessage() {}
+
+func (x *EquipmentLiberation) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EquipmentLiberation.ProtoReflect.Descriptor instead.
+func (*EquipmentLiberation) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *EquipmentLiberation) GetEquipmentId() uint64 {
+	if x != nil {
+		return x.EquipmentId
+	}
+	return 0
+}
+
+func (x *EquipmentLiberation) GetRarity() uint32 {
+	if x != nil {
+		return x.Rarity
+	}
+	return 0
+}
+
+func (x *EquipmentLiberation) GetSeqId() uint32 {
+	if x != nil {
+		return x.SeqId
+	}
+	return 0
+}
+
+func (x *EquipmentLiberation) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+type EventMission struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	MissionId     uint32                 `protobuf:"varint,2,opt,name=mission_id,json=missionId,proto3" json:"mission_id,omitempty"`
+	StartProgress uint64                 `protobuf:"varint,3,opt,name=start_progress,json=startProgress,proto3" json:"start_progress,omitempty"`
+	Complete      uint32                 `protobuf:"varint,4,opt,name=complete,proto3" json:"complete,omitempty"`
+	Day           string                 `protobuf:"bytes,5,opt,name=day,proto3" json:"day,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EventMission) Reset() {
+	*x = EventMission{}
+	mi := &file_puser_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventMission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventMission) ProtoMessage() {}
+
+func (x *EventMission) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventMission.ProtoReflect.Descriptor instead.
+func (*EventMission) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *EventMission) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *EventMission) GetMissionId() uint32 {
+	if x != nil {
+		return x.MissionId
+	}
+	return 0
+}
+
+func (x *EventMission) GetStartProgress() uint64 {
+	if x != nil {
+		return x.StartProgress
+	}
+	return 0
+}
+
+func (x *EventMission) GetComplete() uint32 {
+	if x != nil {
+		return x.Complete
+	}
+	return 0
+}
+
+func (x *EventMission) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+type EventMissionReward struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId             uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	EventMissionRewardId uint32                 `protobuf:"varint,2,opt,name=event_mission_reward_id,json=eventMissionRewardId,proto3" json:"event_mission_reward_id,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *EventMissionReward) Reset() {
+	*x = EventMissionReward{}
+	mi := &file_puser_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventMissionReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventMissionReward) ProtoMessage() {}
+
+func (x *EventMissionReward) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventMissionReward.ProtoReflect.Descriptor instead.
+func (*EventMissionReward) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *EventMissionReward) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *EventMissionReward) GetEventMissionRewardId() uint32 {
+	if x != nil {
+		return x.EventMissionRewardId
+	}
+	return 0
+}
+
+type EventRoulette struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId       uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	RouletteId     uint32                 `protobuf:"varint,2,opt,name=roulette_id,json=rouletteId,proto3" json:"roulette_id,omitempty"`
+	Position       uint32                 `protobuf:"varint,3,opt,name=position,proto3" json:"position,omitempty"`
+	TotalPlayCount uint32                 `protobuf:"varint,4,opt,name=total_play_count,json=totalPlayCount,proto3" json:"total_play_count,omitempty"`
+	FreePlayCount  uint32                 `protobuf:"varint,5,opt,name=free_play_count,json=freePlayCount,proto3" json:"free_play_count,omitempty"`
+	LapCount       uint32                 `protobuf:"varint,6,opt,name=lap_count,json=lapCount,proto3" json:"lap_count,omitempty"`
+	LastPlayAt     string                 `protobuf:"bytes,7,opt,name=last_play_at,json=lastPlayAt,proto3" json:"last_play_at,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *EventRoulette) Reset() {
+	*x = EventRoulette{}
+	mi := &file_puser_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventRoulette) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventRoulette) ProtoMessage() {}
+
+func (x *EventRoulette) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventRoulette.ProtoReflect.Descriptor instead.
+func (*EventRoulette) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *EventRoulette) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *EventRoulette) GetRouletteId() uint32 {
+	if x != nil {
+		return x.RouletteId
+	}
+	return 0
+}
+
+func (x *EventRoulette) GetPosition() uint32 {
+	if x != nil {
+		return x.Position
+	}
+	return 0
+}
+
+func (x *EventRoulette) GetTotalPlayCount() uint32 {
+	if x != nil {
+		return x.TotalPlayCount
+	}
+	return 0
+}
+
+func (x *EventRoulette) GetFreePlayCount() uint32 {
+	if x != nil {
+		return x.FreePlayCount
+	}
+	return 0
+}
+
+func (x *EventRoulette) GetLapCount() uint32 {
+	if x != nil {
+		return x.LapCount
+	}
+	return 0
+}
+
+func (x *EventRoulette) GetLastPlayAt() string {
+	if x != nil {
+		return x.LastPlayAt
+	}
+	return ""
+}
+
+type EventSugoroku struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId       uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	SugorokuId     uint32                 `protobuf:"varint,2,opt,name=sugoroku_id,json=sugorokuId,proto3" json:"sugoroku_id,omitempty"`
+	Position       uint32                 `protobuf:"varint,3,opt,name=position,proto3" json:"position,omitempty"`
+	TotalPlayCount uint32                 `protobuf:"varint,4,opt,name=total_play_count,json=totalPlayCount,proto3" json:"total_play_count,omitempty"`
+	FreePlayCount  uint32                 `protobuf:"varint,5,opt,name=free_play_count,json=freePlayCount,proto3" json:"free_play_count,omitempty"`
+	LapCount       uint32                 `protobuf:"varint,6,opt,name=lap_count,json=lapCount,proto3" json:"lap_count,omitempty"`
+	LastPlayAt     string                 `protobuf:"bytes,7,opt,name=last_play_at,json=lastPlayAt,proto3" json:"last_play_at,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *EventSugoroku) Reset() {
+	*x = EventSugoroku{}
+	mi := &file_puser_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventSugoroku) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventSugoroku) ProtoMessage() {}
+
+func (x *EventSugoroku) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventSugoroku.ProtoReflect.Descriptor instead.
+func (*EventSugoroku) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *EventSugoroku) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *EventSugoroku) GetSugorokuId() uint32 {
+	if x != nil {
+		return x.SugorokuId
+	}
+	return 0
+}
+
+func (x *EventSugoroku) GetPosition() uint32 {
+	if x != nil {
+		return x.Position
+	}
+	return 0
+}
+
+func (x *EventSugoroku) GetTotalPlayCount() uint32 {
+	if x != nil {
+		return x.TotalPlayCount
+	}
+	return 0
+}
+
+func (x *EventSugoroku) GetFreePlayCount() uint32 {
+	if x != nil {
+		return x.FreePlayCount
+	}
+	return 0
+}
+
+func (x *EventSugoroku) GetLapCount() uint32 {
+	if x != nil {
+		return x.LapCount
+	}
+	return 0
+}
+
+func (x *EventSugoroku) GetLastPlayAt() string {
+	if x != nil {
+		return x.LastPlayAt
+	}
+	return ""
+}
+
+type Exchange struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId       uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ExchangeId     uint32                 `protobuf:"varint,2,opt,name=exchange_id,json=exchangeId,proto3" json:"exchange_id,omitempty"`
+	Count          uint32                 `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`
+	TotalCount     uint32                 `protobuf:"varint,4,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	LastExchangeAt string                 `protobuf:"bytes,5,opt,name=last_exchange_at,json=lastExchangeAt,proto3" json:"last_exchange_at,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Exchange) Reset() {
+	*x = Exchange{}
+	mi := &file_puser_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Exchange) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Exchange) ProtoMessage() {}
+
+func (x *Exchange) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Exchange.ProtoReflect.Descriptor instead.
+func (*Exchange) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *Exchange) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Exchange) GetExchangeId() uint32 {
+	if x != nil {
+		return x.ExchangeId
+	}
+	return 0
+}
+
+func (x *Exchange) GetCount() uint32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+func (x *Exchange) GetTotalCount() uint32 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
+}
+
+func (x *Exchange) GetLastExchangeAt() string {
+	if x != nil {
+		return x.LastExchangeAt
+	}
+	return ""
+}
+
+type FunctionalTutorial struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	FunctionId    uint32                 `protobuf:"varint,2,opt,name=function_id,json=functionId,proto3" json:"function_id,omitempty"`
+	Step          uint32                 `protobuf:"varint,3,opt,name=step,proto3" json:"step,omitempty"`
+	Adid          string                 `protobuf:"bytes,4,opt,name=adid,proto3" json:"adid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FunctionalTutorial) Reset() {
+	*x = FunctionalTutorial{}
+	mi := &file_puser_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FunctionalTutorial) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FunctionalTutorial) ProtoMessage() {}
+
+func (x *FunctionalTutorial) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FunctionalTutorial.ProtoReflect.Descriptor instead.
+func (*FunctionalTutorial) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *FunctionalTutorial) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *FunctionalTutorial) GetFunctionId() uint32 {
+	if x != nil {
+		return x.FunctionId
+	}
+	return 0
+}
+
+func (x *FunctionalTutorial) GetStep() uint32 {
+	if x != nil {
+		return x.Step
+	}
+	return 0
+}
+
+func (x *FunctionalTutorial) GetAdid() string {
+	if x != nil {
+		return x.Adid
+	}
+	return ""
+}
+
+type GachaHistory struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId            uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	GachaId             uint32                 `protobuf:"varint,2,opt,name=gacha_id,json=gachaId,proto3" json:"gacha_id,omitempty"`
+	Step                uint32                 `protobuf:"varint,3,opt,name=step,proto3" json:"step,omitempty"`
+	SingleCount         uint32                 `protobuf:"varint,4,opt,name=single_count,json=singleCount,proto3" json:"single_count,omitempty"`
+	LumpCount           uint32                 `protobuf:"varint,5,opt,name=lump_count,json=lumpCount,proto3" json:"lump_count,omitempty"`
+	LumpLimitCount      uint32                 `protobuf:"varint,6,opt,name=lump_limit_count,json=lumpLimitCount,proto3" json:"lump_limit_count,omitempty"`
+	ExchangePoint       uint32                 `protobuf:"varint,7,opt,name=exchange_point,json=exchangePoint,proto3" json:"exchange_point,omitempty"`
+	SinglePaidDate      string                 `protobuf:"bytes,8,opt,name=single_paid_date,json=singlePaidDate,proto3" json:"single_paid_date,omitempty"`
+	LumpDate            string                 `protobuf:"bytes,9,opt,name=lump_date,json=lumpDate,proto3" json:"lump_date,omitempty"`
+	FreeDailySingleDate string                 `protobuf:"bytes,10,opt,name=free_daily_single_date,json=freeDailySingleDate,proto3" json:"free_daily_single_date,omitempty"`
+	FreeDailyLumpDate   string                 `protobuf:"bytes,11,opt,name=free_daily_lump_date,json=freeDailyLumpDate,proto3" json:"free_daily_lump_date,omitempty"`
+	LastGachaDate       string                 `protobuf:"bytes,12,opt,name=last_gacha_date,json=lastGachaDate,proto3" json:"last_gacha_date,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *GachaHistory) Reset() {
+	*x = GachaHistory{}
+	mi := &file_puser_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GachaHistory) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GachaHistory) ProtoMessage() {}
+
+func (x *GachaHistory) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GachaHistory.ProtoReflect.Descriptor instead.
+func (*GachaHistory) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *GachaHistory) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *GachaHistory) GetGachaId() uint32 {
+	if x != nil {
+		return x.GachaId
+	}
+	return 0
+}
+
+func (x *GachaHistory) GetStep() uint32 {
+	if x != nil {
+		return x.Step
+	}
+	return 0
+}
+
+func (x *GachaHistory) GetSingleCount() uint32 {
+	if x != nil {
+		return x.SingleCount
+	}
+	return 0
+}
+
+func (x *GachaHistory) GetLumpCount() uint32 {
+	if x != nil {
+		return x.LumpCount
+	}
+	return 0
+}
+
+func (x *GachaHistory) GetLumpLimitCount() uint32 {
+	if x != nil {
+		return x.LumpLimitCount
+	}
+	return 0
+}
+
+func (x *GachaHistory) GetExchangePoint() uint32 {
+	if x != nil {
+		return x.ExchangePoint
+	}
+	return 0
+}
+
+func (x *GachaHistory) GetSinglePaidDate() string {
+	if x != nil {
+		return x.SinglePaidDate
+	}
+	return ""
+}
+
+func (x *GachaHistory) GetLumpDate() string {
+	if x != nil {
+		return x.LumpDate
+	}
+	return ""
+}
+
+func (x *GachaHistory) GetFreeDailySingleDate() string {
+	if x != nil {
+		return x.FreeDailySingleDate
+	}
+	return ""
+}
+
+func (x *GachaHistory) GetFreeDailyLumpDate() string {
+	if x != nil {
+		return x.FreeDailyLumpDate
+	}
+	return ""
+}
+
+func (x *GachaHistory) GetLastGachaDate() string {
+	if x != nil {
+		return x.LastGachaDate
+	}
+	return ""
+}
+
+type GvgPracticeReward struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Day           string                 `protobuf:"bytes,2,opt,name=day,proto3" json:"day,omitempty"`
+	Count         uint32                 `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GvgPracticeReward) Reset() {
+	*x = GvgPracticeReward{}
+	mi := &file_puser_proto_msgTypes[45]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GvgPracticeReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GvgPracticeReward) ProtoMessage() {}
+
+func (x *GvgPracticeReward) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[45]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GvgPracticeReward.ProtoReflect.Descriptor instead.
+func (*GvgPracticeReward) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{45}
+}
+
+func (x *GvgPracticeReward) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *GvgPracticeReward) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+func (x *GvgPracticeReward) GetCount() uint32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+type ImportantMission struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	MissionId     uint32                 `protobuf:"varint,2,opt,name=mission_id,json=missionId,proto3" json:"mission_id,omitempty"`
+	StartProgress uint64                 `protobuf:"varint,3,opt,name=start_progress,json=startProgress,proto3" json:"start_progress,omitempty"`
+	Complete      uint32                 `protobuf:"varint,4,opt,name=complete,proto3" json:"complete,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportantMission) Reset() {
+	*x = ImportantMission{}
+	mi := &file_puser_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportantMission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportantMission) ProtoMessage() {}
+
+func (x *ImportantMission) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportantMission.ProtoReflect.Descriptor instead.
+func (*ImportantMission) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *ImportantMission) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ImportantMission) GetMissionId() uint32 {
+	if x != nil {
+		return x.MissionId
+	}
+	return 0
+}
+
+func (x *ImportantMission) GetStartProgress() uint64 {
+	if x != nil {
+		return x.StartProgress
+	}
+	return 0
+}
+
+func (x *ImportantMission) GetComplete() uint32 {
+	if x != nil {
+		return x.Complete
+	}
+	return 0
+}
+
+type ImportantMissionGroup struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	GroupId       uint32                 `protobuf:"varint,2,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	Complete      uint32                 `protobuf:"varint,3,opt,name=complete,proto3" json:"complete,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ImportantMissionGroup) Reset() {
+	*x = ImportantMissionGroup{}
+	mi := &file_puser_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportantMissionGroup) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportantMissionGroup) ProtoMessage() {}
+
+func (x *ImportantMissionGroup) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportantMissionGroup.ProtoReflect.Descriptor instead.
+func (*ImportantMissionGroup) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *ImportantMissionGroup) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ImportantMissionGroup) GetGroupId() uint32 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *ImportantMissionGroup) GetComplete() uint32 {
+	if x != nil {
+		return x.Complete
+	}
+	return 0
+}
+
+type Item struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ItemId        uint32                 `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	Quantity      uint32                 `protobuf:"varint,3,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	AcquiredAt    string                 `protobuf:"bytes,4,opt,name=acquired_at,json=acquiredAt,proto3" json:"acquired_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Item) Reset() {
+	*x = Item{}
+	mi := &file_puser_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Item) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Item) ProtoMessage() {}
+
+func (x *Item) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Item.ProtoReflect.Descriptor instead.
+func (*Item) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *Item) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Item) GetItemId() uint32 {
+	if x != nil {
+		return x.ItemId
+	}
+	return 0
+}
+
+func (x *Item) GetQuantity() uint32 {
+	if x != nil {
+		return x.Quantity
+	}
+	return 0
+}
+
+func (x *Item) GetAcquiredAt() string {
+	if x != nil {
+		return x.AcquiredAt
+	}
+	return ""
+}
+
+type JobDeckGroup struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Idx           uint32                 `protobuf:"varint,2,opt,name=idx,proto3" json:"idx,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,3,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	JobId         uint32                 `protobuf:"varint,4,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	Label         string                 `protobuf:"bytes,5,opt,name=label,proto3" json:"label,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *JobDeckGroup) Reset() {
+	*x = JobDeckGroup{}
+	mi := &file_puser_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *JobDeckGroup) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*JobDeckGroup) ProtoMessage() {}
+
+func (x *JobDeckGroup) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use JobDeckGroup.ProtoReflect.Descriptor instead.
+func (*JobDeckGroup) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *JobDeckGroup) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *JobDeckGroup) GetIdx() uint32 {
+	if x != nil {
+		return x.Idx
+	}
+	return 0
+}
+
+func (x *JobDeckGroup) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *JobDeckGroup) GetJobId() uint32 {
+	if x != nil {
+		return x.JobId
+	}
+	return 0
+}
+
+func (x *JobDeckGroup) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+type LoginBonus struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId            uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	LoginBonusGroupId   uint32                 `protobuf:"varint,2,opt,name=login_bonus_group_id,json=loginBonusGroupId,proto3" json:"login_bonus_group_id,omitempty"`
+	Sequence            uint32                 `protobuf:"varint,3,opt,name=sequence,proto3" json:"sequence,omitempty"`
+	LastRewardReceiveAt string                 `protobuf:"bytes,4,opt,name=last_reward_receive_at,json=lastRewardReceiveAt,proto3" json:"last_reward_receive_at,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *LoginBonus) Reset() {
+	*x = LoginBonus{}
+	mi := &file_puser_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LoginBonus) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LoginBonus) ProtoMessage() {}
+
+func (x *LoginBonus) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LoginBonus.ProtoReflect.Descriptor instead.
+func (*LoginBonus) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *LoginBonus) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *LoginBonus) GetLoginBonusGroupId() uint32 {
+	if x != nil {
+		return x.LoginBonusGroupId
+	}
+	return 0
+}
+
+func (x *LoginBonus) GetSequence() uint32 {
+	if x != nil {
+		return x.Sequence
+	}
+	return 0
+}
+
+func (x *LoginBonus) GetLastRewardReceiveAt() string {
+	if x != nil {
+		return x.LastRewardReceiveAt
+	}
+	return ""
+}
+
+type MercenaryHire struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId          uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	MercenaryId       uint64                 `protobuf:"varint,2,opt,name=mercenary_id,json=mercenaryId,proto3" json:"mercenary_id,omitempty"`
+	MercenaryPlayerId uint64                 `protobuf:"varint,3,opt,name=mercenary_player_id,json=mercenaryPlayerId,proto3" json:"mercenary_player_id,omitempty"`
+	ExpiredAt         string                 `protobuf:"bytes,4,opt,name=expired_at,json=expiredAt,proto3" json:"expired_at,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *MercenaryHire) Reset() {
+	*x = MercenaryHire{}
+	mi := &file_puser_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MercenaryHire) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MercenaryHire) ProtoMessage() {}
+
+func (x *MercenaryHire) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MercenaryHire.ProtoReflect.Descriptor instead.
+func (*MercenaryHire) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{51}
+}
+
+func (x *MercenaryHire) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *MercenaryHire) GetMercenaryId() uint64 {
+	if x != nil {
+		return x.MercenaryId
+	}
+	return 0
+}
+
+func (x *MercenaryHire) GetMercenaryPlayerId() uint64 {
+	if x != nil {
+		return x.MercenaryPlayerId
+	}
+	return 0
+}
+
+func (x *MercenaryHire) GetExpiredAt() string {
+	if x != nil {
+		return x.ExpiredAt
+	}
+	return ""
+}
+
+type MercenaryReward struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Reward        uint32                 `protobuf:"varint,2,opt,name=reward,proto3" json:"reward,omitempty"`
+	Day           string                 `protobuf:"bytes,3,opt,name=day,proto3" json:"day,omitempty"`
+	Received      uint32                 `protobuf:"varint,4,opt,name=received,proto3" json:"received,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MercenaryReward) Reset() {
+	*x = MercenaryReward{}
+	mi := &file_puser_proto_msgTypes[52]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MercenaryReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MercenaryReward) ProtoMessage() {}
+
+func (x *MercenaryReward) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[52]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MercenaryReward.ProtoReflect.Descriptor instead.
+func (*MercenaryReward) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{52}
+}
+
+func (x *MercenaryReward) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *MercenaryReward) GetReward() uint32 {
+	if x != nil {
+		return x.Reward
+	}
+	return 0
+}
+
+func (x *MercenaryReward) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+func (x *MercenaryReward) GetReceived() uint32 {
+	if x != nil {
+		return x.Received
+	}
+	return 0
+}
+
+type OrderMission struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	MissionId     uint32                 `protobuf:"varint,2,opt,name=mission_id,json=missionId,proto3" json:"mission_id,omitempty"`
+	StartProgress uint64                 `protobuf:"varint,3,opt,name=start_progress,json=startProgress,proto3" json:"start_progress,omitempty"`
+	Accept        uint32                 `protobuf:"varint,4,opt,name=accept,proto3" json:"accept,omitempty"`
+	Complete      uint32                 `protobuf:"varint,5,opt,name=complete,proto3" json:"complete,omitempty"`
+	Rankup        uint32                 `protobuf:"varint,6,opt,name=rankup,proto3" json:"rankup,omitempty"`
+	Day           string                 `protobuf:"bytes,7,opt,name=day,proto3" json:"day,omitempty"`
+	AcceptedAt    string                 `protobuf:"bytes,8,opt,name=accepted_at,json=acceptedAt,proto3" json:"accepted_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OrderMission) Reset() {
+	*x = OrderMission{}
+	mi := &file_puser_proto_msgTypes[53]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OrderMission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderMission) ProtoMessage() {}
+
+func (x *OrderMission) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[53]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderMission.ProtoReflect.Descriptor instead.
+func (*OrderMission) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{53}
+}
+
+func (x *OrderMission) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *OrderMission) GetMissionId() uint32 {
+	if x != nil {
+		return x.MissionId
+	}
+	return 0
+}
+
+func (x *OrderMission) GetStartProgress() uint64 {
+	if x != nil {
+		return x.StartProgress
+	}
+	return 0
+}
+
+func (x *OrderMission) GetAccept() uint32 {
+	if x != nil {
+		return x.Accept
+	}
+	return 0
+}
+
+func (x *OrderMission) GetComplete() uint32 {
+	if x != nil {
+		return x.Complete
+	}
+	return 0
+}
+
+func (x *OrderMission) GetRankup() uint32 {
+	if x != nil {
+		return x.Rankup
+	}
+	return 0
+}
+
+func (x *OrderMission) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+func (x *OrderMission) GetAcceptedAt() string {
+	if x != nil {
+		return x.AcceptedAt
+	}
+	return ""
+}
+
+type OrderMissionReroll struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Day           string                 `protobuf:"bytes,2,opt,name=day,proto3" json:"day,omitempty"`
+	RerollCount   uint32                 `protobuf:"varint,3,opt,name=reroll_count,json=rerollCount,proto3" json:"reroll_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OrderMissionReroll) Reset() {
+	*x = OrderMissionReroll{}
+	mi := &file_puser_proto_msgTypes[54]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OrderMissionReroll) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderMissionReroll) ProtoMessage() {}
+
+func (x *OrderMissionReroll) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[54]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderMissionReroll.ProtoReflect.Descriptor instead.
+func (*OrderMissionReroll) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{54}
+}
+
+func (x *OrderMissionReroll) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *OrderMissionReroll) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+func (x *OrderMissionReroll) GetRerollCount() uint32 {
+	if x != nil {
+		return x.RerollCount
+	}
+	return 0
+}
+
+type OrderMissionReward struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId             uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	OrderMissionRewardId uint32                 `protobuf:"varint,2,opt,name=order_mission_reward_id,json=orderMissionRewardId,proto3" json:"order_mission_reward_id,omitempty"`
+	Day                  string                 `protobuf:"bytes,3,opt,name=day,proto3" json:"day,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *OrderMissionReward) Reset() {
+	*x = OrderMissionReward{}
+	mi := &file_puser_proto_msgTypes[55]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OrderMissionReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrderMissionReward) ProtoMessage() {}
+
+func (x *OrderMissionReward) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[55]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrderMissionReward.ProtoReflect.Descriptor instead.
+func (*OrderMissionReward) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{55}
+}
+
+func (x *OrderMissionReward) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *OrderMissionReward) GetOrderMissionRewardId() uint32 {
+	if x != nil {
+		return x.OrderMissionRewardId
+	}
+	return 0
+}
+
+func (x *OrderMissionReward) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+type ReliefPoint struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Point         uint32                 `protobuf:"varint,2,opt,name=point,proto3" json:"point,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReliefPoint) Reset() {
+	*x = ReliefPoint{}
+	mi := &file_puser_proto_msgTypes[56]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReliefPoint) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReliefPoint) ProtoMessage() {}
+
+func (x *ReliefPoint) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[56]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReliefPoint.ProtoReflect.Descriptor instead.
+func (*ReliefPoint) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{56}
+}
+
+func (x *ReliefPoint) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ReliefPoint) GetPoint() uint32 {
+	if x != nil {
+		return x.Point
+	}
+	return 0
+}
+
+type ReliefPointReward struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId            uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ReliefPointRewardId uint32                 `protobuf:"varint,2,opt,name=relief_point_reward_id,json=reliefPointRewardId,proto3" json:"relief_point_reward_id,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *ReliefPointReward) Reset() {
+	*x = ReliefPointReward{}
+	mi := &file_puser_proto_msgTypes[57]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReliefPointReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReliefPointReward) ProtoMessage() {}
+
+func (x *ReliefPointReward) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[57]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReliefPointReward.ProtoReflect.Descriptor instead.
+func (*ReliefPointReward) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{57}
+}
+
+func (x *ReliefPointReward) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ReliefPointReward) GetReliefPointRewardId() uint32 {
+	if x != nil {
+		return x.ReliefPointRewardId
+	}
+	return 0
+}
+
+type ReliefPointSending struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId         uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ReceiverPlayerId uint64                 `protobuf:"varint,2,opt,name=receiver_player_id,json=receiverPlayerId,proto3" json:"receiver_player_id,omitempty"`
+	SentAt           string                 `protobuf:"bytes,3,opt,name=sent_at,json=sentAt,proto3" json:"sent_at,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ReliefPointSending) Reset() {
+	*x = ReliefPointSending{}
+	mi := &file_puser_proto_msgTypes[58]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReliefPointSending) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReliefPointSending) ProtoMessage() {}
+
+func (x *ReliefPointSending) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[58]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ReliefPointSending.ProtoReflect.Descriptor instead.
+func (*ReliefPointSending) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *ReliefPointSending) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ReliefPointSending) GetReceiverPlayerId() uint64 {
+	if x != nil {
+		return x.ReceiverPlayerId
+	}
+	return 0
+}
+
+func (x *ReliefPointSending) GetSentAt() string {
+	if x != nil {
+		return x.SentAt
+	}
+	return ""
+}
+
+type Rune struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Id                 uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PlayerId           uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	RuneId             uint32                 `protobuf:"varint,3,opt,name=rune_id,json=runeId,proto3" json:"rune_id,omitempty"`
+	Level              uint32                 `protobuf:"varint,4,opt,name=level,proto3" json:"level,omitempty"`
+	BonusParamOption1  uint32                 `protobuf:"varint,5,opt,name=bonus_param_option1,json=bonusParamOption1,proto3" json:"bonus_param_option1,omitempty"`
+	BonusParamOption2  uint32                 `protobuf:"varint,6,opt,name=bonus_param_option2,json=bonusParamOption2,proto3" json:"bonus_param_option2,omitempty"`
+	BonusParamOption3  uint32                 `protobuf:"varint,7,opt,name=bonus_param_option3,json=bonusParamOption3,proto3" json:"bonus_param_option3,omitempty"`
+	RandomParamOption1 uint32                 `protobuf:"varint,8,opt,name=random_param_option1,json=randomParamOption1,proto3" json:"random_param_option1,omitempty"`
+	RandomParamOption2 uint32                 `protobuf:"varint,9,opt,name=random_param_option2,json=randomParamOption2,proto3" json:"random_param_option2,omitempty"`
+	RandomParamOption3 uint32                 `protobuf:"varint,10,opt,name=random_param_option3,json=randomParamOption3,proto3" json:"random_param_option3,omitempty"`
+	IsEquipped         uint32                 `protobuf:"varint,11,opt,name=is_equipped,json=isEquipped,proto3" json:"is_equipped,omitempty"`
+	IsProtected        uint32                 `protobuf:"varint,12,opt,name=is_protected,json=isProtected,proto3" json:"is_protected,omitempty"`
+	AcquiredAt         string                 `protobuf:"bytes,13,opt,name=acquired_at,json=acquiredAt,proto3" json:"acquired_at,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *Rune) Reset() {
+	*x = Rune{}
+	mi := &file_puser_proto_msgTypes[59]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Rune) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Rune) ProtoMessage() {}
+
+func (x *Rune) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[59]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Rune.ProtoReflect.Descriptor instead.
+func (*Rune) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{59}
+}
+
+func (x *Rune) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Rune) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Rune) GetRuneId() uint32 {
+	if x != nil {
+		return x.RuneId
+	}
+	return 0
+}
+
+func (x *Rune) GetLevel() uint32 {
+	if x != nil {
+		return x.Level
+	}
+	return 0
+}
+
+func (x *Rune) GetBonusParamOption1() uint32 {
+	if x != nil {
+		return x.BonusParamOption1
+	}
+	return 0
+}
+
+func (x *Rune) GetBonusParamOption2() uint32 {
+	if x != nil {
+		return x.BonusParamOption2
+	}
+	return 0
+}
+
+func (x *Rune) GetBonusParamOption3() uint32 {
+	if x != nil {
+		return x.BonusParamOption3
+	}
+	return 0
+}
+
+func (x *Rune) GetRandomParamOption1() uint32 {
+	if x != nil {
+		return x.RandomParamOption1
+	}
+	return 0
+}
+
+func (x *Rune) GetRandomParamOption2() uint32 {
+	if x != nil {
+		return x.RandomParamOption2
+	}
+	return 0
+}
+
+func (x *Rune) GetRandomParamOption3() uint32 {
+	if x != nil {
+		return x.RandomParamOption3
+	}
+	return 0
+}
+
+func (x *Rune) GetIsEquipped() uint32 {
+	if x != nil {
+		return x.IsEquipped
+	}
+	return 0
+}
+
+func (x *Rune) GetIsProtected() uint32 {
+	if x != nil {
+		return x.IsProtected
+	}
+	return 0
+}
+
+func (x *Rune) GetAcquiredAt() string {
+	if x != nil {
+		return x.AcquiredAt
+	}
+	return ""
+}
+
+type SeasonPass struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId             uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	SeasonPassId         uint32                 `protobuf:"varint,2,opt,name=season_pass_id,json=seasonPassId,proto3" json:"season_pass_id,omitempty"`
+	Exp                  uint32                 `protobuf:"varint,3,opt,name=exp,proto3" json:"exp,omitempty"`
+	ReceivedNormalLevel  uint32                 `protobuf:"varint,4,opt,name=received_normal_level,json=receivedNormalLevel,proto3" json:"received_normal_level,omitempty"`
+	ReceivedPremiumLevel uint32                 `protobuf:"varint,5,opt,name=received_premium_level,json=receivedPremiumLevel,proto3" json:"received_premium_level,omitempty"`
+	IsPurchsedPremium    uint32                 `protobuf:"varint,6,opt,name=is_purchsed_premium,json=isPurchsedPremium,proto3" json:"is_purchsed_premium,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *SeasonPass) Reset() {
+	*x = SeasonPass{}
+	mi := &file_puser_proto_msgTypes[60]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeasonPass) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeasonPass) ProtoMessage() {}
+
+func (x *SeasonPass) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[60]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeasonPass.ProtoReflect.Descriptor instead.
+func (*SeasonPass) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{60}
+}
+
+func (x *SeasonPass) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *SeasonPass) GetSeasonPassId() uint32 {
+	if x != nil {
+		return x.SeasonPassId
+	}
+	return 0
+}
+
+func (x *SeasonPass) GetExp() uint32 {
+	if x != nil {
+		return x.Exp
+	}
+	return 0
+}
+
+func (x *SeasonPass) GetReceivedNormalLevel() uint32 {
+	if x != nil {
+		return x.ReceivedNormalLevel
+	}
+	return 0
+}
+
+func (x *SeasonPass) GetReceivedPremiumLevel() uint32 {
+	if x != nil {
+		return x.ReceivedPremiumLevel
+	}
+	return 0
+}
+
+func (x *SeasonPass) GetIsPurchsedPremium() uint32 {
+	if x != nil {
+		return x.IsPurchsedPremium
+	}
+	return 0
+}
+
+type SeasonPassDailyMission struct {
+	state                    protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId                 uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	SeasonPassDailyMissionId uint32                 `protobuf:"varint,2,opt,name=season_pass_daily_mission_id,json=seasonPassDailyMissionId,proto3" json:"season_pass_daily_mission_id,omitempty"`
+	Complete                 uint32                 `protobuf:"varint,3,opt,name=complete,proto3" json:"complete,omitempty"`
+	Day                      string                 `protobuf:"bytes,4,opt,name=day,proto3" json:"day,omitempty"`
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
+}
+
+func (x *SeasonPassDailyMission) Reset() {
+	*x = SeasonPassDailyMission{}
+	mi := &file_puser_proto_msgTypes[61]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeasonPassDailyMission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeasonPassDailyMission) ProtoMessage() {}
+
+func (x *SeasonPassDailyMission) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[61]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeasonPassDailyMission.ProtoReflect.Descriptor instead.
+func (*SeasonPassDailyMission) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{61}
+}
+
+func (x *SeasonPassDailyMission) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *SeasonPassDailyMission) GetSeasonPassDailyMissionId() uint32 {
+	if x != nil {
+		return x.SeasonPassDailyMissionId
+	}
+	return 0
+}
+
+func (x *SeasonPassDailyMission) GetComplete() uint32 {
+	if x != nil {
+		return x.Complete
+	}
+	return 0
+}
+
+func (x *SeasonPassDailyMission) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+type SeasonPassWeeklyMission struct {
+	state                     protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId                  uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	SeasonPassWeeklyMissionId uint32                 `protobuf:"varint,2,opt,name=season_pass_weekly_mission_id,json=seasonPassWeeklyMissionId,proto3" json:"season_pass_weekly_mission_id,omitempty"`
+	StartProgress             uint64                 `protobuf:"varint,3,opt,name=start_progress,json=startProgress,proto3" json:"start_progress,omitempty"`
+	Complete                  uint32                 `protobuf:"varint,4,opt,name=complete,proto3" json:"complete,omitempty"`
+	Day                       string                 `protobuf:"bytes,5,opt,name=day,proto3" json:"day,omitempty"`
+	unknownFields             protoimpl.UnknownFields
+	sizeCache                 protoimpl.SizeCache
+}
+
+func (x *SeasonPassWeeklyMission) Reset() {
+	*x = SeasonPassWeeklyMission{}
+	mi := &file_puser_proto_msgTypes[62]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeasonPassWeeklyMission) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeasonPassWeeklyMission) ProtoMessage() {}
+
+func (x *SeasonPassWeeklyMission) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[62]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeasonPassWeeklyMission.ProtoReflect.Descriptor instead.
+func (*SeasonPassWeeklyMission) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{62}
+}
+
+func (x *SeasonPassWeeklyMission) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *SeasonPassWeeklyMission) GetSeasonPassWeeklyMissionId() uint32 {
+	if x != nil {
+		return x.SeasonPassWeeklyMissionId
+	}
+	return 0
+}
+
+func (x *SeasonPassWeeklyMission) GetStartProgress() uint64 {
+	if x != nil {
+		return x.StartProgress
+	}
+	return 0
+}
+
+func (x *SeasonPassWeeklyMission) GetComplete() uint32 {
+	if x != nil {
+		return x.Complete
+	}
+	return 0
+}
+
+func (x *SeasonPassWeeklyMission) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+type ShopItem struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId           uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ShopItemId         uint32                 `protobuf:"varint,2,opt,name=shop_item_id,json=shopItemId,proto3" json:"shop_item_id,omitempty"`
+	PurchaseCount      uint32                 `protobuf:"varint,3,opt,name=purchase_count,json=purchaseCount,proto3" json:"purchase_count,omitempty"`
+	PurchaseTotalCount uint32                 `protobuf:"varint,4,opt,name=purchase_total_count,json=purchaseTotalCount,proto3" json:"purchase_total_count,omitempty"`
+	SpecialItemSeq     uint32                 `protobuf:"varint,5,opt,name=special_item_seq,json=specialItemSeq,proto3" json:"special_item_seq,omitempty"`
+	PurchasedAt        string                 `protobuf:"bytes,6,opt,name=purchased_at,json=purchasedAt,proto3" json:"purchased_at,omitempty"`
+	ExpiredAt          string                 `protobuf:"bytes,7,opt,name=expired_at,json=expiredAt,proto3" json:"expired_at,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *ShopItem) Reset() {
+	*x = ShopItem{}
+	mi := &file_puser_proto_msgTypes[63]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ShopItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ShopItem) ProtoMessage() {}
+
+func (x *ShopItem) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[63]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ShopItem.ProtoReflect.Descriptor instead.
+func (*ShopItem) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{63}
+}
+
+func (x *ShopItem) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ShopItem) GetShopItemId() uint32 {
+	if x != nil {
+		return x.ShopItemId
+	}
+	return 0
+}
+
+func (x *ShopItem) GetPurchaseCount() uint32 {
+	if x != nil {
+		return x.PurchaseCount
+	}
+	return 0
+}
+
+func (x *ShopItem) GetPurchaseTotalCount() uint32 {
+	if x != nil {
+		return x.PurchaseTotalCount
+	}
+	return 0
+}
+
+func (x *ShopItem) GetSpecialItemSeq() uint32 {
+	if x != nil {
+		return x.SpecialItemSeq
+	}
+	return 0
+}
+
+func (x *ShopItem) GetPurchasedAt() string {
+	if x != nil {
+		return x.PurchasedAt
+	}
+	return ""
+}
+
+func (x *ShopItem) GetExpiredAt() string {
+	if x != nil {
+		return x.ExpiredAt
+	}
+	return ""
+}
+
+type ShopSpecialSale struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId          uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ShopSpecialSaleId uint32                 `protobuf:"varint,2,opt,name=shop_special_sale_id,json=shopSpecialSaleId,proto3" json:"shop_special_sale_id,omitempty"`
+	ExpiredAt         string                 `protobuf:"bytes,3,opt,name=expired_at,json=expiredAt,proto3" json:"expired_at,omitempty"`
+	Rank              uint32                 `protobuf:"varint,4,opt,name=rank,proto3" json:"rank,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *ShopSpecialSale) Reset() {
+	*x = ShopSpecialSale{}
+	mi := &file_puser_proto_msgTypes[64]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ShopSpecialSale) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ShopSpecialSale) ProtoMessage() {}
+
+func (x *ShopSpecialSale) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[64]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ShopSpecialSale.ProtoReflect.Descriptor instead.
+func (*ShopSpecialSale) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{64}
+}
+
+func (x *ShopSpecialSale) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ShopSpecialSale) GetShopSpecialSaleId() uint32 {
+	if x != nil {
+		return x.ShopSpecialSaleId
+	}
+	return 0
+}
+
+func (x *ShopSpecialSale) GetExpiredAt() string {
+	if x != nil {
+		return x.ExpiredAt
+	}
+	return ""
+}
+
+func (x *ShopSpecialSale) GetRank() uint32 {
+	if x != nil {
+		return x.Rank
+	}
+	return 0
+}
+
+type SpecialItemProgress struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ShopItemId    uint32                 `protobuf:"varint,2,opt,name=shop_item_id,json=shopItemId,proto3" json:"shop_item_id,omitempty"`
+	SeqId         uint32                 `protobuf:"varint,3,opt,name=seq_id,json=seqId,proto3" json:"seq_id,omitempty"`
+	StartProgress uint64                 `protobuf:"varint,4,opt,name=start_progress,json=startProgress,proto3" json:"start_progress,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SpecialItemProgress) Reset() {
+	*x = SpecialItemProgress{}
+	mi := &file_puser_proto_msgTypes[65]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SpecialItemProgress) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SpecialItemProgress) ProtoMessage() {}
+
+func (x *SpecialItemProgress) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[65]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SpecialItemProgress.ProtoReflect.Descriptor instead.
+func (*SpecialItemProgress) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *SpecialItemProgress) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *SpecialItemProgress) GetShopItemId() uint32 {
+	if x != nil {
+		return x.ShopItemId
+	}
+	return 0
+}
+
+func (x *SpecialItemProgress) GetSeqId() uint32 {
+	if x != nil {
+		return x.SeqId
+	}
+	return 0
+}
+
+func (x *SpecialItemProgress) GetStartProgress() uint64 {
+	if x != nil {
+		return x.StartProgress
+	}
+	return 0
+}
+
+type Title struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Title) Reset() {
+	*x = Title{}
+	mi := &file_puser_proto_msgTypes[66]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Title) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Title) ProtoMessage() {}
+
+func (x *Title) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[66]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Title.ProtoReflect.Descriptor instead.
+func (*Title) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{66}
+}
+
+func (x *Title) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Title) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+type Vip struct {
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId              uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Point                 uint32                 `protobuf:"varint,2,opt,name=point,proto3" json:"point,omitempty"`
+	Rank                  uint32                 `protobuf:"varint,3,opt,name=rank,proto3" json:"rank,omitempty"`
+	DailyRewardReceivedAt string                 `protobuf:"bytes,4,opt,name=daily_reward_received_at,json=dailyRewardReceivedAt,proto3" json:"daily_reward_received_at,omitempty"`
+	FreeContinueUse       uint32                 `protobuf:"varint,5,opt,name=free_continue_use,json=freeContinueUse,proto3" json:"free_continue_use,omitempty"`
+	FreeContinueUsedAt    string                 `protobuf:"bytes,6,opt,name=free_continue_used_at,json=freeContinueUsedAt,proto3" json:"free_continue_used_at,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *Vip) Reset() {
+	*x = Vip{}
+	mi := &file_puser_proto_msgTypes[67]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Vip) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Vip) ProtoMessage() {}
+
+func (x *Vip) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[67]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Vip.ProtoReflect.Descriptor instead.
+func (*Vip) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{67}
+}
+
+func (x *Vip) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Vip) GetPoint() uint32 {
+	if x != nil {
+		return x.Point
+	}
+	return 0
+}
+
+func (x *Vip) GetRank() uint32 {
+	if x != nil {
+		return x.Rank
+	}
+	return 0
+}
+
+func (x *Vip) GetDailyRewardReceivedAt() string {
+	if x != nil {
+		return x.DailyRewardReceivedAt
+	}
+	return ""
+}
+
+func (x *Vip) GetFreeContinueUse() uint32 {
+	if x != nil {
+		return x.FreeContinueUse
+	}
+	return 0
+}
+
+func (x *Vip) GetFreeContinueUsedAt() string {
+	if x != nil {
+		return x.FreeContinueUsedAt
 	}
 	return ""
 }
@@ -5378,7 +10366,14 @@ const file_puser_proto_rawDesc = "" +
 	"\fjob_deck_idx\x18\x05 \x01(\rR\n" +
 	"jobDeckIdx\x12*\n" +
 	"\x11job_equipment_idx\x18\x06 \x01(\rR\x0fjobEquipmentIdx\x12\x15\n" +
-	"\x06is_new\x18\a \x01(\rR\x05isNew\"\xe3\xcd\x01\n" +
+	"\x06is_new\x18\a \x01(\rR\x05isNew\"\x97\x01\n" +
+	"\bJobSkill\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x15\n" +
+	"\x06job_id\x18\x03 \x01(\rR\x05jobId\x12\x19\n" +
+	"\bskill_id\x18\x04 \x01(\rR\askillId\x12\x14\n" +
+	"\x05level\x18\x05 \x01(\rR\x05level\x12\x16\n" +
+	"\x06status\x18\x06 \x01(\rR\x06status\"\xe3\xcd\x01\n" +
 	"\aJobDeck\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x10\n" +
 	"\x03idx\x18\x02 \x01(\rR\x03idx\x12\x1b\n" +
@@ -5976,7 +10971,457 @@ const file_puser_proto_rawDesc = "" +
 	"\x04rank\x18\x03 \x01(\rR\x04rank\x12\x14\n" +
 	"\x05level\x18\x04 \x01(\rR\x05level\x12%\n" +
 	"\vacquired_at\x18\x05 \x01(\tB\x04\x88\xb5\x18\x01R\n" +
-	"acquiredAtB+Z)example.com/brave-revival/src/proto/puserb\x06proto3"
+	"acquiredAt\"\xfa\b\n" +
+	"\aSetting\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1a\n" +
+	"\blanguage\x18\x02 \x01(\rR\blanguage\x12\x19\n" +
+	"\bpush_all\x18\x03 \x01(\rR\apushAll\x12.\n" +
+	"\x13push_friend_request\x18\x04 \x01(\rR\x11pushFriendRequest\x12*\n" +
+	"\x11push_guild_member\x18\x05 \x01(\rR\x0fpushGuildMember\x123\n" +
+	"\x16push_guild_role_change\x18\x06 \x01(\rR\x13pushGuildRoleChange\x12K\n" +
+	"\"push_mercenary_contract_expiration\x18\a \x01(\rR\x1fpushMercenaryContractExpiration\x123\n" +
+	"\x16push_agito_ap_shortage\x18\b \x01(\rR\x13pushAgitoApShortage\x12,\n" +
+	"\x12push_guild_dungeon\x18\t \x01(\rR\x10pushGuildDungeon\x124\n" +
+	"\x16push_guild_achievement\x18\n" +
+	" \x01(\rR\x14pushGuildAchievement\x12\x1d\n" +
+	"\n" +
+	"push_party\x18\v \x01(\rR\tpushParty\x12&\n" +
+	"\x0fpush_group_chat\x18\f \x01(\rR\rpushGroupChat\x12-\n" +
+	"\x13push_new_chat_guild\x18\r \x01(\rR\x10pushNewChatGuild\x12-\n" +
+	"\x13push_new_chat_group\x18\x0e \x01(\rR\x10pushNewChatGroup\x12/\n" +
+	"\x14push_new_chat_direct\x18\x0f \x01(\rR\x11pushNewChatDirect\x12<\n" +
+	"\x1bpush_new_chat_recruit_party\x18\x10 \x01(\rR\x17pushNewChatRecruitParty\x12B\n" +
+	"\x1egacha_auto_sell_weapon_rarity1\x18\x11 \x01(\rR\x1agachaAutoSellWeaponRarity1\x12B\n" +
+	"\x1egacha_auto_sell_weapon_rarity2\x18\x12 \x01(\rR\x1agachaAutoSellWeaponRarity2\x12B\n" +
+	"\x1egacha_auto_sell_weapon_rarity3\x18\x13 \x01(\rR\x1agachaAutoSellWeaponRarity3\x12@\n" +
+	"\x1dgacha_auto_sell_armor_rarity1\x18\x14 \x01(\rR\x19gachaAutoSellArmorRarity1\x12@\n" +
+	"\x1dgacha_auto_sell_armor_rarity2\x18\x15 \x01(\rR\x19gachaAutoSellArmorRarity2\x12@\n" +
+	"\x1dgacha_auto_sell_armor_rarity3\x18\x16 \x01(\rR\x19gachaAutoSellArmorRarity3\"\xba\x04\n" +
+	"\rAgitoItemArea\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vroom_number\x18\x02 \x01(\rR\n" +
+	"roomNumber\x12+\n" +
+	"\x12agito_item_area_id\x18\x03 \x01(\rR\x0fagitoItemAreaId\x12\x17\n" +
+	"\aitem_id\x18\x04 \x01(\rR\x06itemId\x128\n" +
+	"\x19agito_visitor_lineup_id_1\x18\x05 \x01(\rR\x15agitoVisitorLineupId1\x128\n" +
+	"\x19agito_visitor_lineup_id_2\x18\x06 \x01(\rR\x15agitoVisitorLineupId2\x128\n" +
+	"\x19agito_visitor_lineup_id_3\x18\a \x01(\rR\x15agitoVisitorLineupId3\x12%\n" +
+	"\x0ereceived_flag1\x18\b \x01(\rR\rreceivedFlag1\x12%\n" +
+	"\x0ereceived_flag2\x18\t \x01(\rR\rreceivedFlag2\x12%\n" +
+	"\x0ereceived_flag3\x18\n" +
+	" \x01(\rR\rreceivedFlag3\x12*\n" +
+	"\x11lineup_return_at1\x18\v \x01(\tR\x0flineupReturnAt1\x12*\n" +
+	"\x11lineup_return_at2\x18\f \x01(\tR\x0flineupReturnAt2\x12*\n" +
+	"\x11lineup_return_at3\x18\r \x01(\tR\x0flineupReturnAt3\"\xa5\x01\n" +
+	"\n" +
+	"AbyssFever\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vremain_time\x18\x02 \x01(\rR\n" +
+	"remainTime\x12!\n" +
+	"\fcharge_count\x18\x03 \x01(\rR\vchargeCount\x12\x17\n" +
+	"\aused_at\x18\x04 \x01(\tR\x06usedAt\x12\x1d\n" +
+	"\n" +
+	"charged_at\x18\x05 \x01(\tR\tchargedAt\":\n" +
+	"\vAchievement\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\"\xa0\x02\n" +
+	"\x14AchievementEquipment\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x12\n" +
+	"\x04type\x18\x02 \x01(\rR\x04type\x12(\n" +
+	"\x10equipment_job_id\x18\x03 \x01(\rR\x0eequipmentJobId\x12-\n" +
+	"\x12equipment_category\x18\x04 \x01(\rR\x11equipmentCategory\x12%\n" +
+	"\x0eequipment_part\x18\x05 \x01(\rR\requipmentPart\x12\x1a\n" +
+	"\bcategory\x18\x06 \x01(\rR\bcategory\x12%\n" +
+	"\x0ecategory_value\x18\a \x01(\tR\rcategoryValue\x12\x14\n" +
+	"\x05value\x18\b \x01(\rR\x05value\"\x86\x01\n" +
+	"\x1bAchievementEquipmentReceive\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x128\n" +
+	"\x18achievement_equipment_id\x18\x02 \x01(\rR\x16achievementEquipmentId\x12\x10\n" +
+	"\x03seq\x18\x03 \x01(\rR\x03seq\"i\n" +
+	"\x19AchievementEquipmentStamp\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12/\n" +
+	"\x14stamp_reward_step_id\x18\x02 \x01(\rR\x11stampRewardStepId\"Q\n" +
+	"\x11AchievementReward\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vacquired_at\x18\x02 \x01(\tR\n" +
+	"acquiredAt\"\x96\x01\n" +
+	"\vAdvertising\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12%\n" +
+	"\x0eadvertising_id\x18\x02 \x01(\rR\radvertisingId\x12\x1d\n" +
+	"\n" +
+	"view_count\x18\x03 \x01(\rR\tviewCount\x12$\n" +
+	"\x0elast_viewed_at\x18\x04 \x01(\tR\flastViewedAt\"N\n" +
+	"\x05Agito\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12(\n" +
+	"\x10total_good_count\x18\x02 \x01(\rR\x0etotalGoodCount\"\x98\x01\n" +
+	"\aAgitoAp\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vroom_number\x18\x02 \x01(\rR\n" +
+	"roomNumber\x12\x17\n" +
+	"\aitem_id\x18\x03 \x01(\rR\x06itemId\x12\x0e\n" +
+	"\x02ap\x18\x04 \x01(\rR\x02ap\x12&\n" +
+	"\x0fnext_lottery_at\x18\x05 \x01(\tR\rnextLotteryAt\"\xb7\x01\n" +
+	"\x10AgitoCountReward\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x12\n" +
+	"\x04type\x18\x02 \x01(\rR\x04type\x12\x14\n" +
+	"\x05count\x18\x03 \x01(\rR\x05count\x12,\n" +
+	"\x12received_count_seq\x18\x04 \x01(\x04R\x10receivedCountSeq\x12.\n" +
+	"\x13received_count_seq2\x18\x05 \x01(\x04R\x11receivedCountSeq2\"\xa9\x06\n" +
+	"\x15AgitoFurnitureSetting\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vroom_number\x18\x02 \x01(\rR\n" +
+	"roomNumber\x12+\n" +
+	"\x12wall_paper_item_id\x18\x03 \x01(\rR\x0fwallPaperItemId\x12-\n" +
+	"\x13floor_board_item_id\x18\x04 \x01(\rR\x10floorBoardItemId\x12)\n" +
+	"\x11table_set_item_id\x18\x05 \x01(\rR\x0etableSetItemId\x121\n" +
+	"\x15special_floor_item_id\x18\x06 \x01(\rR\x12specialFloorItemId\x120\n" +
+	"\x15wall_medium_item_id_1\x18\a \x01(\rR\x11wallMediumItemId1\x120\n" +
+	"\x15wall_medium_item_id_2\x18\b \x01(\rR\x11wallMediumItemId2\x120\n" +
+	"\x15wall_medium_item_id_3\x18\t \x01(\rR\x11wallMediumItemId3\x120\n" +
+	"\x15wall_medium_item_id_4\x18\n" +
+	" \x01(\rR\x11wallMediumItemId4\x120\n" +
+	"\x15wall_medium_item_id_5\x18\v \x01(\rR\x11wallMediumItemId5\x12.\n" +
+	"\x14wall_small_item_id_1\x18\f \x01(\rR\x10wallSmallItemId1\x12.\n" +
+	"\x14wall_small_item_id_2\x18\r \x01(\rR\x10wallSmallItemId2\x12.\n" +
+	"\x14wall_small_item_id_3\x18\x0e \x01(\rR\x10wallSmallItemId3\x12.\n" +
+	"\x14wall_small_item_id_4\x18\x0f \x01(\rR\x10wallSmallItemId4\x12.\n" +
+	"\x14wall_small_item_id_5\x18\x10 \x01(\rR\x10wallSmallItemId5\x12.\n" +
+	"\x14wall_small_item_id_6\x18\x11 \x01(\rR\x10wallSmallItemId6\"\xaa\x01\n" +
+	"\x10AgitoGoodHistory\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12$\n" +
+	"\x0egood_player_id\x18\x03 \x01(\x04R\fgoodPlayerId\x12*\n" +
+	"\x11ap_recovered_flag\x18\x04 \x01(\rR\x0fapRecoveredFlag\x12\x17\n" +
+	"\agood_at\x18\x05 \x01(\tR\x06goodAt\"\x86\x01\n" +
+	"\x16AgitoRelotteryInterval\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12!\n" +
+	"\fequipment_id\x18\x02 \x01(\rR\vequipmentId\x12,\n" +
+	"\x12relottery_start_at\x18\x03 \x01(\tR\x10relotteryStartAt\"\xfb\x01\n" +
+	"\fAgitoVisitor\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12!\n" +
+	"\fequipment_id\x18\x02 \x01(\rR\vequipmentId\x12\x1f\n" +
+	"\vvisit_count\x18\x03 \x01(\rR\n" +
+	"visitCount\x12#\n" +
+	"\rvisitor_point\x18\x04 \x01(\rR\fvisitorPoint\x12;\n" +
+	"\x1areceived_visitor_point_seq\x18\x05 \x01(\rR\x17receivedVisitorPointSeq\x12(\n" +
+	"\x10first_visited_at\x18\x06 \x01(\tR\x0efirstVisitedAt\"\xda\x01\n" +
+	"\x17AngelBattleWeeklyReward\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x19\n" +
+	"\bstage_id\x18\x02 \x01(\rR\astageId\x12\x17\n" +
+	"\aroom_id\x18\x03 \x01(\tR\x06roomId\x123\n" +
+	"\x16last_reward_receive_at\x18\x04 \x01(\tR\x13lastRewardReceiveAt\x129\n" +
+	"\x19assist_reward_receive_cnt\x18\x05 \x01(\rR\x16assistRewardReceiveCnt\"F\n" +
+	"\x05Anima\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x10\n" +
+	"\x03put\x18\x03 \x01(\rR\x03put\"h\n" +
+	"\tAnimaArea\x12\"\n" +
+	"\ranima_area_id\x18\x01 \x01(\rR\vanimaAreaId\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x1a\n" +
+	"\bacquired\x18\x03 \x01(\rR\bacquired\"\x90\x04\n" +
+	"\x05Arena\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1e\n" +
+	"\vjob_deck_id\x18\x02 \x01(\x04R\tjobDeckId\x12\x1b\n" +
+	"\ttotal_win\x18\x03 \x01(\rR\btotalWin\x12\x1d\n" +
+	"\n" +
+	"total_lose\x18\x04 \x01(\rR\ttotalLose\x12'\n" +
+	"\x0fconsecutive_win\x18\x05 \x01(\rR\x0econsecutiveWin\x12.\n" +
+	"\x13max_consecutive_win\x18\x06 \x01(\rR\x11maxConsecutiveWin\x12\x1f\n" +
+	"\vtotal_point\x18\a \x01(\rR\n" +
+	"totalPoint\x12\x1f\n" +
+	"\vdaily_point\x18\b \x01(\rR\n" +
+	"dailyPoint\x12!\n" +
+	"\fweekly_point\x18\t \x01(\rR\vweeklyPoint\x12*\n" +
+	"\x11daily_acquired_at\x18\n" +
+	" \x01(\tR\x0fdailyAcquiredAt\x12,\n" +
+	"\x12weekly_acquired_at\x18\v \x01(\tR\x10weeklyAcquiredAt\x12=\n" +
+	"\x1bdaily_reward_received_point\x18\f \x01(\rR\x18dailyRewardReceivedPoint\x127\n" +
+	"\x18daily_reward_received_at\x18\r \x01(\tR\x15dailyRewardReceivedAt\"\xf9\x01\n" +
+	"\x10BackgroundBattle\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x17\n" +
+	"\aroom_id\x18\x02 \x01(\tR\x06roomId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12\x10\n" +
+	"\x03win\x18\x04 \x01(\rR\x03win\x12\x14\n" +
+	"\x05total\x18\x05 \x01(\rR\x05total\x12\x19\n" +
+	"\bloop_cnt\x18\x06 \x01(\rR\aloopCnt\x12\x1b\n" +
+	"\tis_result\x18\a \x01(\rR\bisResult\x12\x18\n" +
+	"\asummary\x18\b \x01(\tR\asummary\x12\x1d\n" +
+	"\n" +
+	"started_at\x18\t \x01(\tR\tstartedAt\"^\n" +
+	"\x05Boost\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x19\n" +
+	"\bboost_id\x18\x02 \x01(\rR\aboostId\x12\x1d\n" +
+	"\n" +
+	"expired_at\x18\x03 \x01(\tR\texpiredAt\"\x87\x01\n" +
+	"\bContents\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vcontents_id\x18\x02 \x01(\rR\n" +
+	"contentsId\x12\x19\n" +
+	"\bstage_id\x18\x03 \x01(\rR\astageId\x12\"\n" +
+	"\rlast_swept_at\x18\x04 \x01(\tR\vlastSweptAt\"\xa4\x01\n" +
+	"\x1bContentsClearAncientTowerEx\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vcontents_id\x18\x02 \x01(\rR\n" +
+	"contentsId\x12\x19\n" +
+	"\bstage_id\x18\x03 \x01(\rR\astageId\x12,\n" +
+	"\x12fastest_clear_time\x18\x04 \x01(\rR\x10fastestClearTime\"\xc8\x03\n" +
+	"\x11ContentsCondition\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vcontents_id\x18\x03 \x01(\rR\n" +
+	"contentsId\x12\x1f\n" +
+	"\vtarget_type\x18\x04 \x01(\rR\n" +
+	"targetType\x12\x1b\n" +
+	"\ttarget_id\x18\x05 \x01(\rR\btargetId\x12\x1d\n" +
+	"\n" +
+	"free_count\x18\x06 \x01(\rR\tfreeCount\x12'\n" +
+	"\x0fchallenge_count\x18\a \x01(\rR\x0echallengeCount\x128\n" +
+	"\x18challenge_purchase_count\x18\b \x01(\rR\x16challengePurchaseCount\x126\n" +
+	"\x17special_challenge_count\x18\t \x01(\rR\x15specialChallengeCount\x12G\n" +
+	" special_challenge_purchase_count\x18\n" +
+	" \x01(\rR\x1dspecialChallengePurchaseCount\x12$\n" +
+	"\x0elast_update_at\x18\v \x01(\tR\flastUpdateAt\"\xf3\x01\n" +
+	"\fContentsHero\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x17\n" +
+	"\aarea_id\x18\x03 \x01(\rR\x06areaId\x12\x1b\n" +
+	"\tused_paid\x18\x04 \x01(\rR\busedPaid\x12\x1d\n" +
+	"\n" +
+	"total_paid\x18\x05 \x01(\rR\ttotalPaid\x12\x1d\n" +
+	"\n" +
+	"daily_paid\x18\x06 \x01(\rR\tdailyPaid\x12 \n" +
+	"\ffree_used_at\x18\a \x01(\tR\n" +
+	"freeUsedAt\x12 \n" +
+	"\flast_paid_at\x18\b \x01(\tR\n" +
+	"lastPaidAt\"\x87\x01\n" +
+	"\x13ContentsRiskDungeon\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x17\n" +
+	"\aarea_id\x18\x02 \x01(\rR\x06areaId\x12\x12\n" +
+	"\x04risk\x18\x03 \x01(\rR\x04risk\x12&\n" +
+	"\x0flast_updated_at\x18\x04 \x01(\tR\rlastUpdatedAt\"\xd2\x01\n" +
+	"\x10ContentsTreasure\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x19\n" +
+	"\bstage_id\x18\x02 \x01(\rR\astageId\x12\x19\n" +
+	"\bmax_rank\x18\x03 \x01(\rR\amaxRank\x12*\n" +
+	"\x11max_treasure_lupi\x18\x04 \x01(\x04R\x0fmaxTreasureLupi\x12?\n" +
+	"\x1cmax_treasure_additional_lupi\x18\x05 \x01(\x04R\x19maxTreasureAdditionalLupi\"M\n" +
+	"\x13ContentsWeekMonster\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x19\n" +
+	"\bstage_id\x18\x02 \x01(\rR\astageId\"x\n" +
+	"\fDailyMission\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1d\n" +
+	"\n" +
+	"mission_id\x18\x02 \x01(\rR\tmissionId\x12\x1a\n" +
+	"\bcomplete\x18\x03 \x01(\rR\bcomplete\x12\x10\n" +
+	"\x03day\x18\x04 \x01(\tR\x03day\"z\n" +
+	"\x12DailyMissionReward\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x125\n" +
+	"\x17daily_mission_reward_id\x18\x02 \x01(\rR\x14dailyMissionRewardId\x12\x10\n" +
+	"\x03day\x18\x03 \x01(\tR\x03day\"\x84\x01\n" +
+	"\x13EquipmentLiberation\x12!\n" +
+	"\fequipment_id\x18\x01 \x01(\x04R\vequipmentId\x12\x16\n" +
+	"\x06rarity\x18\x02 \x01(\rR\x06rarity\x12\x15\n" +
+	"\x06seq_id\x18\x03 \x01(\rR\x05seqId\x12\x1b\n" +
+	"\tplayer_id\x18\x04 \x01(\x04R\bplayerId\"\x9f\x01\n" +
+	"\fEventMission\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1d\n" +
+	"\n" +
+	"mission_id\x18\x02 \x01(\rR\tmissionId\x12%\n" +
+	"\x0estart_progress\x18\x03 \x01(\x04R\rstartProgress\x12\x1a\n" +
+	"\bcomplete\x18\x04 \x01(\rR\bcomplete\x12\x10\n" +
+	"\x03day\x18\x05 \x01(\tR\x03day\"h\n" +
+	"\x12EventMissionReward\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x125\n" +
+	"\x17event_mission_reward_id\x18\x02 \x01(\rR\x14eventMissionRewardId\"\xfa\x01\n" +
+	"\rEventRoulette\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vroulette_id\x18\x02 \x01(\rR\n" +
+	"rouletteId\x12\x1a\n" +
+	"\bposition\x18\x03 \x01(\rR\bposition\x12(\n" +
+	"\x10total_play_count\x18\x04 \x01(\rR\x0etotalPlayCount\x12&\n" +
+	"\x0ffree_play_count\x18\x05 \x01(\rR\rfreePlayCount\x12\x1b\n" +
+	"\tlap_count\x18\x06 \x01(\rR\blapCount\x12 \n" +
+	"\flast_play_at\x18\a \x01(\tR\n" +
+	"lastPlayAt\"\xfa\x01\n" +
+	"\rEventSugoroku\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vsugoroku_id\x18\x02 \x01(\rR\n" +
+	"sugorokuId\x12\x1a\n" +
+	"\bposition\x18\x03 \x01(\rR\bposition\x12(\n" +
+	"\x10total_play_count\x18\x04 \x01(\rR\x0etotalPlayCount\x12&\n" +
+	"\x0ffree_play_count\x18\x05 \x01(\rR\rfreePlayCount\x12\x1b\n" +
+	"\tlap_count\x18\x06 \x01(\rR\blapCount\x12 \n" +
+	"\flast_play_at\x18\a \x01(\tR\n" +
+	"lastPlayAt\"\xa9\x01\n" +
+	"\bExchange\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vexchange_id\x18\x02 \x01(\rR\n" +
+	"exchangeId\x12\x14\n" +
+	"\x05count\x18\x03 \x01(\rR\x05count\x12\x1f\n" +
+	"\vtotal_count\x18\x04 \x01(\rR\n" +
+	"totalCount\x12(\n" +
+	"\x10last_exchange_at\x18\x05 \x01(\tR\x0elastExchangeAt\"z\n" +
+	"\x12FunctionalTutorial\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1f\n" +
+	"\vfunction_id\x18\x02 \x01(\rR\n" +
+	"functionId\x12\x12\n" +
+	"\x04step\x18\x03 \x01(\rR\x04step\x12\x12\n" +
+	"\x04adid\x18\x04 \x01(\tR\x04adid\"\xc2\x03\n" +
+	"\fGachaHistory\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x19\n" +
+	"\bgacha_id\x18\x02 \x01(\rR\agachaId\x12\x12\n" +
+	"\x04step\x18\x03 \x01(\rR\x04step\x12!\n" +
+	"\fsingle_count\x18\x04 \x01(\rR\vsingleCount\x12\x1d\n" +
+	"\n" +
+	"lump_count\x18\x05 \x01(\rR\tlumpCount\x12(\n" +
+	"\x10lump_limit_count\x18\x06 \x01(\rR\x0elumpLimitCount\x12%\n" +
+	"\x0eexchange_point\x18\a \x01(\rR\rexchangePoint\x12(\n" +
+	"\x10single_paid_date\x18\b \x01(\tR\x0esinglePaidDate\x12\x1b\n" +
+	"\tlump_date\x18\t \x01(\tR\blumpDate\x123\n" +
+	"\x16free_daily_single_date\x18\n" +
+	" \x01(\tR\x13freeDailySingleDate\x12/\n" +
+	"\x14free_daily_lump_date\x18\v \x01(\tR\x11freeDailyLumpDate\x12&\n" +
+	"\x0flast_gacha_date\x18\f \x01(\tR\rlastGachaDate\"X\n" +
+	"\x11GvgPracticeReward\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x10\n" +
+	"\x03day\x18\x02 \x01(\tR\x03day\x12\x14\n" +
+	"\x05count\x18\x03 \x01(\rR\x05count\"\x91\x01\n" +
+	"\x10ImportantMission\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1d\n" +
+	"\n" +
+	"mission_id\x18\x02 \x01(\rR\tmissionId\x12%\n" +
+	"\x0estart_progress\x18\x03 \x01(\x04R\rstartProgress\x12\x1a\n" +
+	"\bcomplete\x18\x04 \x01(\rR\bcomplete\"k\n" +
+	"\x15ImportantMissionGroup\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x19\n" +
+	"\bgroup_id\x18\x02 \x01(\rR\agroupId\x12\x1a\n" +
+	"\bcomplete\x18\x03 \x01(\rR\bcomplete\"y\n" +
+	"\x04Item\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x17\n" +
+	"\aitem_id\x18\x02 \x01(\rR\x06itemId\x12\x1a\n" +
+	"\bquantity\x18\x03 \x01(\rR\bquantity\x12\x1f\n" +
+	"\vacquired_at\x18\x04 \x01(\tR\n" +
+	"acquiredAt\"z\n" +
+	"\fJobDeckGroup\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x10\n" +
+	"\x03idx\x18\x02 \x01(\rR\x03idx\x12\x1b\n" +
+	"\tplayer_id\x18\x03 \x01(\x04R\bplayerId\x12\x15\n" +
+	"\x06job_id\x18\x04 \x01(\rR\x05jobId\x12\x14\n" +
+	"\x05label\x18\x05 \x01(\tR\x05label\"\xab\x01\n" +
+	"\n" +
+	"LoginBonus\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12/\n" +
+	"\x14login_bonus_group_id\x18\x02 \x01(\rR\x11loginBonusGroupId\x12\x1a\n" +
+	"\bsequence\x18\x03 \x01(\rR\bsequence\x123\n" +
+	"\x16last_reward_receive_at\x18\x04 \x01(\tR\x13lastRewardReceiveAt\"\x9e\x01\n" +
+	"\rMercenaryHire\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12!\n" +
+	"\fmercenary_id\x18\x02 \x01(\x04R\vmercenaryId\x12.\n" +
+	"\x13mercenary_player_id\x18\x03 \x01(\x04R\x11mercenaryPlayerId\x12\x1d\n" +
+	"\n" +
+	"expired_at\x18\x04 \x01(\tR\texpiredAt\"t\n" +
+	"\x0fMercenaryReward\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x16\n" +
+	"\x06reward\x18\x02 \x01(\rR\x06reward\x12\x10\n" +
+	"\x03day\x18\x03 \x01(\tR\x03day\x12\x1a\n" +
+	"\breceived\x18\x04 \x01(\rR\breceived\"\xf0\x01\n" +
+	"\fOrderMission\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x1d\n" +
+	"\n" +
+	"mission_id\x18\x02 \x01(\rR\tmissionId\x12%\n" +
+	"\x0estart_progress\x18\x03 \x01(\x04R\rstartProgress\x12\x16\n" +
+	"\x06accept\x18\x04 \x01(\rR\x06accept\x12\x1a\n" +
+	"\bcomplete\x18\x05 \x01(\rR\bcomplete\x12\x16\n" +
+	"\x06rankup\x18\x06 \x01(\rR\x06rankup\x12\x10\n" +
+	"\x03day\x18\a \x01(\tR\x03day\x12\x1f\n" +
+	"\vaccepted_at\x18\b \x01(\tR\n" +
+	"acceptedAt\"f\n" +
+	"\x12OrderMissionReroll\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x10\n" +
+	"\x03day\x18\x02 \x01(\tR\x03day\x12!\n" +
+	"\freroll_count\x18\x03 \x01(\rR\vrerollCount\"z\n" +
+	"\x12OrderMissionReward\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x125\n" +
+	"\x17order_mission_reward_id\x18\x02 \x01(\rR\x14orderMissionRewardId\x12\x10\n" +
+	"\x03day\x18\x03 \x01(\tR\x03day\"@\n" +
+	"\vReliefPoint\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x14\n" +
+	"\x05point\x18\x02 \x01(\rR\x05point\"e\n" +
+	"\x11ReliefPointReward\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x123\n" +
+	"\x16relief_point_reward_id\x18\x02 \x01(\rR\x13reliefPointRewardId\"x\n" +
+	"\x12ReliefPointSending\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12,\n" +
+	"\x12receiver_player_id\x18\x02 \x01(\x04R\x10receiverPlayerId\x12\x17\n" +
+	"\asent_at\x18\x03 \x01(\tR\x06sentAt\"\xed\x03\n" +
+	"\x04Rune\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x17\n" +
+	"\arune_id\x18\x03 \x01(\rR\x06runeId\x12\x14\n" +
+	"\x05level\x18\x04 \x01(\rR\x05level\x12.\n" +
+	"\x13bonus_param_option1\x18\x05 \x01(\rR\x11bonusParamOption1\x12.\n" +
+	"\x13bonus_param_option2\x18\x06 \x01(\rR\x11bonusParamOption2\x12.\n" +
+	"\x13bonus_param_option3\x18\a \x01(\rR\x11bonusParamOption3\x120\n" +
+	"\x14random_param_option1\x18\b \x01(\rR\x12randomParamOption1\x120\n" +
+	"\x14random_param_option2\x18\t \x01(\rR\x12randomParamOption2\x120\n" +
+	"\x14random_param_option3\x18\n" +
+	" \x01(\rR\x12randomParamOption3\x12\x1f\n" +
+	"\vis_equipped\x18\v \x01(\rR\n" +
+	"isEquipped\x12!\n" +
+	"\fis_protected\x18\f \x01(\rR\visProtected\x12\x1f\n" +
+	"\vacquired_at\x18\r \x01(\tR\n" +
+	"acquiredAt\"\xfb\x01\n" +
+	"\n" +
+	"SeasonPass\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12$\n" +
+	"\x0eseason_pass_id\x18\x02 \x01(\rR\fseasonPassId\x12\x10\n" +
+	"\x03exp\x18\x03 \x01(\rR\x03exp\x122\n" +
+	"\x15received_normal_level\x18\x04 \x01(\rR\x13receivedNormalLevel\x124\n" +
+	"\x16received_premium_level\x18\x05 \x01(\rR\x14receivedPremiumLevel\x12.\n" +
+	"\x13is_purchsed_premium\x18\x06 \x01(\rR\x11isPurchsedPremium\"\xa3\x01\n" +
+	"\x16SeasonPassDailyMission\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12>\n" +
+	"\x1cseason_pass_daily_mission_id\x18\x02 \x01(\rR\x18seasonPassDailyMissionId\x12\x1a\n" +
+	"\bcomplete\x18\x03 \x01(\rR\bcomplete\x12\x10\n" +
+	"\x03day\x18\x04 \x01(\tR\x03day\"\xcd\x01\n" +
+	"\x17SeasonPassWeeklyMission\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12@\n" +
+	"\x1dseason_pass_weekly_mission_id\x18\x02 \x01(\rR\x19seasonPassWeeklyMissionId\x12%\n" +
+	"\x0estart_progress\x18\x03 \x01(\x04R\rstartProgress\x12\x1a\n" +
+	"\bcomplete\x18\x04 \x01(\rR\bcomplete\x12\x10\n" +
+	"\x03day\x18\x05 \x01(\tR\x03day\"\x8e\x02\n" +
+	"\bShopItem\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12 \n" +
+	"\fshop_item_id\x18\x02 \x01(\rR\n" +
+	"shopItemId\x12%\n" +
+	"\x0epurchase_count\x18\x03 \x01(\rR\rpurchaseCount\x120\n" +
+	"\x14purchase_total_count\x18\x04 \x01(\rR\x12purchaseTotalCount\x12(\n" +
+	"\x10special_item_seq\x18\x05 \x01(\rR\x0especialItemSeq\x12!\n" +
+	"\fpurchased_at\x18\x06 \x01(\tR\vpurchasedAt\x12\x1d\n" +
+	"\n" +
+	"expired_at\x18\a \x01(\tR\texpiredAt\"\x92\x01\n" +
+	"\x0fShopSpecialSale\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12/\n" +
+	"\x14shop_special_sale_id\x18\x02 \x01(\rR\x11shopSpecialSaleId\x12\x1d\n" +
+	"\n" +
+	"expired_at\x18\x03 \x01(\tR\texpiredAt\x12\x12\n" +
+	"\x04rank\x18\x04 \x01(\rR\x04rank\"\x92\x01\n" +
+	"\x13SpecialItemProgress\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12 \n" +
+	"\fshop_item_id\x18\x02 \x01(\rR\n" +
+	"shopItemId\x12\x15\n" +
+	"\x06seq_id\x18\x03 \x01(\rR\x05seqId\x12%\n" +
+	"\x0estart_progress\x18\x04 \x01(\x04R\rstartProgress\"4\n" +
+	"\x05Title\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\"\xe4\x01\n" +
+	"\x03Vip\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x14\n" +
+	"\x05point\x18\x02 \x01(\rR\x05point\x12\x12\n" +
+	"\x04rank\x18\x03 \x01(\rR\x04rank\x127\n" +
+	"\x18daily_reward_received_at\x18\x04 \x01(\tR\x15dailyRewardReceivedAt\x12*\n" +
+	"\x11free_continue_use\x18\x05 \x01(\rR\x0ffreeContinueUse\x121\n" +
+	"\x15free_continue_used_at\x18\x06 \x01(\tR\x12freeContinueUsedAtB+Z)example.com/brave-revival/src/proto/puserb\x06proto3"
 
 var (
 	file_puser_proto_rawDescOnce sync.Once
@@ -5990,13 +11435,76 @@ func file_puser_proto_rawDescGZIP() []byte {
 	return file_puser_proto_rawDescData
 }
 
-var file_puser_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_puser_proto_msgTypes = make([]protoimpl.MessageInfo, 68)
 var file_puser_proto_goTypes = []any{
-	(*Player)(nil),    // 0: Puser.Player
-	(*Job)(nil),       // 1: Puser.Job
-	(*JobDeck)(nil),   // 2: Puser.JobDeck
-	(*Equipment)(nil), // 3: Puser.Equipment
-	(*Elixir)(nil),    // 4: Puser.Elixir
+	(*Player)(nil),                      // 0: Puser.Player
+	(*Job)(nil),                         // 1: Puser.Job
+	(*JobSkill)(nil),                    // 2: Puser.JobSkill
+	(*JobDeck)(nil),                     // 3: Puser.JobDeck
+	(*Equipment)(nil),                   // 4: Puser.Equipment
+	(*Elixir)(nil),                      // 5: Puser.Elixir
+	(*Setting)(nil),                     // 6: Puser.Setting
+	(*AgitoItemArea)(nil),               // 7: Puser.AgitoItemArea
+	(*AbyssFever)(nil),                  // 8: Puser.AbyssFever
+	(*Achievement)(nil),                 // 9: Puser.Achievement
+	(*AchievementEquipment)(nil),        // 10: Puser.AchievementEquipment
+	(*AchievementEquipmentReceive)(nil), // 11: Puser.AchievementEquipmentReceive
+	(*AchievementEquipmentStamp)(nil),   // 12: Puser.AchievementEquipmentStamp
+	(*AchievementReward)(nil),           // 13: Puser.AchievementReward
+	(*Advertising)(nil),                 // 14: Puser.Advertising
+	(*Agito)(nil),                       // 15: Puser.Agito
+	(*AgitoAp)(nil),                     // 16: Puser.AgitoAp
+	(*AgitoCountReward)(nil),            // 17: Puser.AgitoCountReward
+	(*AgitoFurnitureSetting)(nil),       // 18: Puser.AgitoFurnitureSetting
+	(*AgitoGoodHistory)(nil),            // 19: Puser.AgitoGoodHistory
+	(*AgitoRelotteryInterval)(nil),      // 20: Puser.AgitoRelotteryInterval
+	(*AgitoVisitor)(nil),                // 21: Puser.AgitoVisitor
+	(*AngelBattleWeeklyReward)(nil),     // 22: Puser.AngelBattleWeeklyReward
+	(*Anima)(nil),                       // 23: Puser.Anima
+	(*AnimaArea)(nil),                   // 24: Puser.AnimaArea
+	(*Arena)(nil),                       // 25: Puser.Arena
+	(*BackgroundBattle)(nil),            // 26: Puser.BackgroundBattle
+	(*Boost)(nil),                       // 27: Puser.Boost
+	(*Contents)(nil),                    // 28: Puser.Contents
+	(*ContentsClearAncientTowerEx)(nil), // 29: Puser.ContentsClearAncientTowerEx
+	(*ContentsCondition)(nil),           // 30: Puser.ContentsCondition
+	(*ContentsHero)(nil),                // 31: Puser.ContentsHero
+	(*ContentsRiskDungeon)(nil),         // 32: Puser.ContentsRiskDungeon
+	(*ContentsTreasure)(nil),            // 33: Puser.ContentsTreasure
+	(*ContentsWeekMonster)(nil),         // 34: Puser.ContentsWeekMonster
+	(*DailyMission)(nil),                // 35: Puser.DailyMission
+	(*DailyMissionReward)(nil),          // 36: Puser.DailyMissionReward
+	(*EquipmentLiberation)(nil),         // 37: Puser.EquipmentLiberation
+	(*EventMission)(nil),                // 38: Puser.EventMission
+	(*EventMissionReward)(nil),          // 39: Puser.EventMissionReward
+	(*EventRoulette)(nil),               // 40: Puser.EventRoulette
+	(*EventSugoroku)(nil),               // 41: Puser.EventSugoroku
+	(*Exchange)(nil),                    // 42: Puser.Exchange
+	(*FunctionalTutorial)(nil),          // 43: Puser.FunctionalTutorial
+	(*GachaHistory)(nil),                // 44: Puser.GachaHistory
+	(*GvgPracticeReward)(nil),           // 45: Puser.GvgPracticeReward
+	(*ImportantMission)(nil),            // 46: Puser.ImportantMission
+	(*ImportantMissionGroup)(nil),       // 47: Puser.ImportantMissionGroup
+	(*Item)(nil),                        // 48: Puser.Item
+	(*JobDeckGroup)(nil),                // 49: Puser.JobDeckGroup
+	(*LoginBonus)(nil),                  // 50: Puser.LoginBonus
+	(*MercenaryHire)(nil),               // 51: Puser.MercenaryHire
+	(*MercenaryReward)(nil),             // 52: Puser.MercenaryReward
+	(*OrderMission)(nil),                // 53: Puser.OrderMission
+	(*OrderMissionReroll)(nil),          // 54: Puser.OrderMissionReroll
+	(*OrderMissionReward)(nil),          // 55: Puser.OrderMissionReward
+	(*ReliefPoint)(nil),                 // 56: Puser.ReliefPoint
+	(*ReliefPointReward)(nil),           // 57: Puser.ReliefPointReward
+	(*ReliefPointSending)(nil),          // 58: Puser.ReliefPointSending
+	(*Rune)(nil),                        // 59: Puser.Rune
+	(*SeasonPass)(nil),                  // 60: Puser.SeasonPass
+	(*SeasonPassDailyMission)(nil),      // 61: Puser.SeasonPassDailyMission
+	(*SeasonPassWeeklyMission)(nil),     // 62: Puser.SeasonPassWeeklyMission
+	(*ShopItem)(nil),                    // 63: Puser.ShopItem
+	(*ShopSpecialSale)(nil),             // 64: Puser.ShopSpecialSale
+	(*SpecialItemProgress)(nil),         // 65: Puser.SpecialItemProgress
+	(*Title)(nil),                       // 66: Puser.Title
+	(*Vip)(nil),                         // 67: Puser.Vip
 }
 var file_puser_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -6017,7 +11525,7 @@ func file_puser_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_puser_proto_rawDesc), len(file_puser_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   68,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

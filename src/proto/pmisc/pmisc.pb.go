@@ -201,6 +201,394 @@ func (*Guild) Descriptor() ([]byte, []int) {
 	return file_pmisc_proto_rawDescGZIP(), []int{4}
 }
 
+type BattleMember struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	RoomId        string                 `protobuf:"bytes,2,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
+	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	Fever         uint32                 `protobuf:"varint,4,opt,name=fever,proto3" json:"fever,omitempty"`
+	MercenaryId_1 uint64                 `protobuf:"varint,5,opt,name=mercenary_id_1,json=mercenaryId1,proto3" json:"mercenary_id_1,omitempty"`
+	MercenaryId_2 uint64                 `protobuf:"varint,6,opt,name=mercenary_id_2,json=mercenaryId2,proto3" json:"mercenary_id_2,omitempty"`
+	MercenaryId_3 uint64                 `protobuf:"varint,7,opt,name=mercenary_id_3,json=mercenaryId3,proto3" json:"mercenary_id_3,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BattleMember) Reset() {
+	*x = BattleMember{}
+	mi := &file_pmisc_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BattleMember) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BattleMember) ProtoMessage() {}
+
+func (x *BattleMember) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BattleMember.ProtoReflect.Descriptor instead.
+func (*BattleMember) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *BattleMember) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *BattleMember) GetRoomId() string {
+	if x != nil {
+		return x.RoomId
+	}
+	return ""
+}
+
+func (x *BattleMember) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *BattleMember) GetFever() uint32 {
+	if x != nil {
+		return x.Fever
+	}
+	return 0
+}
+
+func (x *BattleMember) GetMercenaryId_1() uint64 {
+	if x != nil {
+		return x.MercenaryId_1
+	}
+	return 0
+}
+
+func (x *BattleMember) GetMercenaryId_2() uint64 {
+	if x != nil {
+		return x.MercenaryId_2
+	}
+	return 0
+}
+
+func (x *BattleMember) GetMercenaryId_3() uint64 {
+	if x != nil {
+		return x.MercenaryId_3
+	}
+	return 0
+}
+
+type Block struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	SenderPlayerId uint64                 `protobuf:"varint,1,opt,name=sender_player_id,json=senderPlayerId,proto3" json:"sender_player_id,omitempty"`
+	TargetPlayerId uint64                 `protobuf:"varint,2,opt,name=target_player_id,json=targetPlayerId,proto3" json:"target_player_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Block) Reset() {
+	*x = Block{}
+	mi := &file_pmisc_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Block) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Block) ProtoMessage() {}
+
+func (x *Block) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Block.ProtoReflect.Descriptor instead.
+func (*Block) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Block) GetSenderPlayerId() uint64 {
+	if x != nil {
+		return x.SenderPlayerId
+	}
+	return 0
+}
+
+func (x *Block) GetTargetPlayerId() uint64 {
+	if x != nil {
+		return x.TargetPlayerId
+	}
+	return 0
+}
+
+type ConditionProgress struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId         uint64                 `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	ConditionTypeId  uint32                 `protobuf:"varint,2,opt,name=condition_type_id,json=conditionTypeId,proto3" json:"condition_type_id,omitempty"`
+	ConditionGroupId uint32                 `protobuf:"varint,3,opt,name=condition_group_id,json=conditionGroupId,proto3" json:"condition_group_id,omitempty"`
+	Progress         uint64                 `protobuf:"varint,4,opt,name=progress,proto3" json:"progress,omitempty"`
+	DailyProgress    uint64                 `protobuf:"varint,5,opt,name=daily_progress,json=dailyProgress,proto3" json:"daily_progress,omitempty"`
+	WeeklyProgress   uint64                 `protobuf:"varint,6,opt,name=weekly_progress,json=weeklyProgress,proto3" json:"weekly_progress,omitempty"`
+	LastUpdate       string                 `protobuf:"bytes,7,opt,name=last_update,json=lastUpdate,proto3" json:"last_update,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ConditionProgress) Reset() {
+	*x = ConditionProgress{}
+	mi := &file_pmisc_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConditionProgress) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConditionProgress) ProtoMessage() {}
+
+func (x *ConditionProgress) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConditionProgress.ProtoReflect.Descriptor instead.
+func (*ConditionProgress) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ConditionProgress) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *ConditionProgress) GetConditionTypeId() uint32 {
+	if x != nil {
+		return x.ConditionTypeId
+	}
+	return 0
+}
+
+func (x *ConditionProgress) GetConditionGroupId() uint32 {
+	if x != nil {
+		return x.ConditionGroupId
+	}
+	return 0
+}
+
+func (x *ConditionProgress) GetProgress() uint64 {
+	if x != nil {
+		return x.Progress
+	}
+	return 0
+}
+
+func (x *ConditionProgress) GetDailyProgress() uint64 {
+	if x != nil {
+		return x.DailyProgress
+	}
+	return 0
+}
+
+func (x *ConditionProgress) GetWeeklyProgress() uint64 {
+	if x != nil {
+		return x.WeeklyProgress
+	}
+	return 0
+}
+
+func (x *ConditionProgress) GetLastUpdate() string {
+	if x != nil {
+		return x.LastUpdate
+	}
+	return ""
+}
+
+type GuildBoard struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	GuildId             uint64                 `protobuf:"varint,1,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	Seq                 uint32                 `protobuf:"varint,2,opt,name=seq,proto3" json:"seq,omitempty"`
+	Title               string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
+	Message             string                 `protobuf:"bytes,4,opt,name=message,proto3" json:"message,omitempty"`
+	IsGuildTop          uint32                 `protobuf:"varint,5,opt,name=is_guild_top,json=isGuildTop,proto3" json:"is_guild_top,omitempty"`
+	IsGveTop            uint32                 `protobuf:"varint,6,opt,name=is_gve_top,json=isGveTop,proto3" json:"is_gve_top,omitempty"`
+	IsGuildAnnouncement uint32                 `protobuf:"varint,7,opt,name=is_guild_announcement,json=isGuildAnnouncement,proto3" json:"is_guild_announcement,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *GuildBoard) Reset() {
+	*x = GuildBoard{}
+	mi := &file_pmisc_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildBoard) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildBoard) ProtoMessage() {}
+
+func (x *GuildBoard) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildBoard.ProtoReflect.Descriptor instead.
+func (*GuildBoard) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GuildBoard) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *GuildBoard) GetSeq() uint32 {
+	if x != nil {
+		return x.Seq
+	}
+	return 0
+}
+
+func (x *GuildBoard) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *GuildBoard) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *GuildBoard) GetIsGuildTop() uint32 {
+	if x != nil {
+		return x.IsGuildTop
+	}
+	return 0
+}
+
+func (x *GuildBoard) GetIsGveTop() uint32 {
+	if x != nil {
+		return x.IsGveTop
+	}
+	return 0
+}
+
+func (x *GuildBoard) GetIsGuildAnnouncement() uint32 {
+	if x != nil {
+		return x.IsGuildAnnouncement
+	}
+	return 0
+}
+
+type Sample struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Sample) Reset() {
+	*x = Sample{}
+	mi := &file_pmisc_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Sample) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Sample) ProtoMessage() {}
+
+func (x *Sample) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Sample.ProtoReflect.Descriptor instead.
+func (*Sample) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *Sample) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Sample) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *Sample) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 var File_pmisc_proto protoreflect.FileDescriptor
 
 const file_pmisc_proto_rawDesc = "" +
@@ -210,7 +598,42 @@ const file_pmisc_proto_rawDesc = "" +
 	"\x16GuildSharedMissionList\"\x1f\n" +
 	"\x1dGuildSharedMissionRankingList\"\x1e\n" +
 	"\x1cGuildWeeklyMissionRewardList\"\a\n" +
-	"\x05GuildB+Z)example.com/brave-revival/src/proto/pmiscb\x06proto3"
+	"\x05Guild\"\xe4\x01\n" +
+	"\fBattleMember\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x17\n" +
+	"\aroom_id\x18\x02 \x01(\tR\x06roomId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12\x14\n" +
+	"\x05fever\x18\x04 \x01(\rR\x05fever\x12$\n" +
+	"\x0emercenary_id_1\x18\x05 \x01(\x04R\fmercenaryId1\x12$\n" +
+	"\x0emercenary_id_2\x18\x06 \x01(\x04R\fmercenaryId2\x12$\n" +
+	"\x0emercenary_id_3\x18\a \x01(\x04R\fmercenaryId3\"[\n" +
+	"\x05Block\x12(\n" +
+	"\x10sender_player_id\x18\x01 \x01(\x04R\x0esenderPlayerId\x12(\n" +
+	"\x10target_player_id\x18\x02 \x01(\x04R\x0etargetPlayerId\"\x97\x02\n" +
+	"\x11ConditionProgress\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12*\n" +
+	"\x11condition_type_id\x18\x02 \x01(\rR\x0fconditionTypeId\x12,\n" +
+	"\x12condition_group_id\x18\x03 \x01(\rR\x10conditionGroupId\x12\x1a\n" +
+	"\bprogress\x18\x04 \x01(\x04R\bprogress\x12%\n" +
+	"\x0edaily_progress\x18\x05 \x01(\x04R\rdailyProgress\x12'\n" +
+	"\x0fweekly_progress\x18\x06 \x01(\x04R\x0eweeklyProgress\x12\x1f\n" +
+	"\vlast_update\x18\a \x01(\tR\n" +
+	"lastUpdate\"\xdd\x01\n" +
+	"\n" +
+	"GuildBoard\x12\x19\n" +
+	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12\x10\n" +
+	"\x03seq\x18\x02 \x01(\rR\x03seq\x12\x14\n" +
+	"\x05title\x18\x03 \x01(\tR\x05title\x12\x18\n" +
+	"\amessage\x18\x04 \x01(\tR\amessage\x12 \n" +
+	"\fis_guild_top\x18\x05 \x01(\rR\n" +
+	"isGuildTop\x12\x1c\n" +
+	"\n" +
+	"is_gve_top\x18\x06 \x01(\rR\bisGveTop\x122\n" +
+	"\x15is_guild_announcement\x18\a \x01(\rR\x13isGuildAnnouncement\"I\n" +
+	"\x06Sample\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04nameB+Z)example.com/brave-revival/src/proto/pmiscb\x06proto3"
 
 var (
 	file_pmisc_proto_rawDescOnce sync.Once
@@ -224,13 +647,18 @@ func file_pmisc_proto_rawDescGZIP() []byte {
 	return file_pmisc_proto_rawDescData
 }
 
-var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_pmisc_proto_goTypes = []any{
 	(*GuildPersonalMissionList)(nil),      // 0: Pmisc.GuildPersonalMissionList
 	(*GuildSharedMissionList)(nil),        // 1: Pmisc.GuildSharedMissionList
 	(*GuildSharedMissionRankingList)(nil), // 2: Pmisc.GuildSharedMissionRankingList
 	(*GuildWeeklyMissionRewardList)(nil),  // 3: Pmisc.GuildWeeklyMissionRewardList
 	(*Guild)(nil),                         // 4: Pmisc.Guild
+	(*BattleMember)(nil),                  // 5: Pmisc.BattleMember
+	(*Block)(nil),                         // 6: Pmisc.Block
+	(*ConditionProgress)(nil),             // 7: Pmisc.ConditionProgress
+	(*GuildBoard)(nil),                    // 8: Pmisc.GuildBoard
+	(*Sample)(nil),                        // 9: Pmisc.Sample
 }
 var file_pmisc_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -251,7 +679,7 @@ func file_pmisc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pmisc_proto_rawDesc), len(file_pmisc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

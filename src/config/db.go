@@ -142,6 +142,7 @@ func loadMasterCSV(path string, rows protoreflect.List, rowDescriptor protorefle
 	}
 	reader.FieldsPerRecord = len(header)
 	reader.ReuseRecord = true
+	reader.Comment = '#'
 
 	fields := make([]protoreflect.FieldDescriptor, len(header))
 	seen := make(map[protoreflect.Name]struct{}, len(header))

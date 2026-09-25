@@ -2,9 +2,12 @@ package www
 
 import (
 	"net/http"
+	"os"
+	"log/slog"
 
 	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/puser"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 func playerList(w http.ResponseWriter, r *http.Request) {
@@ -16,8 +19,20 @@ func playerList(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-func playerLoad(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/x-protobuf")
-	w.Header().Set("proto-type", "Proto.Nocontent")
-	http.ServeFile(w, r, "./load-sample.pb")
+func playerLoad(w http.ResponseWriter, _ *http.Request) {
+	data, err := os.ReadFile("./load-sample.json")
+	if err != nil {
+		slog.Error("failed to read player data", "error", err)
+		http.Error(w, "failed to read player data", http.StatusInternalServerError)
+		return
+	}
+
+	message := &proto.Nocontent{}
+	if err := (protojson.UnmarshalOptions{}).Unmarshal(data, message); err != nil {
+		slog.Error("failed to parse player data", "error", err)
+		http.Error(w, "failed to parse player data", http.StatusInternalServerError)
+		return
+	}
+
+	writeProto(w, http.StatusOK, message)
 }

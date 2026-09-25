@@ -149,5 +149,6 @@ func Run(cfg *config.Config) error {
 			www:     wwwHandler,
 		},
 	}
+	slog.Info("starting proxy server", "addr", server.Addr, "advertise_host", cfg.AdvertiseHost, "proxy_port", cfg.ProxyPort)
 	return server.ListenAndServe()
 }

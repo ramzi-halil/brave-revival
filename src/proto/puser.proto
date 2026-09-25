@@ -61,6 +61,15 @@ message Job {
     uint32 is_new = 7;
 }
 
+message JobSkill {
+    uint64 id = 1;
+    uint64 player_id = 2;
+    uint32 job_id = 3;
+    uint32 skill_id = 4;
+    uint32 level = 5;
+    uint32 status = 6;
+}
+
 message JobDeck {
     uint64 id = 1;
     uint32 idx = 2;
@@ -657,4 +666,524 @@ message Elixir {
     uint32 rank = 3;
     uint32 level = 4;
     string acquired_at = 5 [(options.datetime) = true];
+}
+
+message Setting {
+    uint64 player_id = 1;
+    uint32 language = 2;
+    uint32 push_all = 3;
+    uint32 push_friend_request = 4;
+    uint32 push_guild_member = 5;
+    uint32 push_guild_role_change = 6;
+    uint32 push_mercenary_contract_expiration = 7;
+    uint32 push_agito_ap_shortage = 8;
+    uint32 push_guild_dungeon = 9;
+    uint32 push_guild_achievement = 10;
+    uint32 push_party = 11;
+    uint32 push_group_chat = 12;
+    uint32 push_new_chat_guild = 13;
+    uint32 push_new_chat_group = 14;
+    uint32 push_new_chat_direct = 15;
+    uint32 push_new_chat_recruit_party = 16;
+    uint32 gacha_auto_sell_weapon_rarity1 = 17;
+    uint32 gacha_auto_sell_weapon_rarity2 = 18;
+    uint32 gacha_auto_sell_weapon_rarity3 = 19;
+    uint32 gacha_auto_sell_armor_rarity1 = 20;
+    uint32 gacha_auto_sell_armor_rarity2 = 21;
+    uint32 gacha_auto_sell_armor_rarity3 = 22;
+}
+
+message AgitoItemArea {
+    uint64 player_id = 1;
+    uint32 room_number = 2;
+    uint32 agito_item_area_id = 3;
+    uint32 item_id = 4;
+    uint32 agito_visitor_lineup_id_1 = 5;
+    uint32 agito_visitor_lineup_id_2 = 6;
+    uint32 agito_visitor_lineup_id_3 = 7;
+    uint32 received_flag1 = 8;
+    uint32 received_flag2 = 9;
+    uint32 received_flag3 = 10;
+    string lineup_return_at1 = 11;
+    string lineup_return_at2 = 12;
+    string lineup_return_at3 = 13;
+}
+
+message AbyssFever {
+    uint64 player_id = 1;
+    uint32 remain_time = 2;
+    uint32 charge_count = 3;
+    string used_at = 4;
+    string charged_at = 5;
+}
+
+message Achievement {
+    uint32 id = 1;
+    uint64 player_id = 2;
+}
+
+message AchievementEquipment {
+    uint64 player_id = 1;
+    uint32 type = 2;
+    uint32 equipment_job_id = 3;
+    uint32 equipment_category = 4;
+    uint32 equipment_part = 5;
+    uint32 category = 6;
+    string category_value = 7;
+    uint32 value = 8;
+}
+
+message AchievementEquipmentReceive {
+    uint64 player_id = 1;
+    uint32 achievement_equipment_id = 2;
+    uint32 seq = 3;
+}
+
+message AchievementEquipmentStamp {
+    uint64 player_id = 1;
+    uint32 stamp_reward_step_id = 2;
+}
+
+message AchievementReward {
+    uint64 player_id = 1;
+    string acquired_at = 2;
+}
+
+message Advertising {
+    uint64 player_id = 1;
+    uint32 advertising_id = 2;
+    uint32 view_count = 3;
+    string last_viewed_at = 4;
+}
+
+message Agito {
+    uint64 player_id = 1;
+    uint32 total_good_count = 2;
+}
+
+message AgitoAp {
+    uint64 player_id = 1;
+    uint32 room_number = 2;
+    uint32 item_id = 3;
+    uint32 ap = 4;
+    string next_lottery_at = 5;
+}
+
+message AgitoCountReward {
+    uint64 player_id = 1;
+    uint32 type = 2;
+    uint32 count = 3;
+    uint64 received_count_seq = 4;
+    uint64 received_count_seq2 = 5;
+}
+
+message AgitoFurnitureSetting {
+    uint64 player_id = 1;
+    uint32 room_number = 2;
+    uint32 wall_paper_item_id = 3;
+    uint32 floor_board_item_id = 4;
+    uint32 table_set_item_id = 5;
+    uint32 special_floor_item_id = 6;
+    uint32 wall_medium_item_id_1 = 7;
+    uint32 wall_medium_item_id_2 = 8;
+    uint32 wall_medium_item_id_3 = 9;
+    uint32 wall_medium_item_id_4 = 10;
+    uint32 wall_medium_item_id_5 = 11;
+    uint32 wall_small_item_id_1 = 12;
+    uint32 wall_small_item_id_2 = 13;
+    uint32 wall_small_item_id_3 = 14;
+    uint32 wall_small_item_id_4 = 15;
+    uint32 wall_small_item_id_5 = 16;
+    uint32 wall_small_item_id_6 = 17;
+}
+
+message AgitoGoodHistory {
+    uint64 id = 1;
+    uint64 player_id = 2;
+    uint64 good_player_id = 3;
+    uint32 ap_recovered_flag = 4;
+    string good_at = 5;
+}
+
+message AgitoRelotteryInterval {
+    uint64 player_id = 1;
+    uint32 equipment_id = 2;
+    string relottery_start_at = 3;
+}
+
+message AgitoVisitor {
+    uint64 player_id = 1;
+    uint32 equipment_id = 2;
+    uint32 visit_count = 3;
+    uint32 visitor_point = 4;
+    uint32 received_visitor_point_seq = 5;
+    string first_visited_at = 6;
+}
+
+message AngelBattleWeeklyReward {
+    uint64 player_id = 1;
+    uint32 stage_id = 2;
+    string room_id = 3;
+    string last_reward_receive_at = 4;
+    uint32 assist_reward_receive_cnt = 5;
+}
+
+message Anima {
+    uint32 id = 1;
+    uint64 player_id = 2;
+    uint32 put = 3;
+}
+
+message AnimaArea {
+    uint32 anima_area_id = 1;
+    uint64 player_id = 2;
+    uint32 acquired = 3;
+}
+
+message Arena {
+    uint64 player_id = 1;
+    uint64 job_deck_id = 2;
+    uint32 total_win = 3;
+    uint32 total_lose = 4;
+    uint32 consecutive_win = 5;
+    uint32 max_consecutive_win = 6;
+    uint32 total_point = 7;
+    uint32 daily_point = 8;
+    uint32 weekly_point = 9;
+    string daily_acquired_at = 10;
+    string weekly_acquired_at = 11;
+    uint32 daily_reward_received_point = 12;
+    string daily_reward_received_at = 13;
+}
+
+message BackgroundBattle {
+    uint64 player_id = 1;
+    string room_id = 2;
+    string status = 3;
+    uint32 win = 4;
+    uint32 total = 5;
+    uint32 loop_cnt = 6;
+    uint32 is_result = 7;
+    string summary = 8;
+    string started_at = 9;
+}
+
+message Boost {
+    uint64 player_id = 1;
+    uint32 boost_id = 2;
+    string expired_at = 3;
+}
+
+message Contents {
+    uint64 player_id = 1;
+    uint32 contents_id = 2;
+    uint32 stage_id = 3;
+    string last_swept_at = 4;
+}
+
+message ContentsClearAncientTowerEx {
+    uint64 player_id = 1;
+    uint32 contents_id = 2;
+    uint32 stage_id = 3;
+    uint32 fastest_clear_time = 4;
+}
+
+message ContentsCondition {
+    uint32 id = 1;
+    uint64 player_id = 2;
+    uint32 contents_id = 3;
+    uint32 target_type = 4;
+    uint32 target_id = 5;
+    uint32 free_count = 6;
+    uint32 challenge_count = 7;
+    uint32 challenge_purchase_count = 8;
+    uint32 special_challenge_count = 9;
+    uint32 special_challenge_purchase_count = 10;
+    string last_update_at = 11;
+}
+
+message ContentsHero {
+    uint32 id = 1;
+    uint64 player_id = 2;
+    uint32 area_id = 3;
+    uint32 used_paid = 4;
+    uint32 total_paid = 5;
+    uint32 daily_paid = 6;
+    string free_used_at = 7;
+    string last_paid_at = 8;
+}
+
+message ContentsRiskDungeon {
+    uint64 player_id = 1;
+    uint32 area_id = 2;
+    uint32 risk = 3;
+    string last_updated_at = 4;
+}
+
+message ContentsTreasure {
+    uint64 player_id = 1;
+    uint32 stage_id = 2;
+    uint32 max_rank = 3;
+    uint64 max_treasure_lupi = 4;
+    uint64 max_treasure_additional_lupi = 5;
+}
+
+message ContentsWeekMonster {
+    uint64 player_id = 1;
+    uint32 stage_id = 2;
+}
+
+message DailyMission {
+    uint64 player_id = 1;
+    uint32 mission_id = 2;
+    uint32 complete = 3;
+    string day = 4;
+}
+
+message DailyMissionReward {
+    uint64 player_id = 1;
+    uint32 daily_mission_reward_id = 2;
+    string day = 3;
+}
+
+message EquipmentLiberation {
+    uint64 equipment_id = 1;
+    uint32 rarity = 2;
+    uint32 seq_id = 3;
+    uint64 player_id = 4;
+}
+
+message EventMission {
+    uint64 player_id = 1;
+    uint32 mission_id = 2;
+    uint64 start_progress = 3;
+    uint32 complete = 4;
+    string day = 5;
+}
+
+message EventMissionReward {
+    uint64 player_id = 1;
+    uint32 event_mission_reward_id = 2;
+}
+
+message EventRoulette {
+    uint64 player_id = 1;
+    uint32 roulette_id = 2;
+    uint32 position = 3;
+    uint32 total_play_count = 4;
+    uint32 free_play_count = 5;
+    uint32 lap_count = 6;
+    string last_play_at = 7;
+}
+
+message EventSugoroku {
+    uint64 player_id = 1;
+    uint32 sugoroku_id = 2;
+    uint32 position = 3;
+    uint32 total_play_count = 4;
+    uint32 free_play_count = 5;
+    uint32 lap_count = 6;
+    string last_play_at = 7;
+}
+
+message Exchange {
+    uint64 player_id = 1;
+    uint32 exchange_id = 2;
+    uint32 count = 3;
+    uint32 total_count = 4;
+    string last_exchange_at = 5;
+}
+
+message FunctionalTutorial {
+    uint64 player_id = 1;
+    uint32 function_id = 2;
+    uint32 step = 3;
+    string adid = 4;
+}
+
+message GachaHistory {
+    uint64 player_id = 1;
+    uint32 gacha_id = 2;
+    uint32 step = 3;
+    uint32 single_count = 4;
+    uint32 lump_count = 5;
+    uint32 lump_limit_count = 6;
+    uint32 exchange_point = 7;
+    string single_paid_date = 8;
+    string lump_date = 9;
+    string free_daily_single_date = 10;
+    string free_daily_lump_date = 11;
+    string last_gacha_date = 12;
+}
+
+message GvgPracticeReward {
+    uint64 player_id = 1;
+    string day = 2;
+    uint32 count = 3;
+}
+
+message ImportantMission {
+    uint64 player_id = 1;
+    uint32 mission_id = 2;
+    uint64 start_progress = 3;
+    uint32 complete = 4;
+}
+
+message ImportantMissionGroup {
+    uint64 player_id = 1;
+    uint32 group_id = 2;
+    uint32 complete = 3;
+}
+
+message Item {
+    uint64 player_id = 1;
+    uint32 item_id = 2;
+    uint32 quantity = 3;
+    string acquired_at = 4;
+}
+
+message JobDeckGroup {
+    uint64 id = 1;
+    uint32 idx = 2;
+    uint64 player_id = 3;
+    uint32 job_id = 4;
+    string label = 5;
+}
+
+message LoginBonus {
+    uint64 player_id = 1;
+    uint32 login_bonus_group_id = 2;
+    uint32 sequence = 3;
+    string last_reward_receive_at = 4;
+}
+
+message MercenaryHire {
+    uint64 player_id = 1;
+    uint64 mercenary_id = 2;
+    uint64 mercenary_player_id = 3;
+    string expired_at = 4;
+}
+
+message MercenaryReward {
+    uint64 player_id = 1;
+    uint32 reward = 2;
+    string day = 3;
+    uint32 received = 4;
+}
+
+message OrderMission {
+    uint64 player_id = 1;
+    uint32 mission_id = 2;
+    uint64 start_progress = 3;
+    uint32 accept = 4;
+    uint32 complete = 5;
+    uint32 rankup = 6;
+    string day = 7;
+    string accepted_at = 8;
+}
+
+message OrderMissionReroll {
+    uint64 player_id = 1;
+    string day = 2;
+    uint32 reroll_count = 3;
+}
+
+message OrderMissionReward {
+    uint64 player_id = 1;
+    uint32 order_mission_reward_id = 2;
+    string day = 3;
+}
+
+message ReliefPoint {
+    uint64 player_id = 1;
+    uint32 point = 2;
+}
+
+message ReliefPointReward {
+    uint64 player_id = 1;
+    uint32 relief_point_reward_id = 2;
+}
+
+message ReliefPointSending {
+    uint64 player_id = 1;
+    uint64 receiver_player_id = 2;
+    string sent_at = 3;
+}
+
+message Rune {
+    uint64 id = 1;
+    uint64 player_id = 2;
+    uint32 rune_id = 3;
+    uint32 level = 4;
+    uint32 bonus_param_option1 = 5;
+    uint32 bonus_param_option2 = 6;
+    uint32 bonus_param_option3 = 7;
+    uint32 random_param_option1 = 8;
+    uint32 random_param_option2 = 9;
+    uint32 random_param_option3 = 10;
+    uint32 is_equipped = 11;
+    uint32 is_protected = 12;
+    string acquired_at = 13;
+}
+
+message SeasonPass {
+    uint64 player_id = 1;
+    uint32 season_pass_id = 2;
+    uint32 exp = 3;
+    uint32 received_normal_level = 4;
+    uint32 received_premium_level = 5;
+    uint32 is_purchsed_premium = 6;
+}
+
+message SeasonPassDailyMission {
+    uint64 player_id = 1;
+    uint32 season_pass_daily_mission_id = 2;
+    uint32 complete = 3;
+    string day = 4;
+}
+
+message SeasonPassWeeklyMission {
+    uint64 player_id = 1;
+    uint32 season_pass_weekly_mission_id = 2;
+    uint64 start_progress = 3;
+    uint32 complete = 4;
+    string day = 5;
+}
+
+message ShopItem {
+    uint64 player_id = 1;
+    uint32 shop_item_id = 2;
+    uint32 purchase_count = 3;
+    uint32 purchase_total_count = 4;
+    uint32 special_item_seq = 5;
+    string purchased_at = 6;
+    string expired_at = 7;
+}
+
+message ShopSpecialSale {
+    uint64 player_id = 1;
+    uint32 shop_special_sale_id = 2;
+    string expired_at = 3;
+    uint32 rank = 4;
+}
+
+message SpecialItemProgress {
+    uint64 player_id = 1;
+    uint32 shop_item_id = 2;
+    uint32 seq_id = 3;
+    uint64 start_progress = 4;
+}
+
+message Title {
+    uint32 id = 1;
+    uint64 player_id = 2;
+}
+
+message Vip {
+    uint64 player_id = 1;
+    uint32 point = 2;
+    uint32 rank = 3;
+    string daily_reward_received_at = 4;
+    uint32 free_continue_use = 5;
+    string free_continue_used_at = 6;
 }

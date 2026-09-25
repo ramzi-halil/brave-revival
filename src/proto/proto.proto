@@ -227,3 +227,430 @@ message FieldTopResponse {
     BattleBackgroundReward background_battle_reward = 18;
     AgitoVisitorReturn agito_visitor_return = 20;
 }
+
+message Currency {
+    uint32 red_orb = 1;
+    uint32 free_blue_orb = 2;
+    uint32 paid_blue_orb = 3;
+    uint32 total_orb = 4;
+}
+
+message GuildInfo {
+    uint64 guild_id = 1;
+    string guild_name = 2;
+    uint32 guild_symbol = 3;
+    uint32 guild_symbol_frame = 4;
+    uint32 guild_symbol_frame_color = 5;
+    uint32 guild_member_role = 6;
+    uint64 guild_master_id = 7;
+    Pmisc.GuildBoard guild_board_announcement = 8;
+}
+
+message ChatUnreadCategory {
+}
+
+message StoredMercenary {
+    uint32 job_id = 1;
+    uint32 level = 2;
+    uint32 limit = 3;
+    uint32 removed = 4;
+}
+
+message StoredPresentBoxInfo {
+    bool unreceived_present = 1;
+}
+
+message StoredSample {
+    map<uint64, Pmisc.Sample> list = 1;
+    map<uint64, Pmisc.Sample> add = 2;
+}
+
+message StoredEquipment {
+    map<uint64, Puser.Equipment> list = 1;
+    map<uint64, Puser.Equipment> add = 2;
+}
+
+message StoredJob {
+    map<uint32, Puser.Job> list = 1;
+    map<uint32, Puser.Job> add = 2;
+}
+
+message StoredJobSkill {
+    map<uint64, Puser.JobSkill> list = 1;
+    map<uint64, Puser.JobSkill> add = 2;
+}
+
+message StoredConditionProgress {
+    map<uint64, Pmisc.ConditionProgress> list = 1;
+    map<uint64, Pmisc.ConditionProgress> add = 2;
+}
+
+message StoredAchievement {
+    map<uint32, Puser.Achievement> list = 1;
+    map<uint32, Puser.Achievement> add = 2;
+}
+
+message StoredItem {
+    map<uint32, Puser.Item> list = 1;
+    map<uint32, Puser.Item> add = 2;
+}
+
+message StoredAnima {
+    map<uint32, Puser.Anima> list = 1;
+    map<uint32, Puser.Anima> add = 2;
+}
+
+message StoredAnimaArea {
+    map<uint32, Puser.AnimaArea> list = 1;
+    map<uint32, Puser.AnimaArea> add = 2;
+}
+
+message StoredRune {
+    map<uint64, Puser.Rune> list = 1;
+    map<uint64, Puser.Rune> add = 2;
+}
+
+message StoredElixir {
+    map<uint32, Puser.Elixir> list = 1;
+    map<uint32, Puser.Elixir> add = 2;
+}
+
+message StoredContents {
+    map<uint32, Puser.Contents> list = 1;
+    map<uint32, Puser.Contents> add = 2;
+}
+
+message StoredDailyMission {
+    map<uint32, Puser.DailyMission> list = 1;
+    map<uint32, Puser.DailyMission> add = 2;
+}
+
+message StoredDailyMissionReward {
+    map<uint32, Puser.DailyMissionReward> list = 1;
+    map<uint32, Puser.DailyMissionReward> add = 2;
+}
+
+message StoredOrderMission {
+    map<uint32, Puser.OrderMission> list = 1;
+    map<uint32, Puser.OrderMission> add = 2;
+}
+
+message StoredOrderMissionReroll {
+    map<uint64, Puser.OrderMissionReroll> list = 1;
+    map<uint64, Puser.OrderMissionReroll> add = 2;
+}
+
+message StoredOrderMissionReward {
+    map<uint32, Puser.OrderMissionReward> list = 1;
+    map<uint32, Puser.OrderMissionReward> add = 2;
+}
+
+message StoredMercenaryHire {
+    map<uint64, Puser.MercenaryHire> list = 1;
+    map<uint64, Puser.MercenaryHire> add = 2;
+}
+
+message StoredEventMission {
+    map<uint32, Puser.EventMission> list = 1;
+    map<uint32, Puser.EventMission> add = 2;
+}
+
+message StoredEventMissionReward {
+    map<uint32, Puser.EventMissionReward> list = 1;
+    map<uint32, Puser.EventMissionReward> add = 2;
+}
+
+message StoredContentsCondition {
+    map<uint32, Puser.ContentsCondition> list = 1;
+    map<uint32, Puser.ContentsCondition> add = 2;
+}
+
+message StoredTitle {
+    map<uint32, Puser.Title> list = 1;
+    map<uint32, Puser.Title> add = 2;
+}
+
+message StoredShopItem {
+    map<uint32, Puser.ShopItem> list = 1;
+    map<uint32, Puser.ShopItem> add = 2;
+}
+
+message StoredLoginBonus {
+    map<uint32, Puser.LoginBonus> list = 1;
+    map<uint32, Puser.LoginBonus> add = 2;
+}
+
+message StoredEventSugoroku {
+    map<uint32, Puser.EventSugoroku> list = 1;
+    map<uint32, Puser.EventSugoroku> add = 2;
+}
+
+message StoredBoost {
+    map<uint32, Puser.Boost> list = 1;
+    map<uint32, Puser.Boost> add = 2;
+}
+
+message StoredBlock {
+    map<uint64, Pmisc.Block> list = 1;
+    map<uint64, Pmisc.Block> add = 2;
+}
+
+message StoredExchange {
+    map<uint32, Puser.Exchange> list = 1;
+    map<uint32, Puser.Exchange> add = 2;
+}
+
+message StoredContentsHero {
+    map<uint32, Puser.ContentsHero> list = 1;
+    map<uint32, Puser.ContentsHero> add = 2;
+}
+
+message StoredContentsTreasure {
+    map<uint32, Puser.ContentsTreasure> list = 1;
+    map<uint32, Puser.ContentsTreasure> add = 2;
+}
+
+message StoredContentsWeekMonster {
+    map<uint32, Puser.ContentsWeekMonster> list = 1;
+    map<uint32, Puser.ContentsWeekMonster> add = 2;
+}
+
+message StoredFunctionalTutorial {
+    map<uint32, Puser.FunctionalTutorial> list = 1;
+    map<uint32, Puser.FunctionalTutorial> add = 2;
+}
+
+message StoredEventRoulette {
+    map<uint32, Puser.EventRoulette> list = 1;
+    map<uint32, Puser.EventRoulette> add = 2;
+}
+
+message StoredAngelBattleWeeklyReward {
+    map<uint32, Puser.AngelBattleWeeklyReward> list = 1;
+    map<uint32, Puser.AngelBattleWeeklyReward> add = 2;
+}
+
+message StoredAchievementEquipment {
+    map<string, Puser.AchievementEquipment> list = 1;
+    map<string, Puser.AchievementEquipment> add = 2;
+    repeated string del = 3;
+}
+
+message StoredAchievementEquipmentReceive {
+    map<string, Puser.AchievementEquipmentReceive> list = 1;
+    map<string, Puser.AchievementEquipmentReceive> add = 2;
+    repeated string del = 3;
+}
+
+message StoredAchievementEquipmentStamp {
+    map<uint32, Puser.AchievementEquipmentStamp> list = 1;
+    map<uint32, Puser.AchievementEquipmentStamp> add = 2;
+}
+
+message StoredEquipmentLiberation {
+    map<uint64, Puser.EquipmentLiberation> list = 1;
+    map<uint64, Puser.EquipmentLiberation> add = 2;
+}
+
+message StoredJobDeck {
+    map<uint64, Puser.JobDeck> list = 1;
+    map<uint64, Puser.JobDeck> add = 2;
+}
+
+message StoredAgitoFurnitureSetting {
+    map<uint32, Puser.AgitoFurnitureSetting> list = 1;
+    map<uint32, Puser.AgitoFurnitureSetting> add = 2;
+}
+
+message StoredAgitoAp {
+    map<uint32, Puser.AgitoAp> list = 1;
+    map<uint32, Puser.AgitoAp> add = 2;
+}
+
+message StoredAgitoRelotteryInterval {
+    map<uint32, Puser.AgitoRelotteryInterval> list = 1;
+    map<uint32, Puser.AgitoRelotteryInterval> add = 2;
+}
+
+message StoredAgitoVisitor {
+    map<uint32, Puser.AgitoVisitor> list = 1;
+    map<uint32, Puser.AgitoVisitor> add = 2;
+}
+
+message StoredAgitoGoodHistory {
+    map<uint64, Puser.AgitoGoodHistory> list = 1;
+    map<uint64, Puser.AgitoGoodHistory> add = 2;
+}
+
+message StoredGachaHistory {
+    map<uint32, Puser.GachaHistory> list = 1;
+    map<uint32, Puser.GachaHistory> add = 2;
+}
+
+message StoredAgitoCountReward {
+    map<uint32, Puser.AgitoCountReward> list = 1;
+    map<uint32, Puser.AgitoCountReward> add = 2;
+}
+
+message StoredSeasonPass {
+    map<uint32, Puser.SeasonPass> list = 1;
+    map<uint32, Puser.SeasonPass> add = 2;
+}
+
+message StoredSeasonPassDailyMission {
+    map<uint32, Puser.SeasonPassDailyMission> list = 1;
+    map<uint32, Puser.SeasonPassDailyMission> add = 2;
+}
+
+message StoredSeasonPassWeeklyMission {
+    map<uint32, Puser.SeasonPassWeeklyMission> list = 1;
+    map<uint32, Puser.SeasonPassWeeklyMission> add = 2;
+}
+
+message StoredImportantMissionGroup {
+    map<uint32, Puser.ImportantMissionGroup> list = 1;
+    map<uint32, Puser.ImportantMissionGroup> add = 2;
+}
+
+message StoredImportantMission {
+    map<uint32, Puser.ImportantMission> list = 1;
+    map<uint32, Puser.ImportantMission> add = 2;
+}
+
+message StoredSpecialItemProgress {
+    map<string, Puser.SpecialItemProgress> list = 1;
+    map<string, Puser.SpecialItemProgress> add = 2;
+    repeated string del = 3;
+}
+
+message StoredAdvertising {
+    map<uint32, Puser.Advertising> list = 1;
+    map<uint32, Puser.Advertising> add = 2;
+}
+
+message StoredReliefPointSending {
+    map<uint64, Puser.ReliefPointSending> list = 1;
+    map<uint64, Puser.ReliefPointSending> add = 2;
+}
+
+message StoredReliefPointReward {
+    map<uint32, Puser.ReliefPointReward> list = 1;
+    map<uint32, Puser.ReliefPointReward> add = 2;
+}
+
+message StoredContentsRiskDungeon {
+    map<uint32, Puser.ContentsRiskDungeon> list = 1;
+    map<uint32, Puser.ContentsRiskDungeon> add = 2;
+}
+
+message StoredContentsClearAncientTowerEx {
+    map<string, Puser.ContentsClearAncientTowerEx> list = 1;
+    map<string, Puser.ContentsClearAncientTowerEx> add = 2;
+}
+
+message StoredJobDeckGroup {
+    map<uint64, Puser.JobDeckGroup> list = 1;
+    map<uint64, Puser.JobDeckGroup> add = 2;
+}
+
+message StoredGvgPracticeReward {
+    map<uint64, Puser.GvgPracticeReward> list = 1;
+    map<uint64, Puser.GvgPracticeReward> add = 2;
+}
+
+message StoredShopSpecialSale {
+    map<uint32, Puser.ShopSpecialSale> list = 1;
+    map<uint32, Puser.ShopSpecialSale> add = 2;
+}
+
+message StoredAgitoItemArea {
+    map<uint32, Puser.AgitoItemArea> list = 1;
+    map<uint32, Puser.AgitoItemArea> add = 2;
+}
+
+message StoredData {
+    uint64 generation = 1;
+    Puser.Player player = 2;
+    Currency currency = 3;
+    StoredSample sample = 4;
+    Puser.Setting setting = 5;
+    StoredEquipment equipment = 6;
+    StoredJob job = 7;
+    StoredJobSkill job_skill = 8;
+    StoredConditionProgress condition_progress = 11;
+    StoredAchievement achievement = 12;
+    StoredItem item = 13;
+    StoredAnima anima = 14;
+    StoredAnimaArea anima_area = 15;
+    StoredRune rune = 16;
+    StoredElixir elixir = 18;
+    StoredContents contents = 19;
+    StoredDailyMission daily_mission = 20;
+    StoredDailyMissionReward daily_mission_reward = 21;
+    StoredOrderMission order_mission = 22;
+    StoredOrderMissionReward order_mission_reward = 23;
+    StoredOrderMissionReroll order_mission_reroll = 24;
+    Pmisc.BattleMember battle_member = 25;
+    GuildInfo guild_info = 26;
+    Puser.Arena arena = 29;
+    StoredMercenaryHire mercenary_hire = 30;
+    Puser.MercenaryReward mercenary_reward = 31;
+    Puser.AchievementReward achievement_reward = 32;
+    StoredEventMission event_mission = 33;
+    StoredEventMissionReward event_mission_reward = 34;
+    StoredContentsCondition contents_condition = 35;
+    Puser.AbyssFever abyss_fever = 36;
+    StoredMercenary mercenary = 37;
+    StoredTitle title = 38;
+    StoredShopItem shop_item = 39;
+    StoredLoginBonus login_bonus = 40;
+    StoredEventSugoroku event_sugoroku = 41;
+    StoredBoost boost = 42;
+    StoredBlock block = 43;
+    StoredExchange exchange = 44;
+    StoredContentsHero contents_hero = 45;
+    StoredContentsTreasure contents_treasure = 46;
+    StoredContentsWeekMonster contents_week_monster = 47;
+    StoredFunctionalTutorial functional_tutorial = 48;
+    Puser.BackgroundBattle background_battle = 49;
+    StoredEventRoulette event_roulette = 50;
+    StoredAngelBattleWeeklyReward angel_battle_weekly_reward = 51;
+    StoredAchievementEquipment achievement_equipment = 52;
+    StoredAchievementEquipmentReceive achievement_equipment_receive = 53;
+    StoredAchievementEquipmentStamp achievement_equipment_stamp = 54;
+    StoredEquipmentLiberation equipment_liberation = 55;
+    StoredJobDeck job_deck = 56;
+    StoredAgitoFurnitureSetting agito_furniture_setting = 57;
+    StoredAgitoAp agito_ap = 58;
+    StoredAgitoItemArea agito_item_area = 59;
+    ChatUnreadCategory chat_unread_categories = 60;
+    StoredAgitoRelotteryInterval agito_relottery_interval = 61;
+    StoredAgitoVisitor agito_visitor = 62;
+    Puser.Agito agito = 63;
+    StoredAgitoGoodHistory agito_good_history = 64;
+    StoredGachaHistory gacha_history = 65;
+    StoredAgitoCountReward agito_count_reward = 66;
+    StoredSeasonPass season_pass = 67;
+    StoredSeasonPassDailyMission season_pass_daily_mission = 68;
+    StoredSeasonPassWeeklyMission season_pass_weekly_mission = 69;
+    Puser.Vip vip = 70;
+    StoredImportantMissionGroup important_mission_group = 71;
+    StoredImportantMission important_mission = 72;
+    StoredSpecialItemProgress special_item_progress = 73;
+    StoredAdvertising advertising = 74;
+    StoredPresentBoxInfo present_box_info = 75;
+    Puser.ReliefPoint relief_point = 76;
+    StoredReliefPointSending relief_point_sending = 77;
+    StoredReliefPointReward relief_point_reward = 78;
+    StoredContentsRiskDungeon contents_risk_dungeon = 79;
+    StoredContentsClearAncientTowerEx contents_clear_ancient_tower_ex = 80;
+    StoredJobDeckGroup job_deck_group = 81;
+    StoredGvgPracticeReward gvg_practice_reward = 82;
+    StoredShopSpecialSale shop_special_sale = 83;
+    string link_id = 84;
+}
+
+message Nocontent {
+    StoredData stored_data = 1;
+    Pcommon.Error error = 2;
+}
