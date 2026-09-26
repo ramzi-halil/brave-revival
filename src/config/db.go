@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"time"
 
@@ -13,6 +14,7 @@ import (
 	"example.com/brave-revival/src/proto/pmaster"
 	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/puser"
+	"golang.org/x/sync/errgroup"
 	gproto "google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
@@ -116,13 +118,31 @@ func LoadMaster(dbDir string) (*pmaster.All, error) {
 	all := &pmaster.All{}
 	allMessage := all.ProtoReflect()
 	allFields := allMessage.Descriptor().Fields()
+	type table struct {
+		path          string
+		rows          protoreflect.List
+		rowDescriptor protoreflect.MessageDescriptor
+	}
+	tables := make([]table, allFields.Len())
 
 	for i := range allFields.Len() {
 		allField := allFields.Get(i)
-		path := filepath.Join(dbDir, string(allField.Name())+".csv")
-		if err := loadMasterCSV(path, allMessage.Mutable(allField).List(), allField.Message()); err != nil {
-			return nil, err
+		tables[i] = table{
+			path:          filepath.Join(dbDir, string(allField.Name())+".csv"),
+			rows:          allMessage.Mutable(allField).List(),
+			rowDescriptor: allField.Message(),
 		}
+	}
+
+	var group errgroup.Group
+	group.SetLimit(runtime.GOMAXPROCS(0))
+	for _, table := range tables {
+		group.Go(func() error {
+			return loadMasterCSV(table.path, table.rows, table.rowDescriptor)
+		})
+	}
+	if err := group.Wait(); err != nil {
+		return nil, err
 	}
 
 	return all, nil
@@ -144,7 +164,11 @@ func loadMasterCSV(path string, rows protoreflect.List, rowDescriptor protorefle
 	reader.ReuseRecord = true
 	reader.Comment = '#'
 
-	fields := make([]protoreflect.FieldDescriptor, len(header))
+	type column struct {
+		field    protoreflect.FieldDescriptor
+		datetime bool
+	}
+	fields := make([]column, len(header))
 	seen := make(map[protoreflect.Name]struct{}, len(header))
 	for i, name := range header {
 		field := rowDescriptor.Fields().ByName(protoreflect.Name(name))
@@ -155,7 +179,10 @@ func loadMasterCSV(path string, rows protoreflect.List, rowDescriptor protorefle
 			return fmt.Errorf("master CSV %q has duplicate column %q", path, name)
 		}
 		seen[field.Name()] = struct{}{}
-		fields[i] = field
+		fields[i] = column{
+			field:    field,
+			datetime: field.Kind() == protoreflect.StringKind && gproto.GetExtension(field.Options(), options.E_Datetime).(bool),
+		}
 	}
 	if len(seen) != rowDescriptor.Fields().Len() {
 		for i := range rowDescriptor.Fields().Len() {
@@ -177,18 +204,18 @@ func loadMasterCSV(path string, rows protoreflect.List, rowDescriptor protorefle
 
 		row := rows.NewElement().Message()
 		for i, raw := range record {
-			value, err := parseMasterValue(raw, fields[i])
+			value, err := parseMasterValue(raw, fields[i].field, fields[i].datetime)
 			if err != nil {
-				return fmt.Errorf("master CSV %q record %d column %q: %w", path, recordNumber, fields[i].Name(), err)
+				return fmt.Errorf("master CSV %q record %d column %q: %w", path, recordNumber, fields[i].field.Name(), err)
 			}
-			row.Set(fields[i], value)
+			row.Set(fields[i].field, value)
 		}
 		rows.Append(protoreflect.ValueOfMessage(row))
 	}
 }
 
-func parseMasterValue(raw string, field protoreflect.FieldDescriptor) (protoreflect.Value, error) {
-	if field.Kind() == protoreflect.StringKind && raw != "" && gproto.GetExtension(field.Options(), options.E_Datetime).(bool) {
+func parseMasterValue(raw string, field protoreflect.FieldDescriptor, datetime bool) (protoreflect.Value, error) {
+	if datetime && raw != "" {
 		parsed, err := time.ParseInLocation("2006-01-02T15:04:05", raw, StandardTimeZone)
 		if err != nil {
 			return protoreflect.Value{}, fmt.Errorf("invalid datetime %q: %w", raw, err)
