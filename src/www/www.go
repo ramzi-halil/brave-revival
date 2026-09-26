@@ -65,6 +65,8 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 
 		router.Get("/player/list", playerList)
 		router.Get("/player/load", playerLoad)
+		router.Get("/player/detail/{player_id}", playerDetail)
+
 		router.Post("/field/top", fieldTop)
 
 		router.Get("/mission/guild/personal/list", missionGuildPersonalList)
@@ -73,6 +75,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/guild/facility/list", empty("Proto.GuildFacilityList"))
 	})
 	router.Get("/crow/Assets/{os}/{hash}", assets)
+	router.Get("/news/top/{os}", news)
 	router.NotFound(notFound)
 	router.MethodNotAllowed(notFound)
 

@@ -11,6 +11,7 @@ const defaultPlayerID = 100
 
 func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 	storedEquipments := make(map[uint64]*puser.Equipment, len(master.Equipment))
+	var anyEquipmentID uint64
 	for _, equipment := range master.Equipment {
 		storedEquipments[uint64(equipment.Id)] = &puser.Equipment{
 			Id:                uint64(equipment.Id),
@@ -23,6 +24,9 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			WeaponSkillLevel3: 1,
 			AcquiredAt:        "0",
 		}
+		if anyEquipmentID < 10000 && equipment.EquipmentCategory == 1 {
+			anyEquipmentID = uint64(equipment.Id)
+		}
 	}
 
 	jobDecks := make(map[uint64]*puser.JobDeck, 5)
@@ -32,7 +36,7 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			Idx:            1,
 			PlayerId:       defaultPlayerID,
 			JobId:          uint32(i),
-			Line1MainFront: 1007140,
+			Line1MainFront: anyEquipmentID,
 			HpUseAt:        40,
 			HpUseOrder:     1,
 		}
@@ -43,7 +47,7 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		jobs[i] = &puser.Job{
 			PlayerId:        defaultPlayerID,
 			JobId:           i,
-			Level:           999,
+			Level:           780,
 			JobDeckIdx:      1,
 			JobEquipmentIdx: 1,
 		}
@@ -61,6 +65,36 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		}
 	}
 
+	tutorials := make(map[uint32]*puser.FunctionalTutorial, len(master.FunctionalTutorial))
+	for _, tutorial := range master.FunctionalTutorial {
+		tutorials[tutorial.Id] = &puser.FunctionalTutorial{
+			PlayerId:   defaultPlayerID,
+			FunctionId: tutorial.Id,
+			Step:       2,
+			Adid:       "054f522be8b4cc4a7063159715950950",
+		}
+	}
+
+	contents := make(map[uint32]*puser.Contents, len(master.Contents))
+	for _, content := range master.Contents {
+		contents[content.Id] = &puser.Contents{
+			PlayerId:    defaultPlayerID,
+			ContentsId:  content.Id,
+			StageId:     4131013,
+			LastSweptAt: "0",
+		}
+	}
+
+	items := make(map[uint32]*puser.Item, len(master.Item))
+	for _, item := range master.Item {
+		items[item.Id] = &puser.Item{
+			PlayerId:   defaultPlayerID,
+			ItemId:     item.Id,
+			Quantity:   9999,
+			AcquiredAt: "0",
+		}
+	}
+
 	return &proto.StoredData{
 		Generation: 1,
 		Player: &puser.Player{
@@ -73,8 +107,7 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			CharacterSlots:        9999,
 			AccessorySlots:        9999,
 			AchievementRank:       50,
-			FavoriteEquipmentId_1: 1007140,
-			FavoriteEquipmentId_2: 1044030,
+			FavoriteEquipmentId_1: anyEquipmentID,
 			LastLoginAt:           "0",
 			NameChangedAt:         "0",
 			NewbieShopOpenedAt:    "0",
@@ -94,9 +127,12 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			WeeklyAcquiredAt:      "0",
 			DailyRewardReceivedAt: "0",
 		},
-		JobDeck:       &proto.StoredJobDeck{List: jobDecks},
-		Job:           &proto.StoredJob{List: jobs},
-		AgitoItemArea: &proto.StoredAgitoItemArea{List: agitoItemArea},
+		JobDeck:            &proto.StoredJobDeck{List: jobDecks},
+		Job:                &proto.StoredJob{List: jobs},
+		AgitoItemArea:      &proto.StoredAgitoItemArea{List: agitoItemArea},
+		FunctionalTutorial: &proto.StoredFunctionalTutorial{List: tutorials},
+		Contents:           &proto.StoredContents{List: contents},
+		Item:               &proto.StoredItem{List: items},
 		AgitoFurnitureSetting: &proto.StoredAgitoFurnitureSetting{
 			List: map[uint32]*puser.AgitoFurnitureSetting{
 				1: &puser.AgitoFurnitureSetting{
@@ -121,12 +157,10 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		},
 		Sample:                      &proto.StoredSample{},
 		Setting:                     &puser.Setting{},
-		Item:                        &proto.StoredItem{},
 		Anima:                       &proto.StoredAnima{},
 		AnimaArea:                   &proto.StoredAnimaArea{},
 		Rune:                        &proto.StoredRune{},
 		Elixir:                      &proto.StoredElixir{},
-		Contents:                    &proto.StoredContents{},
 		JobSkill:                    &proto.StoredJobSkill{},
 		ConditionProgress:           &proto.StoredConditionProgress{},
 		Achievement:                 &proto.StoredAchievement{},
@@ -155,7 +189,6 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		ContentsHero:                &proto.StoredContentsHero{},
 		ContentsTreasure:            &proto.StoredContentsTreasure{},
 		ContentsWeekMonster:         &proto.StoredContentsWeekMonster{},
-		FunctionalTutorial:          &proto.StoredFunctionalTutorial{},
 		BackgroundBattle:            &puser.BackgroundBattle{},
 		EventRoulette:               &proto.StoredEventRoulette{},
 		AngelBattleWeeklyReward:     &proto.StoredAngelBattleWeeklyReward{},
