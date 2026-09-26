@@ -9,7 +9,10 @@ import (
 
 const defaultPlayerID = 100
 
-func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
+// generateStoredEquipment generates the list of stored equipments for the player,
+// such that the player has 1 copy of each equipment.
+// The 2nd field is an arbitrary vanguard ID for use in the default deck.
+func generateStoredEquipment(master *pmaster.All) (*proto.StoredEquipment, uint64) {
 	storedEquipments := make(map[uint64]*puser.Equipment, len(master.Equipment))
 	var anyEquipmentID uint64
 	for _, equipment := range master.Equipment {
@@ -28,7 +31,10 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			anyEquipmentID = uint64(equipment.Id)
 		}
 	}
+	return &proto.StoredEquipment{List: storedEquipments}, anyEquipmentID
+}
 
+func generateStoredJobDeck(master *pmaster.All, anyEquipmentID uint64) *proto.StoredJobDeck {
 	jobDecks := make(map[uint64]*puser.JobDeck, 5)
 	for i := 1; i <= 5; i++ {
 		jobDecks[uint64(i)] = &puser.JobDeck{
@@ -41,7 +47,10 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			HpUseOrder:     1,
 		}
 	}
+	return &proto.StoredJobDeck{List: jobDecks}
+}
 
+func generateStoredJob(master *pmaster.All) *proto.StoredJob {
 	jobs := make(map[uint32]*puser.Job, 5)
 	for i := uint32(1); i <= 5; i++ {
 		jobs[i] = &puser.Job{
@@ -52,7 +61,10 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			JobEquipmentIdx: 1,
 		}
 	}
+	return &proto.StoredJob{List: jobs}
+}
 
+func generateStoredAgitoItemArea(master *pmaster.All) *proto.StoredAgitoItemArea {
 	agitoItemArea := make(map[uint32]*puser.AgitoItemArea, len(master.AgitoItemArea))
 	for _, area := range master.AgitoItemArea {
 		agitoItemArea[area.Id] = &puser.AgitoItemArea{
@@ -64,7 +76,10 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			LineupReturnAt3: "0",
 		}
 	}
+	return &proto.StoredAgitoItemArea{List: agitoItemArea}
+}
 
+func generateStoredFunctionTutorial(master *pmaster.All) *proto.StoredFunctionalTutorial {
 	tutorials := make(map[uint32]*puser.FunctionalTutorial, len(master.FunctionalTutorial))
 	for _, tutorial := range master.FunctionalTutorial {
 		tutorials[tutorial.Id] = &puser.FunctionalTutorial{
@@ -74,7 +89,10 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			Adid:       "054f522be8b4cc4a7063159715950950",
 		}
 	}
+	return &proto.StoredFunctionalTutorial{List: tutorials}
+}
 
+func generateStoredContents(master *pmaster.All) *proto.StoredContents {
 	contents := make(map[uint32]*puser.Contents, len(master.Contents))
 	for _, content := range master.Contents {
 		contents[content.Id] = &puser.Contents{
@@ -84,7 +102,10 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			LastSweptAt: "0",
 		}
 	}
+	return &proto.StoredContents{List: contents}
+}
 
+func generateStoredItem(master *pmaster.All) *proto.StoredItem {
 	items := make(map[uint32]*puser.Item, len(master.Item))
 	for _, item := range master.Item {
 		items[item.Id] = &puser.Item{
@@ -94,6 +115,11 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			AcquiredAt: "0",
 		}
 	}
+	return &proto.StoredItem{List: items}
+}
+
+func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
+	equipments, anyEquipmentID := generateStoredEquipment(master)
 
 	return &proto.StoredData{
 		Generation: 1,
@@ -119,7 +145,6 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			FreeBlueOrb: 1200,
 			TotalOrb:    2400,
 		},
-		Equipment: &proto.StoredEquipment{List: storedEquipments},
 		Arena: &puser.Arena{
 			PlayerId:              defaultPlayerID,
 			JobDeckId:             1,
@@ -127,12 +152,6 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			WeeklyAcquiredAt:      "0",
 			DailyRewardReceivedAt: "0",
 		},
-		JobDeck:            &proto.StoredJobDeck{List: jobDecks},
-		Job:                &proto.StoredJob{List: jobs},
-		AgitoItemArea:      &proto.StoredAgitoItemArea{List: agitoItemArea},
-		FunctionalTutorial: &proto.StoredFunctionalTutorial{List: tutorials},
-		Contents:           &proto.StoredContents{List: contents},
-		Item:               &proto.StoredItem{List: items},
 		AgitoFurnitureSetting: &proto.StoredAgitoFurnitureSetting{
 			List: map[uint32]*puser.AgitoFurnitureSetting{
 				1: &puser.AgitoFurnitureSetting{
@@ -155,6 +174,13 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 				},
 			},
 		},
+		Equipment:                   equipments,
+		JobDeck:                     generateStoredJobDeck(master, anyEquipmentID),
+		Job:                         generateStoredJob(master),
+		AgitoItemArea:               generateStoredAgitoItemArea(master),
+		FunctionalTutorial:          generateStoredFunctionTutorial(master),
+		Contents:                    generateStoredContents(master),
+		Item:                        generateStoredItem(master),
 		Sample:                      &proto.StoredSample{},
 		Setting:                     &puser.Setting{},
 		Anima:                       &proto.StoredAnima{},
