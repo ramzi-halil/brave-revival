@@ -93,12 +93,25 @@ func generateStoredFunctionTutorial(master *pmaster.All) *proto.StoredFunctional
 }
 
 func generateStoredContents(master *pmaster.All) *proto.StoredContents {
+	areaContents := make(map[uint32]uint32, len(master.Area))
+	for _, area := range master.Area {
+		areaContents[area.Id] = area.ContentsId
+	}
+
+	maxStageByContents := make(map[uint32]uint32, len(master.Contents))
+	for _, stage := range master.Stage {
+		contentsID, ok := areaContents[stage.AreaId]
+		if ok && stage.Id > maxStageByContents[contentsID] {
+			maxStageByContents[contentsID] = stage.Id
+		}
+	}
+
 	contents := make(map[uint32]*puser.Contents, len(master.Contents))
 	for _, content := range master.Contents {
 		contents[content.Id] = &puser.Contents{
 			PlayerId:    defaultPlayerID,
 			ContentsId:  content.Id,
-			StageId:     4131013,
+			StageId:     maxStageByContents[content.Id],
 			LastSweptAt: "0",
 		}
 	}
