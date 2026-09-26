@@ -82,10 +82,14 @@ func generateStoredAgitoItemArea(master *pmaster.All) *proto.StoredAgitoItemArea
 func generateStoredFunctionTutorial(master *pmaster.All) *proto.StoredFunctionalTutorial {
 	tutorials := make(map[uint32]*puser.FunctionalTutorial, len(master.FunctionalTutorial))
 	for _, tutorial := range master.FunctionalTutorial {
+		step := uint32(2)
+		if tutorial.Id == 11 {
+			step = 7
+		}
 		tutorials[tutorial.Id] = &puser.FunctionalTutorial{
 			PlayerId:   defaultPlayerID,
 			FunctionId: tutorial.Id,
-			Step:       2,
+			Step:       step,
 			Adid:       "054f522be8b4cc4a7063159715950950",
 		}
 	}
