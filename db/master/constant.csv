@@ -319,7 +319,7 @@ id,key,value,type,priority,open_date,close_date,open_time,close_time
 20370,holybeast_player_limit,40,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20371,disable_purchase,1,2,1,2120-09-01T00:00:00,2120-09-30T00:00:00,0,0
 20372,blacksmith_evolution_button_unlock,1,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
-20373,app_close_flag,1,2,1,2026-09-28T17:30:00,2026-12-28T10:30:00,0,0
+20373,app_close_flag,0,2,1,2026-09-28T17:30:00,2026-12-28T10:30:00,0,0
 20374,app_close_dialog_body_text_name,51075,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20375,leader_approval_time_limit,10,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20376,gvg_survival_penalty,15,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0

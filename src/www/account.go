@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"example.com/brave-revival/src/proto/proto"
+	"example.com/brave-revival/src/proto/pmaster"
 )
 
 func accountExist(w http.ResponseWriter, r *http.Request) {
@@ -26,8 +27,11 @@ func accountAuthorize(w http.ResponseWriter, _ *http.Request) {
 	})
 }
 
-func accountCertificate(w http.ResponseWriter, r *http.Request) {
+func accountCertificate(w http.ResponseWriter, _ *http.Request) {
 	writeProto(w, http.StatusOK, &proto.AccountCertificate{
-		Version: getHandler(r).master.Version[0],
+		Version: &pmaster.Version{
+			Resource: 1,
+			Master:   1,
+		},
 	})
 }
