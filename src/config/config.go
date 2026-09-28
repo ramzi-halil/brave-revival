@@ -51,6 +51,9 @@ type Config struct {
 
 	// DBDir is the local directory path where the decoded game data are stored.
 	DBDir string `json:"db_dir"`
+
+	// PlayerPath is the local path storing the player info.
+	PlayerPath string `json:"player_path"`
 }
 
 func ReadFile(path string) (*Config, error) {

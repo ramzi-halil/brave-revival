@@ -1187,3 +1187,6 @@ message Vip {
     uint32 free_continue_use = 5;
     string free_continue_used_at = 6;
 }
+
+message GuildWeeklyMissionRewardList {
+}

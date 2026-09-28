@@ -10302,6 +10302,42 @@ func (x *Vip) GetFreeContinueUsedAt() string {
 	return ""
 }
 
+type GuildWeeklyMissionRewardList struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuildWeeklyMissionRewardList) Reset() {
+	*x = GuildWeeklyMissionRewardList{}
+	mi := &file_puser_proto_msgTypes[68]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildWeeklyMissionRewardList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildWeeklyMissionRewardList) ProtoMessage() {}
+
+func (x *GuildWeeklyMissionRewardList) ProtoReflect() protoreflect.Message {
+	mi := &file_puser_proto_msgTypes[68]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildWeeklyMissionRewardList.ProtoReflect.Descriptor instead.
+func (*GuildWeeklyMissionRewardList) Descriptor() ([]byte, []int) {
+	return file_puser_proto_rawDescGZIP(), []int{68}
+}
+
 var File_puser_proto protoreflect.FileDescriptor
 
 const file_puser_proto_rawDesc = "" +
@@ -11421,7 +11457,8 @@ const file_puser_proto_rawDesc = "" +
 	"\x04rank\x18\x03 \x01(\rR\x04rank\x127\n" +
 	"\x18daily_reward_received_at\x18\x04 \x01(\tR\x15dailyRewardReceivedAt\x12*\n" +
 	"\x11free_continue_use\x18\x05 \x01(\rR\x0ffreeContinueUse\x121\n" +
-	"\x15free_continue_used_at\x18\x06 \x01(\tR\x12freeContinueUsedAtB+Z)example.com/brave-revival/src/proto/puserb\x06proto3"
+	"\x15free_continue_used_at\x18\x06 \x01(\tR\x12freeContinueUsedAt\"\x1e\n" +
+	"\x1cGuildWeeklyMissionRewardListB+Z)example.com/brave-revival/src/proto/puserb\x06proto3"
 
 var (
 	file_puser_proto_rawDescOnce sync.Once
@@ -11435,76 +11472,77 @@ func file_puser_proto_rawDescGZIP() []byte {
 	return file_puser_proto_rawDescData
 }
 
-var file_puser_proto_msgTypes = make([]protoimpl.MessageInfo, 68)
+var file_puser_proto_msgTypes = make([]protoimpl.MessageInfo, 69)
 var file_puser_proto_goTypes = []any{
-	(*Player)(nil),                      // 0: Puser.Player
-	(*Job)(nil),                         // 1: Puser.Job
-	(*JobSkill)(nil),                    // 2: Puser.JobSkill
-	(*JobDeck)(nil),                     // 3: Puser.JobDeck
-	(*Equipment)(nil),                   // 4: Puser.Equipment
-	(*Elixir)(nil),                      // 5: Puser.Elixir
-	(*Setting)(nil),                     // 6: Puser.Setting
-	(*AgitoItemArea)(nil),               // 7: Puser.AgitoItemArea
-	(*AbyssFever)(nil),                  // 8: Puser.AbyssFever
-	(*Achievement)(nil),                 // 9: Puser.Achievement
-	(*AchievementEquipment)(nil),        // 10: Puser.AchievementEquipment
-	(*AchievementEquipmentReceive)(nil), // 11: Puser.AchievementEquipmentReceive
-	(*AchievementEquipmentStamp)(nil),   // 12: Puser.AchievementEquipmentStamp
-	(*AchievementReward)(nil),           // 13: Puser.AchievementReward
-	(*Advertising)(nil),                 // 14: Puser.Advertising
-	(*Agito)(nil),                       // 15: Puser.Agito
-	(*AgitoAp)(nil),                     // 16: Puser.AgitoAp
-	(*AgitoCountReward)(nil),            // 17: Puser.AgitoCountReward
-	(*AgitoFurnitureSetting)(nil),       // 18: Puser.AgitoFurnitureSetting
-	(*AgitoGoodHistory)(nil),            // 19: Puser.AgitoGoodHistory
-	(*AgitoRelotteryInterval)(nil),      // 20: Puser.AgitoRelotteryInterval
-	(*AgitoVisitor)(nil),                // 21: Puser.AgitoVisitor
-	(*AngelBattleWeeklyReward)(nil),     // 22: Puser.AngelBattleWeeklyReward
-	(*Anima)(nil),                       // 23: Puser.Anima
-	(*AnimaArea)(nil),                   // 24: Puser.AnimaArea
-	(*Arena)(nil),                       // 25: Puser.Arena
-	(*BackgroundBattle)(nil),            // 26: Puser.BackgroundBattle
-	(*Boost)(nil),                       // 27: Puser.Boost
-	(*Contents)(nil),                    // 28: Puser.Contents
-	(*ContentsClearAncientTowerEx)(nil), // 29: Puser.ContentsClearAncientTowerEx
-	(*ContentsCondition)(nil),           // 30: Puser.ContentsCondition
-	(*ContentsHero)(nil),                // 31: Puser.ContentsHero
-	(*ContentsRiskDungeon)(nil),         // 32: Puser.ContentsRiskDungeon
-	(*ContentsTreasure)(nil),            // 33: Puser.ContentsTreasure
-	(*ContentsWeekMonster)(nil),         // 34: Puser.ContentsWeekMonster
-	(*DailyMission)(nil),                // 35: Puser.DailyMission
-	(*DailyMissionReward)(nil),          // 36: Puser.DailyMissionReward
-	(*EquipmentLiberation)(nil),         // 37: Puser.EquipmentLiberation
-	(*EventMission)(nil),                // 38: Puser.EventMission
-	(*EventMissionReward)(nil),          // 39: Puser.EventMissionReward
-	(*EventRoulette)(nil),               // 40: Puser.EventRoulette
-	(*EventSugoroku)(nil),               // 41: Puser.EventSugoroku
-	(*Exchange)(nil),                    // 42: Puser.Exchange
-	(*FunctionalTutorial)(nil),          // 43: Puser.FunctionalTutorial
-	(*GachaHistory)(nil),                // 44: Puser.GachaHistory
-	(*GvgPracticeReward)(nil),           // 45: Puser.GvgPracticeReward
-	(*ImportantMission)(nil),            // 46: Puser.ImportantMission
-	(*ImportantMissionGroup)(nil),       // 47: Puser.ImportantMissionGroup
-	(*Item)(nil),                        // 48: Puser.Item
-	(*JobDeckGroup)(nil),                // 49: Puser.JobDeckGroup
-	(*LoginBonus)(nil),                  // 50: Puser.LoginBonus
-	(*MercenaryHire)(nil),               // 51: Puser.MercenaryHire
-	(*MercenaryReward)(nil),             // 52: Puser.MercenaryReward
-	(*OrderMission)(nil),                // 53: Puser.OrderMission
-	(*OrderMissionReroll)(nil),          // 54: Puser.OrderMissionReroll
-	(*OrderMissionReward)(nil),          // 55: Puser.OrderMissionReward
-	(*ReliefPoint)(nil),                 // 56: Puser.ReliefPoint
-	(*ReliefPointReward)(nil),           // 57: Puser.ReliefPointReward
-	(*ReliefPointSending)(nil),          // 58: Puser.ReliefPointSending
-	(*Rune)(nil),                        // 59: Puser.Rune
-	(*SeasonPass)(nil),                  // 60: Puser.SeasonPass
-	(*SeasonPassDailyMission)(nil),      // 61: Puser.SeasonPassDailyMission
-	(*SeasonPassWeeklyMission)(nil),     // 62: Puser.SeasonPassWeeklyMission
-	(*ShopItem)(nil),                    // 63: Puser.ShopItem
-	(*ShopSpecialSale)(nil),             // 64: Puser.ShopSpecialSale
-	(*SpecialItemProgress)(nil),         // 65: Puser.SpecialItemProgress
-	(*Title)(nil),                       // 66: Puser.Title
-	(*Vip)(nil),                         // 67: Puser.Vip
+	(*Player)(nil),                       // 0: Puser.Player
+	(*Job)(nil),                          // 1: Puser.Job
+	(*JobSkill)(nil),                     // 2: Puser.JobSkill
+	(*JobDeck)(nil),                      // 3: Puser.JobDeck
+	(*Equipment)(nil),                    // 4: Puser.Equipment
+	(*Elixir)(nil),                       // 5: Puser.Elixir
+	(*Setting)(nil),                      // 6: Puser.Setting
+	(*AgitoItemArea)(nil),                // 7: Puser.AgitoItemArea
+	(*AbyssFever)(nil),                   // 8: Puser.AbyssFever
+	(*Achievement)(nil),                  // 9: Puser.Achievement
+	(*AchievementEquipment)(nil),         // 10: Puser.AchievementEquipment
+	(*AchievementEquipmentReceive)(nil),  // 11: Puser.AchievementEquipmentReceive
+	(*AchievementEquipmentStamp)(nil),    // 12: Puser.AchievementEquipmentStamp
+	(*AchievementReward)(nil),            // 13: Puser.AchievementReward
+	(*Advertising)(nil),                  // 14: Puser.Advertising
+	(*Agito)(nil),                        // 15: Puser.Agito
+	(*AgitoAp)(nil),                      // 16: Puser.AgitoAp
+	(*AgitoCountReward)(nil),             // 17: Puser.AgitoCountReward
+	(*AgitoFurnitureSetting)(nil),        // 18: Puser.AgitoFurnitureSetting
+	(*AgitoGoodHistory)(nil),             // 19: Puser.AgitoGoodHistory
+	(*AgitoRelotteryInterval)(nil),       // 20: Puser.AgitoRelotteryInterval
+	(*AgitoVisitor)(nil),                 // 21: Puser.AgitoVisitor
+	(*AngelBattleWeeklyReward)(nil),      // 22: Puser.AngelBattleWeeklyReward
+	(*Anima)(nil),                        // 23: Puser.Anima
+	(*AnimaArea)(nil),                    // 24: Puser.AnimaArea
+	(*Arena)(nil),                        // 25: Puser.Arena
+	(*BackgroundBattle)(nil),             // 26: Puser.BackgroundBattle
+	(*Boost)(nil),                        // 27: Puser.Boost
+	(*Contents)(nil),                     // 28: Puser.Contents
+	(*ContentsClearAncientTowerEx)(nil),  // 29: Puser.ContentsClearAncientTowerEx
+	(*ContentsCondition)(nil),            // 30: Puser.ContentsCondition
+	(*ContentsHero)(nil),                 // 31: Puser.ContentsHero
+	(*ContentsRiskDungeon)(nil),          // 32: Puser.ContentsRiskDungeon
+	(*ContentsTreasure)(nil),             // 33: Puser.ContentsTreasure
+	(*ContentsWeekMonster)(nil),          // 34: Puser.ContentsWeekMonster
+	(*DailyMission)(nil),                 // 35: Puser.DailyMission
+	(*DailyMissionReward)(nil),           // 36: Puser.DailyMissionReward
+	(*EquipmentLiberation)(nil),          // 37: Puser.EquipmentLiberation
+	(*EventMission)(nil),                 // 38: Puser.EventMission
+	(*EventMissionReward)(nil),           // 39: Puser.EventMissionReward
+	(*EventRoulette)(nil),                // 40: Puser.EventRoulette
+	(*EventSugoroku)(nil),                // 41: Puser.EventSugoroku
+	(*Exchange)(nil),                     // 42: Puser.Exchange
+	(*FunctionalTutorial)(nil),           // 43: Puser.FunctionalTutorial
+	(*GachaHistory)(nil),                 // 44: Puser.GachaHistory
+	(*GvgPracticeReward)(nil),            // 45: Puser.GvgPracticeReward
+	(*ImportantMission)(nil),             // 46: Puser.ImportantMission
+	(*ImportantMissionGroup)(nil),        // 47: Puser.ImportantMissionGroup
+	(*Item)(nil),                         // 48: Puser.Item
+	(*JobDeckGroup)(nil),                 // 49: Puser.JobDeckGroup
+	(*LoginBonus)(nil),                   // 50: Puser.LoginBonus
+	(*MercenaryHire)(nil),                // 51: Puser.MercenaryHire
+	(*MercenaryReward)(nil),              // 52: Puser.MercenaryReward
+	(*OrderMission)(nil),                 // 53: Puser.OrderMission
+	(*OrderMissionReroll)(nil),           // 54: Puser.OrderMissionReroll
+	(*OrderMissionReward)(nil),           // 55: Puser.OrderMissionReward
+	(*ReliefPoint)(nil),                  // 56: Puser.ReliefPoint
+	(*ReliefPointReward)(nil),            // 57: Puser.ReliefPointReward
+	(*ReliefPointSending)(nil),           // 58: Puser.ReliefPointSending
+	(*Rune)(nil),                         // 59: Puser.Rune
+	(*SeasonPass)(nil),                   // 60: Puser.SeasonPass
+	(*SeasonPassDailyMission)(nil),       // 61: Puser.SeasonPassDailyMission
+	(*SeasonPassWeeklyMission)(nil),      // 62: Puser.SeasonPassWeeklyMission
+	(*ShopItem)(nil),                     // 63: Puser.ShopItem
+	(*ShopSpecialSale)(nil),              // 64: Puser.ShopSpecialSale
+	(*SpecialItemProgress)(nil),          // 65: Puser.SpecialItemProgress
+	(*Title)(nil),                        // 66: Puser.Title
+	(*Vip)(nil),                          // 67: Puser.Vip
+	(*GuildWeeklyMissionRewardList)(nil), // 68: Puser.GuildWeeklyMissionRewardList
 }
 var file_puser_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -11525,7 +11563,7 @@ func file_puser_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_puser_proto_rawDesc), len(file_puser_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   68,
+			NumMessages:   69,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

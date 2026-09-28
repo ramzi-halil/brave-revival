@@ -219,13 +219,44 @@ message GuildSharedMissionResult {
 message AgitoVisitorReturn {
 }
 
+message FieldPlayerDetail {
+    Puser.Player player = 1;
+    Puser.JobDeck current_job_deck = 2;
+    repeated Puser.Equipment equipments = 3;
+    uint64 guild_id = 4;
+    string guild_name = 5;
+    uint32 guild_symbol = 6;
+    uint32 guild_symbol_frame = 7;
+    uint32 guild_symbol_frame_color = 8;
+    uint32 guild_member_role = 9;
+}
+
 message FieldTopResponse {
-    Pmisc.GuildSharedMissionList shared_mission_list = 13;
-    Pmisc.GuildPersonalMissionList personal_mission_list = 14;
-    Pmisc.GuildWeeklyMissionRewardList weekly_mission_reward = 16;
+    StoredData stored_data = 1;
+    repeated FieldPlayerDetail players = 2;
+    uint64 guild_id = 3;
+    string guild_name = 4;
+    uint32 guild_symbol = 5;
+    uint32 guild_symbol_frame = 6;
+    uint32 guild_symbol_frame_color = 7;
+    uint32 guild_member_role = 8;
+    bool is_present_box = 9;
+    uint32 friend_badge = 10;
+    uint32 guild_badge = 11;
+    // repeated GuildWeeklyMission weeklyMissionList = 12;
+    Pmisc.GuildSharedMissionList sharedMissionList = 13;
+    Pmisc.GuildPersonalMissionList personalMissionList = 14;
+    // repeated RaidHistory raid_history_list = 15;
+    Puser.GuildWeeklyMissionRewardList weekly_mission_reward = 16;
     GuildFacilityList facility_list = 17;
     BattleBackgroundReward background_battle_reward = 18;
+    repeated Puser.LoginBonus login_bonus = 19;
     AgitoVisitorReturn agito_visitor_return = 20;
+    string last_agito_received_good_at = 21;
+    uint32 present_box_count = 22;
+    uint32 direct_message_badge = 24;
+    uint32 direct_message_count = 25;
+    // ArenaSeasonResponse arena_season = 26;
 }
 
 message Currency {

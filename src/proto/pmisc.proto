@@ -15,9 +15,6 @@ message GuildSharedMissionRankingList {
     // repeated GuildSharedMissionRanking list = 1;
 }
 
-message GuildWeeklyMissionRewardList {
-}
-
 message Guild {
 }
 

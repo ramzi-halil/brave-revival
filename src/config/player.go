@@ -9,6 +9,9 @@ import (
 
 const defaultPlayerID = 100
 
+// 2026-09-09 21:30 JST
+const defaultTimestamp = "6aa15148"
+
 // generateStoredEquipment generates the list of stored equipments for the player,
 // such that the player has 1 copy of each equipment.
 // The 2nd field is an arbitrary vanguard ID for use in the default deck.
@@ -25,7 +28,7 @@ func generateStoredEquipment(master *pmaster.All) (*proto.StoredEquipment, uint6
 			WeaponSkillLevel1: 1,
 			WeaponSkillLevel2: 1,
 			WeaponSkillLevel3: 1,
-			AcquiredAt:        "0",
+			AcquiredAt:        defaultTimestamp,
 		}
 		if anyEquipmentID < 10000 && equipment.EquipmentCategory == 1 {
 			anyEquipmentID = uint64(equipment.Id)
@@ -67,7 +70,7 @@ func generateStoredJob(master *pmaster.All) *proto.StoredJob {
 func generateStoredAgitoItemArea(master *pmaster.All) *proto.StoredAgitoItemArea {
 	agitoItemArea := make(map[uint32]*puser.AgitoItemArea, len(master.AgitoItemArea))
 	for _, area := range master.AgitoItemArea {
-		agitoItemArea[area.Id] = &puser.AgitoItemArea{
+		agitoItemArea[area.Id | 0x10000] = &puser.AgitoItemArea{
 			PlayerId:        defaultPlayerID,
 			RoomNumber:      1,
 			AgitoItemAreaId: area.Id,
@@ -116,20 +119,20 @@ func generateStoredContents(master *pmaster.All) *proto.StoredContents {
 			PlayerId:    defaultPlayerID,
 			ContentsId:  content.Id,
 			StageId:     maxStageByContents[content.Id],
-			LastSweptAt: "0",
+			LastSweptAt: defaultTimestamp,
 		}
 	}
 	return &proto.StoredContents{List: contents}
 }
 
 func generateStoredItem(master *pmaster.All) *proto.StoredItem {
-	items := make(map[uint32]*puser.Item, len(master.Item))
+	items := make(map[uint32]*puser.Item)
 	for _, item := range master.Item {
 		items[item.Id] = &puser.Item{
 			PlayerId:   defaultPlayerID,
 			ItemId:     item.Id,
-			Quantity:   9999,
-			AcquiredAt: "0",
+			Quantity:   100,
+			AcquiredAt: defaultTimestamp,
 		}
 	}
 	return &proto.StoredItem{List: items}
@@ -151,11 +154,11 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			AccessorySlots:        9999,
 			AchievementRank:       50,
 			FavoriteEquipmentId_1: anyEquipmentID,
-			LastLoginAt:           "0",
-			NameChangedAt:         "0",
-			NewbieShopOpenedAt:    "0",
+			LastLoginAt:           defaultTimestamp,
+			NameChangedAt:         defaultTimestamp,
+			NewbieShopOpenedAt:    defaultTimestamp,
 			ComeBackExpiredAt:     "ffffffff",
-			OpenedAt:              "0",
+			OpenedAt:              defaultTimestamp,
 		},
 		Currency: &proto.Currency{
 			RedOrb:      1200,
@@ -165,9 +168,9 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		Arena: &puser.Arena{
 			PlayerId:              defaultPlayerID,
 			JobDeckId:             1,
-			DailyAcquiredAt:       "0",
-			WeeklyAcquiredAt:      "0",
-			DailyRewardReceivedAt: "0",
+			DailyAcquiredAt:       defaultTimestamp,
+			WeeklyAcquiredAt:      defaultTimestamp,
+			DailyRewardReceivedAt: defaultTimestamp,
 		},
 		AgitoFurnitureSetting: &proto.StoredAgitoFurnitureSetting{
 			List: map[uint32]*puser.AgitoFurnitureSetting{

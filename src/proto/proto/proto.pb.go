@@ -1970,21 +1970,147 @@ func (*AgitoVisitorReturn) Descriptor() ([]byte, []int) {
 	return file_proto_proto_rawDescGZIP(), []int{21}
 }
 
+type FieldPlayerDetail struct {
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	Player                *puser.Player          `protobuf:"bytes,1,opt,name=player,proto3" json:"player,omitempty"`
+	CurrentJobDeck        *puser.JobDeck         `protobuf:"bytes,2,opt,name=current_job_deck,json=currentJobDeck,proto3" json:"current_job_deck,omitempty"`
+	Equipments            []*puser.Equipment     `protobuf:"bytes,3,rep,name=equipments,proto3" json:"equipments,omitempty"`
+	GuildId               uint64                 `protobuf:"varint,4,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	GuildName             string                 `protobuf:"bytes,5,opt,name=guild_name,json=guildName,proto3" json:"guild_name,omitempty"`
+	GuildSymbol           uint32                 `protobuf:"varint,6,opt,name=guild_symbol,json=guildSymbol,proto3" json:"guild_symbol,omitempty"`
+	GuildSymbolFrame      uint32                 `protobuf:"varint,7,opt,name=guild_symbol_frame,json=guildSymbolFrame,proto3" json:"guild_symbol_frame,omitempty"`
+	GuildSymbolFrameColor uint32                 `protobuf:"varint,8,opt,name=guild_symbol_frame_color,json=guildSymbolFrameColor,proto3" json:"guild_symbol_frame_color,omitempty"`
+	GuildMemberRole       uint32                 `protobuf:"varint,9,opt,name=guild_member_role,json=guildMemberRole,proto3" json:"guild_member_role,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *FieldPlayerDetail) Reset() {
+	*x = FieldPlayerDetail{}
+	mi := &file_proto_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FieldPlayerDetail) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FieldPlayerDetail) ProtoMessage() {}
+
+func (x *FieldPlayerDetail) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FieldPlayerDetail.ProtoReflect.Descriptor instead.
+func (*FieldPlayerDetail) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *FieldPlayerDetail) GetPlayer() *puser.Player {
+	if x != nil {
+		return x.Player
+	}
+	return nil
+}
+
+func (x *FieldPlayerDetail) GetCurrentJobDeck() *puser.JobDeck {
+	if x != nil {
+		return x.CurrentJobDeck
+	}
+	return nil
+}
+
+func (x *FieldPlayerDetail) GetEquipments() []*puser.Equipment {
+	if x != nil {
+		return x.Equipments
+	}
+	return nil
+}
+
+func (x *FieldPlayerDetail) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *FieldPlayerDetail) GetGuildName() string {
+	if x != nil {
+		return x.GuildName
+	}
+	return ""
+}
+
+func (x *FieldPlayerDetail) GetGuildSymbol() uint32 {
+	if x != nil {
+		return x.GuildSymbol
+	}
+	return 0
+}
+
+func (x *FieldPlayerDetail) GetGuildSymbolFrame() uint32 {
+	if x != nil {
+		return x.GuildSymbolFrame
+	}
+	return 0
+}
+
+func (x *FieldPlayerDetail) GetGuildSymbolFrameColor() uint32 {
+	if x != nil {
+		return x.GuildSymbolFrameColor
+	}
+	return 0
+}
+
+func (x *FieldPlayerDetail) GetGuildMemberRole() uint32 {
+	if x != nil {
+		return x.GuildMemberRole
+	}
+	return 0
+}
+
 type FieldTopResponse struct {
-	state                  protoimpl.MessageState              `protogen:"open.v1"`
-	SharedMissionList      *pmisc.GuildSharedMissionList       `protobuf:"bytes,13,opt,name=shared_mission_list,json=sharedMissionList,proto3" json:"shared_mission_list,omitempty"`
-	PersonalMissionList    *pmisc.GuildPersonalMissionList     `protobuf:"bytes,14,opt,name=personal_mission_list,json=personalMissionList,proto3" json:"personal_mission_list,omitempty"`
-	WeeklyMissionReward    *pmisc.GuildWeeklyMissionRewardList `protobuf:"bytes,16,opt,name=weekly_mission_reward,json=weeklyMissionReward,proto3" json:"weekly_mission_reward,omitempty"`
-	FacilityList           *GuildFacilityList                  `protobuf:"bytes,17,opt,name=facility_list,json=facilityList,proto3" json:"facility_list,omitempty"`
-	BackgroundBattleReward *BattleBackgroundReward             `protobuf:"bytes,18,opt,name=background_battle_reward,json=backgroundBattleReward,proto3" json:"background_battle_reward,omitempty"`
-	AgitoVisitorReturn     *AgitoVisitorReturn                 `protobuf:"bytes,20,opt,name=agito_visitor_return,json=agitoVisitorReturn,proto3" json:"agito_visitor_return,omitempty"`
-	unknownFields          protoimpl.UnknownFields
-	sizeCache              protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	StoredData            *StoredData            `protobuf:"bytes,1,opt,name=stored_data,json=storedData,proto3" json:"stored_data,omitempty"`
+	Players               []*FieldPlayerDetail   `protobuf:"bytes,2,rep,name=players,proto3" json:"players,omitempty"`
+	GuildId               uint64                 `protobuf:"varint,3,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	GuildName             string                 `protobuf:"bytes,4,opt,name=guild_name,json=guildName,proto3" json:"guild_name,omitempty"`
+	GuildSymbol           uint32                 `protobuf:"varint,5,opt,name=guild_symbol,json=guildSymbol,proto3" json:"guild_symbol,omitempty"`
+	GuildSymbolFrame      uint32                 `protobuf:"varint,6,opt,name=guild_symbol_frame,json=guildSymbolFrame,proto3" json:"guild_symbol_frame,omitempty"`
+	GuildSymbolFrameColor uint32                 `protobuf:"varint,7,opt,name=guild_symbol_frame_color,json=guildSymbolFrameColor,proto3" json:"guild_symbol_frame_color,omitempty"`
+	GuildMemberRole       uint32                 `protobuf:"varint,8,opt,name=guild_member_role,json=guildMemberRole,proto3" json:"guild_member_role,omitempty"`
+	IsPresentBox          bool                   `protobuf:"varint,9,opt,name=is_present_box,json=isPresentBox,proto3" json:"is_present_box,omitempty"`
+	FriendBadge           uint32                 `protobuf:"varint,10,opt,name=friend_badge,json=friendBadge,proto3" json:"friend_badge,omitempty"`
+	GuildBadge            uint32                 `protobuf:"varint,11,opt,name=guild_badge,json=guildBadge,proto3" json:"guild_badge,omitempty"`
+	// repeated GuildWeeklyMission weeklyMissionList = 12;
+	SharedMissionList   *pmisc.GuildSharedMissionList   `protobuf:"bytes,13,opt,name=sharedMissionList,proto3" json:"sharedMissionList,omitempty"`
+	PersonalMissionList *pmisc.GuildPersonalMissionList `protobuf:"bytes,14,opt,name=personalMissionList,proto3" json:"personalMissionList,omitempty"`
+	// repeated RaidHistory raid_history_list = 15;
+	WeeklyMissionReward     *puser.GuildWeeklyMissionRewardList `protobuf:"bytes,16,opt,name=weekly_mission_reward,json=weeklyMissionReward,proto3" json:"weekly_mission_reward,omitempty"`
+	FacilityList            *GuildFacilityList                  `protobuf:"bytes,17,opt,name=facility_list,json=facilityList,proto3" json:"facility_list,omitempty"`
+	BackgroundBattleReward  *BattleBackgroundReward             `protobuf:"bytes,18,opt,name=background_battle_reward,json=backgroundBattleReward,proto3" json:"background_battle_reward,omitempty"`
+	LoginBonus              []*puser.LoginBonus                 `protobuf:"bytes,19,rep,name=login_bonus,json=loginBonus,proto3" json:"login_bonus,omitempty"`
+	AgitoVisitorReturn      *AgitoVisitorReturn                 `protobuf:"bytes,20,opt,name=agito_visitor_return,json=agitoVisitorReturn,proto3" json:"agito_visitor_return,omitempty"`
+	LastAgitoReceivedGoodAt string                              `protobuf:"bytes,21,opt,name=last_agito_received_good_at,json=lastAgitoReceivedGoodAt,proto3" json:"last_agito_received_good_at,omitempty"`
+	PresentBoxCount         uint32                              `protobuf:"varint,22,opt,name=present_box_count,json=presentBoxCount,proto3" json:"present_box_count,omitempty"`
+	DirectMessageBadge      uint32                              `protobuf:"varint,24,opt,name=direct_message_badge,json=directMessageBadge,proto3" json:"direct_message_badge,omitempty"`
+	DirectMessageCount      uint32                              `protobuf:"varint,25,opt,name=direct_message_count,json=directMessageCount,proto3" json:"direct_message_count,omitempty"` // ArenaSeasonResponse arena_season = 26;
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
 }
 
 func (x *FieldTopResponse) Reset() {
 	*x = FieldTopResponse{}
-	mi := &file_proto_proto_msgTypes[22]
+	mi := &file_proto_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1996,7 +2122,7 @@ func (x *FieldTopResponse) String() string {
 func (*FieldTopResponse) ProtoMessage() {}
 
 func (x *FieldTopResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[22]
+	mi := &file_proto_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2009,7 +2135,84 @@ func (x *FieldTopResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FieldTopResponse.ProtoReflect.Descriptor instead.
 func (*FieldTopResponse) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{22}
+	return file_proto_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *FieldTopResponse) GetStoredData() *StoredData {
+	if x != nil {
+		return x.StoredData
+	}
+	return nil
+}
+
+func (x *FieldTopResponse) GetPlayers() []*FieldPlayerDetail {
+	if x != nil {
+		return x.Players
+	}
+	return nil
+}
+
+func (x *FieldTopResponse) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetGuildName() string {
+	if x != nil {
+		return x.GuildName
+	}
+	return ""
+}
+
+func (x *FieldTopResponse) GetGuildSymbol() uint32 {
+	if x != nil {
+		return x.GuildSymbol
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetGuildSymbolFrame() uint32 {
+	if x != nil {
+		return x.GuildSymbolFrame
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetGuildSymbolFrameColor() uint32 {
+	if x != nil {
+		return x.GuildSymbolFrameColor
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetGuildMemberRole() uint32 {
+	if x != nil {
+		return x.GuildMemberRole
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetIsPresentBox() bool {
+	if x != nil {
+		return x.IsPresentBox
+	}
+	return false
+}
+
+func (x *FieldTopResponse) GetFriendBadge() uint32 {
+	if x != nil {
+		return x.FriendBadge
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetGuildBadge() uint32 {
+	if x != nil {
+		return x.GuildBadge
+	}
+	return 0
 }
 
 func (x *FieldTopResponse) GetSharedMissionList() *pmisc.GuildSharedMissionList {
@@ -2026,7 +2229,7 @@ func (x *FieldTopResponse) GetPersonalMissionList() *pmisc.GuildPersonalMissionL
 	return nil
 }
 
-func (x *FieldTopResponse) GetWeeklyMissionReward() *pmisc.GuildWeeklyMissionRewardList {
+func (x *FieldTopResponse) GetWeeklyMissionReward() *puser.GuildWeeklyMissionRewardList {
 	if x != nil {
 		return x.WeeklyMissionReward
 	}
@@ -2047,11 +2250,46 @@ func (x *FieldTopResponse) GetBackgroundBattleReward() *BattleBackgroundReward {
 	return nil
 }
 
+func (x *FieldTopResponse) GetLoginBonus() []*puser.LoginBonus {
+	if x != nil {
+		return x.LoginBonus
+	}
+	return nil
+}
+
 func (x *FieldTopResponse) GetAgitoVisitorReturn() *AgitoVisitorReturn {
 	if x != nil {
 		return x.AgitoVisitorReturn
 	}
 	return nil
+}
+
+func (x *FieldTopResponse) GetLastAgitoReceivedGoodAt() string {
+	if x != nil {
+		return x.LastAgitoReceivedGoodAt
+	}
+	return ""
+}
+
+func (x *FieldTopResponse) GetPresentBoxCount() uint32 {
+	if x != nil {
+		return x.PresentBoxCount
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetDirectMessageBadge() uint32 {
+	if x != nil {
+		return x.DirectMessageBadge
+	}
+	return 0
+}
+
+func (x *FieldTopResponse) GetDirectMessageCount() uint32 {
+	if x != nil {
+		return x.DirectMessageCount
+	}
+	return 0
 }
 
 type Currency struct {
@@ -2066,7 +2304,7 @@ type Currency struct {
 
 func (x *Currency) Reset() {
 	*x = Currency{}
-	mi := &file_proto_proto_msgTypes[23]
+	mi := &file_proto_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2078,7 +2316,7 @@ func (x *Currency) String() string {
 func (*Currency) ProtoMessage() {}
 
 func (x *Currency) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[23]
+	mi := &file_proto_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2091,7 +2329,7 @@ func (x *Currency) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Currency.ProtoReflect.Descriptor instead.
 func (*Currency) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{23}
+	return file_proto_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Currency) GetRedOrb() uint32 {
@@ -2138,7 +2376,7 @@ type GuildInfo struct {
 
 func (x *GuildInfo) Reset() {
 	*x = GuildInfo{}
-	mi := &file_proto_proto_msgTypes[24]
+	mi := &file_proto_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2150,7 +2388,7 @@ func (x *GuildInfo) String() string {
 func (*GuildInfo) ProtoMessage() {}
 
 func (x *GuildInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[24]
+	mi := &file_proto_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2163,7 +2401,7 @@ func (x *GuildInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuildInfo.ProtoReflect.Descriptor instead.
 func (*GuildInfo) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{24}
+	return file_proto_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GuildInfo) GetGuildId() uint64 {
@@ -2230,7 +2468,7 @@ type ChatUnreadCategory struct {
 
 func (x *ChatUnreadCategory) Reset() {
 	*x = ChatUnreadCategory{}
-	mi := &file_proto_proto_msgTypes[25]
+	mi := &file_proto_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2242,7 +2480,7 @@ func (x *ChatUnreadCategory) String() string {
 func (*ChatUnreadCategory) ProtoMessage() {}
 
 func (x *ChatUnreadCategory) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[25]
+	mi := &file_proto_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2255,7 +2493,7 @@ func (x *ChatUnreadCategory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChatUnreadCategory.ProtoReflect.Descriptor instead.
 func (*ChatUnreadCategory) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{25}
+	return file_proto_proto_rawDescGZIP(), []int{26}
 }
 
 type StoredMercenary struct {
@@ -2270,7 +2508,7 @@ type StoredMercenary struct {
 
 func (x *StoredMercenary) Reset() {
 	*x = StoredMercenary{}
-	mi := &file_proto_proto_msgTypes[26]
+	mi := &file_proto_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2282,7 +2520,7 @@ func (x *StoredMercenary) String() string {
 func (*StoredMercenary) ProtoMessage() {}
 
 func (x *StoredMercenary) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[26]
+	mi := &file_proto_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2295,7 +2533,7 @@ func (x *StoredMercenary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredMercenary.ProtoReflect.Descriptor instead.
 func (*StoredMercenary) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{26}
+	return file_proto_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *StoredMercenary) GetJobId() uint32 {
@@ -2335,7 +2573,7 @@ type StoredPresentBoxInfo struct {
 
 func (x *StoredPresentBoxInfo) Reset() {
 	*x = StoredPresentBoxInfo{}
-	mi := &file_proto_proto_msgTypes[27]
+	mi := &file_proto_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2347,7 +2585,7 @@ func (x *StoredPresentBoxInfo) String() string {
 func (*StoredPresentBoxInfo) ProtoMessage() {}
 
 func (x *StoredPresentBoxInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[27]
+	mi := &file_proto_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2360,7 +2598,7 @@ func (x *StoredPresentBoxInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredPresentBoxInfo.ProtoReflect.Descriptor instead.
 func (*StoredPresentBoxInfo) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{27}
+	return file_proto_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *StoredPresentBoxInfo) GetUnreceivedPresent() bool {
@@ -2380,7 +2618,7 @@ type StoredSample struct {
 
 func (x *StoredSample) Reset() {
 	*x = StoredSample{}
-	mi := &file_proto_proto_msgTypes[28]
+	mi := &file_proto_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2392,7 +2630,7 @@ func (x *StoredSample) String() string {
 func (*StoredSample) ProtoMessage() {}
 
 func (x *StoredSample) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[28]
+	mi := &file_proto_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2405,7 +2643,7 @@ func (x *StoredSample) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredSample.ProtoReflect.Descriptor instead.
 func (*StoredSample) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{28}
+	return file_proto_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *StoredSample) GetList() map[uint64]*pmisc.Sample {
@@ -2432,7 +2670,7 @@ type StoredEquipment struct {
 
 func (x *StoredEquipment) Reset() {
 	*x = StoredEquipment{}
-	mi := &file_proto_proto_msgTypes[29]
+	mi := &file_proto_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2444,7 +2682,7 @@ func (x *StoredEquipment) String() string {
 func (*StoredEquipment) ProtoMessage() {}
 
 func (x *StoredEquipment) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[29]
+	mi := &file_proto_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2457,7 +2695,7 @@ func (x *StoredEquipment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredEquipment.ProtoReflect.Descriptor instead.
 func (*StoredEquipment) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{29}
+	return file_proto_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *StoredEquipment) GetList() map[uint64]*puser.Equipment {
@@ -2484,7 +2722,7 @@ type StoredJob struct {
 
 func (x *StoredJob) Reset() {
 	*x = StoredJob{}
-	mi := &file_proto_proto_msgTypes[30]
+	mi := &file_proto_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2496,7 +2734,7 @@ func (x *StoredJob) String() string {
 func (*StoredJob) ProtoMessage() {}
 
 func (x *StoredJob) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[30]
+	mi := &file_proto_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2509,7 +2747,7 @@ func (x *StoredJob) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredJob.ProtoReflect.Descriptor instead.
 func (*StoredJob) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{30}
+	return file_proto_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *StoredJob) GetList() map[uint32]*puser.Job {
@@ -2536,7 +2774,7 @@ type StoredJobSkill struct {
 
 func (x *StoredJobSkill) Reset() {
 	*x = StoredJobSkill{}
-	mi := &file_proto_proto_msgTypes[31]
+	mi := &file_proto_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2548,7 +2786,7 @@ func (x *StoredJobSkill) String() string {
 func (*StoredJobSkill) ProtoMessage() {}
 
 func (x *StoredJobSkill) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[31]
+	mi := &file_proto_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2561,7 +2799,7 @@ func (x *StoredJobSkill) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredJobSkill.ProtoReflect.Descriptor instead.
 func (*StoredJobSkill) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{31}
+	return file_proto_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *StoredJobSkill) GetList() map[uint64]*puser.JobSkill {
@@ -2588,7 +2826,7 @@ type StoredConditionProgress struct {
 
 func (x *StoredConditionProgress) Reset() {
 	*x = StoredConditionProgress{}
-	mi := &file_proto_proto_msgTypes[32]
+	mi := &file_proto_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2600,7 +2838,7 @@ func (x *StoredConditionProgress) String() string {
 func (*StoredConditionProgress) ProtoMessage() {}
 
 func (x *StoredConditionProgress) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[32]
+	mi := &file_proto_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2613,7 +2851,7 @@ func (x *StoredConditionProgress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredConditionProgress.ProtoReflect.Descriptor instead.
 func (*StoredConditionProgress) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{32}
+	return file_proto_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *StoredConditionProgress) GetList() map[uint64]*pmisc.ConditionProgress {
@@ -2640,7 +2878,7 @@ type StoredAchievement struct {
 
 func (x *StoredAchievement) Reset() {
 	*x = StoredAchievement{}
-	mi := &file_proto_proto_msgTypes[33]
+	mi := &file_proto_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2652,7 +2890,7 @@ func (x *StoredAchievement) String() string {
 func (*StoredAchievement) ProtoMessage() {}
 
 func (x *StoredAchievement) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[33]
+	mi := &file_proto_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2665,7 +2903,7 @@ func (x *StoredAchievement) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAchievement.ProtoReflect.Descriptor instead.
 func (*StoredAchievement) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{33}
+	return file_proto_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *StoredAchievement) GetList() map[uint32]*puser.Achievement {
@@ -2692,7 +2930,7 @@ type StoredItem struct {
 
 func (x *StoredItem) Reset() {
 	*x = StoredItem{}
-	mi := &file_proto_proto_msgTypes[34]
+	mi := &file_proto_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2704,7 +2942,7 @@ func (x *StoredItem) String() string {
 func (*StoredItem) ProtoMessage() {}
 
 func (x *StoredItem) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[34]
+	mi := &file_proto_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2717,7 +2955,7 @@ func (x *StoredItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredItem.ProtoReflect.Descriptor instead.
 func (*StoredItem) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{34}
+	return file_proto_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *StoredItem) GetList() map[uint32]*puser.Item {
@@ -2744,7 +2982,7 @@ type StoredAnima struct {
 
 func (x *StoredAnima) Reset() {
 	*x = StoredAnima{}
-	mi := &file_proto_proto_msgTypes[35]
+	mi := &file_proto_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2756,7 +2994,7 @@ func (x *StoredAnima) String() string {
 func (*StoredAnima) ProtoMessage() {}
 
 func (x *StoredAnima) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[35]
+	mi := &file_proto_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2769,7 +3007,7 @@ func (x *StoredAnima) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAnima.ProtoReflect.Descriptor instead.
 func (*StoredAnima) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{35}
+	return file_proto_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *StoredAnima) GetList() map[uint32]*puser.Anima {
@@ -2796,7 +3034,7 @@ type StoredAnimaArea struct {
 
 func (x *StoredAnimaArea) Reset() {
 	*x = StoredAnimaArea{}
-	mi := &file_proto_proto_msgTypes[36]
+	mi := &file_proto_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2808,7 +3046,7 @@ func (x *StoredAnimaArea) String() string {
 func (*StoredAnimaArea) ProtoMessage() {}
 
 func (x *StoredAnimaArea) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[36]
+	mi := &file_proto_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2821,7 +3059,7 @@ func (x *StoredAnimaArea) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAnimaArea.ProtoReflect.Descriptor instead.
 func (*StoredAnimaArea) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{36}
+	return file_proto_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *StoredAnimaArea) GetList() map[uint32]*puser.AnimaArea {
@@ -2848,7 +3086,7 @@ type StoredRune struct {
 
 func (x *StoredRune) Reset() {
 	*x = StoredRune{}
-	mi := &file_proto_proto_msgTypes[37]
+	mi := &file_proto_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2860,7 +3098,7 @@ func (x *StoredRune) String() string {
 func (*StoredRune) ProtoMessage() {}
 
 func (x *StoredRune) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[37]
+	mi := &file_proto_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2873,7 +3111,7 @@ func (x *StoredRune) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredRune.ProtoReflect.Descriptor instead.
 func (*StoredRune) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{37}
+	return file_proto_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *StoredRune) GetList() map[uint64]*puser.Rune {
@@ -2900,7 +3138,7 @@ type StoredElixir struct {
 
 func (x *StoredElixir) Reset() {
 	*x = StoredElixir{}
-	mi := &file_proto_proto_msgTypes[38]
+	mi := &file_proto_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2912,7 +3150,7 @@ func (x *StoredElixir) String() string {
 func (*StoredElixir) ProtoMessage() {}
 
 func (x *StoredElixir) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[38]
+	mi := &file_proto_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2925,7 +3163,7 @@ func (x *StoredElixir) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredElixir.ProtoReflect.Descriptor instead.
 func (*StoredElixir) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{38}
+	return file_proto_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *StoredElixir) GetList() map[uint32]*puser.Elixir {
@@ -2952,7 +3190,7 @@ type StoredContents struct {
 
 func (x *StoredContents) Reset() {
 	*x = StoredContents{}
-	mi := &file_proto_proto_msgTypes[39]
+	mi := &file_proto_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2964,7 +3202,7 @@ func (x *StoredContents) String() string {
 func (*StoredContents) ProtoMessage() {}
 
 func (x *StoredContents) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[39]
+	mi := &file_proto_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2977,7 +3215,7 @@ func (x *StoredContents) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredContents.ProtoReflect.Descriptor instead.
 func (*StoredContents) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{39}
+	return file_proto_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *StoredContents) GetList() map[uint32]*puser.Contents {
@@ -3004,7 +3242,7 @@ type StoredDailyMission struct {
 
 func (x *StoredDailyMission) Reset() {
 	*x = StoredDailyMission{}
-	mi := &file_proto_proto_msgTypes[40]
+	mi := &file_proto_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3016,7 +3254,7 @@ func (x *StoredDailyMission) String() string {
 func (*StoredDailyMission) ProtoMessage() {}
 
 func (x *StoredDailyMission) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[40]
+	mi := &file_proto_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3029,7 +3267,7 @@ func (x *StoredDailyMission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredDailyMission.ProtoReflect.Descriptor instead.
 func (*StoredDailyMission) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{40}
+	return file_proto_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *StoredDailyMission) GetList() map[uint32]*puser.DailyMission {
@@ -3056,7 +3294,7 @@ type StoredDailyMissionReward struct {
 
 func (x *StoredDailyMissionReward) Reset() {
 	*x = StoredDailyMissionReward{}
-	mi := &file_proto_proto_msgTypes[41]
+	mi := &file_proto_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3068,7 +3306,7 @@ func (x *StoredDailyMissionReward) String() string {
 func (*StoredDailyMissionReward) ProtoMessage() {}
 
 func (x *StoredDailyMissionReward) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[41]
+	mi := &file_proto_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3081,7 +3319,7 @@ func (x *StoredDailyMissionReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredDailyMissionReward.ProtoReflect.Descriptor instead.
 func (*StoredDailyMissionReward) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{41}
+	return file_proto_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *StoredDailyMissionReward) GetList() map[uint32]*puser.DailyMissionReward {
@@ -3108,7 +3346,7 @@ type StoredOrderMission struct {
 
 func (x *StoredOrderMission) Reset() {
 	*x = StoredOrderMission{}
-	mi := &file_proto_proto_msgTypes[42]
+	mi := &file_proto_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3120,7 +3358,7 @@ func (x *StoredOrderMission) String() string {
 func (*StoredOrderMission) ProtoMessage() {}
 
 func (x *StoredOrderMission) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[42]
+	mi := &file_proto_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3133,7 +3371,7 @@ func (x *StoredOrderMission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredOrderMission.ProtoReflect.Descriptor instead.
 func (*StoredOrderMission) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{42}
+	return file_proto_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *StoredOrderMission) GetList() map[uint32]*puser.OrderMission {
@@ -3160,7 +3398,7 @@ type StoredOrderMissionReroll struct {
 
 func (x *StoredOrderMissionReroll) Reset() {
 	*x = StoredOrderMissionReroll{}
-	mi := &file_proto_proto_msgTypes[43]
+	mi := &file_proto_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3172,7 +3410,7 @@ func (x *StoredOrderMissionReroll) String() string {
 func (*StoredOrderMissionReroll) ProtoMessage() {}
 
 func (x *StoredOrderMissionReroll) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[43]
+	mi := &file_proto_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3185,7 +3423,7 @@ func (x *StoredOrderMissionReroll) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredOrderMissionReroll.ProtoReflect.Descriptor instead.
 func (*StoredOrderMissionReroll) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{43}
+	return file_proto_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *StoredOrderMissionReroll) GetList() map[uint64]*puser.OrderMissionReroll {
@@ -3212,7 +3450,7 @@ type StoredOrderMissionReward struct {
 
 func (x *StoredOrderMissionReward) Reset() {
 	*x = StoredOrderMissionReward{}
-	mi := &file_proto_proto_msgTypes[44]
+	mi := &file_proto_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3224,7 +3462,7 @@ func (x *StoredOrderMissionReward) String() string {
 func (*StoredOrderMissionReward) ProtoMessage() {}
 
 func (x *StoredOrderMissionReward) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[44]
+	mi := &file_proto_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3237,7 +3475,7 @@ func (x *StoredOrderMissionReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredOrderMissionReward.ProtoReflect.Descriptor instead.
 func (*StoredOrderMissionReward) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{44}
+	return file_proto_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *StoredOrderMissionReward) GetList() map[uint32]*puser.OrderMissionReward {
@@ -3264,7 +3502,7 @@ type StoredMercenaryHire struct {
 
 func (x *StoredMercenaryHire) Reset() {
 	*x = StoredMercenaryHire{}
-	mi := &file_proto_proto_msgTypes[45]
+	mi := &file_proto_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3276,7 +3514,7 @@ func (x *StoredMercenaryHire) String() string {
 func (*StoredMercenaryHire) ProtoMessage() {}
 
 func (x *StoredMercenaryHire) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[45]
+	mi := &file_proto_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3289,7 +3527,7 @@ func (x *StoredMercenaryHire) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredMercenaryHire.ProtoReflect.Descriptor instead.
 func (*StoredMercenaryHire) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{45}
+	return file_proto_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *StoredMercenaryHire) GetList() map[uint64]*puser.MercenaryHire {
@@ -3316,7 +3554,7 @@ type StoredEventMission struct {
 
 func (x *StoredEventMission) Reset() {
 	*x = StoredEventMission{}
-	mi := &file_proto_proto_msgTypes[46]
+	mi := &file_proto_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3328,7 +3566,7 @@ func (x *StoredEventMission) String() string {
 func (*StoredEventMission) ProtoMessage() {}
 
 func (x *StoredEventMission) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[46]
+	mi := &file_proto_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3341,7 +3579,7 @@ func (x *StoredEventMission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredEventMission.ProtoReflect.Descriptor instead.
 func (*StoredEventMission) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{46}
+	return file_proto_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *StoredEventMission) GetList() map[uint32]*puser.EventMission {
@@ -3368,7 +3606,7 @@ type StoredEventMissionReward struct {
 
 func (x *StoredEventMissionReward) Reset() {
 	*x = StoredEventMissionReward{}
-	mi := &file_proto_proto_msgTypes[47]
+	mi := &file_proto_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3380,7 +3618,7 @@ func (x *StoredEventMissionReward) String() string {
 func (*StoredEventMissionReward) ProtoMessage() {}
 
 func (x *StoredEventMissionReward) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[47]
+	mi := &file_proto_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3393,7 +3631,7 @@ func (x *StoredEventMissionReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredEventMissionReward.ProtoReflect.Descriptor instead.
 func (*StoredEventMissionReward) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{47}
+	return file_proto_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *StoredEventMissionReward) GetList() map[uint32]*puser.EventMissionReward {
@@ -3420,7 +3658,7 @@ type StoredContentsCondition struct {
 
 func (x *StoredContentsCondition) Reset() {
 	*x = StoredContentsCondition{}
-	mi := &file_proto_proto_msgTypes[48]
+	mi := &file_proto_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3432,7 +3670,7 @@ func (x *StoredContentsCondition) String() string {
 func (*StoredContentsCondition) ProtoMessage() {}
 
 func (x *StoredContentsCondition) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[48]
+	mi := &file_proto_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3445,7 +3683,7 @@ func (x *StoredContentsCondition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredContentsCondition.ProtoReflect.Descriptor instead.
 func (*StoredContentsCondition) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{48}
+	return file_proto_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *StoredContentsCondition) GetList() map[uint32]*puser.ContentsCondition {
@@ -3472,7 +3710,7 @@ type StoredTitle struct {
 
 func (x *StoredTitle) Reset() {
 	*x = StoredTitle{}
-	mi := &file_proto_proto_msgTypes[49]
+	mi := &file_proto_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3484,7 +3722,7 @@ func (x *StoredTitle) String() string {
 func (*StoredTitle) ProtoMessage() {}
 
 func (x *StoredTitle) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[49]
+	mi := &file_proto_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3497,7 +3735,7 @@ func (x *StoredTitle) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredTitle.ProtoReflect.Descriptor instead.
 func (*StoredTitle) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{49}
+	return file_proto_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *StoredTitle) GetList() map[uint32]*puser.Title {
@@ -3524,7 +3762,7 @@ type StoredShopItem struct {
 
 func (x *StoredShopItem) Reset() {
 	*x = StoredShopItem{}
-	mi := &file_proto_proto_msgTypes[50]
+	mi := &file_proto_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3536,7 +3774,7 @@ func (x *StoredShopItem) String() string {
 func (*StoredShopItem) ProtoMessage() {}
 
 func (x *StoredShopItem) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[50]
+	mi := &file_proto_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3549,7 +3787,7 @@ func (x *StoredShopItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredShopItem.ProtoReflect.Descriptor instead.
 func (*StoredShopItem) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{50}
+	return file_proto_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *StoredShopItem) GetList() map[uint32]*puser.ShopItem {
@@ -3576,7 +3814,7 @@ type StoredLoginBonus struct {
 
 func (x *StoredLoginBonus) Reset() {
 	*x = StoredLoginBonus{}
-	mi := &file_proto_proto_msgTypes[51]
+	mi := &file_proto_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3588,7 +3826,7 @@ func (x *StoredLoginBonus) String() string {
 func (*StoredLoginBonus) ProtoMessage() {}
 
 func (x *StoredLoginBonus) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[51]
+	mi := &file_proto_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3601,7 +3839,7 @@ func (x *StoredLoginBonus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredLoginBonus.ProtoReflect.Descriptor instead.
 func (*StoredLoginBonus) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{51}
+	return file_proto_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *StoredLoginBonus) GetList() map[uint32]*puser.LoginBonus {
@@ -3628,7 +3866,7 @@ type StoredEventSugoroku struct {
 
 func (x *StoredEventSugoroku) Reset() {
 	*x = StoredEventSugoroku{}
-	mi := &file_proto_proto_msgTypes[52]
+	mi := &file_proto_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3640,7 +3878,7 @@ func (x *StoredEventSugoroku) String() string {
 func (*StoredEventSugoroku) ProtoMessage() {}
 
 func (x *StoredEventSugoroku) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[52]
+	mi := &file_proto_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3653,7 +3891,7 @@ func (x *StoredEventSugoroku) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredEventSugoroku.ProtoReflect.Descriptor instead.
 func (*StoredEventSugoroku) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{52}
+	return file_proto_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *StoredEventSugoroku) GetList() map[uint32]*puser.EventSugoroku {
@@ -3680,7 +3918,7 @@ type StoredBoost struct {
 
 func (x *StoredBoost) Reset() {
 	*x = StoredBoost{}
-	mi := &file_proto_proto_msgTypes[53]
+	mi := &file_proto_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3692,7 +3930,7 @@ func (x *StoredBoost) String() string {
 func (*StoredBoost) ProtoMessage() {}
 
 func (x *StoredBoost) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[53]
+	mi := &file_proto_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3705,7 +3943,7 @@ func (x *StoredBoost) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredBoost.ProtoReflect.Descriptor instead.
 func (*StoredBoost) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{53}
+	return file_proto_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *StoredBoost) GetList() map[uint32]*puser.Boost {
@@ -3732,7 +3970,7 @@ type StoredBlock struct {
 
 func (x *StoredBlock) Reset() {
 	*x = StoredBlock{}
-	mi := &file_proto_proto_msgTypes[54]
+	mi := &file_proto_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3744,7 +3982,7 @@ func (x *StoredBlock) String() string {
 func (*StoredBlock) ProtoMessage() {}
 
 func (x *StoredBlock) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[54]
+	mi := &file_proto_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3757,7 +3995,7 @@ func (x *StoredBlock) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredBlock.ProtoReflect.Descriptor instead.
 func (*StoredBlock) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{54}
+	return file_proto_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *StoredBlock) GetList() map[uint64]*pmisc.Block {
@@ -3784,7 +4022,7 @@ type StoredExchange struct {
 
 func (x *StoredExchange) Reset() {
 	*x = StoredExchange{}
-	mi := &file_proto_proto_msgTypes[55]
+	mi := &file_proto_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3796,7 +4034,7 @@ func (x *StoredExchange) String() string {
 func (*StoredExchange) ProtoMessage() {}
 
 func (x *StoredExchange) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[55]
+	mi := &file_proto_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3809,7 +4047,7 @@ func (x *StoredExchange) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredExchange.ProtoReflect.Descriptor instead.
 func (*StoredExchange) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{55}
+	return file_proto_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *StoredExchange) GetList() map[uint32]*puser.Exchange {
@@ -3836,7 +4074,7 @@ type StoredContentsHero struct {
 
 func (x *StoredContentsHero) Reset() {
 	*x = StoredContentsHero{}
-	mi := &file_proto_proto_msgTypes[56]
+	mi := &file_proto_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3848,7 +4086,7 @@ func (x *StoredContentsHero) String() string {
 func (*StoredContentsHero) ProtoMessage() {}
 
 func (x *StoredContentsHero) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[56]
+	mi := &file_proto_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3861,7 +4099,7 @@ func (x *StoredContentsHero) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredContentsHero.ProtoReflect.Descriptor instead.
 func (*StoredContentsHero) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{56}
+	return file_proto_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *StoredContentsHero) GetList() map[uint32]*puser.ContentsHero {
@@ -3888,7 +4126,7 @@ type StoredContentsTreasure struct {
 
 func (x *StoredContentsTreasure) Reset() {
 	*x = StoredContentsTreasure{}
-	mi := &file_proto_proto_msgTypes[57]
+	mi := &file_proto_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3900,7 +4138,7 @@ func (x *StoredContentsTreasure) String() string {
 func (*StoredContentsTreasure) ProtoMessage() {}
 
 func (x *StoredContentsTreasure) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[57]
+	mi := &file_proto_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3913,7 +4151,7 @@ func (x *StoredContentsTreasure) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredContentsTreasure.ProtoReflect.Descriptor instead.
 func (*StoredContentsTreasure) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{57}
+	return file_proto_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *StoredContentsTreasure) GetList() map[uint32]*puser.ContentsTreasure {
@@ -3940,7 +4178,7 @@ type StoredContentsWeekMonster struct {
 
 func (x *StoredContentsWeekMonster) Reset() {
 	*x = StoredContentsWeekMonster{}
-	mi := &file_proto_proto_msgTypes[58]
+	mi := &file_proto_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3952,7 +4190,7 @@ func (x *StoredContentsWeekMonster) String() string {
 func (*StoredContentsWeekMonster) ProtoMessage() {}
 
 func (x *StoredContentsWeekMonster) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[58]
+	mi := &file_proto_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3965,7 +4203,7 @@ func (x *StoredContentsWeekMonster) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredContentsWeekMonster.ProtoReflect.Descriptor instead.
 func (*StoredContentsWeekMonster) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{58}
+	return file_proto_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *StoredContentsWeekMonster) GetList() map[uint32]*puser.ContentsWeekMonster {
@@ -3992,7 +4230,7 @@ type StoredFunctionalTutorial struct {
 
 func (x *StoredFunctionalTutorial) Reset() {
 	*x = StoredFunctionalTutorial{}
-	mi := &file_proto_proto_msgTypes[59]
+	mi := &file_proto_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4004,7 +4242,7 @@ func (x *StoredFunctionalTutorial) String() string {
 func (*StoredFunctionalTutorial) ProtoMessage() {}
 
 func (x *StoredFunctionalTutorial) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[59]
+	mi := &file_proto_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4017,7 +4255,7 @@ func (x *StoredFunctionalTutorial) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredFunctionalTutorial.ProtoReflect.Descriptor instead.
 func (*StoredFunctionalTutorial) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{59}
+	return file_proto_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *StoredFunctionalTutorial) GetList() map[uint32]*puser.FunctionalTutorial {
@@ -4044,7 +4282,7 @@ type StoredEventRoulette struct {
 
 func (x *StoredEventRoulette) Reset() {
 	*x = StoredEventRoulette{}
-	mi := &file_proto_proto_msgTypes[60]
+	mi := &file_proto_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4056,7 +4294,7 @@ func (x *StoredEventRoulette) String() string {
 func (*StoredEventRoulette) ProtoMessage() {}
 
 func (x *StoredEventRoulette) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[60]
+	mi := &file_proto_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4069,7 +4307,7 @@ func (x *StoredEventRoulette) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredEventRoulette.ProtoReflect.Descriptor instead.
 func (*StoredEventRoulette) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{60}
+	return file_proto_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *StoredEventRoulette) GetList() map[uint32]*puser.EventRoulette {
@@ -4096,7 +4334,7 @@ type StoredAngelBattleWeeklyReward struct {
 
 func (x *StoredAngelBattleWeeklyReward) Reset() {
 	*x = StoredAngelBattleWeeklyReward{}
-	mi := &file_proto_proto_msgTypes[61]
+	mi := &file_proto_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4108,7 +4346,7 @@ func (x *StoredAngelBattleWeeklyReward) String() string {
 func (*StoredAngelBattleWeeklyReward) ProtoMessage() {}
 
 func (x *StoredAngelBattleWeeklyReward) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[61]
+	mi := &file_proto_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4121,7 +4359,7 @@ func (x *StoredAngelBattleWeeklyReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAngelBattleWeeklyReward.ProtoReflect.Descriptor instead.
 func (*StoredAngelBattleWeeklyReward) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{61}
+	return file_proto_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *StoredAngelBattleWeeklyReward) GetList() map[uint32]*puser.AngelBattleWeeklyReward {
@@ -4149,7 +4387,7 @@ type StoredAchievementEquipment struct {
 
 func (x *StoredAchievementEquipment) Reset() {
 	*x = StoredAchievementEquipment{}
-	mi := &file_proto_proto_msgTypes[62]
+	mi := &file_proto_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4161,7 +4399,7 @@ func (x *StoredAchievementEquipment) String() string {
 func (*StoredAchievementEquipment) ProtoMessage() {}
 
 func (x *StoredAchievementEquipment) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[62]
+	mi := &file_proto_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4174,7 +4412,7 @@ func (x *StoredAchievementEquipment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAchievementEquipment.ProtoReflect.Descriptor instead.
 func (*StoredAchievementEquipment) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{62}
+	return file_proto_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *StoredAchievementEquipment) GetList() map[string]*puser.AchievementEquipment {
@@ -4209,7 +4447,7 @@ type StoredAchievementEquipmentReceive struct {
 
 func (x *StoredAchievementEquipmentReceive) Reset() {
 	*x = StoredAchievementEquipmentReceive{}
-	mi := &file_proto_proto_msgTypes[63]
+	mi := &file_proto_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4221,7 +4459,7 @@ func (x *StoredAchievementEquipmentReceive) String() string {
 func (*StoredAchievementEquipmentReceive) ProtoMessage() {}
 
 func (x *StoredAchievementEquipmentReceive) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[63]
+	mi := &file_proto_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4234,7 +4472,7 @@ func (x *StoredAchievementEquipmentReceive) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use StoredAchievementEquipmentReceive.ProtoReflect.Descriptor instead.
 func (*StoredAchievementEquipmentReceive) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{63}
+	return file_proto_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *StoredAchievementEquipmentReceive) GetList() map[string]*puser.AchievementEquipmentReceive {
@@ -4268,7 +4506,7 @@ type StoredAchievementEquipmentStamp struct {
 
 func (x *StoredAchievementEquipmentStamp) Reset() {
 	*x = StoredAchievementEquipmentStamp{}
-	mi := &file_proto_proto_msgTypes[64]
+	mi := &file_proto_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4280,7 +4518,7 @@ func (x *StoredAchievementEquipmentStamp) String() string {
 func (*StoredAchievementEquipmentStamp) ProtoMessage() {}
 
 func (x *StoredAchievementEquipmentStamp) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[64]
+	mi := &file_proto_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4293,7 +4531,7 @@ func (x *StoredAchievementEquipmentStamp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAchievementEquipmentStamp.ProtoReflect.Descriptor instead.
 func (*StoredAchievementEquipmentStamp) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{64}
+	return file_proto_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *StoredAchievementEquipmentStamp) GetList() map[uint32]*puser.AchievementEquipmentStamp {
@@ -4320,7 +4558,7 @@ type StoredEquipmentLiberation struct {
 
 func (x *StoredEquipmentLiberation) Reset() {
 	*x = StoredEquipmentLiberation{}
-	mi := &file_proto_proto_msgTypes[65]
+	mi := &file_proto_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4332,7 +4570,7 @@ func (x *StoredEquipmentLiberation) String() string {
 func (*StoredEquipmentLiberation) ProtoMessage() {}
 
 func (x *StoredEquipmentLiberation) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[65]
+	mi := &file_proto_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4345,7 +4583,7 @@ func (x *StoredEquipmentLiberation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredEquipmentLiberation.ProtoReflect.Descriptor instead.
 func (*StoredEquipmentLiberation) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{65}
+	return file_proto_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *StoredEquipmentLiberation) GetList() map[uint64]*puser.EquipmentLiberation {
@@ -4372,7 +4610,7 @@ type StoredJobDeck struct {
 
 func (x *StoredJobDeck) Reset() {
 	*x = StoredJobDeck{}
-	mi := &file_proto_proto_msgTypes[66]
+	mi := &file_proto_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4384,7 +4622,7 @@ func (x *StoredJobDeck) String() string {
 func (*StoredJobDeck) ProtoMessage() {}
 
 func (x *StoredJobDeck) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[66]
+	mi := &file_proto_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4397,7 +4635,7 @@ func (x *StoredJobDeck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredJobDeck.ProtoReflect.Descriptor instead.
 func (*StoredJobDeck) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{66}
+	return file_proto_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *StoredJobDeck) GetList() map[uint64]*puser.JobDeck {
@@ -4424,7 +4662,7 @@ type StoredAgitoFurnitureSetting struct {
 
 func (x *StoredAgitoFurnitureSetting) Reset() {
 	*x = StoredAgitoFurnitureSetting{}
-	mi := &file_proto_proto_msgTypes[67]
+	mi := &file_proto_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4436,7 +4674,7 @@ func (x *StoredAgitoFurnitureSetting) String() string {
 func (*StoredAgitoFurnitureSetting) ProtoMessage() {}
 
 func (x *StoredAgitoFurnitureSetting) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[67]
+	mi := &file_proto_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4449,7 +4687,7 @@ func (x *StoredAgitoFurnitureSetting) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAgitoFurnitureSetting.ProtoReflect.Descriptor instead.
 func (*StoredAgitoFurnitureSetting) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{67}
+	return file_proto_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *StoredAgitoFurnitureSetting) GetList() map[uint32]*puser.AgitoFurnitureSetting {
@@ -4476,7 +4714,7 @@ type StoredAgitoAp struct {
 
 func (x *StoredAgitoAp) Reset() {
 	*x = StoredAgitoAp{}
-	mi := &file_proto_proto_msgTypes[68]
+	mi := &file_proto_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4488,7 +4726,7 @@ func (x *StoredAgitoAp) String() string {
 func (*StoredAgitoAp) ProtoMessage() {}
 
 func (x *StoredAgitoAp) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[68]
+	mi := &file_proto_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4501,7 +4739,7 @@ func (x *StoredAgitoAp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAgitoAp.ProtoReflect.Descriptor instead.
 func (*StoredAgitoAp) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{68}
+	return file_proto_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *StoredAgitoAp) GetList() map[uint32]*puser.AgitoAp {
@@ -4528,7 +4766,7 @@ type StoredAgitoRelotteryInterval struct {
 
 func (x *StoredAgitoRelotteryInterval) Reset() {
 	*x = StoredAgitoRelotteryInterval{}
-	mi := &file_proto_proto_msgTypes[69]
+	mi := &file_proto_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4540,7 +4778,7 @@ func (x *StoredAgitoRelotteryInterval) String() string {
 func (*StoredAgitoRelotteryInterval) ProtoMessage() {}
 
 func (x *StoredAgitoRelotteryInterval) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[69]
+	mi := &file_proto_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4553,7 +4791,7 @@ func (x *StoredAgitoRelotteryInterval) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAgitoRelotteryInterval.ProtoReflect.Descriptor instead.
 func (*StoredAgitoRelotteryInterval) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{69}
+	return file_proto_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *StoredAgitoRelotteryInterval) GetList() map[uint32]*puser.AgitoRelotteryInterval {
@@ -4580,7 +4818,7 @@ type StoredAgitoVisitor struct {
 
 func (x *StoredAgitoVisitor) Reset() {
 	*x = StoredAgitoVisitor{}
-	mi := &file_proto_proto_msgTypes[70]
+	mi := &file_proto_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4592,7 +4830,7 @@ func (x *StoredAgitoVisitor) String() string {
 func (*StoredAgitoVisitor) ProtoMessage() {}
 
 func (x *StoredAgitoVisitor) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[70]
+	mi := &file_proto_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4605,7 +4843,7 @@ func (x *StoredAgitoVisitor) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAgitoVisitor.ProtoReflect.Descriptor instead.
 func (*StoredAgitoVisitor) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{70}
+	return file_proto_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *StoredAgitoVisitor) GetList() map[uint32]*puser.AgitoVisitor {
@@ -4632,7 +4870,7 @@ type StoredAgitoGoodHistory struct {
 
 func (x *StoredAgitoGoodHistory) Reset() {
 	*x = StoredAgitoGoodHistory{}
-	mi := &file_proto_proto_msgTypes[71]
+	mi := &file_proto_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4644,7 +4882,7 @@ func (x *StoredAgitoGoodHistory) String() string {
 func (*StoredAgitoGoodHistory) ProtoMessage() {}
 
 func (x *StoredAgitoGoodHistory) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[71]
+	mi := &file_proto_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4657,7 +4895,7 @@ func (x *StoredAgitoGoodHistory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAgitoGoodHistory.ProtoReflect.Descriptor instead.
 func (*StoredAgitoGoodHistory) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{71}
+	return file_proto_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *StoredAgitoGoodHistory) GetList() map[uint64]*puser.AgitoGoodHistory {
@@ -4684,7 +4922,7 @@ type StoredGachaHistory struct {
 
 func (x *StoredGachaHistory) Reset() {
 	*x = StoredGachaHistory{}
-	mi := &file_proto_proto_msgTypes[72]
+	mi := &file_proto_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4696,7 +4934,7 @@ func (x *StoredGachaHistory) String() string {
 func (*StoredGachaHistory) ProtoMessage() {}
 
 func (x *StoredGachaHistory) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[72]
+	mi := &file_proto_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4709,7 +4947,7 @@ func (x *StoredGachaHistory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredGachaHistory.ProtoReflect.Descriptor instead.
 func (*StoredGachaHistory) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{72}
+	return file_proto_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *StoredGachaHistory) GetList() map[uint32]*puser.GachaHistory {
@@ -4736,7 +4974,7 @@ type StoredAgitoCountReward struct {
 
 func (x *StoredAgitoCountReward) Reset() {
 	*x = StoredAgitoCountReward{}
-	mi := &file_proto_proto_msgTypes[73]
+	mi := &file_proto_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4748,7 +4986,7 @@ func (x *StoredAgitoCountReward) String() string {
 func (*StoredAgitoCountReward) ProtoMessage() {}
 
 func (x *StoredAgitoCountReward) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[73]
+	mi := &file_proto_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4761,7 +4999,7 @@ func (x *StoredAgitoCountReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAgitoCountReward.ProtoReflect.Descriptor instead.
 func (*StoredAgitoCountReward) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{73}
+	return file_proto_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *StoredAgitoCountReward) GetList() map[uint32]*puser.AgitoCountReward {
@@ -4788,7 +5026,7 @@ type StoredSeasonPass struct {
 
 func (x *StoredSeasonPass) Reset() {
 	*x = StoredSeasonPass{}
-	mi := &file_proto_proto_msgTypes[74]
+	mi := &file_proto_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4800,7 +5038,7 @@ func (x *StoredSeasonPass) String() string {
 func (*StoredSeasonPass) ProtoMessage() {}
 
 func (x *StoredSeasonPass) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[74]
+	mi := &file_proto_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4813,7 +5051,7 @@ func (x *StoredSeasonPass) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredSeasonPass.ProtoReflect.Descriptor instead.
 func (*StoredSeasonPass) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{74}
+	return file_proto_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *StoredSeasonPass) GetList() map[uint32]*puser.SeasonPass {
@@ -4840,7 +5078,7 @@ type StoredSeasonPassDailyMission struct {
 
 func (x *StoredSeasonPassDailyMission) Reset() {
 	*x = StoredSeasonPassDailyMission{}
-	mi := &file_proto_proto_msgTypes[75]
+	mi := &file_proto_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4852,7 +5090,7 @@ func (x *StoredSeasonPassDailyMission) String() string {
 func (*StoredSeasonPassDailyMission) ProtoMessage() {}
 
 func (x *StoredSeasonPassDailyMission) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[75]
+	mi := &file_proto_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4865,7 +5103,7 @@ func (x *StoredSeasonPassDailyMission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredSeasonPassDailyMission.ProtoReflect.Descriptor instead.
 func (*StoredSeasonPassDailyMission) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{75}
+	return file_proto_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *StoredSeasonPassDailyMission) GetList() map[uint32]*puser.SeasonPassDailyMission {
@@ -4892,7 +5130,7 @@ type StoredSeasonPassWeeklyMission struct {
 
 func (x *StoredSeasonPassWeeklyMission) Reset() {
 	*x = StoredSeasonPassWeeklyMission{}
-	mi := &file_proto_proto_msgTypes[76]
+	mi := &file_proto_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4904,7 +5142,7 @@ func (x *StoredSeasonPassWeeklyMission) String() string {
 func (*StoredSeasonPassWeeklyMission) ProtoMessage() {}
 
 func (x *StoredSeasonPassWeeklyMission) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[76]
+	mi := &file_proto_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4917,7 +5155,7 @@ func (x *StoredSeasonPassWeeklyMission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredSeasonPassWeeklyMission.ProtoReflect.Descriptor instead.
 func (*StoredSeasonPassWeeklyMission) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{76}
+	return file_proto_proto_rawDescGZIP(), []int{77}
 }
 
 func (x *StoredSeasonPassWeeklyMission) GetList() map[uint32]*puser.SeasonPassWeeklyMission {
@@ -4944,7 +5182,7 @@ type StoredImportantMissionGroup struct {
 
 func (x *StoredImportantMissionGroup) Reset() {
 	*x = StoredImportantMissionGroup{}
-	mi := &file_proto_proto_msgTypes[77]
+	mi := &file_proto_proto_msgTypes[78]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4956,7 +5194,7 @@ func (x *StoredImportantMissionGroup) String() string {
 func (*StoredImportantMissionGroup) ProtoMessage() {}
 
 func (x *StoredImportantMissionGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[77]
+	mi := &file_proto_proto_msgTypes[78]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4969,7 +5207,7 @@ func (x *StoredImportantMissionGroup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredImportantMissionGroup.ProtoReflect.Descriptor instead.
 func (*StoredImportantMissionGroup) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{77}
+	return file_proto_proto_rawDescGZIP(), []int{78}
 }
 
 func (x *StoredImportantMissionGroup) GetList() map[uint32]*puser.ImportantMissionGroup {
@@ -4996,7 +5234,7 @@ type StoredImportantMission struct {
 
 func (x *StoredImportantMission) Reset() {
 	*x = StoredImportantMission{}
-	mi := &file_proto_proto_msgTypes[78]
+	mi := &file_proto_proto_msgTypes[79]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5008,7 +5246,7 @@ func (x *StoredImportantMission) String() string {
 func (*StoredImportantMission) ProtoMessage() {}
 
 func (x *StoredImportantMission) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[78]
+	mi := &file_proto_proto_msgTypes[79]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5021,7 +5259,7 @@ func (x *StoredImportantMission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredImportantMission.ProtoReflect.Descriptor instead.
 func (*StoredImportantMission) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{78}
+	return file_proto_proto_rawDescGZIP(), []int{79}
 }
 
 func (x *StoredImportantMission) GetList() map[uint32]*puser.ImportantMission {
@@ -5049,7 +5287,7 @@ type StoredSpecialItemProgress struct {
 
 func (x *StoredSpecialItemProgress) Reset() {
 	*x = StoredSpecialItemProgress{}
-	mi := &file_proto_proto_msgTypes[79]
+	mi := &file_proto_proto_msgTypes[80]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5061,7 +5299,7 @@ func (x *StoredSpecialItemProgress) String() string {
 func (*StoredSpecialItemProgress) ProtoMessage() {}
 
 func (x *StoredSpecialItemProgress) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[79]
+	mi := &file_proto_proto_msgTypes[80]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5074,7 +5312,7 @@ func (x *StoredSpecialItemProgress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredSpecialItemProgress.ProtoReflect.Descriptor instead.
 func (*StoredSpecialItemProgress) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{79}
+	return file_proto_proto_rawDescGZIP(), []int{80}
 }
 
 func (x *StoredSpecialItemProgress) GetList() map[string]*puser.SpecialItemProgress {
@@ -5108,7 +5346,7 @@ type StoredAdvertising struct {
 
 func (x *StoredAdvertising) Reset() {
 	*x = StoredAdvertising{}
-	mi := &file_proto_proto_msgTypes[80]
+	mi := &file_proto_proto_msgTypes[81]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5120,7 +5358,7 @@ func (x *StoredAdvertising) String() string {
 func (*StoredAdvertising) ProtoMessage() {}
 
 func (x *StoredAdvertising) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[80]
+	mi := &file_proto_proto_msgTypes[81]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5133,7 +5371,7 @@ func (x *StoredAdvertising) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAdvertising.ProtoReflect.Descriptor instead.
 func (*StoredAdvertising) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{80}
+	return file_proto_proto_rawDescGZIP(), []int{81}
 }
 
 func (x *StoredAdvertising) GetList() map[uint32]*puser.Advertising {
@@ -5160,7 +5398,7 @@ type StoredReliefPointSending struct {
 
 func (x *StoredReliefPointSending) Reset() {
 	*x = StoredReliefPointSending{}
-	mi := &file_proto_proto_msgTypes[81]
+	mi := &file_proto_proto_msgTypes[82]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5172,7 +5410,7 @@ func (x *StoredReliefPointSending) String() string {
 func (*StoredReliefPointSending) ProtoMessage() {}
 
 func (x *StoredReliefPointSending) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[81]
+	mi := &file_proto_proto_msgTypes[82]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5185,7 +5423,7 @@ func (x *StoredReliefPointSending) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredReliefPointSending.ProtoReflect.Descriptor instead.
 func (*StoredReliefPointSending) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{81}
+	return file_proto_proto_rawDescGZIP(), []int{82}
 }
 
 func (x *StoredReliefPointSending) GetList() map[uint64]*puser.ReliefPointSending {
@@ -5212,7 +5450,7 @@ type StoredReliefPointReward struct {
 
 func (x *StoredReliefPointReward) Reset() {
 	*x = StoredReliefPointReward{}
-	mi := &file_proto_proto_msgTypes[82]
+	mi := &file_proto_proto_msgTypes[83]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5224,7 +5462,7 @@ func (x *StoredReliefPointReward) String() string {
 func (*StoredReliefPointReward) ProtoMessage() {}
 
 func (x *StoredReliefPointReward) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[82]
+	mi := &file_proto_proto_msgTypes[83]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5237,7 +5475,7 @@ func (x *StoredReliefPointReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredReliefPointReward.ProtoReflect.Descriptor instead.
 func (*StoredReliefPointReward) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{82}
+	return file_proto_proto_rawDescGZIP(), []int{83}
 }
 
 func (x *StoredReliefPointReward) GetList() map[uint32]*puser.ReliefPointReward {
@@ -5264,7 +5502,7 @@ type StoredContentsRiskDungeon struct {
 
 func (x *StoredContentsRiskDungeon) Reset() {
 	*x = StoredContentsRiskDungeon{}
-	mi := &file_proto_proto_msgTypes[83]
+	mi := &file_proto_proto_msgTypes[84]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5276,7 +5514,7 @@ func (x *StoredContentsRiskDungeon) String() string {
 func (*StoredContentsRiskDungeon) ProtoMessage() {}
 
 func (x *StoredContentsRiskDungeon) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[83]
+	mi := &file_proto_proto_msgTypes[84]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5289,7 +5527,7 @@ func (x *StoredContentsRiskDungeon) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredContentsRiskDungeon.ProtoReflect.Descriptor instead.
 func (*StoredContentsRiskDungeon) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{83}
+	return file_proto_proto_rawDescGZIP(), []int{84}
 }
 
 func (x *StoredContentsRiskDungeon) GetList() map[uint32]*puser.ContentsRiskDungeon {
@@ -5316,7 +5554,7 @@ type StoredContentsClearAncientTowerEx struct {
 
 func (x *StoredContentsClearAncientTowerEx) Reset() {
 	*x = StoredContentsClearAncientTowerEx{}
-	mi := &file_proto_proto_msgTypes[84]
+	mi := &file_proto_proto_msgTypes[85]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5328,7 +5566,7 @@ func (x *StoredContentsClearAncientTowerEx) String() string {
 func (*StoredContentsClearAncientTowerEx) ProtoMessage() {}
 
 func (x *StoredContentsClearAncientTowerEx) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[84]
+	mi := &file_proto_proto_msgTypes[85]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5341,7 +5579,7 @@ func (x *StoredContentsClearAncientTowerEx) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use StoredContentsClearAncientTowerEx.ProtoReflect.Descriptor instead.
 func (*StoredContentsClearAncientTowerEx) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{84}
+	return file_proto_proto_rawDescGZIP(), []int{85}
 }
 
 func (x *StoredContentsClearAncientTowerEx) GetList() map[string]*puser.ContentsClearAncientTowerEx {
@@ -5368,7 +5606,7 @@ type StoredJobDeckGroup struct {
 
 func (x *StoredJobDeckGroup) Reset() {
 	*x = StoredJobDeckGroup{}
-	mi := &file_proto_proto_msgTypes[85]
+	mi := &file_proto_proto_msgTypes[86]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5380,7 +5618,7 @@ func (x *StoredJobDeckGroup) String() string {
 func (*StoredJobDeckGroup) ProtoMessage() {}
 
 func (x *StoredJobDeckGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[85]
+	mi := &file_proto_proto_msgTypes[86]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5393,7 +5631,7 @@ func (x *StoredJobDeckGroup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredJobDeckGroup.ProtoReflect.Descriptor instead.
 func (*StoredJobDeckGroup) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{85}
+	return file_proto_proto_rawDescGZIP(), []int{86}
 }
 
 func (x *StoredJobDeckGroup) GetList() map[uint64]*puser.JobDeckGroup {
@@ -5420,7 +5658,7 @@ type StoredGvgPracticeReward struct {
 
 func (x *StoredGvgPracticeReward) Reset() {
 	*x = StoredGvgPracticeReward{}
-	mi := &file_proto_proto_msgTypes[86]
+	mi := &file_proto_proto_msgTypes[87]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5432,7 +5670,7 @@ func (x *StoredGvgPracticeReward) String() string {
 func (*StoredGvgPracticeReward) ProtoMessage() {}
 
 func (x *StoredGvgPracticeReward) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[86]
+	mi := &file_proto_proto_msgTypes[87]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5445,7 +5683,7 @@ func (x *StoredGvgPracticeReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredGvgPracticeReward.ProtoReflect.Descriptor instead.
 func (*StoredGvgPracticeReward) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{86}
+	return file_proto_proto_rawDescGZIP(), []int{87}
 }
 
 func (x *StoredGvgPracticeReward) GetList() map[uint64]*puser.GvgPracticeReward {
@@ -5472,7 +5710,7 @@ type StoredShopSpecialSale struct {
 
 func (x *StoredShopSpecialSale) Reset() {
 	*x = StoredShopSpecialSale{}
-	mi := &file_proto_proto_msgTypes[87]
+	mi := &file_proto_proto_msgTypes[88]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5484,7 +5722,7 @@ func (x *StoredShopSpecialSale) String() string {
 func (*StoredShopSpecialSale) ProtoMessage() {}
 
 func (x *StoredShopSpecialSale) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[87]
+	mi := &file_proto_proto_msgTypes[88]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5497,7 +5735,7 @@ func (x *StoredShopSpecialSale) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredShopSpecialSale.ProtoReflect.Descriptor instead.
 func (*StoredShopSpecialSale) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{87}
+	return file_proto_proto_rawDescGZIP(), []int{88}
 }
 
 func (x *StoredShopSpecialSale) GetList() map[uint32]*puser.ShopSpecialSale {
@@ -5524,7 +5762,7 @@ type StoredAgitoItemArea struct {
 
 func (x *StoredAgitoItemArea) Reset() {
 	*x = StoredAgitoItemArea{}
-	mi := &file_proto_proto_msgTypes[88]
+	mi := &file_proto_proto_msgTypes[89]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5536,7 +5774,7 @@ func (x *StoredAgitoItemArea) String() string {
 func (*StoredAgitoItemArea) ProtoMessage() {}
 
 func (x *StoredAgitoItemArea) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[88]
+	mi := &file_proto_proto_msgTypes[89]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5549,7 +5787,7 @@ func (x *StoredAgitoItemArea) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredAgitoItemArea.ProtoReflect.Descriptor instead.
 func (*StoredAgitoItemArea) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{88}
+	return file_proto_proto_rawDescGZIP(), []int{89}
 }
 
 func (x *StoredAgitoItemArea) GetList() map[uint32]*puser.AgitoItemArea {
@@ -5653,7 +5891,7 @@ type StoredData struct {
 
 func (x *StoredData) Reset() {
 	*x = StoredData{}
-	mi := &file_proto_proto_msgTypes[89]
+	mi := &file_proto_proto_msgTypes[90]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5665,7 +5903,7 @@ func (x *StoredData) String() string {
 func (*StoredData) ProtoMessage() {}
 
 func (x *StoredData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[89]
+	mi := &file_proto_proto_msgTypes[90]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5678,7 +5916,7 @@ func (x *StoredData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoredData.ProtoReflect.Descriptor instead.
 func (*StoredData) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{89}
+	return file_proto_proto_rawDescGZIP(), []int{90}
 }
 
 func (x *StoredData) GetGeneration() uint64 {
@@ -6244,7 +6482,7 @@ type Nocontent struct {
 
 func (x *Nocontent) Reset() {
 	*x = Nocontent{}
-	mi := &file_proto_proto_msgTypes[90]
+	mi := &file_proto_proto_msgTypes[91]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6256,7 +6494,7 @@ func (x *Nocontent) String() string {
 func (*Nocontent) ProtoMessage() {}
 
 func (x *Nocontent) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_proto_msgTypes[90]
+	mi := &file_proto_proto_msgTypes[91]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6269,7 +6507,7 @@ func (x *Nocontent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Nocontent.ProtoReflect.Descriptor instead.
 func (*Nocontent) Descriptor() ([]byte, []int) {
-	return file_proto_proto_rawDescGZIP(), []int{90}
+	return file_proto_proto_rawDescGZIP(), []int{91}
 }
 
 func (x *Nocontent) GetStoredData() *StoredData {
@@ -6477,14 +6715,48 @@ const file_proto_proto_rawDesc = "" +
 	"\x04list\x18\x01 \x01(\v2\x1d.Pmisc.GuildSharedMissionListR\x04list\x12>\n" +
 	"\aranking\x18\x02 \x01(\v2$.Pmisc.GuildSharedMissionRankingListR\aranking\x12\"\n" +
 	"\x05guild\x18\x03 \x01(\v2\f.Pmisc.GuildR\x05guild\"\x14\n" +
-	"\x12AgitoVisitorReturn\"\xf4\x03\n" +
-	"\x10FieldTopResponse\x12M\n" +
-	"\x13shared_mission_list\x18\r \x01(\v2\x1d.Pmisc.GuildSharedMissionListR\x11sharedMissionList\x12S\n" +
-	"\x15personal_mission_list\x18\x0e \x01(\v2\x1f.Pmisc.GuildPersonalMissionListR\x13personalMissionList\x12W\n" +
-	"\x15weekly_mission_reward\x18\x10 \x01(\v2#.Pmisc.GuildWeeklyMissionRewardListR\x13weeklyMissionReward\x12=\n" +
+	"\x12AgitoVisitorReturn\"\x96\x03\n" +
+	"\x11FieldPlayerDetail\x12%\n" +
+	"\x06player\x18\x01 \x01(\v2\r.Puser.PlayerR\x06player\x128\n" +
+	"\x10current_job_deck\x18\x02 \x01(\v2\x0e.Puser.JobDeckR\x0ecurrentJobDeck\x120\n" +
+	"\n" +
+	"equipments\x18\x03 \x03(\v2\x10.Puser.EquipmentR\n" +
+	"equipments\x12\x19\n" +
+	"\bguild_id\x18\x04 \x01(\x04R\aguildId\x12\x1d\n" +
+	"\n" +
+	"guild_name\x18\x05 \x01(\tR\tguildName\x12!\n" +
+	"\fguild_symbol\x18\x06 \x01(\rR\vguildSymbol\x12,\n" +
+	"\x12guild_symbol_frame\x18\a \x01(\rR\x10guildSymbolFrame\x127\n" +
+	"\x18guild_symbol_frame_color\x18\b \x01(\rR\x15guildSymbolFrameColor\x12*\n" +
+	"\x11guild_member_role\x18\t \x01(\rR\x0fguildMemberRole\"\xb4\t\n" +
+	"\x10FieldTopResponse\x122\n" +
+	"\vstored_data\x18\x01 \x01(\v2\x11.Proto.StoredDataR\n" +
+	"storedData\x122\n" +
+	"\aplayers\x18\x02 \x03(\v2\x18.Proto.FieldPlayerDetailR\aplayers\x12\x19\n" +
+	"\bguild_id\x18\x03 \x01(\x04R\aguildId\x12\x1d\n" +
+	"\n" +
+	"guild_name\x18\x04 \x01(\tR\tguildName\x12!\n" +
+	"\fguild_symbol\x18\x05 \x01(\rR\vguildSymbol\x12,\n" +
+	"\x12guild_symbol_frame\x18\x06 \x01(\rR\x10guildSymbolFrame\x127\n" +
+	"\x18guild_symbol_frame_color\x18\a \x01(\rR\x15guildSymbolFrameColor\x12*\n" +
+	"\x11guild_member_role\x18\b \x01(\rR\x0fguildMemberRole\x12$\n" +
+	"\x0eis_present_box\x18\t \x01(\bR\fisPresentBox\x12!\n" +
+	"\ffriend_badge\x18\n" +
+	" \x01(\rR\vfriendBadge\x12\x1f\n" +
+	"\vguild_badge\x18\v \x01(\rR\n" +
+	"guildBadge\x12K\n" +
+	"\x11sharedMissionList\x18\r \x01(\v2\x1d.Pmisc.GuildSharedMissionListR\x11sharedMissionList\x12Q\n" +
+	"\x13personalMissionList\x18\x0e \x01(\v2\x1f.Pmisc.GuildPersonalMissionListR\x13personalMissionList\x12W\n" +
+	"\x15weekly_mission_reward\x18\x10 \x01(\v2#.Puser.GuildWeeklyMissionRewardListR\x13weeklyMissionReward\x12=\n" +
 	"\rfacility_list\x18\x11 \x01(\v2\x18.Proto.GuildFacilityListR\ffacilityList\x12W\n" +
-	"\x18background_battle_reward\x18\x12 \x01(\v2\x1d.Proto.BattleBackgroundRewardR\x16backgroundBattleReward\x12K\n" +
-	"\x14agito_visitor_return\x18\x14 \x01(\v2\x19.Proto.AgitoVisitorReturnR\x12agitoVisitorReturn\"\x88\x01\n" +
+	"\x18background_battle_reward\x18\x12 \x01(\v2\x1d.Proto.BattleBackgroundRewardR\x16backgroundBattleReward\x122\n" +
+	"\vlogin_bonus\x18\x13 \x03(\v2\x11.Puser.LoginBonusR\n" +
+	"loginBonus\x12K\n" +
+	"\x14agito_visitor_return\x18\x14 \x01(\v2\x19.Proto.AgitoVisitorReturnR\x12agitoVisitorReturn\x12<\n" +
+	"\x1blast_agito_received_good_at\x18\x15 \x01(\tR\x17lastAgitoReceivedGoodAt\x12*\n" +
+	"\x11present_box_count\x18\x16 \x01(\rR\x0fpresentBoxCount\x120\n" +
+	"\x14direct_message_badge\x18\x18 \x01(\rR\x12directMessageBadge\x120\n" +
+	"\x14direct_message_count\x18\x19 \x01(\rR\x12directMessageCount\"\x88\x01\n" +
 	"\bCurrency\x12\x17\n" +
 	"\ared_orb\x18\x01 \x01(\rR\x06redOrb\x12\"\n" +
 	"\rfree_blue_orb\x18\x02 \x01(\rR\vfreeBlueOrb\x12\"\n" +
@@ -7170,7 +7442,7 @@ func file_proto_proto_rawDescGZIP() []byte {
 	return file_proto_proto_rawDescData
 }
 
-var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 213)
+var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 214)
 var file_proto_proto_goTypes = []any{
 	(*Empty)(nil),                             // 0: Proto.Empty
 	(*PlayerSummary)(nil),                     // 1: Proto.PlayerSummary
@@ -7194,643 +7466,650 @@ var file_proto_proto_goTypes = []any{
 	(*GuildPersonalMissionResult)(nil),        // 19: Proto.GuildPersonalMissionResult
 	(*GuildSharedMissionResult)(nil),          // 20: Proto.GuildSharedMissionResult
 	(*AgitoVisitorReturn)(nil),                // 21: Proto.AgitoVisitorReturn
-	(*FieldTopResponse)(nil),                  // 22: Proto.FieldTopResponse
-	(*Currency)(nil),                          // 23: Proto.Currency
-	(*GuildInfo)(nil),                         // 24: Proto.GuildInfo
-	(*ChatUnreadCategory)(nil),                // 25: Proto.ChatUnreadCategory
-	(*StoredMercenary)(nil),                   // 26: Proto.StoredMercenary
-	(*StoredPresentBoxInfo)(nil),              // 27: Proto.StoredPresentBoxInfo
-	(*StoredSample)(nil),                      // 28: Proto.StoredSample
-	(*StoredEquipment)(nil),                   // 29: Proto.StoredEquipment
-	(*StoredJob)(nil),                         // 30: Proto.StoredJob
-	(*StoredJobSkill)(nil),                    // 31: Proto.StoredJobSkill
-	(*StoredConditionProgress)(nil),           // 32: Proto.StoredConditionProgress
-	(*StoredAchievement)(nil),                 // 33: Proto.StoredAchievement
-	(*StoredItem)(nil),                        // 34: Proto.StoredItem
-	(*StoredAnima)(nil),                       // 35: Proto.StoredAnima
-	(*StoredAnimaArea)(nil),                   // 36: Proto.StoredAnimaArea
-	(*StoredRune)(nil),                        // 37: Proto.StoredRune
-	(*StoredElixir)(nil),                      // 38: Proto.StoredElixir
-	(*StoredContents)(nil),                    // 39: Proto.StoredContents
-	(*StoredDailyMission)(nil),                // 40: Proto.StoredDailyMission
-	(*StoredDailyMissionReward)(nil),          // 41: Proto.StoredDailyMissionReward
-	(*StoredOrderMission)(nil),                // 42: Proto.StoredOrderMission
-	(*StoredOrderMissionReroll)(nil),          // 43: Proto.StoredOrderMissionReroll
-	(*StoredOrderMissionReward)(nil),          // 44: Proto.StoredOrderMissionReward
-	(*StoredMercenaryHire)(nil),               // 45: Proto.StoredMercenaryHire
-	(*StoredEventMission)(nil),                // 46: Proto.StoredEventMission
-	(*StoredEventMissionReward)(nil),          // 47: Proto.StoredEventMissionReward
-	(*StoredContentsCondition)(nil),           // 48: Proto.StoredContentsCondition
-	(*StoredTitle)(nil),                       // 49: Proto.StoredTitle
-	(*StoredShopItem)(nil),                    // 50: Proto.StoredShopItem
-	(*StoredLoginBonus)(nil),                  // 51: Proto.StoredLoginBonus
-	(*StoredEventSugoroku)(nil),               // 52: Proto.StoredEventSugoroku
-	(*StoredBoost)(nil),                       // 53: Proto.StoredBoost
-	(*StoredBlock)(nil),                       // 54: Proto.StoredBlock
-	(*StoredExchange)(nil),                    // 55: Proto.StoredExchange
-	(*StoredContentsHero)(nil),                // 56: Proto.StoredContentsHero
-	(*StoredContentsTreasure)(nil),            // 57: Proto.StoredContentsTreasure
-	(*StoredContentsWeekMonster)(nil),         // 58: Proto.StoredContentsWeekMonster
-	(*StoredFunctionalTutorial)(nil),          // 59: Proto.StoredFunctionalTutorial
-	(*StoredEventRoulette)(nil),               // 60: Proto.StoredEventRoulette
-	(*StoredAngelBattleWeeklyReward)(nil),     // 61: Proto.StoredAngelBattleWeeklyReward
-	(*StoredAchievementEquipment)(nil),        // 62: Proto.StoredAchievementEquipment
-	(*StoredAchievementEquipmentReceive)(nil), // 63: Proto.StoredAchievementEquipmentReceive
-	(*StoredAchievementEquipmentStamp)(nil),   // 64: Proto.StoredAchievementEquipmentStamp
-	(*StoredEquipmentLiberation)(nil),         // 65: Proto.StoredEquipmentLiberation
-	(*StoredJobDeck)(nil),                     // 66: Proto.StoredJobDeck
-	(*StoredAgitoFurnitureSetting)(nil),       // 67: Proto.StoredAgitoFurnitureSetting
-	(*StoredAgitoAp)(nil),                     // 68: Proto.StoredAgitoAp
-	(*StoredAgitoRelotteryInterval)(nil),      // 69: Proto.StoredAgitoRelotteryInterval
-	(*StoredAgitoVisitor)(nil),                // 70: Proto.StoredAgitoVisitor
-	(*StoredAgitoGoodHistory)(nil),            // 71: Proto.StoredAgitoGoodHistory
-	(*StoredGachaHistory)(nil),                // 72: Proto.StoredGachaHistory
-	(*StoredAgitoCountReward)(nil),            // 73: Proto.StoredAgitoCountReward
-	(*StoredSeasonPass)(nil),                  // 74: Proto.StoredSeasonPass
-	(*StoredSeasonPassDailyMission)(nil),      // 75: Proto.StoredSeasonPassDailyMission
-	(*StoredSeasonPassWeeklyMission)(nil),     // 76: Proto.StoredSeasonPassWeeklyMission
-	(*StoredImportantMissionGroup)(nil),       // 77: Proto.StoredImportantMissionGroup
-	(*StoredImportantMission)(nil),            // 78: Proto.StoredImportantMission
-	(*StoredSpecialItemProgress)(nil),         // 79: Proto.StoredSpecialItemProgress
-	(*StoredAdvertising)(nil),                 // 80: Proto.StoredAdvertising
-	(*StoredReliefPointSending)(nil),          // 81: Proto.StoredReliefPointSending
-	(*StoredReliefPointReward)(nil),           // 82: Proto.StoredReliefPointReward
-	(*StoredContentsRiskDungeon)(nil),         // 83: Proto.StoredContentsRiskDungeon
-	(*StoredContentsClearAncientTowerEx)(nil), // 84: Proto.StoredContentsClearAncientTowerEx
-	(*StoredJobDeckGroup)(nil),                // 85: Proto.StoredJobDeckGroup
-	(*StoredGvgPracticeReward)(nil),           // 86: Proto.StoredGvgPracticeReward
-	(*StoredShopSpecialSale)(nil),             // 87: Proto.StoredShopSpecialSale
-	(*StoredAgitoItemArea)(nil),               // 88: Proto.StoredAgitoItemArea
-	(*StoredData)(nil),                        // 89: Proto.StoredData
-	(*Nocontent)(nil),                         // 90: Proto.Nocontent
-	nil,                                       // 91: Proto.StoredSample.ListEntry
-	nil,                                       // 92: Proto.StoredSample.AddEntry
-	nil,                                       // 93: Proto.StoredEquipment.ListEntry
-	nil,                                       // 94: Proto.StoredEquipment.AddEntry
-	nil,                                       // 95: Proto.StoredJob.ListEntry
-	nil,                                       // 96: Proto.StoredJob.AddEntry
-	nil,                                       // 97: Proto.StoredJobSkill.ListEntry
-	nil,                                       // 98: Proto.StoredJobSkill.AddEntry
-	nil,                                       // 99: Proto.StoredConditionProgress.ListEntry
-	nil,                                       // 100: Proto.StoredConditionProgress.AddEntry
-	nil,                                       // 101: Proto.StoredAchievement.ListEntry
-	nil,                                       // 102: Proto.StoredAchievement.AddEntry
-	nil,                                       // 103: Proto.StoredItem.ListEntry
-	nil,                                       // 104: Proto.StoredItem.AddEntry
-	nil,                                       // 105: Proto.StoredAnima.ListEntry
-	nil,                                       // 106: Proto.StoredAnima.AddEntry
-	nil,                                       // 107: Proto.StoredAnimaArea.ListEntry
-	nil,                                       // 108: Proto.StoredAnimaArea.AddEntry
-	nil,                                       // 109: Proto.StoredRune.ListEntry
-	nil,                                       // 110: Proto.StoredRune.AddEntry
-	nil,                                       // 111: Proto.StoredElixir.ListEntry
-	nil,                                       // 112: Proto.StoredElixir.AddEntry
-	nil,                                       // 113: Proto.StoredContents.ListEntry
-	nil,                                       // 114: Proto.StoredContents.AddEntry
-	nil,                                       // 115: Proto.StoredDailyMission.ListEntry
-	nil,                                       // 116: Proto.StoredDailyMission.AddEntry
-	nil,                                       // 117: Proto.StoredDailyMissionReward.ListEntry
-	nil,                                       // 118: Proto.StoredDailyMissionReward.AddEntry
-	nil,                                       // 119: Proto.StoredOrderMission.ListEntry
-	nil,                                       // 120: Proto.StoredOrderMission.AddEntry
-	nil,                                       // 121: Proto.StoredOrderMissionReroll.ListEntry
-	nil,                                       // 122: Proto.StoredOrderMissionReroll.AddEntry
-	nil,                                       // 123: Proto.StoredOrderMissionReward.ListEntry
-	nil,                                       // 124: Proto.StoredOrderMissionReward.AddEntry
-	nil,                                       // 125: Proto.StoredMercenaryHire.ListEntry
-	nil,                                       // 126: Proto.StoredMercenaryHire.AddEntry
-	nil,                                       // 127: Proto.StoredEventMission.ListEntry
-	nil,                                       // 128: Proto.StoredEventMission.AddEntry
-	nil,                                       // 129: Proto.StoredEventMissionReward.ListEntry
-	nil,                                       // 130: Proto.StoredEventMissionReward.AddEntry
-	nil,                                       // 131: Proto.StoredContentsCondition.ListEntry
-	nil,                                       // 132: Proto.StoredContentsCondition.AddEntry
-	nil,                                       // 133: Proto.StoredTitle.ListEntry
-	nil,                                       // 134: Proto.StoredTitle.AddEntry
-	nil,                                       // 135: Proto.StoredShopItem.ListEntry
-	nil,                                       // 136: Proto.StoredShopItem.AddEntry
-	nil,                                       // 137: Proto.StoredLoginBonus.ListEntry
-	nil,                                       // 138: Proto.StoredLoginBonus.AddEntry
-	nil,                                       // 139: Proto.StoredEventSugoroku.ListEntry
-	nil,                                       // 140: Proto.StoredEventSugoroku.AddEntry
-	nil,                                       // 141: Proto.StoredBoost.ListEntry
-	nil,                                       // 142: Proto.StoredBoost.AddEntry
-	nil,                                       // 143: Proto.StoredBlock.ListEntry
-	nil,                                       // 144: Proto.StoredBlock.AddEntry
-	nil,                                       // 145: Proto.StoredExchange.ListEntry
-	nil,                                       // 146: Proto.StoredExchange.AddEntry
-	nil,                                       // 147: Proto.StoredContentsHero.ListEntry
-	nil,                                       // 148: Proto.StoredContentsHero.AddEntry
-	nil,                                       // 149: Proto.StoredContentsTreasure.ListEntry
-	nil,                                       // 150: Proto.StoredContentsTreasure.AddEntry
-	nil,                                       // 151: Proto.StoredContentsWeekMonster.ListEntry
-	nil,                                       // 152: Proto.StoredContentsWeekMonster.AddEntry
-	nil,                                       // 153: Proto.StoredFunctionalTutorial.ListEntry
-	nil,                                       // 154: Proto.StoredFunctionalTutorial.AddEntry
-	nil,                                       // 155: Proto.StoredEventRoulette.ListEntry
-	nil,                                       // 156: Proto.StoredEventRoulette.AddEntry
-	nil,                                       // 157: Proto.StoredAngelBattleWeeklyReward.ListEntry
-	nil,                                       // 158: Proto.StoredAngelBattleWeeklyReward.AddEntry
-	nil,                                       // 159: Proto.StoredAchievementEquipment.ListEntry
-	nil,                                       // 160: Proto.StoredAchievementEquipment.AddEntry
-	nil,                                       // 161: Proto.StoredAchievementEquipmentReceive.ListEntry
-	nil,                                       // 162: Proto.StoredAchievementEquipmentReceive.AddEntry
-	nil,                                       // 163: Proto.StoredAchievementEquipmentStamp.ListEntry
-	nil,                                       // 164: Proto.StoredAchievementEquipmentStamp.AddEntry
-	nil,                                       // 165: Proto.StoredEquipmentLiberation.ListEntry
-	nil,                                       // 166: Proto.StoredEquipmentLiberation.AddEntry
-	nil,                                       // 167: Proto.StoredJobDeck.ListEntry
-	nil,                                       // 168: Proto.StoredJobDeck.AddEntry
-	nil,                                       // 169: Proto.StoredAgitoFurnitureSetting.ListEntry
-	nil,                                       // 170: Proto.StoredAgitoFurnitureSetting.AddEntry
-	nil,                                       // 171: Proto.StoredAgitoAp.ListEntry
-	nil,                                       // 172: Proto.StoredAgitoAp.AddEntry
-	nil,                                       // 173: Proto.StoredAgitoRelotteryInterval.ListEntry
-	nil,                                       // 174: Proto.StoredAgitoRelotteryInterval.AddEntry
-	nil,                                       // 175: Proto.StoredAgitoVisitor.ListEntry
-	nil,                                       // 176: Proto.StoredAgitoVisitor.AddEntry
-	nil,                                       // 177: Proto.StoredAgitoGoodHistory.ListEntry
-	nil,                                       // 178: Proto.StoredAgitoGoodHistory.AddEntry
-	nil,                                       // 179: Proto.StoredGachaHistory.ListEntry
-	nil,                                       // 180: Proto.StoredGachaHistory.AddEntry
-	nil,                                       // 181: Proto.StoredAgitoCountReward.ListEntry
-	nil,                                       // 182: Proto.StoredAgitoCountReward.AddEntry
-	nil,                                       // 183: Proto.StoredSeasonPass.ListEntry
-	nil,                                       // 184: Proto.StoredSeasonPass.AddEntry
-	nil,                                       // 185: Proto.StoredSeasonPassDailyMission.ListEntry
-	nil,                                       // 186: Proto.StoredSeasonPassDailyMission.AddEntry
-	nil,                                       // 187: Proto.StoredSeasonPassWeeklyMission.ListEntry
-	nil,                                       // 188: Proto.StoredSeasonPassWeeklyMission.AddEntry
-	nil,                                       // 189: Proto.StoredImportantMissionGroup.ListEntry
-	nil,                                       // 190: Proto.StoredImportantMissionGroup.AddEntry
-	nil,                                       // 191: Proto.StoredImportantMission.ListEntry
-	nil,                                       // 192: Proto.StoredImportantMission.AddEntry
-	nil,                                       // 193: Proto.StoredSpecialItemProgress.ListEntry
-	nil,                                       // 194: Proto.StoredSpecialItemProgress.AddEntry
-	nil,                                       // 195: Proto.StoredAdvertising.ListEntry
-	nil,                                       // 196: Proto.StoredAdvertising.AddEntry
-	nil,                                       // 197: Proto.StoredReliefPointSending.ListEntry
-	nil,                                       // 198: Proto.StoredReliefPointSending.AddEntry
-	nil,                                       // 199: Proto.StoredReliefPointReward.ListEntry
-	nil,                                       // 200: Proto.StoredReliefPointReward.AddEntry
-	nil,                                       // 201: Proto.StoredContentsRiskDungeon.ListEntry
-	nil,                                       // 202: Proto.StoredContentsRiskDungeon.AddEntry
-	nil,                                       // 203: Proto.StoredContentsClearAncientTowerEx.ListEntry
-	nil,                                       // 204: Proto.StoredContentsClearAncientTowerEx.AddEntry
-	nil,                                       // 205: Proto.StoredJobDeckGroup.ListEntry
-	nil,                                       // 206: Proto.StoredJobDeckGroup.AddEntry
-	nil,                                       // 207: Proto.StoredGvgPracticeReward.ListEntry
-	nil,                                       // 208: Proto.StoredGvgPracticeReward.AddEntry
-	nil,                                       // 209: Proto.StoredShopSpecialSale.ListEntry
-	nil,                                       // 210: Proto.StoredShopSpecialSale.AddEntry
-	nil,                                       // 211: Proto.StoredAgitoItemArea.ListEntry
-	nil,                                       // 212: Proto.StoredAgitoItemArea.AddEntry
-	(*pcommon.Error)(nil),                     // 213: Pcommon.Error
-	(*pmaster.Version)(nil),                   // 214: Pmaster.Version
-	(*puser.Player)(nil),                      // 215: Puser.Player
-	(*puser.Job)(nil),                         // 216: Puser.Job
-	(*puser.JobDeck)(nil),                     // 217: Puser.JobDeck
-	(*puser.Equipment)(nil),                   // 218: Puser.Equipment
-	(*puser.Elixir)(nil),                      // 219: Puser.Elixir
-	(*pmisc.GuildPersonalMissionList)(nil),    // 220: Pmisc.GuildPersonalMissionList
-	(*pmisc.GuildSharedMissionList)(nil),      // 221: Pmisc.GuildSharedMissionList
-	(*pmisc.GuildSharedMissionRankingList)(nil), // 222: Pmisc.GuildSharedMissionRankingList
-	(*pmisc.Guild)(nil),                         // 223: Pmisc.Guild
-	(*pmisc.GuildWeeklyMissionRewardList)(nil),  // 224: Pmisc.GuildWeeklyMissionRewardList
-	(*pmisc.GuildBoard)(nil),                    // 225: Pmisc.GuildBoard
-	(*puser.Setting)(nil),                       // 226: Puser.Setting
-	(*pmisc.BattleMember)(nil),                  // 227: Pmisc.BattleMember
-	(*puser.Arena)(nil),                         // 228: Puser.Arena
-	(*puser.MercenaryReward)(nil),               // 229: Puser.MercenaryReward
-	(*puser.AchievementReward)(nil),             // 230: Puser.AchievementReward
-	(*puser.AbyssFever)(nil),                    // 231: Puser.AbyssFever
-	(*puser.BackgroundBattle)(nil),              // 232: Puser.BackgroundBattle
-	(*puser.Agito)(nil),                         // 233: Puser.Agito
-	(*puser.Vip)(nil),                           // 234: Puser.Vip
-	(*puser.ReliefPoint)(nil),                   // 235: Puser.ReliefPoint
-	(*pmisc.Sample)(nil),                        // 236: Pmisc.Sample
-	(*puser.JobSkill)(nil),                      // 237: Puser.JobSkill
-	(*pmisc.ConditionProgress)(nil),             // 238: Pmisc.ConditionProgress
-	(*puser.Achievement)(nil),                   // 239: Puser.Achievement
-	(*puser.Item)(nil),                          // 240: Puser.Item
-	(*puser.Anima)(nil),                         // 241: Puser.Anima
-	(*puser.AnimaArea)(nil),                     // 242: Puser.AnimaArea
-	(*puser.Rune)(nil),                          // 243: Puser.Rune
-	(*puser.Contents)(nil),                      // 244: Puser.Contents
-	(*puser.DailyMission)(nil),                  // 245: Puser.DailyMission
-	(*puser.DailyMissionReward)(nil),            // 246: Puser.DailyMissionReward
-	(*puser.OrderMission)(nil),                  // 247: Puser.OrderMission
-	(*puser.OrderMissionReroll)(nil),            // 248: Puser.OrderMissionReroll
-	(*puser.OrderMissionReward)(nil),            // 249: Puser.OrderMissionReward
-	(*puser.MercenaryHire)(nil),                 // 250: Puser.MercenaryHire
-	(*puser.EventMission)(nil),                  // 251: Puser.EventMission
-	(*puser.EventMissionReward)(nil),            // 252: Puser.EventMissionReward
-	(*puser.ContentsCondition)(nil),             // 253: Puser.ContentsCondition
-	(*puser.Title)(nil),                         // 254: Puser.Title
-	(*puser.ShopItem)(nil),                      // 255: Puser.ShopItem
-	(*puser.LoginBonus)(nil),                    // 256: Puser.LoginBonus
-	(*puser.EventSugoroku)(nil),                 // 257: Puser.EventSugoroku
-	(*puser.Boost)(nil),                         // 258: Puser.Boost
-	(*pmisc.Block)(nil),                         // 259: Pmisc.Block
-	(*puser.Exchange)(nil),                      // 260: Puser.Exchange
-	(*puser.ContentsHero)(nil),                  // 261: Puser.ContentsHero
-	(*puser.ContentsTreasure)(nil),              // 262: Puser.ContentsTreasure
-	(*puser.ContentsWeekMonster)(nil),           // 263: Puser.ContentsWeekMonster
-	(*puser.FunctionalTutorial)(nil),            // 264: Puser.FunctionalTutorial
-	(*puser.EventRoulette)(nil),                 // 265: Puser.EventRoulette
-	(*puser.AngelBattleWeeklyReward)(nil),       // 266: Puser.AngelBattleWeeklyReward
-	(*puser.AchievementEquipment)(nil),          // 267: Puser.AchievementEquipment
-	(*puser.AchievementEquipmentReceive)(nil),   // 268: Puser.AchievementEquipmentReceive
-	(*puser.AchievementEquipmentStamp)(nil),     // 269: Puser.AchievementEquipmentStamp
-	(*puser.EquipmentLiberation)(nil),           // 270: Puser.EquipmentLiberation
-	(*puser.AgitoFurnitureSetting)(nil),         // 271: Puser.AgitoFurnitureSetting
-	(*puser.AgitoAp)(nil),                       // 272: Puser.AgitoAp
-	(*puser.AgitoRelotteryInterval)(nil),        // 273: Puser.AgitoRelotteryInterval
-	(*puser.AgitoVisitor)(nil),                  // 274: Puser.AgitoVisitor
-	(*puser.AgitoGoodHistory)(nil),              // 275: Puser.AgitoGoodHistory
-	(*puser.GachaHistory)(nil),                  // 276: Puser.GachaHistory
-	(*puser.AgitoCountReward)(nil),              // 277: Puser.AgitoCountReward
-	(*puser.SeasonPass)(nil),                    // 278: Puser.SeasonPass
-	(*puser.SeasonPassDailyMission)(nil),        // 279: Puser.SeasonPassDailyMission
-	(*puser.SeasonPassWeeklyMission)(nil),       // 280: Puser.SeasonPassWeeklyMission
-	(*puser.ImportantMissionGroup)(nil),         // 281: Puser.ImportantMissionGroup
-	(*puser.ImportantMission)(nil),              // 282: Puser.ImportantMission
-	(*puser.SpecialItemProgress)(nil),           // 283: Puser.SpecialItemProgress
-	(*puser.Advertising)(nil),                   // 284: Puser.Advertising
-	(*puser.ReliefPointSending)(nil),            // 285: Puser.ReliefPointSending
-	(*puser.ReliefPointReward)(nil),             // 286: Puser.ReliefPointReward
-	(*puser.ContentsRiskDungeon)(nil),           // 287: Puser.ContentsRiskDungeon
-	(*puser.ContentsClearAncientTowerEx)(nil),   // 288: Puser.ContentsClearAncientTowerEx
-	(*puser.JobDeckGroup)(nil),                  // 289: Puser.JobDeckGroup
-	(*puser.GvgPracticeReward)(nil),             // 290: Puser.GvgPracticeReward
-	(*puser.ShopSpecialSale)(nil),               // 291: Puser.ShopSpecialSale
-	(*puser.AgitoItemArea)(nil),                 // 292: Puser.AgitoItemArea
+	(*FieldPlayerDetail)(nil),                 // 22: Proto.FieldPlayerDetail
+	(*FieldTopResponse)(nil),                  // 23: Proto.FieldTopResponse
+	(*Currency)(nil),                          // 24: Proto.Currency
+	(*GuildInfo)(nil),                         // 25: Proto.GuildInfo
+	(*ChatUnreadCategory)(nil),                // 26: Proto.ChatUnreadCategory
+	(*StoredMercenary)(nil),                   // 27: Proto.StoredMercenary
+	(*StoredPresentBoxInfo)(nil),              // 28: Proto.StoredPresentBoxInfo
+	(*StoredSample)(nil),                      // 29: Proto.StoredSample
+	(*StoredEquipment)(nil),                   // 30: Proto.StoredEquipment
+	(*StoredJob)(nil),                         // 31: Proto.StoredJob
+	(*StoredJobSkill)(nil),                    // 32: Proto.StoredJobSkill
+	(*StoredConditionProgress)(nil),           // 33: Proto.StoredConditionProgress
+	(*StoredAchievement)(nil),                 // 34: Proto.StoredAchievement
+	(*StoredItem)(nil),                        // 35: Proto.StoredItem
+	(*StoredAnima)(nil),                       // 36: Proto.StoredAnima
+	(*StoredAnimaArea)(nil),                   // 37: Proto.StoredAnimaArea
+	(*StoredRune)(nil),                        // 38: Proto.StoredRune
+	(*StoredElixir)(nil),                      // 39: Proto.StoredElixir
+	(*StoredContents)(nil),                    // 40: Proto.StoredContents
+	(*StoredDailyMission)(nil),                // 41: Proto.StoredDailyMission
+	(*StoredDailyMissionReward)(nil),          // 42: Proto.StoredDailyMissionReward
+	(*StoredOrderMission)(nil),                // 43: Proto.StoredOrderMission
+	(*StoredOrderMissionReroll)(nil),          // 44: Proto.StoredOrderMissionReroll
+	(*StoredOrderMissionReward)(nil),          // 45: Proto.StoredOrderMissionReward
+	(*StoredMercenaryHire)(nil),               // 46: Proto.StoredMercenaryHire
+	(*StoredEventMission)(nil),                // 47: Proto.StoredEventMission
+	(*StoredEventMissionReward)(nil),          // 48: Proto.StoredEventMissionReward
+	(*StoredContentsCondition)(nil),           // 49: Proto.StoredContentsCondition
+	(*StoredTitle)(nil),                       // 50: Proto.StoredTitle
+	(*StoredShopItem)(nil),                    // 51: Proto.StoredShopItem
+	(*StoredLoginBonus)(nil),                  // 52: Proto.StoredLoginBonus
+	(*StoredEventSugoroku)(nil),               // 53: Proto.StoredEventSugoroku
+	(*StoredBoost)(nil),                       // 54: Proto.StoredBoost
+	(*StoredBlock)(nil),                       // 55: Proto.StoredBlock
+	(*StoredExchange)(nil),                    // 56: Proto.StoredExchange
+	(*StoredContentsHero)(nil),                // 57: Proto.StoredContentsHero
+	(*StoredContentsTreasure)(nil),            // 58: Proto.StoredContentsTreasure
+	(*StoredContentsWeekMonster)(nil),         // 59: Proto.StoredContentsWeekMonster
+	(*StoredFunctionalTutorial)(nil),          // 60: Proto.StoredFunctionalTutorial
+	(*StoredEventRoulette)(nil),               // 61: Proto.StoredEventRoulette
+	(*StoredAngelBattleWeeklyReward)(nil),     // 62: Proto.StoredAngelBattleWeeklyReward
+	(*StoredAchievementEquipment)(nil),        // 63: Proto.StoredAchievementEquipment
+	(*StoredAchievementEquipmentReceive)(nil), // 64: Proto.StoredAchievementEquipmentReceive
+	(*StoredAchievementEquipmentStamp)(nil),   // 65: Proto.StoredAchievementEquipmentStamp
+	(*StoredEquipmentLiberation)(nil),         // 66: Proto.StoredEquipmentLiberation
+	(*StoredJobDeck)(nil),                     // 67: Proto.StoredJobDeck
+	(*StoredAgitoFurnitureSetting)(nil),       // 68: Proto.StoredAgitoFurnitureSetting
+	(*StoredAgitoAp)(nil),                     // 69: Proto.StoredAgitoAp
+	(*StoredAgitoRelotteryInterval)(nil),      // 70: Proto.StoredAgitoRelotteryInterval
+	(*StoredAgitoVisitor)(nil),                // 71: Proto.StoredAgitoVisitor
+	(*StoredAgitoGoodHistory)(nil),            // 72: Proto.StoredAgitoGoodHistory
+	(*StoredGachaHistory)(nil),                // 73: Proto.StoredGachaHistory
+	(*StoredAgitoCountReward)(nil),            // 74: Proto.StoredAgitoCountReward
+	(*StoredSeasonPass)(nil),                  // 75: Proto.StoredSeasonPass
+	(*StoredSeasonPassDailyMission)(nil),      // 76: Proto.StoredSeasonPassDailyMission
+	(*StoredSeasonPassWeeklyMission)(nil),     // 77: Proto.StoredSeasonPassWeeklyMission
+	(*StoredImportantMissionGroup)(nil),       // 78: Proto.StoredImportantMissionGroup
+	(*StoredImportantMission)(nil),            // 79: Proto.StoredImportantMission
+	(*StoredSpecialItemProgress)(nil),         // 80: Proto.StoredSpecialItemProgress
+	(*StoredAdvertising)(nil),                 // 81: Proto.StoredAdvertising
+	(*StoredReliefPointSending)(nil),          // 82: Proto.StoredReliefPointSending
+	(*StoredReliefPointReward)(nil),           // 83: Proto.StoredReliefPointReward
+	(*StoredContentsRiskDungeon)(nil),         // 84: Proto.StoredContentsRiskDungeon
+	(*StoredContentsClearAncientTowerEx)(nil), // 85: Proto.StoredContentsClearAncientTowerEx
+	(*StoredJobDeckGroup)(nil),                // 86: Proto.StoredJobDeckGroup
+	(*StoredGvgPracticeReward)(nil),           // 87: Proto.StoredGvgPracticeReward
+	(*StoredShopSpecialSale)(nil),             // 88: Proto.StoredShopSpecialSale
+	(*StoredAgitoItemArea)(nil),               // 89: Proto.StoredAgitoItemArea
+	(*StoredData)(nil),                        // 90: Proto.StoredData
+	(*Nocontent)(nil),                         // 91: Proto.Nocontent
+	nil,                                       // 92: Proto.StoredSample.ListEntry
+	nil,                                       // 93: Proto.StoredSample.AddEntry
+	nil,                                       // 94: Proto.StoredEquipment.ListEntry
+	nil,                                       // 95: Proto.StoredEquipment.AddEntry
+	nil,                                       // 96: Proto.StoredJob.ListEntry
+	nil,                                       // 97: Proto.StoredJob.AddEntry
+	nil,                                       // 98: Proto.StoredJobSkill.ListEntry
+	nil,                                       // 99: Proto.StoredJobSkill.AddEntry
+	nil,                                       // 100: Proto.StoredConditionProgress.ListEntry
+	nil,                                       // 101: Proto.StoredConditionProgress.AddEntry
+	nil,                                       // 102: Proto.StoredAchievement.ListEntry
+	nil,                                       // 103: Proto.StoredAchievement.AddEntry
+	nil,                                       // 104: Proto.StoredItem.ListEntry
+	nil,                                       // 105: Proto.StoredItem.AddEntry
+	nil,                                       // 106: Proto.StoredAnima.ListEntry
+	nil,                                       // 107: Proto.StoredAnima.AddEntry
+	nil,                                       // 108: Proto.StoredAnimaArea.ListEntry
+	nil,                                       // 109: Proto.StoredAnimaArea.AddEntry
+	nil,                                       // 110: Proto.StoredRune.ListEntry
+	nil,                                       // 111: Proto.StoredRune.AddEntry
+	nil,                                       // 112: Proto.StoredElixir.ListEntry
+	nil,                                       // 113: Proto.StoredElixir.AddEntry
+	nil,                                       // 114: Proto.StoredContents.ListEntry
+	nil,                                       // 115: Proto.StoredContents.AddEntry
+	nil,                                       // 116: Proto.StoredDailyMission.ListEntry
+	nil,                                       // 117: Proto.StoredDailyMission.AddEntry
+	nil,                                       // 118: Proto.StoredDailyMissionReward.ListEntry
+	nil,                                       // 119: Proto.StoredDailyMissionReward.AddEntry
+	nil,                                       // 120: Proto.StoredOrderMission.ListEntry
+	nil,                                       // 121: Proto.StoredOrderMission.AddEntry
+	nil,                                       // 122: Proto.StoredOrderMissionReroll.ListEntry
+	nil,                                       // 123: Proto.StoredOrderMissionReroll.AddEntry
+	nil,                                       // 124: Proto.StoredOrderMissionReward.ListEntry
+	nil,                                       // 125: Proto.StoredOrderMissionReward.AddEntry
+	nil,                                       // 126: Proto.StoredMercenaryHire.ListEntry
+	nil,                                       // 127: Proto.StoredMercenaryHire.AddEntry
+	nil,                                       // 128: Proto.StoredEventMission.ListEntry
+	nil,                                       // 129: Proto.StoredEventMission.AddEntry
+	nil,                                       // 130: Proto.StoredEventMissionReward.ListEntry
+	nil,                                       // 131: Proto.StoredEventMissionReward.AddEntry
+	nil,                                       // 132: Proto.StoredContentsCondition.ListEntry
+	nil,                                       // 133: Proto.StoredContentsCondition.AddEntry
+	nil,                                       // 134: Proto.StoredTitle.ListEntry
+	nil,                                       // 135: Proto.StoredTitle.AddEntry
+	nil,                                       // 136: Proto.StoredShopItem.ListEntry
+	nil,                                       // 137: Proto.StoredShopItem.AddEntry
+	nil,                                       // 138: Proto.StoredLoginBonus.ListEntry
+	nil,                                       // 139: Proto.StoredLoginBonus.AddEntry
+	nil,                                       // 140: Proto.StoredEventSugoroku.ListEntry
+	nil,                                       // 141: Proto.StoredEventSugoroku.AddEntry
+	nil,                                       // 142: Proto.StoredBoost.ListEntry
+	nil,                                       // 143: Proto.StoredBoost.AddEntry
+	nil,                                       // 144: Proto.StoredBlock.ListEntry
+	nil,                                       // 145: Proto.StoredBlock.AddEntry
+	nil,                                       // 146: Proto.StoredExchange.ListEntry
+	nil,                                       // 147: Proto.StoredExchange.AddEntry
+	nil,                                       // 148: Proto.StoredContentsHero.ListEntry
+	nil,                                       // 149: Proto.StoredContentsHero.AddEntry
+	nil,                                       // 150: Proto.StoredContentsTreasure.ListEntry
+	nil,                                       // 151: Proto.StoredContentsTreasure.AddEntry
+	nil,                                       // 152: Proto.StoredContentsWeekMonster.ListEntry
+	nil,                                       // 153: Proto.StoredContentsWeekMonster.AddEntry
+	nil,                                       // 154: Proto.StoredFunctionalTutorial.ListEntry
+	nil,                                       // 155: Proto.StoredFunctionalTutorial.AddEntry
+	nil,                                       // 156: Proto.StoredEventRoulette.ListEntry
+	nil,                                       // 157: Proto.StoredEventRoulette.AddEntry
+	nil,                                       // 158: Proto.StoredAngelBattleWeeklyReward.ListEntry
+	nil,                                       // 159: Proto.StoredAngelBattleWeeklyReward.AddEntry
+	nil,                                       // 160: Proto.StoredAchievementEquipment.ListEntry
+	nil,                                       // 161: Proto.StoredAchievementEquipment.AddEntry
+	nil,                                       // 162: Proto.StoredAchievementEquipmentReceive.ListEntry
+	nil,                                       // 163: Proto.StoredAchievementEquipmentReceive.AddEntry
+	nil,                                       // 164: Proto.StoredAchievementEquipmentStamp.ListEntry
+	nil,                                       // 165: Proto.StoredAchievementEquipmentStamp.AddEntry
+	nil,                                       // 166: Proto.StoredEquipmentLiberation.ListEntry
+	nil,                                       // 167: Proto.StoredEquipmentLiberation.AddEntry
+	nil,                                       // 168: Proto.StoredJobDeck.ListEntry
+	nil,                                       // 169: Proto.StoredJobDeck.AddEntry
+	nil,                                       // 170: Proto.StoredAgitoFurnitureSetting.ListEntry
+	nil,                                       // 171: Proto.StoredAgitoFurnitureSetting.AddEntry
+	nil,                                       // 172: Proto.StoredAgitoAp.ListEntry
+	nil,                                       // 173: Proto.StoredAgitoAp.AddEntry
+	nil,                                       // 174: Proto.StoredAgitoRelotteryInterval.ListEntry
+	nil,                                       // 175: Proto.StoredAgitoRelotteryInterval.AddEntry
+	nil,                                       // 176: Proto.StoredAgitoVisitor.ListEntry
+	nil,                                       // 177: Proto.StoredAgitoVisitor.AddEntry
+	nil,                                       // 178: Proto.StoredAgitoGoodHistory.ListEntry
+	nil,                                       // 179: Proto.StoredAgitoGoodHistory.AddEntry
+	nil,                                       // 180: Proto.StoredGachaHistory.ListEntry
+	nil,                                       // 181: Proto.StoredGachaHistory.AddEntry
+	nil,                                       // 182: Proto.StoredAgitoCountReward.ListEntry
+	nil,                                       // 183: Proto.StoredAgitoCountReward.AddEntry
+	nil,                                       // 184: Proto.StoredSeasonPass.ListEntry
+	nil,                                       // 185: Proto.StoredSeasonPass.AddEntry
+	nil,                                       // 186: Proto.StoredSeasonPassDailyMission.ListEntry
+	nil,                                       // 187: Proto.StoredSeasonPassDailyMission.AddEntry
+	nil,                                       // 188: Proto.StoredSeasonPassWeeklyMission.ListEntry
+	nil,                                       // 189: Proto.StoredSeasonPassWeeklyMission.AddEntry
+	nil,                                       // 190: Proto.StoredImportantMissionGroup.ListEntry
+	nil,                                       // 191: Proto.StoredImportantMissionGroup.AddEntry
+	nil,                                       // 192: Proto.StoredImportantMission.ListEntry
+	nil,                                       // 193: Proto.StoredImportantMission.AddEntry
+	nil,                                       // 194: Proto.StoredSpecialItemProgress.ListEntry
+	nil,                                       // 195: Proto.StoredSpecialItemProgress.AddEntry
+	nil,                                       // 196: Proto.StoredAdvertising.ListEntry
+	nil,                                       // 197: Proto.StoredAdvertising.AddEntry
+	nil,                                       // 198: Proto.StoredReliefPointSending.ListEntry
+	nil,                                       // 199: Proto.StoredReliefPointSending.AddEntry
+	nil,                                       // 200: Proto.StoredReliefPointReward.ListEntry
+	nil,                                       // 201: Proto.StoredReliefPointReward.AddEntry
+	nil,                                       // 202: Proto.StoredContentsRiskDungeon.ListEntry
+	nil,                                       // 203: Proto.StoredContentsRiskDungeon.AddEntry
+	nil,                                       // 204: Proto.StoredContentsClearAncientTowerEx.ListEntry
+	nil,                                       // 205: Proto.StoredContentsClearAncientTowerEx.AddEntry
+	nil,                                       // 206: Proto.StoredJobDeckGroup.ListEntry
+	nil,                                       // 207: Proto.StoredJobDeckGroup.AddEntry
+	nil,                                       // 208: Proto.StoredGvgPracticeReward.ListEntry
+	nil,                                       // 209: Proto.StoredGvgPracticeReward.AddEntry
+	nil,                                       // 210: Proto.StoredShopSpecialSale.ListEntry
+	nil,                                       // 211: Proto.StoredShopSpecialSale.AddEntry
+	nil,                                       // 212: Proto.StoredAgitoItemArea.ListEntry
+	nil,                                       // 213: Proto.StoredAgitoItemArea.AddEntry
+	(*pcommon.Error)(nil),                     // 214: Pcommon.Error
+	(*pmaster.Version)(nil),                   // 215: Pmaster.Version
+	(*puser.Player)(nil),                      // 216: Puser.Player
+	(*puser.Job)(nil),                         // 217: Puser.Job
+	(*puser.JobDeck)(nil),                     // 218: Puser.JobDeck
+	(*puser.Equipment)(nil),                   // 219: Puser.Equipment
+	(*puser.Elixir)(nil),                      // 220: Puser.Elixir
+	(*pmisc.GuildPersonalMissionList)(nil),    // 221: Pmisc.GuildPersonalMissionList
+	(*pmisc.GuildSharedMissionList)(nil),      // 222: Pmisc.GuildSharedMissionList
+	(*pmisc.GuildSharedMissionRankingList)(nil), // 223: Pmisc.GuildSharedMissionRankingList
+	(*pmisc.Guild)(nil),                         // 224: Pmisc.Guild
+	(*puser.GuildWeeklyMissionRewardList)(nil),  // 225: Puser.GuildWeeklyMissionRewardList
+	(*puser.LoginBonus)(nil),                    // 226: Puser.LoginBonus
+	(*pmisc.GuildBoard)(nil),                    // 227: Pmisc.GuildBoard
+	(*puser.Setting)(nil),                       // 228: Puser.Setting
+	(*pmisc.BattleMember)(nil),                  // 229: Pmisc.BattleMember
+	(*puser.Arena)(nil),                         // 230: Puser.Arena
+	(*puser.MercenaryReward)(nil),               // 231: Puser.MercenaryReward
+	(*puser.AchievementReward)(nil),             // 232: Puser.AchievementReward
+	(*puser.AbyssFever)(nil),                    // 233: Puser.AbyssFever
+	(*puser.BackgroundBattle)(nil),              // 234: Puser.BackgroundBattle
+	(*puser.Agito)(nil),                         // 235: Puser.Agito
+	(*puser.Vip)(nil),                           // 236: Puser.Vip
+	(*puser.ReliefPoint)(nil),                   // 237: Puser.ReliefPoint
+	(*pmisc.Sample)(nil),                        // 238: Pmisc.Sample
+	(*puser.JobSkill)(nil),                      // 239: Puser.JobSkill
+	(*pmisc.ConditionProgress)(nil),             // 240: Pmisc.ConditionProgress
+	(*puser.Achievement)(nil),                   // 241: Puser.Achievement
+	(*puser.Item)(nil),                          // 242: Puser.Item
+	(*puser.Anima)(nil),                         // 243: Puser.Anima
+	(*puser.AnimaArea)(nil),                     // 244: Puser.AnimaArea
+	(*puser.Rune)(nil),                          // 245: Puser.Rune
+	(*puser.Contents)(nil),                      // 246: Puser.Contents
+	(*puser.DailyMission)(nil),                  // 247: Puser.DailyMission
+	(*puser.DailyMissionReward)(nil),            // 248: Puser.DailyMissionReward
+	(*puser.OrderMission)(nil),                  // 249: Puser.OrderMission
+	(*puser.OrderMissionReroll)(nil),            // 250: Puser.OrderMissionReroll
+	(*puser.OrderMissionReward)(nil),            // 251: Puser.OrderMissionReward
+	(*puser.MercenaryHire)(nil),                 // 252: Puser.MercenaryHire
+	(*puser.EventMission)(nil),                  // 253: Puser.EventMission
+	(*puser.EventMissionReward)(nil),            // 254: Puser.EventMissionReward
+	(*puser.ContentsCondition)(nil),             // 255: Puser.ContentsCondition
+	(*puser.Title)(nil),                         // 256: Puser.Title
+	(*puser.ShopItem)(nil),                      // 257: Puser.ShopItem
+	(*puser.EventSugoroku)(nil),                 // 258: Puser.EventSugoroku
+	(*puser.Boost)(nil),                         // 259: Puser.Boost
+	(*pmisc.Block)(nil),                         // 260: Pmisc.Block
+	(*puser.Exchange)(nil),                      // 261: Puser.Exchange
+	(*puser.ContentsHero)(nil),                  // 262: Puser.ContentsHero
+	(*puser.ContentsTreasure)(nil),              // 263: Puser.ContentsTreasure
+	(*puser.ContentsWeekMonster)(nil),           // 264: Puser.ContentsWeekMonster
+	(*puser.FunctionalTutorial)(nil),            // 265: Puser.FunctionalTutorial
+	(*puser.EventRoulette)(nil),                 // 266: Puser.EventRoulette
+	(*puser.AngelBattleWeeklyReward)(nil),       // 267: Puser.AngelBattleWeeklyReward
+	(*puser.AchievementEquipment)(nil),          // 268: Puser.AchievementEquipment
+	(*puser.AchievementEquipmentReceive)(nil),   // 269: Puser.AchievementEquipmentReceive
+	(*puser.AchievementEquipmentStamp)(nil),     // 270: Puser.AchievementEquipmentStamp
+	(*puser.EquipmentLiberation)(nil),           // 271: Puser.EquipmentLiberation
+	(*puser.AgitoFurnitureSetting)(nil),         // 272: Puser.AgitoFurnitureSetting
+	(*puser.AgitoAp)(nil),                       // 273: Puser.AgitoAp
+	(*puser.AgitoRelotteryInterval)(nil),        // 274: Puser.AgitoRelotteryInterval
+	(*puser.AgitoVisitor)(nil),                  // 275: Puser.AgitoVisitor
+	(*puser.AgitoGoodHistory)(nil),              // 276: Puser.AgitoGoodHistory
+	(*puser.GachaHistory)(nil),                  // 277: Puser.GachaHistory
+	(*puser.AgitoCountReward)(nil),              // 278: Puser.AgitoCountReward
+	(*puser.SeasonPass)(nil),                    // 279: Puser.SeasonPass
+	(*puser.SeasonPassDailyMission)(nil),        // 280: Puser.SeasonPassDailyMission
+	(*puser.SeasonPassWeeklyMission)(nil),       // 281: Puser.SeasonPassWeeklyMission
+	(*puser.ImportantMissionGroup)(nil),         // 282: Puser.ImportantMissionGroup
+	(*puser.ImportantMission)(nil),              // 283: Puser.ImportantMission
+	(*puser.SpecialItemProgress)(nil),           // 284: Puser.SpecialItemProgress
+	(*puser.Advertising)(nil),                   // 285: Puser.Advertising
+	(*puser.ReliefPointSending)(nil),            // 286: Puser.ReliefPointSending
+	(*puser.ReliefPointReward)(nil),             // 287: Puser.ReliefPointReward
+	(*puser.ContentsRiskDungeon)(nil),           // 288: Puser.ContentsRiskDungeon
+	(*puser.ContentsClearAncientTowerEx)(nil),   // 289: Puser.ContentsClearAncientTowerEx
+	(*puser.JobDeckGroup)(nil),                  // 290: Puser.JobDeckGroup
+	(*puser.GvgPracticeReward)(nil),             // 291: Puser.GvgPracticeReward
+	(*puser.ShopSpecialSale)(nil),               // 292: Puser.ShopSpecialSale
+	(*puser.AgitoItemArea)(nil),                 // 293: Puser.AgitoItemArea
 }
 var file_proto_proto_depIdxs = []int32{
-	213, // 0: Proto.Empty.error:type_name -> Pcommon.Error
-	213, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
+	214, // 0: Proto.Empty.error:type_name -> Pcommon.Error
+	214, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
 	1,   // 2: Proto.PlayerExist.player_summary:type_name -> Proto.PlayerSummary
-	214, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
+	215, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
 	5,   // 4: Proto.BattleClearParam.job_parameter:type_name -> Proto.BaseParameter
 	5,   // 5: Proto.BattleClearParam.arena_parameter:type_name -> Proto.BaseParameter
 	7,   // 6: Proto.BattleBackgroundReward.reward_list:type_name -> Proto.RewardInfo
 	6,   // 7: Proto.BattleBackgroundReward.before:type_name -> Proto.BattleClearParam
 	6,   // 8: Proto.BattleBackgroundReward.after:type_name -> Proto.BattleClearParam
 	8,   // 9: Proto.BackgroundStatus.reward:type_name -> Proto.BattleBackgroundReward
-	215, // 10: Proto.PlayerDetail.player:type_name -> Puser.Player
-	216, // 11: Proto.PlayerDetail.current_job:type_name -> Puser.Job
-	216, // 12: Proto.PlayerDetail.jobs:type_name -> Puser.Job
-	217, // 13: Proto.PlayerDetail.current_job_deck:type_name -> Puser.JobDeck
-	218, // 14: Proto.PlayerDetail.equipments:type_name -> Puser.Equipment
-	219, // 15: Proto.PlayerDetail.elixirs:type_name -> Puser.Elixir
+	216, // 10: Proto.PlayerDetail.player:type_name -> Puser.Player
+	217, // 11: Proto.PlayerDetail.current_job:type_name -> Puser.Job
+	217, // 12: Proto.PlayerDetail.jobs:type_name -> Puser.Job
+	218, // 13: Proto.PlayerDetail.current_job_deck:type_name -> Puser.JobDeck
+	219, // 14: Proto.PlayerDetail.equipments:type_name -> Puser.Equipment
+	220, // 15: Proto.PlayerDetail.elixirs:type_name -> Puser.Elixir
 	5,   // 16: Proto.PlayerDetail.base_parameter:type_name -> Proto.BaseParameter
 	10,  // 17: Proto.PlayerDetail.guild_summary:type_name -> Proto.GuildSummary
 	11,  // 18: Proto.PlayerDetail.guild_member:type_name -> Proto.GuildMember
 	12,  // 19: Proto.PlayerDetail.power_assessment_list:type_name -> Proto.PowerAssessment
-	215, // 20: Proto.PlayerList.players:type_name -> Puser.Player
-	213, // 21: Proto.PlayerList.error:type_name -> Pcommon.Error
+	216, // 20: Proto.PlayerList.players:type_name -> Puser.Player
+	214, // 21: Proto.PlayerList.error:type_name -> Pcommon.Error
 	9,   // 22: Proto.PlayerList.background_status:type_name -> Proto.BackgroundStatus
 	15,  // 23: Proto.Etc.host:type_name -> Proto.Host
 	16,  // 24: Proto.Etc.revision:type_name -> Proto.Revision
-	220, // 25: Proto.GuildPersonalMissionResult.list:type_name -> Pmisc.GuildPersonalMissionList
-	221, // 26: Proto.GuildSharedMissionResult.list:type_name -> Pmisc.GuildSharedMissionList
-	222, // 27: Proto.GuildSharedMissionResult.ranking:type_name -> Pmisc.GuildSharedMissionRankingList
-	223, // 28: Proto.GuildSharedMissionResult.guild:type_name -> Pmisc.Guild
-	221, // 29: Proto.FieldTopResponse.shared_mission_list:type_name -> Pmisc.GuildSharedMissionList
-	220, // 30: Proto.FieldTopResponse.personal_mission_list:type_name -> Pmisc.GuildPersonalMissionList
-	224, // 31: Proto.FieldTopResponse.weekly_mission_reward:type_name -> Pmisc.GuildWeeklyMissionRewardList
-	18,  // 32: Proto.FieldTopResponse.facility_list:type_name -> Proto.GuildFacilityList
-	8,   // 33: Proto.FieldTopResponse.background_battle_reward:type_name -> Proto.BattleBackgroundReward
-	21,  // 34: Proto.FieldTopResponse.agito_visitor_return:type_name -> Proto.AgitoVisitorReturn
-	225, // 35: Proto.GuildInfo.guild_board_announcement:type_name -> Pmisc.GuildBoard
-	91,  // 36: Proto.StoredSample.list:type_name -> Proto.StoredSample.ListEntry
-	92,  // 37: Proto.StoredSample.add:type_name -> Proto.StoredSample.AddEntry
-	93,  // 38: Proto.StoredEquipment.list:type_name -> Proto.StoredEquipment.ListEntry
-	94,  // 39: Proto.StoredEquipment.add:type_name -> Proto.StoredEquipment.AddEntry
-	95,  // 40: Proto.StoredJob.list:type_name -> Proto.StoredJob.ListEntry
-	96,  // 41: Proto.StoredJob.add:type_name -> Proto.StoredJob.AddEntry
-	97,  // 42: Proto.StoredJobSkill.list:type_name -> Proto.StoredJobSkill.ListEntry
-	98,  // 43: Proto.StoredJobSkill.add:type_name -> Proto.StoredJobSkill.AddEntry
-	99,  // 44: Proto.StoredConditionProgress.list:type_name -> Proto.StoredConditionProgress.ListEntry
-	100, // 45: Proto.StoredConditionProgress.add:type_name -> Proto.StoredConditionProgress.AddEntry
-	101, // 46: Proto.StoredAchievement.list:type_name -> Proto.StoredAchievement.ListEntry
-	102, // 47: Proto.StoredAchievement.add:type_name -> Proto.StoredAchievement.AddEntry
-	103, // 48: Proto.StoredItem.list:type_name -> Proto.StoredItem.ListEntry
-	104, // 49: Proto.StoredItem.add:type_name -> Proto.StoredItem.AddEntry
-	105, // 50: Proto.StoredAnima.list:type_name -> Proto.StoredAnima.ListEntry
-	106, // 51: Proto.StoredAnima.add:type_name -> Proto.StoredAnima.AddEntry
-	107, // 52: Proto.StoredAnimaArea.list:type_name -> Proto.StoredAnimaArea.ListEntry
-	108, // 53: Proto.StoredAnimaArea.add:type_name -> Proto.StoredAnimaArea.AddEntry
-	109, // 54: Proto.StoredRune.list:type_name -> Proto.StoredRune.ListEntry
-	110, // 55: Proto.StoredRune.add:type_name -> Proto.StoredRune.AddEntry
-	111, // 56: Proto.StoredElixir.list:type_name -> Proto.StoredElixir.ListEntry
-	112, // 57: Proto.StoredElixir.add:type_name -> Proto.StoredElixir.AddEntry
-	113, // 58: Proto.StoredContents.list:type_name -> Proto.StoredContents.ListEntry
-	114, // 59: Proto.StoredContents.add:type_name -> Proto.StoredContents.AddEntry
-	115, // 60: Proto.StoredDailyMission.list:type_name -> Proto.StoredDailyMission.ListEntry
-	116, // 61: Proto.StoredDailyMission.add:type_name -> Proto.StoredDailyMission.AddEntry
-	117, // 62: Proto.StoredDailyMissionReward.list:type_name -> Proto.StoredDailyMissionReward.ListEntry
-	118, // 63: Proto.StoredDailyMissionReward.add:type_name -> Proto.StoredDailyMissionReward.AddEntry
-	119, // 64: Proto.StoredOrderMission.list:type_name -> Proto.StoredOrderMission.ListEntry
-	120, // 65: Proto.StoredOrderMission.add:type_name -> Proto.StoredOrderMission.AddEntry
-	121, // 66: Proto.StoredOrderMissionReroll.list:type_name -> Proto.StoredOrderMissionReroll.ListEntry
-	122, // 67: Proto.StoredOrderMissionReroll.add:type_name -> Proto.StoredOrderMissionReroll.AddEntry
-	123, // 68: Proto.StoredOrderMissionReward.list:type_name -> Proto.StoredOrderMissionReward.ListEntry
-	124, // 69: Proto.StoredOrderMissionReward.add:type_name -> Proto.StoredOrderMissionReward.AddEntry
-	125, // 70: Proto.StoredMercenaryHire.list:type_name -> Proto.StoredMercenaryHire.ListEntry
-	126, // 71: Proto.StoredMercenaryHire.add:type_name -> Proto.StoredMercenaryHire.AddEntry
-	127, // 72: Proto.StoredEventMission.list:type_name -> Proto.StoredEventMission.ListEntry
-	128, // 73: Proto.StoredEventMission.add:type_name -> Proto.StoredEventMission.AddEntry
-	129, // 74: Proto.StoredEventMissionReward.list:type_name -> Proto.StoredEventMissionReward.ListEntry
-	130, // 75: Proto.StoredEventMissionReward.add:type_name -> Proto.StoredEventMissionReward.AddEntry
-	131, // 76: Proto.StoredContentsCondition.list:type_name -> Proto.StoredContentsCondition.ListEntry
-	132, // 77: Proto.StoredContentsCondition.add:type_name -> Proto.StoredContentsCondition.AddEntry
-	133, // 78: Proto.StoredTitle.list:type_name -> Proto.StoredTitle.ListEntry
-	134, // 79: Proto.StoredTitle.add:type_name -> Proto.StoredTitle.AddEntry
-	135, // 80: Proto.StoredShopItem.list:type_name -> Proto.StoredShopItem.ListEntry
-	136, // 81: Proto.StoredShopItem.add:type_name -> Proto.StoredShopItem.AddEntry
-	137, // 82: Proto.StoredLoginBonus.list:type_name -> Proto.StoredLoginBonus.ListEntry
-	138, // 83: Proto.StoredLoginBonus.add:type_name -> Proto.StoredLoginBonus.AddEntry
-	139, // 84: Proto.StoredEventSugoroku.list:type_name -> Proto.StoredEventSugoroku.ListEntry
-	140, // 85: Proto.StoredEventSugoroku.add:type_name -> Proto.StoredEventSugoroku.AddEntry
-	141, // 86: Proto.StoredBoost.list:type_name -> Proto.StoredBoost.ListEntry
-	142, // 87: Proto.StoredBoost.add:type_name -> Proto.StoredBoost.AddEntry
-	143, // 88: Proto.StoredBlock.list:type_name -> Proto.StoredBlock.ListEntry
-	144, // 89: Proto.StoredBlock.add:type_name -> Proto.StoredBlock.AddEntry
-	145, // 90: Proto.StoredExchange.list:type_name -> Proto.StoredExchange.ListEntry
-	146, // 91: Proto.StoredExchange.add:type_name -> Proto.StoredExchange.AddEntry
-	147, // 92: Proto.StoredContentsHero.list:type_name -> Proto.StoredContentsHero.ListEntry
-	148, // 93: Proto.StoredContentsHero.add:type_name -> Proto.StoredContentsHero.AddEntry
-	149, // 94: Proto.StoredContentsTreasure.list:type_name -> Proto.StoredContentsTreasure.ListEntry
-	150, // 95: Proto.StoredContentsTreasure.add:type_name -> Proto.StoredContentsTreasure.AddEntry
-	151, // 96: Proto.StoredContentsWeekMonster.list:type_name -> Proto.StoredContentsWeekMonster.ListEntry
-	152, // 97: Proto.StoredContentsWeekMonster.add:type_name -> Proto.StoredContentsWeekMonster.AddEntry
-	153, // 98: Proto.StoredFunctionalTutorial.list:type_name -> Proto.StoredFunctionalTutorial.ListEntry
-	154, // 99: Proto.StoredFunctionalTutorial.add:type_name -> Proto.StoredFunctionalTutorial.AddEntry
-	155, // 100: Proto.StoredEventRoulette.list:type_name -> Proto.StoredEventRoulette.ListEntry
-	156, // 101: Proto.StoredEventRoulette.add:type_name -> Proto.StoredEventRoulette.AddEntry
-	157, // 102: Proto.StoredAngelBattleWeeklyReward.list:type_name -> Proto.StoredAngelBattleWeeklyReward.ListEntry
-	158, // 103: Proto.StoredAngelBattleWeeklyReward.add:type_name -> Proto.StoredAngelBattleWeeklyReward.AddEntry
-	159, // 104: Proto.StoredAchievementEquipment.list:type_name -> Proto.StoredAchievementEquipment.ListEntry
-	160, // 105: Proto.StoredAchievementEquipment.add:type_name -> Proto.StoredAchievementEquipment.AddEntry
-	161, // 106: Proto.StoredAchievementEquipmentReceive.list:type_name -> Proto.StoredAchievementEquipmentReceive.ListEntry
-	162, // 107: Proto.StoredAchievementEquipmentReceive.add:type_name -> Proto.StoredAchievementEquipmentReceive.AddEntry
-	163, // 108: Proto.StoredAchievementEquipmentStamp.list:type_name -> Proto.StoredAchievementEquipmentStamp.ListEntry
-	164, // 109: Proto.StoredAchievementEquipmentStamp.add:type_name -> Proto.StoredAchievementEquipmentStamp.AddEntry
-	165, // 110: Proto.StoredEquipmentLiberation.list:type_name -> Proto.StoredEquipmentLiberation.ListEntry
-	166, // 111: Proto.StoredEquipmentLiberation.add:type_name -> Proto.StoredEquipmentLiberation.AddEntry
-	167, // 112: Proto.StoredJobDeck.list:type_name -> Proto.StoredJobDeck.ListEntry
-	168, // 113: Proto.StoredJobDeck.add:type_name -> Proto.StoredJobDeck.AddEntry
-	169, // 114: Proto.StoredAgitoFurnitureSetting.list:type_name -> Proto.StoredAgitoFurnitureSetting.ListEntry
-	170, // 115: Proto.StoredAgitoFurnitureSetting.add:type_name -> Proto.StoredAgitoFurnitureSetting.AddEntry
-	171, // 116: Proto.StoredAgitoAp.list:type_name -> Proto.StoredAgitoAp.ListEntry
-	172, // 117: Proto.StoredAgitoAp.add:type_name -> Proto.StoredAgitoAp.AddEntry
-	173, // 118: Proto.StoredAgitoRelotteryInterval.list:type_name -> Proto.StoredAgitoRelotteryInterval.ListEntry
-	174, // 119: Proto.StoredAgitoRelotteryInterval.add:type_name -> Proto.StoredAgitoRelotteryInterval.AddEntry
-	175, // 120: Proto.StoredAgitoVisitor.list:type_name -> Proto.StoredAgitoVisitor.ListEntry
-	176, // 121: Proto.StoredAgitoVisitor.add:type_name -> Proto.StoredAgitoVisitor.AddEntry
-	177, // 122: Proto.StoredAgitoGoodHistory.list:type_name -> Proto.StoredAgitoGoodHistory.ListEntry
-	178, // 123: Proto.StoredAgitoGoodHistory.add:type_name -> Proto.StoredAgitoGoodHistory.AddEntry
-	179, // 124: Proto.StoredGachaHistory.list:type_name -> Proto.StoredGachaHistory.ListEntry
-	180, // 125: Proto.StoredGachaHistory.add:type_name -> Proto.StoredGachaHistory.AddEntry
-	181, // 126: Proto.StoredAgitoCountReward.list:type_name -> Proto.StoredAgitoCountReward.ListEntry
-	182, // 127: Proto.StoredAgitoCountReward.add:type_name -> Proto.StoredAgitoCountReward.AddEntry
-	183, // 128: Proto.StoredSeasonPass.list:type_name -> Proto.StoredSeasonPass.ListEntry
-	184, // 129: Proto.StoredSeasonPass.add:type_name -> Proto.StoredSeasonPass.AddEntry
-	185, // 130: Proto.StoredSeasonPassDailyMission.list:type_name -> Proto.StoredSeasonPassDailyMission.ListEntry
-	186, // 131: Proto.StoredSeasonPassDailyMission.add:type_name -> Proto.StoredSeasonPassDailyMission.AddEntry
-	187, // 132: Proto.StoredSeasonPassWeeklyMission.list:type_name -> Proto.StoredSeasonPassWeeklyMission.ListEntry
-	188, // 133: Proto.StoredSeasonPassWeeklyMission.add:type_name -> Proto.StoredSeasonPassWeeklyMission.AddEntry
-	189, // 134: Proto.StoredImportantMissionGroup.list:type_name -> Proto.StoredImportantMissionGroup.ListEntry
-	190, // 135: Proto.StoredImportantMissionGroup.add:type_name -> Proto.StoredImportantMissionGroup.AddEntry
-	191, // 136: Proto.StoredImportantMission.list:type_name -> Proto.StoredImportantMission.ListEntry
-	192, // 137: Proto.StoredImportantMission.add:type_name -> Proto.StoredImportantMission.AddEntry
-	193, // 138: Proto.StoredSpecialItemProgress.list:type_name -> Proto.StoredSpecialItemProgress.ListEntry
-	194, // 139: Proto.StoredSpecialItemProgress.add:type_name -> Proto.StoredSpecialItemProgress.AddEntry
-	195, // 140: Proto.StoredAdvertising.list:type_name -> Proto.StoredAdvertising.ListEntry
-	196, // 141: Proto.StoredAdvertising.add:type_name -> Proto.StoredAdvertising.AddEntry
-	197, // 142: Proto.StoredReliefPointSending.list:type_name -> Proto.StoredReliefPointSending.ListEntry
-	198, // 143: Proto.StoredReliefPointSending.add:type_name -> Proto.StoredReliefPointSending.AddEntry
-	199, // 144: Proto.StoredReliefPointReward.list:type_name -> Proto.StoredReliefPointReward.ListEntry
-	200, // 145: Proto.StoredReliefPointReward.add:type_name -> Proto.StoredReliefPointReward.AddEntry
-	201, // 146: Proto.StoredContentsRiskDungeon.list:type_name -> Proto.StoredContentsRiskDungeon.ListEntry
-	202, // 147: Proto.StoredContentsRiskDungeon.add:type_name -> Proto.StoredContentsRiskDungeon.AddEntry
-	203, // 148: Proto.StoredContentsClearAncientTowerEx.list:type_name -> Proto.StoredContentsClearAncientTowerEx.ListEntry
-	204, // 149: Proto.StoredContentsClearAncientTowerEx.add:type_name -> Proto.StoredContentsClearAncientTowerEx.AddEntry
-	205, // 150: Proto.StoredJobDeckGroup.list:type_name -> Proto.StoredJobDeckGroup.ListEntry
-	206, // 151: Proto.StoredJobDeckGroup.add:type_name -> Proto.StoredJobDeckGroup.AddEntry
-	207, // 152: Proto.StoredGvgPracticeReward.list:type_name -> Proto.StoredGvgPracticeReward.ListEntry
-	208, // 153: Proto.StoredGvgPracticeReward.add:type_name -> Proto.StoredGvgPracticeReward.AddEntry
-	209, // 154: Proto.StoredShopSpecialSale.list:type_name -> Proto.StoredShopSpecialSale.ListEntry
-	210, // 155: Proto.StoredShopSpecialSale.add:type_name -> Proto.StoredShopSpecialSale.AddEntry
-	211, // 156: Proto.StoredAgitoItemArea.list:type_name -> Proto.StoredAgitoItemArea.ListEntry
-	212, // 157: Proto.StoredAgitoItemArea.add:type_name -> Proto.StoredAgitoItemArea.AddEntry
-	215, // 158: Proto.StoredData.player:type_name -> Puser.Player
-	23,  // 159: Proto.StoredData.currency:type_name -> Proto.Currency
-	28,  // 160: Proto.StoredData.sample:type_name -> Proto.StoredSample
-	226, // 161: Proto.StoredData.setting:type_name -> Puser.Setting
-	29,  // 162: Proto.StoredData.equipment:type_name -> Proto.StoredEquipment
-	30,  // 163: Proto.StoredData.job:type_name -> Proto.StoredJob
-	31,  // 164: Proto.StoredData.job_skill:type_name -> Proto.StoredJobSkill
-	32,  // 165: Proto.StoredData.condition_progress:type_name -> Proto.StoredConditionProgress
-	33,  // 166: Proto.StoredData.achievement:type_name -> Proto.StoredAchievement
-	34,  // 167: Proto.StoredData.item:type_name -> Proto.StoredItem
-	35,  // 168: Proto.StoredData.anima:type_name -> Proto.StoredAnima
-	36,  // 169: Proto.StoredData.anima_area:type_name -> Proto.StoredAnimaArea
-	37,  // 170: Proto.StoredData.rune:type_name -> Proto.StoredRune
-	38,  // 171: Proto.StoredData.elixir:type_name -> Proto.StoredElixir
-	39,  // 172: Proto.StoredData.contents:type_name -> Proto.StoredContents
-	40,  // 173: Proto.StoredData.daily_mission:type_name -> Proto.StoredDailyMission
-	41,  // 174: Proto.StoredData.daily_mission_reward:type_name -> Proto.StoredDailyMissionReward
-	42,  // 175: Proto.StoredData.order_mission:type_name -> Proto.StoredOrderMission
-	44,  // 176: Proto.StoredData.order_mission_reward:type_name -> Proto.StoredOrderMissionReward
-	43,  // 177: Proto.StoredData.order_mission_reroll:type_name -> Proto.StoredOrderMissionReroll
-	227, // 178: Proto.StoredData.battle_member:type_name -> Pmisc.BattleMember
-	24,  // 179: Proto.StoredData.guild_info:type_name -> Proto.GuildInfo
-	228, // 180: Proto.StoredData.arena:type_name -> Puser.Arena
-	45,  // 181: Proto.StoredData.mercenary_hire:type_name -> Proto.StoredMercenaryHire
-	229, // 182: Proto.StoredData.mercenary_reward:type_name -> Puser.MercenaryReward
-	230, // 183: Proto.StoredData.achievement_reward:type_name -> Puser.AchievementReward
-	46,  // 184: Proto.StoredData.event_mission:type_name -> Proto.StoredEventMission
-	47,  // 185: Proto.StoredData.event_mission_reward:type_name -> Proto.StoredEventMissionReward
-	48,  // 186: Proto.StoredData.contents_condition:type_name -> Proto.StoredContentsCondition
-	231, // 187: Proto.StoredData.abyss_fever:type_name -> Puser.AbyssFever
-	26,  // 188: Proto.StoredData.mercenary:type_name -> Proto.StoredMercenary
-	49,  // 189: Proto.StoredData.title:type_name -> Proto.StoredTitle
-	50,  // 190: Proto.StoredData.shop_item:type_name -> Proto.StoredShopItem
-	51,  // 191: Proto.StoredData.login_bonus:type_name -> Proto.StoredLoginBonus
-	52,  // 192: Proto.StoredData.event_sugoroku:type_name -> Proto.StoredEventSugoroku
-	53,  // 193: Proto.StoredData.boost:type_name -> Proto.StoredBoost
-	54,  // 194: Proto.StoredData.block:type_name -> Proto.StoredBlock
-	55,  // 195: Proto.StoredData.exchange:type_name -> Proto.StoredExchange
-	56,  // 196: Proto.StoredData.contents_hero:type_name -> Proto.StoredContentsHero
-	57,  // 197: Proto.StoredData.contents_treasure:type_name -> Proto.StoredContentsTreasure
-	58,  // 198: Proto.StoredData.contents_week_monster:type_name -> Proto.StoredContentsWeekMonster
-	59,  // 199: Proto.StoredData.functional_tutorial:type_name -> Proto.StoredFunctionalTutorial
-	232, // 200: Proto.StoredData.background_battle:type_name -> Puser.BackgroundBattle
-	60,  // 201: Proto.StoredData.event_roulette:type_name -> Proto.StoredEventRoulette
-	61,  // 202: Proto.StoredData.angel_battle_weekly_reward:type_name -> Proto.StoredAngelBattleWeeklyReward
-	62,  // 203: Proto.StoredData.achievement_equipment:type_name -> Proto.StoredAchievementEquipment
-	63,  // 204: Proto.StoredData.achievement_equipment_receive:type_name -> Proto.StoredAchievementEquipmentReceive
-	64,  // 205: Proto.StoredData.achievement_equipment_stamp:type_name -> Proto.StoredAchievementEquipmentStamp
-	65,  // 206: Proto.StoredData.equipment_liberation:type_name -> Proto.StoredEquipmentLiberation
-	66,  // 207: Proto.StoredData.job_deck:type_name -> Proto.StoredJobDeck
-	67,  // 208: Proto.StoredData.agito_furniture_setting:type_name -> Proto.StoredAgitoFurnitureSetting
-	68,  // 209: Proto.StoredData.agito_ap:type_name -> Proto.StoredAgitoAp
-	88,  // 210: Proto.StoredData.agito_item_area:type_name -> Proto.StoredAgitoItemArea
-	25,  // 211: Proto.StoredData.chat_unread_categories:type_name -> Proto.ChatUnreadCategory
-	69,  // 212: Proto.StoredData.agito_relottery_interval:type_name -> Proto.StoredAgitoRelotteryInterval
-	70,  // 213: Proto.StoredData.agito_visitor:type_name -> Proto.StoredAgitoVisitor
-	233, // 214: Proto.StoredData.agito:type_name -> Puser.Agito
-	71,  // 215: Proto.StoredData.agito_good_history:type_name -> Proto.StoredAgitoGoodHistory
-	72,  // 216: Proto.StoredData.gacha_history:type_name -> Proto.StoredGachaHistory
-	73,  // 217: Proto.StoredData.agito_count_reward:type_name -> Proto.StoredAgitoCountReward
-	74,  // 218: Proto.StoredData.season_pass:type_name -> Proto.StoredSeasonPass
-	75,  // 219: Proto.StoredData.season_pass_daily_mission:type_name -> Proto.StoredSeasonPassDailyMission
-	76,  // 220: Proto.StoredData.season_pass_weekly_mission:type_name -> Proto.StoredSeasonPassWeeklyMission
-	234, // 221: Proto.StoredData.vip:type_name -> Puser.Vip
-	77,  // 222: Proto.StoredData.important_mission_group:type_name -> Proto.StoredImportantMissionGroup
-	78,  // 223: Proto.StoredData.important_mission:type_name -> Proto.StoredImportantMission
-	79,  // 224: Proto.StoredData.special_item_progress:type_name -> Proto.StoredSpecialItemProgress
-	80,  // 225: Proto.StoredData.advertising:type_name -> Proto.StoredAdvertising
-	27,  // 226: Proto.StoredData.present_box_info:type_name -> Proto.StoredPresentBoxInfo
-	235, // 227: Proto.StoredData.relief_point:type_name -> Puser.ReliefPoint
-	81,  // 228: Proto.StoredData.relief_point_sending:type_name -> Proto.StoredReliefPointSending
-	82,  // 229: Proto.StoredData.relief_point_reward:type_name -> Proto.StoredReliefPointReward
-	83,  // 230: Proto.StoredData.contents_risk_dungeon:type_name -> Proto.StoredContentsRiskDungeon
-	84,  // 231: Proto.StoredData.contents_clear_ancient_tower_ex:type_name -> Proto.StoredContentsClearAncientTowerEx
-	85,  // 232: Proto.StoredData.job_deck_group:type_name -> Proto.StoredJobDeckGroup
-	86,  // 233: Proto.StoredData.gvg_practice_reward:type_name -> Proto.StoredGvgPracticeReward
-	87,  // 234: Proto.StoredData.shop_special_sale:type_name -> Proto.StoredShopSpecialSale
-	89,  // 235: Proto.Nocontent.stored_data:type_name -> Proto.StoredData
-	213, // 236: Proto.Nocontent.error:type_name -> Pcommon.Error
-	236, // 237: Proto.StoredSample.ListEntry.value:type_name -> Pmisc.Sample
-	236, // 238: Proto.StoredSample.AddEntry.value:type_name -> Pmisc.Sample
-	218, // 239: Proto.StoredEquipment.ListEntry.value:type_name -> Puser.Equipment
-	218, // 240: Proto.StoredEquipment.AddEntry.value:type_name -> Puser.Equipment
-	216, // 241: Proto.StoredJob.ListEntry.value:type_name -> Puser.Job
-	216, // 242: Proto.StoredJob.AddEntry.value:type_name -> Puser.Job
-	237, // 243: Proto.StoredJobSkill.ListEntry.value:type_name -> Puser.JobSkill
-	237, // 244: Proto.StoredJobSkill.AddEntry.value:type_name -> Puser.JobSkill
-	238, // 245: Proto.StoredConditionProgress.ListEntry.value:type_name -> Pmisc.ConditionProgress
-	238, // 246: Proto.StoredConditionProgress.AddEntry.value:type_name -> Pmisc.ConditionProgress
-	239, // 247: Proto.StoredAchievement.ListEntry.value:type_name -> Puser.Achievement
-	239, // 248: Proto.StoredAchievement.AddEntry.value:type_name -> Puser.Achievement
-	240, // 249: Proto.StoredItem.ListEntry.value:type_name -> Puser.Item
-	240, // 250: Proto.StoredItem.AddEntry.value:type_name -> Puser.Item
-	241, // 251: Proto.StoredAnima.ListEntry.value:type_name -> Puser.Anima
-	241, // 252: Proto.StoredAnima.AddEntry.value:type_name -> Puser.Anima
-	242, // 253: Proto.StoredAnimaArea.ListEntry.value:type_name -> Puser.AnimaArea
-	242, // 254: Proto.StoredAnimaArea.AddEntry.value:type_name -> Puser.AnimaArea
-	243, // 255: Proto.StoredRune.ListEntry.value:type_name -> Puser.Rune
-	243, // 256: Proto.StoredRune.AddEntry.value:type_name -> Puser.Rune
-	219, // 257: Proto.StoredElixir.ListEntry.value:type_name -> Puser.Elixir
-	219, // 258: Proto.StoredElixir.AddEntry.value:type_name -> Puser.Elixir
-	244, // 259: Proto.StoredContents.ListEntry.value:type_name -> Puser.Contents
-	244, // 260: Proto.StoredContents.AddEntry.value:type_name -> Puser.Contents
-	245, // 261: Proto.StoredDailyMission.ListEntry.value:type_name -> Puser.DailyMission
-	245, // 262: Proto.StoredDailyMission.AddEntry.value:type_name -> Puser.DailyMission
-	246, // 263: Proto.StoredDailyMissionReward.ListEntry.value:type_name -> Puser.DailyMissionReward
-	246, // 264: Proto.StoredDailyMissionReward.AddEntry.value:type_name -> Puser.DailyMissionReward
-	247, // 265: Proto.StoredOrderMission.ListEntry.value:type_name -> Puser.OrderMission
-	247, // 266: Proto.StoredOrderMission.AddEntry.value:type_name -> Puser.OrderMission
-	248, // 267: Proto.StoredOrderMissionReroll.ListEntry.value:type_name -> Puser.OrderMissionReroll
-	248, // 268: Proto.StoredOrderMissionReroll.AddEntry.value:type_name -> Puser.OrderMissionReroll
-	249, // 269: Proto.StoredOrderMissionReward.ListEntry.value:type_name -> Puser.OrderMissionReward
-	249, // 270: Proto.StoredOrderMissionReward.AddEntry.value:type_name -> Puser.OrderMissionReward
-	250, // 271: Proto.StoredMercenaryHire.ListEntry.value:type_name -> Puser.MercenaryHire
-	250, // 272: Proto.StoredMercenaryHire.AddEntry.value:type_name -> Puser.MercenaryHire
-	251, // 273: Proto.StoredEventMission.ListEntry.value:type_name -> Puser.EventMission
-	251, // 274: Proto.StoredEventMission.AddEntry.value:type_name -> Puser.EventMission
-	252, // 275: Proto.StoredEventMissionReward.ListEntry.value:type_name -> Puser.EventMissionReward
-	252, // 276: Proto.StoredEventMissionReward.AddEntry.value:type_name -> Puser.EventMissionReward
-	253, // 277: Proto.StoredContentsCondition.ListEntry.value:type_name -> Puser.ContentsCondition
-	253, // 278: Proto.StoredContentsCondition.AddEntry.value:type_name -> Puser.ContentsCondition
-	254, // 279: Proto.StoredTitle.ListEntry.value:type_name -> Puser.Title
-	254, // 280: Proto.StoredTitle.AddEntry.value:type_name -> Puser.Title
-	255, // 281: Proto.StoredShopItem.ListEntry.value:type_name -> Puser.ShopItem
-	255, // 282: Proto.StoredShopItem.AddEntry.value:type_name -> Puser.ShopItem
-	256, // 283: Proto.StoredLoginBonus.ListEntry.value:type_name -> Puser.LoginBonus
-	256, // 284: Proto.StoredLoginBonus.AddEntry.value:type_name -> Puser.LoginBonus
-	257, // 285: Proto.StoredEventSugoroku.ListEntry.value:type_name -> Puser.EventSugoroku
-	257, // 286: Proto.StoredEventSugoroku.AddEntry.value:type_name -> Puser.EventSugoroku
-	258, // 287: Proto.StoredBoost.ListEntry.value:type_name -> Puser.Boost
-	258, // 288: Proto.StoredBoost.AddEntry.value:type_name -> Puser.Boost
-	259, // 289: Proto.StoredBlock.ListEntry.value:type_name -> Pmisc.Block
-	259, // 290: Proto.StoredBlock.AddEntry.value:type_name -> Pmisc.Block
-	260, // 291: Proto.StoredExchange.ListEntry.value:type_name -> Puser.Exchange
-	260, // 292: Proto.StoredExchange.AddEntry.value:type_name -> Puser.Exchange
-	261, // 293: Proto.StoredContentsHero.ListEntry.value:type_name -> Puser.ContentsHero
-	261, // 294: Proto.StoredContentsHero.AddEntry.value:type_name -> Puser.ContentsHero
-	262, // 295: Proto.StoredContentsTreasure.ListEntry.value:type_name -> Puser.ContentsTreasure
-	262, // 296: Proto.StoredContentsTreasure.AddEntry.value:type_name -> Puser.ContentsTreasure
-	263, // 297: Proto.StoredContentsWeekMonster.ListEntry.value:type_name -> Puser.ContentsWeekMonster
-	263, // 298: Proto.StoredContentsWeekMonster.AddEntry.value:type_name -> Puser.ContentsWeekMonster
-	264, // 299: Proto.StoredFunctionalTutorial.ListEntry.value:type_name -> Puser.FunctionalTutorial
-	264, // 300: Proto.StoredFunctionalTutorial.AddEntry.value:type_name -> Puser.FunctionalTutorial
-	265, // 301: Proto.StoredEventRoulette.ListEntry.value:type_name -> Puser.EventRoulette
-	265, // 302: Proto.StoredEventRoulette.AddEntry.value:type_name -> Puser.EventRoulette
-	266, // 303: Proto.StoredAngelBattleWeeklyReward.ListEntry.value:type_name -> Puser.AngelBattleWeeklyReward
-	266, // 304: Proto.StoredAngelBattleWeeklyReward.AddEntry.value:type_name -> Puser.AngelBattleWeeklyReward
-	267, // 305: Proto.StoredAchievementEquipment.ListEntry.value:type_name -> Puser.AchievementEquipment
-	267, // 306: Proto.StoredAchievementEquipment.AddEntry.value:type_name -> Puser.AchievementEquipment
-	268, // 307: Proto.StoredAchievementEquipmentReceive.ListEntry.value:type_name -> Puser.AchievementEquipmentReceive
-	268, // 308: Proto.StoredAchievementEquipmentReceive.AddEntry.value:type_name -> Puser.AchievementEquipmentReceive
-	269, // 309: Proto.StoredAchievementEquipmentStamp.ListEntry.value:type_name -> Puser.AchievementEquipmentStamp
-	269, // 310: Proto.StoredAchievementEquipmentStamp.AddEntry.value:type_name -> Puser.AchievementEquipmentStamp
-	270, // 311: Proto.StoredEquipmentLiberation.ListEntry.value:type_name -> Puser.EquipmentLiberation
-	270, // 312: Proto.StoredEquipmentLiberation.AddEntry.value:type_name -> Puser.EquipmentLiberation
-	217, // 313: Proto.StoredJobDeck.ListEntry.value:type_name -> Puser.JobDeck
-	217, // 314: Proto.StoredJobDeck.AddEntry.value:type_name -> Puser.JobDeck
-	271, // 315: Proto.StoredAgitoFurnitureSetting.ListEntry.value:type_name -> Puser.AgitoFurnitureSetting
-	271, // 316: Proto.StoredAgitoFurnitureSetting.AddEntry.value:type_name -> Puser.AgitoFurnitureSetting
-	272, // 317: Proto.StoredAgitoAp.ListEntry.value:type_name -> Puser.AgitoAp
-	272, // 318: Proto.StoredAgitoAp.AddEntry.value:type_name -> Puser.AgitoAp
-	273, // 319: Proto.StoredAgitoRelotteryInterval.ListEntry.value:type_name -> Puser.AgitoRelotteryInterval
-	273, // 320: Proto.StoredAgitoRelotteryInterval.AddEntry.value:type_name -> Puser.AgitoRelotteryInterval
-	274, // 321: Proto.StoredAgitoVisitor.ListEntry.value:type_name -> Puser.AgitoVisitor
-	274, // 322: Proto.StoredAgitoVisitor.AddEntry.value:type_name -> Puser.AgitoVisitor
-	275, // 323: Proto.StoredAgitoGoodHistory.ListEntry.value:type_name -> Puser.AgitoGoodHistory
-	275, // 324: Proto.StoredAgitoGoodHistory.AddEntry.value:type_name -> Puser.AgitoGoodHistory
-	276, // 325: Proto.StoredGachaHistory.ListEntry.value:type_name -> Puser.GachaHistory
-	276, // 326: Proto.StoredGachaHistory.AddEntry.value:type_name -> Puser.GachaHistory
-	277, // 327: Proto.StoredAgitoCountReward.ListEntry.value:type_name -> Puser.AgitoCountReward
-	277, // 328: Proto.StoredAgitoCountReward.AddEntry.value:type_name -> Puser.AgitoCountReward
-	278, // 329: Proto.StoredSeasonPass.ListEntry.value:type_name -> Puser.SeasonPass
-	278, // 330: Proto.StoredSeasonPass.AddEntry.value:type_name -> Puser.SeasonPass
-	279, // 331: Proto.StoredSeasonPassDailyMission.ListEntry.value:type_name -> Puser.SeasonPassDailyMission
-	279, // 332: Proto.StoredSeasonPassDailyMission.AddEntry.value:type_name -> Puser.SeasonPassDailyMission
-	280, // 333: Proto.StoredSeasonPassWeeklyMission.ListEntry.value:type_name -> Puser.SeasonPassWeeklyMission
-	280, // 334: Proto.StoredSeasonPassWeeklyMission.AddEntry.value:type_name -> Puser.SeasonPassWeeklyMission
-	281, // 335: Proto.StoredImportantMissionGroup.ListEntry.value:type_name -> Puser.ImportantMissionGroup
-	281, // 336: Proto.StoredImportantMissionGroup.AddEntry.value:type_name -> Puser.ImportantMissionGroup
-	282, // 337: Proto.StoredImportantMission.ListEntry.value:type_name -> Puser.ImportantMission
-	282, // 338: Proto.StoredImportantMission.AddEntry.value:type_name -> Puser.ImportantMission
-	283, // 339: Proto.StoredSpecialItemProgress.ListEntry.value:type_name -> Puser.SpecialItemProgress
-	283, // 340: Proto.StoredSpecialItemProgress.AddEntry.value:type_name -> Puser.SpecialItemProgress
-	284, // 341: Proto.StoredAdvertising.ListEntry.value:type_name -> Puser.Advertising
-	284, // 342: Proto.StoredAdvertising.AddEntry.value:type_name -> Puser.Advertising
-	285, // 343: Proto.StoredReliefPointSending.ListEntry.value:type_name -> Puser.ReliefPointSending
-	285, // 344: Proto.StoredReliefPointSending.AddEntry.value:type_name -> Puser.ReliefPointSending
-	286, // 345: Proto.StoredReliefPointReward.ListEntry.value:type_name -> Puser.ReliefPointReward
-	286, // 346: Proto.StoredReliefPointReward.AddEntry.value:type_name -> Puser.ReliefPointReward
-	287, // 347: Proto.StoredContentsRiskDungeon.ListEntry.value:type_name -> Puser.ContentsRiskDungeon
-	287, // 348: Proto.StoredContentsRiskDungeon.AddEntry.value:type_name -> Puser.ContentsRiskDungeon
-	288, // 349: Proto.StoredContentsClearAncientTowerEx.ListEntry.value:type_name -> Puser.ContentsClearAncientTowerEx
-	288, // 350: Proto.StoredContentsClearAncientTowerEx.AddEntry.value:type_name -> Puser.ContentsClearAncientTowerEx
-	289, // 351: Proto.StoredJobDeckGroup.ListEntry.value:type_name -> Puser.JobDeckGroup
-	289, // 352: Proto.StoredJobDeckGroup.AddEntry.value:type_name -> Puser.JobDeckGroup
-	290, // 353: Proto.StoredGvgPracticeReward.ListEntry.value:type_name -> Puser.GvgPracticeReward
-	290, // 354: Proto.StoredGvgPracticeReward.AddEntry.value:type_name -> Puser.GvgPracticeReward
-	291, // 355: Proto.StoredShopSpecialSale.ListEntry.value:type_name -> Puser.ShopSpecialSale
-	291, // 356: Proto.StoredShopSpecialSale.AddEntry.value:type_name -> Puser.ShopSpecialSale
-	292, // 357: Proto.StoredAgitoItemArea.ListEntry.value:type_name -> Puser.AgitoItemArea
-	292, // 358: Proto.StoredAgitoItemArea.AddEntry.value:type_name -> Puser.AgitoItemArea
-	359, // [359:359] is the sub-list for method output_type
-	359, // [359:359] is the sub-list for method input_type
-	359, // [359:359] is the sub-list for extension type_name
-	359, // [359:359] is the sub-list for extension extendee
-	0,   // [0:359] is the sub-list for field type_name
+	221, // 25: Proto.GuildPersonalMissionResult.list:type_name -> Pmisc.GuildPersonalMissionList
+	222, // 26: Proto.GuildSharedMissionResult.list:type_name -> Pmisc.GuildSharedMissionList
+	223, // 27: Proto.GuildSharedMissionResult.ranking:type_name -> Pmisc.GuildSharedMissionRankingList
+	224, // 28: Proto.GuildSharedMissionResult.guild:type_name -> Pmisc.Guild
+	216, // 29: Proto.FieldPlayerDetail.player:type_name -> Puser.Player
+	218, // 30: Proto.FieldPlayerDetail.current_job_deck:type_name -> Puser.JobDeck
+	219, // 31: Proto.FieldPlayerDetail.equipments:type_name -> Puser.Equipment
+	90,  // 32: Proto.FieldTopResponse.stored_data:type_name -> Proto.StoredData
+	22,  // 33: Proto.FieldTopResponse.players:type_name -> Proto.FieldPlayerDetail
+	222, // 34: Proto.FieldTopResponse.sharedMissionList:type_name -> Pmisc.GuildSharedMissionList
+	221, // 35: Proto.FieldTopResponse.personalMissionList:type_name -> Pmisc.GuildPersonalMissionList
+	225, // 36: Proto.FieldTopResponse.weekly_mission_reward:type_name -> Puser.GuildWeeklyMissionRewardList
+	18,  // 37: Proto.FieldTopResponse.facility_list:type_name -> Proto.GuildFacilityList
+	8,   // 38: Proto.FieldTopResponse.background_battle_reward:type_name -> Proto.BattleBackgroundReward
+	226, // 39: Proto.FieldTopResponse.login_bonus:type_name -> Puser.LoginBonus
+	21,  // 40: Proto.FieldTopResponse.agito_visitor_return:type_name -> Proto.AgitoVisitorReturn
+	227, // 41: Proto.GuildInfo.guild_board_announcement:type_name -> Pmisc.GuildBoard
+	92,  // 42: Proto.StoredSample.list:type_name -> Proto.StoredSample.ListEntry
+	93,  // 43: Proto.StoredSample.add:type_name -> Proto.StoredSample.AddEntry
+	94,  // 44: Proto.StoredEquipment.list:type_name -> Proto.StoredEquipment.ListEntry
+	95,  // 45: Proto.StoredEquipment.add:type_name -> Proto.StoredEquipment.AddEntry
+	96,  // 46: Proto.StoredJob.list:type_name -> Proto.StoredJob.ListEntry
+	97,  // 47: Proto.StoredJob.add:type_name -> Proto.StoredJob.AddEntry
+	98,  // 48: Proto.StoredJobSkill.list:type_name -> Proto.StoredJobSkill.ListEntry
+	99,  // 49: Proto.StoredJobSkill.add:type_name -> Proto.StoredJobSkill.AddEntry
+	100, // 50: Proto.StoredConditionProgress.list:type_name -> Proto.StoredConditionProgress.ListEntry
+	101, // 51: Proto.StoredConditionProgress.add:type_name -> Proto.StoredConditionProgress.AddEntry
+	102, // 52: Proto.StoredAchievement.list:type_name -> Proto.StoredAchievement.ListEntry
+	103, // 53: Proto.StoredAchievement.add:type_name -> Proto.StoredAchievement.AddEntry
+	104, // 54: Proto.StoredItem.list:type_name -> Proto.StoredItem.ListEntry
+	105, // 55: Proto.StoredItem.add:type_name -> Proto.StoredItem.AddEntry
+	106, // 56: Proto.StoredAnima.list:type_name -> Proto.StoredAnima.ListEntry
+	107, // 57: Proto.StoredAnima.add:type_name -> Proto.StoredAnima.AddEntry
+	108, // 58: Proto.StoredAnimaArea.list:type_name -> Proto.StoredAnimaArea.ListEntry
+	109, // 59: Proto.StoredAnimaArea.add:type_name -> Proto.StoredAnimaArea.AddEntry
+	110, // 60: Proto.StoredRune.list:type_name -> Proto.StoredRune.ListEntry
+	111, // 61: Proto.StoredRune.add:type_name -> Proto.StoredRune.AddEntry
+	112, // 62: Proto.StoredElixir.list:type_name -> Proto.StoredElixir.ListEntry
+	113, // 63: Proto.StoredElixir.add:type_name -> Proto.StoredElixir.AddEntry
+	114, // 64: Proto.StoredContents.list:type_name -> Proto.StoredContents.ListEntry
+	115, // 65: Proto.StoredContents.add:type_name -> Proto.StoredContents.AddEntry
+	116, // 66: Proto.StoredDailyMission.list:type_name -> Proto.StoredDailyMission.ListEntry
+	117, // 67: Proto.StoredDailyMission.add:type_name -> Proto.StoredDailyMission.AddEntry
+	118, // 68: Proto.StoredDailyMissionReward.list:type_name -> Proto.StoredDailyMissionReward.ListEntry
+	119, // 69: Proto.StoredDailyMissionReward.add:type_name -> Proto.StoredDailyMissionReward.AddEntry
+	120, // 70: Proto.StoredOrderMission.list:type_name -> Proto.StoredOrderMission.ListEntry
+	121, // 71: Proto.StoredOrderMission.add:type_name -> Proto.StoredOrderMission.AddEntry
+	122, // 72: Proto.StoredOrderMissionReroll.list:type_name -> Proto.StoredOrderMissionReroll.ListEntry
+	123, // 73: Proto.StoredOrderMissionReroll.add:type_name -> Proto.StoredOrderMissionReroll.AddEntry
+	124, // 74: Proto.StoredOrderMissionReward.list:type_name -> Proto.StoredOrderMissionReward.ListEntry
+	125, // 75: Proto.StoredOrderMissionReward.add:type_name -> Proto.StoredOrderMissionReward.AddEntry
+	126, // 76: Proto.StoredMercenaryHire.list:type_name -> Proto.StoredMercenaryHire.ListEntry
+	127, // 77: Proto.StoredMercenaryHire.add:type_name -> Proto.StoredMercenaryHire.AddEntry
+	128, // 78: Proto.StoredEventMission.list:type_name -> Proto.StoredEventMission.ListEntry
+	129, // 79: Proto.StoredEventMission.add:type_name -> Proto.StoredEventMission.AddEntry
+	130, // 80: Proto.StoredEventMissionReward.list:type_name -> Proto.StoredEventMissionReward.ListEntry
+	131, // 81: Proto.StoredEventMissionReward.add:type_name -> Proto.StoredEventMissionReward.AddEntry
+	132, // 82: Proto.StoredContentsCondition.list:type_name -> Proto.StoredContentsCondition.ListEntry
+	133, // 83: Proto.StoredContentsCondition.add:type_name -> Proto.StoredContentsCondition.AddEntry
+	134, // 84: Proto.StoredTitle.list:type_name -> Proto.StoredTitle.ListEntry
+	135, // 85: Proto.StoredTitle.add:type_name -> Proto.StoredTitle.AddEntry
+	136, // 86: Proto.StoredShopItem.list:type_name -> Proto.StoredShopItem.ListEntry
+	137, // 87: Proto.StoredShopItem.add:type_name -> Proto.StoredShopItem.AddEntry
+	138, // 88: Proto.StoredLoginBonus.list:type_name -> Proto.StoredLoginBonus.ListEntry
+	139, // 89: Proto.StoredLoginBonus.add:type_name -> Proto.StoredLoginBonus.AddEntry
+	140, // 90: Proto.StoredEventSugoroku.list:type_name -> Proto.StoredEventSugoroku.ListEntry
+	141, // 91: Proto.StoredEventSugoroku.add:type_name -> Proto.StoredEventSugoroku.AddEntry
+	142, // 92: Proto.StoredBoost.list:type_name -> Proto.StoredBoost.ListEntry
+	143, // 93: Proto.StoredBoost.add:type_name -> Proto.StoredBoost.AddEntry
+	144, // 94: Proto.StoredBlock.list:type_name -> Proto.StoredBlock.ListEntry
+	145, // 95: Proto.StoredBlock.add:type_name -> Proto.StoredBlock.AddEntry
+	146, // 96: Proto.StoredExchange.list:type_name -> Proto.StoredExchange.ListEntry
+	147, // 97: Proto.StoredExchange.add:type_name -> Proto.StoredExchange.AddEntry
+	148, // 98: Proto.StoredContentsHero.list:type_name -> Proto.StoredContentsHero.ListEntry
+	149, // 99: Proto.StoredContentsHero.add:type_name -> Proto.StoredContentsHero.AddEntry
+	150, // 100: Proto.StoredContentsTreasure.list:type_name -> Proto.StoredContentsTreasure.ListEntry
+	151, // 101: Proto.StoredContentsTreasure.add:type_name -> Proto.StoredContentsTreasure.AddEntry
+	152, // 102: Proto.StoredContentsWeekMonster.list:type_name -> Proto.StoredContentsWeekMonster.ListEntry
+	153, // 103: Proto.StoredContentsWeekMonster.add:type_name -> Proto.StoredContentsWeekMonster.AddEntry
+	154, // 104: Proto.StoredFunctionalTutorial.list:type_name -> Proto.StoredFunctionalTutorial.ListEntry
+	155, // 105: Proto.StoredFunctionalTutorial.add:type_name -> Proto.StoredFunctionalTutorial.AddEntry
+	156, // 106: Proto.StoredEventRoulette.list:type_name -> Proto.StoredEventRoulette.ListEntry
+	157, // 107: Proto.StoredEventRoulette.add:type_name -> Proto.StoredEventRoulette.AddEntry
+	158, // 108: Proto.StoredAngelBattleWeeklyReward.list:type_name -> Proto.StoredAngelBattleWeeklyReward.ListEntry
+	159, // 109: Proto.StoredAngelBattleWeeklyReward.add:type_name -> Proto.StoredAngelBattleWeeklyReward.AddEntry
+	160, // 110: Proto.StoredAchievementEquipment.list:type_name -> Proto.StoredAchievementEquipment.ListEntry
+	161, // 111: Proto.StoredAchievementEquipment.add:type_name -> Proto.StoredAchievementEquipment.AddEntry
+	162, // 112: Proto.StoredAchievementEquipmentReceive.list:type_name -> Proto.StoredAchievementEquipmentReceive.ListEntry
+	163, // 113: Proto.StoredAchievementEquipmentReceive.add:type_name -> Proto.StoredAchievementEquipmentReceive.AddEntry
+	164, // 114: Proto.StoredAchievementEquipmentStamp.list:type_name -> Proto.StoredAchievementEquipmentStamp.ListEntry
+	165, // 115: Proto.StoredAchievementEquipmentStamp.add:type_name -> Proto.StoredAchievementEquipmentStamp.AddEntry
+	166, // 116: Proto.StoredEquipmentLiberation.list:type_name -> Proto.StoredEquipmentLiberation.ListEntry
+	167, // 117: Proto.StoredEquipmentLiberation.add:type_name -> Proto.StoredEquipmentLiberation.AddEntry
+	168, // 118: Proto.StoredJobDeck.list:type_name -> Proto.StoredJobDeck.ListEntry
+	169, // 119: Proto.StoredJobDeck.add:type_name -> Proto.StoredJobDeck.AddEntry
+	170, // 120: Proto.StoredAgitoFurnitureSetting.list:type_name -> Proto.StoredAgitoFurnitureSetting.ListEntry
+	171, // 121: Proto.StoredAgitoFurnitureSetting.add:type_name -> Proto.StoredAgitoFurnitureSetting.AddEntry
+	172, // 122: Proto.StoredAgitoAp.list:type_name -> Proto.StoredAgitoAp.ListEntry
+	173, // 123: Proto.StoredAgitoAp.add:type_name -> Proto.StoredAgitoAp.AddEntry
+	174, // 124: Proto.StoredAgitoRelotteryInterval.list:type_name -> Proto.StoredAgitoRelotteryInterval.ListEntry
+	175, // 125: Proto.StoredAgitoRelotteryInterval.add:type_name -> Proto.StoredAgitoRelotteryInterval.AddEntry
+	176, // 126: Proto.StoredAgitoVisitor.list:type_name -> Proto.StoredAgitoVisitor.ListEntry
+	177, // 127: Proto.StoredAgitoVisitor.add:type_name -> Proto.StoredAgitoVisitor.AddEntry
+	178, // 128: Proto.StoredAgitoGoodHistory.list:type_name -> Proto.StoredAgitoGoodHistory.ListEntry
+	179, // 129: Proto.StoredAgitoGoodHistory.add:type_name -> Proto.StoredAgitoGoodHistory.AddEntry
+	180, // 130: Proto.StoredGachaHistory.list:type_name -> Proto.StoredGachaHistory.ListEntry
+	181, // 131: Proto.StoredGachaHistory.add:type_name -> Proto.StoredGachaHistory.AddEntry
+	182, // 132: Proto.StoredAgitoCountReward.list:type_name -> Proto.StoredAgitoCountReward.ListEntry
+	183, // 133: Proto.StoredAgitoCountReward.add:type_name -> Proto.StoredAgitoCountReward.AddEntry
+	184, // 134: Proto.StoredSeasonPass.list:type_name -> Proto.StoredSeasonPass.ListEntry
+	185, // 135: Proto.StoredSeasonPass.add:type_name -> Proto.StoredSeasonPass.AddEntry
+	186, // 136: Proto.StoredSeasonPassDailyMission.list:type_name -> Proto.StoredSeasonPassDailyMission.ListEntry
+	187, // 137: Proto.StoredSeasonPassDailyMission.add:type_name -> Proto.StoredSeasonPassDailyMission.AddEntry
+	188, // 138: Proto.StoredSeasonPassWeeklyMission.list:type_name -> Proto.StoredSeasonPassWeeklyMission.ListEntry
+	189, // 139: Proto.StoredSeasonPassWeeklyMission.add:type_name -> Proto.StoredSeasonPassWeeklyMission.AddEntry
+	190, // 140: Proto.StoredImportantMissionGroup.list:type_name -> Proto.StoredImportantMissionGroup.ListEntry
+	191, // 141: Proto.StoredImportantMissionGroup.add:type_name -> Proto.StoredImportantMissionGroup.AddEntry
+	192, // 142: Proto.StoredImportantMission.list:type_name -> Proto.StoredImportantMission.ListEntry
+	193, // 143: Proto.StoredImportantMission.add:type_name -> Proto.StoredImportantMission.AddEntry
+	194, // 144: Proto.StoredSpecialItemProgress.list:type_name -> Proto.StoredSpecialItemProgress.ListEntry
+	195, // 145: Proto.StoredSpecialItemProgress.add:type_name -> Proto.StoredSpecialItemProgress.AddEntry
+	196, // 146: Proto.StoredAdvertising.list:type_name -> Proto.StoredAdvertising.ListEntry
+	197, // 147: Proto.StoredAdvertising.add:type_name -> Proto.StoredAdvertising.AddEntry
+	198, // 148: Proto.StoredReliefPointSending.list:type_name -> Proto.StoredReliefPointSending.ListEntry
+	199, // 149: Proto.StoredReliefPointSending.add:type_name -> Proto.StoredReliefPointSending.AddEntry
+	200, // 150: Proto.StoredReliefPointReward.list:type_name -> Proto.StoredReliefPointReward.ListEntry
+	201, // 151: Proto.StoredReliefPointReward.add:type_name -> Proto.StoredReliefPointReward.AddEntry
+	202, // 152: Proto.StoredContentsRiskDungeon.list:type_name -> Proto.StoredContentsRiskDungeon.ListEntry
+	203, // 153: Proto.StoredContentsRiskDungeon.add:type_name -> Proto.StoredContentsRiskDungeon.AddEntry
+	204, // 154: Proto.StoredContentsClearAncientTowerEx.list:type_name -> Proto.StoredContentsClearAncientTowerEx.ListEntry
+	205, // 155: Proto.StoredContentsClearAncientTowerEx.add:type_name -> Proto.StoredContentsClearAncientTowerEx.AddEntry
+	206, // 156: Proto.StoredJobDeckGroup.list:type_name -> Proto.StoredJobDeckGroup.ListEntry
+	207, // 157: Proto.StoredJobDeckGroup.add:type_name -> Proto.StoredJobDeckGroup.AddEntry
+	208, // 158: Proto.StoredGvgPracticeReward.list:type_name -> Proto.StoredGvgPracticeReward.ListEntry
+	209, // 159: Proto.StoredGvgPracticeReward.add:type_name -> Proto.StoredGvgPracticeReward.AddEntry
+	210, // 160: Proto.StoredShopSpecialSale.list:type_name -> Proto.StoredShopSpecialSale.ListEntry
+	211, // 161: Proto.StoredShopSpecialSale.add:type_name -> Proto.StoredShopSpecialSale.AddEntry
+	212, // 162: Proto.StoredAgitoItemArea.list:type_name -> Proto.StoredAgitoItemArea.ListEntry
+	213, // 163: Proto.StoredAgitoItemArea.add:type_name -> Proto.StoredAgitoItemArea.AddEntry
+	216, // 164: Proto.StoredData.player:type_name -> Puser.Player
+	24,  // 165: Proto.StoredData.currency:type_name -> Proto.Currency
+	29,  // 166: Proto.StoredData.sample:type_name -> Proto.StoredSample
+	228, // 167: Proto.StoredData.setting:type_name -> Puser.Setting
+	30,  // 168: Proto.StoredData.equipment:type_name -> Proto.StoredEquipment
+	31,  // 169: Proto.StoredData.job:type_name -> Proto.StoredJob
+	32,  // 170: Proto.StoredData.job_skill:type_name -> Proto.StoredJobSkill
+	33,  // 171: Proto.StoredData.condition_progress:type_name -> Proto.StoredConditionProgress
+	34,  // 172: Proto.StoredData.achievement:type_name -> Proto.StoredAchievement
+	35,  // 173: Proto.StoredData.item:type_name -> Proto.StoredItem
+	36,  // 174: Proto.StoredData.anima:type_name -> Proto.StoredAnima
+	37,  // 175: Proto.StoredData.anima_area:type_name -> Proto.StoredAnimaArea
+	38,  // 176: Proto.StoredData.rune:type_name -> Proto.StoredRune
+	39,  // 177: Proto.StoredData.elixir:type_name -> Proto.StoredElixir
+	40,  // 178: Proto.StoredData.contents:type_name -> Proto.StoredContents
+	41,  // 179: Proto.StoredData.daily_mission:type_name -> Proto.StoredDailyMission
+	42,  // 180: Proto.StoredData.daily_mission_reward:type_name -> Proto.StoredDailyMissionReward
+	43,  // 181: Proto.StoredData.order_mission:type_name -> Proto.StoredOrderMission
+	45,  // 182: Proto.StoredData.order_mission_reward:type_name -> Proto.StoredOrderMissionReward
+	44,  // 183: Proto.StoredData.order_mission_reroll:type_name -> Proto.StoredOrderMissionReroll
+	229, // 184: Proto.StoredData.battle_member:type_name -> Pmisc.BattleMember
+	25,  // 185: Proto.StoredData.guild_info:type_name -> Proto.GuildInfo
+	230, // 186: Proto.StoredData.arena:type_name -> Puser.Arena
+	46,  // 187: Proto.StoredData.mercenary_hire:type_name -> Proto.StoredMercenaryHire
+	231, // 188: Proto.StoredData.mercenary_reward:type_name -> Puser.MercenaryReward
+	232, // 189: Proto.StoredData.achievement_reward:type_name -> Puser.AchievementReward
+	47,  // 190: Proto.StoredData.event_mission:type_name -> Proto.StoredEventMission
+	48,  // 191: Proto.StoredData.event_mission_reward:type_name -> Proto.StoredEventMissionReward
+	49,  // 192: Proto.StoredData.contents_condition:type_name -> Proto.StoredContentsCondition
+	233, // 193: Proto.StoredData.abyss_fever:type_name -> Puser.AbyssFever
+	27,  // 194: Proto.StoredData.mercenary:type_name -> Proto.StoredMercenary
+	50,  // 195: Proto.StoredData.title:type_name -> Proto.StoredTitle
+	51,  // 196: Proto.StoredData.shop_item:type_name -> Proto.StoredShopItem
+	52,  // 197: Proto.StoredData.login_bonus:type_name -> Proto.StoredLoginBonus
+	53,  // 198: Proto.StoredData.event_sugoroku:type_name -> Proto.StoredEventSugoroku
+	54,  // 199: Proto.StoredData.boost:type_name -> Proto.StoredBoost
+	55,  // 200: Proto.StoredData.block:type_name -> Proto.StoredBlock
+	56,  // 201: Proto.StoredData.exchange:type_name -> Proto.StoredExchange
+	57,  // 202: Proto.StoredData.contents_hero:type_name -> Proto.StoredContentsHero
+	58,  // 203: Proto.StoredData.contents_treasure:type_name -> Proto.StoredContentsTreasure
+	59,  // 204: Proto.StoredData.contents_week_monster:type_name -> Proto.StoredContentsWeekMonster
+	60,  // 205: Proto.StoredData.functional_tutorial:type_name -> Proto.StoredFunctionalTutorial
+	234, // 206: Proto.StoredData.background_battle:type_name -> Puser.BackgroundBattle
+	61,  // 207: Proto.StoredData.event_roulette:type_name -> Proto.StoredEventRoulette
+	62,  // 208: Proto.StoredData.angel_battle_weekly_reward:type_name -> Proto.StoredAngelBattleWeeklyReward
+	63,  // 209: Proto.StoredData.achievement_equipment:type_name -> Proto.StoredAchievementEquipment
+	64,  // 210: Proto.StoredData.achievement_equipment_receive:type_name -> Proto.StoredAchievementEquipmentReceive
+	65,  // 211: Proto.StoredData.achievement_equipment_stamp:type_name -> Proto.StoredAchievementEquipmentStamp
+	66,  // 212: Proto.StoredData.equipment_liberation:type_name -> Proto.StoredEquipmentLiberation
+	67,  // 213: Proto.StoredData.job_deck:type_name -> Proto.StoredJobDeck
+	68,  // 214: Proto.StoredData.agito_furniture_setting:type_name -> Proto.StoredAgitoFurnitureSetting
+	69,  // 215: Proto.StoredData.agito_ap:type_name -> Proto.StoredAgitoAp
+	89,  // 216: Proto.StoredData.agito_item_area:type_name -> Proto.StoredAgitoItemArea
+	26,  // 217: Proto.StoredData.chat_unread_categories:type_name -> Proto.ChatUnreadCategory
+	70,  // 218: Proto.StoredData.agito_relottery_interval:type_name -> Proto.StoredAgitoRelotteryInterval
+	71,  // 219: Proto.StoredData.agito_visitor:type_name -> Proto.StoredAgitoVisitor
+	235, // 220: Proto.StoredData.agito:type_name -> Puser.Agito
+	72,  // 221: Proto.StoredData.agito_good_history:type_name -> Proto.StoredAgitoGoodHistory
+	73,  // 222: Proto.StoredData.gacha_history:type_name -> Proto.StoredGachaHistory
+	74,  // 223: Proto.StoredData.agito_count_reward:type_name -> Proto.StoredAgitoCountReward
+	75,  // 224: Proto.StoredData.season_pass:type_name -> Proto.StoredSeasonPass
+	76,  // 225: Proto.StoredData.season_pass_daily_mission:type_name -> Proto.StoredSeasonPassDailyMission
+	77,  // 226: Proto.StoredData.season_pass_weekly_mission:type_name -> Proto.StoredSeasonPassWeeklyMission
+	236, // 227: Proto.StoredData.vip:type_name -> Puser.Vip
+	78,  // 228: Proto.StoredData.important_mission_group:type_name -> Proto.StoredImportantMissionGroup
+	79,  // 229: Proto.StoredData.important_mission:type_name -> Proto.StoredImportantMission
+	80,  // 230: Proto.StoredData.special_item_progress:type_name -> Proto.StoredSpecialItemProgress
+	81,  // 231: Proto.StoredData.advertising:type_name -> Proto.StoredAdvertising
+	28,  // 232: Proto.StoredData.present_box_info:type_name -> Proto.StoredPresentBoxInfo
+	237, // 233: Proto.StoredData.relief_point:type_name -> Puser.ReliefPoint
+	82,  // 234: Proto.StoredData.relief_point_sending:type_name -> Proto.StoredReliefPointSending
+	83,  // 235: Proto.StoredData.relief_point_reward:type_name -> Proto.StoredReliefPointReward
+	84,  // 236: Proto.StoredData.contents_risk_dungeon:type_name -> Proto.StoredContentsRiskDungeon
+	85,  // 237: Proto.StoredData.contents_clear_ancient_tower_ex:type_name -> Proto.StoredContentsClearAncientTowerEx
+	86,  // 238: Proto.StoredData.job_deck_group:type_name -> Proto.StoredJobDeckGroup
+	87,  // 239: Proto.StoredData.gvg_practice_reward:type_name -> Proto.StoredGvgPracticeReward
+	88,  // 240: Proto.StoredData.shop_special_sale:type_name -> Proto.StoredShopSpecialSale
+	90,  // 241: Proto.Nocontent.stored_data:type_name -> Proto.StoredData
+	214, // 242: Proto.Nocontent.error:type_name -> Pcommon.Error
+	238, // 243: Proto.StoredSample.ListEntry.value:type_name -> Pmisc.Sample
+	238, // 244: Proto.StoredSample.AddEntry.value:type_name -> Pmisc.Sample
+	219, // 245: Proto.StoredEquipment.ListEntry.value:type_name -> Puser.Equipment
+	219, // 246: Proto.StoredEquipment.AddEntry.value:type_name -> Puser.Equipment
+	217, // 247: Proto.StoredJob.ListEntry.value:type_name -> Puser.Job
+	217, // 248: Proto.StoredJob.AddEntry.value:type_name -> Puser.Job
+	239, // 249: Proto.StoredJobSkill.ListEntry.value:type_name -> Puser.JobSkill
+	239, // 250: Proto.StoredJobSkill.AddEntry.value:type_name -> Puser.JobSkill
+	240, // 251: Proto.StoredConditionProgress.ListEntry.value:type_name -> Pmisc.ConditionProgress
+	240, // 252: Proto.StoredConditionProgress.AddEntry.value:type_name -> Pmisc.ConditionProgress
+	241, // 253: Proto.StoredAchievement.ListEntry.value:type_name -> Puser.Achievement
+	241, // 254: Proto.StoredAchievement.AddEntry.value:type_name -> Puser.Achievement
+	242, // 255: Proto.StoredItem.ListEntry.value:type_name -> Puser.Item
+	242, // 256: Proto.StoredItem.AddEntry.value:type_name -> Puser.Item
+	243, // 257: Proto.StoredAnima.ListEntry.value:type_name -> Puser.Anima
+	243, // 258: Proto.StoredAnima.AddEntry.value:type_name -> Puser.Anima
+	244, // 259: Proto.StoredAnimaArea.ListEntry.value:type_name -> Puser.AnimaArea
+	244, // 260: Proto.StoredAnimaArea.AddEntry.value:type_name -> Puser.AnimaArea
+	245, // 261: Proto.StoredRune.ListEntry.value:type_name -> Puser.Rune
+	245, // 262: Proto.StoredRune.AddEntry.value:type_name -> Puser.Rune
+	220, // 263: Proto.StoredElixir.ListEntry.value:type_name -> Puser.Elixir
+	220, // 264: Proto.StoredElixir.AddEntry.value:type_name -> Puser.Elixir
+	246, // 265: Proto.StoredContents.ListEntry.value:type_name -> Puser.Contents
+	246, // 266: Proto.StoredContents.AddEntry.value:type_name -> Puser.Contents
+	247, // 267: Proto.StoredDailyMission.ListEntry.value:type_name -> Puser.DailyMission
+	247, // 268: Proto.StoredDailyMission.AddEntry.value:type_name -> Puser.DailyMission
+	248, // 269: Proto.StoredDailyMissionReward.ListEntry.value:type_name -> Puser.DailyMissionReward
+	248, // 270: Proto.StoredDailyMissionReward.AddEntry.value:type_name -> Puser.DailyMissionReward
+	249, // 271: Proto.StoredOrderMission.ListEntry.value:type_name -> Puser.OrderMission
+	249, // 272: Proto.StoredOrderMission.AddEntry.value:type_name -> Puser.OrderMission
+	250, // 273: Proto.StoredOrderMissionReroll.ListEntry.value:type_name -> Puser.OrderMissionReroll
+	250, // 274: Proto.StoredOrderMissionReroll.AddEntry.value:type_name -> Puser.OrderMissionReroll
+	251, // 275: Proto.StoredOrderMissionReward.ListEntry.value:type_name -> Puser.OrderMissionReward
+	251, // 276: Proto.StoredOrderMissionReward.AddEntry.value:type_name -> Puser.OrderMissionReward
+	252, // 277: Proto.StoredMercenaryHire.ListEntry.value:type_name -> Puser.MercenaryHire
+	252, // 278: Proto.StoredMercenaryHire.AddEntry.value:type_name -> Puser.MercenaryHire
+	253, // 279: Proto.StoredEventMission.ListEntry.value:type_name -> Puser.EventMission
+	253, // 280: Proto.StoredEventMission.AddEntry.value:type_name -> Puser.EventMission
+	254, // 281: Proto.StoredEventMissionReward.ListEntry.value:type_name -> Puser.EventMissionReward
+	254, // 282: Proto.StoredEventMissionReward.AddEntry.value:type_name -> Puser.EventMissionReward
+	255, // 283: Proto.StoredContentsCondition.ListEntry.value:type_name -> Puser.ContentsCondition
+	255, // 284: Proto.StoredContentsCondition.AddEntry.value:type_name -> Puser.ContentsCondition
+	256, // 285: Proto.StoredTitle.ListEntry.value:type_name -> Puser.Title
+	256, // 286: Proto.StoredTitle.AddEntry.value:type_name -> Puser.Title
+	257, // 287: Proto.StoredShopItem.ListEntry.value:type_name -> Puser.ShopItem
+	257, // 288: Proto.StoredShopItem.AddEntry.value:type_name -> Puser.ShopItem
+	226, // 289: Proto.StoredLoginBonus.ListEntry.value:type_name -> Puser.LoginBonus
+	226, // 290: Proto.StoredLoginBonus.AddEntry.value:type_name -> Puser.LoginBonus
+	258, // 291: Proto.StoredEventSugoroku.ListEntry.value:type_name -> Puser.EventSugoroku
+	258, // 292: Proto.StoredEventSugoroku.AddEntry.value:type_name -> Puser.EventSugoroku
+	259, // 293: Proto.StoredBoost.ListEntry.value:type_name -> Puser.Boost
+	259, // 294: Proto.StoredBoost.AddEntry.value:type_name -> Puser.Boost
+	260, // 295: Proto.StoredBlock.ListEntry.value:type_name -> Pmisc.Block
+	260, // 296: Proto.StoredBlock.AddEntry.value:type_name -> Pmisc.Block
+	261, // 297: Proto.StoredExchange.ListEntry.value:type_name -> Puser.Exchange
+	261, // 298: Proto.StoredExchange.AddEntry.value:type_name -> Puser.Exchange
+	262, // 299: Proto.StoredContentsHero.ListEntry.value:type_name -> Puser.ContentsHero
+	262, // 300: Proto.StoredContentsHero.AddEntry.value:type_name -> Puser.ContentsHero
+	263, // 301: Proto.StoredContentsTreasure.ListEntry.value:type_name -> Puser.ContentsTreasure
+	263, // 302: Proto.StoredContentsTreasure.AddEntry.value:type_name -> Puser.ContentsTreasure
+	264, // 303: Proto.StoredContentsWeekMonster.ListEntry.value:type_name -> Puser.ContentsWeekMonster
+	264, // 304: Proto.StoredContentsWeekMonster.AddEntry.value:type_name -> Puser.ContentsWeekMonster
+	265, // 305: Proto.StoredFunctionalTutorial.ListEntry.value:type_name -> Puser.FunctionalTutorial
+	265, // 306: Proto.StoredFunctionalTutorial.AddEntry.value:type_name -> Puser.FunctionalTutorial
+	266, // 307: Proto.StoredEventRoulette.ListEntry.value:type_name -> Puser.EventRoulette
+	266, // 308: Proto.StoredEventRoulette.AddEntry.value:type_name -> Puser.EventRoulette
+	267, // 309: Proto.StoredAngelBattleWeeklyReward.ListEntry.value:type_name -> Puser.AngelBattleWeeklyReward
+	267, // 310: Proto.StoredAngelBattleWeeklyReward.AddEntry.value:type_name -> Puser.AngelBattleWeeklyReward
+	268, // 311: Proto.StoredAchievementEquipment.ListEntry.value:type_name -> Puser.AchievementEquipment
+	268, // 312: Proto.StoredAchievementEquipment.AddEntry.value:type_name -> Puser.AchievementEquipment
+	269, // 313: Proto.StoredAchievementEquipmentReceive.ListEntry.value:type_name -> Puser.AchievementEquipmentReceive
+	269, // 314: Proto.StoredAchievementEquipmentReceive.AddEntry.value:type_name -> Puser.AchievementEquipmentReceive
+	270, // 315: Proto.StoredAchievementEquipmentStamp.ListEntry.value:type_name -> Puser.AchievementEquipmentStamp
+	270, // 316: Proto.StoredAchievementEquipmentStamp.AddEntry.value:type_name -> Puser.AchievementEquipmentStamp
+	271, // 317: Proto.StoredEquipmentLiberation.ListEntry.value:type_name -> Puser.EquipmentLiberation
+	271, // 318: Proto.StoredEquipmentLiberation.AddEntry.value:type_name -> Puser.EquipmentLiberation
+	218, // 319: Proto.StoredJobDeck.ListEntry.value:type_name -> Puser.JobDeck
+	218, // 320: Proto.StoredJobDeck.AddEntry.value:type_name -> Puser.JobDeck
+	272, // 321: Proto.StoredAgitoFurnitureSetting.ListEntry.value:type_name -> Puser.AgitoFurnitureSetting
+	272, // 322: Proto.StoredAgitoFurnitureSetting.AddEntry.value:type_name -> Puser.AgitoFurnitureSetting
+	273, // 323: Proto.StoredAgitoAp.ListEntry.value:type_name -> Puser.AgitoAp
+	273, // 324: Proto.StoredAgitoAp.AddEntry.value:type_name -> Puser.AgitoAp
+	274, // 325: Proto.StoredAgitoRelotteryInterval.ListEntry.value:type_name -> Puser.AgitoRelotteryInterval
+	274, // 326: Proto.StoredAgitoRelotteryInterval.AddEntry.value:type_name -> Puser.AgitoRelotteryInterval
+	275, // 327: Proto.StoredAgitoVisitor.ListEntry.value:type_name -> Puser.AgitoVisitor
+	275, // 328: Proto.StoredAgitoVisitor.AddEntry.value:type_name -> Puser.AgitoVisitor
+	276, // 329: Proto.StoredAgitoGoodHistory.ListEntry.value:type_name -> Puser.AgitoGoodHistory
+	276, // 330: Proto.StoredAgitoGoodHistory.AddEntry.value:type_name -> Puser.AgitoGoodHistory
+	277, // 331: Proto.StoredGachaHistory.ListEntry.value:type_name -> Puser.GachaHistory
+	277, // 332: Proto.StoredGachaHistory.AddEntry.value:type_name -> Puser.GachaHistory
+	278, // 333: Proto.StoredAgitoCountReward.ListEntry.value:type_name -> Puser.AgitoCountReward
+	278, // 334: Proto.StoredAgitoCountReward.AddEntry.value:type_name -> Puser.AgitoCountReward
+	279, // 335: Proto.StoredSeasonPass.ListEntry.value:type_name -> Puser.SeasonPass
+	279, // 336: Proto.StoredSeasonPass.AddEntry.value:type_name -> Puser.SeasonPass
+	280, // 337: Proto.StoredSeasonPassDailyMission.ListEntry.value:type_name -> Puser.SeasonPassDailyMission
+	280, // 338: Proto.StoredSeasonPassDailyMission.AddEntry.value:type_name -> Puser.SeasonPassDailyMission
+	281, // 339: Proto.StoredSeasonPassWeeklyMission.ListEntry.value:type_name -> Puser.SeasonPassWeeklyMission
+	281, // 340: Proto.StoredSeasonPassWeeklyMission.AddEntry.value:type_name -> Puser.SeasonPassWeeklyMission
+	282, // 341: Proto.StoredImportantMissionGroup.ListEntry.value:type_name -> Puser.ImportantMissionGroup
+	282, // 342: Proto.StoredImportantMissionGroup.AddEntry.value:type_name -> Puser.ImportantMissionGroup
+	283, // 343: Proto.StoredImportantMission.ListEntry.value:type_name -> Puser.ImportantMission
+	283, // 344: Proto.StoredImportantMission.AddEntry.value:type_name -> Puser.ImportantMission
+	284, // 345: Proto.StoredSpecialItemProgress.ListEntry.value:type_name -> Puser.SpecialItemProgress
+	284, // 346: Proto.StoredSpecialItemProgress.AddEntry.value:type_name -> Puser.SpecialItemProgress
+	285, // 347: Proto.StoredAdvertising.ListEntry.value:type_name -> Puser.Advertising
+	285, // 348: Proto.StoredAdvertising.AddEntry.value:type_name -> Puser.Advertising
+	286, // 349: Proto.StoredReliefPointSending.ListEntry.value:type_name -> Puser.ReliefPointSending
+	286, // 350: Proto.StoredReliefPointSending.AddEntry.value:type_name -> Puser.ReliefPointSending
+	287, // 351: Proto.StoredReliefPointReward.ListEntry.value:type_name -> Puser.ReliefPointReward
+	287, // 352: Proto.StoredReliefPointReward.AddEntry.value:type_name -> Puser.ReliefPointReward
+	288, // 353: Proto.StoredContentsRiskDungeon.ListEntry.value:type_name -> Puser.ContentsRiskDungeon
+	288, // 354: Proto.StoredContentsRiskDungeon.AddEntry.value:type_name -> Puser.ContentsRiskDungeon
+	289, // 355: Proto.StoredContentsClearAncientTowerEx.ListEntry.value:type_name -> Puser.ContentsClearAncientTowerEx
+	289, // 356: Proto.StoredContentsClearAncientTowerEx.AddEntry.value:type_name -> Puser.ContentsClearAncientTowerEx
+	290, // 357: Proto.StoredJobDeckGroup.ListEntry.value:type_name -> Puser.JobDeckGroup
+	290, // 358: Proto.StoredJobDeckGroup.AddEntry.value:type_name -> Puser.JobDeckGroup
+	291, // 359: Proto.StoredGvgPracticeReward.ListEntry.value:type_name -> Puser.GvgPracticeReward
+	291, // 360: Proto.StoredGvgPracticeReward.AddEntry.value:type_name -> Puser.GvgPracticeReward
+	292, // 361: Proto.StoredShopSpecialSale.ListEntry.value:type_name -> Puser.ShopSpecialSale
+	292, // 362: Proto.StoredShopSpecialSale.AddEntry.value:type_name -> Puser.ShopSpecialSale
+	293, // 363: Proto.StoredAgitoItemArea.ListEntry.value:type_name -> Puser.AgitoItemArea
+	293, // 364: Proto.StoredAgitoItemArea.AddEntry.value:type_name -> Puser.AgitoItemArea
+	365, // [365:365] is the sub-list for method output_type
+	365, // [365:365] is the sub-list for method input_type
+	365, // [365:365] is the sub-list for extension type_name
+	365, // [365:365] is the sub-list for extension extendee
+	0,   // [0:365] is the sub-list for field type_name
 }
 
 func init() { file_proto_proto_init() }
@@ -7844,7 +8123,7 @@ func file_proto_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_proto_rawDesc), len(file_proto_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   213,
+			NumMessages:   214,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
