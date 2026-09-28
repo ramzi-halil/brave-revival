@@ -7,6 +7,7 @@ import (
 
 	"example.com/brave-revival/src/proto/proto"
 	"github.com/go-chi/chi/v5"
+	pb "google.golang.org/protobuf/proto"
 )
 
 func etc(w http.ResponseWriter, r *http.Request) {
@@ -34,12 +35,22 @@ func etc(w http.ResponseWriter, r *http.Request) {
 }
 
 func masterAll(w http.ResponseWriter, r *http.Request) {
-	writeProto(w, http.StatusOK, getHandler(r).master)
+	handler := getHandler(r)
+	writeProtoStreamed(w, http.StatusOK, func(stream func(pb.Message) error) error {
+		handler.masterLock.Lock()
+		defer handler.masterLock.Unlock()
+		return stream(handler.master)
+	})
 }
 
 func resourceList(w http.ResponseWriter, r *http.Request) {
+	handler := getHandler(r)
 	platform := chi.URLParam(r, "os")
-	res := getHandler(r).resources[platform]
-	w.Header().Set("x-enish-app-resource-cnt", fmt.Sprint(len(res.Resource)))
-	writeProto(w, http.StatusOK, res)
+	writeProtoStreamed(w, http.StatusOK, func(stream func(pb.Message) error) error {
+		handler.masterLock.Lock()
+		defer handler.masterLock.Unlock()
+		res := handler.resources[platform]
+		w.Header().Set("x-enish-app-resource-cnt", fmt.Sprint(len(res.Resource)))
+		return stream(res)
+	})
 }

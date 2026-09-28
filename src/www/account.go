@@ -3,22 +3,24 @@ package www
 import (
 	"net/http"
 
-	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/pmaster"
+	"example.com/brave-revival/src/proto/proto"
 )
 
 func accountExist(w http.ResponseWriter, r *http.Request) {
-	player := getHandler(r).player
-	writeProto(w, http.StatusOK, &proto.PlayerExist{
-		PlayerSummary: &proto.PlayerSummary{
-			PlayerId: player.Player.Id,
-			Nickname: player.Player.Nickname,
-			JobId:    player.Player.JobId,
-			JobLevel: 999,
-			Power:    999,
-		},
-		WorldDescription: "Brave Revival",
+	reply := getHandler(r).readPlayer(func(player *proto.StoredData) *proto.PlayerExist {
+		return &proto.PlayerExist{
+			PlayerSummary: &proto.PlayerSummary{
+				PlayerId: player.Player.Id,
+				Nickname: player.Player.Nickname,
+				JobId:    player.Player.JobId,
+				JobLevel: 999,
+				Power:    999,
+			},
+			WorldDescription: "Brave Revival",
+		}
 	})
+	writeProto(w, http.StatusOK, reply)
 }
 
 func accountAuthorize(w http.ResponseWriter, _ *http.Request) {

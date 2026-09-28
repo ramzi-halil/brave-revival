@@ -70,7 +70,7 @@ func generateStoredJob(master *pmaster.All) *proto.StoredJob {
 func generateStoredAgitoItemArea(master *pmaster.All) *proto.StoredAgitoItemArea {
 	agitoItemArea := make(map[uint32]*puser.AgitoItemArea, len(master.AgitoItemArea))
 	for _, area := range master.AgitoItemArea {
-		agitoItemArea[area.Id | 0x10000] = &puser.AgitoItemArea{
+		agitoItemArea[area.Id|0x10000] = &puser.AgitoItemArea{
 			PlayerId:        defaultPlayerID,
 			RoomNumber:      1,
 			AgitoItemAreaId: area.Id,

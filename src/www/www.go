@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"sync"
 
 	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/pcommon"
@@ -23,9 +24,12 @@ type Handler struct {
 	config *config.Config
 	router chi.Router
 
-	master    *pmaster.All
-	resources config.Resources
-	player    *proto.StoredData
+	masterLock sync.Mutex
+	master     *pmaster.All
+	resources  config.Resources
+
+	playerLock sync.Mutex
+	player     *proto.StoredData
 }
 
 type handlerKey struct{}
@@ -111,18 +115,37 @@ func loadPlayer(path string, master *pmaster.All) (*proto.StoredData, error) {
 	return player, nil
 }
 
-func (h *Handler) savePlayer() {
-	if h.config.PlayerPath == "" {
-		return
+func (h *Handler) readPlayer[R any](action func(player *proto.StoredData) R) R {
+	h.playerLock.Lock()
+	defer h.playerLock.Unlock()
+	return action(h.player)
+}
+
+func (h *Handler) writePlayer[R any](action func(player *proto.StoredData) R) R {
+	locked := true
+	h.playerLock.Lock()
+	defer func() {
+		if locked {
+			h.playerLock.Unlock()
+		}
+	}()
+
+	h.player.Generation++
+	result := action(h.player)
+
+	if h.config.PlayerPath != "" {
+		data, err := (protojson.MarshalOptions{Multiline: true}).Marshal(h.player)
+		if err == nil {
+			h.playerLock.Unlock()
+			locked = false
+			if err := os.WriteFile(h.config.PlayerPath, data, 0o644); err != nil {
+				slog.Warn("Failed to write player file", "path", h.config.PlayerPath, "err", err)
+			}
+		} else {
+			slog.Warn("Failed to serialize player", "err", err)
+		}
 	}
-	data, err := (protojson.MarshalOptions{Multiline: true}).Marshal(h.player)
-	if err != nil {
-		slog.Warn("Failed to serialize player", "err", err)
-		return
-	}
-	if err := os.WriteFile(h.config.PlayerPath, append(data, '\n'), 0o644); err != nil {
-		slog.Warn("Failed to write player file", "path", h.config.PlayerPath, "err", err)
-	}
+	return result
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -141,14 +164,26 @@ func notFound(w http.ResponseWriter, _ *http.Request) {
 }
 
 func writeProto(w http.ResponseWriter, status int, message pb.Message) {
-	w.Header().Set("Content-Type", protobufContentType)
-	w.Header().Set("proto-type", string(message.ProtoReflect().Descriptor().FullName()))
-	payload, err := pb.Marshal(message)
-	if err != nil {
+	writeProtoStreamed(w, status, func(stream func(pb.Message) error) error {
+		return stream(message)
+	})
+}
+
+func writeProtoStreamed(w http.ResponseWriter, status int, action func(func(pb.Message) error) error) {
+	var protoType string
+	var payload []byte
+
+	if err := action(func(message pb.Message) (err error) {
+		protoType = string(message.ProtoReflect().Descriptor().FullName())
+		payload, err = pb.Marshal(message)
+		return
+	}); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 
+	w.Header().Set("Content-Type", protobufContentType)
+	w.Header().Set("proto-type", protoType)
 	w.WriteHeader(status)
 	_, _ = w.Write(payload)
 }
