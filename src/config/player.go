@@ -128,10 +128,14 @@ func generateStoredContents(master *pmaster.All) *proto.StoredContents {
 func generateStoredItem(master *pmaster.All) *proto.StoredItem {
 	items := make(map[uint32]*puser.Item)
 	for _, item := range master.Item {
+		quantity := uint32(9999)
+		if item.Type == 36 {
+			quantity = 1
+		}
 		items[item.Id] = &puser.Item{
 			PlayerId:   defaultPlayerID,
 			ItemId:     item.Id,
-			Quantity:   100,
+			Quantity:   quantity,
 			AcquiredAt: defaultTimestamp,
 		}
 	}
@@ -177,9 +181,9 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 				1: &puser.AgitoFurnitureSetting{
 					PlayerId:         defaultPlayerID,
 					RoomNumber:       1,
-					WallPaperItemId:  35476,
-					FloorBoardItemId: 35477,
-					TableSetItemId:   35684,
+					WallPaperItemId:  35001,
+					FloorBoardItemId: 35002,
+					TableSetItemId:   35003,
 				},
 			},
 		},
@@ -188,7 +192,7 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 				1: &puser.AgitoAp{
 					PlayerId:      defaultPlayerID,
 					RoomNumber:    1,
-					ItemId:        34005,
+					ItemId:        34001,
 					Ap:            9999,
 					NextLotteryAt: "ffffffff",
 				},
