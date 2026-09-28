@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brave Revival Control</title>
+</head>
+<body>
+    <p><a href="/ca.crt">Download CA Certificate</a></p>
+    <p><a href="/proxy.pac">Right-click to Copy Proxy PAC URL</a></p>
+    <p><a href="/singbox.json">Right-click to Copy Sing-box Profile Remote Configuration URL</a></p>
+    <p><button type="button" data-reload="/reload/player">Reload player</button> <span role="status"></span></p>
+    <p><button type="button" data-reload="/reload/master">Reload master and resources</button> <span role="status"></span></p>
+    <script>
+        for (const button of document.querySelectorAll('button[data-reload]')) {
+            button.addEventListener('click', async () => {
+                const status = button.nextElementSibling;
+                button.disabled = true;
+                status.textContent = 'Reloading...';
+                try {
+                    const response = await fetch(button.dataset.reload, { method: 'PUT' });
+                    status.textContent = response.ok ? 'Reloaded.' : `Reload failed: ${await response.text()}`;
+                } catch (error) {
+                    status.textContent = `Reload failed: ${error}`;
+                } finally {
+                    button.disabled = false;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

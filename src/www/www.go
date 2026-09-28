@@ -59,8 +59,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 	}
 
 	router.Use(middleware.WithValue(handlerKey{}, handler))
-	router.Use(middleware.SetHeader("x-enish-app-version-master", fmt.Sprint(master.Version[0].Master)))
-	router.Use(middleware.SetHeader("x-enish-app-version-resource", fmt.Sprint(master.Version[0].Resource)))
+	router.Use(handler.versionHeaders)
 	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
 
@@ -95,6 +94,51 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 	router.MethodNotAllowed(notFound)
 
 	return handler, nil
+}
+
+func (h *Handler) versionHeaders(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		h.masterLock.Lock()
+		version := h.master.Version[0]
+		w.Header().Set("x-enish-app-version-master", fmt.Sprint(version.Master))
+		w.Header().Set("x-enish-app-version-resource", fmt.Sprint(version.Resource))
+		h.masterLock.Unlock()
+		next.ServeHTTP(w, r)
+	})
+}
+
+func (h *Handler) ReloadPlayer() error {
+	h.masterLock.Lock()
+	master := h.master
+	h.masterLock.Unlock()
+
+	player, err := loadPlayer(h.config.PlayerPath, master)
+	if err != nil {
+		return err
+	}
+	h.playerLock.Lock()
+	h.player = player
+	h.playerLock.Unlock()
+	return nil
+}
+
+func (h *Handler) ReloadMaster() error {
+	master, err := config.LoadMaster(h.config.DBDir)
+	if err != nil {
+		return fmt.Errorf("failed to load master: %w", err)
+	}
+	if len(master.Version) == 0 {
+		return fmt.Errorf("loaded master has no version")
+	}
+	resources, err := config.LoadResources(h.config.DBDir)
+	if err != nil {
+		return err
+	}
+	h.masterLock.Lock()
+	h.master = master
+	h.resources = resources
+	h.masterLock.Unlock()
+	return nil
 }
 
 func loadPlayer(path string, master *pmaster.All) (*proto.StoredData, error) {
