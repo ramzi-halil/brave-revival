@@ -73,14 +73,14 @@ func LoadResources(dbDir string) (Resources, error) {
 	defer f.Close()
 
 	reader := csv.NewReader(f)
-	reader.FieldsPerRecord = 3
+	reader.FieldsPerRecord = 5
 
 	header, err := reader.Read()
 	if err != nil {
 		return nil, fmt.Errorf("cannot read resources CSV: %w", err)
 	}
 
-	m := make([]*pmaster.Resources, len(header)-1)
+	m := make([]*pmaster.Resources, 2)
 	for i := range m {
 		m[i] = &pmaster.Resources{
 			Resource: make(map[uint32]*pmaster.ResourceInfo),
@@ -97,12 +97,17 @@ func LoadResources(dbDir string) (Resources, error) {
 			if err != nil {
 				return nil, fmt.Errorf("resource CSV contains invalid ID: %w", err)
 			}
-			for i, hash := range record[1:] {
-				m[i].Resource[uint32(id)] = &pmaster.ResourceInfo{Hash: hash}
+			for i := range 2 {
+				hash := record[i+1]
+				size, err := strconv.ParseUint(record[i+3], 10, 32)
+				if err != nil {
+					return nil, fmt.Errorf("resource CSV contains invalid size: %w", err)
+				}
+				m[i].Resource[uint32(id)] = &pmaster.ResourceInfo{Hash: hash, Size: uint32(size)}
 			}
 
 		case io.EOF:
-			result := make(Resources, len(header)-1)
+			result := make(Resources, len(m))
 			for i, res := range m {
 				result[header[i+1]] = res
 			}

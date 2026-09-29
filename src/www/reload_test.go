@@ -51,7 +51,7 @@ func TestReloadMaster(t *testing.T) {
 		require.NoError(t, os.WriteFile(filepath.Join(dbDir, string(field.Name())+".csv"), []byte(content), 0o600))
 	}
 	resourcesPath := filepath.Join(dbDir, "resources.csv")
-	require.NoError(t, os.WriteFile(resourcesPath, []byte("id,ios,android\n1,new-hash,other-hash\n"), 0o600))
+	require.NoError(t, os.WriteFile(resourcesPath, []byte("id,ios,android,ios_size,android_size\n1,new-hash,other-hash,123,456\n"), 0o600))
 
 	oldMaster := &pmaster.All{Version: []*pmaster.Version{{Master: 9}}}
 	h := &Handler{config: &config.Config{DBDir: dbDir}, master: oldMaster}
