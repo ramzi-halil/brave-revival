@@ -45,7 +45,7 @@ func main() {
 	slog.SetLogLoggerLevel(slog.LevelInfo)
 
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: brave-revival <config.json>")
+		fmt.Println("Usage: ./brave-revival <config.json>")
 		os.Exit(1)
 	}
 	if err := run(); err != nil {
