@@ -23,6 +23,7 @@ const protobufContentType = "application/x-protobuf"
 type Handler struct {
 	config *config.Config
 	router chi.Router
+	assets *os.Root
 
 	masterLock sync.Mutex
 	master     *pmaster.All
@@ -49,10 +50,16 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		return nil, err
 	}
 
+	assetsDir, err := os.OpenRoot(cfg.AssetsDir)
+	if err != nil {
+		return nil, fmt.Errorf("failed to open assets dir: %w", err)
+	}
+
 	router := chi.NewRouter()
 	handler := &Handler{
 		config:    cfg,
 		router:    router,
+		assets:    assetsDir,
 		master:    master,
 		resources: resources,
 		player:    player,
@@ -88,7 +95,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 
 		router.Get("/guild/facility/list", empty("Proto.GuildFacilityList"))
 	})
-	router.Get("/crow/Assets/{os}/{hash}", assets)
+	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
 	router.Get("/news/top/{os}", news)
 	router.NotFound(notFound)
 	router.MethodNotAllowed(notFound)
