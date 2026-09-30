@@ -39,7 +39,7 @@ Note that on Android, [apps ignore user-installed CA by default][1]. Unless you 
 
 ## Allow the APK to trust user-defined certificate
 
-6. Put the following content into `res/xml/network_security_config.xml`
+6. Create `res/xml/network_security_config.xml` and paste the following content:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

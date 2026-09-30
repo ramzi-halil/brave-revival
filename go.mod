@@ -3,8 +3,10 @@ module example.com/brave-revival
 go 1.27.1
 
 require (
+	github.com/agusibrahim/apksig-go v1.1.0
 	github.com/coder/websocket v1.8.15
 	github.com/go-chi/chi/v5 v5.3.2
+	github.com/shogo82148/androidbinary v1.0.6
 	github.com/stretchr/testify v1.12.1
 	golang.org/x/sync v0.22.0
 	google.golang.org/grpc v1.84.0
