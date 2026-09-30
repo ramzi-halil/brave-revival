@@ -45,9 +45,6 @@
                 "query_type": "A",
                 "action": "route",
                 "server": "fakeip"
-            },
-            {
-                "action": "reject"
             }
         ],
         "final": "local",
@@ -60,9 +57,6 @@
                 "domain_suffix": "enish-games.com",
                 "action": "route",
                 "outbound": "proxy"
-            },
-            {
-                "action": "reject"
             }
         ],
         "final": "direct"
