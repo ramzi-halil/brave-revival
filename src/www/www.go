@@ -81,6 +81,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/resource/list/{os}", resourceList)
 		router.Post("/actionlog/{action}/send", empty("Proto.Empty"))
 		router.Post("/fcm/token/add", empty("Proto.Nocontent"))
+		router.Post("/season_pass/top", empty("Proto.SeasonPassTop"))
 
 		router.Post("/account/exist", accountExist)
 		router.Post("/account/authorize", accountAuthorize)
@@ -113,6 +114,8 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 
 		router.Post("/vip/receive/daily/reward", empty("Proto.Nocontent"))
 		router.Post("/shop/buy", empty("Proto.ShopItemReceiveList"))
+
+		router.Post("/gacha/purchase", gachaPurchase)
 	})
 	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
 	router.Get("/news/top/{os}", news)

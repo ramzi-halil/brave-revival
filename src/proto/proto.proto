@@ -716,3 +716,12 @@ message AgitoInfo {
     uint32 total_good_count = 21;
     string self_last_agito_received_good_at = 22;
 }
+
+message GachaResult {
+    StoredData stored_data = 1;
+    uint32 gacha_id = 2;
+    repeated RewardInfo inventory = 3;
+    repeated RewardInfo present = 4;
+    repeated RewardInfo bonus = 5;
+    map<uint32, bool> new_equipment = 6;
+}
