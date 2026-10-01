@@ -725,3 +725,16 @@ message GachaResult {
     repeated RewardInfo bonus = 5;
     map<uint32, bool> new_equipment = 6;
 }
+
+message ShopItemReceiveList {
+    Pcommon.Error error = 1;
+    StoredData stored_data = 2;
+    bool is_free = 3;
+    repeated RewardInfo inventory_receive_list = 4;
+    repeated RewardInfo present_receive_list = 5;
+    repeated RewardInfo bonus_receive_list = 6;
+    repeated RewardInfo first_receive_list = 7;
+    // BattleClearParam before = 8;
+    // BattleClearParam after = 9;
+    uint32 shopItemID = 10;
+}

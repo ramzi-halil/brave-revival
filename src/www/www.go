@@ -113,7 +113,8 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/guild/facility/list", empty("Proto.GuildFacilityList"))
 
 		router.Post("/vip/receive/daily/reward", empty("Proto.Nocontent"))
-		router.Post("/shop/buy", empty("Proto.ShopItemReceiveList"))
+		router.Post("/shop/buy", shopBuy)
+		router.Post("/shop/top", empty("Proto.ShopTopResponse"))
 
 		router.Post("/gacha/purchase", gachaPurchase)
 	})
