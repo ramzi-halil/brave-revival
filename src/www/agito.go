@@ -1,8 +1,10 @@
 package www
 
 import (
+	"math/rand/v2"
 	"net/http"
 
+	"example.com/brave-revival/src/proto/pmaster"
 	"example.com/brave-revival/src/proto/pmisc"
 	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/puser"
@@ -79,5 +81,168 @@ func agitoItemSet(w http.ResponseWriter, r *http.Request) {
 			},
 		}
 	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func agitoPlayerRecommend(w http.ResponseWriter, r *http.Request) {
+	handler := getHandler(r)
+	handler.masterLock.Lock()
+	var equipments []*pmaster.Equipment
+	for _, equipment := range handler.master.Equipment {
+		if equipment.EquipmentCategory == 1 || equipment.EquipmentCategory == 2 {
+			equipments = append(equipments, equipment)
+		}
+	}
+	var equipmentIDs [3]uint32
+	memberIDs := make(map[uint32]bool)
+	for len(equipments) > 0 && len(memberIDs) < len(equipmentIDs) {
+		i := rand.IntN(len(equipments))
+		equipment := equipments[i]
+		equipments[i] = equipments[len(equipments)-1]
+		equipments = equipments[:len(equipments)-1]
+		if memberIDs[equipment.MemberId] {
+			continue
+		}
+		equipmentIDs[len(memberIDs)] = equipment.Id
+		memberIDs[equipment.MemberId] = true
+	}
+
+	furnitureIDs := make(map[uint32][]uint32)
+	for _, furniture := range handler.master.AgitoFurniture {
+		furnitureIDs[furniture.Type] = append(furnitureIDs[furniture.Type], furniture.ItemId)
+	}
+	pickFurniture := func(itemType uint32) uint32 {
+		ids := furnitureIDs[itemType]
+		if len(ids) == 0 {
+			return 0
+		}
+		return ids[rand.IntN(len(ids))]
+	}
+
+	var areas, optionalAreas []*pmaster.AgitoItemArea
+	selected := make(map[uint32]bool)
+	excluded := make(map[uint32]bool)
+	selectArea := func(area *pmaster.AgitoItemArea) {
+		areas = append(areas, area)
+		selected[area.Id] = true
+		excluded[area.ExceptAgitoItemAreaId_1] = true
+		excluded[area.ExceptAgitoItemAreaId_2] = true
+		excluded[area.ExceptAgitoItemAreaId_3] = true
+	}
+	for _, area := range handler.master.AgitoItemArea {
+		switch area.AgitoItemType {
+		case 1, 3:
+			selectArea(area)
+		case 2, 4:
+			optionalAreas = append(optionalAreas, area)
+		}
+	}
+	remaining := map[uint32]int{2: 4, 4: 1}
+	for _, i := range rand.Perm(len(optionalAreas)) {
+		area := optionalAreas[i]
+		if remaining[area.AgitoItemType] == 0 || excluded[area.Id] || selected[area.ExceptAgitoItemAreaId_1] || selected[area.ExceptAgitoItemAreaId_2] || selected[area.ExceptAgitoItemAreaId_3] {
+			continue
+		}
+		selectArea(area)
+		remaining[area.AgitoItemType]--
+	}
+
+	itemsByType := make(map[uint32][]*pmaster.AgitoItem)
+	seenItemIDs := make(map[uint32]bool)
+	for _, item := range handler.master.AgitoItem {
+		if !seenItemIDs[item.ItemId] {
+			itemsByType[item.Type] = append(itemsByType[item.Type], item)
+			seenItemIDs[item.ItemId] = true
+		}
+	}
+	lineupIDs := make(map[uint32][]uint32)
+	for _, lineup := range handler.master.AgitoVisitorLineup {
+		if lineup.EquipmentId != 0 {
+			lineupIDs[lineup.LineupId] = append(lineupIDs[lineup.LineupId], lineup.Id)
+		}
+	}
+	pickLineup := func(lineupID uint32) uint32 {
+		ids := lineupIDs[lineupID]
+		if len(ids) == 0 {
+			return 0
+		}
+		return ids[rand.IntN(len(ids))]
+	}
+	var itemAreas []*puser.AgitoItemArea
+	for _, area := range areas {
+		items := itemsByType[area.AgitoItemType]
+		if len(items) == 0 {
+			continue
+		}
+		i := rand.IntN(len(items))
+		item := items[i]
+		itemArea := &puser.AgitoItemArea{
+			PlayerId:               200,
+			RoomNumber:             1,
+			AgitoItemAreaId:        area.Id,
+			ItemId:                 item.ItemId,
+			AgitoVisitorLineupId_1: pickLineup(item.AgitoVisitorLineupId_1),
+			AgitoVisitorLineupId_2: pickLineup(item.AgitoVisitorLineupId_2),
+			AgitoVisitorLineupId_3: pickLineup(item.AgitoVisitorLineupId_3),
+			LineupReturnAt1:        "0",
+			LineupReturnAt2:        "0",
+			LineupReturnAt3:        "0",
+		}
+		var lineups []*uint32
+		for _, id := range []*uint32{&itemArea.AgitoVisitorLineupId_1, &itemArea.AgitoVisitorLineupId_2, &itemArea.AgitoVisitorLineupId_3} {
+			if *id != 0 {
+				lineups = append(lineups, id)
+			}
+		}
+		if len(lineups) > 1 {
+			choice := rand.IntN(len(lineups) + 1)
+			for i, id := range lineups {
+				if choice < len(lineups) && i != choice {
+					*id = 0
+				}
+			}
+		}
+		itemAreas = append(itemAreas, itemArea)
+		items[i] = items[len(items)-1]
+		itemsByType[area.AgitoItemType] = items[:len(items)-1]
+	}
+
+	reply := &proto.AgitoInfo{
+		PlayerId:                    200,
+		Nickname:                    "sample #2",
+		JobId:                       1,
+		JobLevel:                    780,
+		FavoriteEquipmentId_1:       equipmentIDs[0],
+		FavoriteEquipmentId_2:       equipmentIDs[1],
+		FavoriteEquipmentId_3:       equipmentIDs[2],
+		SelfLastAgitoReceivedGoodAt: "0",
+		AgitoRoom: []*proto.AgitoRoom{
+			{
+				RoomNumber: 1,
+				AgitoFurnitureSetting: &puser.AgitoFurnitureSetting{
+					PlayerId:           200,
+					RoomNumber:         1,
+					WallPaperItemId:    pickFurniture(1),
+					FloorBoardItemId:   pickFurniture(2),
+					TableSetItemId:     pickFurniture(3),
+					SpecialFloorItemId: pickFurniture(6),
+					WallMediumItemId_1: pickFurniture(7),
+					WallMediumItemId_2: pickFurniture(7),
+					WallMediumItemId_3: pickFurniture(7),
+					WallMediumItemId_4: pickFurniture(7),
+					WallMediumItemId_5: pickFurniture(7),
+					WallSmallItemId_1:  pickFurniture(8),
+					WallSmallItemId_2:  pickFurniture(8),
+					WallSmallItemId_3:  pickFurniture(8),
+					WallSmallItemId_4:  pickFurniture(8),
+					WallSmallItemId_5:  pickFurniture(8),
+					WallSmallItemId_6:  pickFurniture(8),
+				},
+				AgitoItemArea: itemAreas,
+			},
+		},
+	}
+	handler.masterLock.Unlock()
+
 	writeProto(w, http.StatusOK, reply)
 }

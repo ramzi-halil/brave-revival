@@ -685,3 +685,34 @@ message Nocontent {
     StoredData stored_data = 1;
     Pcommon.Error error = 2;
 }
+
+message AgitoRoom {
+    uint32 room_number = 1;
+    Puser.AgitoFurnitureSetting agito_furniture_setting = 2;
+    repeated Puser.AgitoItemArea agito_item_area = 3;
+}
+
+message AgitoInfo {
+    repeated AgitoRoom agito_room = 1;
+    uint64 player_id = 2;
+    string nickname = 3;
+    uint32 player_title_id = 4;
+    uint32 job_id = 5;
+    uint32 job_level = 6;
+    uint32 power = 7;
+    uint32 favorite_equipment_id_1 = 8;
+    uint32 favorite_equipment_id_1_costume = 9;
+    uint32 favorite_equipment_id_1_stylish_head = 10;
+    uint32 favorite_equipment_id_1_stylish_body = 11;
+    uint32 favorite_equipment_id_2 = 12;
+    uint32 favorite_equipment_id_2_costume = 13;
+    uint32 favorite_equipment_id_2_stylish_head = 14;
+    uint32 favorite_equipment_id_2_stylish_body = 15;
+    uint32 favorite_equipment_id_3 = 16;
+    uint32 favorite_equipment_id_3_costume = 17;
+    uint32 favorite_equipment_id_3_stylish_head = 18;
+    uint32 favorite_equipment_id_3_stylish_body = 19;
+    uint64 job_exp = 20;
+    uint32 total_good_count = 21;
+    string self_last_agito_received_good_at = 22;
+}
