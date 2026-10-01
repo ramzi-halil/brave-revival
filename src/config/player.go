@@ -172,9 +172,9 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			OpenedAt:              defaultTimestamp,
 		},
 		Currency: &proto.Currency{
-			RedOrb:      1200,
-			FreeBlueOrb: 1200,
-			TotalOrb:    2400,
+			RedOrb:      9999,
+			FreeBlueOrb: 9999,
+			TotalOrb:    19998,
 		},
 		Arena: &puser.Arena{
 			PlayerId:              defaultPlayerID,
@@ -204,6 +204,10 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 					NextLotteryAt: "ffffffff",
 				},
 			},
+		},
+		Vip: &puser.Vip{
+			PlayerId: defaultPlayerID,
+			Rank:     12,
 		},
 		Equipment:                   equipments,
 		JobDeck:                     generateStoredJobDeck(master, anyEquipmentID),
@@ -263,7 +267,6 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		SeasonPass:                  &proto.StoredSeasonPass{},
 		SeasonPassDailyMission:      &proto.StoredSeasonPassDailyMission{},
 		SeasonPassWeeklyMission:     &proto.StoredSeasonPassWeeklyMission{},
-		Vip:                         &puser.Vip{},
 		ImportantMissionGroup:       &proto.StoredImportantMissionGroup{},
 		ImportantMission:            &proto.StoredImportantMission{},
 		SpecialItemProgress:         &proto.StoredSpecialItemProgress{},
