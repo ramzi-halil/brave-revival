@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTPS flows</title>
+    <style>
+        body { margin: 0; font: 16px system-ui, sans-serif; }
+        header { padding: 12px; border-bottom: 1px solid #aaa; }
+        #connection { margin-left: 16px; }
+        main { display: flex; height: calc(100dvh - 50px); }
+        nav { width: 35%; min-width: 180px; overflow-y: auto; border-right: 2px solid #888; padding: 8px; }
+        nav button { display: block; width: 100%; text-align: left; padding: 10px; margin-bottom: 4px; background: white; border: 2px solid transparent; font: inherit; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+        nav button[aria-pressed="true"] { border-color: #2862ef; }
+        article { flex: 1; min-width: 0; overflow: auto; padding: 16px; }
+        h2 { font-size: 22px; font-weight: normal; margin: 0 0 12px; overflow-wrap: anywhere; }
+        .request { color: #c22; }
+        .response { color: #078530; margin-top: 24px; }
+        pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+        details { color: #444; font-size: 14px; margin: 12px 0; }
+    </style>
+</head>
+<body>
+    <header><a href="/">Control</a> · HTTPS flows <span id="connection" role="status">Connecting…</span></header>
+    <main>
+        <nav id="list" aria-label="Recorded requests"></nav>
+        <article>
+            <p id="hint" role="status">Waiting for requests…</p>
+            <div id="detail" hidden>
+                <section class="request">
+                    <h2 id="request-title"></h2>
+                    <small id="time"></small>
+                    <pre id="request-body"></pre>
+                    <details><summary>Request headers</summary><pre id="request-headers"></pre></details>
+                </section>
+                <section class="response">
+                    <h2 id="response-status"></h2>
+                    <div id="proto-type"></div>
+                    <pre id="response-body"></pre>
+                    <details><summary>Response headers</summary><pre id="response-headers"></pre></details>
+                </section>
+            </div>
+        </article>
+    </main>
+    <script>
+        const list = document.getElementById('list');
+        const hint = document.getElementById('hint');
+        const detail = document.getElementById('detail');
+        const connection = document.getElementById('connection');
+        let selected = null;
+        let records = [];
+        let pending = null;
+
+        function markSelection() {
+            for (const button of list.children) {
+                button.setAttribute('aria-pressed', String(Number(button.dataset.id) === selected));
+            }
+        }
+
+        async function select(id) {
+            selected = id;
+            markSelection();
+            if (pending) pending.abort();
+            const request = new AbortController();
+            pending = request;
+            detail.hidden = true;
+            hint.hidden = false;
+            hint.textContent = 'Loading…';
+            try {
+                const response = await fetch(`/forms/flows/${id}`, { signal: request.signal });
+                if (!response.ok) throw new Error(await response.text());
+                const record = await response.json();
+                if (selected !== id) return;
+                document.getElementById('request-title').textContent = `${record.method} ${record.url}`;
+                document.getElementById('time').textContent = new Date(record.time).toLocaleString();
+                document.getElementById('request-body').textContent = record.requestText || '(empty body)';
+                document.getElementById('request-headers').textContent = JSON.stringify(record.requestHeaders, null, 2);
+                document.getElementById('response-status').textContent = record.status;
+                document.getElementById('proto-type').textContent = record.protoType;
+                document.getElementById('response-body').textContent = record.responseText || '(empty body)';
+                document.getElementById('response-headers').textContent = JSON.stringify(record.responseHeaders, null, 2);
+                hint.hidden = true;
+                detail.hidden = false;
+            } catch (error) {
+                if (error.name !== 'AbortError' && selected === id) hint.textContent = String(error);
+            }
+        }
+
+        const events = new EventSource('/forms/flows');
+        events.onmessage = event => {
+            records = JSON.parse(event.data);
+            connection.textContent = `Live · ${records.length} / 256`;
+            const atBottom = list.scrollHeight - list.scrollTop - list.clientHeight < 40;
+            const scrollTop = list.scrollTop;
+            const retained = new Set(records.map(record => record.id));
+            for (const button of [...list.children]) {
+                if (!retained.has(Number(button.dataset.id))) button.remove();
+            }
+            const existing = new Set([...list.children].map(button => Number(button.dataset.id)));
+            for (const record of records) {
+                if (existing.has(record.id)) continue;
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.dataset.id = record.id;
+                button.textContent = `${record.method} ${record.url}`;
+                button.title = `${button.textContent} (${record.status})`;
+                button.addEventListener('click', () => select(record.id));
+                list.append(button);
+            }
+            markSelection();
+            list.scrollTop = atBottom ? list.scrollHeight : scrollTop;
+            if (!records.some(record => record.id === selected)) {
+                if (records.length) {
+                    select(records[records.length - 1].id);
+                } else {
+                    if (pending) pending.abort();
+                    selected = null;
+                    detail.hidden = true;
+                    hint.hidden = false;
+                    hint.textContent = 'Waiting for requests…';
+                }
+            }
+        };
+        events.onerror = () => { connection.textContent = 'Disconnected · reconnecting…'; };
+        window.addEventListener('pagehide', () => events.close());
+    </script>
+</body>
+</html>

@@ -9,6 +9,7 @@ import (
 	"sync"
 
 	"example.com/brave-revival/src/config"
+	"example.com/brave-revival/src/flows"
 	"example.com/brave-revival/src/proto/pcommon"
 	"example.com/brave-revival/src/proto/pmaster"
 	"example.com/brave-revival/src/proto/proto"
@@ -24,6 +25,7 @@ type Handler struct {
 	config *config.Config
 	router chi.Router
 	assets *os.Root
+	flows  *flows.Recorder
 
 	masterLock sync.Mutex
 	master     *pmaster.All
@@ -60,6 +62,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		config:    cfg,
 		router:    router,
 		assets:    assetsDir,
+		flows:     &flows.Recorder{},
 		master:    master,
 		resources: resources,
 		player:    player,
@@ -67,10 +70,12 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 
 	router.Use(middleware.WithValue(handlerKey{}, handler))
 	router.Use(handler.versionHeaders)
-	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
 
 	router.Route("/{version:v1_4[34]_274}", func(router chi.Router) {
+		router.Use(handler.flows.Middleware)
+		// Recover inside the recorder so panic responses are captured too.
+		router.Use(middleware.Recoverer)
 		router.Get("/etc", etc)
 		router.Get("/master/all", masterAll)
 		router.Get("/resource/list/{os}", resourceList)
@@ -201,6 +206,10 @@ func (h *Handler) writePlayer[R any](action func(player *proto.StoredData) R) R 
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	h.router.ServeHTTP(w, r)
+}
+
+func (h *Handler) Flows() *flows.Recorder {
+	return h.flows
 }
 
 func getHandler(r *http.Request) *Handler {

@@ -13,6 +13,7 @@ import (
 
 	"example.com/brave-revival/src/cert"
 	"example.com/brave-revival/src/config"
+	"example.com/brave-revival/src/flows"
 	"example.com/brave-revival/src/www"
 	"github.com/go-chi/chi/v5"
 )
@@ -32,6 +33,7 @@ type handler struct {
 	config  *config.Config
 	tlsCert tls.Certificate
 	www     *www.Handler
+	flows   *flows.Recorder
 	router  chi.Router
 }
 
@@ -40,12 +42,16 @@ func newHandler(cfg *config.Config, tlsCert tls.Certificate, wwwHandler *www.Han
 		config:  cfg,
 		tlsCert: tlsCert,
 		www:     wwwHandler,
+		flows:   wwwHandler.Flows(),
 		router:  chi.NewRouter(),
 	}
 	h.router.Get("/proxy.pac", h.handleProxyPAC)
 	h.router.Get("/ca.crt", h.handleCA)
 	h.router.Get("/singbox.json", h.handleSingBox)
 	h.router.Get("/", h.handleIndex)
+	h.router.Get("/flows", h.handleFlows)
+	h.router.Get("/forms/flows", h.handleFlowEvents)
+	h.router.Get("/forms/flows/{id}", h.handleFlow)
 	h.router.Put("/reload/player", h.handleReloadPlayer)
 	h.router.Put("/reload/master", h.handleReloadMaster)
 	h.router.NotFound(h.handleNotFound)
