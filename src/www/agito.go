@@ -64,17 +64,17 @@ func agitoFurnitureSet(w http.ResponseWriter, r *http.Request) {
 
 func agitoItemSet(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	areaID := u32(r.PostForm.Get("agito_item_area_id"))
+	areaIDMasked := u32(r.PostForm.Get("agito_item_area_id")) | 0x10000
 	itemID := u32(r.PostForm.Get("item_id"))
 
 	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
-		area := player.AgitoItemArea.List[areaID|0x10000]
+		area := player.AgitoItemArea.List[areaIDMasked]
 		area.ItemId = itemID
 		return &proto.Nocontent{
 			StoredData: &proto.StoredData{
 				Generation: player.Generation,
 				AgitoItemArea: &proto.StoredAgitoItemArea{
-					Add: map[uint32]*puser.AgitoItemArea{areaID: area},
+					Add: map[uint32]*puser.AgitoItemArea{areaIDMasked: area},
 				},
 			},
 		}
