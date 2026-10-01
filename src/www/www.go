@@ -91,14 +91,26 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/player/detail/{player_id}", playerDetail)
 		router.Post("/player/change/favorite", playerChangeFavorite)
 
+		router.Get("/friend/list", empty("Proto.FriendList"))
+		router.Get("/friend/approval/list", empty("Proto.FriendApprovalList"))
+		router.Get("/friend/request/list", empty("Proto.FriendRequestList"))
+		router.Get("/player/recommend/list", empty("Proto.PlayerRecommendList"))
+		router.Post("/player/search/list", empty("Proto.PlayerSearchList"))
+		router.Get("/block/list", empty("Proto.BlockList"))
+
 		router.Post("/field/top", fieldTop)
 		router.Post("/agito/furniture/set", agitoFurnitureSet)
 		router.Post("/agito/item/set", agitoItemSet)
+		router.Post("/agito/apitem/set", empty("Proto.Nocontent"))
+		router.Get("/agito/list/good", empty("Proto.AgitoListGoodHistoryList"))
 
 		router.Get("/mission/guild/personal/list", missionGuildPersonalList)
 		router.Get("/mission/guild/shared/list", missionGuildSharedList)
 
 		router.Get("/guild/facility/list", empty("Proto.GuildFacilityList"))
+
+		router.Post("/vip/receive/daily/reward", empty("Proto.Nocontent"))
+		router.Post("/shop/buy", empty("Proto.ShopItemReceiveList"))
 	})
 	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
 	router.Get("/news/top/{os}", news)
