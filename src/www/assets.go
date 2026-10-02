@@ -1,6 +1,7 @@
 package www
 
 import (
+	"log/slog"
 	"net/http"
 	"time"
 
@@ -9,16 +10,14 @@ import (
 
 func assets(w http.ResponseWriter, r *http.Request) {
 	hash := chi.URLParam(r, "hash")
-	assetsDir := getHandler(r).assets
-	for _, path := range []string{hash[:2] + "/" + hash + ".unity3d", hash} {
-		file, err := assetsDir.Open(path)
-		if err == nil {
-			defer file.Close()
-			w.Header().Set("Content-Type", "application/octet-stream")
-			http.ServeContent(w, r, hash, time.Time{}, file)
-			return
-		}
+	file, err := getHandler(r).OpenResourceByHash(hash)
+	if err != nil {
+		slog.Warn("Asset not found", "hash", hash, "error", err)
+		http.Error(w, "Asset not found", http.StatusNotFound)
+		return
 	}
 
-	http.Error(w, "Asset not found", http.StatusNotFound)
+	defer file.Close()
+	w.Header().Set("Content-Type", "application/octet-stream")
+	http.ServeContent(w, r, hash, time.Time{}, file)
 }

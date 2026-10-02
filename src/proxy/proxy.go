@@ -52,6 +52,7 @@ func newHandler(cfg *config.Config, tlsCert tls.Certificate, wwwHandler *www.Han
 	h.router.Get("/flows", h.handleFlows)
 	h.router.Get("/forms/flows", h.handleFlowEvents)
 	h.router.Get("/forms/flows/{id}", h.handleFlow)
+	h.router.Get("/res/t/{id}", h.handleTexture)
 	h.router.Put("/reload/player", h.handleReloadPlayer)
 	h.router.Put("/reload/master", h.handleReloadMaster)
 	h.router.NotFound(h.handleNotFound)

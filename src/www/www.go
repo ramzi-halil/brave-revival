@@ -299,6 +299,30 @@ func (h *Handler) Flows() *flows.Recorder {
 	return h.flows
 }
 
+func (h *Handler) ResourceHash(platform string, id uint32) (string, bool) {
+	h.masterLock.Lock()
+	defer h.masterLock.Unlock()
+	resources := h.resources[platform]
+	if resources == nil || resources.Resource[id] == nil {
+		return "", false
+	}
+	hash := resources.Resource[id].Hash
+	return hash, hash != ""
+}
+
+func (h *Handler) OpenResourceByHash(hash string) (*os.File, error) {
+	if len(hash) < 2 {
+		return nil, os.ErrNotExist
+	}
+	for _, path := range []string{hash[:2] + "/" + hash + ".unity3d", hash} {
+		file, err := h.assets.Open(path)
+		if err == nil {
+			return file, nil
+		}
+	}
+	return nil, os.ErrNotExist
+}
+
 func getHandler(r *http.Request) *Handler {
 	return r.Context().Value(handlerKey{}).(*Handler)
 }
