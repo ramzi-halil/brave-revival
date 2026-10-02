@@ -120,6 +120,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/agito/list/good", empty("Proto.AgitoListGoodHistoryList"))
 		router.Post("/agito/player/recommend", agitoPlayerRecommend)
 		router.Post("/agito/player/good", empty("Proto.Nocontent"))
+		router.Post("/agito/item/receive", agitoItemReceive)
 
 		router.Get("/mission/guild/personal/list", missionGuildPersonalList)
 		router.Get("/mission/guild/shared/list", missionGuildSharedList)

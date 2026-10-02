@@ -8,7 +8,7 @@ import (
 
 func battleTowerSweep(w http.ResponseWriter, _ *http.Request) {
 	clearParam := &proto.BattleClearParam{
-		JobId: 1,
+		JobId:        1,
 		JobParameter: &proto.BaseParameter{},
 	}
 

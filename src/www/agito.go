@@ -247,3 +247,56 @@ func agitoPlayerRecommend(w http.ResponseWriter, r *http.Request) {
 
 	writeProto(w, http.StatusOK, reply)
 }
+
+func findEquipmentAndItemByLineupID(master *pmaster.All, lineupID uint32) (equipmentID, itemID uint32) {
+	for _, lineup := range master.AgitoVisitorLineup {
+		if lineup.Id == lineupID {
+			equipmentID = lineup.EquipmentId
+			for _, item := range master.AgitoItem {
+				switch lineup.LineupId {
+				case item.AgitoVisitorLineupId_1, item.AgitoVisitorLineupId_2, item.AgitoVisitorLineupId_3:
+					itemID = item.ItemId
+					return
+				}
+			}
+		}
+	}
+	return
+}
+
+func agitoItemReceive(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	lineupID := u32(r.PostForm.Get("lineup_id"))
+
+	handler := getHandler(r)
+	handler.masterLock.Lock()
+	equipmentID, itemID := findEquipmentAndItemByLineupID(handler.master, lineupID)
+	handler.masterLock.Unlock()
+
+	writeProto(w, http.StatusOK, &proto.AgitoVisitorRewardReceive{
+		StoredData: &proto.StoredData{
+			AgitoVisitor: &proto.StoredAgitoVisitor{
+				Add: map[uint32]*puser.AgitoVisitor{
+					equipmentID: {
+						EquipmentId:    equipmentID,
+						FirstVisitedAt: "0",
+					},
+				},
+			},
+		},
+		ReceiveReward: &proto.AgitoVisitorReturnReward{
+			ItemId:      itemID,
+			EquipmentId: equipmentID,
+			ReceiveRewardList: []*proto.RewardInfo{
+				{
+					TargetType: 22,
+					Quantity:   1,
+				},
+				{
+					TargetType: 25,
+					Quantity:   1,
+				},
+			},
+		},
+	})
+}

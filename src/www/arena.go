@@ -3,25 +3,25 @@ package www
 import (
 	"net/http"
 
-	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/pmisc"
+	"example.com/brave-revival/src/proto/proto"
 )
 
 func arenaSeason(w http.ResponseWriter, _ *http.Request) {
 	writeProto(w, http.StatusOK, &proto.ArenaSeasonResponse{
 		CurrentSeason: &pmisc.ArenaSeason{
-			Id: 139,
-			OpenDate: "2",
+			Id:        139,
+			OpenDate:  "2",
 			CloseDate: "ffffffff",
 		},
 		PreSeason: &pmisc.ArenaSeason{
-			Id: 138,
-			OpenDate: "1",
+			Id:        138,
+			OpenDate:  "1",
 			CloseDate: "2",
 		},
 		PrePreSeason: &pmisc.ArenaSeason{
-			Id: 137,
-			OpenDate: "0",
+			Id:        137,
+			OpenDate:  "0",
 			CloseDate: "1",
 		},
 	})

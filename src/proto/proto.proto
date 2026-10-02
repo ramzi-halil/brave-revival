@@ -783,3 +783,16 @@ message ArenaPlayer {
     Puser.JobDeck current_job_deck = 3;
     map<uint64, Puser.Equipment> equipments = 4;
 }
+
+message AgitoVisitorRewardReceive {
+    StoredData stored_data = 1;
+    AgitoVisitorReturnReward receive_reward = 2;
+}
+
+message AgitoVisitorReturnReward {
+    uint32 item_id = 1;
+    uint32 equipment_id = 2;
+    repeated RewardInfo receive_reward_list = 3;
+    bool is_received = 4;
+    uint32 add_point = 5;
+}
