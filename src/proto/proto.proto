@@ -752,3 +752,34 @@ message LimitBreakRequest {
     uint64 equipment_id = 1;
     map<uint32, uint32> material_items = 3;
 }
+
+message TowerSweepResponse {
+    StoredData stored_data = 1;
+    repeated RewardInfo rewards = 2;
+    BattleClearParam before = 3;
+    BattleClearParam after = 4;
+}
+
+message ArenaSeasonResponse {
+    Pmisc.ArenaSeason current_season = 1;
+    Pmisc.ArenaSeason pre_season = 2;
+    Pmisc.ArenaSeason pre_pre_season = 3;
+}
+
+message ArenaOpponent {
+    uint32 rank = 1;
+    ArenaPlayer opponent = 2;
+}
+
+message ArenaOpponentResponse {
+    Pcommon.Error error = 1;
+    uint32 ranking = 2;
+    repeated ArenaOpponent list = 3;
+}
+
+message ArenaPlayer {
+    bool is_dummy = 1;
+    PlayerSummary player_summary = 2;
+    Puser.JobDeck current_job_deck = 3;
+    map<uint64, Puser.Equipment> equipments = 4;
+}

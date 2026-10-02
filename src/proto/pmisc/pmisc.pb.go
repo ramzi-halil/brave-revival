@@ -553,6 +553,66 @@ func (x *Sample) GetName() string {
 	return ""
 }
 
+type ArenaSeason struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	OpenDate      string                 `protobuf:"bytes,2,opt,name=open_date,json=openDate,proto3" json:"open_date,omitempty"`
+	CloseDate     string                 `protobuf:"bytes,3,opt,name=close_date,json=closeDate,proto3" json:"close_date,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ArenaSeason) Reset() {
+	*x = ArenaSeason{}
+	mi := &file_pmisc_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ArenaSeason) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ArenaSeason) ProtoMessage() {}
+
+func (x *ArenaSeason) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ArenaSeason.ProtoReflect.Descriptor instead.
+func (*ArenaSeason) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ArenaSeason) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ArenaSeason) GetOpenDate() string {
+	if x != nil {
+		return x.OpenDate
+	}
+	return ""
+}
+
+func (x *ArenaSeason) GetCloseDate() string {
+	if x != nil {
+		return x.CloseDate
+	}
+	return ""
+}
+
 var File_pmisc_proto protoreflect.FileDescriptor
 
 const file_pmisc_proto_rawDesc = "" +
@@ -596,7 +656,12 @@ const file_pmisc_proto_rawDesc = "" +
 	"\x06Sample\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1b\n" +
 	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04nameB+Z)example.com/brave-revival/src/proto/pmiscb\x06proto3"
+	"\x04name\x18\x03 \x01(\tR\x04name\"Y\n" +
+	"\vArenaSeason\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
+	"\topen_date\x18\x02 \x01(\tR\bopenDate\x12\x1d\n" +
+	"\n" +
+	"close_date\x18\x03 \x01(\tR\tcloseDateB+Z)example.com/brave-revival/src/proto/pmiscb\x06proto3"
 
 var (
 	file_pmisc_proto_rawDescOnce sync.Once
@@ -610,7 +675,7 @@ func file_pmisc_proto_rawDescGZIP() []byte {
 	return file_pmisc_proto_rawDescData
 }
 
-var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_pmisc_proto_goTypes = []any{
 	(*GuildPersonalMissionList)(nil),      // 0: Pmisc.GuildPersonalMissionList
 	(*GuildSharedMissionList)(nil),        // 1: Pmisc.GuildSharedMissionList
@@ -621,6 +686,7 @@ var file_pmisc_proto_goTypes = []any{
 	(*ConditionProgress)(nil),             // 6: Pmisc.ConditionProgress
 	(*GuildBoard)(nil),                    // 7: Pmisc.GuildBoard
 	(*Sample)(nil),                        // 8: Pmisc.Sample
+	(*ArenaSeason)(nil),                   // 9: Pmisc.ArenaSeason
 }
 var file_pmisc_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -641,7 +707,7 @@ func file_pmisc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pmisc_proto_rawDesc), len(file_pmisc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

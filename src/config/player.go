@@ -193,7 +193,7 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		},
 		Arena: &puser.Arena{
 			PlayerId:              defaultPlayerID,
-			JobDeckId:             1,
+			JobDeckId:             101,
 			DailyAcquiredAt:       defaultTimestamp,
 			WeeklyAcquiredAt:      defaultTimestamp,
 			DailyRewardReceivedAt: defaultTimestamp,

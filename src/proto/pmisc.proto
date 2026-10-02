@@ -58,3 +58,9 @@ message Sample {
     uint64 player_id = 2;
     string name = 3;
 }
+
+message ArenaSeason {
+    uint32 id = 1;
+    string open_date = 2;
+    string close_date = 3;
+}

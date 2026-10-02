@@ -174,6 +174,17 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/job/deck/set", jobDeckSet)
 		router.Post("/job/group/label/change", jobGroupLabelChange)
 		router.Post("/job/deck/label/change", jobDeckLabelChange)
+
+		router.Post("/abyss/fever/charge", empty("Proto.Nocontent"))
+		router.Get("/tower/top", empty("Proto.TowerTopResult"))
+		router.Post("/battle/tower/sweep", battleTowerSweep)
+
+		router.Get("/arena/season", arenaSeason)
+		router.Get("/arena/ranking", empty("Proto.ArenaRankingResponse"))
+		router.Get("/arena/history", empty("Proto.ArenaHistoryResponse"))
+		router.Post("/arena/jobdeck/set", arenaJobdeckSet)
+		// TODO: actually return a valid opponent when we can play battle.
+		router.Get("/arena/opponent", empty("Proto.ArenaOpponentResponse"))
 	})
 	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
 	router.Get("/news/top/{os}", news)
