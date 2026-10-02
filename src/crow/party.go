@@ -29,7 +29,7 @@ func (*partyHandler) Connect(stream crowparty.CrowParty_ConnectServer) error {
 		}
 
 		// TODO: Implement party state and return the appropriate response.
-		if err := stream.Send(&crowparty.PartyResponse{MessageId: request.MessageId, SenderPlayerId: config.DummyPlayerID}); err != nil {
+		if err := stream.Send(&crowparty.PartyResponse{MessageId: request.MessageId, SenderPlayerId: 100}); err != nil {
 			return err
 		}
 	}
