@@ -212,6 +212,7 @@ func agitoPlayerRecommend(w http.ResponseWriter, r *http.Request) {
 		Nickname:                    "sample #2",
 		JobId:                       1,
 		JobLevel:                    780,
+		PlayerTitleId:               handler.master.Title[rand.IntN(len(handler.master.Title))].Id,
 		FavoriteEquipmentId_1:       equipmentIDs[0],
 		FavoriteEquipmentId_2:       equipmentIDs[1],
 		FavoriteEquipmentId_3:       equipmentIDs[2],
