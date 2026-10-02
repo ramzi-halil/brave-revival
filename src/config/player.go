@@ -53,12 +53,13 @@ func generateStoredEquipment(master *pmaster.All) (*proto.StoredEquipment, uint6
 
 func generateStoredJobDeck(master *pmaster.All, anyEquipmentID uint64) *proto.StoredJobDeck {
 	jobDecks := make(map[uint64]*puser.JobDeck, 5)
-	for i := 1; i <= 5; i++ {
-		jobDecks[uint64(i)] = &puser.JobDeck{
-			Id:             uint64(i),
+	for i := uint32(1); i <= 5; i++ {
+		jobDeckID := uint64(i*100 + 1)
+		jobDecks[jobDeckID] = &puser.JobDeck{
+			Id:             jobDeckID,
 			Idx:            1,
 			PlayerId:       defaultPlayerID,
-			JobId:          uint32(i),
+			JobId:          i,
 			Line1MainFront: anyEquipmentID,
 			HpUseAt:        40,
 			HpUseOrder:     1,
@@ -223,6 +224,9 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			PlayerId: defaultPlayerID,
 			Rank:     12,
 		},
+		JobDeckGroup: &proto.StoredJobDeckGroup{
+			List: map[uint64]*puser.JobDeckGroup{},
+		},
 		Equipment:                   equipments,
 		JobDeck:                     generateStoredJobDeck(master, anyEquipmentID),
 		Job:                         generateStoredJob(master),
@@ -291,7 +295,6 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		ReliefPointReward:           &proto.StoredReliefPointReward{},
 		ContentsRiskDungeon:         &proto.StoredContentsRiskDungeon{},
 		ContentsClearAncientTowerEx: &proto.StoredContentsClearAncientTowerEx{},
-		JobDeckGroup:                &proto.StoredJobDeckGroup{},
 		GvgPracticeReward:           &proto.StoredGvgPracticeReward{},
 		ShopSpecialSale:             &proto.StoredShopSpecialSale{},
 	}

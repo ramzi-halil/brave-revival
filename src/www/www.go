@@ -172,6 +172,8 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/job/skill/learn", empty("Proto.Nocontent"))
 		router.Post("/job/deck/change", jobDeckChange)
 		router.Post("/job/deck/set", jobDeckSet)
+		router.Post("/job/group/label/change", jobGroupLabelChange)
+		router.Post("/job/deck/label/change", jobDeckLabelChange)
 	})
 	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
 	router.Get("/news/top/{os}", news)
