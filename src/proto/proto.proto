@@ -738,3 +738,7 @@ message ShopItemReceiveList {
     // BattleClearParam after = 9;
     uint32 shopItemID = 10;
 }
+
+message AuthorizeInheritPassword {
+    string code = 1;
+}

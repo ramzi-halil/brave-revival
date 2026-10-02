@@ -86,11 +86,18 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/account/exist", accountExist)
 		router.Post("/account/authorize", accountAuthorize)
 		router.Post("/account/certificate", accountCertificate)
+		router.Post("/account/inherit/password", accountInheritPassword)
+		router.Post("/account/reset", empty("Proto.Nocontent"))
+		router.Post("/account/inherit", empty("Proto.Nocontent"))
 
 		router.Get("/player/list", playerList)
 		router.Get("/player/load", playerLoad)
 		router.Get("/player/detail/{player_id}", playerDetail)
 		router.Post("/player/change/favorite", playerChangeFavorite)
+		router.Post("/setting/update", empty("Proto.Nocontent"))
+		router.Post("/player/delete", empty("Proto.Nocontent"))
+		router.Post("/player/change/nickname", playerChangeNickname)
+		router.Post("/player/change/comment", playerChangeComment)
 
 		router.Get("/friend/list", empty("Proto.FriendList"))
 		router.Get("/friend/approval/list", empty("Proto.FriendApprovalList"))

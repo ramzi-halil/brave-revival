@@ -37,3 +37,9 @@ func accountCertificate(w http.ResponseWriter, _ *http.Request) {
 		},
 	})
 }
+
+func accountInheritPassword(w http.ResponseWriter, _ *http.Request) {
+	writeProto(w, http.StatusOK, &proto.AuthorizeInheritPassword{
+		Code: "12345678",
+	})
+}

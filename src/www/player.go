@@ -69,3 +69,35 @@ func playerChangeFavorite(w http.ResponseWriter, r *http.Request) {
 	})
 	writeProto(w, http.StatusOK, reply)
 }
+
+func playerChangeNickname(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	nickname := r.PostForm.Get("nickname")
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		player.Player.Nickname = nickname
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func playerChangeComment(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	comment := r.PostForm.Get("comment")
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		player.Player.Comment = comment
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
