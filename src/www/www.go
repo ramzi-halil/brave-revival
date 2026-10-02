@@ -2,6 +2,7 @@ package www
 
 import (
 	"fmt"
+	"io"
 	"log/slog"
 	"net/http"
 	"os"
@@ -93,8 +94,9 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/player/list", playerList)
 		router.Get("/player/load", playerLoad)
 		router.Get("/player/detail/{player_id}", playerDetail)
-		router.Post("/player/change/favorite", playerChangeFavorite)
 		router.Post("/setting/update", empty("Proto.Nocontent"))
+
+		router.Post("/player/change/favorite", playerChangeFavorite)
 		router.Post("/player/delete", empty("Proto.Nocontent"))
 		router.Post("/player/change/nickname", playerChangeNickname)
 		router.Post("/player/change/comment", playerChangeComment)
@@ -154,6 +156,22 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/chat/friends", empty("Proto.ChatFriendListResponse"))
 		router.Get("/chat/groups", empty("Proto.ChatGroupWithInviteResponse"))
 		router.Post("/chat/group/create", empty("Proto.ChatGroupCreateResultResponse"))
+
+		router.Post("/equipment/forge", equipmentForge)
+		router.Post("/equipment/bulkforge", equipmentForge)
+		router.Post("/equipment/enhance", equipmentEnhance)
+		router.Post("/equipment/inherit/enhancement", equipmentInheritEnhance)
+		router.Post("/equipment/option_skill/redraw", empty("Proto.Nocontent"))
+		router.Post("/equipment/option_skill/lock", equipmentOptionSkillLock)
+		router.Post("/equipment/option_skill/unlock", equipmentOptionSkillUnlock)
+		router.Post("/equipment/limitbreak", equipmentLimitbreak)
+		router.Post("/equipment/evolution/material", equipmentEvolutionMaterial)
+		router.Post("/equipment/weapon_skill/enhance/material", equipmentWeaponSkillEnhanceMaterial)
+
+		router.Post("/player/change/job", playerChangeJob)
+		router.Post("/job/skill/learn", empty("Proto.Nocontent"))
+		router.Post("/job/deck/change", jobDeckChange)
+		router.Post("/job/deck/set", jobDeckSet)
 	})
 	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
 	router.Get("/news/top/{os}", news)
@@ -301,6 +319,19 @@ func writeProtoStreamed(w http.ResponseWriter, status int, action func(func(pb.M
 	w.Header().Set("proto-type", protoType)
 	w.WriteHeader(status)
 	_, _ = w.Write(payload)
+}
+
+func readProto(r *http.Request, message pb.Message) bool {
+	body, err := io.ReadAll(r.Body)
+	if err != nil {
+		slog.Error("failed to read request body", "error", err)
+		return false
+	}
+	if err := pb.Unmarshal(body, message); err != nil {
+		slog.Error("failed to unmarshal protobuf", "error", err)
+		return false
+	}
+	return true
 }
 
 func empty(protoType string) func(w http.ResponseWriter, _ *http.Request) {

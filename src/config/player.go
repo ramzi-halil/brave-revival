@@ -16,18 +16,32 @@ const defaultTimestamp = "6aa15148"
 // such that the player has 1 copy of each equipment.
 // The 2nd field is an arbitrary vanguard ID for use in the default deck.
 func generateStoredEquipment(master *pmaster.All) (*proto.StoredEquipment, uint64) {
+	defaultTargetParamOption := map[uint32]uint32{0: 0}
+	for _, targetParamOption := range master.TargetParamOption {
+		defaultTargetParamOption[targetParamOption.GroupId] = targetParamOption.Id
+	}
+
 	storedEquipments := make(map[uint64]*puser.Equipment, len(master.Equipment))
 	var anyEquipmentID uint64
 	for _, equipment := range master.Equipment {
+		rarity := uint32(1)
+		if equipment.EquipmentCategory <= 7 {
+			rarity = 6
+		}
+		paramOption := defaultTargetParamOption[equipment.TargetParamOptionGroupId]
+
 		storedEquipments[uint64(equipment.Id)] = &puser.Equipment{
 			Id:                uint64(equipment.Id),
 			PlayerId:          defaultPlayerID,
 			EquipmentId:       equipment.Id,
-			Rarity:            6,
+			Rarity:            rarity,
 			Level:             1,
 			WeaponSkillLevel1: 1,
 			WeaponSkillLevel2: 1,
 			WeaponSkillLevel3: 1,
+			ParamOption1:      paramOption,
+			ParamOption2:      paramOption,
+			ParamOption3:      paramOption,
 			AcquiredAt:        defaultTimestamp,
 		}
 		if anyEquipmentID < 10000 && equipment.EquipmentCategory == 1 {

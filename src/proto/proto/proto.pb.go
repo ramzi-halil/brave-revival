@@ -7026,6 +7026,110 @@ func (x *AuthorizeInheritPassword) GetCode() string {
 	return ""
 }
 
+type EquipmentEnhanceResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StoredData    *StoredData            `protobuf:"bytes,1,opt,name=stored_data,json=storedData,proto3" json:"stored_data,omitempty"`
+	TryCount      uint32                 `protobuf:"varint,2,opt,name=try_count,json=tryCount,proto3" json:"try_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EquipmentEnhanceResponse) Reset() {
+	*x = EquipmentEnhanceResponse{}
+	mi := &file_proto_proto_msgTypes[97]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EquipmentEnhanceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EquipmentEnhanceResponse) ProtoMessage() {}
+
+func (x *EquipmentEnhanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[97]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EquipmentEnhanceResponse.ProtoReflect.Descriptor instead.
+func (*EquipmentEnhanceResponse) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{97}
+}
+
+func (x *EquipmentEnhanceResponse) GetStoredData() *StoredData {
+	if x != nil {
+		return x.StoredData
+	}
+	return nil
+}
+
+func (x *EquipmentEnhanceResponse) GetTryCount() uint32 {
+	if x != nil {
+		return x.TryCount
+	}
+	return 0
+}
+
+type LimitBreakRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EquipmentId   uint64                 `protobuf:"varint,1,opt,name=equipment_id,json=equipmentId,proto3" json:"equipment_id,omitempty"`
+	MaterialItems map[uint32]uint32      `protobuf:"bytes,3,rep,name=material_items,json=materialItems,proto3" json:"material_items,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LimitBreakRequest) Reset() {
+	*x = LimitBreakRequest{}
+	mi := &file_proto_proto_msgTypes[98]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LimitBreakRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LimitBreakRequest) ProtoMessage() {}
+
+func (x *LimitBreakRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_proto_msgTypes[98]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LimitBreakRequest.ProtoReflect.Descriptor instead.
+func (*LimitBreakRequest) Descriptor() ([]byte, []int) {
+	return file_proto_proto_rawDescGZIP(), []int{98}
+}
+
+func (x *LimitBreakRequest) GetEquipmentId() uint64 {
+	if x != nil {
+		return x.EquipmentId
+	}
+	return 0
+}
+
+func (x *LimitBreakRequest) GetMaterialItems() map[uint32]uint32 {
+	if x != nil {
+		return x.MaterialItems
+	}
+	return nil
+}
+
 var File_proto_proto protoreflect.FileDescriptor
 
 const file_proto_proto_rawDesc = "" +
@@ -7986,7 +8090,17 @@ const file_proto_proto_rawDesc = "" +
 	" \x01(\rR\n" +
 	"shopItemID\".\n" +
 	"\x18AuthorizeInheritPassword\x12\x12\n" +
-	"\x04code\x18\x01 \x01(\tR\x04codeB+Z)example.com/brave-revival/src/proto/protob\x06proto3"
+	"\x04code\x18\x01 \x01(\tR\x04code\"k\n" +
+	"\x18EquipmentEnhanceResponse\x122\n" +
+	"\vstored_data\x18\x01 \x01(\v2\x11.Proto.StoredDataR\n" +
+	"storedData\x12\x1b\n" +
+	"\ttry_count\x18\x02 \x01(\rR\btryCount\"\xcc\x01\n" +
+	"\x11LimitBreakRequest\x12!\n" +
+	"\fequipment_id\x18\x01 \x01(\x04R\vequipmentId\x12R\n" +
+	"\x0ematerial_items\x18\x03 \x03(\v2+.Proto.LimitBreakRequest.MaterialItemsEntryR\rmaterialItems\x1a@\n" +
+	"\x12MaterialItemsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\rR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\rR\x05value:\x028\x01B+Z)example.com/brave-revival/src/proto/protob\x06proto3"
 
 var (
 	file_proto_proto_rawDescOnce sync.Once
@@ -8000,7 +8114,7 @@ func file_proto_proto_rawDescGZIP() []byte {
 	return file_proto_proto_rawDescData
 }
 
-var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 220)
+var file_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 223)
 var file_proto_proto_goTypes = []any{
 	(*Empty)(nil),                             // 0: Proto.Empty
 	(*PlayerSummary)(nil),                     // 1: Proto.PlayerSummary
@@ -8099,379 +8213,382 @@ var file_proto_proto_goTypes = []any{
 	(*GachaResult)(nil),                       // 94: Proto.GachaResult
 	(*ShopItemReceiveList)(nil),               // 95: Proto.ShopItemReceiveList
 	(*AuthorizeInheritPassword)(nil),          // 96: Proto.AuthorizeInheritPassword
-	nil,                                       // 97: Proto.StoredSample.ListEntry
-	nil,                                       // 98: Proto.StoredSample.AddEntry
-	nil,                                       // 99: Proto.StoredEquipment.ListEntry
-	nil,                                       // 100: Proto.StoredEquipment.AddEntry
-	nil,                                       // 101: Proto.StoredJob.ListEntry
-	nil,                                       // 102: Proto.StoredJob.AddEntry
-	nil,                                       // 103: Proto.StoredJobSkill.ListEntry
-	nil,                                       // 104: Proto.StoredJobSkill.AddEntry
-	nil,                                       // 105: Proto.StoredConditionProgress.ListEntry
-	nil,                                       // 106: Proto.StoredConditionProgress.AddEntry
-	nil,                                       // 107: Proto.StoredAchievement.ListEntry
-	nil,                                       // 108: Proto.StoredAchievement.AddEntry
-	nil,                                       // 109: Proto.StoredItem.ListEntry
-	nil,                                       // 110: Proto.StoredItem.AddEntry
-	nil,                                       // 111: Proto.StoredAnima.ListEntry
-	nil,                                       // 112: Proto.StoredAnima.AddEntry
-	nil,                                       // 113: Proto.StoredAnimaArea.ListEntry
-	nil,                                       // 114: Proto.StoredAnimaArea.AddEntry
-	nil,                                       // 115: Proto.StoredRune.ListEntry
-	nil,                                       // 116: Proto.StoredRune.AddEntry
-	nil,                                       // 117: Proto.StoredElixir.ListEntry
-	nil,                                       // 118: Proto.StoredElixir.AddEntry
-	nil,                                       // 119: Proto.StoredContents.ListEntry
-	nil,                                       // 120: Proto.StoredContents.AddEntry
-	nil,                                       // 121: Proto.StoredDailyMission.ListEntry
-	nil,                                       // 122: Proto.StoredDailyMission.AddEntry
-	nil,                                       // 123: Proto.StoredDailyMissionReward.ListEntry
-	nil,                                       // 124: Proto.StoredDailyMissionReward.AddEntry
-	nil,                                       // 125: Proto.StoredOrderMission.ListEntry
-	nil,                                       // 126: Proto.StoredOrderMission.AddEntry
-	nil,                                       // 127: Proto.StoredOrderMissionReroll.ListEntry
-	nil,                                       // 128: Proto.StoredOrderMissionReroll.AddEntry
-	nil,                                       // 129: Proto.StoredOrderMissionReward.ListEntry
-	nil,                                       // 130: Proto.StoredOrderMissionReward.AddEntry
-	nil,                                       // 131: Proto.StoredMercenaryHire.ListEntry
-	nil,                                       // 132: Proto.StoredMercenaryHire.AddEntry
-	nil,                                       // 133: Proto.StoredEventMission.ListEntry
-	nil,                                       // 134: Proto.StoredEventMission.AddEntry
-	nil,                                       // 135: Proto.StoredEventMissionReward.ListEntry
-	nil,                                       // 136: Proto.StoredEventMissionReward.AddEntry
-	nil,                                       // 137: Proto.StoredContentsCondition.ListEntry
-	nil,                                       // 138: Proto.StoredContentsCondition.AddEntry
-	nil,                                       // 139: Proto.StoredTitle.ListEntry
-	nil,                                       // 140: Proto.StoredTitle.AddEntry
-	nil,                                       // 141: Proto.StoredShopItem.ListEntry
-	nil,                                       // 142: Proto.StoredShopItem.AddEntry
-	nil,                                       // 143: Proto.StoredLoginBonus.ListEntry
-	nil,                                       // 144: Proto.StoredLoginBonus.AddEntry
-	nil,                                       // 145: Proto.StoredEventSugoroku.ListEntry
-	nil,                                       // 146: Proto.StoredEventSugoroku.AddEntry
-	nil,                                       // 147: Proto.StoredBoost.ListEntry
-	nil,                                       // 148: Proto.StoredBoost.AddEntry
-	nil,                                       // 149: Proto.StoredBlock.ListEntry
-	nil,                                       // 150: Proto.StoredBlock.AddEntry
-	nil,                                       // 151: Proto.StoredExchange.ListEntry
-	nil,                                       // 152: Proto.StoredExchange.AddEntry
-	nil,                                       // 153: Proto.StoredContentsHero.ListEntry
-	nil,                                       // 154: Proto.StoredContentsHero.AddEntry
-	nil,                                       // 155: Proto.StoredContentsTreasure.ListEntry
-	nil,                                       // 156: Proto.StoredContentsTreasure.AddEntry
-	nil,                                       // 157: Proto.StoredContentsWeekMonster.ListEntry
-	nil,                                       // 158: Proto.StoredContentsWeekMonster.AddEntry
-	nil,                                       // 159: Proto.StoredFunctionalTutorial.ListEntry
-	nil,                                       // 160: Proto.StoredFunctionalTutorial.AddEntry
-	nil,                                       // 161: Proto.StoredEventRoulette.ListEntry
-	nil,                                       // 162: Proto.StoredEventRoulette.AddEntry
-	nil,                                       // 163: Proto.StoredAngelBattleWeeklyReward.ListEntry
-	nil,                                       // 164: Proto.StoredAngelBattleWeeklyReward.AddEntry
-	nil,                                       // 165: Proto.StoredAchievementEquipment.ListEntry
-	nil,                                       // 166: Proto.StoredAchievementEquipment.AddEntry
-	nil,                                       // 167: Proto.StoredAchievementEquipmentReceive.ListEntry
-	nil,                                       // 168: Proto.StoredAchievementEquipmentReceive.AddEntry
-	nil,                                       // 169: Proto.StoredAchievementEquipmentStamp.ListEntry
-	nil,                                       // 170: Proto.StoredAchievementEquipmentStamp.AddEntry
-	nil,                                       // 171: Proto.StoredEquipmentLiberation.ListEntry
-	nil,                                       // 172: Proto.StoredEquipmentLiberation.AddEntry
-	nil,                                       // 173: Proto.StoredJobDeck.ListEntry
-	nil,                                       // 174: Proto.StoredJobDeck.AddEntry
-	nil,                                       // 175: Proto.StoredAgitoFurnitureSetting.ListEntry
-	nil,                                       // 176: Proto.StoredAgitoFurnitureSetting.AddEntry
-	nil,                                       // 177: Proto.StoredAgitoAp.ListEntry
-	nil,                                       // 178: Proto.StoredAgitoAp.AddEntry
-	nil,                                       // 179: Proto.StoredAgitoRelotteryInterval.ListEntry
-	nil,                                       // 180: Proto.StoredAgitoRelotteryInterval.AddEntry
-	nil,                                       // 181: Proto.StoredAgitoVisitor.ListEntry
-	nil,                                       // 182: Proto.StoredAgitoVisitor.AddEntry
-	nil,                                       // 183: Proto.StoredAgitoGoodHistory.ListEntry
-	nil,                                       // 184: Proto.StoredAgitoGoodHistory.AddEntry
-	nil,                                       // 185: Proto.StoredGachaHistory.ListEntry
-	nil,                                       // 186: Proto.StoredGachaHistory.AddEntry
-	nil,                                       // 187: Proto.StoredAgitoCountReward.ListEntry
-	nil,                                       // 188: Proto.StoredAgitoCountReward.AddEntry
-	nil,                                       // 189: Proto.StoredSeasonPass.ListEntry
-	nil,                                       // 190: Proto.StoredSeasonPass.AddEntry
-	nil,                                       // 191: Proto.StoredSeasonPassDailyMission.ListEntry
-	nil,                                       // 192: Proto.StoredSeasonPassDailyMission.AddEntry
-	nil,                                       // 193: Proto.StoredSeasonPassWeeklyMission.ListEntry
-	nil,                                       // 194: Proto.StoredSeasonPassWeeklyMission.AddEntry
-	nil,                                       // 195: Proto.StoredImportantMissionGroup.ListEntry
-	nil,                                       // 196: Proto.StoredImportantMissionGroup.AddEntry
-	nil,                                       // 197: Proto.StoredImportantMission.ListEntry
-	nil,                                       // 198: Proto.StoredImportantMission.AddEntry
-	nil,                                       // 199: Proto.StoredSpecialItemProgress.ListEntry
-	nil,                                       // 200: Proto.StoredSpecialItemProgress.AddEntry
-	nil,                                       // 201: Proto.StoredAdvertising.ListEntry
-	nil,                                       // 202: Proto.StoredAdvertising.AddEntry
-	nil,                                       // 203: Proto.StoredReliefPointSending.ListEntry
-	nil,                                       // 204: Proto.StoredReliefPointSending.AddEntry
-	nil,                                       // 205: Proto.StoredReliefPointReward.ListEntry
-	nil,                                       // 206: Proto.StoredReliefPointReward.AddEntry
-	nil,                                       // 207: Proto.StoredContentsRiskDungeon.ListEntry
-	nil,                                       // 208: Proto.StoredContentsRiskDungeon.AddEntry
-	nil,                                       // 209: Proto.StoredContentsClearAncientTowerEx.ListEntry
-	nil,                                       // 210: Proto.StoredContentsClearAncientTowerEx.AddEntry
-	nil,                                       // 211: Proto.StoredJobDeckGroup.ListEntry
-	nil,                                       // 212: Proto.StoredJobDeckGroup.AddEntry
-	nil,                                       // 213: Proto.StoredGvgPracticeReward.ListEntry
-	nil,                                       // 214: Proto.StoredGvgPracticeReward.AddEntry
-	nil,                                       // 215: Proto.StoredShopSpecialSale.ListEntry
-	nil,                                       // 216: Proto.StoredShopSpecialSale.AddEntry
-	nil,                                       // 217: Proto.StoredAgitoItemArea.ListEntry
-	nil,                                       // 218: Proto.StoredAgitoItemArea.AddEntry
-	nil,                                       // 219: Proto.GachaResult.NewEquipmentEntry
-	(*pcommon.Error)(nil),                     // 220: Pcommon.Error
-	(*pmaster.Version)(nil),                   // 221: Pmaster.Version
-	(*puser.Player)(nil),                      // 222: Puser.Player
-	(*puser.Job)(nil),                         // 223: Puser.Job
-	(*puser.JobDeck)(nil),                     // 224: Puser.JobDeck
-	(*puser.Equipment)(nil),                   // 225: Puser.Equipment
-	(*puser.Elixir)(nil),                      // 226: Puser.Elixir
-	(*pmisc.GuildPersonalMissionList)(nil),    // 227: Pmisc.GuildPersonalMissionList
-	(*pmisc.GuildSharedMissionList)(nil),      // 228: Pmisc.GuildSharedMissionList
-	(*pmisc.GuildSharedMissionRankingList)(nil), // 229: Pmisc.GuildSharedMissionRankingList
-	(*pmisc.Guild)(nil),                         // 230: Pmisc.Guild
-	(*puser.GuildWeeklyMissionRewardList)(nil),  // 231: Puser.GuildWeeklyMissionRewardList
-	(*puser.LoginBonus)(nil),                    // 232: Puser.LoginBonus
-	(*pmisc.GuildBoard)(nil),                    // 233: Pmisc.GuildBoard
-	(*puser.Setting)(nil),                       // 234: Puser.Setting
-	(*pmisc.BattleMember)(nil),                  // 235: Pmisc.BattleMember
-	(*puser.Arena)(nil),                         // 236: Puser.Arena
-	(*puser.MercenaryReward)(nil),               // 237: Puser.MercenaryReward
-	(*puser.AchievementReward)(nil),             // 238: Puser.AchievementReward
-	(*puser.AbyssFever)(nil),                    // 239: Puser.AbyssFever
-	(*puser.BackgroundBattle)(nil),              // 240: Puser.BackgroundBattle
-	(*puser.Agito)(nil),                         // 241: Puser.Agito
-	(*puser.Vip)(nil),                           // 242: Puser.Vip
-	(*puser.ReliefPoint)(nil),                   // 243: Puser.ReliefPoint
-	(*puser.AgitoFurnitureSetting)(nil),         // 244: Puser.AgitoFurnitureSetting
-	(*puser.AgitoItemArea)(nil),                 // 245: Puser.AgitoItemArea
-	(*pmisc.Sample)(nil),                        // 246: Pmisc.Sample
-	(*puser.JobSkill)(nil),                      // 247: Puser.JobSkill
-	(*pmisc.ConditionProgress)(nil),             // 248: Pmisc.ConditionProgress
-	(*puser.Achievement)(nil),                   // 249: Puser.Achievement
-	(*puser.Item)(nil),                          // 250: Puser.Item
-	(*puser.Anima)(nil),                         // 251: Puser.Anima
-	(*puser.AnimaArea)(nil),                     // 252: Puser.AnimaArea
-	(*puser.Rune)(nil),                          // 253: Puser.Rune
-	(*puser.Contents)(nil),                      // 254: Puser.Contents
-	(*puser.DailyMission)(nil),                  // 255: Puser.DailyMission
-	(*puser.DailyMissionReward)(nil),            // 256: Puser.DailyMissionReward
-	(*puser.OrderMission)(nil),                  // 257: Puser.OrderMission
-	(*puser.OrderMissionReroll)(nil),            // 258: Puser.OrderMissionReroll
-	(*puser.OrderMissionReward)(nil),            // 259: Puser.OrderMissionReward
-	(*puser.MercenaryHire)(nil),                 // 260: Puser.MercenaryHire
-	(*puser.EventMission)(nil),                  // 261: Puser.EventMission
-	(*puser.EventMissionReward)(nil),            // 262: Puser.EventMissionReward
-	(*puser.ContentsCondition)(nil),             // 263: Puser.ContentsCondition
-	(*puser.Title)(nil),                         // 264: Puser.Title
-	(*puser.ShopItem)(nil),                      // 265: Puser.ShopItem
-	(*puser.EventSugoroku)(nil),                 // 266: Puser.EventSugoroku
-	(*puser.Boost)(nil),                         // 267: Puser.Boost
-	(*pmisc.Block)(nil),                         // 268: Pmisc.Block
-	(*puser.Exchange)(nil),                      // 269: Puser.Exchange
-	(*puser.ContentsHero)(nil),                  // 270: Puser.ContentsHero
-	(*puser.ContentsTreasure)(nil),              // 271: Puser.ContentsTreasure
-	(*puser.ContentsWeekMonster)(nil),           // 272: Puser.ContentsWeekMonster
-	(*puser.FunctionalTutorial)(nil),            // 273: Puser.FunctionalTutorial
-	(*puser.EventRoulette)(nil),                 // 274: Puser.EventRoulette
-	(*puser.AngelBattleWeeklyReward)(nil),       // 275: Puser.AngelBattleWeeklyReward
-	(*puser.AchievementEquipment)(nil),          // 276: Puser.AchievementEquipment
-	(*puser.AchievementEquipmentReceive)(nil),   // 277: Puser.AchievementEquipmentReceive
-	(*puser.AchievementEquipmentStamp)(nil),     // 278: Puser.AchievementEquipmentStamp
-	(*puser.EquipmentLiberation)(nil),           // 279: Puser.EquipmentLiberation
-	(*puser.AgitoAp)(nil),                       // 280: Puser.AgitoAp
-	(*puser.AgitoRelotteryInterval)(nil),        // 281: Puser.AgitoRelotteryInterval
-	(*puser.AgitoVisitor)(nil),                  // 282: Puser.AgitoVisitor
-	(*puser.AgitoGoodHistory)(nil),              // 283: Puser.AgitoGoodHistory
-	(*puser.GachaHistory)(nil),                  // 284: Puser.GachaHistory
-	(*puser.AgitoCountReward)(nil),              // 285: Puser.AgitoCountReward
-	(*puser.SeasonPass)(nil),                    // 286: Puser.SeasonPass
-	(*puser.SeasonPassDailyMission)(nil),        // 287: Puser.SeasonPassDailyMission
-	(*puser.SeasonPassWeeklyMission)(nil),       // 288: Puser.SeasonPassWeeklyMission
-	(*puser.ImportantMissionGroup)(nil),         // 289: Puser.ImportantMissionGroup
-	(*puser.ImportantMission)(nil),              // 290: Puser.ImportantMission
-	(*puser.SpecialItemProgress)(nil),           // 291: Puser.SpecialItemProgress
-	(*puser.Advertising)(nil),                   // 292: Puser.Advertising
-	(*puser.ReliefPointSending)(nil),            // 293: Puser.ReliefPointSending
-	(*puser.ReliefPointReward)(nil),             // 294: Puser.ReliefPointReward
-	(*puser.ContentsRiskDungeon)(nil),           // 295: Puser.ContentsRiskDungeon
-	(*puser.ContentsClearAncientTowerEx)(nil),   // 296: Puser.ContentsClearAncientTowerEx
-	(*puser.JobDeckGroup)(nil),                  // 297: Puser.JobDeckGroup
-	(*puser.GvgPracticeReward)(nil),             // 298: Puser.GvgPracticeReward
-	(*puser.ShopSpecialSale)(nil),               // 299: Puser.ShopSpecialSale
+	(*EquipmentEnhanceResponse)(nil),          // 97: Proto.EquipmentEnhanceResponse
+	(*LimitBreakRequest)(nil),                 // 98: Proto.LimitBreakRequest
+	nil,                                       // 99: Proto.StoredSample.ListEntry
+	nil,                                       // 100: Proto.StoredSample.AddEntry
+	nil,                                       // 101: Proto.StoredEquipment.ListEntry
+	nil,                                       // 102: Proto.StoredEquipment.AddEntry
+	nil,                                       // 103: Proto.StoredJob.ListEntry
+	nil,                                       // 104: Proto.StoredJob.AddEntry
+	nil,                                       // 105: Proto.StoredJobSkill.ListEntry
+	nil,                                       // 106: Proto.StoredJobSkill.AddEntry
+	nil,                                       // 107: Proto.StoredConditionProgress.ListEntry
+	nil,                                       // 108: Proto.StoredConditionProgress.AddEntry
+	nil,                                       // 109: Proto.StoredAchievement.ListEntry
+	nil,                                       // 110: Proto.StoredAchievement.AddEntry
+	nil,                                       // 111: Proto.StoredItem.ListEntry
+	nil,                                       // 112: Proto.StoredItem.AddEntry
+	nil,                                       // 113: Proto.StoredAnima.ListEntry
+	nil,                                       // 114: Proto.StoredAnima.AddEntry
+	nil,                                       // 115: Proto.StoredAnimaArea.ListEntry
+	nil,                                       // 116: Proto.StoredAnimaArea.AddEntry
+	nil,                                       // 117: Proto.StoredRune.ListEntry
+	nil,                                       // 118: Proto.StoredRune.AddEntry
+	nil,                                       // 119: Proto.StoredElixir.ListEntry
+	nil,                                       // 120: Proto.StoredElixir.AddEntry
+	nil,                                       // 121: Proto.StoredContents.ListEntry
+	nil,                                       // 122: Proto.StoredContents.AddEntry
+	nil,                                       // 123: Proto.StoredDailyMission.ListEntry
+	nil,                                       // 124: Proto.StoredDailyMission.AddEntry
+	nil,                                       // 125: Proto.StoredDailyMissionReward.ListEntry
+	nil,                                       // 126: Proto.StoredDailyMissionReward.AddEntry
+	nil,                                       // 127: Proto.StoredOrderMission.ListEntry
+	nil,                                       // 128: Proto.StoredOrderMission.AddEntry
+	nil,                                       // 129: Proto.StoredOrderMissionReroll.ListEntry
+	nil,                                       // 130: Proto.StoredOrderMissionReroll.AddEntry
+	nil,                                       // 131: Proto.StoredOrderMissionReward.ListEntry
+	nil,                                       // 132: Proto.StoredOrderMissionReward.AddEntry
+	nil,                                       // 133: Proto.StoredMercenaryHire.ListEntry
+	nil,                                       // 134: Proto.StoredMercenaryHire.AddEntry
+	nil,                                       // 135: Proto.StoredEventMission.ListEntry
+	nil,                                       // 136: Proto.StoredEventMission.AddEntry
+	nil,                                       // 137: Proto.StoredEventMissionReward.ListEntry
+	nil,                                       // 138: Proto.StoredEventMissionReward.AddEntry
+	nil,                                       // 139: Proto.StoredContentsCondition.ListEntry
+	nil,                                       // 140: Proto.StoredContentsCondition.AddEntry
+	nil,                                       // 141: Proto.StoredTitle.ListEntry
+	nil,                                       // 142: Proto.StoredTitle.AddEntry
+	nil,                                       // 143: Proto.StoredShopItem.ListEntry
+	nil,                                       // 144: Proto.StoredShopItem.AddEntry
+	nil,                                       // 145: Proto.StoredLoginBonus.ListEntry
+	nil,                                       // 146: Proto.StoredLoginBonus.AddEntry
+	nil,                                       // 147: Proto.StoredEventSugoroku.ListEntry
+	nil,                                       // 148: Proto.StoredEventSugoroku.AddEntry
+	nil,                                       // 149: Proto.StoredBoost.ListEntry
+	nil,                                       // 150: Proto.StoredBoost.AddEntry
+	nil,                                       // 151: Proto.StoredBlock.ListEntry
+	nil,                                       // 152: Proto.StoredBlock.AddEntry
+	nil,                                       // 153: Proto.StoredExchange.ListEntry
+	nil,                                       // 154: Proto.StoredExchange.AddEntry
+	nil,                                       // 155: Proto.StoredContentsHero.ListEntry
+	nil,                                       // 156: Proto.StoredContentsHero.AddEntry
+	nil,                                       // 157: Proto.StoredContentsTreasure.ListEntry
+	nil,                                       // 158: Proto.StoredContentsTreasure.AddEntry
+	nil,                                       // 159: Proto.StoredContentsWeekMonster.ListEntry
+	nil,                                       // 160: Proto.StoredContentsWeekMonster.AddEntry
+	nil,                                       // 161: Proto.StoredFunctionalTutorial.ListEntry
+	nil,                                       // 162: Proto.StoredFunctionalTutorial.AddEntry
+	nil,                                       // 163: Proto.StoredEventRoulette.ListEntry
+	nil,                                       // 164: Proto.StoredEventRoulette.AddEntry
+	nil,                                       // 165: Proto.StoredAngelBattleWeeklyReward.ListEntry
+	nil,                                       // 166: Proto.StoredAngelBattleWeeklyReward.AddEntry
+	nil,                                       // 167: Proto.StoredAchievementEquipment.ListEntry
+	nil,                                       // 168: Proto.StoredAchievementEquipment.AddEntry
+	nil,                                       // 169: Proto.StoredAchievementEquipmentReceive.ListEntry
+	nil,                                       // 170: Proto.StoredAchievementEquipmentReceive.AddEntry
+	nil,                                       // 171: Proto.StoredAchievementEquipmentStamp.ListEntry
+	nil,                                       // 172: Proto.StoredAchievementEquipmentStamp.AddEntry
+	nil,                                       // 173: Proto.StoredEquipmentLiberation.ListEntry
+	nil,                                       // 174: Proto.StoredEquipmentLiberation.AddEntry
+	nil,                                       // 175: Proto.StoredJobDeck.ListEntry
+	nil,                                       // 176: Proto.StoredJobDeck.AddEntry
+	nil,                                       // 177: Proto.StoredAgitoFurnitureSetting.ListEntry
+	nil,                                       // 178: Proto.StoredAgitoFurnitureSetting.AddEntry
+	nil,                                       // 179: Proto.StoredAgitoAp.ListEntry
+	nil,                                       // 180: Proto.StoredAgitoAp.AddEntry
+	nil,                                       // 181: Proto.StoredAgitoRelotteryInterval.ListEntry
+	nil,                                       // 182: Proto.StoredAgitoRelotteryInterval.AddEntry
+	nil,                                       // 183: Proto.StoredAgitoVisitor.ListEntry
+	nil,                                       // 184: Proto.StoredAgitoVisitor.AddEntry
+	nil,                                       // 185: Proto.StoredAgitoGoodHistory.ListEntry
+	nil,                                       // 186: Proto.StoredAgitoGoodHistory.AddEntry
+	nil,                                       // 187: Proto.StoredGachaHistory.ListEntry
+	nil,                                       // 188: Proto.StoredGachaHistory.AddEntry
+	nil,                                       // 189: Proto.StoredAgitoCountReward.ListEntry
+	nil,                                       // 190: Proto.StoredAgitoCountReward.AddEntry
+	nil,                                       // 191: Proto.StoredSeasonPass.ListEntry
+	nil,                                       // 192: Proto.StoredSeasonPass.AddEntry
+	nil,                                       // 193: Proto.StoredSeasonPassDailyMission.ListEntry
+	nil,                                       // 194: Proto.StoredSeasonPassDailyMission.AddEntry
+	nil,                                       // 195: Proto.StoredSeasonPassWeeklyMission.ListEntry
+	nil,                                       // 196: Proto.StoredSeasonPassWeeklyMission.AddEntry
+	nil,                                       // 197: Proto.StoredImportantMissionGroup.ListEntry
+	nil,                                       // 198: Proto.StoredImportantMissionGroup.AddEntry
+	nil,                                       // 199: Proto.StoredImportantMission.ListEntry
+	nil,                                       // 200: Proto.StoredImportantMission.AddEntry
+	nil,                                       // 201: Proto.StoredSpecialItemProgress.ListEntry
+	nil,                                       // 202: Proto.StoredSpecialItemProgress.AddEntry
+	nil,                                       // 203: Proto.StoredAdvertising.ListEntry
+	nil,                                       // 204: Proto.StoredAdvertising.AddEntry
+	nil,                                       // 205: Proto.StoredReliefPointSending.ListEntry
+	nil,                                       // 206: Proto.StoredReliefPointSending.AddEntry
+	nil,                                       // 207: Proto.StoredReliefPointReward.ListEntry
+	nil,                                       // 208: Proto.StoredReliefPointReward.AddEntry
+	nil,                                       // 209: Proto.StoredContentsRiskDungeon.ListEntry
+	nil,                                       // 210: Proto.StoredContentsRiskDungeon.AddEntry
+	nil,                                       // 211: Proto.StoredContentsClearAncientTowerEx.ListEntry
+	nil,                                       // 212: Proto.StoredContentsClearAncientTowerEx.AddEntry
+	nil,                                       // 213: Proto.StoredJobDeckGroup.ListEntry
+	nil,                                       // 214: Proto.StoredJobDeckGroup.AddEntry
+	nil,                                       // 215: Proto.StoredGvgPracticeReward.ListEntry
+	nil,                                       // 216: Proto.StoredGvgPracticeReward.AddEntry
+	nil,                                       // 217: Proto.StoredShopSpecialSale.ListEntry
+	nil,                                       // 218: Proto.StoredShopSpecialSale.AddEntry
+	nil,                                       // 219: Proto.StoredAgitoItemArea.ListEntry
+	nil,                                       // 220: Proto.StoredAgitoItemArea.AddEntry
+	nil,                                       // 221: Proto.GachaResult.NewEquipmentEntry
+	nil,                                       // 222: Proto.LimitBreakRequest.MaterialItemsEntry
+	(*pcommon.Error)(nil),                     // 223: Pcommon.Error
+	(*pmaster.Version)(nil),                   // 224: Pmaster.Version
+	(*puser.Player)(nil),                      // 225: Puser.Player
+	(*puser.Job)(nil),                         // 226: Puser.Job
+	(*puser.JobDeck)(nil),                     // 227: Puser.JobDeck
+	(*puser.Equipment)(nil),                   // 228: Puser.Equipment
+	(*puser.Elixir)(nil),                      // 229: Puser.Elixir
+	(*pmisc.GuildPersonalMissionList)(nil),    // 230: Pmisc.GuildPersonalMissionList
+	(*pmisc.GuildSharedMissionList)(nil),      // 231: Pmisc.GuildSharedMissionList
+	(*pmisc.GuildSharedMissionRankingList)(nil), // 232: Pmisc.GuildSharedMissionRankingList
+	(*pmisc.Guild)(nil),                         // 233: Pmisc.Guild
+	(*puser.GuildWeeklyMissionRewardList)(nil),  // 234: Puser.GuildWeeklyMissionRewardList
+	(*puser.LoginBonus)(nil),                    // 235: Puser.LoginBonus
+	(*pmisc.GuildBoard)(nil),                    // 236: Pmisc.GuildBoard
+	(*puser.Setting)(nil),                       // 237: Puser.Setting
+	(*pmisc.BattleMember)(nil),                  // 238: Pmisc.BattleMember
+	(*puser.Arena)(nil),                         // 239: Puser.Arena
+	(*puser.MercenaryReward)(nil),               // 240: Puser.MercenaryReward
+	(*puser.AchievementReward)(nil),             // 241: Puser.AchievementReward
+	(*puser.AbyssFever)(nil),                    // 242: Puser.AbyssFever
+	(*puser.BackgroundBattle)(nil),              // 243: Puser.BackgroundBattle
+	(*puser.Agito)(nil),                         // 244: Puser.Agito
+	(*puser.Vip)(nil),                           // 245: Puser.Vip
+	(*puser.ReliefPoint)(nil),                   // 246: Puser.ReliefPoint
+	(*puser.AgitoFurnitureSetting)(nil),         // 247: Puser.AgitoFurnitureSetting
+	(*puser.AgitoItemArea)(nil),                 // 248: Puser.AgitoItemArea
+	(*pmisc.Sample)(nil),                        // 249: Pmisc.Sample
+	(*puser.JobSkill)(nil),                      // 250: Puser.JobSkill
+	(*pmisc.ConditionProgress)(nil),             // 251: Pmisc.ConditionProgress
+	(*puser.Achievement)(nil),                   // 252: Puser.Achievement
+	(*puser.Item)(nil),                          // 253: Puser.Item
+	(*puser.Anima)(nil),                         // 254: Puser.Anima
+	(*puser.AnimaArea)(nil),                     // 255: Puser.AnimaArea
+	(*puser.Rune)(nil),                          // 256: Puser.Rune
+	(*puser.Contents)(nil),                      // 257: Puser.Contents
+	(*puser.DailyMission)(nil),                  // 258: Puser.DailyMission
+	(*puser.DailyMissionReward)(nil),            // 259: Puser.DailyMissionReward
+	(*puser.OrderMission)(nil),                  // 260: Puser.OrderMission
+	(*puser.OrderMissionReroll)(nil),            // 261: Puser.OrderMissionReroll
+	(*puser.OrderMissionReward)(nil),            // 262: Puser.OrderMissionReward
+	(*puser.MercenaryHire)(nil),                 // 263: Puser.MercenaryHire
+	(*puser.EventMission)(nil),                  // 264: Puser.EventMission
+	(*puser.EventMissionReward)(nil),            // 265: Puser.EventMissionReward
+	(*puser.ContentsCondition)(nil),             // 266: Puser.ContentsCondition
+	(*puser.Title)(nil),                         // 267: Puser.Title
+	(*puser.ShopItem)(nil),                      // 268: Puser.ShopItem
+	(*puser.EventSugoroku)(nil),                 // 269: Puser.EventSugoroku
+	(*puser.Boost)(nil),                         // 270: Puser.Boost
+	(*pmisc.Block)(nil),                         // 271: Pmisc.Block
+	(*puser.Exchange)(nil),                      // 272: Puser.Exchange
+	(*puser.ContentsHero)(nil),                  // 273: Puser.ContentsHero
+	(*puser.ContentsTreasure)(nil),              // 274: Puser.ContentsTreasure
+	(*puser.ContentsWeekMonster)(nil),           // 275: Puser.ContentsWeekMonster
+	(*puser.FunctionalTutorial)(nil),            // 276: Puser.FunctionalTutorial
+	(*puser.EventRoulette)(nil),                 // 277: Puser.EventRoulette
+	(*puser.AngelBattleWeeklyReward)(nil),       // 278: Puser.AngelBattleWeeklyReward
+	(*puser.AchievementEquipment)(nil),          // 279: Puser.AchievementEquipment
+	(*puser.AchievementEquipmentReceive)(nil),   // 280: Puser.AchievementEquipmentReceive
+	(*puser.AchievementEquipmentStamp)(nil),     // 281: Puser.AchievementEquipmentStamp
+	(*puser.EquipmentLiberation)(nil),           // 282: Puser.EquipmentLiberation
+	(*puser.AgitoAp)(nil),                       // 283: Puser.AgitoAp
+	(*puser.AgitoRelotteryInterval)(nil),        // 284: Puser.AgitoRelotteryInterval
+	(*puser.AgitoVisitor)(nil),                  // 285: Puser.AgitoVisitor
+	(*puser.AgitoGoodHistory)(nil),              // 286: Puser.AgitoGoodHistory
+	(*puser.GachaHistory)(nil),                  // 287: Puser.GachaHistory
+	(*puser.AgitoCountReward)(nil),              // 288: Puser.AgitoCountReward
+	(*puser.SeasonPass)(nil),                    // 289: Puser.SeasonPass
+	(*puser.SeasonPassDailyMission)(nil),        // 290: Puser.SeasonPassDailyMission
+	(*puser.SeasonPassWeeklyMission)(nil),       // 291: Puser.SeasonPassWeeklyMission
+	(*puser.ImportantMissionGroup)(nil),         // 292: Puser.ImportantMissionGroup
+	(*puser.ImportantMission)(nil),              // 293: Puser.ImportantMission
+	(*puser.SpecialItemProgress)(nil),           // 294: Puser.SpecialItemProgress
+	(*puser.Advertising)(nil),                   // 295: Puser.Advertising
+	(*puser.ReliefPointSending)(nil),            // 296: Puser.ReliefPointSending
+	(*puser.ReliefPointReward)(nil),             // 297: Puser.ReliefPointReward
+	(*puser.ContentsRiskDungeon)(nil),           // 298: Puser.ContentsRiskDungeon
+	(*puser.ContentsClearAncientTowerEx)(nil),   // 299: Puser.ContentsClearAncientTowerEx
+	(*puser.JobDeckGroup)(nil),                  // 300: Puser.JobDeckGroup
+	(*puser.GvgPracticeReward)(nil),             // 301: Puser.GvgPracticeReward
+	(*puser.ShopSpecialSale)(nil),               // 302: Puser.ShopSpecialSale
 }
 var file_proto_proto_depIdxs = []int32{
-	220, // 0: Proto.Empty.error:type_name -> Pcommon.Error
-	220, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
+	223, // 0: Proto.Empty.error:type_name -> Pcommon.Error
+	223, // 1: Proto.PlayerExist.error:type_name -> Pcommon.Error
 	1,   // 2: Proto.PlayerExist.player_summary:type_name -> Proto.PlayerSummary
-	221, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
+	224, // 3: Proto.AccountCertificate.version:type_name -> Pmaster.Version
 	5,   // 4: Proto.BattleClearParam.job_parameter:type_name -> Proto.BaseParameter
 	5,   // 5: Proto.BattleClearParam.arena_parameter:type_name -> Proto.BaseParameter
 	7,   // 6: Proto.BattleBackgroundReward.reward_list:type_name -> Proto.RewardInfo
 	6,   // 7: Proto.BattleBackgroundReward.before:type_name -> Proto.BattleClearParam
 	6,   // 8: Proto.BattleBackgroundReward.after:type_name -> Proto.BattleClearParam
 	8,   // 9: Proto.BackgroundStatus.reward:type_name -> Proto.BattleBackgroundReward
-	222, // 10: Proto.PlayerDetail.player:type_name -> Puser.Player
-	223, // 11: Proto.PlayerDetail.current_job:type_name -> Puser.Job
-	223, // 12: Proto.PlayerDetail.jobs:type_name -> Puser.Job
-	224, // 13: Proto.PlayerDetail.current_job_deck:type_name -> Puser.JobDeck
-	225, // 14: Proto.PlayerDetail.equipments:type_name -> Puser.Equipment
-	226, // 15: Proto.PlayerDetail.elixirs:type_name -> Puser.Elixir
+	225, // 10: Proto.PlayerDetail.player:type_name -> Puser.Player
+	226, // 11: Proto.PlayerDetail.current_job:type_name -> Puser.Job
+	226, // 12: Proto.PlayerDetail.jobs:type_name -> Puser.Job
+	227, // 13: Proto.PlayerDetail.current_job_deck:type_name -> Puser.JobDeck
+	228, // 14: Proto.PlayerDetail.equipments:type_name -> Puser.Equipment
+	229, // 15: Proto.PlayerDetail.elixirs:type_name -> Puser.Elixir
 	5,   // 16: Proto.PlayerDetail.base_parameter:type_name -> Proto.BaseParameter
 	10,  // 17: Proto.PlayerDetail.guild_summary:type_name -> Proto.GuildSummary
 	11,  // 18: Proto.PlayerDetail.guild_member:type_name -> Proto.GuildMember
 	12,  // 19: Proto.PlayerDetail.power_assessment_list:type_name -> Proto.PowerAssessment
-	222, // 20: Proto.PlayerList.players:type_name -> Puser.Player
-	220, // 21: Proto.PlayerList.error:type_name -> Pcommon.Error
+	225, // 20: Proto.PlayerList.players:type_name -> Puser.Player
+	223, // 21: Proto.PlayerList.error:type_name -> Pcommon.Error
 	9,   // 22: Proto.PlayerList.background_status:type_name -> Proto.BackgroundStatus
 	15,  // 23: Proto.Etc.host:type_name -> Proto.Host
 	16,  // 24: Proto.Etc.revision:type_name -> Proto.Revision
-	227, // 25: Proto.GuildPersonalMissionResult.list:type_name -> Pmisc.GuildPersonalMissionList
-	228, // 26: Proto.GuildSharedMissionResult.list:type_name -> Pmisc.GuildSharedMissionList
-	229, // 27: Proto.GuildSharedMissionResult.ranking:type_name -> Pmisc.GuildSharedMissionRankingList
-	230, // 28: Proto.GuildSharedMissionResult.guild:type_name -> Pmisc.Guild
-	222, // 29: Proto.FieldPlayerDetail.player:type_name -> Puser.Player
-	224, // 30: Proto.FieldPlayerDetail.current_job_deck:type_name -> Puser.JobDeck
-	225, // 31: Proto.FieldPlayerDetail.equipments:type_name -> Puser.Equipment
+	230, // 25: Proto.GuildPersonalMissionResult.list:type_name -> Pmisc.GuildPersonalMissionList
+	231, // 26: Proto.GuildSharedMissionResult.list:type_name -> Pmisc.GuildSharedMissionList
+	232, // 27: Proto.GuildSharedMissionResult.ranking:type_name -> Pmisc.GuildSharedMissionRankingList
+	233, // 28: Proto.GuildSharedMissionResult.guild:type_name -> Pmisc.Guild
+	225, // 29: Proto.FieldPlayerDetail.player:type_name -> Puser.Player
+	227, // 30: Proto.FieldPlayerDetail.current_job_deck:type_name -> Puser.JobDeck
+	228, // 31: Proto.FieldPlayerDetail.equipments:type_name -> Puser.Equipment
 	90,  // 32: Proto.FieldTopResponse.stored_data:type_name -> Proto.StoredData
 	22,  // 33: Proto.FieldTopResponse.players:type_name -> Proto.FieldPlayerDetail
-	228, // 34: Proto.FieldTopResponse.sharedMissionList:type_name -> Pmisc.GuildSharedMissionList
-	227, // 35: Proto.FieldTopResponse.personalMissionList:type_name -> Pmisc.GuildPersonalMissionList
-	231, // 36: Proto.FieldTopResponse.weekly_mission_reward:type_name -> Puser.GuildWeeklyMissionRewardList
+	231, // 34: Proto.FieldTopResponse.sharedMissionList:type_name -> Pmisc.GuildSharedMissionList
+	230, // 35: Proto.FieldTopResponse.personalMissionList:type_name -> Pmisc.GuildPersonalMissionList
+	234, // 36: Proto.FieldTopResponse.weekly_mission_reward:type_name -> Puser.GuildWeeklyMissionRewardList
 	18,  // 37: Proto.FieldTopResponse.facility_list:type_name -> Proto.GuildFacilityList
 	8,   // 38: Proto.FieldTopResponse.background_battle_reward:type_name -> Proto.BattleBackgroundReward
-	232, // 39: Proto.FieldTopResponse.login_bonus:type_name -> Puser.LoginBonus
+	235, // 39: Proto.FieldTopResponse.login_bonus:type_name -> Puser.LoginBonus
 	21,  // 40: Proto.FieldTopResponse.agito_visitor_return:type_name -> Proto.AgitoVisitorReturn
-	233, // 41: Proto.GuildInfo.guild_board_announcement:type_name -> Pmisc.GuildBoard
-	97,  // 42: Proto.StoredSample.list:type_name -> Proto.StoredSample.ListEntry
-	98,  // 43: Proto.StoredSample.add:type_name -> Proto.StoredSample.AddEntry
-	99,  // 44: Proto.StoredEquipment.list:type_name -> Proto.StoredEquipment.ListEntry
-	100, // 45: Proto.StoredEquipment.add:type_name -> Proto.StoredEquipment.AddEntry
-	101, // 46: Proto.StoredJob.list:type_name -> Proto.StoredJob.ListEntry
-	102, // 47: Proto.StoredJob.add:type_name -> Proto.StoredJob.AddEntry
-	103, // 48: Proto.StoredJobSkill.list:type_name -> Proto.StoredJobSkill.ListEntry
-	104, // 49: Proto.StoredJobSkill.add:type_name -> Proto.StoredJobSkill.AddEntry
-	105, // 50: Proto.StoredConditionProgress.list:type_name -> Proto.StoredConditionProgress.ListEntry
-	106, // 51: Proto.StoredConditionProgress.add:type_name -> Proto.StoredConditionProgress.AddEntry
-	107, // 52: Proto.StoredAchievement.list:type_name -> Proto.StoredAchievement.ListEntry
-	108, // 53: Proto.StoredAchievement.add:type_name -> Proto.StoredAchievement.AddEntry
-	109, // 54: Proto.StoredItem.list:type_name -> Proto.StoredItem.ListEntry
-	110, // 55: Proto.StoredItem.add:type_name -> Proto.StoredItem.AddEntry
-	111, // 56: Proto.StoredAnima.list:type_name -> Proto.StoredAnima.ListEntry
-	112, // 57: Proto.StoredAnima.add:type_name -> Proto.StoredAnima.AddEntry
-	113, // 58: Proto.StoredAnimaArea.list:type_name -> Proto.StoredAnimaArea.ListEntry
-	114, // 59: Proto.StoredAnimaArea.add:type_name -> Proto.StoredAnimaArea.AddEntry
-	115, // 60: Proto.StoredRune.list:type_name -> Proto.StoredRune.ListEntry
-	116, // 61: Proto.StoredRune.add:type_name -> Proto.StoredRune.AddEntry
-	117, // 62: Proto.StoredElixir.list:type_name -> Proto.StoredElixir.ListEntry
-	118, // 63: Proto.StoredElixir.add:type_name -> Proto.StoredElixir.AddEntry
-	119, // 64: Proto.StoredContents.list:type_name -> Proto.StoredContents.ListEntry
-	120, // 65: Proto.StoredContents.add:type_name -> Proto.StoredContents.AddEntry
-	121, // 66: Proto.StoredDailyMission.list:type_name -> Proto.StoredDailyMission.ListEntry
-	122, // 67: Proto.StoredDailyMission.add:type_name -> Proto.StoredDailyMission.AddEntry
-	123, // 68: Proto.StoredDailyMissionReward.list:type_name -> Proto.StoredDailyMissionReward.ListEntry
-	124, // 69: Proto.StoredDailyMissionReward.add:type_name -> Proto.StoredDailyMissionReward.AddEntry
-	125, // 70: Proto.StoredOrderMission.list:type_name -> Proto.StoredOrderMission.ListEntry
-	126, // 71: Proto.StoredOrderMission.add:type_name -> Proto.StoredOrderMission.AddEntry
-	127, // 72: Proto.StoredOrderMissionReroll.list:type_name -> Proto.StoredOrderMissionReroll.ListEntry
-	128, // 73: Proto.StoredOrderMissionReroll.add:type_name -> Proto.StoredOrderMissionReroll.AddEntry
-	129, // 74: Proto.StoredOrderMissionReward.list:type_name -> Proto.StoredOrderMissionReward.ListEntry
-	130, // 75: Proto.StoredOrderMissionReward.add:type_name -> Proto.StoredOrderMissionReward.AddEntry
-	131, // 76: Proto.StoredMercenaryHire.list:type_name -> Proto.StoredMercenaryHire.ListEntry
-	132, // 77: Proto.StoredMercenaryHire.add:type_name -> Proto.StoredMercenaryHire.AddEntry
-	133, // 78: Proto.StoredEventMission.list:type_name -> Proto.StoredEventMission.ListEntry
-	134, // 79: Proto.StoredEventMission.add:type_name -> Proto.StoredEventMission.AddEntry
-	135, // 80: Proto.StoredEventMissionReward.list:type_name -> Proto.StoredEventMissionReward.ListEntry
-	136, // 81: Proto.StoredEventMissionReward.add:type_name -> Proto.StoredEventMissionReward.AddEntry
-	137, // 82: Proto.StoredContentsCondition.list:type_name -> Proto.StoredContentsCondition.ListEntry
-	138, // 83: Proto.StoredContentsCondition.add:type_name -> Proto.StoredContentsCondition.AddEntry
-	139, // 84: Proto.StoredTitle.list:type_name -> Proto.StoredTitle.ListEntry
-	140, // 85: Proto.StoredTitle.add:type_name -> Proto.StoredTitle.AddEntry
-	141, // 86: Proto.StoredShopItem.list:type_name -> Proto.StoredShopItem.ListEntry
-	142, // 87: Proto.StoredShopItem.add:type_name -> Proto.StoredShopItem.AddEntry
-	143, // 88: Proto.StoredLoginBonus.list:type_name -> Proto.StoredLoginBonus.ListEntry
-	144, // 89: Proto.StoredLoginBonus.add:type_name -> Proto.StoredLoginBonus.AddEntry
-	145, // 90: Proto.StoredEventSugoroku.list:type_name -> Proto.StoredEventSugoroku.ListEntry
-	146, // 91: Proto.StoredEventSugoroku.add:type_name -> Proto.StoredEventSugoroku.AddEntry
-	147, // 92: Proto.StoredBoost.list:type_name -> Proto.StoredBoost.ListEntry
-	148, // 93: Proto.StoredBoost.add:type_name -> Proto.StoredBoost.AddEntry
-	149, // 94: Proto.StoredBlock.list:type_name -> Proto.StoredBlock.ListEntry
-	150, // 95: Proto.StoredBlock.add:type_name -> Proto.StoredBlock.AddEntry
-	151, // 96: Proto.StoredExchange.list:type_name -> Proto.StoredExchange.ListEntry
-	152, // 97: Proto.StoredExchange.add:type_name -> Proto.StoredExchange.AddEntry
-	153, // 98: Proto.StoredContentsHero.list:type_name -> Proto.StoredContentsHero.ListEntry
-	154, // 99: Proto.StoredContentsHero.add:type_name -> Proto.StoredContentsHero.AddEntry
-	155, // 100: Proto.StoredContentsTreasure.list:type_name -> Proto.StoredContentsTreasure.ListEntry
-	156, // 101: Proto.StoredContentsTreasure.add:type_name -> Proto.StoredContentsTreasure.AddEntry
-	157, // 102: Proto.StoredContentsWeekMonster.list:type_name -> Proto.StoredContentsWeekMonster.ListEntry
-	158, // 103: Proto.StoredContentsWeekMonster.add:type_name -> Proto.StoredContentsWeekMonster.AddEntry
-	159, // 104: Proto.StoredFunctionalTutorial.list:type_name -> Proto.StoredFunctionalTutorial.ListEntry
-	160, // 105: Proto.StoredFunctionalTutorial.add:type_name -> Proto.StoredFunctionalTutorial.AddEntry
-	161, // 106: Proto.StoredEventRoulette.list:type_name -> Proto.StoredEventRoulette.ListEntry
-	162, // 107: Proto.StoredEventRoulette.add:type_name -> Proto.StoredEventRoulette.AddEntry
-	163, // 108: Proto.StoredAngelBattleWeeklyReward.list:type_name -> Proto.StoredAngelBattleWeeklyReward.ListEntry
-	164, // 109: Proto.StoredAngelBattleWeeklyReward.add:type_name -> Proto.StoredAngelBattleWeeklyReward.AddEntry
-	165, // 110: Proto.StoredAchievementEquipment.list:type_name -> Proto.StoredAchievementEquipment.ListEntry
-	166, // 111: Proto.StoredAchievementEquipment.add:type_name -> Proto.StoredAchievementEquipment.AddEntry
-	167, // 112: Proto.StoredAchievementEquipmentReceive.list:type_name -> Proto.StoredAchievementEquipmentReceive.ListEntry
-	168, // 113: Proto.StoredAchievementEquipmentReceive.add:type_name -> Proto.StoredAchievementEquipmentReceive.AddEntry
-	169, // 114: Proto.StoredAchievementEquipmentStamp.list:type_name -> Proto.StoredAchievementEquipmentStamp.ListEntry
-	170, // 115: Proto.StoredAchievementEquipmentStamp.add:type_name -> Proto.StoredAchievementEquipmentStamp.AddEntry
-	171, // 116: Proto.StoredEquipmentLiberation.list:type_name -> Proto.StoredEquipmentLiberation.ListEntry
-	172, // 117: Proto.StoredEquipmentLiberation.add:type_name -> Proto.StoredEquipmentLiberation.AddEntry
-	173, // 118: Proto.StoredJobDeck.list:type_name -> Proto.StoredJobDeck.ListEntry
-	174, // 119: Proto.StoredJobDeck.add:type_name -> Proto.StoredJobDeck.AddEntry
-	175, // 120: Proto.StoredAgitoFurnitureSetting.list:type_name -> Proto.StoredAgitoFurnitureSetting.ListEntry
-	176, // 121: Proto.StoredAgitoFurnitureSetting.add:type_name -> Proto.StoredAgitoFurnitureSetting.AddEntry
-	177, // 122: Proto.StoredAgitoAp.list:type_name -> Proto.StoredAgitoAp.ListEntry
-	178, // 123: Proto.StoredAgitoAp.add:type_name -> Proto.StoredAgitoAp.AddEntry
-	179, // 124: Proto.StoredAgitoRelotteryInterval.list:type_name -> Proto.StoredAgitoRelotteryInterval.ListEntry
-	180, // 125: Proto.StoredAgitoRelotteryInterval.add:type_name -> Proto.StoredAgitoRelotteryInterval.AddEntry
-	181, // 126: Proto.StoredAgitoVisitor.list:type_name -> Proto.StoredAgitoVisitor.ListEntry
-	182, // 127: Proto.StoredAgitoVisitor.add:type_name -> Proto.StoredAgitoVisitor.AddEntry
-	183, // 128: Proto.StoredAgitoGoodHistory.list:type_name -> Proto.StoredAgitoGoodHistory.ListEntry
-	184, // 129: Proto.StoredAgitoGoodHistory.add:type_name -> Proto.StoredAgitoGoodHistory.AddEntry
-	185, // 130: Proto.StoredGachaHistory.list:type_name -> Proto.StoredGachaHistory.ListEntry
-	186, // 131: Proto.StoredGachaHistory.add:type_name -> Proto.StoredGachaHistory.AddEntry
-	187, // 132: Proto.StoredAgitoCountReward.list:type_name -> Proto.StoredAgitoCountReward.ListEntry
-	188, // 133: Proto.StoredAgitoCountReward.add:type_name -> Proto.StoredAgitoCountReward.AddEntry
-	189, // 134: Proto.StoredSeasonPass.list:type_name -> Proto.StoredSeasonPass.ListEntry
-	190, // 135: Proto.StoredSeasonPass.add:type_name -> Proto.StoredSeasonPass.AddEntry
-	191, // 136: Proto.StoredSeasonPassDailyMission.list:type_name -> Proto.StoredSeasonPassDailyMission.ListEntry
-	192, // 137: Proto.StoredSeasonPassDailyMission.add:type_name -> Proto.StoredSeasonPassDailyMission.AddEntry
-	193, // 138: Proto.StoredSeasonPassWeeklyMission.list:type_name -> Proto.StoredSeasonPassWeeklyMission.ListEntry
-	194, // 139: Proto.StoredSeasonPassWeeklyMission.add:type_name -> Proto.StoredSeasonPassWeeklyMission.AddEntry
-	195, // 140: Proto.StoredImportantMissionGroup.list:type_name -> Proto.StoredImportantMissionGroup.ListEntry
-	196, // 141: Proto.StoredImportantMissionGroup.add:type_name -> Proto.StoredImportantMissionGroup.AddEntry
-	197, // 142: Proto.StoredImportantMission.list:type_name -> Proto.StoredImportantMission.ListEntry
-	198, // 143: Proto.StoredImportantMission.add:type_name -> Proto.StoredImportantMission.AddEntry
-	199, // 144: Proto.StoredSpecialItemProgress.list:type_name -> Proto.StoredSpecialItemProgress.ListEntry
-	200, // 145: Proto.StoredSpecialItemProgress.add:type_name -> Proto.StoredSpecialItemProgress.AddEntry
-	201, // 146: Proto.StoredAdvertising.list:type_name -> Proto.StoredAdvertising.ListEntry
-	202, // 147: Proto.StoredAdvertising.add:type_name -> Proto.StoredAdvertising.AddEntry
-	203, // 148: Proto.StoredReliefPointSending.list:type_name -> Proto.StoredReliefPointSending.ListEntry
-	204, // 149: Proto.StoredReliefPointSending.add:type_name -> Proto.StoredReliefPointSending.AddEntry
-	205, // 150: Proto.StoredReliefPointReward.list:type_name -> Proto.StoredReliefPointReward.ListEntry
-	206, // 151: Proto.StoredReliefPointReward.add:type_name -> Proto.StoredReliefPointReward.AddEntry
-	207, // 152: Proto.StoredContentsRiskDungeon.list:type_name -> Proto.StoredContentsRiskDungeon.ListEntry
-	208, // 153: Proto.StoredContentsRiskDungeon.add:type_name -> Proto.StoredContentsRiskDungeon.AddEntry
-	209, // 154: Proto.StoredContentsClearAncientTowerEx.list:type_name -> Proto.StoredContentsClearAncientTowerEx.ListEntry
-	210, // 155: Proto.StoredContentsClearAncientTowerEx.add:type_name -> Proto.StoredContentsClearAncientTowerEx.AddEntry
-	211, // 156: Proto.StoredJobDeckGroup.list:type_name -> Proto.StoredJobDeckGroup.ListEntry
-	212, // 157: Proto.StoredJobDeckGroup.add:type_name -> Proto.StoredJobDeckGroup.AddEntry
-	213, // 158: Proto.StoredGvgPracticeReward.list:type_name -> Proto.StoredGvgPracticeReward.ListEntry
-	214, // 159: Proto.StoredGvgPracticeReward.add:type_name -> Proto.StoredGvgPracticeReward.AddEntry
-	215, // 160: Proto.StoredShopSpecialSale.list:type_name -> Proto.StoredShopSpecialSale.ListEntry
-	216, // 161: Proto.StoredShopSpecialSale.add:type_name -> Proto.StoredShopSpecialSale.AddEntry
-	217, // 162: Proto.StoredAgitoItemArea.list:type_name -> Proto.StoredAgitoItemArea.ListEntry
-	218, // 163: Proto.StoredAgitoItemArea.add:type_name -> Proto.StoredAgitoItemArea.AddEntry
-	222, // 164: Proto.StoredData.player:type_name -> Puser.Player
+	236, // 41: Proto.GuildInfo.guild_board_announcement:type_name -> Pmisc.GuildBoard
+	99,  // 42: Proto.StoredSample.list:type_name -> Proto.StoredSample.ListEntry
+	100, // 43: Proto.StoredSample.add:type_name -> Proto.StoredSample.AddEntry
+	101, // 44: Proto.StoredEquipment.list:type_name -> Proto.StoredEquipment.ListEntry
+	102, // 45: Proto.StoredEquipment.add:type_name -> Proto.StoredEquipment.AddEntry
+	103, // 46: Proto.StoredJob.list:type_name -> Proto.StoredJob.ListEntry
+	104, // 47: Proto.StoredJob.add:type_name -> Proto.StoredJob.AddEntry
+	105, // 48: Proto.StoredJobSkill.list:type_name -> Proto.StoredJobSkill.ListEntry
+	106, // 49: Proto.StoredJobSkill.add:type_name -> Proto.StoredJobSkill.AddEntry
+	107, // 50: Proto.StoredConditionProgress.list:type_name -> Proto.StoredConditionProgress.ListEntry
+	108, // 51: Proto.StoredConditionProgress.add:type_name -> Proto.StoredConditionProgress.AddEntry
+	109, // 52: Proto.StoredAchievement.list:type_name -> Proto.StoredAchievement.ListEntry
+	110, // 53: Proto.StoredAchievement.add:type_name -> Proto.StoredAchievement.AddEntry
+	111, // 54: Proto.StoredItem.list:type_name -> Proto.StoredItem.ListEntry
+	112, // 55: Proto.StoredItem.add:type_name -> Proto.StoredItem.AddEntry
+	113, // 56: Proto.StoredAnima.list:type_name -> Proto.StoredAnima.ListEntry
+	114, // 57: Proto.StoredAnima.add:type_name -> Proto.StoredAnima.AddEntry
+	115, // 58: Proto.StoredAnimaArea.list:type_name -> Proto.StoredAnimaArea.ListEntry
+	116, // 59: Proto.StoredAnimaArea.add:type_name -> Proto.StoredAnimaArea.AddEntry
+	117, // 60: Proto.StoredRune.list:type_name -> Proto.StoredRune.ListEntry
+	118, // 61: Proto.StoredRune.add:type_name -> Proto.StoredRune.AddEntry
+	119, // 62: Proto.StoredElixir.list:type_name -> Proto.StoredElixir.ListEntry
+	120, // 63: Proto.StoredElixir.add:type_name -> Proto.StoredElixir.AddEntry
+	121, // 64: Proto.StoredContents.list:type_name -> Proto.StoredContents.ListEntry
+	122, // 65: Proto.StoredContents.add:type_name -> Proto.StoredContents.AddEntry
+	123, // 66: Proto.StoredDailyMission.list:type_name -> Proto.StoredDailyMission.ListEntry
+	124, // 67: Proto.StoredDailyMission.add:type_name -> Proto.StoredDailyMission.AddEntry
+	125, // 68: Proto.StoredDailyMissionReward.list:type_name -> Proto.StoredDailyMissionReward.ListEntry
+	126, // 69: Proto.StoredDailyMissionReward.add:type_name -> Proto.StoredDailyMissionReward.AddEntry
+	127, // 70: Proto.StoredOrderMission.list:type_name -> Proto.StoredOrderMission.ListEntry
+	128, // 71: Proto.StoredOrderMission.add:type_name -> Proto.StoredOrderMission.AddEntry
+	129, // 72: Proto.StoredOrderMissionReroll.list:type_name -> Proto.StoredOrderMissionReroll.ListEntry
+	130, // 73: Proto.StoredOrderMissionReroll.add:type_name -> Proto.StoredOrderMissionReroll.AddEntry
+	131, // 74: Proto.StoredOrderMissionReward.list:type_name -> Proto.StoredOrderMissionReward.ListEntry
+	132, // 75: Proto.StoredOrderMissionReward.add:type_name -> Proto.StoredOrderMissionReward.AddEntry
+	133, // 76: Proto.StoredMercenaryHire.list:type_name -> Proto.StoredMercenaryHire.ListEntry
+	134, // 77: Proto.StoredMercenaryHire.add:type_name -> Proto.StoredMercenaryHire.AddEntry
+	135, // 78: Proto.StoredEventMission.list:type_name -> Proto.StoredEventMission.ListEntry
+	136, // 79: Proto.StoredEventMission.add:type_name -> Proto.StoredEventMission.AddEntry
+	137, // 80: Proto.StoredEventMissionReward.list:type_name -> Proto.StoredEventMissionReward.ListEntry
+	138, // 81: Proto.StoredEventMissionReward.add:type_name -> Proto.StoredEventMissionReward.AddEntry
+	139, // 82: Proto.StoredContentsCondition.list:type_name -> Proto.StoredContentsCondition.ListEntry
+	140, // 83: Proto.StoredContentsCondition.add:type_name -> Proto.StoredContentsCondition.AddEntry
+	141, // 84: Proto.StoredTitle.list:type_name -> Proto.StoredTitle.ListEntry
+	142, // 85: Proto.StoredTitle.add:type_name -> Proto.StoredTitle.AddEntry
+	143, // 86: Proto.StoredShopItem.list:type_name -> Proto.StoredShopItem.ListEntry
+	144, // 87: Proto.StoredShopItem.add:type_name -> Proto.StoredShopItem.AddEntry
+	145, // 88: Proto.StoredLoginBonus.list:type_name -> Proto.StoredLoginBonus.ListEntry
+	146, // 89: Proto.StoredLoginBonus.add:type_name -> Proto.StoredLoginBonus.AddEntry
+	147, // 90: Proto.StoredEventSugoroku.list:type_name -> Proto.StoredEventSugoroku.ListEntry
+	148, // 91: Proto.StoredEventSugoroku.add:type_name -> Proto.StoredEventSugoroku.AddEntry
+	149, // 92: Proto.StoredBoost.list:type_name -> Proto.StoredBoost.ListEntry
+	150, // 93: Proto.StoredBoost.add:type_name -> Proto.StoredBoost.AddEntry
+	151, // 94: Proto.StoredBlock.list:type_name -> Proto.StoredBlock.ListEntry
+	152, // 95: Proto.StoredBlock.add:type_name -> Proto.StoredBlock.AddEntry
+	153, // 96: Proto.StoredExchange.list:type_name -> Proto.StoredExchange.ListEntry
+	154, // 97: Proto.StoredExchange.add:type_name -> Proto.StoredExchange.AddEntry
+	155, // 98: Proto.StoredContentsHero.list:type_name -> Proto.StoredContentsHero.ListEntry
+	156, // 99: Proto.StoredContentsHero.add:type_name -> Proto.StoredContentsHero.AddEntry
+	157, // 100: Proto.StoredContentsTreasure.list:type_name -> Proto.StoredContentsTreasure.ListEntry
+	158, // 101: Proto.StoredContentsTreasure.add:type_name -> Proto.StoredContentsTreasure.AddEntry
+	159, // 102: Proto.StoredContentsWeekMonster.list:type_name -> Proto.StoredContentsWeekMonster.ListEntry
+	160, // 103: Proto.StoredContentsWeekMonster.add:type_name -> Proto.StoredContentsWeekMonster.AddEntry
+	161, // 104: Proto.StoredFunctionalTutorial.list:type_name -> Proto.StoredFunctionalTutorial.ListEntry
+	162, // 105: Proto.StoredFunctionalTutorial.add:type_name -> Proto.StoredFunctionalTutorial.AddEntry
+	163, // 106: Proto.StoredEventRoulette.list:type_name -> Proto.StoredEventRoulette.ListEntry
+	164, // 107: Proto.StoredEventRoulette.add:type_name -> Proto.StoredEventRoulette.AddEntry
+	165, // 108: Proto.StoredAngelBattleWeeklyReward.list:type_name -> Proto.StoredAngelBattleWeeklyReward.ListEntry
+	166, // 109: Proto.StoredAngelBattleWeeklyReward.add:type_name -> Proto.StoredAngelBattleWeeklyReward.AddEntry
+	167, // 110: Proto.StoredAchievementEquipment.list:type_name -> Proto.StoredAchievementEquipment.ListEntry
+	168, // 111: Proto.StoredAchievementEquipment.add:type_name -> Proto.StoredAchievementEquipment.AddEntry
+	169, // 112: Proto.StoredAchievementEquipmentReceive.list:type_name -> Proto.StoredAchievementEquipmentReceive.ListEntry
+	170, // 113: Proto.StoredAchievementEquipmentReceive.add:type_name -> Proto.StoredAchievementEquipmentReceive.AddEntry
+	171, // 114: Proto.StoredAchievementEquipmentStamp.list:type_name -> Proto.StoredAchievementEquipmentStamp.ListEntry
+	172, // 115: Proto.StoredAchievementEquipmentStamp.add:type_name -> Proto.StoredAchievementEquipmentStamp.AddEntry
+	173, // 116: Proto.StoredEquipmentLiberation.list:type_name -> Proto.StoredEquipmentLiberation.ListEntry
+	174, // 117: Proto.StoredEquipmentLiberation.add:type_name -> Proto.StoredEquipmentLiberation.AddEntry
+	175, // 118: Proto.StoredJobDeck.list:type_name -> Proto.StoredJobDeck.ListEntry
+	176, // 119: Proto.StoredJobDeck.add:type_name -> Proto.StoredJobDeck.AddEntry
+	177, // 120: Proto.StoredAgitoFurnitureSetting.list:type_name -> Proto.StoredAgitoFurnitureSetting.ListEntry
+	178, // 121: Proto.StoredAgitoFurnitureSetting.add:type_name -> Proto.StoredAgitoFurnitureSetting.AddEntry
+	179, // 122: Proto.StoredAgitoAp.list:type_name -> Proto.StoredAgitoAp.ListEntry
+	180, // 123: Proto.StoredAgitoAp.add:type_name -> Proto.StoredAgitoAp.AddEntry
+	181, // 124: Proto.StoredAgitoRelotteryInterval.list:type_name -> Proto.StoredAgitoRelotteryInterval.ListEntry
+	182, // 125: Proto.StoredAgitoRelotteryInterval.add:type_name -> Proto.StoredAgitoRelotteryInterval.AddEntry
+	183, // 126: Proto.StoredAgitoVisitor.list:type_name -> Proto.StoredAgitoVisitor.ListEntry
+	184, // 127: Proto.StoredAgitoVisitor.add:type_name -> Proto.StoredAgitoVisitor.AddEntry
+	185, // 128: Proto.StoredAgitoGoodHistory.list:type_name -> Proto.StoredAgitoGoodHistory.ListEntry
+	186, // 129: Proto.StoredAgitoGoodHistory.add:type_name -> Proto.StoredAgitoGoodHistory.AddEntry
+	187, // 130: Proto.StoredGachaHistory.list:type_name -> Proto.StoredGachaHistory.ListEntry
+	188, // 131: Proto.StoredGachaHistory.add:type_name -> Proto.StoredGachaHistory.AddEntry
+	189, // 132: Proto.StoredAgitoCountReward.list:type_name -> Proto.StoredAgitoCountReward.ListEntry
+	190, // 133: Proto.StoredAgitoCountReward.add:type_name -> Proto.StoredAgitoCountReward.AddEntry
+	191, // 134: Proto.StoredSeasonPass.list:type_name -> Proto.StoredSeasonPass.ListEntry
+	192, // 135: Proto.StoredSeasonPass.add:type_name -> Proto.StoredSeasonPass.AddEntry
+	193, // 136: Proto.StoredSeasonPassDailyMission.list:type_name -> Proto.StoredSeasonPassDailyMission.ListEntry
+	194, // 137: Proto.StoredSeasonPassDailyMission.add:type_name -> Proto.StoredSeasonPassDailyMission.AddEntry
+	195, // 138: Proto.StoredSeasonPassWeeklyMission.list:type_name -> Proto.StoredSeasonPassWeeklyMission.ListEntry
+	196, // 139: Proto.StoredSeasonPassWeeklyMission.add:type_name -> Proto.StoredSeasonPassWeeklyMission.AddEntry
+	197, // 140: Proto.StoredImportantMissionGroup.list:type_name -> Proto.StoredImportantMissionGroup.ListEntry
+	198, // 141: Proto.StoredImportantMissionGroup.add:type_name -> Proto.StoredImportantMissionGroup.AddEntry
+	199, // 142: Proto.StoredImportantMission.list:type_name -> Proto.StoredImportantMission.ListEntry
+	200, // 143: Proto.StoredImportantMission.add:type_name -> Proto.StoredImportantMission.AddEntry
+	201, // 144: Proto.StoredSpecialItemProgress.list:type_name -> Proto.StoredSpecialItemProgress.ListEntry
+	202, // 145: Proto.StoredSpecialItemProgress.add:type_name -> Proto.StoredSpecialItemProgress.AddEntry
+	203, // 146: Proto.StoredAdvertising.list:type_name -> Proto.StoredAdvertising.ListEntry
+	204, // 147: Proto.StoredAdvertising.add:type_name -> Proto.StoredAdvertising.AddEntry
+	205, // 148: Proto.StoredReliefPointSending.list:type_name -> Proto.StoredReliefPointSending.ListEntry
+	206, // 149: Proto.StoredReliefPointSending.add:type_name -> Proto.StoredReliefPointSending.AddEntry
+	207, // 150: Proto.StoredReliefPointReward.list:type_name -> Proto.StoredReliefPointReward.ListEntry
+	208, // 151: Proto.StoredReliefPointReward.add:type_name -> Proto.StoredReliefPointReward.AddEntry
+	209, // 152: Proto.StoredContentsRiskDungeon.list:type_name -> Proto.StoredContentsRiskDungeon.ListEntry
+	210, // 153: Proto.StoredContentsRiskDungeon.add:type_name -> Proto.StoredContentsRiskDungeon.AddEntry
+	211, // 154: Proto.StoredContentsClearAncientTowerEx.list:type_name -> Proto.StoredContentsClearAncientTowerEx.ListEntry
+	212, // 155: Proto.StoredContentsClearAncientTowerEx.add:type_name -> Proto.StoredContentsClearAncientTowerEx.AddEntry
+	213, // 156: Proto.StoredJobDeckGroup.list:type_name -> Proto.StoredJobDeckGroup.ListEntry
+	214, // 157: Proto.StoredJobDeckGroup.add:type_name -> Proto.StoredJobDeckGroup.AddEntry
+	215, // 158: Proto.StoredGvgPracticeReward.list:type_name -> Proto.StoredGvgPracticeReward.ListEntry
+	216, // 159: Proto.StoredGvgPracticeReward.add:type_name -> Proto.StoredGvgPracticeReward.AddEntry
+	217, // 160: Proto.StoredShopSpecialSale.list:type_name -> Proto.StoredShopSpecialSale.ListEntry
+	218, // 161: Proto.StoredShopSpecialSale.add:type_name -> Proto.StoredShopSpecialSale.AddEntry
+	219, // 162: Proto.StoredAgitoItemArea.list:type_name -> Proto.StoredAgitoItemArea.ListEntry
+	220, // 163: Proto.StoredAgitoItemArea.add:type_name -> Proto.StoredAgitoItemArea.AddEntry
+	225, // 164: Proto.StoredData.player:type_name -> Puser.Player
 	24,  // 165: Proto.StoredData.currency:type_name -> Proto.Currency
 	29,  // 166: Proto.StoredData.sample:type_name -> Proto.StoredSample
-	234, // 167: Proto.StoredData.setting:type_name -> Puser.Setting
+	237, // 167: Proto.StoredData.setting:type_name -> Puser.Setting
 	30,  // 168: Proto.StoredData.equipment:type_name -> Proto.StoredEquipment
 	31,  // 169: Proto.StoredData.job:type_name -> Proto.StoredJob
 	32,  // 170: Proto.StoredData.job_skill:type_name -> Proto.StoredJobSkill
@@ -8488,16 +8605,16 @@ var file_proto_proto_depIdxs = []int32{
 	43,  // 181: Proto.StoredData.order_mission:type_name -> Proto.StoredOrderMission
 	45,  // 182: Proto.StoredData.order_mission_reward:type_name -> Proto.StoredOrderMissionReward
 	44,  // 183: Proto.StoredData.order_mission_reroll:type_name -> Proto.StoredOrderMissionReroll
-	235, // 184: Proto.StoredData.battle_member:type_name -> Pmisc.BattleMember
+	238, // 184: Proto.StoredData.battle_member:type_name -> Pmisc.BattleMember
 	25,  // 185: Proto.StoredData.guild_info:type_name -> Proto.GuildInfo
-	236, // 186: Proto.StoredData.arena:type_name -> Puser.Arena
+	239, // 186: Proto.StoredData.arena:type_name -> Puser.Arena
 	46,  // 187: Proto.StoredData.mercenary_hire:type_name -> Proto.StoredMercenaryHire
-	237, // 188: Proto.StoredData.mercenary_reward:type_name -> Puser.MercenaryReward
-	238, // 189: Proto.StoredData.achievement_reward:type_name -> Puser.AchievementReward
+	240, // 188: Proto.StoredData.mercenary_reward:type_name -> Puser.MercenaryReward
+	241, // 189: Proto.StoredData.achievement_reward:type_name -> Puser.AchievementReward
 	47,  // 190: Proto.StoredData.event_mission:type_name -> Proto.StoredEventMission
 	48,  // 191: Proto.StoredData.event_mission_reward:type_name -> Proto.StoredEventMissionReward
 	49,  // 192: Proto.StoredData.contents_condition:type_name -> Proto.StoredContentsCondition
-	239, // 193: Proto.StoredData.abyss_fever:type_name -> Puser.AbyssFever
+	242, // 193: Proto.StoredData.abyss_fever:type_name -> Puser.AbyssFever
 	27,  // 194: Proto.StoredData.mercenary:type_name -> Proto.StoredMercenary
 	50,  // 195: Proto.StoredData.title:type_name -> Proto.StoredTitle
 	51,  // 196: Proto.StoredData.shop_item:type_name -> Proto.StoredShopItem
@@ -8510,7 +8627,7 @@ var file_proto_proto_depIdxs = []int32{
 	58,  // 203: Proto.StoredData.contents_treasure:type_name -> Proto.StoredContentsTreasure
 	59,  // 204: Proto.StoredData.contents_week_monster:type_name -> Proto.StoredContentsWeekMonster
 	60,  // 205: Proto.StoredData.functional_tutorial:type_name -> Proto.StoredFunctionalTutorial
-	240, // 206: Proto.StoredData.background_battle:type_name -> Puser.BackgroundBattle
+	243, // 206: Proto.StoredData.background_battle:type_name -> Puser.BackgroundBattle
 	61,  // 207: Proto.StoredData.event_roulette:type_name -> Proto.StoredEventRoulette
 	62,  // 208: Proto.StoredData.angel_battle_weekly_reward:type_name -> Proto.StoredAngelBattleWeeklyReward
 	63,  // 209: Proto.StoredData.achievement_equipment:type_name -> Proto.StoredAchievementEquipment
@@ -8524,20 +8641,20 @@ var file_proto_proto_depIdxs = []int32{
 	26,  // 217: Proto.StoredData.chat_unread_categories:type_name -> Proto.ChatUnreadCategory
 	70,  // 218: Proto.StoredData.agito_relottery_interval:type_name -> Proto.StoredAgitoRelotteryInterval
 	71,  // 219: Proto.StoredData.agito_visitor:type_name -> Proto.StoredAgitoVisitor
-	241, // 220: Proto.StoredData.agito:type_name -> Puser.Agito
+	244, // 220: Proto.StoredData.agito:type_name -> Puser.Agito
 	72,  // 221: Proto.StoredData.agito_good_history:type_name -> Proto.StoredAgitoGoodHistory
 	73,  // 222: Proto.StoredData.gacha_history:type_name -> Proto.StoredGachaHistory
 	74,  // 223: Proto.StoredData.agito_count_reward:type_name -> Proto.StoredAgitoCountReward
 	75,  // 224: Proto.StoredData.season_pass:type_name -> Proto.StoredSeasonPass
 	76,  // 225: Proto.StoredData.season_pass_daily_mission:type_name -> Proto.StoredSeasonPassDailyMission
 	77,  // 226: Proto.StoredData.season_pass_weekly_mission:type_name -> Proto.StoredSeasonPassWeeklyMission
-	242, // 227: Proto.StoredData.vip:type_name -> Puser.Vip
+	245, // 227: Proto.StoredData.vip:type_name -> Puser.Vip
 	78,  // 228: Proto.StoredData.important_mission_group:type_name -> Proto.StoredImportantMissionGroup
 	79,  // 229: Proto.StoredData.important_mission:type_name -> Proto.StoredImportantMission
 	80,  // 230: Proto.StoredData.special_item_progress:type_name -> Proto.StoredSpecialItemProgress
 	81,  // 231: Proto.StoredData.advertising:type_name -> Proto.StoredAdvertising
 	28,  // 232: Proto.StoredData.present_box_info:type_name -> Proto.StoredPresentBoxInfo
-	243, // 233: Proto.StoredData.relief_point:type_name -> Puser.ReliefPoint
+	246, // 233: Proto.StoredData.relief_point:type_name -> Puser.ReliefPoint
 	82,  // 234: Proto.StoredData.relief_point_sending:type_name -> Proto.StoredReliefPointSending
 	83,  // 235: Proto.StoredData.relief_point_reward:type_name -> Proto.StoredReliefPointReward
 	84,  // 236: Proto.StoredData.contents_risk_dungeon:type_name -> Proto.StoredContentsRiskDungeon
@@ -8546,148 +8663,150 @@ var file_proto_proto_depIdxs = []int32{
 	87,  // 239: Proto.StoredData.gvg_practice_reward:type_name -> Proto.StoredGvgPracticeReward
 	88,  // 240: Proto.StoredData.shop_special_sale:type_name -> Proto.StoredShopSpecialSale
 	90,  // 241: Proto.Nocontent.stored_data:type_name -> Proto.StoredData
-	220, // 242: Proto.Nocontent.error:type_name -> Pcommon.Error
-	244, // 243: Proto.AgitoRoom.agito_furniture_setting:type_name -> Puser.AgitoFurnitureSetting
-	245, // 244: Proto.AgitoRoom.agito_item_area:type_name -> Puser.AgitoItemArea
+	223, // 242: Proto.Nocontent.error:type_name -> Pcommon.Error
+	247, // 243: Proto.AgitoRoom.agito_furniture_setting:type_name -> Puser.AgitoFurnitureSetting
+	248, // 244: Proto.AgitoRoom.agito_item_area:type_name -> Puser.AgitoItemArea
 	92,  // 245: Proto.AgitoInfo.agito_room:type_name -> Proto.AgitoRoom
 	90,  // 246: Proto.GachaResult.stored_data:type_name -> Proto.StoredData
 	7,   // 247: Proto.GachaResult.inventory:type_name -> Proto.RewardInfo
 	7,   // 248: Proto.GachaResult.present:type_name -> Proto.RewardInfo
 	7,   // 249: Proto.GachaResult.bonus:type_name -> Proto.RewardInfo
-	219, // 250: Proto.GachaResult.new_equipment:type_name -> Proto.GachaResult.NewEquipmentEntry
-	220, // 251: Proto.ShopItemReceiveList.error:type_name -> Pcommon.Error
+	221, // 250: Proto.GachaResult.new_equipment:type_name -> Proto.GachaResult.NewEquipmentEntry
+	223, // 251: Proto.ShopItemReceiveList.error:type_name -> Pcommon.Error
 	90,  // 252: Proto.ShopItemReceiveList.stored_data:type_name -> Proto.StoredData
 	7,   // 253: Proto.ShopItemReceiveList.inventory_receive_list:type_name -> Proto.RewardInfo
 	7,   // 254: Proto.ShopItemReceiveList.present_receive_list:type_name -> Proto.RewardInfo
 	7,   // 255: Proto.ShopItemReceiveList.bonus_receive_list:type_name -> Proto.RewardInfo
 	7,   // 256: Proto.ShopItemReceiveList.first_receive_list:type_name -> Proto.RewardInfo
-	246, // 257: Proto.StoredSample.ListEntry.value:type_name -> Pmisc.Sample
-	246, // 258: Proto.StoredSample.AddEntry.value:type_name -> Pmisc.Sample
-	225, // 259: Proto.StoredEquipment.ListEntry.value:type_name -> Puser.Equipment
-	225, // 260: Proto.StoredEquipment.AddEntry.value:type_name -> Puser.Equipment
-	223, // 261: Proto.StoredJob.ListEntry.value:type_name -> Puser.Job
-	223, // 262: Proto.StoredJob.AddEntry.value:type_name -> Puser.Job
-	247, // 263: Proto.StoredJobSkill.ListEntry.value:type_name -> Puser.JobSkill
-	247, // 264: Proto.StoredJobSkill.AddEntry.value:type_name -> Puser.JobSkill
-	248, // 265: Proto.StoredConditionProgress.ListEntry.value:type_name -> Pmisc.ConditionProgress
-	248, // 266: Proto.StoredConditionProgress.AddEntry.value:type_name -> Pmisc.ConditionProgress
-	249, // 267: Proto.StoredAchievement.ListEntry.value:type_name -> Puser.Achievement
-	249, // 268: Proto.StoredAchievement.AddEntry.value:type_name -> Puser.Achievement
-	250, // 269: Proto.StoredItem.ListEntry.value:type_name -> Puser.Item
-	250, // 270: Proto.StoredItem.AddEntry.value:type_name -> Puser.Item
-	251, // 271: Proto.StoredAnima.ListEntry.value:type_name -> Puser.Anima
-	251, // 272: Proto.StoredAnima.AddEntry.value:type_name -> Puser.Anima
-	252, // 273: Proto.StoredAnimaArea.ListEntry.value:type_name -> Puser.AnimaArea
-	252, // 274: Proto.StoredAnimaArea.AddEntry.value:type_name -> Puser.AnimaArea
-	253, // 275: Proto.StoredRune.ListEntry.value:type_name -> Puser.Rune
-	253, // 276: Proto.StoredRune.AddEntry.value:type_name -> Puser.Rune
-	226, // 277: Proto.StoredElixir.ListEntry.value:type_name -> Puser.Elixir
-	226, // 278: Proto.StoredElixir.AddEntry.value:type_name -> Puser.Elixir
-	254, // 279: Proto.StoredContents.ListEntry.value:type_name -> Puser.Contents
-	254, // 280: Proto.StoredContents.AddEntry.value:type_name -> Puser.Contents
-	255, // 281: Proto.StoredDailyMission.ListEntry.value:type_name -> Puser.DailyMission
-	255, // 282: Proto.StoredDailyMission.AddEntry.value:type_name -> Puser.DailyMission
-	256, // 283: Proto.StoredDailyMissionReward.ListEntry.value:type_name -> Puser.DailyMissionReward
-	256, // 284: Proto.StoredDailyMissionReward.AddEntry.value:type_name -> Puser.DailyMissionReward
-	257, // 285: Proto.StoredOrderMission.ListEntry.value:type_name -> Puser.OrderMission
-	257, // 286: Proto.StoredOrderMission.AddEntry.value:type_name -> Puser.OrderMission
-	258, // 287: Proto.StoredOrderMissionReroll.ListEntry.value:type_name -> Puser.OrderMissionReroll
-	258, // 288: Proto.StoredOrderMissionReroll.AddEntry.value:type_name -> Puser.OrderMissionReroll
-	259, // 289: Proto.StoredOrderMissionReward.ListEntry.value:type_name -> Puser.OrderMissionReward
-	259, // 290: Proto.StoredOrderMissionReward.AddEntry.value:type_name -> Puser.OrderMissionReward
-	260, // 291: Proto.StoredMercenaryHire.ListEntry.value:type_name -> Puser.MercenaryHire
-	260, // 292: Proto.StoredMercenaryHire.AddEntry.value:type_name -> Puser.MercenaryHire
-	261, // 293: Proto.StoredEventMission.ListEntry.value:type_name -> Puser.EventMission
-	261, // 294: Proto.StoredEventMission.AddEntry.value:type_name -> Puser.EventMission
-	262, // 295: Proto.StoredEventMissionReward.ListEntry.value:type_name -> Puser.EventMissionReward
-	262, // 296: Proto.StoredEventMissionReward.AddEntry.value:type_name -> Puser.EventMissionReward
-	263, // 297: Proto.StoredContentsCondition.ListEntry.value:type_name -> Puser.ContentsCondition
-	263, // 298: Proto.StoredContentsCondition.AddEntry.value:type_name -> Puser.ContentsCondition
-	264, // 299: Proto.StoredTitle.ListEntry.value:type_name -> Puser.Title
-	264, // 300: Proto.StoredTitle.AddEntry.value:type_name -> Puser.Title
-	265, // 301: Proto.StoredShopItem.ListEntry.value:type_name -> Puser.ShopItem
-	265, // 302: Proto.StoredShopItem.AddEntry.value:type_name -> Puser.ShopItem
-	232, // 303: Proto.StoredLoginBonus.ListEntry.value:type_name -> Puser.LoginBonus
-	232, // 304: Proto.StoredLoginBonus.AddEntry.value:type_name -> Puser.LoginBonus
-	266, // 305: Proto.StoredEventSugoroku.ListEntry.value:type_name -> Puser.EventSugoroku
-	266, // 306: Proto.StoredEventSugoroku.AddEntry.value:type_name -> Puser.EventSugoroku
-	267, // 307: Proto.StoredBoost.ListEntry.value:type_name -> Puser.Boost
-	267, // 308: Proto.StoredBoost.AddEntry.value:type_name -> Puser.Boost
-	268, // 309: Proto.StoredBlock.ListEntry.value:type_name -> Pmisc.Block
-	268, // 310: Proto.StoredBlock.AddEntry.value:type_name -> Pmisc.Block
-	269, // 311: Proto.StoredExchange.ListEntry.value:type_name -> Puser.Exchange
-	269, // 312: Proto.StoredExchange.AddEntry.value:type_name -> Puser.Exchange
-	270, // 313: Proto.StoredContentsHero.ListEntry.value:type_name -> Puser.ContentsHero
-	270, // 314: Proto.StoredContentsHero.AddEntry.value:type_name -> Puser.ContentsHero
-	271, // 315: Proto.StoredContentsTreasure.ListEntry.value:type_name -> Puser.ContentsTreasure
-	271, // 316: Proto.StoredContentsTreasure.AddEntry.value:type_name -> Puser.ContentsTreasure
-	272, // 317: Proto.StoredContentsWeekMonster.ListEntry.value:type_name -> Puser.ContentsWeekMonster
-	272, // 318: Proto.StoredContentsWeekMonster.AddEntry.value:type_name -> Puser.ContentsWeekMonster
-	273, // 319: Proto.StoredFunctionalTutorial.ListEntry.value:type_name -> Puser.FunctionalTutorial
-	273, // 320: Proto.StoredFunctionalTutorial.AddEntry.value:type_name -> Puser.FunctionalTutorial
-	274, // 321: Proto.StoredEventRoulette.ListEntry.value:type_name -> Puser.EventRoulette
-	274, // 322: Proto.StoredEventRoulette.AddEntry.value:type_name -> Puser.EventRoulette
-	275, // 323: Proto.StoredAngelBattleWeeklyReward.ListEntry.value:type_name -> Puser.AngelBattleWeeklyReward
-	275, // 324: Proto.StoredAngelBattleWeeklyReward.AddEntry.value:type_name -> Puser.AngelBattleWeeklyReward
-	276, // 325: Proto.StoredAchievementEquipment.ListEntry.value:type_name -> Puser.AchievementEquipment
-	276, // 326: Proto.StoredAchievementEquipment.AddEntry.value:type_name -> Puser.AchievementEquipment
-	277, // 327: Proto.StoredAchievementEquipmentReceive.ListEntry.value:type_name -> Puser.AchievementEquipmentReceive
-	277, // 328: Proto.StoredAchievementEquipmentReceive.AddEntry.value:type_name -> Puser.AchievementEquipmentReceive
-	278, // 329: Proto.StoredAchievementEquipmentStamp.ListEntry.value:type_name -> Puser.AchievementEquipmentStamp
-	278, // 330: Proto.StoredAchievementEquipmentStamp.AddEntry.value:type_name -> Puser.AchievementEquipmentStamp
-	279, // 331: Proto.StoredEquipmentLiberation.ListEntry.value:type_name -> Puser.EquipmentLiberation
-	279, // 332: Proto.StoredEquipmentLiberation.AddEntry.value:type_name -> Puser.EquipmentLiberation
-	224, // 333: Proto.StoredJobDeck.ListEntry.value:type_name -> Puser.JobDeck
-	224, // 334: Proto.StoredJobDeck.AddEntry.value:type_name -> Puser.JobDeck
-	244, // 335: Proto.StoredAgitoFurnitureSetting.ListEntry.value:type_name -> Puser.AgitoFurnitureSetting
-	244, // 336: Proto.StoredAgitoFurnitureSetting.AddEntry.value:type_name -> Puser.AgitoFurnitureSetting
-	280, // 337: Proto.StoredAgitoAp.ListEntry.value:type_name -> Puser.AgitoAp
-	280, // 338: Proto.StoredAgitoAp.AddEntry.value:type_name -> Puser.AgitoAp
-	281, // 339: Proto.StoredAgitoRelotteryInterval.ListEntry.value:type_name -> Puser.AgitoRelotteryInterval
-	281, // 340: Proto.StoredAgitoRelotteryInterval.AddEntry.value:type_name -> Puser.AgitoRelotteryInterval
-	282, // 341: Proto.StoredAgitoVisitor.ListEntry.value:type_name -> Puser.AgitoVisitor
-	282, // 342: Proto.StoredAgitoVisitor.AddEntry.value:type_name -> Puser.AgitoVisitor
-	283, // 343: Proto.StoredAgitoGoodHistory.ListEntry.value:type_name -> Puser.AgitoGoodHistory
-	283, // 344: Proto.StoredAgitoGoodHistory.AddEntry.value:type_name -> Puser.AgitoGoodHistory
-	284, // 345: Proto.StoredGachaHistory.ListEntry.value:type_name -> Puser.GachaHistory
-	284, // 346: Proto.StoredGachaHistory.AddEntry.value:type_name -> Puser.GachaHistory
-	285, // 347: Proto.StoredAgitoCountReward.ListEntry.value:type_name -> Puser.AgitoCountReward
-	285, // 348: Proto.StoredAgitoCountReward.AddEntry.value:type_name -> Puser.AgitoCountReward
-	286, // 349: Proto.StoredSeasonPass.ListEntry.value:type_name -> Puser.SeasonPass
-	286, // 350: Proto.StoredSeasonPass.AddEntry.value:type_name -> Puser.SeasonPass
-	287, // 351: Proto.StoredSeasonPassDailyMission.ListEntry.value:type_name -> Puser.SeasonPassDailyMission
-	287, // 352: Proto.StoredSeasonPassDailyMission.AddEntry.value:type_name -> Puser.SeasonPassDailyMission
-	288, // 353: Proto.StoredSeasonPassWeeklyMission.ListEntry.value:type_name -> Puser.SeasonPassWeeklyMission
-	288, // 354: Proto.StoredSeasonPassWeeklyMission.AddEntry.value:type_name -> Puser.SeasonPassWeeklyMission
-	289, // 355: Proto.StoredImportantMissionGroup.ListEntry.value:type_name -> Puser.ImportantMissionGroup
-	289, // 356: Proto.StoredImportantMissionGroup.AddEntry.value:type_name -> Puser.ImportantMissionGroup
-	290, // 357: Proto.StoredImportantMission.ListEntry.value:type_name -> Puser.ImportantMission
-	290, // 358: Proto.StoredImportantMission.AddEntry.value:type_name -> Puser.ImportantMission
-	291, // 359: Proto.StoredSpecialItemProgress.ListEntry.value:type_name -> Puser.SpecialItemProgress
-	291, // 360: Proto.StoredSpecialItemProgress.AddEntry.value:type_name -> Puser.SpecialItemProgress
-	292, // 361: Proto.StoredAdvertising.ListEntry.value:type_name -> Puser.Advertising
-	292, // 362: Proto.StoredAdvertising.AddEntry.value:type_name -> Puser.Advertising
-	293, // 363: Proto.StoredReliefPointSending.ListEntry.value:type_name -> Puser.ReliefPointSending
-	293, // 364: Proto.StoredReliefPointSending.AddEntry.value:type_name -> Puser.ReliefPointSending
-	294, // 365: Proto.StoredReliefPointReward.ListEntry.value:type_name -> Puser.ReliefPointReward
-	294, // 366: Proto.StoredReliefPointReward.AddEntry.value:type_name -> Puser.ReliefPointReward
-	295, // 367: Proto.StoredContentsRiskDungeon.ListEntry.value:type_name -> Puser.ContentsRiskDungeon
-	295, // 368: Proto.StoredContentsRiskDungeon.AddEntry.value:type_name -> Puser.ContentsRiskDungeon
-	296, // 369: Proto.StoredContentsClearAncientTowerEx.ListEntry.value:type_name -> Puser.ContentsClearAncientTowerEx
-	296, // 370: Proto.StoredContentsClearAncientTowerEx.AddEntry.value:type_name -> Puser.ContentsClearAncientTowerEx
-	297, // 371: Proto.StoredJobDeckGroup.ListEntry.value:type_name -> Puser.JobDeckGroup
-	297, // 372: Proto.StoredJobDeckGroup.AddEntry.value:type_name -> Puser.JobDeckGroup
-	298, // 373: Proto.StoredGvgPracticeReward.ListEntry.value:type_name -> Puser.GvgPracticeReward
-	298, // 374: Proto.StoredGvgPracticeReward.AddEntry.value:type_name -> Puser.GvgPracticeReward
-	299, // 375: Proto.StoredShopSpecialSale.ListEntry.value:type_name -> Puser.ShopSpecialSale
-	299, // 376: Proto.StoredShopSpecialSale.AddEntry.value:type_name -> Puser.ShopSpecialSale
-	245, // 377: Proto.StoredAgitoItemArea.ListEntry.value:type_name -> Puser.AgitoItemArea
-	245, // 378: Proto.StoredAgitoItemArea.AddEntry.value:type_name -> Puser.AgitoItemArea
-	379, // [379:379] is the sub-list for method output_type
-	379, // [379:379] is the sub-list for method input_type
-	379, // [379:379] is the sub-list for extension type_name
-	379, // [379:379] is the sub-list for extension extendee
-	0,   // [0:379] is the sub-list for field type_name
+	90,  // 257: Proto.EquipmentEnhanceResponse.stored_data:type_name -> Proto.StoredData
+	222, // 258: Proto.LimitBreakRequest.material_items:type_name -> Proto.LimitBreakRequest.MaterialItemsEntry
+	249, // 259: Proto.StoredSample.ListEntry.value:type_name -> Pmisc.Sample
+	249, // 260: Proto.StoredSample.AddEntry.value:type_name -> Pmisc.Sample
+	228, // 261: Proto.StoredEquipment.ListEntry.value:type_name -> Puser.Equipment
+	228, // 262: Proto.StoredEquipment.AddEntry.value:type_name -> Puser.Equipment
+	226, // 263: Proto.StoredJob.ListEntry.value:type_name -> Puser.Job
+	226, // 264: Proto.StoredJob.AddEntry.value:type_name -> Puser.Job
+	250, // 265: Proto.StoredJobSkill.ListEntry.value:type_name -> Puser.JobSkill
+	250, // 266: Proto.StoredJobSkill.AddEntry.value:type_name -> Puser.JobSkill
+	251, // 267: Proto.StoredConditionProgress.ListEntry.value:type_name -> Pmisc.ConditionProgress
+	251, // 268: Proto.StoredConditionProgress.AddEntry.value:type_name -> Pmisc.ConditionProgress
+	252, // 269: Proto.StoredAchievement.ListEntry.value:type_name -> Puser.Achievement
+	252, // 270: Proto.StoredAchievement.AddEntry.value:type_name -> Puser.Achievement
+	253, // 271: Proto.StoredItem.ListEntry.value:type_name -> Puser.Item
+	253, // 272: Proto.StoredItem.AddEntry.value:type_name -> Puser.Item
+	254, // 273: Proto.StoredAnima.ListEntry.value:type_name -> Puser.Anima
+	254, // 274: Proto.StoredAnima.AddEntry.value:type_name -> Puser.Anima
+	255, // 275: Proto.StoredAnimaArea.ListEntry.value:type_name -> Puser.AnimaArea
+	255, // 276: Proto.StoredAnimaArea.AddEntry.value:type_name -> Puser.AnimaArea
+	256, // 277: Proto.StoredRune.ListEntry.value:type_name -> Puser.Rune
+	256, // 278: Proto.StoredRune.AddEntry.value:type_name -> Puser.Rune
+	229, // 279: Proto.StoredElixir.ListEntry.value:type_name -> Puser.Elixir
+	229, // 280: Proto.StoredElixir.AddEntry.value:type_name -> Puser.Elixir
+	257, // 281: Proto.StoredContents.ListEntry.value:type_name -> Puser.Contents
+	257, // 282: Proto.StoredContents.AddEntry.value:type_name -> Puser.Contents
+	258, // 283: Proto.StoredDailyMission.ListEntry.value:type_name -> Puser.DailyMission
+	258, // 284: Proto.StoredDailyMission.AddEntry.value:type_name -> Puser.DailyMission
+	259, // 285: Proto.StoredDailyMissionReward.ListEntry.value:type_name -> Puser.DailyMissionReward
+	259, // 286: Proto.StoredDailyMissionReward.AddEntry.value:type_name -> Puser.DailyMissionReward
+	260, // 287: Proto.StoredOrderMission.ListEntry.value:type_name -> Puser.OrderMission
+	260, // 288: Proto.StoredOrderMission.AddEntry.value:type_name -> Puser.OrderMission
+	261, // 289: Proto.StoredOrderMissionReroll.ListEntry.value:type_name -> Puser.OrderMissionReroll
+	261, // 290: Proto.StoredOrderMissionReroll.AddEntry.value:type_name -> Puser.OrderMissionReroll
+	262, // 291: Proto.StoredOrderMissionReward.ListEntry.value:type_name -> Puser.OrderMissionReward
+	262, // 292: Proto.StoredOrderMissionReward.AddEntry.value:type_name -> Puser.OrderMissionReward
+	263, // 293: Proto.StoredMercenaryHire.ListEntry.value:type_name -> Puser.MercenaryHire
+	263, // 294: Proto.StoredMercenaryHire.AddEntry.value:type_name -> Puser.MercenaryHire
+	264, // 295: Proto.StoredEventMission.ListEntry.value:type_name -> Puser.EventMission
+	264, // 296: Proto.StoredEventMission.AddEntry.value:type_name -> Puser.EventMission
+	265, // 297: Proto.StoredEventMissionReward.ListEntry.value:type_name -> Puser.EventMissionReward
+	265, // 298: Proto.StoredEventMissionReward.AddEntry.value:type_name -> Puser.EventMissionReward
+	266, // 299: Proto.StoredContentsCondition.ListEntry.value:type_name -> Puser.ContentsCondition
+	266, // 300: Proto.StoredContentsCondition.AddEntry.value:type_name -> Puser.ContentsCondition
+	267, // 301: Proto.StoredTitle.ListEntry.value:type_name -> Puser.Title
+	267, // 302: Proto.StoredTitle.AddEntry.value:type_name -> Puser.Title
+	268, // 303: Proto.StoredShopItem.ListEntry.value:type_name -> Puser.ShopItem
+	268, // 304: Proto.StoredShopItem.AddEntry.value:type_name -> Puser.ShopItem
+	235, // 305: Proto.StoredLoginBonus.ListEntry.value:type_name -> Puser.LoginBonus
+	235, // 306: Proto.StoredLoginBonus.AddEntry.value:type_name -> Puser.LoginBonus
+	269, // 307: Proto.StoredEventSugoroku.ListEntry.value:type_name -> Puser.EventSugoroku
+	269, // 308: Proto.StoredEventSugoroku.AddEntry.value:type_name -> Puser.EventSugoroku
+	270, // 309: Proto.StoredBoost.ListEntry.value:type_name -> Puser.Boost
+	270, // 310: Proto.StoredBoost.AddEntry.value:type_name -> Puser.Boost
+	271, // 311: Proto.StoredBlock.ListEntry.value:type_name -> Pmisc.Block
+	271, // 312: Proto.StoredBlock.AddEntry.value:type_name -> Pmisc.Block
+	272, // 313: Proto.StoredExchange.ListEntry.value:type_name -> Puser.Exchange
+	272, // 314: Proto.StoredExchange.AddEntry.value:type_name -> Puser.Exchange
+	273, // 315: Proto.StoredContentsHero.ListEntry.value:type_name -> Puser.ContentsHero
+	273, // 316: Proto.StoredContentsHero.AddEntry.value:type_name -> Puser.ContentsHero
+	274, // 317: Proto.StoredContentsTreasure.ListEntry.value:type_name -> Puser.ContentsTreasure
+	274, // 318: Proto.StoredContentsTreasure.AddEntry.value:type_name -> Puser.ContentsTreasure
+	275, // 319: Proto.StoredContentsWeekMonster.ListEntry.value:type_name -> Puser.ContentsWeekMonster
+	275, // 320: Proto.StoredContentsWeekMonster.AddEntry.value:type_name -> Puser.ContentsWeekMonster
+	276, // 321: Proto.StoredFunctionalTutorial.ListEntry.value:type_name -> Puser.FunctionalTutorial
+	276, // 322: Proto.StoredFunctionalTutorial.AddEntry.value:type_name -> Puser.FunctionalTutorial
+	277, // 323: Proto.StoredEventRoulette.ListEntry.value:type_name -> Puser.EventRoulette
+	277, // 324: Proto.StoredEventRoulette.AddEntry.value:type_name -> Puser.EventRoulette
+	278, // 325: Proto.StoredAngelBattleWeeklyReward.ListEntry.value:type_name -> Puser.AngelBattleWeeklyReward
+	278, // 326: Proto.StoredAngelBattleWeeklyReward.AddEntry.value:type_name -> Puser.AngelBattleWeeklyReward
+	279, // 327: Proto.StoredAchievementEquipment.ListEntry.value:type_name -> Puser.AchievementEquipment
+	279, // 328: Proto.StoredAchievementEquipment.AddEntry.value:type_name -> Puser.AchievementEquipment
+	280, // 329: Proto.StoredAchievementEquipmentReceive.ListEntry.value:type_name -> Puser.AchievementEquipmentReceive
+	280, // 330: Proto.StoredAchievementEquipmentReceive.AddEntry.value:type_name -> Puser.AchievementEquipmentReceive
+	281, // 331: Proto.StoredAchievementEquipmentStamp.ListEntry.value:type_name -> Puser.AchievementEquipmentStamp
+	281, // 332: Proto.StoredAchievementEquipmentStamp.AddEntry.value:type_name -> Puser.AchievementEquipmentStamp
+	282, // 333: Proto.StoredEquipmentLiberation.ListEntry.value:type_name -> Puser.EquipmentLiberation
+	282, // 334: Proto.StoredEquipmentLiberation.AddEntry.value:type_name -> Puser.EquipmentLiberation
+	227, // 335: Proto.StoredJobDeck.ListEntry.value:type_name -> Puser.JobDeck
+	227, // 336: Proto.StoredJobDeck.AddEntry.value:type_name -> Puser.JobDeck
+	247, // 337: Proto.StoredAgitoFurnitureSetting.ListEntry.value:type_name -> Puser.AgitoFurnitureSetting
+	247, // 338: Proto.StoredAgitoFurnitureSetting.AddEntry.value:type_name -> Puser.AgitoFurnitureSetting
+	283, // 339: Proto.StoredAgitoAp.ListEntry.value:type_name -> Puser.AgitoAp
+	283, // 340: Proto.StoredAgitoAp.AddEntry.value:type_name -> Puser.AgitoAp
+	284, // 341: Proto.StoredAgitoRelotteryInterval.ListEntry.value:type_name -> Puser.AgitoRelotteryInterval
+	284, // 342: Proto.StoredAgitoRelotteryInterval.AddEntry.value:type_name -> Puser.AgitoRelotteryInterval
+	285, // 343: Proto.StoredAgitoVisitor.ListEntry.value:type_name -> Puser.AgitoVisitor
+	285, // 344: Proto.StoredAgitoVisitor.AddEntry.value:type_name -> Puser.AgitoVisitor
+	286, // 345: Proto.StoredAgitoGoodHistory.ListEntry.value:type_name -> Puser.AgitoGoodHistory
+	286, // 346: Proto.StoredAgitoGoodHistory.AddEntry.value:type_name -> Puser.AgitoGoodHistory
+	287, // 347: Proto.StoredGachaHistory.ListEntry.value:type_name -> Puser.GachaHistory
+	287, // 348: Proto.StoredGachaHistory.AddEntry.value:type_name -> Puser.GachaHistory
+	288, // 349: Proto.StoredAgitoCountReward.ListEntry.value:type_name -> Puser.AgitoCountReward
+	288, // 350: Proto.StoredAgitoCountReward.AddEntry.value:type_name -> Puser.AgitoCountReward
+	289, // 351: Proto.StoredSeasonPass.ListEntry.value:type_name -> Puser.SeasonPass
+	289, // 352: Proto.StoredSeasonPass.AddEntry.value:type_name -> Puser.SeasonPass
+	290, // 353: Proto.StoredSeasonPassDailyMission.ListEntry.value:type_name -> Puser.SeasonPassDailyMission
+	290, // 354: Proto.StoredSeasonPassDailyMission.AddEntry.value:type_name -> Puser.SeasonPassDailyMission
+	291, // 355: Proto.StoredSeasonPassWeeklyMission.ListEntry.value:type_name -> Puser.SeasonPassWeeklyMission
+	291, // 356: Proto.StoredSeasonPassWeeklyMission.AddEntry.value:type_name -> Puser.SeasonPassWeeklyMission
+	292, // 357: Proto.StoredImportantMissionGroup.ListEntry.value:type_name -> Puser.ImportantMissionGroup
+	292, // 358: Proto.StoredImportantMissionGroup.AddEntry.value:type_name -> Puser.ImportantMissionGroup
+	293, // 359: Proto.StoredImportantMission.ListEntry.value:type_name -> Puser.ImportantMission
+	293, // 360: Proto.StoredImportantMission.AddEntry.value:type_name -> Puser.ImportantMission
+	294, // 361: Proto.StoredSpecialItemProgress.ListEntry.value:type_name -> Puser.SpecialItemProgress
+	294, // 362: Proto.StoredSpecialItemProgress.AddEntry.value:type_name -> Puser.SpecialItemProgress
+	295, // 363: Proto.StoredAdvertising.ListEntry.value:type_name -> Puser.Advertising
+	295, // 364: Proto.StoredAdvertising.AddEntry.value:type_name -> Puser.Advertising
+	296, // 365: Proto.StoredReliefPointSending.ListEntry.value:type_name -> Puser.ReliefPointSending
+	296, // 366: Proto.StoredReliefPointSending.AddEntry.value:type_name -> Puser.ReliefPointSending
+	297, // 367: Proto.StoredReliefPointReward.ListEntry.value:type_name -> Puser.ReliefPointReward
+	297, // 368: Proto.StoredReliefPointReward.AddEntry.value:type_name -> Puser.ReliefPointReward
+	298, // 369: Proto.StoredContentsRiskDungeon.ListEntry.value:type_name -> Puser.ContentsRiskDungeon
+	298, // 370: Proto.StoredContentsRiskDungeon.AddEntry.value:type_name -> Puser.ContentsRiskDungeon
+	299, // 371: Proto.StoredContentsClearAncientTowerEx.ListEntry.value:type_name -> Puser.ContentsClearAncientTowerEx
+	299, // 372: Proto.StoredContentsClearAncientTowerEx.AddEntry.value:type_name -> Puser.ContentsClearAncientTowerEx
+	300, // 373: Proto.StoredJobDeckGroup.ListEntry.value:type_name -> Puser.JobDeckGroup
+	300, // 374: Proto.StoredJobDeckGroup.AddEntry.value:type_name -> Puser.JobDeckGroup
+	301, // 375: Proto.StoredGvgPracticeReward.ListEntry.value:type_name -> Puser.GvgPracticeReward
+	301, // 376: Proto.StoredGvgPracticeReward.AddEntry.value:type_name -> Puser.GvgPracticeReward
+	302, // 377: Proto.StoredShopSpecialSale.ListEntry.value:type_name -> Puser.ShopSpecialSale
+	302, // 378: Proto.StoredShopSpecialSale.AddEntry.value:type_name -> Puser.ShopSpecialSale
+	248, // 379: Proto.StoredAgitoItemArea.ListEntry.value:type_name -> Puser.AgitoItemArea
+	248, // 380: Proto.StoredAgitoItemArea.AddEntry.value:type_name -> Puser.AgitoItemArea
+	381, // [381:381] is the sub-list for method output_type
+	381, // [381:381] is the sub-list for method input_type
+	381, // [381:381] is the sub-list for extension type_name
+	381, // [381:381] is the sub-list for extension extendee
+	0,   // [0:381] is the sub-list for field type_name
 }
 
 func init() { file_proto_proto_init() }
@@ -8701,7 +8820,7 @@ func file_proto_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_proto_rawDesc), len(file_proto_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   220,
+			NumMessages:   223,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

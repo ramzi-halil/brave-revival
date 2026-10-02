@@ -29,11 +29,20 @@ func playerLoad(w http.ResponseWriter, r *http.Request) {
 
 func playerDetail(w http.ResponseWriter, r *http.Request) {
 	reply := getHandler(r).readPlayer(func(player *proto.StoredData) *proto.PlayerDetail {
+		job := player.Job.List[player.Player.JobId]
+		var currentDeck *puser.JobDeck
+		for _, deck := range player.JobDeck.List {
+			if deck.JobId == job.JobId && deck.Idx == job.JobDeckIdx {
+				currentDeck = deck
+				break
+			}
+		}
+
 		return &proto.PlayerDetail{
 			Player:         player.Player,
-			CurrentJob:     player.Job.List[1],
+			CurrentJob:     job,
 			Jobs:           slices.Collect(maps.Values(player.Job.List)),
-			CurrentJobDeck: player.JobDeck.List[1],
+			CurrentJobDeck: currentDeck,
 			Equipments:     slices.Collect(maps.Values(player.Equipment.List)),
 			BaseParameter:  &proto.BaseParameter{},
 			GuildSummary:   &proto.GuildSummary{},
@@ -92,6 +101,22 @@ func playerChangeComment(w http.ResponseWriter, r *http.Request) {
 
 	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
 		player.Player.Comment = comment
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func playerChangeJob(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	jobId := u32(r.PostForm.Get("job_id"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		player.Player.JobId = jobId
 		return &proto.Nocontent{
 			StoredData: &proto.StoredData{
 				Generation: player.Generation,

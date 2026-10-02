@@ -742,3 +742,13 @@ message ShopItemReceiveList {
 message AuthorizeInheritPassword {
     string code = 1;
 }
+
+message EquipmentEnhanceResponse {
+    StoredData stored_data = 1;
+    uint32 try_count = 2;
+}
+
+message LimitBreakRequest {
+    uint64 equipment_id = 1;
+    map<uint32, uint32> material_items = 3;
+}
