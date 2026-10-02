@@ -99,6 +99,11 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/player/search/list", empty("Proto.PlayerSearchList"))
 		router.Get("/block/list", empty("Proto.BlockList"))
 
+		router.Get("/mercenary/history", empty("Proto.MercenaryHistory"))
+		router.Post("/mercenary/register", empty("Proto.Nocontent"))
+		router.Post("/mercenary/cancel", empty("Proto.Nocontent"))
+		router.Get("/mercenary/list", empty("Proto.MercenaryList"))
+
 		router.Post("/field/top", fieldTop)
 		router.Post("/agito/furniture/set", agitoFurnitureSet)
 		router.Post("/agito/item/set", agitoItemSet)
@@ -117,6 +122,25 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/shop/top", empty("Proto.ShopTopResponse"))
 
 		router.Post("/gacha/purchase", gachaPurchase)
+		router.Post("/event/roulette/play", empty("Proto.RoulettePlay"))
+		router.Post("/item/exchange", empty("Proto.Nocontent"))
+		router.Post("/item/use/box/choice", empty("Proto.UseItemBoxReceiveList"))
+		router.Post("/item/use/box/random", empty("Proto.UseItemBoxReceiveList"))
+		router.Post("/item/use", empty("Proto.Nocontent"))
+
+		router.Get("/ranking/list", empty("Proto.RankingList"))
+		router.Post("/present/list", empty("Proto.PresentBoxList"))
+
+		router.Post("/elixir/manufacture", empty("Proto.Nocontent"))
+		router.Post("/anima/put", empty("Proto.Nocontent"))
+		router.Post("/achievement/daily", empty("Proto.Nocontent"))
+
+		router.Get("/guild/player/invite/request/list", empty("Proto.GuildInviteRequestList"))
+		router.Get("/guild/player/join/request/list", empty("Proto.GuildJoinRequestList"))
+		router.Get("/guild/player/info", empty("Proto.GuildPlayerInfo"))
+		router.Get("/guild/recommend/list", empty("Proto.GuildRecommendList"))
+		router.Post("/guild/search/list", empty("Proto.GuildSearchList"))
+		router.Get("/guild/penalty", empty("Proto.GuildPenalty"))
 	})
 	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
 	router.Get("/news/top/{os}", news)
