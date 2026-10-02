@@ -148,6 +148,12 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/guild/recommend/list", empty("Proto.GuildRecommendList"))
 		router.Post("/guild/search/list", empty("Proto.GuildSearchList"))
 		router.Get("/guild/penalty", empty("Proto.GuildPenalty"))
+
+		router.Get("/chat/messages", empty("Proto.ChatMessageListResponse"))
+		router.Get("/chat/directs", empty("Proto.ChatFriendListResponse"))
+		router.Get("/chat/friends", empty("Proto.ChatFriendListResponse"))
+		router.Get("/chat/groups", empty("Proto.ChatGroupWithInviteResponse"))
+		router.Post("/chat/group/create", empty("Proto.ChatGroupCreateResultResponse"))
 	})
 	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
 	router.Get("/news/top/{os}", news)
