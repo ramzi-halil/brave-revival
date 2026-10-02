@@ -50,6 +50,9 @@ func newHandler(cfg *config.Config, tlsCert tls.Certificate, wwwHandler *www.Han
 	h.router.Get("/singbox.json", h.handleSingBox)
 	h.router.Get("/", h.handleIndex)
 	h.router.Get("/flows", h.handleFlows)
+	h.router.Get("/agito", h.handleAgito)
+	h.router.Get("/forms/agito", h.handleAgitoData)
+	h.router.Put("/forms/agito", h.handleAgitoSave)
 	h.router.Get("/forms/flows", h.handleFlowEvents)
 	h.router.Get("/forms/flows/{id}", h.handleFlow)
 	h.router.Get("/res/t/{id}", h.handleTexture)
@@ -121,7 +124,7 @@ func (h *handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	slog.Info("handling direct request", "method", r.Method, "url", &r.URL, "remote_addr", r.RemoteAddr)
+	slog.Debug("handling direct request", "method", r.Method, "url", r.URL, "remote_addr", r.RemoteAddr)
 
 	h.router.ServeHTTP(w, r)
 }

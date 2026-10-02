@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agito editor</title>
+    <style>
+        .editor { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1rem; align-items: start; }
+        .room { overflow-x: auto; }
+        #item-lookup h2 { margin-top: 0; }
+        #lookup-equipment { max-width: 100%; }
+        @media (max-width: 700px) { .editor { grid-template-columns: minmax(0, 1fr); } }
+        #areas { display: grid; grid-template-columns: repeat(9, minmax(100px, 1fr)); grid-template-rows: auto 3rem; align-items: start; gap: .5rem; max-width: 1350px; }
+        fieldset { min-width: 0; margin: 0; }
+        fieldset button { width: 100%; margin-bottom: .25rem; }
+        img { width: 40px; height: 40px; object-fit: contain; vertical-align: middle; }
+        dialog { max-width: 90vw; max-height: 85vh; overflow-y: auto; }
+        .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .25rem; }
+        .choices button { display: flex; align-items: center; gap: .5rem; text-align: left; }
+        .motion-2 { background-color: #dbeafe; color: #1e3a8a; }
+        .motion-3 { background-color: #f3e8ff; color: #581c87; }
+        #selector { width: 750px; }
+    </style>
+</head>
+<body>
+    <p><a href="/">Control page</a></p>
+    <h1>Agito editor</h1>
+    <p>Select an area’s item, then its visitors. Changes take effect when you save.</p>
+    <p><button id="remove-all" type="button" disabled>Remove all selections</button></p>
+    <div class="editor">
+        <div class="room"><div id="areas"></div></div>
+        <aside id="item-lookup" aria-labelledby="lookup-title">
+            <h2 id="lookup-title">Find items by visitor</h2>
+            <p><span id="lookup-icon"></span><select id="lookup-equipment" aria-label="Visitor equipment" disabled></select></p>
+            <div id="lookup-results"></div>
+        </aside>
+    </div>
+    <p><button id="save" type="button" disabled>Save</button> <span id="status" role="status">Loading…</span></p>
+    <dialog id="selector" aria-labelledby="selector-title">
+        <h2 id="selector-title"></h2>
+        <p><button id="remove" type="button">Remove selection</button> <button id="cancel" type="button">Cancel</button></p>
+        <p><label>Search by name or ID <input id="search" type="search"></label></p>
+        <div id="options"></div>
+    </dialog>
+    <script>
+        const areasElement = document.getElementById('areas');
+        const status = document.getElementById('status');
+        const save = document.getElementById('save');
+        const removeAll = document.getElementById('remove-all');
+        const selector = document.getElementById('selector');
+        const search = document.getElementById('search');
+        const options = document.getElementById('options');
+        const lookupEquipment = document.getElementById('lookup-equipment');
+        const lookupIcon = document.getElementById('lookup-icon');
+        const lookupResults = document.getElementById('lookup-results');
+        const changed = new Set();
+        const positions = new Map([
+            [301, [1, 2, 1]], [302, [1, 4, 1]], [303, [1, 6, 1]], [304, [1, 8, 1]],
+            [101, [3, 2, 1]], [102, [3, 3, 1]],
+            [201, [3, 7, 1]], [401, [3, 8, 1]], [202, [3, 9, 1]],
+            [205, [4, 4, 1]], [403, [4, 5, 1]], [206, [4, 6, 1]],
+            [207, [5, 1, 1]], [404, [5, 2, 1]], [208, [5, 3, 1]],
+            [203, [5, 7, 1]], [402, [5, 8, 1]], [204, [5, 9, 1]],
+        ]);
+        let data, items, lineups, active;
+
+        function icon(choice) {
+            const img = document.createElement('img');
+            img.src = `/res/t/${choice.resourceId}`;
+            img.alt = '';
+            img.loading = 'lazy';
+            img.addEventListener('error', () => { img.hidden = true; });
+            return img;
+        }
+
+        function choiceButton(choice, emptyLabel, label, onClick) {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.setAttribute('aria-label', label);
+            if (choice?.motionPattern === 2 || choice?.motionPattern === 3) button.className = `motion-${choice.motionPattern}`;
+            if (choice?.resourceId) button.append(icon(choice));
+            button.append(document.createTextNode(choice ? choice.name : emptyLabel));
+            button.addEventListener('click', onClick);
+            return button;
+        }
+
+        function renderAreas() {
+            areasElement.replaceChildren();
+            let extra = 0;
+            for (const area of data.areas) {
+                const field = document.createElement('fieldset');
+                const [row, column, span] = positions.get(area.areaId) || [6 + Math.floor(extra / 9), 1 + extra++ % 9, 1];
+                field.style.gridRow = row;
+                field.style.gridColumn = `${column} / span ${span}`;
+                const legend = document.createElement('legend');
+                legend.textContent = `${{1: '☕️', 2: '💺', 3: '🗄️', 4: '🛋️'}[area.type]} (${area.areaId})`;
+                field.append(legend);
+                const item = items.get(area.itemId);
+                const itemChoice = item || (area.itemId ? { name: `Item #${area.itemId}` } : null);
+                field.append(choiceButton(itemChoice, 'Select item', `Select item for area ${area.areaId}`, () => openSelector(area, null)));
+                for (let slot = 0; slot < 3; slot++) {
+                    if (!item?.lineupIds[slot]) continue;
+                    const id = area.lineupIds[slot];
+                    const choice = lineups.get(id) || (id ? { name: `Visitor #${id}` } : null);
+                    field.append(choiceButton(choice, `Select visitor ${slot + 1}`, `Select visitor ${slot + 1} for area ${area.areaId}`, () => openSelector(area, slot)));
+                }
+                areasElement.append(field);
+            }
+        }
+
+        function select(id) {
+            const { area, slot } = active;
+            if (slot === null) {
+                if (area.itemId !== id) {
+                    area.itemId = id;
+                    area.lineupIds = [0, 0, 0];
+                    changed.add(area.areaId);
+                }
+            } else if (area.lineupIds[slot] !== id) {
+                area.lineupIds[slot] = id;
+                changed.add(area.areaId);
+            }
+            selector.close();
+            renderAreas();
+            save.disabled = changed.size === 0;
+            status.textContent = changed.size ? 'Unsaved changes.' : '';
+        }
+
+        function renderOptions() {
+            const { area, slot } = active;
+            const isItem = slot === null;
+            const preferredGroup = isItem ? area.type : items.get(area.itemId).lineupIds[slot];
+            const query = search.value.trim().toLocaleLowerCase();
+            const choices = (isItem ? data.items : data.lineups).filter(choice =>
+                `${choice.name} ${choice.id} ${choice.equipmentId || ''}`.toLocaleLowerCase().includes(query));
+            const preferred = choice => isItem ? choice.type === preferredGroup : choice.lineupId === preferredGroup;
+            options.replaceChildren();
+            for (const [title, matches] of [
+                ['Preferred', choices.filter(preferred)],
+                ['Other choices', choices.filter(choice => !preferred(choice))],
+            ]) {
+                if (title === 'Other choices') options.append(document.createElement('hr'));
+                const heading = document.createElement('h3');
+                heading.textContent = title;
+                options.append(heading);
+                if (!matches.length) {
+                    const empty = document.createElement('p');
+                    empty.textContent = 'No matching choices.';
+                    options.append(empty);
+                    continue;
+                }
+                const list = document.createElement('div');
+                list.className = 'choices';
+                for (const choice of matches) {
+                    const label = `${choice.name} (#${choice.id})`;
+                    const button = choiceButton(choice, '', label, () => select(choice.id));
+                    const current = isItem ? area.itemId : area.lineupIds[slot];
+                    button.setAttribute('aria-pressed', choice.id === current);
+                    const detail = document.createElement('small');
+                    detail.textContent = `#${choice.id}`;
+                    button.append(detail);
+                    list.append(button);
+                }
+                options.append(list);
+            }
+        }
+
+        function openSelector(area, slot) {
+            active = { area, slot };
+            document.getElementById('selector-title').textContent = slot === null
+                ? `Area ${area.areaId}: select item` : `Area ${area.areaId}: select visitor ${slot + 1}`;
+            search.value = '';
+            renderOptions();
+            selector.showModal();
+            search.focus();
+        }
+
+        function renderEquipmentOptions() {
+            const current = lookupEquipment.value;
+            const equipment = new Map();
+            for (const lineup of data.lineups) {
+                equipment.set(lineup.equipmentId, lineup);
+            }
+            lookupEquipment.replaceChildren();
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = equipment.size ? 'Select visitor equipment' : 'No matching equipment';
+            lookupEquipment.append(placeholder);
+            let group, memberId;
+            for (const visitor of [...equipment.values()].sort((a, b) => a.memberId - b.memberId || a.equipmentId - b.equipmentId)) {
+                if (!group || memberId !== visitor.memberId) {
+                    group = document.createElement('optgroup');
+                    group.label = visitor.memberName;
+                    memberId = visitor.memberId;
+                    lookupEquipment.append(group);
+                }
+                const option = document.createElement('option');
+                option.value = visitor.equipmentId;
+                option.textContent = `${visitor.name} (#${visitor.equipmentId})`;
+                group.append(option);
+            }
+            lookupEquipment.value = equipment.has(Number(current)) ? current : '';
+            renderLookup();
+        }
+
+        function renderLookup() {
+            const equipmentId = Number(lookupEquipment.value);
+            lookupResults.replaceChildren();
+            lookupIcon.replaceChildren();
+            if (!equipmentId) {
+                lookupResults.textContent = 'Select visitor equipment to find its preferred items.';
+                return;
+            }
+            const visitors = data.lineups.filter(lineup => lineup.equipmentId === equipmentId);
+            if (visitors[0]?.resourceId) lookupIcon.append(icon(visitors[0]));
+            const groups = new Set(visitors.map(visitor => visitor.lineupId));
+            let count = 0;
+            for (const item of data.items) {
+                if (!item.lineupIds.some(group => group !== 0 && groups.has(group))) continue;
+                const entry = document.createElement('p');
+                if (item.resourceId) entry.append(icon(item));
+                entry.append(document.createTextNode(`${item.name} (#${item.id})`));
+                lookupResults.append(entry);
+                count++;
+            }
+            if (!count) lookupResults.textContent = 'No matching Agito items.';
+        }
+
+        lookupEquipment.addEventListener('change', renderLookup);
+        search.addEventListener('input', renderOptions);
+        document.getElementById('remove').addEventListener('click', () => select(0));
+        document.getElementById('cancel').addEventListener('click', () => selector.close());
+        selector.addEventListener('click', event => {
+            if (event.target !== selector) return;
+            const bounds = selector.getBoundingClientRect();
+            if (event.clientX < bounds.left || event.clientX > bounds.right ||
+                event.clientY < bounds.top || event.clientY > bounds.bottom) selector.close();
+        });
+        removeAll.addEventListener('click', () => {
+            for (const area of data.areas) {
+                if (!area.itemId && !area.lineupIds.some(id => id !== 0)) continue;
+                area.itemId = 0;
+                area.lineupIds = [0, 0, 0];
+                changed.add(area.areaId);
+            }
+            renderAreas();
+            save.disabled = changed.size === 0;
+            status.textContent = changed.size ? 'Unsaved changes.' : '';
+        });
+        save.addEventListener('click', async () => {
+            save.disabled = true;
+            removeAll.disabled = true;
+            areasElement.inert = true;
+            status.textContent = 'Saving…';
+            try {
+                const selections = data.areas.filter(area => changed.has(area.areaId)).map(area => ({
+                    areaId: area.areaId, itemId: area.itemId, lineupIds: area.lineupIds,
+                }));
+                const response = await fetch('/forms/agito', {
+                    method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(selections),
+                });
+                if (!response.ok) throw new Error(await response.text());
+                changed.clear();
+                status.textContent = 'Saved.';
+            } catch (error) {
+                status.textContent = `Save failed: ${error.message}`;
+            } finally {
+                areasElement.inert = false;
+                removeAll.disabled = false;
+                save.disabled = changed.size === 0;
+            }
+        });
+
+        (async () => {
+            try {
+                const response = await fetch('/forms/agito');
+                if (!response.ok) throw new Error(await response.text());
+                data = await response.json();
+                data.items.sort((a, b) => a.id - b.id);
+                data.lineups.sort((a, b) => a.id - b.id);
+                items = new Map(data.items.map(item => [item.id, item]));
+                lineups = new Map(data.lineups.map(lineup => [lineup.id, lineup]));
+                renderAreas();
+                removeAll.disabled = false;
+                status.textContent = '';
+                lookupEquipment.disabled = false;
+                renderEquipmentOptions();
+            } catch (error) {
+                status.textContent = `Load failed: ${error.message}`;
+            }
+        })();
+    </script>
+</body>
+</html>

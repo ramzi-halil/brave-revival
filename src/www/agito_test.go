@@ -27,6 +27,9 @@ func TestAgitoPlayerRecommend(t *testing.T) {
 			{Id: 101, AgitoItemType: 1},
 			{Id: 102, AgitoItemType: 1, ExceptAgitoItemAreaId_3: 405},
 		},
+		Title: []*pmaster.Title{
+			{Id: 1},
+		},
 	}
 	for _, itemType := range []uint32{1, 2, 3, 6, 7, 8} {
 		master.AgitoFurniture = append(master.AgitoFurniture, &pmaster.AgitoFurniture{ItemId: 1000 + itemType, Type: itemType})
