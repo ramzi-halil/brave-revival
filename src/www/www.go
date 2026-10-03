@@ -190,6 +190,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/equipment/rune/detach/all", equipmentRuneDetachAll)
 		router.Post("/equipment/rune/attach", equipmentRuneAttach)
 		router.Post("/equipment/record", empty("Proto.EquipmentRecordList"))
+		router.Post("/equipment/sell", empty("Proto.Nocontent"))
 
 		router.Post("/player/change/job", playerChangeJob)
 		router.Post("/job/skill/learn", empty("Proto.Nocontent"))
@@ -197,6 +198,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/job/deck/set", jobDeckSet)
 		router.Post("/job/group/label/change", jobGroupLabelChange)
 		router.Post("/job/deck/label/change", jobDeckLabelChange)
+		router.Post("/job/deck/equipment/remove/all", jobDeckEquipmentRemoveAll)
 
 		router.Post("/abyss/fever/charge", empty("Proto.Nocontent"))
 		router.Get("/tower/top", empty("Proto.TowerTopResult"))
