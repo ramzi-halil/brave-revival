@@ -1625,6 +1625,138 @@ func (x *ArenaSeason) GetCloseDate() string {
 	return ""
 }
 
+type GuildDungeon struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	GuildId          uint64                 `protobuf:"varint,1,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	GuildDungeonId   uint32                 `protobuf:"varint,2,opt,name=guild_dungeon_id,json=guildDungeonId,proto3" json:"guild_dungeon_id,omitempty"`
+	RaidId           uint32                 `protobuf:"varint,3,opt,name=raid_id,json=raidId,proto3" json:"raid_id,omitempty"`
+	ResetCount       uint32                 `protobuf:"varint,4,opt,name=reset_count,json=resetCount,proto3" json:"reset_count,omitempty"`
+	LastClearStageId uint32                 `protobuf:"varint,5,opt,name=last_clear_stage_id,json=lastClearStageId,proto3" json:"last_clear_stage_id,omitempty"`
+	StageStatus      uint32                 `protobuf:"varint,6,opt,name=stage_status,json=stageStatus,proto3" json:"stage_status,omitempty"`
+	IsOnceCleared    uint32                 `protobuf:"varint,7,opt,name=is_once_cleared,json=isOnceCleared,proto3" json:"is_once_cleared,omitempty"`
+	LastOpenAt       string                 `protobuf:"bytes,8,opt,name=last_open_at,json=lastOpenAt,proto3" json:"last_open_at,omitempty"`
+	LastResetAt      string                 `protobuf:"bytes,9,opt,name=last_reset_at,json=lastResetAt,proto3" json:"last_reset_at,omitempty"`
+	LastClearAt      string                 `protobuf:"bytes,10,opt,name=last_clear_at,json=lastClearAt,proto3" json:"last_clear_at,omitempty"`
+	LastUpdateAt     string                 `protobuf:"bytes,11,opt,name=last_update_at,json=lastUpdateAt,proto3" json:"last_update_at,omitempty"`
+	RaidEndAt        string                 `protobuf:"bytes,12,opt,name=raid_end_at,json=raidEndAt,proto3" json:"raid_end_at,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *GuildDungeon) Reset() {
+	*x = GuildDungeon{}
+	mi := &file_pmisc_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildDungeon) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildDungeon) ProtoMessage() {}
+
+func (x *GuildDungeon) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildDungeon.ProtoReflect.Descriptor instead.
+func (*GuildDungeon) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GuildDungeon) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *GuildDungeon) GetGuildDungeonId() uint32 {
+	if x != nil {
+		return x.GuildDungeonId
+	}
+	return 0
+}
+
+func (x *GuildDungeon) GetRaidId() uint32 {
+	if x != nil {
+		return x.RaidId
+	}
+	return 0
+}
+
+func (x *GuildDungeon) GetResetCount() uint32 {
+	if x != nil {
+		return x.ResetCount
+	}
+	return 0
+}
+
+func (x *GuildDungeon) GetLastClearStageId() uint32 {
+	if x != nil {
+		return x.LastClearStageId
+	}
+	return 0
+}
+
+func (x *GuildDungeon) GetStageStatus() uint32 {
+	if x != nil {
+		return x.StageStatus
+	}
+	return 0
+}
+
+func (x *GuildDungeon) GetIsOnceCleared() uint32 {
+	if x != nil {
+		return x.IsOnceCleared
+	}
+	return 0
+}
+
+func (x *GuildDungeon) GetLastOpenAt() string {
+	if x != nil {
+		return x.LastOpenAt
+	}
+	return ""
+}
+
+func (x *GuildDungeon) GetLastResetAt() string {
+	if x != nil {
+		return x.LastResetAt
+	}
+	return ""
+}
+
+func (x *GuildDungeon) GetLastClearAt() string {
+	if x != nil {
+		return x.LastClearAt
+	}
+	return ""
+}
+
+func (x *GuildDungeon) GetLastUpdateAt() string {
+	if x != nil {
+		return x.LastUpdateAt
+	}
+	return ""
+}
+
+func (x *GuildDungeon) GetRaidEndAt() string {
+	if x != nil {
+		return x.RaidEndAt
+	}
+	return ""
+}
+
 var File_pmisc_proto protoreflect.FileDescriptor
 
 const file_pmisc_proto_rawDesc = "" +
@@ -1785,7 +1917,23 @@ const file_pmisc_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
 	"\topen_date\x18\x02 \x01(\tR\bopenDate\x12\x1d\n" +
 	"\n" +
-	"close_date\x18\x03 \x01(\tR\tcloseDateB+Z)example.com/brave-revival/src/proto/pmiscb\x06proto3"
+	"close_date\x18\x03 \x01(\tR\tcloseDate\"\xb7\x03\n" +
+	"\fGuildDungeon\x12\x19\n" +
+	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12(\n" +
+	"\x10guild_dungeon_id\x18\x02 \x01(\rR\x0eguildDungeonId\x12\x17\n" +
+	"\araid_id\x18\x03 \x01(\rR\x06raidId\x12\x1f\n" +
+	"\vreset_count\x18\x04 \x01(\rR\n" +
+	"resetCount\x12-\n" +
+	"\x13last_clear_stage_id\x18\x05 \x01(\rR\x10lastClearStageId\x12!\n" +
+	"\fstage_status\x18\x06 \x01(\rR\vstageStatus\x12&\n" +
+	"\x0fis_once_cleared\x18\a \x01(\rR\risOnceCleared\x12 \n" +
+	"\flast_open_at\x18\b \x01(\tR\n" +
+	"lastOpenAt\x12\"\n" +
+	"\rlast_reset_at\x18\t \x01(\tR\vlastResetAt\x12\"\n" +
+	"\rlast_clear_at\x18\n" +
+	" \x01(\tR\vlastClearAt\x12$\n" +
+	"\x0elast_update_at\x18\v \x01(\tR\flastUpdateAt\x12\x1e\n" +
+	"\vraid_end_at\x18\f \x01(\tR\traidEndAtB+Z)example.com/brave-revival/src/proto/pmiscb\x06proto3"
 
 var (
 	file_pmisc_proto_rawDescOnce sync.Once
@@ -1799,7 +1947,7 @@ func file_pmisc_proto_rawDescGZIP() []byte {
 	return file_pmisc_proto_rawDescData
 }
 
-var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_pmisc_proto_goTypes = []any{
 	(*GuildPersonalMissionList)(nil),      // 0: Pmisc.GuildPersonalMissionList
 	(*GuildSharedMissionList)(nil),        // 1: Pmisc.GuildSharedMissionList
@@ -1818,6 +1966,7 @@ var file_pmisc_proto_goTypes = []any{
 	(*GuildBoard)(nil),                    // 14: Pmisc.GuildBoard
 	(*Sample)(nil),                        // 15: Pmisc.Sample
 	(*ArenaSeason)(nil),                   // 16: Pmisc.ArenaSeason
+	(*GuildDungeon)(nil),                  // 17: Pmisc.GuildDungeon
 }
 var file_pmisc_proto_depIdxs = []int32{
 	8, // 0: Pmisc.GuildFacilityList.list:type_name -> Pmisc.GuildFacility
@@ -1839,7 +1988,7 @@ func file_pmisc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pmisc_proto_rawDesc), len(file_pmisc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

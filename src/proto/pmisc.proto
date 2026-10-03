@@ -180,3 +180,18 @@ message ArenaSeason {
     string open_date = 2;
     string close_date = 3;
 }
+
+message GuildDungeon {
+    uint64 guild_id = 1;
+    uint32 guild_dungeon_id = 2;
+    uint32 raid_id = 3;
+    uint32 reset_count = 4;
+    uint32 last_clear_stage_id = 5;
+    uint32 stage_status = 6;
+    uint32 is_once_cleared = 7;
+    string last_open_at = 8;
+    string last_reset_at = 9;
+    string last_clear_at = 10;
+    string last_update_at = 11;
+    string raid_end_at = 12;
+}

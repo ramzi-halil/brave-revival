@@ -125,6 +125,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 
 		router.Get("/mission/guild/personal/list", missionGuildPersonalList)
 		router.Get("/mission/guild/shared/list", missionGuildSharedList)
+		router.Get("/loginbonus/list", empty("Proto.UserLoginBonus"))
 
 		router.Get("/guild/player/invite/request/list", empty("Proto.GuildInviteRequestList"))
 		router.Get("/guild/player/join/request/list", empty("Proto.GuildJoinRequestList"))
@@ -150,7 +151,19 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/guild/warehouse/history/list", empty("Proto.GuildWarehouseHistoryList"))
 		router.Post("/guild/update/symbol", guildUpdateSymbol)
 		router.Post("/guild/member/leave", empty("Proto.Nocontent"))
+		router.Post("/guild/update/setting", empty("Proto.Nocontent"))
+		router.Post("/guild/update/description", empty("Proto.Nocontent"))
+		router.Post("/guild/change/name", guildChangeName)
+		router.Post("/guild/update/boardtitle", empty("Proto.Nocontent"))
+		router.Post("/guild/update/boardmessage", empty("Proto.Nocontent"))
+		router.Post("/guild/update/boardshow", empty("Proto.Nocontent"))
+		router.Post("/guild/dungeon/top", guildDungeonTop)
 		router.Get("/mission/guild/weekly/list", missionGuildWeeklyList)
+		router.Get("/holybeast/top", empty("Proto.HolyBeastInfo"))
+
+		router.Get("/gvg/bid/top", empty("Proto.GvgBidTop"))
+		router.Get("/gvg/bid/top/field/list", gvgBidTopFieldList)
+		router.Get("/gvg/history/list", gvgHistoryList)
 
 		router.Post("/vip/receive/daily/reward", empty("Proto.Nocontent"))
 		router.Post("/shop/buy", shopBuy)

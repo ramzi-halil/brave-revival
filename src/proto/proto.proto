@@ -864,3 +864,37 @@ message GuildPenalty {
     uint64 next_interval = 4;
     string last_leaving_at = 5;
 }
+
+message GuildDungeon {
+    Pmisc.GuildDungeon guild_dungeon = 1;
+    uint32 entry_cnt = 2;
+    bool battle_start = 3;
+    map<uint32, uint32> stage_list = 4;
+}
+
+message GuildDungeonTop {
+    uint64 guild_id = 1;
+    uint32 guild_lv = 2;
+    uint32 guild_tower_lv = 3;
+    uint32 guild_member_cnt = 4;
+    Pmisc.Guild guild = 5;
+    map<uint32, GuildDungeon> guild_dungeon_raid = 6;
+    Pcommon.Error error = 7;
+    StoredData stored_data = 8;
+}
+
+message GvgHistoryList {
+    Pcommon.Error error = 1;
+    uint32 battle_field_id = 2;
+    // repeated GvgHistory list = 3;
+}
+
+message GvgBidTopFieldList {
+    Pcommon.Error error = 1;
+    // map<uint32, GvgBattleFieldBid> max_bid_map = 2;
+    map<uint32, string> end_time_map = 3;
+    // Pmisc.GvgBid own_guild_bid = 4;
+    uint32 own_guild_bid_rank = 5;
+    map<uint32, bool> battle_matching_status_map = 6;
+    map<uint32, uint32> field_limit_cp_map = 7;
+}

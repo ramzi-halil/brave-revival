@@ -9,6 +9,36 @@ import (
 	"example.com/brave-revival/src/proto/puser"
 )
 
+func generateGuild(player *proto.StoredData) *pmisc.Guild {
+	return &pmisc.Guild{
+		Id:                      player.GuildInfo.GuildId,
+		Name:                    player.GuildInfo.GuildName,
+		Exp:                     99_999_999,
+		Lupi:                    999_999_999,
+		Wood:                    999_999,
+		Stone:                   999_999,
+		Iron:                    999_999,
+		Crystal:                 999_999,
+		FacilityItemCount:       999,
+		Star:                    999_999_999,
+		Moon:                    999_999_999,
+		Description:             "hello",
+		JoinType:                1,
+		PlayStyle:               2,
+		RecruitmentTarget:       1,
+		DungeonType:             1,
+		DungeonResetType:        2,
+		Symbol:                  player.GuildInfo.GuildSymbol,
+		SymbolFrame:             player.GuildInfo.GuildSymbolFrame,
+		SymbolFrameColor:        player.GuildInfo.GuildSymbolFrameColor,
+		RewardLv:                50,
+		UpdateRewardLvDate:      "0",
+		WarehouseGiftReceivedAt: "0",
+		NameChangedAt:           "0",
+		GvgPracticeLimitAt:      "0",
+	}
+}
+
 func guildDetail(w http.ResponseWriter, r *http.Request) {
 	reply := getHandler(r).readPlayer(func(player *proto.StoredData) *proto.GuildDetail {
 		guildBoards := make([]*pmisc.GuildBoard, 0, 6)
@@ -26,33 +56,7 @@ func guildDetail(w http.ResponseWriter, r *http.Request) {
 		}
 
 		return &proto.GuildDetail{
-			Guild: &pmisc.Guild{
-				Id:                      player.GuildInfo.GuildId,
-				Name:                    player.GuildInfo.GuildName,
-				Exp:                     99_999_999,
-				Lupi:                    999_999_999,
-				Wood:                    999_999,
-				Stone:                   999_999,
-				Iron:                    999_999,
-				Crystal:                 999_999,
-				FacilityItemCount:       999,
-				Star:                    999_999_999,
-				Moon:                    999_999_999,
-				Description:             "hello",
-				JoinType:                1,
-				PlayStyle:               2,
-				RecruitmentTarget:       1,
-				DungeonType:             1,
-				DungeonResetType:        2,
-				Symbol:                  player.GuildInfo.GuildSymbol,
-				SymbolFrame:             player.GuildInfo.GuildSymbolFrame,
-				SymbolFrameColor:        player.GuildInfo.GuildSymbolFrameColor,
-				RewardLv:                50,
-				UpdateRewardLvDate:      "0",
-				WarehouseGiftReceivedAt: "0",
-				NameChangedAt:           "0",
-				GvgPracticeLimitAt:      "0",
-			},
+			Guild:                generateGuild(player),
 			Members:              []*proto.GuildMember{{PlayerSummary: config.GeneratePlayerSummary(player)}},
 			Lv:                   50,
 			IsRecommend:          1,
@@ -62,7 +66,12 @@ func guildDetail(w http.ResponseWriter, r *http.Request) {
 				Generation: player.Generation,
 				GuildInfo:  player.GuildInfo,
 			},
-			IsLogined:   1,
+			IsLogined: 1,
+			Role:      1,
+			Donation: &pmisc.GuildDonation{
+				GuildId:  player.GuildInfo.GuildId,
+				PlayerId: player.Player.Id,
+			},
 			GuildBoards: guildBoards,
 			GvgBattleField: &pmisc.GvgBattleField{
 				StartBattleDate: "0",
@@ -125,4 +134,70 @@ func missionGuildWeeklyList(w http.ResponseWriter, r *http.Request) {
 		List:   []*proto.GuildWeeklyMission{mission, mission, mission},
 		Reward: &puser.GuildWeeklyMissionRewardList{},
 	})
+}
+
+func guildChangeName(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	name := r.PostForm.Get("name")
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		player.GuildInfo.GuildName = name
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				GuildInfo:  player.GuildInfo,
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func guildDungeonTop(w http.ResponseWriter, r *http.Request) {
+	type stageKey struct {
+		areaID     uint32
+		difficulty uint32
+	}
+
+	dungeons := make(map[uint32]*proto.GuildDungeon)
+	stageLists := make(map[stageKey]map[uint32]uint32)
+
+	handler := getHandler(r)
+	handler.masterLock.Lock()
+	for _, dungeon := range handler.master.GuildDungeon {
+		key := stageKey{areaID: dungeon.AreaId, difficulty: dungeon.Difficulty}
+		stageLists[key] = make(map[uint32]uint32)
+	}
+	for _, stage := range handler.master.Stage {
+		key := stageKey{areaID: stage.AreaId, difficulty: stage.Difficulty}
+		if s, ok := stageLists[key]; ok {
+			s[stage.Id] = 0
+		}
+	}
+	for _, dungeon := range handler.master.GuildDungeon {
+		key := stageKey{areaID: dungeon.AreaId, difficulty: dungeon.Difficulty}
+		dungeons[dungeon.Id] = &proto.GuildDungeon{
+			GuildDungeon: &pmisc.GuildDungeon{
+				GuildDungeonId: dungeon.Id,
+				IsOnceCleared:  1,
+				LastOpenAt:     "0",
+				LastResetAt:    "0",
+				LastClearAt:    "0",
+				LastUpdateAt:   "0",
+				RaidEndAt:      "0",
+			},
+			StageList: stageLists[key],
+		}
+	}
+	handler.masterLock.Unlock()
+
+	reply := getHandler(r).readPlayer(func(player *proto.StoredData) *proto.GuildDungeonTop {
+		for _, dungeon := range dungeons {
+			dungeon.GuildDungeon.GuildId = player.GuildInfo.GuildId
+		}
+		return &proto.GuildDungeonTop{
+			Guild:            generateGuild(player),
+			GuildDungeonRaid: dungeons,
+		}
+	})
+
+	writeProto(w, http.StatusOK, reply)
 }
