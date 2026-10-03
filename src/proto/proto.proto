@@ -898,3 +898,16 @@ message GvgBidTopFieldList {
     map<uint32, bool> battle_matching_status_map = 6;
     map<uint32, uint32> field_limit_cp_map = 7;
 }
+
+message GvgPracticeInfo {
+    Pcommon.Error error = 1;
+    Pmisc.GvgPracticeMatching gvg_practice_matching = 2;
+    Pmisc.GvgPracticeBattle gvg_practice_battle = 3;
+    // repeated GvgPracticeNominate gvg_practice_nominate_list = 4;
+    GuildSummary guild1_info = 5;
+    GuildSummary guild2_info = 6;
+    repeated Pmisc.GvgPracticeStopSchedule stop_schedule = 7;
+    // repeated GvgPracticeChoiceList match_time_list = 8;
+    // repeated GvgPracticeChoiceList member_limit_list = 9;
+    // repeated GvgPracticeChoiceList power_list = 10;
+}

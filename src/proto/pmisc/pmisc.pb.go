@@ -789,6 +789,66 @@ func (x *GvgPracticeBattle) GetReason() uint32 {
 	return 0
 }
 
+type GvgPracticeStopSchedule struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	FromDate      string                 `protobuf:"bytes,2,opt,name=from_date,json=fromDate,proto3" json:"from_date,omitempty"`
+	ToDate        string                 `protobuf:"bytes,3,opt,name=to_date,json=toDate,proto3" json:"to_date,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GvgPracticeStopSchedule) Reset() {
+	*x = GvgPracticeStopSchedule{}
+	mi := &file_pmisc_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GvgPracticeStopSchedule) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GvgPracticeStopSchedule) ProtoMessage() {}
+
+func (x *GvgPracticeStopSchedule) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GvgPracticeStopSchedule.ProtoReflect.Descriptor instead.
+func (*GvgPracticeStopSchedule) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GvgPracticeStopSchedule) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *GvgPracticeStopSchedule) GetFromDate() string {
+	if x != nil {
+		return x.FromDate
+	}
+	return ""
+}
+
+func (x *GvgPracticeStopSchedule) GetToDate() string {
+	if x != nil {
+		return x.ToDate
+	}
+	return ""
+}
+
 type GuildFacility struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GuildId       uint64                 `protobuf:"varint,1,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
@@ -802,7 +862,7 @@ type GuildFacility struct {
 
 func (x *GuildFacility) Reset() {
 	*x = GuildFacility{}
-	mi := &file_pmisc_proto_msgTypes[8]
+	mi := &file_pmisc_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -814,7 +874,7 @@ func (x *GuildFacility) String() string {
 func (*GuildFacility) ProtoMessage() {}
 
 func (x *GuildFacility) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[8]
+	mi := &file_pmisc_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -827,7 +887,7 @@ func (x *GuildFacility) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuildFacility.ProtoReflect.Descriptor instead.
 func (*GuildFacility) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{8}
+	return file_pmisc_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GuildFacility) GetGuildId() uint64 {
@@ -874,7 +934,7 @@ type GuildFacilityList struct {
 
 func (x *GuildFacilityList) Reset() {
 	*x = GuildFacilityList{}
-	mi := &file_pmisc_proto_msgTypes[9]
+	mi := &file_pmisc_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -886,7 +946,7 @@ func (x *GuildFacilityList) String() string {
 func (*GuildFacilityList) ProtoMessage() {}
 
 func (x *GuildFacilityList) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[9]
+	mi := &file_pmisc_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -899,7 +959,7 @@ func (x *GuildFacilityList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuildFacilityList.ProtoReflect.Descriptor instead.
 func (*GuildFacilityList) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{9}
+	return file_pmisc_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GuildFacilityList) GetList() []*GuildFacility {
@@ -946,7 +1006,7 @@ type Guild struct {
 
 func (x *Guild) Reset() {
 	*x = Guild{}
-	mi := &file_pmisc_proto_msgTypes[10]
+	mi := &file_pmisc_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -958,7 +1018,7 @@ func (x *Guild) String() string {
 func (*Guild) ProtoMessage() {}
 
 func (x *Guild) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[10]
+	mi := &file_pmisc_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -971,7 +1031,7 @@ func (x *Guild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Guild.ProtoReflect.Descriptor instead.
 func (*Guild) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{10}
+	return file_pmisc_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *Guild) GetId() uint64 {
@@ -1192,7 +1252,7 @@ type BattleMember struct {
 
 func (x *BattleMember) Reset() {
 	*x = BattleMember{}
-	mi := &file_pmisc_proto_msgTypes[11]
+	mi := &file_pmisc_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1204,7 +1264,7 @@ func (x *BattleMember) String() string {
 func (*BattleMember) ProtoMessage() {}
 
 func (x *BattleMember) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[11]
+	mi := &file_pmisc_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1217,7 +1277,7 @@ func (x *BattleMember) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BattleMember.ProtoReflect.Descriptor instead.
 func (*BattleMember) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{11}
+	return file_pmisc_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *BattleMember) GetPlayerId() uint64 {
@@ -1279,7 +1339,7 @@ type Block struct {
 
 func (x *Block) Reset() {
 	*x = Block{}
-	mi := &file_pmisc_proto_msgTypes[12]
+	mi := &file_pmisc_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1291,7 +1351,7 @@ func (x *Block) String() string {
 func (*Block) ProtoMessage() {}
 
 func (x *Block) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[12]
+	mi := &file_pmisc_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1304,7 +1364,7 @@ func (x *Block) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Block.ProtoReflect.Descriptor instead.
 func (*Block) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{12}
+	return file_pmisc_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *Block) GetSenderPlayerId() uint64 {
@@ -1336,7 +1396,7 @@ type ConditionProgress struct {
 
 func (x *ConditionProgress) Reset() {
 	*x = ConditionProgress{}
-	mi := &file_pmisc_proto_msgTypes[13]
+	mi := &file_pmisc_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1348,7 +1408,7 @@ func (x *ConditionProgress) String() string {
 func (*ConditionProgress) ProtoMessage() {}
 
 func (x *ConditionProgress) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[13]
+	mi := &file_pmisc_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1361,7 +1421,7 @@ func (x *ConditionProgress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConditionProgress.ProtoReflect.Descriptor instead.
 func (*ConditionProgress) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{13}
+	return file_pmisc_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ConditionProgress) GetPlayerId() uint64 {
@@ -1428,7 +1488,7 @@ type GuildBoard struct {
 
 func (x *GuildBoard) Reset() {
 	*x = GuildBoard{}
-	mi := &file_pmisc_proto_msgTypes[14]
+	mi := &file_pmisc_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1440,7 +1500,7 @@ func (x *GuildBoard) String() string {
 func (*GuildBoard) ProtoMessage() {}
 
 func (x *GuildBoard) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[14]
+	mi := &file_pmisc_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1453,7 +1513,7 @@ func (x *GuildBoard) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuildBoard.ProtoReflect.Descriptor instead.
 func (*GuildBoard) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{14}
+	return file_pmisc_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GuildBoard) GetGuildId() uint64 {
@@ -1516,7 +1576,7 @@ type Sample struct {
 
 func (x *Sample) Reset() {
 	*x = Sample{}
-	mi := &file_pmisc_proto_msgTypes[15]
+	mi := &file_pmisc_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1528,7 +1588,7 @@ func (x *Sample) String() string {
 func (*Sample) ProtoMessage() {}
 
 func (x *Sample) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[15]
+	mi := &file_pmisc_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1541,7 +1601,7 @@ func (x *Sample) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Sample.ProtoReflect.Descriptor instead.
 func (*Sample) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{15}
+	return file_pmisc_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *Sample) GetId() uint64 {
@@ -1576,7 +1636,7 @@ type ArenaSeason struct {
 
 func (x *ArenaSeason) Reset() {
 	*x = ArenaSeason{}
-	mi := &file_pmisc_proto_msgTypes[16]
+	mi := &file_pmisc_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1588,7 +1648,7 @@ func (x *ArenaSeason) String() string {
 func (*ArenaSeason) ProtoMessage() {}
 
 func (x *ArenaSeason) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[16]
+	mi := &file_pmisc_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1601,7 +1661,7 @@ func (x *ArenaSeason) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ArenaSeason.ProtoReflect.Descriptor instead.
 func (*ArenaSeason) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{16}
+	return file_pmisc_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ArenaSeason) GetId() uint32 {
@@ -1645,7 +1705,7 @@ type GuildDungeon struct {
 
 func (x *GuildDungeon) Reset() {
 	*x = GuildDungeon{}
-	mi := &file_pmisc_proto_msgTypes[17]
+	mi := &file_pmisc_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1657,7 +1717,7 @@ func (x *GuildDungeon) String() string {
 func (*GuildDungeon) ProtoMessage() {}
 
 func (x *GuildDungeon) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[17]
+	mi := &file_pmisc_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1670,7 +1730,7 @@ func (x *GuildDungeon) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuildDungeon.ProtoReflect.Descriptor instead.
 func (*GuildDungeon) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{17}
+	return file_pmisc_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GuildDungeon) GetGuildId() uint64 {
@@ -1836,7 +1896,11 @@ const file_pmisc_proto_rawDesc = "" +
 	"\x13guild2_symbol_frame\x18\x12 \x01(\rR\x11guild2SymbolFrame\x129\n" +
 	"\x19guild2_symbol_frame_color\x18\x13 \x01(\rR\x16guild2SymbolFrameColor\x12&\n" +
 	"\x0fwinner_guild_id\x18\x14 \x01(\x04R\rwinnerGuildId\x12\x16\n" +
-	"\x06reason\x18\x15 \x01(\rR\x06reason\"\x94\x01\n" +
+	"\x06reason\x18\x15 \x01(\rR\x06reason\"_\n" +
+	"\x17GvgPracticeStopSchedule\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x1b\n" +
+	"\tfrom_date\x18\x02 \x01(\tR\bfromDate\x12\x17\n" +
+	"\ato_date\x18\x03 \x01(\tR\x06toDate\"\x94\x01\n" +
 	"\rGuildFacility\x12\x19\n" +
 	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12\x1b\n" +
 	"\tmaster_id\x18\x02 \x01(\rR\bmasterId\x12\x14\n" +
@@ -1947,7 +2011,7 @@ func file_pmisc_proto_rawDescGZIP() []byte {
 	return file_pmisc_proto_rawDescData
 }
 
-var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_pmisc_proto_goTypes = []any{
 	(*GuildPersonalMissionList)(nil),      // 0: Pmisc.GuildPersonalMissionList
 	(*GuildSharedMissionList)(nil),        // 1: Pmisc.GuildSharedMissionList
@@ -1957,19 +2021,20 @@ var file_pmisc_proto_goTypes = []any{
 	(*GuildItem)(nil),                     // 5: Pmisc.GuildItem
 	(*GvgPracticeMatching)(nil),           // 6: Pmisc.GvgPracticeMatching
 	(*GvgPracticeBattle)(nil),             // 7: Pmisc.GvgPracticeBattle
-	(*GuildFacility)(nil),                 // 8: Pmisc.GuildFacility
-	(*GuildFacilityList)(nil),             // 9: Pmisc.GuildFacilityList
-	(*Guild)(nil),                         // 10: Pmisc.Guild
-	(*BattleMember)(nil),                  // 11: Pmisc.BattleMember
-	(*Block)(nil),                         // 12: Pmisc.Block
-	(*ConditionProgress)(nil),             // 13: Pmisc.ConditionProgress
-	(*GuildBoard)(nil),                    // 14: Pmisc.GuildBoard
-	(*Sample)(nil),                        // 15: Pmisc.Sample
-	(*ArenaSeason)(nil),                   // 16: Pmisc.ArenaSeason
-	(*GuildDungeon)(nil),                  // 17: Pmisc.GuildDungeon
+	(*GvgPracticeStopSchedule)(nil),       // 8: Pmisc.GvgPracticeStopSchedule
+	(*GuildFacility)(nil),                 // 9: Pmisc.GuildFacility
+	(*GuildFacilityList)(nil),             // 10: Pmisc.GuildFacilityList
+	(*Guild)(nil),                         // 11: Pmisc.Guild
+	(*BattleMember)(nil),                  // 12: Pmisc.BattleMember
+	(*Block)(nil),                         // 13: Pmisc.Block
+	(*ConditionProgress)(nil),             // 14: Pmisc.ConditionProgress
+	(*GuildBoard)(nil),                    // 15: Pmisc.GuildBoard
+	(*Sample)(nil),                        // 16: Pmisc.Sample
+	(*ArenaSeason)(nil),                   // 17: Pmisc.ArenaSeason
+	(*GuildDungeon)(nil),                  // 18: Pmisc.GuildDungeon
 }
 var file_pmisc_proto_depIdxs = []int32{
-	8, // 0: Pmisc.GuildFacilityList.list:type_name -> Pmisc.GuildFacility
+	9, // 0: Pmisc.GuildFacilityList.list:type_name -> Pmisc.GuildFacility
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -1988,7 +2053,7 @@ func file_pmisc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pmisc_proto_rawDesc), len(file_pmisc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

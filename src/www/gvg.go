@@ -31,3 +31,22 @@ func gvgBidTopFieldList(w http.ResponseWriter, r *http.Request) {
 		EndTimeMap: endTimeMap,
 	})
 }
+
+// TODO: does not work yet!
+/*
+func gvgPracticeTop(w http.ResponseWriter, r *http.Request) {
+	writeProto(w, http.StatusOK, &proto.GvgPracticeInfo{
+		GvgPracticeMatching: &pmisc.GvgPracticeMatching{
+			EntryAt: "0",
+			MatchingAt: "0",
+		},
+		GvgPracticeBattle: &pmisc.GvgPracticeBattle{
+			StartBattleDate: "0",
+		},
+		StopSchedule: []*pmisc.GvgPracticeStopSchedule{{
+			FromDate: "0",
+			ToDate:   "0",
+		}},
+	})
+}
+*/

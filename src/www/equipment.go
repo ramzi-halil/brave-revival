@@ -353,3 +353,71 @@ func equipmentRuneDetachAll(w http.ResponseWriter, r *http.Request) {
 	})
 	writeProto(w, http.StatusOK, reply)
 }
+
+func equipmentProtectLockOrUnlock(w http.ResponseWriter, r *http.Request, protectState uint32) {
+	r.ParseForm()
+	equipmentId := u64(r.PostForm.Get("equipment_id"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		equipment := player.Equipment.List[equipmentId]
+		equipment.IsProtected = protectState
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+				Equipment: &proto.StoredEquipment{
+					Add: map[uint64]*puser.Equipment{equipmentId: equipment},
+				},
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func equipmentProtectLock(w http.ResponseWriter, r *http.Request) {
+	equipmentProtectLockOrUnlock(w, r, 1)
+}
+
+func equipmentProtectUnlock(w http.ResponseWriter, r *http.Request) {
+	equipmentProtectLockOrUnlock(w, r, 0)
+}
+
+func equipmentAwakening(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	equipmentId := u64(r.PostForm.Get("equipment_id"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		equipment := player.Equipment.List[equipmentId]
+		equipment.Awakening++
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+				Equipment: &proto.StoredEquipment{
+					Add: map[uint64]*puser.Equipment{equipmentId: equipment},
+				},
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func equipmentAwakeningreset(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	equipmentId := u64(r.PostForm.Get("equipment_id"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		equipment := player.Equipment.List[equipmentId]
+		equipment.Awakening = 0
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+				Equipment: &proto.StoredEquipment{
+					Add: map[uint64]*puser.Equipment{equipmentId: equipment},
+				},
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}

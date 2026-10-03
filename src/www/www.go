@@ -164,6 +164,8 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/gvg/bid/top", empty("Proto.GvgBidTop"))
 		router.Get("/gvg/bid/top/field/list", gvgBidTopFieldList)
 		router.Get("/gvg/history/list", gvgHistoryList)
+		// router.Get("/gvg/practice/top", gvgPracticeTop)
+		router.Get("/gvg/practice/history/list", empty("Proto.GvgHistoryList"))
 
 		router.Post("/vip/receive/daily/reward", empty("Proto.Nocontent"))
 		router.Post("/shop/buy", shopBuy)
@@ -204,6 +206,10 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/equipment/rune/attach", equipmentRuneAttach)
 		router.Post("/equipment/record", empty("Proto.EquipmentRecordList"))
 		router.Post("/equipment/sell", empty("Proto.Nocontent"))
+		router.Post("/equipment/protect/lock", equipmentProtectLock)
+		router.Post("/equipment/protect/unlock", equipmentProtectUnlock)
+		router.Post("/equipment/awakening", equipmentAwakening)
+		router.Post("/equipment/awakeningreset", equipmentAwakeningreset)
 
 		router.Post("/player/change/job", playerChangeJob)
 		router.Post("/job/skill/learn", empty("Proto.Nocontent"))

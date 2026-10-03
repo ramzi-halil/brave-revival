@@ -90,6 +90,12 @@ message GvgPracticeBattle {
     uint32 reason = 21;
 }
 
+message GvgPracticeStopSchedule {
+    uint32 id = 1;
+    string from_date = 2;
+    string to_date = 3;
+}
+
 message GuildFacility {
     uint64 guild_id = 1;
     uint32 master_id = 2;
