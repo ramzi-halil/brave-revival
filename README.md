@@ -121,3 +121,63 @@ Brave Revival works by replacing HTTPS requests to the official Enish server wit
 2. **Configure proxy via PAC**
     * Go to *Settings* → *Wi-Fi* → tap the ⓘ icon next to the connected Wi-Fi network → *Configure Proxy* → *Automatic*.
     * In the *URL* field, enter `http://10.0.2.2:13845/proxy.pac`.
+
+# Features
+
+The server is designed for solo play with the focus on capturing scenes instead of game play or collecting resources.
+
+* You start with an account with all units, skins and items obtained, level maximized (at Lv.780), VIP level maximized (at VIP Lv.12), and all titles unlocked.
+
+* These are supported:
+    * Change the furniture and items in corps room (兵団集め)
+    * Visit randomly generated rooms
+    * Change your name and comment
+    * Change guild symbol and name
+    * Enhancing any units
+        * Materials are never consumed.
+        * Proficiency (熟練度) and Skill level enhancement always fail by default. Enable ☑️ "Until succeed" (成功するまで) to make them always succeed. This is to allow both voices can be played.
+        * Successful proficiency enhancement always result in +1 regardless of material.
+    * Attach and detach medals (勲章)
+    * Level-up and reset the skill board
+    * Change deck (編成) content and labels
+    * Watch scenarios in the main story
+
+* Most other details are immutable. The following actions are all no-ops:
+    * Receive rewards
+    * Buy items from shop
+    * Exchange items
+    * Play roulette
+    * Perform "technical training" (技術訓練)
+    * Register "Titan research" (巨人研究)
+    * Send "Like" to randomly generated rooms
+    * Donate to the guild
+    * Edit the guild message boards
+    * Redraw "latent parameters" (潜在能力)
+    * Rarity-up any medals
+    * Lengthen "lap quests" (周回クエスト) bonus time
+    * Sweep for expedition (壁外調査掃討)
+
+* The entire server has only a single player. Thus,
+    * Friend list is always empty
+    * Chat rooms are empty
+    * You cannot create new chat groups
+    * Mercenary list is empty
+    * "Like" list is empty
+
+* You cannot lose or gain any items or units. The inventory is unchanged in-game despite some operation may show success.
+
+* Gacha does not follow the standard probabilities, high rarity units appear much more often. Nevertheless, as described above the pulled units aren't added to inventory.
+
+## Known issues
+
+* **Battle does not work yet**
+
+* Advertisement will be disabled in the future. Currently you can still watch ads but they will not give you any rewards.
+
+* Guild facilities' levels should be maximized. Currently they are all at Lv.1.
+
+* The Practice-GvG area currently crashes with 404.
+
+* Guild Interception Battles (共闘迎撃戦) cannot be unlocked.
+
+* PvP shows no opponents.
