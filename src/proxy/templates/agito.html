@@ -7,39 +7,47 @@
     <style>
         .editor { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1rem; align-items: start; }
         .room { overflow-x: auto; }
+        .room-content { min-width: calc(900px + 4rem); max-width: 1350px; }
         #item-lookup h2 { margin-top: 0; }
         #lookup-equipment { max-width: 100%; }
         @media (max-width: 700px) { .editor { grid-template-columns: minmax(0, 1fr); } }
         #areas { display: grid; grid-template-columns: repeat(9, minmax(100px, 1fr)); grid-template-rows: auto 3rem; align-items: start; gap: .5rem; max-width: 1350px; }
         fieldset { min-width: 0; margin: 0; }
+        fieldset button, .choices button { border: 1px solid #90909f; border-radius: 4px; background-color: #ebebeb; color: #424242 }
         fieldset button { width: 100%; margin-bottom: .25rem; }
         img { width: 40px; height: 40px; object-fit: contain; vertical-align: middle; }
         dialog { max-width: 90vw; max-height: 85vh; overflow-y: auto; }
         .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .25rem; }
         .choices button { display: flex; align-items: center; gap: .5rem; text-align: left; }
-        .motion-2 { background-color: #dbeafe; color: #1e3a8a; }
-        .motion-3 { background-color: #f3e8ff; color: #581c87; }
+        button.motion-2 { background-color: #daeefe; color: #0d4768; } /* oklch(0.94 0.03 240), oklch(0.38 0.08 240) */
+        button.motion-3 { background-color: #eee7fd; color: #493766; } /* oklch(0.94 0.03 300), oklch(0.38 0.08 300) */
+        fieldset button:hover, .choices button:hover { filter: brightness(90%); cursor: pointer; }
         #selector { width: 750px; }
+        #save { font-size: 1.5rem; padding: .75rem 3rem; }
+        #status.unsaved { color: red; }
     </style>
 </head>
 <body>
-    <p><a href="/">Control page</a></p>
+    <p><a href="/">&larr; Back</a></p>
     <h1>Agito editor</h1>
     <p>Select an area’s item, then its visitors. Changes take effect when you save.</p>
     <p><button id="remove-all" type="button" disabled>Remove all selections</button></p>
     <div class="editor">
-        <div class="room"><div id="areas"></div></div>
+        <div class="room"><div class="room-content">
+            <div id="areas"></div>
+            <p style="text-align: center"><button id="save" type="button" disabled>Save</button><br><span id="status" role="status">Loading…</span></p>
+        </div></div>
         <aside id="item-lookup" aria-labelledby="lookup-title">
             <h2 id="lookup-title">Find items by visitor</h2>
-            <p><span id="lookup-icon"></span><select id="lookup-equipment" aria-label="Visitor equipment" disabled></select></p>
+            <p><span id="lookup-icon"></span><select id="lookup-equipment" aria-label="Visitor" disabled></select></p>
             <div id="lookup-results"></div>
         </aside>
     </div>
-    <p><button id="save" type="button" disabled>Save</button> <span id="status" role="status">Loading…</span></p>
     <dialog id="selector" aria-labelledby="selector-title">
         <h2 id="selector-title"></h2>
         <p><button id="remove" type="button">Remove selection</button> <button id="cancel" type="button">Cancel</button></p>
         <p><label>Search by name or ID <input id="search" type="search"></label></p>
+        <datalist id="member-names"></datalist>
         <div id="options"></div>
     </dialog>
     <script>
@@ -124,6 +132,7 @@
             renderAreas();
             save.disabled = changed.size === 0;
             status.textContent = changed.size ? 'Unsaved changes.' : '';
+            status.classList.toggle('unsaved', changed.size > 0);
         }
 
         function renderOptions() {
@@ -132,7 +141,7 @@
             const preferredGroup = isItem ? area.type : items.get(area.itemId).lineupIds[slot];
             const query = search.value.trim().toLocaleLowerCase();
             const choices = (isItem ? data.items : data.lineups).filter(choice =>
-                `${choice.name} ${choice.id} ${choice.equipmentId || ''}`.toLocaleLowerCase().includes(query));
+                `${choice.name} ${choice.memberName || ''} ${choice.id} ${choice.equipmentId || ''}`.toLocaleLowerCase().includes(query));
             const preferred = choice => isItem ? choice.type === preferredGroup : choice.lineupId === preferredGroup;
             options.replaceChildren();
             for (const [title, matches] of [
@@ -170,6 +179,8 @@
             document.getElementById('selector-title').textContent = slot === null
                 ? `Area ${area.areaId}: select item` : `Area ${area.areaId}: select visitor ${slot + 1}`;
             search.value = '';
+            if (slot === null) search.removeAttribute('list');
+            else search.setAttribute('list', 'member-names');
             renderOptions();
             selector.showModal();
             search.focus();
@@ -184,7 +195,7 @@
             lookupEquipment.replaceChildren();
             const placeholder = document.createElement('option');
             placeholder.value = '';
-            placeholder.textContent = equipment.size ? 'Select visitor equipment' : 'No matching equipment';
+            placeholder.textContent = equipment.size ? 'Select visitor' : 'No matching visitors';
             lookupEquipment.append(placeholder);
             let group, memberId;
             for (const visitor of [...equipment.values()].sort((a, b) => a.memberId - b.memberId || a.equipmentId - b.equipmentId)) {
@@ -208,7 +219,7 @@
             lookupResults.replaceChildren();
             lookupIcon.replaceChildren();
             if (!equipmentId) {
-                lookupResults.textContent = 'Select visitor equipment to find its preferred items.';
+                lookupResults.textContent = 'Select visitor to find its preferred items.';
                 return;
             }
             const visitors = data.lineups.filter(lineup => lineup.equipmentId === equipmentId);
@@ -246,12 +257,14 @@
             renderAreas();
             save.disabled = changed.size === 0;
             status.textContent = changed.size ? 'Unsaved changes.' : '';
+            status.classList.toggle('unsaved', changed.size > 0);
         });
         save.addEventListener('click', async () => {
             save.disabled = true;
             removeAll.disabled = true;
             areasElement.inert = true;
             status.textContent = 'Saving…';
+            status.classList.remove('unsaved');
             try {
                 const selections = data.areas.filter(area => changed.has(area.areaId)).map(area => ({
                     areaId: area.areaId, itemId: area.itemId, lineupIds: area.lineupIds,
@@ -280,6 +293,12 @@
                 data.lineups.sort((a, b) => a.id - b.id);
                 items = new Map(data.items.map(item => [item.id, item]));
                 lineups = new Map(data.lineups.map(lineup => [lineup.id, lineup]));
+                const memberNames = document.getElementById('member-names');
+                for (const name of new Set([...data.lineups].sort((a, b) => a.memberId - b.memberId).map(lineup => lineup.memberName).filter(Boolean))) {
+                    const option = document.createElement('option');
+                    option.value = name;
+                    memberNames.append(option);
+                }
                 renderAreas();
                 removeAll.disabled = false;
                 status.textContent = '';

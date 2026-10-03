@@ -181,3 +181,19 @@ The server is designed for solo play with the focus on capturing scenes instead 
 * Guild Interception Battles (共闘迎撃戦) cannot be unlocked.
 
 * PvP shows no opponents.
+
+## Advanced corps room editing
+
+On the server machine, you can go to `http://127.0.0.1:13845/agito` to arbitrarily edit the corp room.
+
+After finish editing, click "Save" to save the changes, and then in the game either click the Stopwatch icon ⏱️ (何か変化があるかも？) on the home screen to refresh.
+
+Unlike editing within the game, the item and visitor selection are unrestricted. For instance you can place a Sofa on top of the table, choose visitors beyond the preset line-up, or even have duplicate items or visitors.
+
+But keep in mind:
+
+* Table-top items have opposite orientation than other items. Other items placed in the "☕️ 1xx" area will face backward, and vice-versa.
+* The base level of table-top items are at the table top height. Therefore, if you place a table-top item on the floor, the visitors will be sunken below the floor.
+* "🛋️ 4xx" areas only allows large items. Visitors will not come if small items are placed in the "🛋️ 4xx" area. On the other hand, large items can be placed in any area.
+* Visitors with special motion are highlighted in blue (motion #2) or purple (motion #3). Some items do not support special motion (mainly the large items and Bureo-Darumas), and those special-motion visitors will not appear.
+* As usual, the controllable character is always be a different than any visitors. So it is impossible to have a scene which the entire room is filled with a unique character. At minimum you have to allow the hooded placeholder unit to appear.
