@@ -54,3 +54,7 @@ func resourceList(w http.ResponseWriter, r *http.Request) {
 		return stream(res)
 	})
 }
+
+func news(w http.ResponseWriter, _ *http.Request) {
+	w.Write([]byte("<h1>Hello</h1>"))
+}
