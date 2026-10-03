@@ -9,6 +9,8 @@ import (
 
 const defaultPlayerID = 100
 
+const defaultGuildID = 50
+
 // 2026-09-09 21:30 JST
 const defaultTimestamp = "6aa15148"
 
@@ -227,6 +229,15 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		JobDeckGroup: &proto.StoredJobDeckGroup{
 			List: map[uint64]*puser.JobDeckGroup{},
 		},
+		GuildInfo: &proto.GuildInfo{
+			GuildId:               defaultGuildID,
+			GuildName:             "sample guild",
+			GuildSymbol:           1,
+			GuildSymbolFrame:      1,
+			GuildSymbolFrameColor: 0xff0000ff,
+			GuildMemberRole:       1,
+			GuildMasterId:         defaultPlayerID,
+		},
 		Equipment:                   equipments,
 		JobDeck:                     generateStoredJobDeck(master, anyEquipmentID),
 		Job:                         generateStoredJob(master),
@@ -249,7 +260,6 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		OrderMissionReward:          &proto.StoredOrderMissionReward{},
 		OrderMissionReroll:          &proto.StoredOrderMissionReroll{},
 		BattleMember:                &pmisc.BattleMember{},
-		GuildInfo:                   &proto.GuildInfo{},
 		MercenaryHire:               &proto.StoredMercenaryHire{},
 		MercenaryReward:             &puser.MercenaryReward{},
 		AchievementReward:           &puser.AchievementReward{},
@@ -297,5 +307,22 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		ContentsClearAncientTowerEx: &proto.StoredContentsClearAncientTowerEx{},
 		GvgPracticeReward:           &proto.StoredGvgPracticeReward{},
 		ShopSpecialSale:             &proto.StoredShopSpecialSale{},
+	}
+}
+
+func GeneratePlayerSummary(player *proto.StoredData) *proto.PlayerSummary {
+	level := player.Job.List[player.Player.JobId].Level
+	return &proto.PlayerSummary{
+		PlayerId:          player.Player.Id,
+		Nickname:          player.Player.Nickname,
+		Comment:           player.Player.Comment,
+		JobId:             player.Player.JobId,
+		JobLevel:          level,
+		Power:             999_999_999,
+		GuildId:           player.GuildInfo.GuildId,
+		GuildMemberType:   player.GuildInfo.GuildMemberRole,
+		FavoriteEquipment: player.Equipment.List[player.Player.FavoriteEquipmentId_1].EquipmentId,
+		LoginAt:           player.Player.LastLoginAt,
+		MaxJobLevel:       level,
 	}
 }

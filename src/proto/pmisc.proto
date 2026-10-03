@@ -15,7 +15,123 @@ message GuildSharedMissionRankingList {
     // repeated GuildSharedMissionRanking list = 1;
 }
 
+message GuildDonation {
+    uint64 guild_id = 1;
+    uint64 player_id = 2;
+    uint32 lupi = 3;
+    uint32 star = 4;
+    uint32 moon = 5;
+}
+
+message GvgBattleField {
+    uint32 battle_field_id = 1;
+    string start_battle_date = 2;
+    uint64 guild1_id = 3;
+    uint32 guild1_is_dummy = 4;
+    uint64 guild1_score = 5;
+    uint32 guild1_symbol = 6;
+    uint32 guild1_symbol_frame = 7;
+    uint32 guild1_symbol_frame_color = 8;
+    uint64 guild2_id = 9;
+    uint32 guild2_is_dummy = 10;
+    uint64 guild2_score = 11;
+    uint32 guild2_symbol = 12;
+    uint32 guild2_symbol_frame = 13;
+    uint32 guild2_symbol_frame_color = 14;
+    uint64 pre_leader_guild_id = 15;
+    uint64 winner_guild_id = 16;
+    uint32 is_finished = 17;
+    uint32 reason = 18;
+}
+
+message GuildItem {
+    uint64 guild_id = 1;
+    uint32 item_id = 2;
+    uint32 quantity = 3;
+}
+
+message GvgPracticeMatching {
+    uint64 guild_id = 1;
+    uint32 gvg_id = 2;
+    uint32 status = 3;
+    string entry_at = 4;
+    uint32 lv = 5;
+    string matching_at = 6;
+    uint32 power = 7;
+    uint32 member_limit = 8;
+    uint32 match_time = 9;
+    string password = 10;
+    string description = 11;
+    uint32 is_room_owner = 12;
+    uint64 gvg_practice_battle_id = 13;
+}
+
+message GvgPracticeBattle {
+    uint64 id = 1;
+    uint32 gvg_id = 2;
+    uint32 status = 3;
+    uint32 battle_field_id = 4;
+    string start_battle_date = 5;
+    uint32 room_type = 6;
+    uint32 power = 7;
+    uint32 member_limit = 8;
+    uint32 match_time = 9;
+    uint64 guild1_id = 10;
+    uint64 guild1_score = 11;
+    uint32 guild1_symbol = 12;
+    uint32 guild1_symbol_frame = 13;
+    uint32 guild1_symbol_frame_color = 14;
+    uint64 guild2_id = 15;
+    uint64 guild2_score = 16;
+    uint32 guild2_symbol = 17;
+    uint32 guild2_symbol_frame = 18;
+    uint32 guild2_symbol_frame_color = 19;
+    uint64 winner_guild_id = 20;
+    uint32 reason = 21;
+}
+
+message GuildFacility {
+    uint64 guild_id = 1;
+    uint32 master_id = 2;
+    uint32 level = 3;
+    string status = 4;
+    string buildup_at = 5;
+}
+
+message GuildFacilityList {
+    repeated GuildFacility list = 1;
+}
+
 message Guild {
+    uint64 id = 1;
+    string name = 2;
+    uint64 exp = 3;
+    uint64 lupi = 4;
+    uint64 wood = 5;
+    uint64 stone = 6;
+    uint64 iron = 7;
+    uint64 crystal = 8;
+    uint32 facility_item_count = 9;
+    uint64 star = 10;
+    uint64 moon = 11;
+    string description = 12;
+    string message = 13;
+    uint32 working_time_type = 14;
+    uint32 join_type = 15;
+    uint32 play_style = 16;
+    uint32 recruitment_target = 17;
+    uint32 dungeon_type = 18;
+    uint32 dungeon_reset_type = 19;
+    uint32 symbol = 20;
+    uint32 symbol_frame = 21;
+    uint32 symbol_frame_color = 22;
+    uint32 reward_lv = 23;
+    string update_reward_lv_date = 24;
+    uint32 warehouse_gift_count = 25;
+    string warehouse_gift_received_at = 26;
+    string name_changed_at = 27;
+    uint32 gvg_practice_penalty_type = 28;
+    string gvg_practice_limit_at = 29;
 }
 
 message BattleMember {

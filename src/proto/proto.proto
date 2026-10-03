@@ -125,15 +125,13 @@ message GuildSummary {
 }
 
 message GuildMember {
-    uint64 guild_id = 1;
-    uint64 player_id = 2;
-    uint32 role = 3;
-    uint64 point = 4;
+    PlayerSummary player_summary = 1;
+    uint64 point = 2;
+    uint32 has_yell = 3;
+    uint32 can_send_yell = 4;
     uint64 weekly_point = 5;
-    string last_joined_at = 6 [(options.datetime) = true];
-    string login_reward_received_at = 7 [(options.datetime) = true];
-    string updated_point_at = 8 [(options.datetime) = true];
-    string training_completed_at = 9 [(options.datetime) = true];
+    uint32 present_count = 6;
+    string last_joined_at = 7;
 }
 
 message PowerAssessment {
@@ -203,9 +201,6 @@ message Etc {
     Revision revision = 6;
 }
 
-message GuildFacilityList {
-}
-
 message GuildPersonalMissionResult {
     Pmisc.GuildPersonalMissionList list = 1;
 }
@@ -248,7 +243,7 @@ message FieldTopResponse {
     Pmisc.GuildPersonalMissionList personalMissionList = 14;
     // repeated RaidHistory raid_history_list = 15;
     Puser.GuildWeeklyMissionRewardList weekly_mission_reward = 16;
-    GuildFacilityList facility_list = 17;
+    Pmisc.GuildFacilityList facility_list = 17;
     BattleBackgroundReward background_battle_reward = 18;
     repeated Puser.LoginBonus login_bonus = 19;
     AgitoVisitorReturn agito_visitor_return = 20;
@@ -795,4 +790,77 @@ message AgitoVisitorReturnReward {
     repeated RewardInfo receive_reward_list = 3;
     bool is_received = 4;
     uint32 add_point = 5;
+}
+
+message GuildWeeklyMission {
+    uint64 guild_id = 1;
+    uint32 mission_group_id = 2;
+    string day_monday = 3;
+    uint64 progress = 4;
+}
+
+message GuildDetail {
+    Pcommon.Error error = 1;
+    Pmisc.Guild guild = 2;
+    repeated GuildMember members = 3;
+    uint32 lv = 4;
+    uint32 is_recommend = 5;
+    uint32 max_member_count = 6;
+    string enable_update_symbol_at = 7;
+    StoredData stored_data = 8;
+    uint32 is_invited = 9;
+    uint32 is_join_requesting = 10;
+    uint32 is_logined = 11;
+    repeated FieldPlayerDetail field_players = 12;
+    uint32 role = 13;
+    Pmisc.GuildDonation donation = 14;
+    uint32 login_badge = 15;
+    uint32 member_badge = 16;
+    uint32 donate_badge = 17;
+    uint32 facility_badge = 18;
+    repeated GuildWeeklyMission weeklyMissionList = 19;
+    Pmisc.GuildSharedMissionList sharedMissionList = 20;
+    Pmisc.GuildPersonalMissionList personalMissionList = 21;
+    Puser.GuildWeeklyMissionRewardList weeklyMissionReward = 22;
+    uint32 ranking_rank = 23;
+    uint32 ranking_score = 24;
+    uint32 gvg_bidding_field_id = 25;
+    uint32 gvg_leader_field_id = 26;
+    Pmisc.GvgBattleField gvg_battle_field = 27;
+    repeated Pmisc.GuildBoard guild_boards = 28;
+    repeated Pmisc.GuildItem guild_items = 29;
+    string guild_dungeon_raid_end_at = 30;
+    string holybeast_raid_end_at = 31;
+    repeated Pmisc.GuildDonation donation_members = 32;
+    repeated Pmisc.GvgPracticeMatching gvg_practice_matching = 33;
+    repeated Pmisc.GvgPracticeBattle gvg_practice_battle = 34;
+    uint32 contribution_guild = 35;
+    uint32 contribution_personal = 36;
+}
+
+message GuildLoginSummary {
+    Pcommon.Error error = 1;
+    uint32 today_login_member_count = 2;
+    uint32 yesterday_login_member_count = 3;
+    uint32 today_max_member_count = 4;
+    uint32 yesterday_max_member_count = 5;
+    uint32 guild_lv = 6;
+    uint32 reward_guild_lv = 7;
+    uint32 can_receive_reward = 8;
+}
+
+message GuildWeeklyMissionResult {
+    repeated GuildWeeklyMission list = 1;
+    Puser.GuildWeeklyMissionRewardList reward = 2;
+    StoredData stored_data = 3;
+    repeated RewardInfo receive_reward_list_personal = 4;
+    repeated RewardInfo receive_reward_list_guild = 5;
+}
+
+message GuildPenalty {
+    StoredData stored_data = 1;
+    Pcommon.Error error = 2;
+    uint64 interval = 3;
+    uint64 next_interval = 4;
+    string last_leaving_at = 5;
 }

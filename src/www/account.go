@@ -3,6 +3,7 @@ package www
 import (
 	"net/http"
 
+	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/pmaster"
 	"example.com/brave-revival/src/proto/proto"
 )
@@ -10,13 +11,7 @@ import (
 func accountExist(w http.ResponseWriter, r *http.Request) {
 	reply := getHandler(r).readPlayer(func(player *proto.StoredData) *proto.PlayerExist {
 		return &proto.PlayerExist{
-			PlayerSummary: &proto.PlayerSummary{
-				PlayerId: player.Player.Id,
-				Nickname: player.Player.Nickname,
-				JobId:    player.Player.JobId,
-				JobLevel: 999,
-				Power:    999,
-			},
+			PlayerSummary:    config.GeneratePlayerSummary(player),
 			WorldDescription: "Brave Revival",
 		}
 	})

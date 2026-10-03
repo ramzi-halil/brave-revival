@@ -129,15 +129,824 @@ func (*GuildSharedMissionRankingList) Descriptor() ([]byte, []int) {
 	return file_pmisc_proto_rawDescGZIP(), []int{2}
 }
 
-type Guild struct {
+type GuildDonation struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	GuildId       uint64                 `protobuf:"varint,1,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	PlayerId      uint64                 `protobuf:"varint,2,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Lupi          uint32                 `protobuf:"varint,3,opt,name=lupi,proto3" json:"lupi,omitempty"`
+	Star          uint32                 `protobuf:"varint,4,opt,name=star,proto3" json:"star,omitempty"`
+	Moon          uint32                 `protobuf:"varint,5,opt,name=moon,proto3" json:"moon,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
+func (x *GuildDonation) Reset() {
+	*x = GuildDonation{}
+	mi := &file_pmisc_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildDonation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildDonation) ProtoMessage() {}
+
+func (x *GuildDonation) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildDonation.ProtoReflect.Descriptor instead.
+func (*GuildDonation) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GuildDonation) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *GuildDonation) GetPlayerId() uint64 {
+	if x != nil {
+		return x.PlayerId
+	}
+	return 0
+}
+
+func (x *GuildDonation) GetLupi() uint32 {
+	if x != nil {
+		return x.Lupi
+	}
+	return 0
+}
+
+func (x *GuildDonation) GetStar() uint32 {
+	if x != nil {
+		return x.Star
+	}
+	return 0
+}
+
+func (x *GuildDonation) GetMoon() uint32 {
+	if x != nil {
+		return x.Moon
+	}
+	return 0
+}
+
+type GvgBattleField struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	BattleFieldId          uint32                 `protobuf:"varint,1,opt,name=battle_field_id,json=battleFieldId,proto3" json:"battle_field_id,omitempty"`
+	StartBattleDate        string                 `protobuf:"bytes,2,opt,name=start_battle_date,json=startBattleDate,proto3" json:"start_battle_date,omitempty"`
+	Guild1Id               uint64                 `protobuf:"varint,3,opt,name=guild1_id,json=guild1Id,proto3" json:"guild1_id,omitempty"`
+	Guild1IsDummy          uint32                 `protobuf:"varint,4,opt,name=guild1_is_dummy,json=guild1IsDummy,proto3" json:"guild1_is_dummy,omitempty"`
+	Guild1Score            uint64                 `protobuf:"varint,5,opt,name=guild1_score,json=guild1Score,proto3" json:"guild1_score,omitempty"`
+	Guild1Symbol           uint32                 `protobuf:"varint,6,opt,name=guild1_symbol,json=guild1Symbol,proto3" json:"guild1_symbol,omitempty"`
+	Guild1SymbolFrame      uint32                 `protobuf:"varint,7,opt,name=guild1_symbol_frame,json=guild1SymbolFrame,proto3" json:"guild1_symbol_frame,omitempty"`
+	Guild1SymbolFrameColor uint32                 `protobuf:"varint,8,opt,name=guild1_symbol_frame_color,json=guild1SymbolFrameColor,proto3" json:"guild1_symbol_frame_color,omitempty"`
+	Guild2Id               uint64                 `protobuf:"varint,9,opt,name=guild2_id,json=guild2Id,proto3" json:"guild2_id,omitempty"`
+	Guild2IsDummy          uint32                 `protobuf:"varint,10,opt,name=guild2_is_dummy,json=guild2IsDummy,proto3" json:"guild2_is_dummy,omitempty"`
+	Guild2Score            uint64                 `protobuf:"varint,11,opt,name=guild2_score,json=guild2Score,proto3" json:"guild2_score,omitempty"`
+	Guild2Symbol           uint32                 `protobuf:"varint,12,opt,name=guild2_symbol,json=guild2Symbol,proto3" json:"guild2_symbol,omitempty"`
+	Guild2SymbolFrame      uint32                 `protobuf:"varint,13,opt,name=guild2_symbol_frame,json=guild2SymbolFrame,proto3" json:"guild2_symbol_frame,omitempty"`
+	Guild2SymbolFrameColor uint32                 `protobuf:"varint,14,opt,name=guild2_symbol_frame_color,json=guild2SymbolFrameColor,proto3" json:"guild2_symbol_frame_color,omitempty"`
+	PreLeaderGuildId       uint64                 `protobuf:"varint,15,opt,name=pre_leader_guild_id,json=preLeaderGuildId,proto3" json:"pre_leader_guild_id,omitempty"`
+	WinnerGuildId          uint64                 `protobuf:"varint,16,opt,name=winner_guild_id,json=winnerGuildId,proto3" json:"winner_guild_id,omitempty"`
+	IsFinished             uint32                 `protobuf:"varint,17,opt,name=is_finished,json=isFinished,proto3" json:"is_finished,omitempty"`
+	Reason                 uint32                 `protobuf:"varint,18,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *GvgBattleField) Reset() {
+	*x = GvgBattleField{}
+	mi := &file_pmisc_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GvgBattleField) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GvgBattleField) ProtoMessage() {}
+
+func (x *GvgBattleField) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GvgBattleField.ProtoReflect.Descriptor instead.
+func (*GvgBattleField) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GvgBattleField) GetBattleFieldId() uint32 {
+	if x != nil {
+		return x.BattleFieldId
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetStartBattleDate() string {
+	if x != nil {
+		return x.StartBattleDate
+	}
+	return ""
+}
+
+func (x *GvgBattleField) GetGuild1Id() uint64 {
+	if x != nil {
+		return x.Guild1Id
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild1IsDummy() uint32 {
+	if x != nil {
+		return x.Guild1IsDummy
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild1Score() uint64 {
+	if x != nil {
+		return x.Guild1Score
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild1Symbol() uint32 {
+	if x != nil {
+		return x.Guild1Symbol
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild1SymbolFrame() uint32 {
+	if x != nil {
+		return x.Guild1SymbolFrame
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild1SymbolFrameColor() uint32 {
+	if x != nil {
+		return x.Guild1SymbolFrameColor
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild2Id() uint64 {
+	if x != nil {
+		return x.Guild2Id
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild2IsDummy() uint32 {
+	if x != nil {
+		return x.Guild2IsDummy
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild2Score() uint64 {
+	if x != nil {
+		return x.Guild2Score
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild2Symbol() uint32 {
+	if x != nil {
+		return x.Guild2Symbol
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild2SymbolFrame() uint32 {
+	if x != nil {
+		return x.Guild2SymbolFrame
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetGuild2SymbolFrameColor() uint32 {
+	if x != nil {
+		return x.Guild2SymbolFrameColor
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetPreLeaderGuildId() uint64 {
+	if x != nil {
+		return x.PreLeaderGuildId
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetWinnerGuildId() uint64 {
+	if x != nil {
+		return x.WinnerGuildId
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetIsFinished() uint32 {
+	if x != nil {
+		return x.IsFinished
+	}
+	return 0
+}
+
+func (x *GvgBattleField) GetReason() uint32 {
+	if x != nil {
+		return x.Reason
+	}
+	return 0
+}
+
+type GuildItem struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GuildId       uint64                 `protobuf:"varint,1,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	ItemId        uint32                 `protobuf:"varint,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	Quantity      uint32                 `protobuf:"varint,3,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuildItem) Reset() {
+	*x = GuildItem{}
+	mi := &file_pmisc_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildItem) ProtoMessage() {}
+
+func (x *GuildItem) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildItem.ProtoReflect.Descriptor instead.
+func (*GuildItem) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GuildItem) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *GuildItem) GetItemId() uint32 {
+	if x != nil {
+		return x.ItemId
+	}
+	return 0
+}
+
+func (x *GuildItem) GetQuantity() uint32 {
+	if x != nil {
+		return x.Quantity
+	}
+	return 0
+}
+
+type GvgPracticeMatching struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	GuildId             uint64                 `protobuf:"varint,1,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	GvgId               uint32                 `protobuf:"varint,2,opt,name=gvg_id,json=gvgId,proto3" json:"gvg_id,omitempty"`
+	Status              uint32                 `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`
+	EntryAt             string                 `protobuf:"bytes,4,opt,name=entry_at,json=entryAt,proto3" json:"entry_at,omitempty"`
+	Lv                  uint32                 `protobuf:"varint,5,opt,name=lv,proto3" json:"lv,omitempty"`
+	MatchingAt          string                 `protobuf:"bytes,6,opt,name=matching_at,json=matchingAt,proto3" json:"matching_at,omitempty"`
+	Power               uint32                 `protobuf:"varint,7,opt,name=power,proto3" json:"power,omitempty"`
+	MemberLimit         uint32                 `protobuf:"varint,8,opt,name=member_limit,json=memberLimit,proto3" json:"member_limit,omitempty"`
+	MatchTime           uint32                 `protobuf:"varint,9,opt,name=match_time,json=matchTime,proto3" json:"match_time,omitempty"`
+	Password            string                 `protobuf:"bytes,10,opt,name=password,proto3" json:"password,omitempty"`
+	Description         string                 `protobuf:"bytes,11,opt,name=description,proto3" json:"description,omitempty"`
+	IsRoomOwner         uint32                 `protobuf:"varint,12,opt,name=is_room_owner,json=isRoomOwner,proto3" json:"is_room_owner,omitempty"`
+	GvgPracticeBattleId uint64                 `protobuf:"varint,13,opt,name=gvg_practice_battle_id,json=gvgPracticeBattleId,proto3" json:"gvg_practice_battle_id,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *GvgPracticeMatching) Reset() {
+	*x = GvgPracticeMatching{}
+	mi := &file_pmisc_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GvgPracticeMatching) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GvgPracticeMatching) ProtoMessage() {}
+
+func (x *GvgPracticeMatching) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GvgPracticeMatching.ProtoReflect.Descriptor instead.
+func (*GvgPracticeMatching) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GvgPracticeMatching) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *GvgPracticeMatching) GetGvgId() uint32 {
+	if x != nil {
+		return x.GvgId
+	}
+	return 0
+}
+
+func (x *GvgPracticeMatching) GetStatus() uint32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *GvgPracticeMatching) GetEntryAt() string {
+	if x != nil {
+		return x.EntryAt
+	}
+	return ""
+}
+
+func (x *GvgPracticeMatching) GetLv() uint32 {
+	if x != nil {
+		return x.Lv
+	}
+	return 0
+}
+
+func (x *GvgPracticeMatching) GetMatchingAt() string {
+	if x != nil {
+		return x.MatchingAt
+	}
+	return ""
+}
+
+func (x *GvgPracticeMatching) GetPower() uint32 {
+	if x != nil {
+		return x.Power
+	}
+	return 0
+}
+
+func (x *GvgPracticeMatching) GetMemberLimit() uint32 {
+	if x != nil {
+		return x.MemberLimit
+	}
+	return 0
+}
+
+func (x *GvgPracticeMatching) GetMatchTime() uint32 {
+	if x != nil {
+		return x.MatchTime
+	}
+	return 0
+}
+
+func (x *GvgPracticeMatching) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *GvgPracticeMatching) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *GvgPracticeMatching) GetIsRoomOwner() uint32 {
+	if x != nil {
+		return x.IsRoomOwner
+	}
+	return 0
+}
+
+func (x *GvgPracticeMatching) GetGvgPracticeBattleId() uint64 {
+	if x != nil {
+		return x.GvgPracticeBattleId
+	}
+	return 0
+}
+
+type GvgPracticeBattle struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	Id                     uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	GvgId                  uint32                 `protobuf:"varint,2,opt,name=gvg_id,json=gvgId,proto3" json:"gvg_id,omitempty"`
+	Status                 uint32                 `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`
+	BattleFieldId          uint32                 `protobuf:"varint,4,opt,name=battle_field_id,json=battleFieldId,proto3" json:"battle_field_id,omitempty"`
+	StartBattleDate        string                 `protobuf:"bytes,5,opt,name=start_battle_date,json=startBattleDate,proto3" json:"start_battle_date,omitempty"`
+	RoomType               uint32                 `protobuf:"varint,6,opt,name=room_type,json=roomType,proto3" json:"room_type,omitempty"`
+	Power                  uint32                 `protobuf:"varint,7,opt,name=power,proto3" json:"power,omitempty"`
+	MemberLimit            uint32                 `protobuf:"varint,8,opt,name=member_limit,json=memberLimit,proto3" json:"member_limit,omitempty"`
+	MatchTime              uint32                 `protobuf:"varint,9,opt,name=match_time,json=matchTime,proto3" json:"match_time,omitempty"`
+	Guild1Id               uint64                 `protobuf:"varint,10,opt,name=guild1_id,json=guild1Id,proto3" json:"guild1_id,omitempty"`
+	Guild1Score            uint64                 `protobuf:"varint,11,opt,name=guild1_score,json=guild1Score,proto3" json:"guild1_score,omitempty"`
+	Guild1Symbol           uint32                 `protobuf:"varint,12,opt,name=guild1_symbol,json=guild1Symbol,proto3" json:"guild1_symbol,omitempty"`
+	Guild1SymbolFrame      uint32                 `protobuf:"varint,13,opt,name=guild1_symbol_frame,json=guild1SymbolFrame,proto3" json:"guild1_symbol_frame,omitempty"`
+	Guild1SymbolFrameColor uint32                 `protobuf:"varint,14,opt,name=guild1_symbol_frame_color,json=guild1SymbolFrameColor,proto3" json:"guild1_symbol_frame_color,omitempty"`
+	Guild2Id               uint64                 `protobuf:"varint,15,opt,name=guild2_id,json=guild2Id,proto3" json:"guild2_id,omitempty"`
+	Guild2Score            uint64                 `protobuf:"varint,16,opt,name=guild2_score,json=guild2Score,proto3" json:"guild2_score,omitempty"`
+	Guild2Symbol           uint32                 `protobuf:"varint,17,opt,name=guild2_symbol,json=guild2Symbol,proto3" json:"guild2_symbol,omitempty"`
+	Guild2SymbolFrame      uint32                 `protobuf:"varint,18,opt,name=guild2_symbol_frame,json=guild2SymbolFrame,proto3" json:"guild2_symbol_frame,omitempty"`
+	Guild2SymbolFrameColor uint32                 `protobuf:"varint,19,opt,name=guild2_symbol_frame_color,json=guild2SymbolFrameColor,proto3" json:"guild2_symbol_frame_color,omitempty"`
+	WinnerGuildId          uint64                 `protobuf:"varint,20,opt,name=winner_guild_id,json=winnerGuildId,proto3" json:"winner_guild_id,omitempty"`
+	Reason                 uint32                 `protobuf:"varint,21,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *GvgPracticeBattle) Reset() {
+	*x = GvgPracticeBattle{}
+	mi := &file_pmisc_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GvgPracticeBattle) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GvgPracticeBattle) ProtoMessage() {}
+
+func (x *GvgPracticeBattle) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GvgPracticeBattle.ProtoReflect.Descriptor instead.
+func (*GvgPracticeBattle) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GvgPracticeBattle) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGvgId() uint32 {
+	if x != nil {
+		return x.GvgId
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetStatus() uint32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetBattleFieldId() uint32 {
+	if x != nil {
+		return x.BattleFieldId
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetStartBattleDate() string {
+	if x != nil {
+		return x.StartBattleDate
+	}
+	return ""
+}
+
+func (x *GvgPracticeBattle) GetRoomType() uint32 {
+	if x != nil {
+		return x.RoomType
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetPower() uint32 {
+	if x != nil {
+		return x.Power
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetMemberLimit() uint32 {
+	if x != nil {
+		return x.MemberLimit
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetMatchTime() uint32 {
+	if x != nil {
+		return x.MatchTime
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild1Id() uint64 {
+	if x != nil {
+		return x.Guild1Id
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild1Score() uint64 {
+	if x != nil {
+		return x.Guild1Score
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild1Symbol() uint32 {
+	if x != nil {
+		return x.Guild1Symbol
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild1SymbolFrame() uint32 {
+	if x != nil {
+		return x.Guild1SymbolFrame
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild1SymbolFrameColor() uint32 {
+	if x != nil {
+		return x.Guild1SymbolFrameColor
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild2Id() uint64 {
+	if x != nil {
+		return x.Guild2Id
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild2Score() uint64 {
+	if x != nil {
+		return x.Guild2Score
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild2Symbol() uint32 {
+	if x != nil {
+		return x.Guild2Symbol
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild2SymbolFrame() uint32 {
+	if x != nil {
+		return x.Guild2SymbolFrame
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetGuild2SymbolFrameColor() uint32 {
+	if x != nil {
+		return x.Guild2SymbolFrameColor
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetWinnerGuildId() uint64 {
+	if x != nil {
+		return x.WinnerGuildId
+	}
+	return 0
+}
+
+func (x *GvgPracticeBattle) GetReason() uint32 {
+	if x != nil {
+		return x.Reason
+	}
+	return 0
+}
+
+type GuildFacility struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GuildId       uint64                 `protobuf:"varint,1,opt,name=guild_id,json=guildId,proto3" json:"guild_id,omitempty"`
+	MasterId      uint32                 `protobuf:"varint,2,opt,name=master_id,json=masterId,proto3" json:"master_id,omitempty"`
+	Level         uint32                 `protobuf:"varint,3,opt,name=level,proto3" json:"level,omitempty"`
+	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
+	BuildupAt     string                 `protobuf:"bytes,5,opt,name=buildup_at,json=buildupAt,proto3" json:"buildup_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuildFacility) Reset() {
+	*x = GuildFacility{}
+	mi := &file_pmisc_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildFacility) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildFacility) ProtoMessage() {}
+
+func (x *GuildFacility) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildFacility.ProtoReflect.Descriptor instead.
+func (*GuildFacility) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GuildFacility) GetGuildId() uint64 {
+	if x != nil {
+		return x.GuildId
+	}
+	return 0
+}
+
+func (x *GuildFacility) GetMasterId() uint32 {
+	if x != nil {
+		return x.MasterId
+	}
+	return 0
+}
+
+func (x *GuildFacility) GetLevel() uint32 {
+	if x != nil {
+		return x.Level
+	}
+	return 0
+}
+
+func (x *GuildFacility) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *GuildFacility) GetBuildupAt() string {
+	if x != nil {
+		return x.BuildupAt
+	}
+	return ""
+}
+
+type GuildFacilityList struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	List          []*GuildFacility       `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GuildFacilityList) Reset() {
+	*x = GuildFacilityList{}
+	mi := &file_pmisc_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GuildFacilityList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GuildFacilityList) ProtoMessage() {}
+
+func (x *GuildFacilityList) ProtoReflect() protoreflect.Message {
+	mi := &file_pmisc_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GuildFacilityList.ProtoReflect.Descriptor instead.
+func (*GuildFacilityList) Descriptor() ([]byte, []int) {
+	return file_pmisc_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GuildFacilityList) GetList() []*GuildFacility {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+type Guild struct {
+	state                   protoimpl.MessageState `protogen:"open.v1"`
+	Id                      uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name                    string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Exp                     uint64                 `protobuf:"varint,3,opt,name=exp,proto3" json:"exp,omitempty"`
+	Lupi                    uint64                 `protobuf:"varint,4,opt,name=lupi,proto3" json:"lupi,omitempty"`
+	Wood                    uint64                 `protobuf:"varint,5,opt,name=wood,proto3" json:"wood,omitempty"`
+	Stone                   uint64                 `protobuf:"varint,6,opt,name=stone,proto3" json:"stone,omitempty"`
+	Iron                    uint64                 `protobuf:"varint,7,opt,name=iron,proto3" json:"iron,omitempty"`
+	Crystal                 uint64                 `protobuf:"varint,8,opt,name=crystal,proto3" json:"crystal,omitempty"`
+	FacilityItemCount       uint32                 `protobuf:"varint,9,opt,name=facility_item_count,json=facilityItemCount,proto3" json:"facility_item_count,omitempty"`
+	Star                    uint64                 `protobuf:"varint,10,opt,name=star,proto3" json:"star,omitempty"`
+	Moon                    uint64                 `protobuf:"varint,11,opt,name=moon,proto3" json:"moon,omitempty"`
+	Description             string                 `protobuf:"bytes,12,opt,name=description,proto3" json:"description,omitempty"`
+	Message                 string                 `protobuf:"bytes,13,opt,name=message,proto3" json:"message,omitempty"`
+	WorkingTimeType         uint32                 `protobuf:"varint,14,opt,name=working_time_type,json=workingTimeType,proto3" json:"working_time_type,omitempty"`
+	JoinType                uint32                 `protobuf:"varint,15,opt,name=join_type,json=joinType,proto3" json:"join_type,omitempty"`
+	PlayStyle               uint32                 `protobuf:"varint,16,opt,name=play_style,json=playStyle,proto3" json:"play_style,omitempty"`
+	RecruitmentTarget       uint32                 `protobuf:"varint,17,opt,name=recruitment_target,json=recruitmentTarget,proto3" json:"recruitment_target,omitempty"`
+	DungeonType             uint32                 `protobuf:"varint,18,opt,name=dungeon_type,json=dungeonType,proto3" json:"dungeon_type,omitempty"`
+	DungeonResetType        uint32                 `protobuf:"varint,19,opt,name=dungeon_reset_type,json=dungeonResetType,proto3" json:"dungeon_reset_type,omitempty"`
+	Symbol                  uint32                 `protobuf:"varint,20,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	SymbolFrame             uint32                 `protobuf:"varint,21,opt,name=symbol_frame,json=symbolFrame,proto3" json:"symbol_frame,omitempty"`
+	SymbolFrameColor        uint32                 `protobuf:"varint,22,opt,name=symbol_frame_color,json=symbolFrameColor,proto3" json:"symbol_frame_color,omitempty"`
+	RewardLv                uint32                 `protobuf:"varint,23,opt,name=reward_lv,json=rewardLv,proto3" json:"reward_lv,omitempty"`
+	UpdateRewardLvDate      string                 `protobuf:"bytes,24,opt,name=update_reward_lv_date,json=updateRewardLvDate,proto3" json:"update_reward_lv_date,omitempty"`
+	WarehouseGiftCount      uint32                 `protobuf:"varint,25,opt,name=warehouse_gift_count,json=warehouseGiftCount,proto3" json:"warehouse_gift_count,omitempty"`
+	WarehouseGiftReceivedAt string                 `protobuf:"bytes,26,opt,name=warehouse_gift_received_at,json=warehouseGiftReceivedAt,proto3" json:"warehouse_gift_received_at,omitempty"`
+	NameChangedAt           string                 `protobuf:"bytes,27,opt,name=name_changed_at,json=nameChangedAt,proto3" json:"name_changed_at,omitempty"`
+	GvgPracticePenaltyType  uint32                 `protobuf:"varint,28,opt,name=gvg_practice_penalty_type,json=gvgPracticePenaltyType,proto3" json:"gvg_practice_penalty_type,omitempty"`
+	GvgPracticeLimitAt      string                 `protobuf:"bytes,29,opt,name=gvg_practice_limit_at,json=gvgPracticeLimitAt,proto3" json:"gvg_practice_limit_at,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
+}
+
 func (x *Guild) Reset() {
 	*x = Guild{}
-	mi := &file_pmisc_proto_msgTypes[3]
+	mi := &file_pmisc_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -149,7 +958,7 @@ func (x *Guild) String() string {
 func (*Guild) ProtoMessage() {}
 
 func (x *Guild) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[3]
+	mi := &file_pmisc_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,7 +971,210 @@ func (x *Guild) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Guild.ProtoReflect.Descriptor instead.
 func (*Guild) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{3}
+	return file_pmisc_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *Guild) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Guild) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Guild) GetExp() uint64 {
+	if x != nil {
+		return x.Exp
+	}
+	return 0
+}
+
+func (x *Guild) GetLupi() uint64 {
+	if x != nil {
+		return x.Lupi
+	}
+	return 0
+}
+
+func (x *Guild) GetWood() uint64 {
+	if x != nil {
+		return x.Wood
+	}
+	return 0
+}
+
+func (x *Guild) GetStone() uint64 {
+	if x != nil {
+		return x.Stone
+	}
+	return 0
+}
+
+func (x *Guild) GetIron() uint64 {
+	if x != nil {
+		return x.Iron
+	}
+	return 0
+}
+
+func (x *Guild) GetCrystal() uint64 {
+	if x != nil {
+		return x.Crystal
+	}
+	return 0
+}
+
+func (x *Guild) GetFacilityItemCount() uint32 {
+	if x != nil {
+		return x.FacilityItemCount
+	}
+	return 0
+}
+
+func (x *Guild) GetStar() uint64 {
+	if x != nil {
+		return x.Star
+	}
+	return 0
+}
+
+func (x *Guild) GetMoon() uint64 {
+	if x != nil {
+		return x.Moon
+	}
+	return 0
+}
+
+func (x *Guild) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *Guild) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *Guild) GetWorkingTimeType() uint32 {
+	if x != nil {
+		return x.WorkingTimeType
+	}
+	return 0
+}
+
+func (x *Guild) GetJoinType() uint32 {
+	if x != nil {
+		return x.JoinType
+	}
+	return 0
+}
+
+func (x *Guild) GetPlayStyle() uint32 {
+	if x != nil {
+		return x.PlayStyle
+	}
+	return 0
+}
+
+func (x *Guild) GetRecruitmentTarget() uint32 {
+	if x != nil {
+		return x.RecruitmentTarget
+	}
+	return 0
+}
+
+func (x *Guild) GetDungeonType() uint32 {
+	if x != nil {
+		return x.DungeonType
+	}
+	return 0
+}
+
+func (x *Guild) GetDungeonResetType() uint32 {
+	if x != nil {
+		return x.DungeonResetType
+	}
+	return 0
+}
+
+func (x *Guild) GetSymbol() uint32 {
+	if x != nil {
+		return x.Symbol
+	}
+	return 0
+}
+
+func (x *Guild) GetSymbolFrame() uint32 {
+	if x != nil {
+		return x.SymbolFrame
+	}
+	return 0
+}
+
+func (x *Guild) GetSymbolFrameColor() uint32 {
+	if x != nil {
+		return x.SymbolFrameColor
+	}
+	return 0
+}
+
+func (x *Guild) GetRewardLv() uint32 {
+	if x != nil {
+		return x.RewardLv
+	}
+	return 0
+}
+
+func (x *Guild) GetUpdateRewardLvDate() string {
+	if x != nil {
+		return x.UpdateRewardLvDate
+	}
+	return ""
+}
+
+func (x *Guild) GetWarehouseGiftCount() uint32 {
+	if x != nil {
+		return x.WarehouseGiftCount
+	}
+	return 0
+}
+
+func (x *Guild) GetWarehouseGiftReceivedAt() string {
+	if x != nil {
+		return x.WarehouseGiftReceivedAt
+	}
+	return ""
+}
+
+func (x *Guild) GetNameChangedAt() string {
+	if x != nil {
+		return x.NameChangedAt
+	}
+	return ""
+}
+
+func (x *Guild) GetGvgPracticePenaltyType() uint32 {
+	if x != nil {
+		return x.GvgPracticePenaltyType
+	}
+	return 0
+}
+
+func (x *Guild) GetGvgPracticeLimitAt() string {
+	if x != nil {
+		return x.GvgPracticeLimitAt
+	}
+	return ""
 }
 
 type BattleMember struct {
@@ -180,7 +1192,7 @@ type BattleMember struct {
 
 func (x *BattleMember) Reset() {
 	*x = BattleMember{}
-	mi := &file_pmisc_proto_msgTypes[4]
+	mi := &file_pmisc_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -192,7 +1204,7 @@ func (x *BattleMember) String() string {
 func (*BattleMember) ProtoMessage() {}
 
 func (x *BattleMember) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[4]
+	mi := &file_pmisc_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,7 +1217,7 @@ func (x *BattleMember) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BattleMember.ProtoReflect.Descriptor instead.
 func (*BattleMember) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{4}
+	return file_pmisc_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *BattleMember) GetPlayerId() uint64 {
@@ -267,7 +1279,7 @@ type Block struct {
 
 func (x *Block) Reset() {
 	*x = Block{}
-	mi := &file_pmisc_proto_msgTypes[5]
+	mi := &file_pmisc_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -279,7 +1291,7 @@ func (x *Block) String() string {
 func (*Block) ProtoMessage() {}
 
 func (x *Block) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[5]
+	mi := &file_pmisc_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -292,7 +1304,7 @@ func (x *Block) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Block.ProtoReflect.Descriptor instead.
 func (*Block) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{5}
+	return file_pmisc_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *Block) GetSenderPlayerId() uint64 {
@@ -324,7 +1336,7 @@ type ConditionProgress struct {
 
 func (x *ConditionProgress) Reset() {
 	*x = ConditionProgress{}
-	mi := &file_pmisc_proto_msgTypes[6]
+	mi := &file_pmisc_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -336,7 +1348,7 @@ func (x *ConditionProgress) String() string {
 func (*ConditionProgress) ProtoMessage() {}
 
 func (x *ConditionProgress) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[6]
+	mi := &file_pmisc_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -349,7 +1361,7 @@ func (x *ConditionProgress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConditionProgress.ProtoReflect.Descriptor instead.
 func (*ConditionProgress) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{6}
+	return file_pmisc_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ConditionProgress) GetPlayerId() uint64 {
@@ -416,7 +1428,7 @@ type GuildBoard struct {
 
 func (x *GuildBoard) Reset() {
 	*x = GuildBoard{}
-	mi := &file_pmisc_proto_msgTypes[7]
+	mi := &file_pmisc_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -428,7 +1440,7 @@ func (x *GuildBoard) String() string {
 func (*GuildBoard) ProtoMessage() {}
 
 func (x *GuildBoard) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[7]
+	mi := &file_pmisc_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -441,7 +1453,7 @@ func (x *GuildBoard) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GuildBoard.ProtoReflect.Descriptor instead.
 func (*GuildBoard) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{7}
+	return file_pmisc_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GuildBoard) GetGuildId() uint64 {
@@ -504,7 +1516,7 @@ type Sample struct {
 
 func (x *Sample) Reset() {
 	*x = Sample{}
-	mi := &file_pmisc_proto_msgTypes[8]
+	mi := &file_pmisc_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -516,7 +1528,7 @@ func (x *Sample) String() string {
 func (*Sample) ProtoMessage() {}
 
 func (x *Sample) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[8]
+	mi := &file_pmisc_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -529,7 +1541,7 @@ func (x *Sample) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Sample.ProtoReflect.Descriptor instead.
 func (*Sample) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{8}
+	return file_pmisc_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *Sample) GetId() uint64 {
@@ -564,7 +1576,7 @@ type ArenaSeason struct {
 
 func (x *ArenaSeason) Reset() {
 	*x = ArenaSeason{}
-	mi := &file_pmisc_proto_msgTypes[9]
+	mi := &file_pmisc_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -576,7 +1588,7 @@ func (x *ArenaSeason) String() string {
 func (*ArenaSeason) ProtoMessage() {}
 
 func (x *ArenaSeason) ProtoReflect() protoreflect.Message {
-	mi := &file_pmisc_proto_msgTypes[9]
+	mi := &file_pmisc_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -589,7 +1601,7 @@ func (x *ArenaSeason) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ArenaSeason.ProtoReflect.Descriptor instead.
 func (*ArenaSeason) Descriptor() ([]byte, []int) {
-	return file_pmisc_proto_rawDescGZIP(), []int{9}
+	return file_pmisc_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ArenaSeason) GetId() uint32 {
@@ -620,8 +1632,120 @@ const file_pmisc_proto_rawDesc = "" +
 	"\vpmisc.proto\x12\x05Pmisc\"\x1a\n" +
 	"\x18GuildPersonalMissionList\"\x18\n" +
 	"\x16GuildSharedMissionList\"\x1f\n" +
-	"\x1dGuildSharedMissionRankingList\"\a\n" +
-	"\x05Guild\"\xe4\x01\n" +
+	"\x1dGuildSharedMissionRankingList\"\x83\x01\n" +
+	"\rGuildDonation\x12\x19\n" +
+	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12\x1b\n" +
+	"\tplayer_id\x18\x02 \x01(\x04R\bplayerId\x12\x12\n" +
+	"\x04lupi\x18\x03 \x01(\rR\x04lupi\x12\x12\n" +
+	"\x04star\x18\x04 \x01(\rR\x04star\x12\x12\n" +
+	"\x04moon\x18\x05 \x01(\rR\x04moon\"\xe4\x05\n" +
+	"\x0eGvgBattleField\x12&\n" +
+	"\x0fbattle_field_id\x18\x01 \x01(\rR\rbattleFieldId\x12*\n" +
+	"\x11start_battle_date\x18\x02 \x01(\tR\x0fstartBattleDate\x12\x1b\n" +
+	"\tguild1_id\x18\x03 \x01(\x04R\bguild1Id\x12&\n" +
+	"\x0fguild1_is_dummy\x18\x04 \x01(\rR\rguild1IsDummy\x12!\n" +
+	"\fguild1_score\x18\x05 \x01(\x04R\vguild1Score\x12#\n" +
+	"\rguild1_symbol\x18\x06 \x01(\rR\fguild1Symbol\x12.\n" +
+	"\x13guild1_symbol_frame\x18\a \x01(\rR\x11guild1SymbolFrame\x129\n" +
+	"\x19guild1_symbol_frame_color\x18\b \x01(\rR\x16guild1SymbolFrameColor\x12\x1b\n" +
+	"\tguild2_id\x18\t \x01(\x04R\bguild2Id\x12&\n" +
+	"\x0fguild2_is_dummy\x18\n" +
+	" \x01(\rR\rguild2IsDummy\x12!\n" +
+	"\fguild2_score\x18\v \x01(\x04R\vguild2Score\x12#\n" +
+	"\rguild2_symbol\x18\f \x01(\rR\fguild2Symbol\x12.\n" +
+	"\x13guild2_symbol_frame\x18\r \x01(\rR\x11guild2SymbolFrame\x129\n" +
+	"\x19guild2_symbol_frame_color\x18\x0e \x01(\rR\x16guild2SymbolFrameColor\x12-\n" +
+	"\x13pre_leader_guild_id\x18\x0f \x01(\x04R\x10preLeaderGuildId\x12&\n" +
+	"\x0fwinner_guild_id\x18\x10 \x01(\x04R\rwinnerGuildId\x12\x1f\n" +
+	"\vis_finished\x18\x11 \x01(\rR\n" +
+	"isFinished\x12\x16\n" +
+	"\x06reason\x18\x12 \x01(\rR\x06reason\"[\n" +
+	"\tGuildItem\x12\x19\n" +
+	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12\x17\n" +
+	"\aitem_id\x18\x02 \x01(\rR\x06itemId\x12\x1a\n" +
+	"\bquantity\x18\x03 \x01(\rR\bquantity\"\x9a\x03\n" +
+	"\x13GvgPracticeMatching\x12\x19\n" +
+	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12\x15\n" +
+	"\x06gvg_id\x18\x02 \x01(\rR\x05gvgId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\rR\x06status\x12\x19\n" +
+	"\bentry_at\x18\x04 \x01(\tR\aentryAt\x12\x0e\n" +
+	"\x02lv\x18\x05 \x01(\rR\x02lv\x12\x1f\n" +
+	"\vmatching_at\x18\x06 \x01(\tR\n" +
+	"matchingAt\x12\x14\n" +
+	"\x05power\x18\a \x01(\rR\x05power\x12!\n" +
+	"\fmember_limit\x18\b \x01(\rR\vmemberLimit\x12\x1d\n" +
+	"\n" +
+	"match_time\x18\t \x01(\rR\tmatchTime\x12\x1a\n" +
+	"\bpassword\x18\n" +
+	" \x01(\tR\bpassword\x12 \n" +
+	"\vdescription\x18\v \x01(\tR\vdescription\x12\"\n" +
+	"\ris_room_owner\x18\f \x01(\rR\visRoomOwner\x123\n" +
+	"\x16gvg_practice_battle_id\x18\r \x01(\x04R\x13gvgPracticeBattleId\"\xfb\x05\n" +
+	"\x11GvgPracticeBattle\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x15\n" +
+	"\x06gvg_id\x18\x02 \x01(\rR\x05gvgId\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\rR\x06status\x12&\n" +
+	"\x0fbattle_field_id\x18\x04 \x01(\rR\rbattleFieldId\x12*\n" +
+	"\x11start_battle_date\x18\x05 \x01(\tR\x0fstartBattleDate\x12\x1b\n" +
+	"\troom_type\x18\x06 \x01(\rR\broomType\x12\x14\n" +
+	"\x05power\x18\a \x01(\rR\x05power\x12!\n" +
+	"\fmember_limit\x18\b \x01(\rR\vmemberLimit\x12\x1d\n" +
+	"\n" +
+	"match_time\x18\t \x01(\rR\tmatchTime\x12\x1b\n" +
+	"\tguild1_id\x18\n" +
+	" \x01(\x04R\bguild1Id\x12!\n" +
+	"\fguild1_score\x18\v \x01(\x04R\vguild1Score\x12#\n" +
+	"\rguild1_symbol\x18\f \x01(\rR\fguild1Symbol\x12.\n" +
+	"\x13guild1_symbol_frame\x18\r \x01(\rR\x11guild1SymbolFrame\x129\n" +
+	"\x19guild1_symbol_frame_color\x18\x0e \x01(\rR\x16guild1SymbolFrameColor\x12\x1b\n" +
+	"\tguild2_id\x18\x0f \x01(\x04R\bguild2Id\x12!\n" +
+	"\fguild2_score\x18\x10 \x01(\x04R\vguild2Score\x12#\n" +
+	"\rguild2_symbol\x18\x11 \x01(\rR\fguild2Symbol\x12.\n" +
+	"\x13guild2_symbol_frame\x18\x12 \x01(\rR\x11guild2SymbolFrame\x129\n" +
+	"\x19guild2_symbol_frame_color\x18\x13 \x01(\rR\x16guild2SymbolFrameColor\x12&\n" +
+	"\x0fwinner_guild_id\x18\x14 \x01(\x04R\rwinnerGuildId\x12\x16\n" +
+	"\x06reason\x18\x15 \x01(\rR\x06reason\"\x94\x01\n" +
+	"\rGuildFacility\x12\x19\n" +
+	"\bguild_id\x18\x01 \x01(\x04R\aguildId\x12\x1b\n" +
+	"\tmaster_id\x18\x02 \x01(\rR\bmasterId\x12\x14\n" +
+	"\x05level\x18\x03 \x01(\rR\x05level\x12\x16\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\x12\x1d\n" +
+	"\n" +
+	"buildup_at\x18\x05 \x01(\tR\tbuildupAt\"=\n" +
+	"\x11GuildFacilityList\x12(\n" +
+	"\x04list\x18\x01 \x03(\v2\x14.Pmisc.GuildFacilityR\x04list\"\xe3\a\n" +
+	"\x05Guild\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
+	"\x03exp\x18\x03 \x01(\x04R\x03exp\x12\x12\n" +
+	"\x04lupi\x18\x04 \x01(\x04R\x04lupi\x12\x12\n" +
+	"\x04wood\x18\x05 \x01(\x04R\x04wood\x12\x14\n" +
+	"\x05stone\x18\x06 \x01(\x04R\x05stone\x12\x12\n" +
+	"\x04iron\x18\a \x01(\x04R\x04iron\x12\x18\n" +
+	"\acrystal\x18\b \x01(\x04R\acrystal\x12.\n" +
+	"\x13facility_item_count\x18\t \x01(\rR\x11facilityItemCount\x12\x12\n" +
+	"\x04star\x18\n" +
+	" \x01(\x04R\x04star\x12\x12\n" +
+	"\x04moon\x18\v \x01(\x04R\x04moon\x12 \n" +
+	"\vdescription\x18\f \x01(\tR\vdescription\x12\x18\n" +
+	"\amessage\x18\r \x01(\tR\amessage\x12*\n" +
+	"\x11working_time_type\x18\x0e \x01(\rR\x0fworkingTimeType\x12\x1b\n" +
+	"\tjoin_type\x18\x0f \x01(\rR\bjoinType\x12\x1d\n" +
+	"\n" +
+	"play_style\x18\x10 \x01(\rR\tplayStyle\x12-\n" +
+	"\x12recruitment_target\x18\x11 \x01(\rR\x11recruitmentTarget\x12!\n" +
+	"\fdungeon_type\x18\x12 \x01(\rR\vdungeonType\x12,\n" +
+	"\x12dungeon_reset_type\x18\x13 \x01(\rR\x10dungeonResetType\x12\x16\n" +
+	"\x06symbol\x18\x14 \x01(\rR\x06symbol\x12!\n" +
+	"\fsymbol_frame\x18\x15 \x01(\rR\vsymbolFrame\x12,\n" +
+	"\x12symbol_frame_color\x18\x16 \x01(\rR\x10symbolFrameColor\x12\x1b\n" +
+	"\treward_lv\x18\x17 \x01(\rR\brewardLv\x121\n" +
+	"\x15update_reward_lv_date\x18\x18 \x01(\tR\x12updateRewardLvDate\x120\n" +
+	"\x14warehouse_gift_count\x18\x19 \x01(\rR\x12warehouseGiftCount\x12;\n" +
+	"\x1awarehouse_gift_received_at\x18\x1a \x01(\tR\x17warehouseGiftReceivedAt\x12&\n" +
+	"\x0fname_changed_at\x18\x1b \x01(\tR\rnameChangedAt\x129\n" +
+	"\x19gvg_practice_penalty_type\x18\x1c \x01(\rR\x16gvgPracticePenaltyType\x121\n" +
+	"\x15gvg_practice_limit_at\x18\x1d \x01(\tR\x12gvgPracticeLimitAt\"\xe4\x01\n" +
 	"\fBattleMember\x12\x1b\n" +
 	"\tplayer_id\x18\x01 \x01(\x04R\bplayerId\x12\x17\n" +
 	"\aroom_id\x18\x02 \x01(\tR\x06roomId\x12\x16\n" +
@@ -675,25 +1799,33 @@ func file_pmisc_proto_rawDescGZIP() []byte {
 	return file_pmisc_proto_rawDescData
 }
 
-var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_pmisc_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_pmisc_proto_goTypes = []any{
 	(*GuildPersonalMissionList)(nil),      // 0: Pmisc.GuildPersonalMissionList
 	(*GuildSharedMissionList)(nil),        // 1: Pmisc.GuildSharedMissionList
 	(*GuildSharedMissionRankingList)(nil), // 2: Pmisc.GuildSharedMissionRankingList
-	(*Guild)(nil),                         // 3: Pmisc.Guild
-	(*BattleMember)(nil),                  // 4: Pmisc.BattleMember
-	(*Block)(nil),                         // 5: Pmisc.Block
-	(*ConditionProgress)(nil),             // 6: Pmisc.ConditionProgress
-	(*GuildBoard)(nil),                    // 7: Pmisc.GuildBoard
-	(*Sample)(nil),                        // 8: Pmisc.Sample
-	(*ArenaSeason)(nil),                   // 9: Pmisc.ArenaSeason
+	(*GuildDonation)(nil),                 // 3: Pmisc.GuildDonation
+	(*GvgBattleField)(nil),                // 4: Pmisc.GvgBattleField
+	(*GuildItem)(nil),                     // 5: Pmisc.GuildItem
+	(*GvgPracticeMatching)(nil),           // 6: Pmisc.GvgPracticeMatching
+	(*GvgPracticeBattle)(nil),             // 7: Pmisc.GvgPracticeBattle
+	(*GuildFacility)(nil),                 // 8: Pmisc.GuildFacility
+	(*GuildFacilityList)(nil),             // 9: Pmisc.GuildFacilityList
+	(*Guild)(nil),                         // 10: Pmisc.Guild
+	(*BattleMember)(nil),                  // 11: Pmisc.BattleMember
+	(*Block)(nil),                         // 12: Pmisc.Block
+	(*ConditionProgress)(nil),             // 13: Pmisc.ConditionProgress
+	(*GuildBoard)(nil),                    // 14: Pmisc.GuildBoard
+	(*Sample)(nil),                        // 15: Pmisc.Sample
+	(*ArenaSeason)(nil),                   // 16: Pmisc.ArenaSeason
 }
 var file_pmisc_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	8, // 0: Pmisc.GuildFacilityList.list:type_name -> Pmisc.GuildFacility
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_pmisc_proto_init() }
@@ -707,7 +1839,7 @@ func file_pmisc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pmisc_proto_rawDesc), len(file_pmisc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
