@@ -170,3 +170,83 @@ func jobDeckEquipmentRemoveAll(w http.ResponseWriter, r *http.Request) {
 	})
 	writeProto(w, http.StatusOK, reply)
 }
+
+func jobSkillLearn(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	jobID := u32(r.PostForm.Get("job_id"))
+	jobSkillID := u64(r.PostForm.Get("job_skill_id"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		jobSkill, ok := player.JobSkill.List[jobSkillID]
+		if ok {
+			jobSkill.Status = 1
+		} else {
+			jobSkill = &puser.JobSkill{
+				Id:       jobSkillID,
+				PlayerId: player.Player.Id,
+				JobId:    jobID,
+				SkillId:  uint32(jobSkillID),
+				Level:    1,
+				Status:   1,
+			}
+			player.JobSkill.List[jobSkillID] = jobSkill
+		}
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+				JobSkill: &proto.StoredJobSkill{
+					Add: map[uint64]*puser.JobSkill{jobSkillID: jobSkill},
+				},
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func jobSkillEnhance(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	jobSkillID := u64(r.PostForm.Get("job_skill_id"))
+	loopFlag := u32(r.PostForm.Get("loop_flag"))
+	maxFlag := u32(r.PostForm.Get("max_flag"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		jobSkill := player.JobSkill.List[jobSkillID]
+		if maxFlag != 0 {
+			jobSkill.Level = 10
+		} else if loopFlag != 0 {
+			jobSkill.Level++
+		}
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+				JobSkill:   &proto.StoredJobSkill{Add: map[uint64]*puser.JobSkill{jobSkillID: jobSkill}},
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func jobSkillReset(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	jobID := u32(r.PostForm.Get("job_id"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		resetSkills := make(map[uint64]*puser.JobSkill)
+		for id, jobSkill := range player.JobSkill.List {
+			if jobSkill.JobId == jobID {
+				jobSkill.Status = 0
+				resetSkills[id] = jobSkill
+			}
+		}
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+				JobSkill:   &proto.StoredJobSkill{Add: resetSkills},
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}

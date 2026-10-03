@@ -289,7 +289,7 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		Anima:                       &proto.StoredAnima{},
 		AnimaArea:                   &proto.StoredAnimaArea{},
 		Elixir:                      &proto.StoredElixir{},
-		JobSkill:                    &proto.StoredJobSkill{},
+		JobSkill:                    &proto.StoredJobSkill{List: make(map[uint64]*puser.JobSkill)},
 		ConditionProgress:           &proto.StoredConditionProgress{},
 		Achievement:                 &proto.StoredAchievement{},
 		DailyMission:                &proto.StoredDailyMission{},
