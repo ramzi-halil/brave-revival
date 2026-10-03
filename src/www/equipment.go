@@ -193,3 +193,163 @@ func equipmentWeaponSkillEnhanceMaterial(w http.ResponseWriter, r *http.Request)
 	})
 	writeProto(w, http.StatusOK, reply)
 }
+
+func attachRune(runeSlot *uint64, changedRunes map[uint64]*puser.Rune, runes *proto.StoredRune, runeId uint64) {
+	if runeId == 0 {
+		return
+	}
+	*runeSlot = runeId
+	r := runes.List[runeId]
+	r.IsEquipped = 1
+	changedRunes[runeId] = r
+}
+
+func detachRune(runeSlot *uint64, changedRunes map[uint64]*puser.Rune, runes *proto.StoredRune, shouldDetach bool) {
+	runeId := *runeSlot
+	if !shouldDetach || runeId == 0 {
+		return
+	}
+	*runeSlot = 0
+	r := runes.List[runeId]
+	r.IsEquipped = 0
+	changedRunes[runeId] = r
+}
+
+func equipmentRuneAttach(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	equipmentId := u64(r.PostForm.Get("equipment_id"))
+	rune1 := u64(r.PostForm.Get("rune1"))
+	rune2 := u64(r.PostForm.Get("rune2"))
+	rune3 := u64(r.PostForm.Get("rune3"))
+	rune4 := u64(r.PostForm.Get("rune4"))
+	rune5 := u64(r.PostForm.Get("rune5"))
+	rune6 := u64(r.PostForm.Get("rune6"))
+	rune7 := u64(r.PostForm.Get("rune7"))
+	rune8 := u64(r.PostForm.Get("rune8"))
+	rune9 := u64(r.PostForm.Get("rune9"))
+	rune10 := u64(r.PostForm.Get("rune10"))
+	rune11 := u64(r.PostForm.Get("rune11"))
+	rune12 := u64(r.PostForm.Get("rune12"))
+	runeEx := u64(r.PostForm.Get("rune_ex"))
+	runeEx2 := u64(r.PostForm.Get("rune_ex2"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		equipment := player.Equipment.List[equipmentId]
+		changedRunes := make(map[uint64]*puser.Rune)
+		attachRune(&equipment.Rune1, changedRunes, player.Rune, rune1)
+		attachRune(&equipment.Rune2, changedRunes, player.Rune, rune2)
+		attachRune(&equipment.Rune3, changedRunes, player.Rune, rune3)
+		attachRune(&equipment.Rune4, changedRunes, player.Rune, rune4)
+		attachRune(&equipment.Rune5, changedRunes, player.Rune, rune5)
+		attachRune(&equipment.Rune6, changedRunes, player.Rune, rune6)
+		attachRune(&equipment.Rune7, changedRunes, player.Rune, rune7)
+		attachRune(&equipment.Rune8, changedRunes, player.Rune, rune8)
+		attachRune(&equipment.Rune9, changedRunes, player.Rune, rune9)
+		attachRune(&equipment.Rune10, changedRunes, player.Rune, rune10)
+		attachRune(&equipment.Rune11, changedRunes, player.Rune, rune11)
+		attachRune(&equipment.Rune12, changedRunes, player.Rune, rune12)
+		attachRune(&equipment.RuneEx, changedRunes, player.Rune, runeEx)
+		attachRune(&equipment.RuneEx2, changedRunes, player.Rune, runeEx2)
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+				Equipment: &proto.StoredEquipment{
+					Add: map[uint64]*puser.Equipment{equipmentId: equipment},
+				},
+				Rune: &proto.StoredRune{
+					Add: changedRunes,
+				},
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func equipmentRuneDetach(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	equipmentId := u64(r.PostForm.Get("equipment_id"))
+	rune1 := r.PostForm.Get("rune1") == "True"
+	rune2 := r.PostForm.Get("rune2") == "True"
+	rune3 := r.PostForm.Get("rune3") == "True"
+	rune4 := r.PostForm.Get("rune4") == "True"
+	rune5 := r.PostForm.Get("rune5") == "True"
+	rune6 := r.PostForm.Get("rune6") == "True"
+	rune7 := r.PostForm.Get("rune7") == "True"
+	rune8 := r.PostForm.Get("rune8") == "True"
+	rune9 := r.PostForm.Get("rune9") == "True"
+	rune10 := r.PostForm.Get("rune10") == "True"
+	rune11 := r.PostForm.Get("rune11") == "True"
+	rune12 := r.PostForm.Get("rune12") == "True"
+	runeEx := r.PostForm.Get("rune_ex") == "True"
+	runeEx2 := r.PostForm.Get("rune_ex2") == "True"
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		equipment := player.Equipment.List[equipmentId]
+		changedRunes := make(map[uint64]*puser.Rune)
+		detachRune(&equipment.Rune1, changedRunes, player.Rune, rune1)
+		detachRune(&equipment.Rune2, changedRunes, player.Rune, rune2)
+		detachRune(&equipment.Rune3, changedRunes, player.Rune, rune3)
+		detachRune(&equipment.Rune4, changedRunes, player.Rune, rune4)
+		detachRune(&equipment.Rune5, changedRunes, player.Rune, rune5)
+		detachRune(&equipment.Rune6, changedRunes, player.Rune, rune6)
+		detachRune(&equipment.Rune7, changedRunes, player.Rune, rune7)
+		detachRune(&equipment.Rune8, changedRunes, player.Rune, rune8)
+		detachRune(&equipment.Rune9, changedRunes, player.Rune, rune9)
+		detachRune(&equipment.Rune10, changedRunes, player.Rune, rune10)
+		detachRune(&equipment.Rune11, changedRunes, player.Rune, rune11)
+		detachRune(&equipment.Rune12, changedRunes, player.Rune, rune12)
+		detachRune(&equipment.RuneEx, changedRunes, player.Rune, runeEx)
+		detachRune(&equipment.RuneEx2, changedRunes, player.Rune, runeEx2)
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+				Equipment: &proto.StoredEquipment{
+					Add: map[uint64]*puser.Equipment{equipmentId: equipment},
+				},
+				Rune: &proto.StoredRune{
+					Add: changedRunes,
+				},
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func equipmentRuneDetachAll(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	equipmentId := u64(r.PostForm.Get("equipment_id"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		equipment := player.Equipment.List[equipmentId]
+		changedRunes := make(map[uint64]*puser.Rune)
+		detachRune(&equipment.Rune1, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune2, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune3, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune4, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune5, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune6, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune7, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune8, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune9, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune10, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune11, changedRunes, player.Rune, true)
+		detachRune(&equipment.Rune12, changedRunes, player.Rune, true)
+		detachRune(&equipment.RuneEx, changedRunes, player.Rune, true)
+		detachRune(&equipment.RuneEx2, changedRunes, player.Rune, true)
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+				Equipment: &proto.StoredEquipment{
+					Add: map[uint64]*puser.Equipment{equipmentId: equipment},
+				},
+				Rune: &proto.StoredRune{
+					Add: changedRunes,
+				},
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}

@@ -170,6 +170,31 @@ func generateStoredTitle(master *pmaster.All) *proto.StoredTitle {
 	return &proto.StoredTitle{List: titles}
 }
 
+func generateStoredRune(master *pmaster.All) *proto.StoredRune {
+	runes := make(map[uint64]*puser.Rune)
+	for _, r := range master.Rune {
+		count := uint64(1)
+		if r.MemberId != 0 {
+			if r.Rarity != 6 {
+				continue
+			}
+		} else {
+			count = 999
+		}
+		for i := range count {
+			runeID := uint64(r.Id)*1000 + i
+			runes[runeID] = &puser.Rune{
+				Id:         runeID,
+				PlayerId:   defaultPlayerID,
+				RuneId:     r.Id,
+				Level:      1,
+				AcquiredAt: "0",
+			}
+		}
+	}
+	return &proto.StoredRune{List: runes}
+}
+
 func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 	equipments, anyEquipmentID := generateStoredEquipment(master)
 
@@ -257,12 +282,12 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		Contents:           generateStoredContents(master),
 		Item:               generateStoredItem(master),
 		Title:              generateStoredTitle(master),
+		Rune:               generateStoredRune(master),
 
 		Sample:                      &proto.StoredSample{},
 		Setting:                     &puser.Setting{},
 		Anima:                       &proto.StoredAnima{},
 		AnimaArea:                   &proto.StoredAnimaArea{},
-		Rune:                        &proto.StoredRune{},
 		Elixir:                      &proto.StoredElixir{},
 		JobSkill:                    &proto.StoredJobSkill{},
 		ConditionProgress:           &proto.StoredConditionProgress{},

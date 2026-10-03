@@ -186,6 +186,10 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/equipment/limitbreak", equipmentLimitbreak)
 		router.Post("/equipment/evolution/material", equipmentEvolutionMaterial)
 		router.Post("/equipment/weapon_skill/enhance/material", equipmentWeaponSkillEnhanceMaterial)
+		router.Post("/equipment/rune/detach", equipmentRuneDetach)
+		router.Post("/equipment/rune/detach/all", equipmentRuneDetachAll)
+		router.Post("/equipment/rune/attach", equipmentRuneAttach)
+		router.Post("/equipment/record", empty("Proto.EquipmentRecordList"))
 
 		router.Post("/player/change/job", playerChangeJob)
 		router.Post("/job/skill/learn", empty("Proto.Nocontent"))
@@ -204,6 +208,9 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/arena/jobdeck/set", arenaJobdeckSet)
 		// TODO: actually return a valid opponent when we can play battle.
 		router.Get("/arena/opponent", empty("Proto.ArenaOpponentResponse"))
+
+		router.Post("/rune/sell", empty("Proto.Nocontent"))
+		router.Post("/rune/rarity/up", empty("Proto.Nocontent"))
 	})
 	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
 	router.Get("/news/top/{os}", news)
