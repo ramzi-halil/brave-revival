@@ -26,15 +26,10 @@ type Config struct {
 	// The standard server uses port 10000 for this.
 	ChatPort uint16 `json:"chat_port"`
 
-	// PartyPort is the TCP (gRPC/H2C) port number of the party server.
+	// PartyPort is the TCP (gRPC/H2C) port number of the party and notification server.
 	//
 	// The standard server uses port 10002 for this.
 	PartyPort uint16 `json:"party_port"`
-
-	// NotifyPort is the TCP (gRPC/H2C) port number of the notify server.
-	//
-	// The standard server uses port 10004 for this.
-	NotifyPort uint16 `json:"notify_port"`
 
 	// PhotonPort is the UDP port number of the Photon game server.
 	//
@@ -75,9 +70,6 @@ func ReadFile(path string) (*Config, error) {
 	}
 	if cfg.PartyPort == 0 {
 		cfg.PartyPort = 10002
-	}
-	if cfg.NotifyPort == 0 {
-		cfg.NotifyPort = 10004
 	}
 	if cfg.PhotonPort == 0 {
 		cfg.PhotonPort = 5056

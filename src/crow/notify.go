@@ -3,12 +3,8 @@ package crow
 import (
 	"context"
 	"log/slog"
-	"net"
-	"net/netip"
 
-	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/crownotify"
-	"google.golang.org/grpc"
 )
 
 type notifyHandler struct {
@@ -74,17 +70,4 @@ func (*notifyHandler) SendTicker(context.Context, *crownotify.SendTickerRequest)
 	slog.Debug("CrowNotify.CrowNotify/SendTicker")
 	// TODO: Broadcast the ticker message.
 	return &crownotify.NullResponse{}, nil
-}
-
-func RunNotify(cfg *config.Config) error {
-	address := net.TCPAddrFromAddrPort(netip.AddrPortFrom(cfg.Host, cfg.NotifyPort))
-	listener, err := net.ListenTCP("tcp", address)
-	if err != nil {
-		return err
-	}
-	defer listener.Close()
-
-	server := grpc.NewServer()
-	crownotify.RegisterCrowNotifyServer(server, &notifyHandler{})
-	return server.Serve(listener)
 }

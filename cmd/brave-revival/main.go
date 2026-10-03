@@ -30,10 +30,7 @@ func run() error {
 		return photon.RunLobby(cfg)
 	})
 	eg.Go(func() error {
-		return crow.RunParty(cfg)
-	})
-	eg.Go(func() error {
-		return crow.RunNotify(cfg)
+		return crow.Run(cfg)
 	})
 	eg.Go(func() error {
 		return chat.Run(cfg)

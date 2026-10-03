@@ -71,8 +71,7 @@ If the server has strict firewall rules, please allow incoming connections from 
 | 5055  | UDP (Photon) | - | Battle (master server); **hard-coded and cannot be changed** |
 | 5056  | UDP (Photon) | "photon_port" | Battle (game server) |
 | 10000 | TCP (WebSocket) | "chat_port" | Chat |
-| 10002 | TCP (gRPC) | "party_port" | Party |
-| 10004 | TCP (gRPC) | "notify_port" | Notification |
+| 10002 | TCP (gRPC) | "party_port" | Party and notification |
 | 13845 | TCP (HTTP) | "proxy_port" | Proxy and control |
 
 # Proxying game traffic

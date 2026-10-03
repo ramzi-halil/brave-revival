@@ -18,7 +18,7 @@ func etc(w http.ResponseWriter, r *http.Request) {
 			Photon:   config.AdvertiseHost,
 			Chat:     chatHost,
 			Party:    net.JoinHostPort(config.AdvertiseHost, fmt.Sprint(config.PartyPort)),
-			Notify:   net.JoinHostPort(config.AdvertiseHost, fmt.Sprint(config.NotifyPort)),
+			Notify:   net.JoinHostPort(config.AdvertiseHost, fmt.Sprint(config.PartyPort)),
 			Gvg:      config.AdvertiseHost,
 			Realtime: "ws://" + chatHost,
 			GvgHosts: 1,
