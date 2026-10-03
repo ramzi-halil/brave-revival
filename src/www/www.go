@@ -100,6 +100,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/player/delete", empty("Proto.Nocontent"))
 		router.Post("/player/change/nickname", playerChangeNickname)
 		router.Post("/player/change/comment", playerChangeComment)
+		router.Post("/title/set", titleSet)
 
 		router.Get("/friend/list", empty("Proto.FriendList"))
 		router.Get("/friend/approval/list", empty("Proto.FriendApprovalList"))

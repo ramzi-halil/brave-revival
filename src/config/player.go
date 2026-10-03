@@ -159,6 +159,17 @@ func generateStoredItem(master *pmaster.All) *proto.StoredItem {
 	return &proto.StoredItem{List: items}
 }
 
+func generateStoredTitle(master *pmaster.All) *proto.StoredTitle {
+	titles := make(map[uint32]*puser.Title)
+	for _, title := range master.Title {
+		titles[title.Id] = &puser.Title{
+			Id:       title.Id,
+			PlayerId: defaultPlayerID,
+		}
+	}
+	return &proto.StoredTitle{List: titles}
+}
+
 func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 	equipments, anyEquipmentID := generateStoredEquipment(master)
 
@@ -238,13 +249,15 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 			GuildMemberRole:       1,
 			GuildMasterId:         defaultPlayerID,
 		},
-		Equipment:                   equipments,
-		JobDeck:                     generateStoredJobDeck(master, anyEquipmentID),
-		Job:                         generateStoredJob(master),
-		AgitoItemArea:               generateStoredAgitoItemArea(master),
-		FunctionalTutorial:          generateStoredFunctionTutorial(master),
-		Contents:                    generateStoredContents(master),
-		Item:                        generateStoredItem(master),
+		Equipment:          equipments,
+		JobDeck:            generateStoredJobDeck(master, anyEquipmentID),
+		Job:                generateStoredJob(master),
+		AgitoItemArea:      generateStoredAgitoItemArea(master),
+		FunctionalTutorial: generateStoredFunctionTutorial(master),
+		Contents:           generateStoredContents(master),
+		Item:               generateStoredItem(master),
+		Title:              generateStoredTitle(master),
+
 		Sample:                      &proto.StoredSample{},
 		Setting:                     &puser.Setting{},
 		Anima:                       &proto.StoredAnima{},
@@ -268,7 +281,6 @@ func GenerateDefaultPlayer(master *pmaster.All) *proto.StoredData {
 		ContentsCondition:           &proto.StoredContentsCondition{},
 		AbyssFever:                  &puser.AbyssFever{},
 		Mercenary:                   &proto.StoredMercenary{},
-		Title:                       &proto.StoredTitle{},
 		ShopItem:                    &proto.StoredShopItem{},
 		LoginBonus:                  &proto.StoredLoginBonus{},
 		EventSugoroku:               &proto.StoredEventSugoroku{},

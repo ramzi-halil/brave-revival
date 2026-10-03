@@ -126,3 +126,19 @@ func playerChangeJob(w http.ResponseWriter, r *http.Request) {
 	})
 	writeProto(w, http.StatusOK, reply)
 }
+
+func titleSet(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	titleId := u32(r.PostForm.Get("title_id"))
+
+	reply := getHandler(r).writePlayer(func(player *proto.StoredData) *proto.Nocontent {
+		player.Player.TitleId = titleId
+		return &proto.Nocontent{
+			StoredData: &proto.StoredData{
+				Generation: player.Generation,
+				Player:     player.Player,
+			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}

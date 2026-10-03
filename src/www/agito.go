@@ -28,7 +28,7 @@ func fieldTop(w http.ResponseWriter, r *http.Request) {
 			SharedMissionList:       &pmisc.GuildSharedMissionList{},
 			PersonalMissionList:     &pmisc.GuildPersonalMissionList{},
 			WeeklyMissionReward:     &puser.GuildWeeklyMissionRewardList{},
-			FacilityList:            &proto.GuildFacilityList{},
+			FacilityList:            &pmisc.GuildFacilityList{},
 			BackgroundBattleReward:  &proto.BattleBackgroundReward{},
 			AgitoVisitorReturn:      &proto.AgitoVisitorReturn{},
 			LastAgitoReceivedGoodAt: "0",
