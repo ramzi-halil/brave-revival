@@ -319,7 +319,7 @@ id,key,value,type,priority,open_date,close_date,open_time,close_time
 20370,holybeast_player_limit,40,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20371,disable_purchase,1,2,1,2120-09-01T00:00:00,2120-09-30T00:00:00,0,0
 20372,blacksmith_evolution_button_unlock,1,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
-20373,app_close_flag,0,2,1,2026-09-28T17:30:00,2026-12-28T10:30:00,0,0
+20373,app_close_flag,0,2,1,2026-09-28T17:30:00,2200-12-31T00:00:00,0,0
 20374,app_close_dialog_body_text_name,51075,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20375,leader_approval_time_limit,10,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20376,gvg_survival_penalty,15,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
@@ -458,7 +458,7 @@ id,key,value,type,priority,open_date,close_date,open_time,close_time
 20514,deck_same_character_open_flag,1,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20515,equipment_enhancement_inherit_cost,100000,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20516,home_display_label_shop_beginner,"初心者パック
-販売中！",4,1,2016-11-16T00:00:00,2026-08-28T10:29:59,0,0
+販売中！",4,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20517,beginner_guid_url,notify#notify=7,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20518,gvg_bidding_help_url,https://shingeki-bo.enish.com/gvg/,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20519,equipment_limit_break_required_1,1,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
@@ -474,7 +474,7 @@ id,key,value,type,priority,open_date,close_date,open_time,close_time
 20528,comeback_expiration_time,168,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20530,startup_background_resource,0,2,2,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20531,home_display_label_shop_comeback,"カムバック
-限定販売中！",4,1,2016-11-16T00:00:00,2026-08-28T10:29:59,0,0
+限定販売中！",4,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20532,max_deck_group,6,2,1,2016-11-16T00:00:00,2200-12-31T00:00:00,0,0
 20533,home_display_label_shop,"無料デイリー
 パック配布中！",4,1,2022-10-13T10:35:00,2022-10-31T23:59:59,0,0
