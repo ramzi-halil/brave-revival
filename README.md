@@ -3,6 +3,8 @@
 > [!NOTE]
 > This project is not affiliated with Enish in any way. It is a fan-made project intended for personal use primarily.
 
+![Ereh](docs/ereh.avif)
+
 # Preparation
 
 To compile the code here, you need to install [Go](https://go.dev/dl/) v1.27.1 or above.
@@ -172,6 +174,8 @@ The server is designed for solo play with the focus on capturing scenes instead 
 
 * **Battle does not work yet**
 
+* No zoomed-in view of corp room visitors.
+
 * Advertisement will be disabled in the future. Currently you can still watch ads but they will not give you any rewards.
 
 * Guild facilities' levels should be maximized. Currently they are all at Lv.1.
@@ -183,6 +187,16 @@ The server is designed for solo play with the focus on capturing scenes instead 
 * PvP shows no opponents.
 
 ## Advanced corps room editing
+
+<table><tr><td>
+
+![](docs/ymir.avif)
+
+</td><td>
+
+![](docs/agito-editor.png)
+
+</td></tr><tr></table>
 
 On the server machine, you can go to `http://127.0.0.1:13845/agito` to arbitrarily edit the corp room.
 
