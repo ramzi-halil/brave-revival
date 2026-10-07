@@ -4,7 +4,6 @@
     "proxy_port": 13845,
     "chat_port": 10000,
     "party_port": 10002,
-    "photon_port": 5056,
     "tls_dir": "./tls-cache",
     "assets_dir": "./raw",
     "db_dir": "./db/master",

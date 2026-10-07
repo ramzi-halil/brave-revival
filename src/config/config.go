@@ -31,11 +31,6 @@ type Config struct {
 	// The standard server uses port 10002 for this.
 	PartyPort uint16 `json:"party_port"`
 
-	// PhotonPort is the UDP port number of the Photon game server.
-	//
-	// The standard server uses port 5056 for this.
-	PhotonPort uint16 `json:"photon_port"`
-
 	// TLSDir is the local directory path where the TLS certificate and key are stored.
 	TLSDir string `json:"tls_dir"`
 
@@ -70,9 +65,6 @@ func ReadFile(path string) (*Config, error) {
 	}
 	if cfg.PartyPort == 0 {
 		cfg.PartyPort = 10002
-	}
-	if cfg.PhotonPort == 0 {
-		cfg.PhotonPort = 5056
 	}
 
 	return &cfg, nil
