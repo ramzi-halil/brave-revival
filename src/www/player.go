@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"slices"
 
+	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/puser"
 )
@@ -138,6 +139,24 @@ func titleSet(w http.ResponseWriter, r *http.Request) {
 				Generation: player.Generation,
 				Player:     player.Player,
 			},
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}
+
+func playerSummaryList(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	playerIds := r.Form["player_id"]
+
+	reply := getHandler(r).readPlayer(func(player *proto.StoredData) *proto.PlayerSummaryList {
+		players := make([]*proto.PlayerSummary, 0, len(playerIds))
+		for _, playerId := range playerIds {
+			p := config.GeneratePlayerSummary(player)
+			p.PlayerId = u64(playerId)
+			players = append(players, p)
+		}
+		return &proto.PlayerSummaryList{
+			Players: players,
 		}
 	})
 	writeProto(w, http.StatusOK, reply)

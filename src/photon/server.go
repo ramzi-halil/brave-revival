@@ -716,6 +716,8 @@ func (s *Server) handleContent(client *Client, content []byte) error {
 		s.mu.RUnlock()
 		if handler != nil {
 			client.enqueue(func() { handler(client, request) })
+		} else {
+			slog.Warn("no handler for operation request", "code", request.Code, "internal", request.Internal)
 		}
 		return nil
 	case MessageOperationResponse, MessageInternalOperationResponse:
@@ -729,6 +731,8 @@ func (s *Server) handleContent(client *Client, content []byte) error {
 		s.mu.RUnlock()
 		if handler != nil {
 			client.enqueue(func() { handler(client, response) })
+		} else {
+			slog.Warn("no handler for operation response", "code", response.Code, "internal", response.Internal)
 		}
 		return nil
 	case MessageEvent:
@@ -741,6 +745,8 @@ func (s *Server) handleContent(client *Client, content []byte) error {
 		s.mu.RUnlock()
 		if handler != nil {
 			client.enqueue(func() { handler(client, event) })
+		} else {
+			slog.Warn("no handler for event", "code", event.Code)
 		}
 		return nil
 	default:

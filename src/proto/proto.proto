@@ -27,6 +27,10 @@ message PlayerSummary {
     uint32 max_job_level = 11;
 }
 
+message PlayerSummaryList {
+    repeated PlayerSummary players = 1;
+}
+
 message PlayerExist {
     Pcommon.Error error = 1;
     PlayerSummary player_summary = 2;

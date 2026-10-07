@@ -100,6 +100,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/player/delete", empty("Proto.Nocontent"))
 		router.Post("/player/change/nickname", playerChangeNickname)
 		router.Post("/player/change/comment", playerChangeComment)
+		router.Post("/player/summary/list", playerSummaryList)
 		router.Post("/title/set", titleSet)
 
 		router.Get("/friend/list", empty("Proto.FriendList"))
@@ -224,6 +225,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/abyss/fever/charge", empty("Proto.Nocontent"))
 		router.Get("/tower/top", empty("Proto.TowerTopResult"))
 		router.Post("/battle/tower/sweep", battleTowerSweep)
+		router.Get("/battle/raid/history", empty("Proto.RaidHistoryResponse"))
 
 		router.Get("/arena/season", arenaSeason)
 		router.Get("/arena/ranking", empty("Proto.ArenaRankingResponse"))
