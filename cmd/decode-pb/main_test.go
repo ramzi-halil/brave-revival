@@ -108,7 +108,7 @@ func TestDecode(t *testing.T) {
 			input := filepath.Join(t.TempDir(), "input.pb")
 			require.NoError(t, os.WriteFile(input, data, 0o600))
 			var out bytes.Buffer
-			require.NoError(t, decode(&out, string(tt.message.ProtoReflect().Descriptor().FullName()), input))
+			require.NoError(t, decode(&out, string(tt.message.ProtoReflect().Descriptor().FullName()), input, "go"))
 			if tt.unordered {
 				require.ElementsMatch(t, strings.Split(tt.want, "\n"), strings.Split(out.String(), "\n"))
 			} else {
@@ -133,7 +133,7 @@ func TestDecodeErrors(t *testing.T) {
 		{"Proto.Empty", input, "decode Proto.Empty"},
 	} {
 		var out bytes.Buffer
-		require.ErrorContains(t, decode(&out, tt.message, tt.input), tt.want)
+		require.ErrorContains(t, decode(&out, tt.message, tt.input, "go"), tt.want)
 		require.Empty(t, out.String())
 	}
 }
