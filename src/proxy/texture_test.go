@@ -14,12 +14,11 @@ import (
 	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/pmaster"
 	"example.com/brave-revival/src/www"
-	"github.com/kvarenzn/ssm/uni"
 	"github.com/stretchr/testify/require"
 )
 
 func TestTextureViewer(t *testing.T) {
-	fixture, err := os.ReadFile("testdata/texture.unity3d")
+	fixture, err := os.ReadFile("internal/unity/testdata/texture.unity3d")
 	require.NoError(t, err)
 	assetsDir := t.TempDir()
 	dbDir := t.TempDir()
@@ -88,37 +87,13 @@ func TestTexturePNG(t *testing.T) {
 		_, err := texturePNG(data, "invalid")
 		require.Error(t, err)
 	}
-	data, err := os.ReadFile("testdata/texture.unity3d")
-	require.NoError(t, err)
-	reader, err := uni.NewFileReader(data, "test")
-	require.NoError(t, err)
-	bundle, err := uni.NewBundleFile(reader)
-	require.NoError(t, err)
-	_, err = texturePNG(bundle.Files[0].Stream, "test.assets")
-	require.Error(t, err) // The streamed pixels require the bundle's .resS entry.
-	data, err = os.ReadFile("testdata/texture.assets")
+	data, err := os.ReadFile("internal/unity/testdata/texture.assets")
 	require.NoError(t, err)
 	encoded, err := texturePNG(data, "test.assets")
 	require.NoError(t, err)
 	require.NotEmpty(t, encoded)
-	data, err = os.ReadFile("testdata/no-texture.assets")
+	data, err = os.ReadFile("internal/unity/testdata/no-texture.assets")
 	require.NoError(t, err)
 	_, err = texturePNG(data, "test.assets")
 	require.EqualError(t, err, "asset contains no Texture2D")
-}
-
-func TestDecodeASTCTexture(t *testing.T) {
-	block := []byte{0xfc, 0xfd, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0, 0, 0, 0, 0xff, 0xff}
-	for _, format := range []uni.TextureFormat{uni.ASTC_RGB_5x5, uni.ASTC_RGBA_5x5} {
-		texture := &uni.Texture2D{
-			Width: 5, Height: 5, Format: format,
-			ImageData: uni.NewResourceReader(uni.NewBinaryReaderFromBytes(block, true), 0, int64(len(block))),
-		}
-		img, err := decodeTexture(texture)
-		require.NoError(t, err)
-		require.Equal(t, color.NRGBA{R: 255, A: 255}, color.NRGBAModel.Convert(img.At(0, 0)))
-		texture.ImageData.Size = 1
-		_, err = decodeTexture(texture)
-		require.Error(t, err)
-	}
 }

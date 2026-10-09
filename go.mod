@@ -6,7 +6,7 @@ require (
 	github.com/agusibrahim/apksig-go v1.1.0
 	github.com/coder/websocket v1.8.15
 	github.com/go-chi/chi/v5 v5.3.2
-	github.com/kvarenzn/ssm v0.3.2
+	github.com/pierrec/lz4/v4 v4.1.25
 	github.com/shogo82148/androidbinary v1.0.6
 	github.com/stretchr/testify v1.12.1
 	golang.org/x/sync v0.22.0
@@ -15,7 +15,6 @@ require (
 )
 
 require (
-	github.com/pierrec/lz4/v4 v4.1.25 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/net v0.57.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect
