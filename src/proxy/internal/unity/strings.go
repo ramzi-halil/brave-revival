@@ -1,4 +1,4 @@
-// UnityPy common type-tree strings (MIT); see LICENSE.UnityPy.
+// UnityPy common type-tree strings.
 
 package unity
 

@@ -1,4 +1,4 @@
-// Adapted from UnityPy/helpers/TypeTreeNode.py and TypeTreeHelper.py (MIT); see LICENSE.UnityPy.
+// Adapted from UnityPy/helpers/TypeTreeNode.py and TypeTreeHelper.py.
 
 package unity
 

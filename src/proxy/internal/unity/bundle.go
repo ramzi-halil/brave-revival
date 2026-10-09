@@ -1,4 +1,4 @@
-// Adapted from UnityPy/files/BundleFile.py (MIT); see LICENSE.UnityPy.
+// Adapted from UnityPy/files/BundleFile.py.
 
 package unity
 

@@ -1,4 +1,4 @@
-// Adapted from UnityPy/files/SerializedFile.py and ObjectReader.py (MIT); see LICENSE.UnityPy.
+// Adapted from UnityPy/files/SerializedFile.py and ObjectReader.py.
 
 package unity
 

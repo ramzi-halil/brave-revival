@@ -1,4 +1,4 @@
-// Adapted from UnityPy's Texture2D type trees and Texture2DConverter.py (MIT); see LICENSE.UnityPy.
+// Adapted from UnityPy's Texture2D type trees and Texture2DConverter.py.
 
 package unity
 

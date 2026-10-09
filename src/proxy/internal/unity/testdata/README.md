@@ -12,7 +12,7 @@ a 2×2 RGBA image (red/green above blue/half-transparent white) and differ only 
 byte order. They exercise common type-tree strings and alignment.
 
 `pixels.json` contains compressed bytes and SHA-256 hashes of the expected RGBA
-pixels after Unity's vertical flip. The references use UnityPy's MIT dependency
+pixels after Unity's vertical flip. The references use UnityPy's dependency
 texture2ddecoder 1.0.6. ASTC vectors cover six block sizes, using UnityPy's ASTC
 encoder on gradients, sharp color/alpha boundaries, and random pixels seeded
 with `221 + pattern`. ETC vectors use random blocks seeded with 217, with invalid

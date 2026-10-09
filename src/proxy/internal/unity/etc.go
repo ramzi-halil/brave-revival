@@ -1,5 +1,4 @@
-// Translated from K0lb3/texture2ddecoder's MIT-licensed ETC decoder.
-// See LICENSE.texture2ddecoder and README.md for upstream attribution.
+// Translated from K0lb3/texture2ddecoder's ETC decoder.
 
 package unity
 

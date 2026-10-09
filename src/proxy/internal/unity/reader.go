@@ -1,4 +1,4 @@
-// Adapted from UnityPy (MIT); see LICENSE.UnityPy.
+// Adapted from UnityPy.
 
 package unity
 

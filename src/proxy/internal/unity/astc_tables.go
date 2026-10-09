@@ -1,4 +1,4 @@
-// Translated from K0lb3/texture2ddecoder (MIT); see LICENSE.texture2ddecoder.
+// Translated from K0lb3/texture2ddecoder.
 
 package unity
 
