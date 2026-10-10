@@ -363,3 +363,19 @@ func GeneratePlayerSummary(player *proto.StoredData) *proto.PlayerSummary {
 		MaxJobLevel:       level,
 	}
 }
+
+func GenerateGuildSummary(player *proto.StoredData) *proto.GuildSummary {
+	return &proto.GuildSummary{
+		GuildId:          player.GuildInfo.GuildId,
+		Name:             player.GuildInfo.GuildName,
+		Symbol:           player.GuildInfo.GuildSymbol,
+		SymbolFrame:      player.GuildInfo.GuildSymbolFrame,
+		SymbolFrameColor: player.GuildInfo.GuildSymbolFrameColor,
+		MemberCount:      1,
+		MemberMaxCount:   40,
+		Lv:               50,
+		Power:            999_999_999,
+		RankingRank:      1,
+		RankingScore:     999_999_999,
+	}
+}

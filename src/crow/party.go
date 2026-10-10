@@ -16,7 +16,7 @@ type partyHandler struct {
 func (h *partyHandler) Connect(stream crowparty.CrowParty_ConnectServer) error {
 	for {
 		request, err := stream.Recv()
-		slog.Warn("CrowParty.CrowParty/Connect", "request", request, "err", err)
+		slog.Debug("CrowParty.CrowParty/Connect", "request", request, "err", err)
 		if errors.Is(err, io.EOF) {
 			return nil
 		}

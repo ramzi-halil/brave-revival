@@ -135,6 +135,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/guild/search/list", empty("Proto.GuildSearchList"))
 		router.Get("/guild/penalty", guildPenalty)
 		router.Post("/guild/create", empty("Proto.Nocontent"))
+		router.Post("/guild/summary/list", guildSummaryList)
 
 		router.Get("/guild/facility/list", empty("Proto.GuildFacilityList"))
 		router.Post("/guild/top", guildDetail)

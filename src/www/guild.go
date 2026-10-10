@@ -201,3 +201,21 @@ func guildDungeonTop(w http.ResponseWriter, r *http.Request) {
 
 	writeProto(w, http.StatusOK, reply)
 }
+
+func guildSummaryList(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	ids := r.Form["id"]
+
+	reply := getHandler(r).readPlayer(func(player *proto.StoredData) *proto.GuildSummaryList {
+		summaries := make([]*proto.GuildSummary, 0, len(ids))
+		for _, idStr := range ids {
+			summary := config.GenerateGuildSummary(player)
+			summary.GuildId = u64(idStr)
+			summaries = append(summaries, summary)
+		}
+		return &proto.GuildSummaryList{
+			Guilds: summaries,
+		}
+	})
+	writeProto(w, http.StatusOK, reply)
+}

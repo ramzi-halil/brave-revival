@@ -128,6 +128,10 @@ message GuildSummary {
     uint32 ranking_score = 11;
 }
 
+message GuildSummaryList {
+    repeated GuildSummary guilds = 1;
+}
+
 message GuildMember {
     PlayerSummary player_summary = 1;
     uint64 point = 2;

@@ -46,7 +46,7 @@ func playerDetail(w http.ResponseWriter, r *http.Request) {
 			CurrentJobDeck: currentDeck,
 			Equipments:     slices.Collect(maps.Values(player.Equipment.List)),
 			BaseParameter:  &proto.BaseParameter{},
-			GuildSummary:   &proto.GuildSummary{},
+			GuildSummary:   config.GenerateGuildSummary(player),
 			GuildMember:    &proto.GuildMember{},
 		}
 	})

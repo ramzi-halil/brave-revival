@@ -12,7 +12,7 @@ type notifyHandler struct {
 }
 
 func (*notifyHandler) Notify(req *crownotify.NotifyRequest, stream crownotify.CrowNotify_NotifyServer) error {
-	slog.Info("CrowNotify.CrowNotify/Notify", "req", req)
+	slog.Debug("CrowNotify.CrowNotify/Notify", "req", req)
 	// we have nothing to notify.
 	<-stream.Context().Done()
 	return nil
