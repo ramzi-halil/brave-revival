@@ -257,6 +257,7 @@ message FieldTopResponse {
     AgitoVisitorReturn agito_visitor_return = 20;
     string last_agito_received_good_at = 21;
     uint32 present_box_count = 22;
+    repeated uint32 agito_new_lineup_ids = 23;
     uint32 direct_message_badge = 24;
     uint32 direct_message_count = 25;
     // ArenaSeasonResponse arena_season = 26;

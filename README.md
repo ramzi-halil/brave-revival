@@ -173,8 +173,6 @@ The server is designed for solo play with the focus on capturing scenes instead 
 
 * **Battle does not work yet**
 
-* No zoomed-in view of corp room visitors.
-
 * Advertisement will be disabled in the future. Currently you can still watch ads but they will not give you any rewards.
 
 * Guild facilities' levels should be maximized. Currently they are all at Lv.1.

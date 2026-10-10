@@ -12,6 +12,19 @@ import (
 
 func fieldTop(w http.ResponseWriter, r *http.Request) {
 	reply := getHandler(r).readPlayer(func(player *proto.StoredData) *proto.FieldTopResponse {
+		var lineupIDs []uint32
+		for _, area := range player.AgitoItemArea.List {
+			if area.AgitoVisitorLineupId_1 != 0 {
+				lineupIDs = append(lineupIDs, area.AgitoVisitorLineupId_1)
+			}
+			if area.AgitoVisitorLineupId_2 != 0 {
+				lineupIDs = append(lineupIDs, area.AgitoVisitorLineupId_2)
+			}
+			if area.AgitoVisitorLineupId_3 != 0 {
+				lineupIDs = append(lineupIDs, area.AgitoVisitorLineupId_3)
+			}
+		}
+
 		return &proto.FieldTopResponse{
 			StoredData: &proto.StoredData{
 				Generation:    player.Generation,
@@ -32,6 +45,7 @@ func fieldTop(w http.ResponseWriter, r *http.Request) {
 			BackgroundBattleReward:  &proto.BattleBackgroundReward{},
 			AgitoVisitorReturn:      &proto.AgitoVisitorReturn{},
 			LastAgitoReceivedGoodAt: "0",
+			AgitoNewLineupIds:       lineupIDs,
 		}
 	})
 	writeProto(w, http.StatusOK, reply)

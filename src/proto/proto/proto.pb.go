@@ -2138,6 +2138,7 @@ type FieldTopResponse struct {
 	AgitoVisitorReturn      *AgitoVisitorReturn                 `protobuf:"bytes,20,opt,name=agito_visitor_return,json=agitoVisitorReturn,proto3" json:"agito_visitor_return,omitempty"`
 	LastAgitoReceivedGoodAt string                              `protobuf:"bytes,21,opt,name=last_agito_received_good_at,json=lastAgitoReceivedGoodAt,proto3" json:"last_agito_received_good_at,omitempty"`
 	PresentBoxCount         uint32                              `protobuf:"varint,22,opt,name=present_box_count,json=presentBoxCount,proto3" json:"present_box_count,omitempty"`
+	AgitoNewLineupIds       []uint32                            `protobuf:"varint,23,rep,packed,name=agito_new_lineup_ids,json=agitoNewLineupIds,proto3" json:"agito_new_lineup_ids,omitempty"`
 	DirectMessageBadge      uint32                              `protobuf:"varint,24,opt,name=direct_message_badge,json=directMessageBadge,proto3" json:"direct_message_badge,omitempty"`
 	DirectMessageCount      uint32                              `protobuf:"varint,25,opt,name=direct_message_count,json=directMessageCount,proto3" json:"direct_message_count,omitempty"` // ArenaSeasonResponse arena_season = 26;
 	unknownFields           protoimpl.UnknownFields
@@ -2312,6 +2313,13 @@ func (x *FieldTopResponse) GetPresentBoxCount() uint32 {
 		return x.PresentBoxCount
 	}
 	return 0
+}
+
+func (x *FieldTopResponse) GetAgitoNewLineupIds() []uint32 {
+	if x != nil {
+		return x.AgitoNewLineupIds
+	}
+	return nil
 }
 
 func (x *FieldTopResponse) GetDirectMessageBadge() uint32 {
@@ -8834,7 +8842,7 @@ const file_proto_proto_rawDesc = "" +
 	"\fguild_symbol\x18\x06 \x01(\rR\vguildSymbol\x12,\n" +
 	"\x12guild_symbol_frame\x18\a \x01(\rR\x10guildSymbolFrame\x127\n" +
 	"\x18guild_symbol_frame_color\x18\b \x01(\rR\x15guildSymbolFrameColor\x12*\n" +
-	"\x11guild_member_role\x18\t \x01(\rR\x0fguildMemberRole\"\xb4\t\n" +
+	"\x11guild_member_role\x18\t \x01(\rR\x0fguildMemberRole\"\xe5\t\n" +
 	"\x10FieldTopResponse\x122\n" +
 	"\vstored_data\x18\x01 \x01(\v2\x11.Proto.StoredDataR\n" +
 	"storedData\x122\n" +
@@ -8860,7 +8868,8 @@ const file_proto_proto_rawDesc = "" +
 	"loginBonus\x12K\n" +
 	"\x14agito_visitor_return\x18\x14 \x01(\v2\x19.Proto.AgitoVisitorReturnR\x12agitoVisitorReturn\x12<\n" +
 	"\x1blast_agito_received_good_at\x18\x15 \x01(\tR\x17lastAgitoReceivedGoodAt\x12*\n" +
-	"\x11present_box_count\x18\x16 \x01(\rR\x0fpresentBoxCount\x120\n" +
+	"\x11present_box_count\x18\x16 \x01(\rR\x0fpresentBoxCount\x12/\n" +
+	"\x14agito_new_lineup_ids\x18\x17 \x03(\rR\x11agitoNewLineupIds\x120\n" +
 	"\x14direct_message_badge\x18\x18 \x01(\rR\x12directMessageBadge\x120\n" +
 	"\x14direct_message_count\x18\x19 \x01(\rR\x12directMessageCount\"\x88\x01\n" +
 	"\bCurrency\x12\x17\n" +
