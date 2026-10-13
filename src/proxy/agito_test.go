@@ -41,7 +41,7 @@ func TestAgitoEditorRoutes(t *testing.T) {
 	}
 	require.NoError(t, os.WriteFile(filepath.Join(dbDir, "resources.csv"), []byte("id,ios,android,ios_size,android_size\n"), 0o600))
 	playerPath := filepath.Join(t.TempDir(), "player.json")
-	wwwHandler, err := www.NewHandler(&config.Config{DBDir: dbDir, AssetsDir: t.TempDir(), PlayerPath: playerPath})
+	wwwHandler, err := www.NewHandler(&config.Config{DBDir: dbDir, AssetsDir: []string{t.TempDir()}, PlayerPath: playerPath})
 	require.NoError(t, err)
 	h := newHandler(&config.Config{}, tls.Certificate{}, wwwHandler)
 	w := httptest.NewRecorder()

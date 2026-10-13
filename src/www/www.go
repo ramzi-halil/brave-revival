@@ -1,6 +1,7 @@
 package www
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"log/slog"
@@ -25,7 +26,7 @@ const protobufContentType = "application/x-protobuf"
 type Handler struct {
 	config *config.Config
 	router chi.Router
-	assets *os.Root
+	assets []*os.Root
 	flows  *flows.Recorder
 
 	masterLock sync.Mutex
@@ -53,16 +54,23 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		return nil, err
 	}
 
-	assetsDir, err := os.OpenRoot(cfg.AssetsDir)
-	if err != nil {
-		return nil, fmt.Errorf("failed to open assets dir: %w", err)
+	assetsDirs := make([]*os.Root, 0, len(cfg.AssetsDir))
+	for _, path := range cfg.AssetsDir {
+		assetsDir, err := os.OpenRoot(path)
+		if err != nil {
+			for _, root := range assetsDirs {
+				root.Close()
+			}
+			return nil, fmt.Errorf("failed to open assets dir %q: %w", path, err)
+		}
+		assetsDirs = append(assetsDirs, assetsDir)
 	}
 
 	router := chi.NewRouter()
 	handler := &Handler{
 		config:    cfg,
 		router:    router,
-		assets:    assetsDir,
+		assets:    assetsDirs,
 		flows:     &flows.Recorder{},
 		master:    master,
 		resources: resources,
@@ -362,16 +370,21 @@ func (h *Handler) ResourceHash(platform string, id uint32) (string, bool) {
 }
 
 func (h *Handler) OpenResourceByHash(hash string) (*os.File, error) {
-	if len(hash) < 2 {
+	if len(hash) < 2 || len(h.assets) == 0 {
 		return nil, os.ErrNotExist
 	}
-	for _, path := range []string{hash[:2] + "/" + hash + ".unity3d", hash} {
-		file, err := h.assets.Open(path)
-		if err == nil {
-			return file, nil
+	searchPaths := []string{hash[:2] + "/" + hash + ".unity3d", hash}
+	var errs []error
+	for _, assets := range h.assets {
+		for _, path := range searchPaths {
+			file, err := assets.Open(path)
+			if err == nil {
+				return file, nil
+			}
+			errs = append(errs, err)
 		}
 	}
-	return nil, os.ErrNotExist
+	return nil, errors.Join(errs...)
 }
 
 func getHandler(r *http.Request) *Handler {

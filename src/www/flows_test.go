@@ -30,9 +30,13 @@ func TestVersionedFlows(t *testing.T) {
 		require.NoError(t, os.WriteFile(filepath.Join(dbDir, string(field.Name())+".csv"), []byte(content), 0o600))
 	}
 	require.NoError(t, os.WriteFile(filepath.Join(dbDir, "resources.csv"), []byte("id,ios,android,ios_size,android_size\n"), 0o600))
-	h, err := NewHandler(&config.Config{DBDir: dbDir, AssetsDir: t.TempDir()})
+	h, err := NewHandler(&config.Config{DBDir: dbDir, AssetsDir: []string{t.TempDir()}})
 	require.NoError(t, err)
-	t.Cleanup(func() { h.assets.Close() })
+	t.Cleanup(func() {
+		for _, assets := range h.assets {
+			assets.Close()
+		}
+	})
 
 	cases := []struct {
 		method    string

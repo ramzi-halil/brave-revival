@@ -34,10 +34,10 @@ type Config struct {
 	// TLSDir is the local directory path where the TLS certificate and key are stored.
 	TLSDir string `json:"tls_dir"`
 
-	// AssetsDir is the local directory path where the Unity3D asset files are stored.
+	// AssetsDir lists the local directories where the Unity3D asset files are stored, in search order.
 	//
 	// The assets must be stored in the form `./ha/hash.unity3d`, where `ha` is the first two characters of the hash.
-	AssetsDir string `json:"assets_dir"`
+	AssetsDir []string `json:"assets_dir"`
 
 	// DBDir is the local directory path where the decoded game data are stored.
 	DBDir string `json:"db_dir"`

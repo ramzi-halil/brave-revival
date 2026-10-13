@@ -39,7 +39,7 @@ func TestTextureViewer(t *testing.T) {
 	resources := "id,ios,android,ios_size,android_size\n1,ios-hash,android-hash,440,0\n2,missing-hash,android-hash,0,0\n3,broken-hash,android-hash,0,0\n"
 	require.NoError(t, os.WriteFile(filepath.Join(dbDir, "resources.csv"), []byte(resources), 0o600))
 	require.NoError(t, os.WriteFile(filepath.Join(assetsDir, "broken-hash"), []byte("UnityFS\x00"), 0o600))
-	wwwHandler, err := www.NewHandler(&config.Config{DBDir: dbDir, AssetsDir: assetsDir})
+	wwwHandler, err := www.NewHandler(&config.Config{DBDir: dbDir, AssetsDir: []string{assetsDir}})
 	require.NoError(t, err)
 	h := newHandler(&config.Config{}, tls.Certificate{}, wwwHandler)
 
