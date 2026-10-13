@@ -920,3 +920,8 @@ message GvgPracticeInfo {
     // repeated GvgPracticeChoiceList member_limit_list = 9;
     // repeated GvgPracticeChoiceList power_list = 10;
 }
+
+message RiskDungeonGetRiskResponse {
+    map<uint64, uint32> risk_map = 2;
+    map<uint64, uint32> challenge_unit_map = 3;
+}

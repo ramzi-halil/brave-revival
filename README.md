@@ -173,6 +173,8 @@ The server is designed for solo play with the focus on capturing scenes instead 
 
 * **Battle does not work yet**
 
+* Changing party room properties may not be updated immediately. Auto-match is not yet handled.
+
 * Advertisement will be disabled in the future. Currently you can still watch ads but they will not give you any rewards.
 
 * Guild facilities' levels should be maximized. Currently they are all at Lv.1.

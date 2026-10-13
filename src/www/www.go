@@ -235,6 +235,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Get("/tower/top", empty("Proto.TowerTopResult"))
 		router.Post("/battle/tower/sweep", battleTowerSweep)
 		router.Get("/battle/raid/history", empty("Proto.RaidHistoryResponse"))
+		router.Post("/risk_dungeon/get/risk", riskDungeonGetRisk)
 
 		router.Get("/arena/season", arenaSeason)
 		router.Get("/arena/ranking", empty("Proto.ArenaRankingResponse"))
