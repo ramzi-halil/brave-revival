@@ -43,7 +43,7 @@ func TestTextureViewer(t *testing.T) {
 	require.NoError(t, err)
 	h := newHandler(&config.Config{}, tls.Certificate{}, wwwHandler)
 
-	for _, path := range []string{"io/ios-hash.unity3d", "ios-hash"} {
+	for _, path := range []string{"io/ios-hash.unity3d", "ios-hash", "an/android-hash.unity3d", "android-hash"} {
 		t.Run(path, func(t *testing.T) {
 			assetPath := filepath.Join(assetsDir, path)
 			require.NoError(t, os.MkdirAll(filepath.Dir(assetPath), 0o700))

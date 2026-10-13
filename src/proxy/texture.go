@@ -2,7 +2,9 @@ package proxy
 
 import (
 	"bytes"
+	"errors"
 	"io"
+	"io/fs"
 	"net/http"
 	"strconv"
 	"time"
@@ -23,6 +25,12 @@ func (h *handler) handleTexture(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	file, err := h.www.OpenResourceByHash(hash)
+	if errors.Is(err, fs.ErrNotExist) {
+		if androidHash, ok := h.www.ResourceHash("android", uint32(id)); ok {
+			hash = androidHash
+			file, err = h.www.OpenResourceByHash(hash)
+		}
+	}
 	if err != nil {
 		http.Error(w, "Asset not found", http.StatusNotFound)
 		return
