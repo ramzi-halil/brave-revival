@@ -246,7 +246,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		router.Post("/rune/sell", empty("Proto.Nocontent"))
 		router.Post("/rune/rarity/up", empty("Proto.Nocontent"))
 	})
-	router.Get("/crow/Assets/{os}/{hash:[0-9a-f]{32}}", assets)
+	router.Get("/crow/Assets/{os}/{hash:[-._0-9a-zA-Z]{2,}}", assets)
 	router.Get("/news/top/{os}", news)
 	router.NotFound(notFound)
 	router.MethodNotAllowed(notFound)
