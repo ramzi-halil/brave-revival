@@ -54,7 +54,10 @@ func run(args []string, stderr io.Writer) error {
 	if err != nil {
 		return fmt.Errorf("decode PNG: %w", err)
 	}
-	data := textureBundle(img, *resource, target)
+	data, err := textureBundle(img, *resource, target)
+	if err != nil {
+		return err
+	}
 	if err := os.WriteFile(*output, data, 0o644); err != nil {
 		return fmt.Errorf("write output: %w", err)
 	}

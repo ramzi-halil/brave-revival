@@ -4,14 +4,18 @@ package main
 
 import (
 	"encoding/binary"
+	"fmt"
 	"image"
 	"image/draw"
 	"strings"
+
+	"github.com/pierrec/lz4/v4"
 )
 
 const (
-	unityVersion = "2022.3.62f3"
-	rgba32       = 4
+	unityVersion    = "2022.3.62f3"
+	rgba32          = 4
+	bundleBlockSize = 128 << 10
 )
 
 type writer struct {
@@ -157,19 +161,45 @@ func serializedAsset(img image.Image, name string, platform int32) []byte {
 	return w.data
 }
 
-func textureBundle(img image.Image, name string, platform int32) []byte {
+func compressBundleBlock(compressor *lz4.CompressorHC, data []byte) ([]byte, uint16, error) {
+	compressed := make([]byte, lz4.CompressBlockBound(len(data)))
+	n, err := compressor.CompressBlock(data, compressed)
+	if err != nil {
+		return nil, 0, fmt.Errorf("compress UnityFS block: %w", err)
+	}
+	if n == 0 || n >= len(data) {
+		return data, 0, nil
+	}
+	return compressed[:n], 3, nil
+}
+
+func textureBundle(img image.Image, name string, platform int32) ([]byte, error) {
 	asset := serializedAsset(img, name, platform)
+	compressor := lz4.CompressorHC{Level: lz4.Level9}
+	var blocks []byte
 	info := writer{order: binary.BigEndian}
 	info.raw(make([]byte, 16))
-	info.u32(1)
-	info.u32(uint32(len(asset)))
-	info.u32(uint32(len(asset)))
-	info.u16(0)
+	info.u32(uint32((len(asset) + bundleBlockSize - 1) / bundleBlockSize))
+	for offset := 0; offset < len(asset); offset += bundleBlockSize {
+		block := asset[offset:min(offset+bundleBlockSize, len(asset))]
+		compressed, flags, err := compressBundleBlock(&compressor, block)
+		if err != nil {
+			return nil, err
+		}
+		info.u32(uint32(len(block)))
+		info.u32(uint32(len(compressed)))
+		info.u16(flags)
+		blocks = append(blocks, compressed...)
+	}
 	info.u32(1)
 	info.u64(0)
 	info.u64(uint64(len(asset)))
 	info.u32(4)
 	info.cstring("CAB-" + name + "r")
+	compressedInfo, infoFlags, err := compressBundleBlock(&compressor, info.data)
+	if err != nil {
+		return nil, err
+	}
 	w := writer{order: binary.BigEndian}
 	w.cstring("UnityFS")
 	w.u32(8)
@@ -177,12 +207,13 @@ func textureBundle(img image.Image, name string, platform int32) []byte {
 	w.cstring(unityVersion)
 	sizeOffset := len(w.data)
 	w.u64(0)
+	w.u32(uint32(len(compressedInfo)))
 	w.u32(uint32(len(info.data)))
-	w.u32(uint32(len(info.data)))
-	w.u32(0x40)
+	w.u32(0x240 | uint32(infoFlags))
 	w.align(16)
-	w.raw(info.data)
-	w.raw(asset)
+	w.raw(compressedInfo)
+	w.align(16)
+	w.raw(blocks)
 	binary.BigEndian.PutUint64(w.data[sizeOffset:], uint64(len(w.data)))
-	return w.data
+	return w.data, nil
 }

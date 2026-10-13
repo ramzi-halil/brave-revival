@@ -6,9 +6,11 @@ go run ./cmd/gen-asset -i input.png -o output.unity3d -p ios -r 700101012
 
 All four flags are required. `-p` accepts `android` or `ios`.
 
-The output is an uncompressed UnityFS version 8 bundle for Unity `2022.3.62f3`,
-containing a serialized version 22 asset. It includes an AssetBundle object and
-one Texture2D with inline RGBA32 pixels, one mip level, bilinear filtering,
+The output is an LZ4HC-compressed UnityFS version 8 bundle for Unity `2022.3.62f3`,
+using 128 KiB blocks and a compressed block directory. Blocks that do not shrink
+are stored uncompressed. The bundle contains a serialized version 22 asset,
+including an AssetBundle object and one Texture2D with inline RGBA32 pixels,
+one mip level, bilinear filtering,
 clamp wrapping and sRGB color space. The platform sets Unity's build target to
 Android (13) or iOS (9); both preserve 8-bit PNG pixels and alpha without texture
 compression. Input dimensions are limited to 16384 per side and 512 MiB of RGBA
