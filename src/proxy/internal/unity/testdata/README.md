@@ -11,6 +11,13 @@ a Unity 2022.3 Texture2D type tree, written and verified with UnityPy. Both cont
 a 2×2 RGBA image (red/green above blue/half-transparent white) and differ only in
 byte order. They exercise common type-tree strings and alignment.
 
+`model.unity3d` is an LZ4 UnityFS bundle written with UnityPy's Unity 2022.3
+type trees. It contains three synthetic four-vertex meshes and a red 2×2 RGBA32
+texture. Positions/normals and half-float UVs use separate vertex streams;
+32-bit triangle indices have a base vertex of one. It exercises multi-mesh
+extraction, stream alignment, UV decoding, and handedness conversion. The meshes
+are named `lh`, `rh`, and `f`, so weapon filtering must exclude the face mesh.
+
 `pixels.json` contains compressed bytes and SHA-256 hashes of the expected RGBA
 pixels after Unity's vertical flip. The references use UnityPy's dependency
 texture2ddecoder 1.0.6. ASTC vectors cover six block sizes, using UnityPy's ASTC

@@ -90,10 +90,11 @@ func readTreeValue(r *reader, nodes []typeNode, index int) (value any) {
 		if nodes[element].size == 1 && nodes[element].end == element+1 {
 			return r.take(n)
 		}
-		for range n {
-			readTreeValue(r, nodes, element)
+		values := make([]any, n)
+		for i := range n {
+			values[i] = readTreeValue(r, nodes, element)
 		}
-		return nil
+		return values
 	}
 	if index+1 < node.end && nodes[index+1].typ == "Array" {
 		return readTreeValue(r, nodes, index+1)

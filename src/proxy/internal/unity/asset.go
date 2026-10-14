@@ -44,6 +44,23 @@ type assetType struct {
 }
 
 func readAsset(data []byte, streams map[string][]byte) (*texture, error) {
+	var texture *texture
+	err := readAssetObjects(data, func(typ assetType, object *reader, engine unityVersion, platform int) bool {
+		if typ.classID != 28 {
+			return false
+		}
+		if len(typ.nodes) != 0 {
+			values := readTreeValue(object, typ.nodes, 0).(map[string]any)
+			texture = textureFromValues(values, streams)
+		} else {
+			texture = readTexture(object, engine, platform, streams)
+		}
+		return true
+	})
+	return texture, err
+}
+
+func readAssetObjects(data []byte, visit func(assetType, *reader, unityVersion, int) bool) error {
 	r := newReader(data)
 	r.u32()
 	size, version, offset := uint64(r.u32()), r.u32(), uint64(r.u32())
@@ -55,12 +72,12 @@ func readAsset(data []byte, streams map[string][]byte) (*texture, error) {
 		r.u64()
 	}
 	if version < 13 || version > 22 || size != uint64(len(data)) || offset > size {
-		return nil, fmt.Errorf("unsupported or invalid serialized Unity asset")
+		return fmt.Errorf("unsupported or invalid serialized Unity asset")
 	}
 	if endian == 0 {
 		r.order = binary.LittleEndian
 	} else if endian != 1 {
-		return nil, fmt.Errorf("invalid Unity byte order")
+		return fmt.Errorf("invalid Unity byte order")
 	}
 	engine := parseVersion(r.cstring())
 	platform, hasTree := r.i32(), r.u8() != 0
@@ -117,7 +134,7 @@ func readAsset(data []byte, streams map[string][]byte) (*texture, error) {
 			}
 		} else {
 			if typeID < 0 || typeID >= len(types) {
-				return nil, fmt.Errorf("invalid Unity object type index")
+				return fmt.Errorf("invalid Unity object type index")
 			}
 			typ = types[typeID]
 		}
@@ -127,19 +144,14 @@ func readAsset(data []byte, streams map[string][]byte) (*texture, error) {
 		if version == 15 || version == 16 {
 			r.u8()
 		}
-		if typ.classID != 28 {
-			continue
-		}
 		if start > size-offset {
-			return nil, fmt.Errorf("Unity object outside asset")
+			return fmt.Errorf("Unity object outside asset")
 		}
 		object := newReader(slice(data, start+offset, uint64(length)))
 		object.order = r.order
-		if len(typ.nodes) != 0 {
-			values := readTreeValue(object, typ.nodes, 0).(map[string]any)
-			return textureFromValues(values, streams), nil
+		if visit(typ, object, engine, platform) {
+			return nil
 		}
-		return readTexture(object, engine, platform, streams), nil
 	}
-	return nil, nil
+	return nil
 }

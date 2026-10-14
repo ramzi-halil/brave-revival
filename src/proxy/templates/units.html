@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View units</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; height: 100vh; height: 100dvh; display: flex; flex-direction: column; font-family: sans-serif; }
+        header { padding: .75rem 1rem; border-bottom: 1px solid #ddd; display: flex; align-items: center; gap: 1rem; }
+        h1 { font-size: 1.25rem; margin: 0; }
+        main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 2fr); flex: 1; min-height: 0; }
+        .column { min-width: 0; overflow: auto; overscroll-behavior: contain; padding: 1rem; }
+        .column + .column { border-left: 1px solid #ddd; }
+        #filter { width: 100%; padding: .5rem; font: inherit; }
+        #units { display: grid; gap: .5rem; margin-top: 1rem; }
+        #units button { display: flex; align-items: center; gap: .75rem; width: 100%; padding: .5rem; border: 2px solid transparent; background: #f6f6f6; text-align: left; cursor: pointer; font: inherit; overflow-wrap: anywhere; }
+        #units button:hover { background: #eee; }
+        #units button[aria-pressed="true"] { border-color: #36f; background: #eef3ff; }
+        #units img { width: 64px; height: 64px; flex-shrink: 0; object-fit: contain; border-radius: 8px; border: 2px ridge #777; }
+        small, #character-id, #model-parts { color: #667085; }
+        #units small { display: block; margin-bottom: .25rem; }
+        h2 { font-size: 1.5rem; margin: 0 0 .5rem; }
+        figure { margin: 0 0 1.5rem; }
+        figure img { display: block; object-fit: contain; max-width: 100%; height: auto; }
+        .story { white-space: pre-wrap; overflow-wrap: anywhere; }
+        #model-parts { padding-left: 1.25rem; }
+        #model-display { height: 512px; }
+        #model-display canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+        #model-status { white-space: pre-wrap; overflow-wrap: anywhere; }
+    </style>
+</head>
+<body>
+    <header><a href="/">&larr; Back</a><h1>View units</h1></header>
+    <main>
+        <section class="column" aria-label="Equipment list">
+            <input id="filter" type="search" placeholder="Filter…" aria-label="Filter by name or equipment ID" disabled>
+            <p id="status" role="status">Loading…</p>
+            <div id="units"></div>
+        </section>
+        <section class="column" id="details" aria-label="Static images">
+            <p>Select equipment to view its images.</p>
+        </section>
+        <section class="column" id="model" aria-label="3D model" hidden>
+            <h2>3D</h2>
+            <div id="character-id"></div>
+            <ul id="model-parts"></ul>
+            <p><label><input id="model-weapon" type="checkbox" checked> Weapon</label> <label><input id="model-device" type="checkbox" checked> Device</label></p>
+            <p id="model-status" role="status"></p>
+            <div id="model-display" aria-label="3D model display"></div>
+            <p>Drag to rotate. Scroll to zoom.</p>
+        </section>
+    </main>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.186.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.186.1/examples/jsm/"
+        }
+    }
+    </script>
+    <script>
+        const filter = document.getElementById('filter');
+        const list = document.getElementById('units');
+        const status = document.getElementById('status');
+        const details = document.getElementById('details');
+        const model = document.getElementById('model');
+        const modelParts = document.getElementById('model-parts');
+        const modelStatus = document.getElementById('model-status');
+        const weapon = document.getElementById('model-weapon');
+        const device = document.getElementById('model-device');
+        const detailPanels = [['Visitor', 256, 256, 'visitorResourceId'], ['Story'], ['XL', 1024, 1024, 'iconXL'], ['LL', 512, 512, 'iconLL'], ['L', 256, 512, 'iconL'], ['M', 128, 128, 'iconM']];
+        const partNames = ['Hair', 'Face', 'Head', 'Upper', 'Lower', 'Weapon', 'Device'];
+        let units = [], selected, activeUnit, viewerPromise, modelVersion = 0;
+
+        async function renderModel(unit) {
+            const version = ++modelVersion;
+            modelStatus.textContent = 'Loading model…';
+            try {
+                viewerPromise ||= import('/units-model.js').then(({ UnitModel }) => new UnitModel(document.getElementById('model-display')));
+                const viewer = await viewerPromise;
+                if (version !== modelVersion) return;
+                const parts = unit.models.map((id, index) => ({ id, name: partNames[index], index })).filter(part =>
+                    part.id && (part.index < 5 || (part.index === 5 ? weapon.checked : device.checked)));
+                const message = await viewer.show(parts, unit.id);
+                if (version === modelVersion) modelStatus.textContent = message || (parts.length ? '' : 'No model resources.');
+            } catch (error) {
+                if (version === modelVersion) modelStatus.textContent = `Model failed to load: ${error.message}`;
+            }
+        }
+
+        weapon.addEventListener('change', () => renderModel(activeUnit));
+        device.addEventListener('change', () => renderModel(activeUnit));
+
+        function image(id, width, height) {
+            const img = document.createElement('img');
+            img.src = `/res/t/${id}`;
+            img.alt = '';
+            img.width = width;
+            img.height = height;
+            img.loading = 'lazy';
+            return img;
+        }
+
+        function select(unit) {
+            selected = unit.id;
+            activeUnit = unit;
+            for (const button of list.children) button.setAttribute('aria-pressed', Number(button.dataset.id) === selected);
+            details.replaceChildren();
+            for (const [label, width, height, field] of detailPanels) {
+                if (label === 'Story') {
+                    if (unit.story) {
+                        const heading = document.createElement('h2');
+                        heading.textContent = 'Story';
+                        const story = document.createElement('p');
+                        story.className = 'story';
+                        story.textContent = unit.story;
+                        details.append(heading, story);
+                    }
+                    continue;
+                }
+                if (!unit[field]) continue;
+                const figure = document.createElement('figure');
+                const heading = document.createElement('h2');
+                heading.textContent = `${label} (${width}×${height})`;
+                const link = document.createElement('a');
+                link.href = `/res/t/${unit[field]}`;
+                link.target = '_blank';
+                link.rel = 'noopener';
+                link.setAttribute('aria-label', `Open ${label} image in a new tab`);
+                link.append(image(unit[field], width, height));
+                figure.append(heading, link);
+                details.append(figure);
+            }
+            if (!details.children.length) details.textContent = 'No static images.';
+            details.scrollTop = 0;
+            document.getElementById('character-id').textContent = unit.characterId || '';
+            modelParts.replaceChildren();
+            unit.models.forEach((id, index) => {
+                if (!id) return;
+                const part = document.createElement('li');
+                part.textContent = `${partNames[index]}: ${id}`;
+                modelParts.append(part);
+            });
+            model.hidden = false;
+            weapon.disabled = !unit.models[5];
+            device.disabled = !unit.models[6];
+            model.scrollTop = 0;
+            renderModel(unit);
+        }
+
+        function renderList() {
+            const query = filter.value.trim().toLocaleLowerCase();
+            const matches = units.filter(unit => `${unit.id} ${unit.name}`.toLocaleLowerCase().includes(query));
+            const buttons = matches.map(unit => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.dataset.id = unit.id;
+                button.setAttribute('aria-pressed', unit.id === selected);
+                if (unit.iconM) {
+                    const thumbnail = image(unit.iconM, 64, 64);
+                    thumbnail.style.background = unit.bgRgb === 'PRISM'
+                        ? 'radial-gradient(transparent 40%, #000), conic-gradient(in hsl longer hue, red, red)'
+                        : `radial-gradient(#${unit.bgRgb === '0' ? '000000' : unit.bgRgb} 40%, #000)`;
+                    button.append(thumbnail);
+                }
+                const label = document.createElement('span');
+                const id = document.createElement('small');
+                id.textContent = unit.id;
+                label.append(id, document.createTextNode(unit.name));
+                button.append(label);
+                button.addEventListener('click', () => select(unit));
+                return button;
+            });
+            list.replaceChildren(...buttons);
+            status.textContent = matches.length ? `${matches.length} equipment entries` : 'No matching equipment.';
+        }
+
+        filter.addEventListener('input', renderList);
+        (async () => {
+            try {
+                const response = await fetch('/forms/units');
+                if (!response.ok) throw new Error(await response.text());
+                units = await response.json();
+                units.sort((a, b) => a.id - b.id);
+                renderList();
+                if (units.length) select(units[0]);
+                else details.textContent = 'No equipment in the master.';
+                filter.disabled = false;
+            } catch (error) {
+                status.textContent = `Load failed: ${error.message}`;
+            }
+        })();
+    </script>
+</body>
+</html>

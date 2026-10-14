@@ -20,7 +20,7 @@ func newReader(data []byte) *reader {
 	return &reader{data: data, order: binary.BigEndian}
 }
 
-// Bounds failures unwind to TexturePNG so binary layouts can be read without losing error context.
+// Bounds failures unwind to the decoder entry points so binary layouts retain error context.
 func (r *reader) take(n int) []byte {
 	if n < 0 || n > len(r.data)-r.pos {
 		panic(fmt.Errorf("truncated Unity asset at offset %d (need %d bytes)", r.pos, n))
