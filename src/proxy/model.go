@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strconv"
 	"time"
 
 	"example.com/brave-revival/src/proxy/internal/unity"
@@ -15,6 +14,15 @@ import (
 
 //go:embed templates/units-model.js
 var unitsModelJS string
+
+//go:embed templates/skeleton.json
+var skeletonJSON []byte
+
+func (h *handler) handleSkeleton(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Cache-Control", "no-store")
+	http.ServeContent(w, r, "skeleton.json", time.Time{}, bytes.NewReader(skeletonJSON))
+}
 
 func (h *handler) handleUnitsModelJS(w http.ResponseWriter, _ *http.Request) {
 	w.Header().Set("Content-Type", "text/javascript; charset=utf-8")
@@ -27,10 +35,9 @@ func (h *handler) handleModel(w http.ResponseWriter, r *http.Request) {
 	if data == nil {
 		return
 	}
-	id, _ := strconv.ParseUint(chi.URLParam(r, "id"), 10, 32)
-	names := h.www.ModelMeshNames(uint32(id))
+	names := r.URL.Query()["name"]
 	if len(names) == 0 {
-		http.Error(w, "Resource is not an EquipmentCharacter model", http.StatusUnprocessableEntity)
+		http.Error(w, "Missing ?name query", http.StatusBadRequest)
 		return
 	}
 	meshes, err := unity.ModelMeshes(data, hash, names...)

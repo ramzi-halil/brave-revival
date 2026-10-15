@@ -26,3 +26,6 @@ bundle data, float/half-float and normalized integer channels. Triangle lists,
 triangle strips and quads support 16/32-bit indices and submesh base vertices.
 X coordinates and triangle winding are mirrored for Three.js. UVs remain
 independent vertex attributes so they can be modified after loading.
+Skinning channels are exported as `skinWeight` and `skinIndex` attributes, with
+the original palette's full-path bone hashes and column-major inverse bind
+matrices converted to the same mirrored-X basis as the geometry.

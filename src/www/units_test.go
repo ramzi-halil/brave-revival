@@ -33,10 +33,4 @@ func TestUnits(t *testing.T) {
 		{ID: 20, Name: "#20", CharacterID: 99},
 	}, h.Units())
 	require.Empty(t, (&Handler{master: &pmaster.All{}}).Units())
-	for id, names := range map[uint32][]string{
-		1061001: {"ha1"}, 1060001: {"f"}, 1033000: {"h"}, 1034001: {"b"},
-		1035001: {"l"}, 1001001: {"lh", "rh"}, 1067001: {"d"}, 0: nil, 99: nil,
-	} {
-		require.Equal(t, names, h.ModelMeshNames(id))
-	}
 }

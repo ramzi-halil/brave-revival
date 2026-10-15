@@ -53,6 +53,7 @@ func newHandler(cfg *config.Config, tlsCert tls.Certificate, wwwHandler *www.Han
 	h.router.Get("/agito", h.handleAgito)
 	h.router.Get("/units", h.handleUnits)
 	h.router.Get("/units-model.js", h.handleUnitsModelJS)
+	h.router.Get("/skeleton.json", h.handleSkeleton)
 	h.router.Get("/forms/units", h.handleUnitsData)
 	h.router.Get("/forms/agito", h.handleAgitoData)
 	h.router.Put("/forms/agito", h.handleAgitoSave)

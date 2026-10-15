@@ -7,6 +7,7 @@ function dispose(group) {
     group.traverse(object => {
         if (!object.isMesh) return;
         object.geometry.dispose();
+        if (object.isSkinnedMesh) object.skeleton?.dispose();
         materials.add(object.material);
     });
     for (const material of materials) {
@@ -15,8 +16,48 @@ function dispose(group) {
     }
 }
 
-async function loadPart(part, signal) {
-    const response = await fetch(`/res/m/${part.id}`, { signal });
+async function loadArmature() {
+    const response = await fetch('/skeleton.json');
+    if (!response.ok) throw new Error(await response.text());
+    const root = new THREE.ObjectLoader().parse(await response.json());
+    const bones = new Map();
+    root.traverse(bone => {
+        if (bone.isBone) bones.set(bone.userData.bonePathHash, bone);
+    });
+    root.updateMatrixWorld(true);
+    const restInverses = new Map([...bones].map(([hash, bone]) => [hash, bone.matrixWorld.clone().invert().elements]));
+    return { root, bones, restInverses };
+}
+
+export function resolveSkinBones(mesh, geometry, armature) {
+    let hashes = mesh.boneNameHashes;
+    const matchesBindPose = (hash, index) => armature.restInverses.get(hash)?.every((value, component) =>
+        Math.abs(value - mesh.bindPoses[index][component]) < 0.0001);
+    // Some bundles move the root hash to the end without moving weights or bind poses.
+    if (!hashes.every(matchesBindPose)) {
+        for (let offset = 1; offset < hashes.length; offset++) {
+            const rotated = hashes.slice(offset).concat(hashes.slice(0, offset));
+            if (rotated.every(matchesBindPose)) {
+                hashes = rotated;
+                break;
+            }
+        }
+    }
+    const indices = geometry.getAttribute('skinIndex').array;
+    const weights = geometry.getAttribute('skinWeight').array;
+    const used = new Set();
+    for (let i = 0; i < weights.length; i++) if (weights[i] > 0) used.add(indices[i]);
+    return hashes.map((hash, index) => {
+        const bone = armature.bones.get(hash);
+        if (!bone && used.has(index)) throw new Error(`Skeleton is missing bone path hash ${hash}`);
+        // Zero-weight palette slots may name attachment bones absent from the base rig.
+        return bone || armature.root;
+    });
+}
+
+async function loadPart(part, signal, armature) {
+    const query = part.assetNames.map(n => 'name=' + encodeURIComponent(n)).join('&');
+    const response = await fetch(`/res/m/${part.id}?${query}`, { signal });
     if (!response.ok) throw new Error(await response.text());
     const data = await response.json();
     signal.throwIfAborted();
@@ -32,9 +73,17 @@ async function loadPart(part, signal) {
             const geometry = new THREE.BufferGeometryLoader().parse(mesh.geometry);
             geometry.getAttribute('uv').setUsage(THREE.DynamicDrawUsage);
             if (!geometry.hasAttribute('normal')) geometry.computeVertexNormals();
-            const object = new THREE.Mesh(geometry, material);
+            const object = mesh.bindPoses ? new THREE.SkinnedMesh(geometry, material) : new THREE.Mesh(geometry, material);
             object.name = mesh.name;
             group.add(object);
+            if (object.isSkinnedMesh) {
+                const bones = resolveSkinBones(mesh, geometry, armature);
+                const inverses = mesh.bindPoses.map(matrix => new THREE.Matrix4().fromArray(matrix));
+                // Parts share bone transforms, but retain their own Unity palette and inverse binds.
+                object.bindMode = THREE.DetachedBindMode;
+                object.bind(new THREE.Skeleton(bones, inverses), new THREE.Matrix4());
+                object.normalizeSkinWeights();
+            }
         }
         signal.throwIfAborted();
         return group;
@@ -91,7 +140,11 @@ export class UnitModel {
         this.controller = controller;
         dispose(this.group);
         this.group.clear();
-        const results = await Promise.allSettled(parts.map(part => loadPart(part, controller.signal)));
+        const armature = await (this.armaturePromise ||= loadArmature());
+        if (controller.signal.aborted) return;
+        this.scene.add(armature.root);
+        this.armature = armature;
+        const results = await Promise.allSettled(parts.map(part => loadPart(part, controller.signal, armature)));
         if (controller.signal.aborted) {
             for (const result of results) if (result.status === 'fulfilled') dispose(result.value);
             return;

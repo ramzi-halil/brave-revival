@@ -17,6 +17,8 @@ texture. Positions/normals and half-float UVs use separate vertex streams;
 32-bit triangle indices have a base vertex of one. It exercises multi-mesh
 extraction, stream alignment, UV decoding, and handedness conversion. The meshes
 are named `lh`, `rh`, and `f`, so weapon filtering must exclude the face mesh.
+Each mesh also has two bone path hashes, four influences per vertex (including
+mixed weights), and identity plus rotated/translated inverse bind matrices.
 
 `pixels.json` contains compressed bytes and SHA-256 hashes of the expected RGBA
 pixels after Unity's vertical flip. The references use UnityPy's dependency

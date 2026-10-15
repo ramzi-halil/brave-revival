@@ -71,6 +71,7 @@
         const device = document.getElementById('model-device');
         const detailPanels = [['Visitor', 256, 256, 'visitorResourceId'], ['Story'], ['XL', 1024, 1024, 'iconXL'], ['LL', 512, 512, 'iconLL'], ['L', 256, 512, 'iconL'], ['M', 128, 128, 'iconM']];
         const partNames = ['Hair', 'Face', 'Head', 'Upper', 'Lower', 'Weapon', 'Device'];
+        const partAssetNames = [['ha1'], ['f'], ['h'], ['b'], ['l'], ['lh', 'rh'], ['d']];
         let units = [], selected, activeUnit, viewerPromise, modelVersion = 0;
 
         async function renderModel(unit) {
@@ -80,7 +81,7 @@
                 viewerPromise ||= import('/units-model.js').then(({ UnitModel }) => new UnitModel(document.getElementById('model-display')));
                 const viewer = await viewerPromise;
                 if (version !== modelVersion) return;
-                const parts = unit.models.map((id, index) => ({ id, name: partNames[index], index })).filter(part =>
+                const parts = unit.models.map((id, index) => ({ id, name: partNames[index], assetNames: partAssetNames[index], index })).filter(part =>
                     part.id && (part.index < 5 || (part.index === 5 ? weapon.checked : device.checked)));
                 const message = await viewer.show(parts, unit.id);
                 if (version === modelVersion) modelStatus.textContent = message || (parts.length ? '' : 'No model resources.');

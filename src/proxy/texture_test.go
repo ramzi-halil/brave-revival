@@ -100,6 +100,10 @@ func TestTextureViewer(t *testing.T) {
 			require.ElementsMatch(t, []string{"lh", "rh"}, []string{reply.Meshes[0].Name, reply.Meshes[1].Name})
 			require.Equal(t, []uint32{3, 2, 1}, reply.Meshes[0].Geometry.Data.Index.Array)
 			require.Equal(t, "/res/t/4", reply.Texture)
+			require.Len(t, reply.Meshes[0].BindPoses, 2)
+			require.Equal(t, []uint32{385153371, 1509296682}, reply.Meshes[0].BoneNameHashes)
+			require.Equal(t, "Uint16Array", reply.Meshes[0].Geometry.Data.Attributes["skinIndex"].Type)
+			require.Equal(t, 4, reply.Meshes[0].Geometry.Data.Attributes["skinWeight"].ItemSize)
 		})
 	}
 	resources = strings.ReplaceAll(resources, "ios-hash", "reloaded-hash")

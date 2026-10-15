@@ -12,8 +12,10 @@ import (
 )
 
 type Mesh struct {
-	Name     string   `json:"name"`
-	Geometry Geometry `json:"geometry"`
+	Name           string        `json:"name"`
+	Geometry       Geometry      `json:"geometry"`
+	BindPoses      [][16]float32 `json:"bindPoses,omitempty"`
+	BoneNameHashes []uint32      `json:"boneNameHashes,omitempty"`
 }
 
 type Geometry struct {
@@ -139,7 +141,10 @@ func meshFromValues(values map[string]any, order binary.ByteOrder, version unity
 	for _, target := range []struct {
 		index, size int
 		name        string
-	}{{0, 3, "position"}, {1, 3, "normal"}, {uvChannel, 2, "uv"}} {
+	}{{0, 3, "position"}, {1, 3, "normal"}, {uvChannel, 2, "uv"}, {12, 4, "skinWeight"}, {13, 4, "skinIndex"}} {
+		if target.index >= 12 && !version.atLeast(2018, 2, 0) {
+			continue
+		}
 		if target.index >= len(channels) || channels[target.index].dimension == 0 {
 			continue
 		}
@@ -159,13 +164,61 @@ func meshFromValues(values map[string]any, order binary.ByteOrder, version unity
 					panic(fmt.Errorf("non-finite Unity vertex attribute"))
 				}
 				// Mirror X together with triangle winding to convert Unity's handedness.
-				if dimension == 0 && target.name != "uv" {
+				if dimension == 0 && (target.name == "position" || target.name == "normal") {
 					value = -value
 				}
 				array[vertex*target.size+dimension] = value
 			}
 		}
 		attributes[target.name] = Attribute{target.size, "Float32Array", array}
+	}
+	mesh := Mesh{Name: values["m_Name"].(string)}
+	weights, hasWeights := attributes["skinWeight"]
+	boneIndices, hasIndices := attributes["skinIndex"]
+	if hasWeights != hasIndices {
+		panic(fmt.Errorf("Unity mesh has incomplete skinning attributes"))
+	}
+	if hasWeights {
+		poses := values["m_BindPose"].([]any)
+		hashes := values["m_BoneNameHashes"].([]any)
+		if len(poses) == 0 || len(poses) != len(hashes) || len(poses) > 65536 {
+			panic(fmt.Errorf("invalid Unity bone palette"))
+		}
+		mesh.BindPoses = make([][16]float32, len(poses))
+		mesh.BoneNameHashes = make([]uint32, len(hashes))
+		for i, raw := range poses {
+			matrix := raw.(map[string]any)
+			for row := range 4 {
+				for column := range 4 {
+					value := math.Float32frombits(uint32(matrix[fmt.Sprintf("e%d%d", row, column)].(int64)))
+					if math.IsNaN(float64(value)) || math.IsInf(float64(value), 0) {
+						panic(fmt.Errorf("non-finite Unity bind pose"))
+					}
+					// Change the inverse bind's basis with H * M * H, where H mirrors X.
+					if (row == 0) != (column == 0) {
+						value = -value
+					}
+					mesh.BindPoses[i][column*4+row] = value
+				}
+			}
+			mesh.BoneNameHashes[i] = uint32(hashes[i].(int64))
+		}
+		for vertex := range count {
+			var sum float32
+			for influence := range 4 {
+				i := vertex*4 + influence
+				weight, index := weights.Array[i], boneIndices.Array[i]
+				if weight < 0 || index < 0 || index != float32(int(index)) || index >= float32(len(poses)) {
+					panic(fmt.Errorf("invalid Unity bone influence"))
+				}
+				sum += weight
+			}
+			if sum <= 0 || math.IsInf(float64(sum), 0) {
+				panic(fmt.Errorf("invalid Unity skin weight sum"))
+			}
+		}
+		boneIndices.Type = "Uint16Array"
+		attributes["skinIndex"] = boneIndices
 	}
 	if _, ok := attributes["position"]; !ok {
 		panic(fmt.Errorf("Unity mesh has no positions"))
@@ -235,7 +288,8 @@ func meshFromValues(values map[string]any, order binary.ByteOrder, version unity
 			panic(fmt.Errorf("unsupported Unity mesh topology"))
 		}
 	}
-	return Mesh{values["m_Name"].(string), Geometry{GeometryData{attributes, Index{"Uint32Array", indices}}}}
+	mesh.Geometry = Geometry{GeometryData{attributes, Index{"Uint32Array", indices}}}
+	return mesh
 }
 
 func vertexFormat(format int, version unityVersion) int {

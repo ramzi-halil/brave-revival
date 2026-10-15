@@ -20,33 +20,6 @@ type Unit struct {
 	Models            [7]uint32 `json:"models"`
 }
 
-func (h *Handler) ModelMeshNames(id uint32) []string {
-	if id == 0 {
-		return nil
-	}
-	h.masterLock.Lock()
-	defer h.masterLock.Unlock()
-	for _, character := range h.master.EquipmentCharacter {
-		switch id {
-		case character.HairModelId:
-			return []string{"ha1"}
-		case character.FaceModelId:
-			return []string{"f"}
-		case character.HeadModelId:
-			return []string{"h"}
-		case character.UpperBodyModelId:
-			return []string{"b"}
-		case character.LowerBodyModelId:
-			return []string{"l"}
-		case character.WeaponModelId:
-			return []string{"lh", "rh"}
-		case character.DeviceModelId:
-			return []string{"d"}
-		}
-	}
-	return nil
-}
-
 func (h *Handler) Units() []Unit {
 	h.masterLock.Lock()
 	defer h.masterLock.Unlock()
