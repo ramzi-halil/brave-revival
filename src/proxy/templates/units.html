@@ -28,6 +28,14 @@
         #model-display { height: 512px; }
         #model-display canvas { display: block; width: 100%; height: 100%; touch-action: none; }
         #model-status { white-space: pre-wrap; overflow-wrap: anywhere; }
+        #animation-form label { display: block; margin-bottom: .25rem; }
+        .animation-source, .animation-playback { display: flex; align-items: center; gap: .5rem; }
+        .animation-source input, #animation-timeline { flex: 1; min-width: 0; }
+        .animation-source input, .animation-source button, #animation-play { font: inherit; padding: .4rem; }
+        .animation-playback { margin-top: .5rem; }
+        #animation-time { white-space: nowrap; font-size: .875rem; font-variant-numeric: tabular-nums; }
+        #animation-status { white-space: pre-wrap; overflow-wrap: anywhere; }
+        #animation-status:empty { display: none; }
     </style>
 </head>
 <body>
@@ -46,6 +54,19 @@
             <div id="character-id"></div>
             <ul id="model-parts"></ul>
             <p><label><input id="model-weapon" type="checkbox" checked> Weapon</label> <label><input id="model-device" type="checkbox" checked> Device</label></p>
+            <form id="animation-form">
+                <label for="animation-path">Animation</label>
+                <div class="animation-source">
+                    <input id="animation-path" type="text" placeholder="{id}/{container}/{clip}" autocomplete="off" spellcheck="false">
+                    <button type="submit">Load</button>
+                </div>
+            </form>
+            <div class="animation-playback">
+                <button id="animation-play" type="button" disabled>Play</button>
+                <input id="animation-timeline" type="range" min="0" max="0" step="0.001" value="0" aria-label="Animation timeline" disabled>
+                <output id="animation-time">0.00 / 0.00 s</output>
+            </div>
+            <p id="animation-status" role="status"></p>
             <p id="model-status" role="status"></p>
             <div id="model-display" aria-label="3D model display"></div>
             <p>Drag to rotate. Scroll to zoom.</p>
@@ -69,17 +90,52 @@
         const modelStatus = document.getElementById('model-status');
         const weapon = document.getElementById('model-weapon');
         const device = document.getElementById('model-device');
+        const animationPath = document.getElementById('animation-path');
+        const animationPlay = document.getElementById('animation-play');
+        const animationTimeline = document.getElementById('animation-timeline');
+        const animationTime = document.getElementById('animation-time');
+        const animationStatus = document.getElementById('animation-status');
         const detailPanels = [['Visitor', 256, 256, 'visitorResourceId'], ['Story'], ['XL', 1024, 1024, 'iconXL'], ['LL', 512, 512, 'iconLL'], ['L', 256, 512, 'iconL'], ['M', 128, 128, 'iconM']];
         const partNames = ['Hair', 'Face', 'Head', 'Upper', 'Lower', 'Weapon', 'Device'];
         const partAssetNames = [['ha1'], ['f'], ['h'], ['b'], ['l'], ['lh', 'rh'], ['d']];
-        let units = [], selected, activeUnit, viewerPromise, modelVersion = 0;
+        let units = [], selected, activeUnit, viewerPromise, modelVersion = 0, animationVersion = 0;
+
+        function getViewer() {
+            return viewerPromise ||= import('/units-model.js').then(({ UnitModel }) => {
+                const viewer = new UnitModel(document.getElementById('model-display'));
+                viewer.onAnimationChange = ({ duration, time, playing }) => {
+                    animationPlay.disabled = animationTimeline.disabled = !duration;
+                    animationPlay.textContent = playing ? 'Pause' : 'Play';
+                    animationTimeline.max = duration;
+                    animationTimeline.value = time;
+                    animationTime.value = `${time.toFixed(2)} / ${duration.toFixed(2)} s`;
+                };
+                return viewer;
+            });
+        }
+
+        document.getElementById('animation-form').addEventListener('submit', async event => {
+            event.preventDefault();
+            const version = ++animationVersion;
+            const path = animationPath.value.trim();
+            animationStatus.textContent = path ? 'Loading animation…' : '';
+            try {
+                const viewer = await getViewer();
+                if (version !== animationVersion) return;
+                await viewer.loadAnimation(path);
+                if (version === animationVersion) animationStatus.textContent = path ? `Loaded ${path}` : '';
+            } catch (error) {
+                if (version === animationVersion) animationStatus.textContent = `Animation failed to load: ${error.message}`;
+            }
+        });
+        animationPlay.addEventListener('click', async () => (await getViewer()).toggleAnimation());
+        animationTimeline.addEventListener('input', async () => (await getViewer()).seekAnimation(Number(animationTimeline.value)));
 
         async function renderModel(unit) {
             const version = ++modelVersion;
             modelStatus.textContent = 'Loading model…';
             try {
-                viewerPromise ||= import('/units-model.js').then(({ UnitModel }) => new UnitModel(document.getElementById('model-display')));
-                const viewer = await viewerPromise;
+                const viewer = await getViewer();
                 if (version !== modelVersion) return;
                 const parts = unit.models.map((id, index) => ({ id, name: partNames[index], assetNames: partAssetNames[index], index })).filter(part =>
                     part.id && (part.index < 5 || (part.index === 5 ? weapon.checked : device.checked)));

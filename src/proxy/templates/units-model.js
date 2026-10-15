@@ -22,10 +22,13 @@ async function loadArmature() {
     const root = new THREE.ObjectLoader().parse(await response.json());
     const bones = new Map();
     root.traverse(bone => {
-        if (bone.isBone) bones.set(bone.userData.bonePathHash, bone);
+        if (bone.isBone) bones.set(Number(bone.uuid), bone);
     });
     root.updateMatrixWorld(true);
     const restInverses = new Map([...bones].map(([hash, bone]) => [hash, bone.matrixWorld.clone().invert().elements]));
+    const faceUV = new THREE.Object3D();
+    faceUV.name = 'face_UV';
+    root.add(faceUV);
     return { root, bones, restInverses };
 }
 
@@ -77,6 +80,7 @@ async function loadPart(part, signal, armature) {
             object.name = mesh.name;
             group.add(object);
             if (object.isSkinnedMesh) {
+                object.frustumCulled = false;
                 const bones = resolveSkinBones(mesh, geometry, armature);
                 const inverses = mesh.bindPoses.map(matrix => new THREE.Matrix4().fromArray(matrix));
                 // Parts share bone transforms, but retain their own Unity palette and inverse binds.
@@ -119,10 +123,77 @@ export class UnitModel {
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(container);
         this.resize();
-        this.renderer.setAnimationLoop(() => {
+        this.playing = false;
+        this.renderer.setAnimationLoop(time => {
+            const delta = Math.min((time - (this.frameTime ?? time)) / 1000, 0.1);
+            this.frameTime = time;
+            if (this.playing && this.animationAction) {
+                this.mixer.update(delta);
+                this.onAnimationChange?.(this.animationState);
+            }
             this.controls.update();
             this.outline.render(this.scene, this.camera);
         });
+    }
+
+    async getArmature() {
+        const armature = await (this.armaturePromise ||= loadArmature());
+        if (!this.mixer) {
+            this.scene.add(armature.root);
+            this.armature = armature;
+            this.mixer = new THREE.AnimationMixer(armature.root);
+        }
+        return armature;
+    }
+
+    get animationState() {
+        return {
+            duration: this.animationClip?.duration || 0,
+            time: this.animationAction?.time || 0,
+            playing: this.playing,
+        };
+    }
+
+    async loadAnimation(path) {
+        this.animationController?.abort();
+        const controller = new AbortController();
+        this.animationController = controller;
+        path = path.trim();
+        let clip;
+        if (path) {
+            const parts = path.split('/');
+            if (parts.length > 3 || !/^\d+$/.test(parts[0]) || parts.some(part => !part || part === '.' || part === '..')) {
+                throw new Error('Enter id, id/container, or id/container/clip');
+            }
+            const response = await fetch(`/res/a/${parts.map(encodeURIComponent).join('/')}`, { signal: controller.signal });
+            if (!response.ok) throw new Error(await response.text());
+            clip = THREE.AnimationClip.parse(await response.json());
+            if (!Number.isFinite(clip.duration) || clip.duration <= 0 || !clip.validate()) throw new Error('Invalid animation clip');
+        }
+        await this.getArmature();
+        controller.signal.throwIfAborted();
+        this.mixer.stopAllAction();
+        if (this.animationClip) this.mixer.uncacheClip(this.animationClip);
+        this.animationClip = clip;
+        this.animationAction = clip ? this.mixer.clipAction(clip).reset().play() : undefined;
+        this.animationPath = path;
+        this.playing = !!clip;
+        this.mixer.update(0);
+        this.onAnimationChange?.(this.animationState);
+    }
+
+    toggleAnimation() {
+        if (!this.animationAction) return;
+        this.playing = !this.playing;
+        this.onAnimationChange?.(this.animationState);
+    }
+
+    seekAnimation(time) {
+        if (!this.animationAction || !Number.isFinite(time)) return;
+        this.playing = false;
+        this.animationAction.time = Math.max(0, Math.min(time, this.animationClip.duration));
+        this.mixer.update(0);
+        this.onAnimationChange?.(this.animationState);
     }
 
     resize() {
@@ -140,10 +211,8 @@ export class UnitModel {
         this.controller = controller;
         dispose(this.group);
         this.group.clear();
-        const armature = await (this.armaturePromise ||= loadArmature());
+        const armature = await this.getArmature();
         if (controller.signal.aborted) return;
-        this.scene.add(armature.root);
-        this.armature = armature;
         const results = await Promise.allSettled(parts.map(part => loadPart(part, controller.signal, armature)));
         if (controller.signal.aborted) {
             for (const result of results) if (result.status === 'fulfilled') dispose(result.value);

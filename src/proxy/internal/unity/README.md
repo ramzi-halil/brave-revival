@@ -1,5 +1,6 @@
 This package extracts the first Texture2D as PNG and Mesh objects as Three.js
-BufferGeometry data from a UnityFS bundle or serialized asset.
+BufferGeometry data, and AnimationClips as Three.js AnimationClip JSON from a
+UnityFS bundle or serialized asset.
 It is a Go translation of the relevant parts of
 [UnityPy](https://github.com/K0lb3/UnityPy/tree/417d59522a998fdee9a9c2b29fe35f3063222457/UnityPy)
 (MIT): BundleFile, SerializedFile, ObjectReader, TypeTreeNode, TypeTreeHelper,
@@ -29,3 +30,19 @@ independent vertex attributes so they can be modified after loading.
 Skinning channels are exported as `skinWeight` and `skinIndex` attributes, with
 the original palette's full-path bone hashes and column-major inverse bind
 matrices converted to the same mirrored-X basis as the geometry.
+
+Animation selection uses a container-name substring and exact clip name,
+including clips referenced by the container's preload range. Selection rules
+prefer references from `UnityEngine.Timeline.AnimationPlayableAsset` over
+incidental camera/effect dependencies in that range. Containers without such
+references retain preload-based selection. Equally preferred named matches
+remain ambiguous. Transform curves support explicit Hermite keys and packed
+streamed, dense, and constant channels.
+Sampling, quaternion continuity, and optimization follow `unity-animation.js`
+and Three.js. Streamed tangent reconstruction follows
+[AssetStudio](https://github.com/Perfare/AssetStudio/blob/master/AssetStudio/Classes/AnimationClip.cs)
+(MIT). Their notices are retained in `NOTICE.txt`.
+Unsupported weighted, compressed-rotation, Euler, float, and object-reference
+curves return errors. Bone UUIDs and animation targets are decimal strings of
+Unity's full-path CRC32 hashes, so animation export does not depend on the
+armature. The separate `face_UV` texture-atlas control retains its name.

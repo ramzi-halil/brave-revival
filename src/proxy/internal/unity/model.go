@@ -62,7 +62,7 @@ func ModelMeshes(data []byte, name string, names ...string) (meshes []Mesh, err 
 		if !isSerialized(file.data) {
 			continue
 		}
-		err = readAssetObjects(file.data, func(typ assetType, object *reader, engine unityVersion, _ int) bool {
+		err = readAssetObjects(file.data, func(typ assetType, object *reader, engine unityVersion, _ int, _ int64) bool {
 			if typ.classID != 43 {
 				return false
 			}

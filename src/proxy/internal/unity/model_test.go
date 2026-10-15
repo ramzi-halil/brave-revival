@@ -54,7 +54,7 @@ func TestInvalidSkinning(t *testing.T) {
 	require.NoError(t, err)
 	files, err := readBundle(data)
 	require.NoError(t, err)
-	err = readAssetObjects(files[0].data, func(typ assetType, object *reader, version unityVersion, _ int) bool {
+	err = readAssetObjects(files[0].data, func(typ assetType, object *reader, version unityVersion, _ int, _ int64) bool {
 		if typ.classID != 43 {
 			return false
 		}

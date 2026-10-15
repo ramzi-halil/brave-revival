@@ -45,7 +45,7 @@ type assetType struct {
 
 func readAsset(data []byte, streams map[string][]byte) (*texture, error) {
 	var texture *texture
-	err := readAssetObjects(data, func(typ assetType, object *reader, engine unityVersion, platform int) bool {
+	err := readAssetObjects(data, func(typ assetType, object *reader, engine unityVersion, platform int, _ int64) bool {
 		if typ.classID != 28 {
 			return false
 		}
@@ -60,7 +60,7 @@ func readAsset(data []byte, streams map[string][]byte) (*texture, error) {
 	return texture, err
 }
 
-func readAssetObjects(data []byte, visit func(assetType, *reader, unityVersion, int) bool) error {
+func readAssetObjects(data []byte, visit func(assetType, *reader, unityVersion, int, int64) bool) error {
 	r := newReader(data)
 	r.u32()
 	size, version, offset := uint64(r.u32()), r.u32(), uint64(r.u32())
@@ -111,10 +111,11 @@ func readAssetObjects(data []byte, visit func(assetType, *reader, unityVersion, 
 		if version >= 14 {
 			r.align(4)
 		}
+		var pathID int64
 		if bigID || version >= 14 {
-			r.u64()
+			pathID = int64(r.u64())
 		} else {
-			r.u32()
+			pathID = int64(r.i32())
 		}
 		var start uint64
 		if version >= 22 {
@@ -149,7 +150,7 @@ func readAssetObjects(data []byte, visit func(assetType, *reader, unityVersion, 
 		}
 		object := newReader(slice(data, start+offset, uint64(length)))
 		object.order = r.order
-		if visit(typ, object, engine, platform) {
+		if visit(typ, object, engine, platform, pathID) {
 			return nil
 		}
 	}

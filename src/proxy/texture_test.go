@@ -40,7 +40,7 @@ func TestTextureViewer(t *testing.T) {
 		}
 		require.NoError(t, os.WriteFile(filepath.Join(dbDir, string(field.Name())+".csv"), []byte(content), 0o600))
 	}
-	resources := "id,ios,android,ios_size,android_size\n1,ios-hash,android-hash,440,0\n2,missing-hash,android-hash,0,0\n3,broken-hash,android-hash,0,0\n4,model-hash,model-android-hash,0,0\n"
+	resources := "id,ios,android,ios_size,android_size\n1,ios-hash,android-hash,440,0\n2,missing-hash,android-hash,0,0\n3,broken-hash,android-hash,0,0\n4,model-hash,model-android-hash,0,0\n5,animation-hash,animation-android-hash,0,0\n"
 	require.NoError(t, os.WriteFile(filepath.Join(dbDir, "resources.csv"), []byte(resources), 0o600))
 	require.NoError(t, os.WriteFile(filepath.Join(assetsDir, "broken-hash"), []byte("UnityFS\x00"), 0o600))
 	wwwHandler, err := www.NewHandler(&config.Config{DBDir: dbDir, AssetsDir: []string{assetsDir}})
@@ -77,7 +77,7 @@ func TestTextureViewer(t *testing.T) {
 		h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, url, nil))
 		require.Equal(t, status, w.Code, url)
 		w = httptest.NewRecorder()
-		h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, strings.Replace(url, "/res/t/", "/res/m/", 1), nil))
+		h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, strings.Replace(url, "/res/t/", "/res/m/", 1)+"?name=lh", nil))
 		require.Equal(t, status, w.Code, url)
 	}
 	model, err := os.ReadFile("internal/unity/testdata/model.unity3d")
@@ -88,7 +88,7 @@ func TestTextureViewer(t *testing.T) {
 			require.NoError(t, os.WriteFile(assetPath, model, 0o600))
 			defer os.Remove(assetPath)
 			w := httptest.NewRecorder()
-			h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, "/res/m/4", nil))
+			h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, "/res/m/4?name=lh&name=rh", nil))
 			require.Equal(t, http.StatusOK, w.Code, w.Body.String())
 			require.Equal(t, "application/json", w.Header().Get("Content-Type"))
 			var reply struct {
@@ -104,6 +104,64 @@ func TestTextureViewer(t *testing.T) {
 			require.Equal(t, []uint32{385153371, 1509296682}, reply.Meshes[0].BoneNameHashes)
 			require.Equal(t, "Uint16Array", reply.Meshes[0].Geometry.Data.Attributes["skinIndex"].Type)
 			require.Equal(t, 4, reply.Meshes[0].Geometry.Data.Attributes["skinWeight"].ItemSize)
+		})
+	}
+	animation, err := os.ReadFile("internal/unity/testdata/animation.unity3d")
+	require.NoError(t, err)
+	for _, hash := range []string{"animation-hash", "animation-android-hash"} {
+		t.Run(hash, func(t *testing.T) {
+			assetPath := filepath.Join(assetsDir, hash)
+			require.NoError(t, os.WriteFile(assetPath, animation, 0o600))
+			defer os.Remove(assetPath)
+			for _, container := range []string{"first", "second", "character"} {
+				w := httptest.NewRecorder()
+				h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, "/res/a/5/"+container+"/101", nil))
+				require.Equal(t, http.StatusOK, w.Code, w.Body.String())
+				require.Equal(t, "application/json", w.Header().Get("Content-Type"))
+				var reply unity.Animation
+				require.NoError(t, json.Unmarshal(w.Body.Bytes(), &reply))
+				require.Equal(t, "101", reply.Name)
+				require.Equal(t, 1.0, reply.Duration)
+				require.Len(t, reply.Tracks, 3)
+				require.Equal(t, "1509296682.position", reply.Tracks[0].Name)
+				require.Equal(t, []float32{0, .25, .5, .75, 1}, reply.Tracks[0].Times)
+			}
+			for url, status := range map[string]int{
+				"/res/a/invalid/first/101":  http.StatusBadRequest,
+				"/res/a/999/first/101":      http.StatusNotFound,
+				"/res/a/3/first/101":        http.StatusUnprocessableEntity,
+				"/res/a/5/missing/101":      http.StatusNotFound,
+				"/res/a/5/first/10":         http.StatusNotFound,
+				"/res/a/5/test/101":         http.StatusUnprocessableEntity,
+				"/res/a/invalid":            http.StatusBadRequest,
+				"/res/a/2":                  http.StatusNotFound,
+				"/res/a/5/missing":          http.StatusNotFound,
+				"/res/a/5/ambiguous/101":    http.StatusUnprocessableEntity,
+				"/res/a/5/non-timeline/101": http.StatusUnprocessableEntity,
+			} {
+				w := httptest.NewRecorder()
+				h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, url, nil))
+				require.Equal(t, status, w.Code, url+": "+w.Body.String())
+			}
+			for _, test := range []struct{ url, name string }{
+				{"/res/a/5", "101"},
+				{"/res/a/5/first", "101"},
+				{"/res/a/5/second", "101"},
+				{"/res/a/5/direct", "sampled"},
+				{"/res/a/5/test", ""},
+				{"/res/a/5/character", "101"},
+			} {
+				w := httptest.NewRecorder()
+				h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, test.url, nil))
+				require.Equal(t, http.StatusOK, w.Code, test.url+": "+w.Body.String())
+				var reply unity.Animation
+				require.NoError(t, json.Unmarshal(w.Body.Bytes(), &reply))
+				if test.name == "" {
+					require.Contains(t, []string{"101", "sampled"}, reply.Name)
+				} else {
+					require.Equal(t, test.name, reply.Name)
+				}
+			}
 		})
 	}
 	resources = strings.ReplaceAll(resources, "ios-hash", "reloaded-hash")

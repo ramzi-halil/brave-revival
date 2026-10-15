@@ -20,6 +20,17 @@ are named `lh`, `rh`, and `f`, so weapon filtering must exclude the face mesh.
 Each mesh also has two bone path hashes, four influences per vertex (including
 mixed weights), and identity plus rotated/translated inverse bind matrices.
 
+`animation.unity3d` contains two clips named `101` in separate container preload
+ranges, plus a directly referenced clip named `sampled`. Their synthetic curves
+exercise Hermite position sampling, normalized mirrored quaternions, streamed
+cubic coefficients, dense samples, constant channels, and binding by path hash.
+Container `5.playable` aliases the first clip for default-container API tests.
+Additional Timeline containers share both `101` clips in their preload ranges:
+one identifies the character clip through a renamed `AnimationPlayableAsset`,
+one references both clips as playable assets and remains ambiguous, and one has
+an identically named script outside the Timeline namespace and also remains
+ambiguous. Existing containers exercise selection without Timeline references.
+
 `pixels.json` contains compressed bytes and SHA-256 hashes of the expected RGBA
 pixels after Unity's vertical flip. The references use UnityPy's dependency
 texture2ddecoder 1.0.6. ASTC vectors cover six block sizes, using UnityPy's ASTC
