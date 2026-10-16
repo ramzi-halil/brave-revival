@@ -2,6 +2,35 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { OutlineEffect } from 'three/addons/effects/OutlineEffect.js';
 
+function createSkybox() {
+    const faces = Array.from({ length: 6 }, (_, index) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = canvas.height = 512;
+        const context = canvas.getContext('2d');
+        const gradient = context.createLinearGradient(0, 0, 0, 512);
+        gradient.addColorStop(0, '#adcbe1');
+        gradient.addColorStop(0.48, '#edf4f8');
+        gradient.addColorStop(0.5, '#bac8d2');
+        gradient.addColorStop(0.52, '#dce0e3');
+        gradient.addColorStop(1, '#929fa9');
+        context.fillStyle = index === 2 ? '#adcbe1' : index === 3 ? '#929fa9' : gradient;
+        context.fillRect(0, 0, 512, 512);
+        context.strokeStyle = '#64788c30';
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(256, 0);
+        context.lineTo(256, 512);
+        context.moveTo(0, 256);
+        context.lineTo(512, 256);
+        context.stroke();
+        return canvas;
+    });
+    const texture = new THREE.CubeTexture(faces);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.needsUpdate = true;
+    return texture;
+}
+
 function dispose(group) {
     const materials = new Set();
     group.traverse(object => {
@@ -105,7 +134,7 @@ export class UnitModel {
     constructor(container) {
         this.container = container;
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0xf2f3f5);
+        this.scene.background = createSkybox();
         this.camera = new THREE.PerspectiveCamera(35, 1, 0.01, 1000);
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -120,6 +149,22 @@ export class UnitModel {
         this.scene.add(light);
         this.group = new THREE.Group();
         this.scene.add(this.group);
+        const checker = new THREE.DataTexture(new Uint8Array([
+            220, 224, 227, 255, 186, 200, 210, 255,
+            186, 200, 210, 255, 220, 224, 227, 255,
+        ]), 2, 2);
+        checker.colorSpace = THREE.SRGBColorSpace;
+        checker.wrapS = checker.wrapT = THREE.RepeatWrapping;
+        checker.magFilter = THREE.NearestFilter;
+        checker.minFilter = THREE.LinearMipmapLinearFilter;
+        checker.generateMipmaps = true;
+        checker.needsUpdate = true;
+        const floorMaterial = new THREE.MeshBasicMaterial({ map: checker, side: THREE.FrontSide });
+        floorMaterial.userData.outlineParameters = { visible: false };
+        this.floor = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), floorMaterial);
+        this.floor.rotation.x = -Math.PI / 2;
+        this.floor.visible = false;
+        this.scene.add(this.floor);
         this.observer = new ResizeObserver(() => this.resize());
         this.observer.observe(container);
         this.resize();
@@ -179,6 +224,7 @@ export class UnitModel {
         this.animationPath = path;
         this.playing = !!clip;
         this.mixer.update(0);
+        this.fitCamera();
         this.onAnimationChange?.(this.animationState);
     }
 
@@ -205,12 +251,82 @@ export class UnitModel {
         this.camera.updateProjectionMatrix();
     }
 
+    modelBounds() {
+        const bounds = new THREE.Box3();
+        const action = this.animationAction;
+        const time = action?.time;
+        const times = new Set([0]);
+        if (action) {
+            const duration = this.animationClip.duration;
+            const frames = Math.ceil(duration * 60);
+            for (let frame = 1; frame <= frames; frame++) times.add(duration * frame / frames);
+            for (const track of this.animationClip.tracks) {
+                for (const keyTime of track.times) times.add(keyTime);
+            }
+        }
+        try {
+            for (const sample of [...times].sort((a, b) => a - b)) {
+                if (action) {
+                    action.time = sample;
+                    this.mixer.update(0);
+                }
+                this.scene.updateMatrixWorld(true);
+                // Precise bounds evaluate skinning instead of reusing a previous pose's cached box.
+                bounds.expandByObject(this.group, true);
+            }
+        } finally {
+            if (action) {
+                action.time = time;
+                this.mixer.update(0);
+                this.scene.updateMatrixWorld(true);
+            }
+        }
+        return bounds;
+    }
+
+    updateFloor(bounds) {
+        this.floor.visible = !bounds.isEmpty();
+        if (!this.floor.visible) return;
+        const minX = Math.min(bounds.min.x, -5);
+        const minZ = Math.min(bounds.min.z, -5);
+        const maxX = Math.max(bounds.max.x, 5);
+        const maxZ = Math.max(bounds.max.z, 5);
+        const width = maxX - minX;
+        const depth = maxZ - minZ;
+        this.floor.position.set((minX + maxX) / 2, 0, (minZ + maxZ) / 2);
+        this.floor.scale.set(width, depth, 1);
+        this.floor.material.map.repeat.set(width / 10, depth / 10);
+        this.floor.material.map.offset.set(-width / 20, -depth / 20);
+    }
+
+    fitCamera(resetAngle = false) {
+        const bounds = this.modelBounds();
+        this.updateFloor(bounds);
+        if (bounds.isEmpty()) return;
+        const center = bounds.getCenter(new THREE.Vector3());
+        if (resetAngle) this.camera.quaternion.identity();
+        const rotation = new THREE.Matrix4().makeRotationFromQuaternion(this.camera.quaternion.clone().invert());
+        const size = bounds.clone().applyMatrix4(rotation).getSize(new THREE.Vector3());
+        const verticalTan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov) / 2);
+        const horizontalTan = verticalTan * this.camera.aspect;
+        const distance = 1.2 * Math.max(size.y / (2 * verticalTan), size.x / (2 * horizontalTan)) + size.z / 2;
+        this.camera.near = Math.max(distance / 1000, 0.001);
+        this.camera.far = Math.max(distance * 100, 100);
+        this.camera.position.copy(center).add(new THREE.Vector3(0, 0, distance).applyQuaternion(this.camera.quaternion));
+        this.camera.updateProjectionMatrix();
+        this.controls.target.copy(center);
+        this.controls.minDistance = distance / 10;
+        this.controls.maxDistance = distance * 10;
+        this.controls.update();
+    }
+
     async show(parts, unitId) {
         this.controller?.abort();
         const controller = new AbortController();
         this.controller = controller;
         dispose(this.group);
         this.group.clear();
+        this.floor.visible = false;
         const armature = await this.getArmature();
         if (controller.signal.aborted) return;
         const results = await Promise.allSettled(parts.map(part => loadPart(part, controller.signal, armature)));
@@ -224,21 +340,10 @@ export class UnitModel {
             else failed.push(`${parts[index].name}: ${result.reason.message || 'Texture failed to load'}`);
         });
         if (this.group.children.length && this.unitId !== unitId) {
-            const bounds = new THREE.Box3().setFromObject(this.group);
-            const center = bounds.getCenter(new THREE.Vector3());
-            const size = bounds.getSize(new THREE.Vector3());
-            const verticalFov = THREE.MathUtils.degToRad(this.camera.fov);
-            const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * this.camera.aspect);
-            const distance = 1.2 * Math.max(size.y / (2 * Math.tan(verticalFov / 2)), size.x / (2 * Math.tan(horizontalFov / 2))) + size.z / 2;
-            this.camera.near = Math.max(distance / 1000, 0.001);
-            this.camera.far = Math.max(distance * 100, 100);
-            this.camera.position.copy(center).add(new THREE.Vector3(0, 0, distance));
-            this.camera.updateProjectionMatrix();
-            this.controls.target.copy(center);
-            this.controls.minDistance = distance / 10;
-            this.controls.maxDistance = distance * 10;
-            this.controls.update();
+            this.fitCamera(true);
             this.unitId = unitId;
+        } else {
+            this.updateFloor(this.modelBounds());
         }
         return failed.length ? `Could not load ${failed.join('; ')}` : '';
     }
