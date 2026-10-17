@@ -185,8 +185,9 @@ async function loadPart(part, signal, armature) {
             if (object.isSkinnedMesh) {
                 object.frustumCulled = false;
                 const bones = resolveSkinBones(mesh, geometry, armature);
-                const inverses = mesh.bindPoses.map(matrix => new THREE.Matrix4().fromArray(matrix));
-                // Parts share bone transforms, but retain their own Unity palette and inverse binds.
+                // Some lower-body bundles have posed inverse binds despite T-pose vertices.
+                const inverses = mesh.bindPoses.map((matrix, index) => new THREE.Matrix4().fromArray(
+                    mesh.name === 'l' ? armature.restInverses.get(Number(bones[index].uuid)) : matrix));
                 object.bindMode = THREE.DetachedBindMode;
                 object.bind(new THREE.Skeleton(bones, inverses), new THREE.Matrix4());
                 object.normalizeSkinWeights();
