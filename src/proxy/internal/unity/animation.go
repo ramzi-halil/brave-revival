@@ -143,7 +143,7 @@ func AnimationClip(data []byte, name, container, clip string) (animation *Animat
 	if selected == nil {
 		return nil, fmt.Errorf("%w: %q in container %q", ErrAnimationNotFound, clip, container)
 	}
-	if clip != "" && ambiguous {
+	if ambiguous {
 		return nil, fmt.Errorf("ambiguous AnimationClip %q in container %q", clip, container)
 	}
 	return animationFromValues(selected), nil

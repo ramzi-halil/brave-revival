@@ -148,7 +148,6 @@ func TestTextureViewer(t *testing.T) {
 				{"/res/a/5/first", "101"},
 				{"/res/a/5/second", "101"},
 				{"/res/a/5/direct", "sampled"},
-				{"/res/a/5/test", ""},
 				{"/res/a/5/character", "101"},
 			} {
 				w := httptest.NewRecorder()
@@ -156,11 +155,13 @@ func TestTextureViewer(t *testing.T) {
 				require.Equal(t, http.StatusOK, w.Code, test.url+": "+w.Body.String())
 				var reply unity.Animation
 				require.NoError(t, json.Unmarshal(w.Body.Bytes(), &reply))
-				if test.name == "" {
-					require.Contains(t, []string{"101", "sampled"}, reply.Name)
-				} else {
-					require.Equal(t, test.name, reply.Name)
-				}
+				require.Equal(t, test.name, reply.Name)
+			}
+			for _, container := range []string{"test", "ambiguous", "non-timeline"} {
+				w := httptest.NewRecorder()
+				h.ServeHTTP(w, httptest.NewRequest(http.MethodGet, "/res/a/5/"+container, nil))
+				require.Equal(t, http.StatusUnprocessableEntity, w.Code, w.Body.String())
+				require.Contains(t, w.Body.String(), "ambiguous AnimationClip")
 			}
 		})
 	}

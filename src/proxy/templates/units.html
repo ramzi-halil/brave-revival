@@ -12,7 +12,7 @@
         main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 2fr); flex: 1; min-height: 0; }
         .column { min-width: 0; overflow: auto; overscroll-behavior: contain; padding: 1rem; }
         .column + .column { border-left: 1px solid #ddd; }
-        #filter { width: 100%; padding: .5rem; font: inherit; }
+        #filter { position: sticky; top: 0; z-index: 1; width: 100%; padding: .5rem; font: inherit; background: #fff; box-shadow: 0 -1rem #fff; }
         #units { display: grid; gap: .5rem; margin-top: 1rem; }
         #units button { display: flex; align-items: center; gap: .75rem; width: 100%; padding: .5rem; border: 2px solid transparent; background: #f6f6f6; text-align: left; cursor: pointer; font: inherit; overflow-wrap: anywhere; }
         #units button:hover { background: #eee; }

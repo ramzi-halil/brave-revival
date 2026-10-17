@@ -48,9 +48,8 @@ func TestAnimationClip(t *testing.T) {
 		require.NoError(t, err)
 		require.Equal(t, name, clip.Name)
 	}
-	clip, err := AnimationClip(data, "test", "assets/test", "")
-	require.NoError(t, err)
-	require.Contains(t, []string{"101", "sampled"}, clip.Name)
+	_, err = AnimationClip(data, "test", "assets/test", "")
+	require.EqualError(t, err, `ambiguous AnimationClip "" in container "assets/test"`)
 	for _, test := range []struct{ container, clip string }{{"absent", "101"}, {"absent", ""}, {"first", "sampled"}, {"first", "10"}} {
 		_, err := AnimationClip(data, "test", test.container, test.clip)
 		require.ErrorIs(t, err, ErrAnimationNotFound)
@@ -63,8 +62,10 @@ func TestAnimationClip(t *testing.T) {
 		require.Equal(t, []float32{0, 1, 2, -.5, 1, 2, -1, 1, 2, -1.5, 1, 2, -2, 1, 2}, clip.Tracks[0].Values)
 	}
 	for _, container := range []string{"timeline/ambiguous", "timeline/non-timeline"} {
-		_, err := AnimationClip(data, "test", container, "101")
-		require.ErrorContains(t, err, "ambiguous AnimationClip")
+		for _, name := range []string{"101", ""} {
+			_, err := AnimationClip(data, "test", container, name)
+			require.ErrorContains(t, err, "ambiguous AnimationClip")
+		}
 	}
 	for _, broken := range [][]byte{nil, []byte("invalid"), []byte("UnityFS\x00"), data[:len(data)-1]} {
 		_, err = AnimationClip(broken, "broken", "first", "101")
