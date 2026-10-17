@@ -58,7 +58,54 @@ async function loadArmature() {
     const faceUV = new THREE.Object3D();
     faceUV.name = 'face_UV';
     root.add(faceUV);
-    return { root, bones, restInverses, faceUV };
+    const restPose = new Map();
+    root.traverse(node => {
+        for (const property of ['position', 'quaternion', 'scale']) {
+            const value = node[property].toArray();
+            restPose.set(`${node.uuid}.${property}`, value);
+            if (node === root || node.name) restPose.set(`${node === root ? '' : node.name}.${property}`, value);
+        }
+    });
+    return { root, bones, restInverses, faceUV, restPose };
+}
+
+export function stitchAnimationClips(clips, restPose) {
+    if (clips.length === 1) return clips[0];
+    const segments = clips.map(clip => new Map(clip.tracks.map(track => [track.name, track])));
+    const tracks = new Map(clips.flatMap(clip => clip.tracks.map(track => [track.name, track])));
+    const combined = [];
+    for (const [name, template] of tracks) {
+        const size = template.getValueSize();
+        const times = [], values = [];
+        let offset = 0;
+        for (let index = 0; index < clips.length; index++) {
+            const track = segments[index].get(name);
+            const duration = clips[index].duration;
+            if (track) {
+                if (track.constructor !== template.constructor || track.getInterpolation() !== template.getInterpolation()) {
+                    throw new Error(`Incompatible animation track: ${name}`);
+                }
+                if (track.times[0] > 0) {
+                    times.push(offset);
+                    values.push(...track.values.slice(0, size));
+                }
+                for (const time of track.times) times.push(offset + Math.min(time, duration));
+                for (const value of track.values) values.push(value);
+                if (track.times.at(-1) < duration) {
+                    times.push(offset + duration);
+                    values.push(...track.values.slice(-size));
+                }
+            } else {
+                const value = restPose.get(name) || template.values.slice(0, size);
+                times.push(offset, offset + duration);
+                values.push(...value, ...value);
+            }
+            offset += duration;
+        }
+        // Duplicate boundary times preserve each clip's endpoint without blending into the next pose.
+        combined.push(new template.constructor(name, times, values, template.getInterpolation()));
+    }
+    return new THREE.AnimationClip(clips.map(clip => clip.name).join('+'), clips.reduce((sum, clip) => sum + clip.duration, 0), combined, clips[0].blendMode);
 }
 
 export class FaceUV {
@@ -233,19 +280,24 @@ export class UnitModel {
         this.animationController = controller;
         path = path.trim();
         let clip;
+        let clips;
         if (path) {
-            const parts = path.split('/');
-            if (parts.length > 3 || !/^\d+$/.test(parts[0]) || parts.some(part => !part || part === '.' || part === '..')) {
+            const sources = path.split('+').map(source => source.trim().split('/'));
+            if (sources.some(parts => parts.length > 3 || !/^\d+$/.test(parts[0]) || parts.some(part => !part || part === '.' || part === '..'))) {
                 throw new Error('Enter id, id/container, or id/container/clip');
             }
-            const response = await fetch(`/res/a/${parts.map(encodeURIComponent).join('/')}`, { signal: controller.signal });
-            if (!response.ok) throw new Error(await response.text());
-            clip = THREE.AnimationClip.parse(await response.json());
-            clip.tracks = clip.tracks.filter(track => !track.name.startsWith('face_UV.') || track.name === 'face_UV.position');
-            if (!Number.isFinite(clip.duration) || clip.duration <= 0 || !clip.validate()) throw new Error('Invalid animation clip');
+            clips = await Promise.all(sources.map(async parts => {
+                const response = await fetch(`/res/a/${parts.map(encodeURIComponent).join('/')}`, { signal: controller.signal });
+                if (!response.ok) throw new Error(await response.text());
+                const clip = THREE.AnimationClip.parse(await response.json());
+                clip.tracks = clip.tracks.filter(track => !track.name.startsWith('face_UV.') || track.name === 'face_UV.position');
+                if (!Number.isFinite(clip.duration) || clip.duration <= 0 || !clip.validate()) throw new Error('Invalid animation clip');
+                return clip;
+            }));
         }
-        await this.getArmature();
+        const armature = await this.getArmature();
         controller.signal.throwIfAborted();
+        if (clips) clip = stitchAnimationClips(clips, armature.restPose);
         this.mixer.stopAllAction();
         if (this.animationClip) this.mixer.uncacheClip(this.animationClip);
         this.animationClip = clip;
