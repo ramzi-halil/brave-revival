@@ -24,11 +24,14 @@ type Animation struct {
 }
 
 type AnimationTrack struct {
-	Name   string    `json:"name"`
-	Type   string    `json:"type"`
-	Times  []float32 `json:"times"`
-	Values []float32 `json:"values"`
+	Name          string    `json:"name"`
+	Type          string    `json:"type"`
+	Times         []float32 `json:"times"`
+	Values        []float32 `json:"values"`
+	Interpolation int       `json:"interpolation,omitempty"`
 }
+
+const interpolateDiscrete = 2300
 
 func AnimationClip(data []byte, name, container, clip string) (animation *Animation, err error) {
 	defer func() {
@@ -217,8 +220,9 @@ func animationFromValues(values map[string]any) *Animation {
 	}
 	budget := maxAssetSize / 4
 	for _, curve := range curves {
+		discrete := curve.target == "face_UV"
 		times := []float64{start, stop}
-		for frame := 0; start+float64(frame)/rate < stop; frame++ {
+		for frame := 0; !discrete && start+float64(frame)/rate < stop; frame++ {
 			times = append(times, start+float64(frame)/rate)
 		}
 		for _, keys := range curve.components {
@@ -240,12 +244,20 @@ func animationFromValues(values map[string]any) *Animation {
 		if curve.property == 2 {
 			track.Type = "quaternion"
 		}
+		if discrete {
+			track.Interpolation = interpolateDiscrete
+		}
 		var previous [4]float64
 		for i, time := range times {
 			track.Times[i] = float32(time - start)
 			var value [4]float64
 			for component, keys := range curve.components {
-				value[component] = sampleAnimation(keys, time, baked || curve.linear)
+				if discrete {
+					index := sort.Search(len(keys), func(i int) bool { return keys[i].time > time })
+					value[component] = keys[max(0, index-1)].value
+				} else {
+					value[component] = sampleAnimation(keys, time, baked || curve.linear)
+				}
 			}
 			if curve.property == 1 {
 				value[0] = -value[0]

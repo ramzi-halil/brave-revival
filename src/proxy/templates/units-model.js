@@ -58,7 +58,33 @@ async function loadArmature() {
     const faceUV = new THREE.Object3D();
     faceUV.name = 'face_UV';
     root.add(faceUV);
-    return { root, bones, restInverses };
+    return { root, bones, restInverses, faceUV };
+}
+
+export class FaceUV {
+    constructor(geometry) {
+        this.uv = geometry.getAttribute('uv');
+        this.eyes = [];
+        this.mouth = [];
+        for (let index = 0; index < this.uv.count; index++) {
+            const u = this.uv.getX(index) - Math.floor(this.uv.getX(index));
+            const v = this.uv.getY(index) - Math.floor(this.uv.getY(index));
+            // Atlas coordinates may be outside [0, 1] because the texture repeats.
+            if (u < 0.72 && v > 0.75) this.eyes.push([index, this.uv.getY(index)]);
+            else if (u >= 0.72 && u < 0.89 && v > 0.9) this.mouth.push([index, this.uv.getY(index)]);
+        }
+    }
+
+    update(position) {
+        const eye = (-position.x) & 3;
+        const mouth = position.y & 3;
+        if (eye === this.eyeIndex && mouth === this.mouthIndex) return;
+        for (const [index, v] of this.eyes) this.uv.setY(index, v - eye * 0.25);
+        for (const [index, v] of this.mouth) this.uv.setY(index, v - mouth * 0.10);
+        this.eyeIndex = eye;
+        this.mouthIndex = mouth;
+        this.uv.needsUpdate = true;
+    }
 }
 
 export function resolveSkinBones(mesh, geometry, armature) {
@@ -107,6 +133,7 @@ async function loadPart(part, signal, armature) {
             if (!geometry.hasAttribute('normal')) geometry.computeVertexNormals();
             const object = mesh.bindPoses ? new THREE.SkinnedMesh(geometry, material) : new THREE.Mesh(geometry, material);
             object.name = mesh.name;
+            if (mesh.name === 'f') object.userData.faceUV = new FaceUV(geometry);
             group.add(object);
             if (object.isSkinnedMesh) {
                 object.frustumCulled = false;
@@ -177,6 +204,7 @@ export class UnitModel {
                 this.onAnimationChange?.(this.animationState);
             }
             this.controls.update();
+            this.updateFaceUV();
             this.outline.render(this.scene, this.camera);
         });
     }
@@ -213,6 +241,7 @@ export class UnitModel {
             const response = await fetch(`/res/a/${parts.map(encodeURIComponent).join('/')}`, { signal: controller.signal });
             if (!response.ok) throw new Error(await response.text());
             clip = THREE.AnimationClip.parse(await response.json());
+            clip.tracks = clip.tracks.filter(track => !track.name.startsWith('face_UV.') || track.name === 'face_UV.position');
             if (!Number.isFinite(clip.duration) || clip.duration <= 0 || !clip.validate()) throw new Error('Invalid animation clip');
         }
         await this.getArmature();
@@ -225,6 +254,7 @@ export class UnitModel {
         this.playing = !!clip;
         this.mixer.update(0);
         this.fitCamera();
+        this.updateFaceUV();
         this.onAnimationChange?.(this.animationState);
     }
 
@@ -239,7 +269,13 @@ export class UnitModel {
         this.playing = false;
         this.animationAction.time = Math.max(0, Math.min(time, this.animationClip.duration));
         this.mixer.update(0);
+        this.updateFaceUV();
         this.onAnimationChange?.(this.animationState);
+    }
+
+    updateFaceUV() {
+        if (!this.armature) return;
+        this.group.traverse(object => object.userData.faceUV?.update(this.armature.faceUV.position));
     }
 
     resize() {
@@ -345,6 +381,7 @@ export class UnitModel {
         } else {
             this.updateFloor(this.modelBounds());
         }
+        this.updateFaceUV();
         return failed.length ? `Could not load ${failed.join('; ')}` : '';
     }
 }

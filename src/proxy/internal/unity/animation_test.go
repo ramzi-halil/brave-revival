@@ -31,7 +31,7 @@ func TestAnimationClip(t *testing.T) {
 			require.Equal(t, 1.0, clip.Duration)
 			require.Equal(t, 2500, clip.BlendMode)
 			require.Len(t, clip.Tracks, 3)
-			require.Equal(t, AnimationTrack{"1509296682.position", "vector", []float32{0, .25, .5, .75, 1}, test.position}, clip.Tracks[0])
+			require.Equal(t, AnimationTrack{"1509296682.position", "vector", []float32{0, .25, .5, .75, 1}, test.position, 0}, clip.Tracks[0])
 			require.Equal(t, "1509296682.quaternion", clip.Tracks[1].Name)
 			require.Equal(t, "quaternion", clip.Tracks[1].Type)
 			require.Equal(t, []float32{0, 1}, clip.Tracks[1].Times)
@@ -40,7 +40,7 @@ func TestAnimationClip(t *testing.T) {
 			} else {
 				require.Equal(t, []float32{0, 0, 0, 1, 0, 0, 0, 1}, clip.Tracks[1].Values)
 			}
-			require.Equal(t, AnimationTrack{"1509296682.scale", "vector", []float32{0, 1}, []float32{1, 1, 1, 1, 1, 1}}, clip.Tracks[2])
+			require.Equal(t, AnimationTrack{"1509296682.scale", "vector", []float32{0, 1}, []float32{1, 1, 1, 1, 1, 1}, 0}, clip.Tracks[2])
 		})
 	}
 	for container, name := range map[string]string{"first": "101", "second": "101", "direct": "sampled", "5": "101"} {
@@ -70,6 +70,42 @@ func TestAnimationClip(t *testing.T) {
 		_, err = AnimationClip(broken, "broken", "first", "101")
 		require.Error(t, err)
 	}
+}
+
+func TestFaceUVDiscreteAnimation(t *testing.T) {
+	data, err := os.ReadFile("testdata/animation.unity3d")
+	require.NoError(t, err)
+	files, err := readBundle(data)
+	require.NoError(t, err)
+	bits := func(value float32) int64 { return int64(math.Float32bits(value)) }
+	vector := func(x, y, z float32) map[string]any {
+		return map[string]any{"x": bits(x), "y": bits(y), "z": bits(z)}
+	}
+	err = readAssetObjects(files[0].data, func(typ assetType, object *reader, _ unityVersion, _ int, id int64) bool {
+		if id != 1 {
+			return false
+		}
+		values := readTreeValue(object, typ.nodes, 0).(map[string]any)
+		entry := values["m_PositionCurves"].([]any)[0].(map[string]any)
+		entry["path"] = "face_UV"
+		entry["curve"].(map[string]any)["m_Curve"] = []any{
+			map[string]any{"time": bits(1), "value": vector(0, 0, 0), "inSlope": vector(0, 0, 0), "outSlope": vector(3, 3, 0)},
+			map[string]any{"time": bits(2), "value": vector(3, 3, 0), "inSlope": vector(3, 3, 0), "outSlope": vector(0, 0, 0)},
+		}
+		for _, start := range []float32{1, 1.25} {
+			values["m_MuscleClip"].(map[string]any)["m_StartTime"] = bits(start)
+			clip := animationFromValues(values)
+			require.Equal(t, AnimationTrack{"face_UV.position", "vector", []float32{0, 2 - start}, []float32{0, 0, 0, -3, 3, 0}, interpolateDiscrete}, clip.Tracks[0])
+			encoded, err := json.Marshal(clip.Tracks)
+			require.NoError(t, err)
+			require.Contains(t, string(encoded), `"interpolation":2300`)
+			for _, track := range clip.Tracks[1:] {
+				require.Zero(t, track.Interpolation)
+			}
+		}
+		return true
+	})
+	require.NoError(t, err)
 }
 
 func TestAnimationCurveValidation(t *testing.T) {
