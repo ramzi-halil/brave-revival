@@ -10,6 +10,7 @@ import (
 	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/puser"
+	"example.com/brave-revival/src/sync"
 	"github.com/stretchr/testify/require"
 	pb "google.golang.org/protobuf/proto"
 )
@@ -33,7 +34,7 @@ func TestJobDeckEquipmentRemoveAll(t *testing.T) {
 			}
 			player := &proto.StoredData{JobDeck: &proto.StoredJobDeck{List: decks}}
 			before := pb.Clone(player.JobDeck)
-			h := &Handler{config: &config.Config{}, player: player}
+			h := &Handler{config: &config.Config{}, player: sync.MakeLock(player)}
 			r := httptest.NewRequest(http.MethodPost, "/job/deck/equipment/remove/all", strings.NewReader("equipment_id=42"))
 			r.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 			r = r.WithContext(context.WithValue(r.Context(), handlerKey{}, h))

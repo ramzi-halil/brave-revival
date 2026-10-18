@@ -12,6 +12,7 @@ import (
 	"example.com/brave-revival/src/proto/pmaster"
 	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/puser"
+	"example.com/brave-revival/src/sync"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/encoding/protojson"
 )
@@ -19,19 +20,23 @@ import (
 func TestReloadPlayer(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "player.json")
 	oldPlayer := &proto.StoredData{Generation: 1}
-	h := &Handler{config: &config.Config{PlayerPath: path}, master: &pmaster.All{}, player: oldPlayer}
+	h := &Handler{config: &config.Config{PlayerPath: path}, master: &pmaster.All{}, player: sync.MakeLock(oldPlayer)}
 	data, err := protojson.Marshal(&proto.StoredData{Generation: 7, Player: &puser.Player{Nickname: "reloaded"}})
 	require.NoError(t, err)
 	require.NoError(t, os.WriteFile(path, data, 0o600))
 
 	require.NoError(t, h.ReloadPlayer())
-	require.Equal(t, uint64(7), h.player.Generation)
-	require.Equal(t, "reloaded", h.player.Player.Nickname)
+	reloaded := h.player.Do1(func(p *proto.StoredData) *proto.StoredData {
+		require.Equal(t, uint64(7), p.Generation)
+		require.Equal(t, "reloaded", p.Player.Nickname)
+		return p
+	})
 
-	reloaded := h.player
 	require.NoError(t, os.WriteFile(path, []byte("invalid"), 0o600))
 	require.Error(t, h.ReloadPlayer())
-	require.Same(t, reloaded, h.player)
+	h.player.Do0(func(p *proto.StoredData) {
+		require.Same(t, reloaded, p)
+	})
 }
 
 func TestReloadMaster(t *testing.T) {

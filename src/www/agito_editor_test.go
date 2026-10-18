@@ -9,6 +9,7 @@ import (
 	"example.com/brave-revival/src/proto/pmaster"
 	"example.com/brave-revival/src/proto/proto"
 	"example.com/brave-revival/src/proto/puser"
+	"example.com/brave-revival/src/sync"
 	"github.com/stretchr/testify/require"
 	pb "google.golang.org/protobuf/proto"
 )
@@ -37,12 +38,18 @@ func agitoEditorHandler(t *testing.T) *Handler {
 	player.AgitoItemArea.List[101|0x10000].ReceivedFlag1 = 1
 	player.AgitoItemArea.List[101|0x10000].LineupReturnAt1 = "123"
 	player.AgitoItemArea.List[101|0x20000] = &puser.AgitoItemArea{RoomNumber: 2, ItemId: 10}
-	return &Handler{config: &config.Config{PlayerPath: filepath.Join(t.TempDir(), "player.json")}, master: master, player: player}
+	return &Handler{config: &config.Config{PlayerPath: filepath.Join(t.TempDir(), "player.json")}, master: master, player: sync.MakeLock(player)}
+}
+
+func agitoEditorPlayerSnapshot(h *Handler) *proto.StoredData {
+	return h.readPlayer(func(player *proto.StoredData) *proto.StoredData {
+		return pb.Clone(player).(*proto.StoredData)
+	})
 }
 
 func TestAgitoEditorData(t *testing.T) {
 	h := agitoEditorHandler(t)
-	before := pb.Clone(h.player)
+	before := agitoEditorPlayerSnapshot(h)
 	data := h.AgitoEditor()
 	require.Equal(t, []AgitoEditorArea{
 		{AgitoSelection: AgitoSelection{AreaID: 101, ItemID: 10, LineupIDs: []uint32{11, 0, 0}}, Type: 1},
@@ -64,44 +71,51 @@ func TestAgitoEditorData(t *testing.T) {
 	require.Equal(t, "#60", data.Lineups[1].MemberName)
 	require.Equal(t, "#40", data.Lineups[1].Name)
 	data.Areas[0].LineupIDs[0] = 999
-	require.True(t, pb.Equal(before, h.player))
+	require.True(t, pb.Equal(before, agitoEditorPlayerSnapshot(h)))
 }
 
 func TestSaveAgitoEditor(t *testing.T) {
 	h := agitoEditorHandler(t)
-	before := pb.Clone(h.player).(*proto.StoredData)
+	before := agitoEditorPlayerSnapshot(h)
 	// Different item types and visitor groups remain valid choices.
 	require.NoError(t, h.SaveAgitoEditor([]AgitoSelection{{AreaID: 101, ItemID: 20, LineupIDs: []uint32{11, 0, 21}}}))
-	require.Equal(t, before.Generation+1, h.player.Generation)
-	area := h.player.AgitoItemArea.List[101|0x10000]
+	require.Equal(t, before.Generation+1, agitoEditorPlayerSnapshot(h).Generation)
+	area := agitoEditorPlayerSnapshot(h).AgitoItemArea.List[101|0x10000]
 	require.Equal(t, uint32(20), area.ItemId)
 	require.Equal(t, uint32(11), area.AgitoVisitorLineupId_1)
 	require.Equal(t, uint32(21), area.AgitoVisitorLineupId_3)
 	require.Equal(t, []uint32{1, 1, 1}, []uint32{area.ReceivedFlag1, area.ReceivedFlag2, area.ReceivedFlag3})
 	require.Equal(t, "0", area.LineupReturnAt1)
-	require.True(t, pb.Equal(before.AgitoAp, h.player.AgitoAp))
-	require.True(t, pb.Equal(before.Player, h.player.Player))
-	require.True(t, pb.Equal(before.AgitoItemArea.List[101|0x20000], h.player.AgitoItemArea.List[101|0x20000]))
+	require.True(t, pb.Equal(before.AgitoAp, agitoEditorPlayerSnapshot(h).AgitoAp))
+	require.True(t, pb.Equal(before.Player, agitoEditorPlayerSnapshot(h).Player))
+	require.True(t, pb.Equal(before.AgitoItemArea.List[101|0x20000], agitoEditorPlayerSnapshot(h).AgitoItemArea.List[101|0x20000]))
 	reloaded, err := loadPlayer(h.config.PlayerPath, h.master)
 	require.NoError(t, err)
-	require.True(t, pb.Equal(h.player, reloaded))
+	require.True(t, pb.Equal(agitoEditorPlayerSnapshot(h), reloaded))
 
-	area.ReceivedFlag1, area.ReceivedFlag2, area.ReceivedFlag3 = 0, 0, 0
+	h.player.Do1(func(player *proto.StoredData) bool {
+		area := player.AgitoItemArea.List[101|0x10000]
+		area.ReceivedFlag1, area.ReceivedFlag2, area.ReceivedFlag3 = 0, 0, 0
+		return true
+	})
 	require.NoError(t, h.SaveAgitoEditor([]AgitoSelection{{AreaID: 101, ItemID: 20, LineupIDs: []uint32{11, 0, 21}}}))
-	area = h.player.AgitoItemArea.List[101|0x10000]
+	area = agitoEditorPlayerSnapshot(h).AgitoItemArea.List[101|0x10000]
 	require.Equal(t, []uint32{1, 1, 1}, []uint32{area.ReceivedFlag1, area.ReceivedFlag2, area.ReceivedFlag3})
 
 	require.NoError(t, h.SaveAgitoEditor([]AgitoSelection{{AreaID: 101, ItemID: 20}}))
-	area = h.player.AgitoItemArea.List[101|0x10000]
+	area = agitoEditorPlayerSnapshot(h).AgitoItemArea.List[101|0x10000]
 	require.Zero(t, area.AgitoVisitorLineupId_1)
 	require.Zero(t, area.AgitoVisitorLineupId_3)
 	require.NoError(t, h.SaveAgitoEditor([]AgitoSelection{{AreaID: 101}}))
-	require.Zero(t, h.player.AgitoItemArea.List[101|0x10000].ItemId)
+	require.Zero(t, agitoEditorPlayerSnapshot(h).AgitoItemArea.List[101|0x10000].ItemId)
 
-	h.player.AgitoItemArea = nil
+	h.player.Do1(func(player *proto.StoredData) bool {
+		player.AgitoItemArea = nil
+		return true
+	})
 	require.NoError(t, h.SaveAgitoEditor([]AgitoSelection{{AreaID: 401, ItemID: 10}}))
-	area = h.player.AgitoItemArea.List[401|0x10000]
-	require.Equal(t, h.player.Player.Id, area.PlayerId)
+	area = agitoEditorPlayerSnapshot(h).AgitoItemArea.List[401|0x10000]
+	require.Equal(t, agitoEditorPlayerSnapshot(h).Player.Id, area.PlayerId)
 	require.Equal(t, uint32(1), area.RoomNumber)
 	require.Equal(t, uint32(401), area.AgitoItemAreaId)
 	require.Equal(t, []uint32{1, 1, 1}, []uint32{area.ReceivedFlag1, area.ReceivedFlag2, area.ReceivedFlag3})
@@ -109,7 +123,7 @@ func TestSaveAgitoEditor(t *testing.T) {
 
 func TestSaveAgitoEditorRejectsInvalidSelections(t *testing.T) {
 	h := agitoEditorHandler(t)
-	before := pb.Clone(h.player)
+	before := agitoEditorPlayerSnapshot(h)
 	for _, selections := range [][]AgitoSelection{
 		{{AreaID: 999}},
 		{{AreaID: 101}, {AreaID: 101}},
@@ -121,14 +135,14 @@ func TestSaveAgitoEditorRejectsInvalidSelections(t *testing.T) {
 		{{AreaID: 101, ItemID: 20, LineupIDs: []uint32{0, 0, 0, 0}}},
 	} {
 		require.ErrorIs(t, h.SaveAgitoEditor(selections), ErrInvalidAgitoSelection)
-		require.True(t, pb.Equal(before, h.player))
+		require.True(t, pb.Equal(before, agitoEditorPlayerSnapshot(h)))
 	}
 	_, err := os.Stat(h.config.PlayerPath)
 	require.True(t, os.IsNotExist(err))
 	require.NoError(t, h.SaveAgitoEditor(nil))
-	require.True(t, pb.Equal(before, h.player))
+	require.True(t, pb.Equal(before, agitoEditorPlayerSnapshot(h)))
 
 	h.config.PlayerPath = t.TempDir()
 	require.ErrorContains(t, h.SaveAgitoEditor([]AgitoSelection{{AreaID: 101}}), "save player")
-	require.True(t, pb.Equal(before, h.player))
+	require.True(t, pb.Equal(before, agitoEditorPlayerSnapshot(h)))
 }

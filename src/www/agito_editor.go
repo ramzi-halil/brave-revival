@@ -52,8 +52,6 @@ type AgitoEditorData struct {
 }
 
 func (h *Handler) AgitoEditor() AgitoEditorData {
-	h.playerLock.Lock()
-	defer h.playerLock.Unlock()
 	data := AgitoEditorData{
 		Areas: []AgitoEditorArea{}, Items: []AgitoEditorItem{}, Lineups: []AgitoEditorLineup{},
 	}
@@ -111,17 +109,19 @@ func (h *Handler) AgitoEditor() AgitoEditorData {
 		choice.MotionPattern = lineup.MotionPattern
 		data.Lineups = append(data.Lineups, choice)
 	}
-	for _, area := range h.master.AgitoItemArea {
-		stored := h.player.GetAgitoItemArea().GetList()[area.Id|0x10000]
-		data.Areas = append(data.Areas, AgitoEditorArea{
-			Type: area.AgitoItemType,
-			AgitoSelection: AgitoSelection{
-				AreaID: area.Id, ItemID: stored.GetItemId(),
-				LineupIDs: []uint32{stored.GetAgitoVisitorLineupId_1(), stored.GetAgitoVisitorLineupId_2(), stored.GetAgitoVisitorLineupId_3()},
-			},
-		})
-	}
-	return data
+	return h.readPlayer(func(player *proto.StoredData) AgitoEditorData {
+		for _, area := range h.master.AgitoItemArea {
+			stored := player.GetAgitoItemArea().GetList()[area.Id|0x10000]
+			data.Areas = append(data.Areas, AgitoEditorArea{
+				Type: area.AgitoItemType,
+				AgitoSelection: AgitoSelection{
+					AreaID: area.Id, ItemID: stored.GetItemId(),
+					LineupIDs: []uint32{stored.GetAgitoVisitorLineupId_1(), stored.GetAgitoVisitorLineupId_2(), stored.GetAgitoVisitorLineupId_3()},
+				},
+			})
+		}
+		return data
+	})
 }
 
 func (h *Handler) SaveAgitoEditor(selections []AgitoSelection) error {
@@ -159,51 +159,52 @@ func (h *Handler) SaveAgitoEditor(selections []AgitoSelection) error {
 	if len(selections) == 0 {
 		return nil
 	}
-	h.playerLock.Lock()
-	defer h.playerLock.Unlock()
-	player := pb.Clone(h.player).(*proto.StoredData)
-	if player.AgitoItemArea == nil {
-		player.AgitoItemArea = &proto.StoredAgitoItemArea{}
-	}
-	if player.AgitoItemArea.List == nil {
-		player.AgitoItemArea.List = make(map[uint32]*puser.AgitoItemArea)
-	}
-	for _, selection := range selections {
-		key := selection.AreaID | 0x10000
-		area := player.AgitoItemArea.List[key]
-		if area == nil {
-			area = &puser.AgitoItemArea{
-				PlayerId: player.GetPlayer().GetId(), RoomNumber: 1, AgitoItemAreaId: selection.AreaID,
-				LineupReturnAt1: "0", LineupReturnAt2: "0", LineupReturnAt3: "0",
+	return h.player.Do1(func(current *proto.StoredData) error {
+		player := pb.Clone(current).(*proto.StoredData)
+		if player.AgitoItemArea == nil {
+			player.AgitoItemArea = &proto.StoredAgitoItemArea{}
+		}
+		if player.AgitoItemArea.List == nil {
+			player.AgitoItemArea.List = make(map[uint32]*puser.AgitoItemArea)
+		}
+		for _, selection := range selections {
+			key := selection.AreaID | 0x10000
+			area := player.AgitoItemArea.List[key]
+			if area == nil {
+				area = &puser.AgitoItemArea{
+					PlayerId: player.GetPlayer().GetId(), RoomNumber: 1, AgitoItemAreaId: selection.AreaID,
+					LineupReturnAt1: "0", LineupReturnAt2: "0", LineupReturnAt3: "0",
+				}
+				player.AgitoItemArea.List[key] = area
 			}
-			player.AgitoItemArea.List[key] = area
-		}
-		ids := []*uint32{&area.AgitoVisitorLineupId_1, &area.AgitoVisitorLineupId_2, &area.AgitoVisitorLineupId_3}
-		flags := []*uint32{&area.ReceivedFlag1, &area.ReceivedFlag2, &area.ReceivedFlag3}
-		times := []*string{&area.LineupReturnAt1, &area.LineupReturnAt2, &area.LineupReturnAt3}
-		for i := range ids {
-			var id uint32
-			if i < len(selection.LineupIDs) {
-				id = selection.LineupIDs[i]
+			ids := []*uint32{&area.AgitoVisitorLineupId_1, &area.AgitoVisitorLineupId_2, &area.AgitoVisitorLineupId_3}
+			flags := []*uint32{&area.ReceivedFlag1, &area.ReceivedFlag2, &area.ReceivedFlag3}
+			times := []*string{&area.LineupReturnAt1, &area.LineupReturnAt2, &area.LineupReturnAt3}
+			for i := range ids {
+				var id uint32
+				if i < len(selection.LineupIDs) {
+					id = selection.LineupIDs[i]
+				}
+				if area.ItemId != selection.ItemID || *ids[i] != id {
+					*times[i] = "0"
+				}
+				*flags[i] = 1
+				*ids[i] = id
 			}
-			if area.ItemId != selection.ItemID || *ids[i] != id {
-				*times[i] = "0"
+			area.ItemId = selection.ItemID
+		}
+		player.Generation++
+		if h.config.PlayerPath != "" {
+			data, err := (protojson.MarshalOptions{Multiline: true}).Marshal(player)
+			if err != nil {
+				return fmt.Errorf("serialize player: %w", err)
 			}
-			*flags[i] = 1
-			*ids[i] = id
+			if err := os.WriteFile(h.config.PlayerPath, data, 0o644); err != nil {
+				return fmt.Errorf("save player: %w", err)
+			}
 		}
-		area.ItemId = selection.ItemID
-	}
-	player.Generation++
-	if h.config.PlayerPath != "" {
-		data, err := (protojson.MarshalOptions{Multiline: true}).Marshal(player)
-		if err != nil {
-			return fmt.Errorf("serialize player: %w", err)
-		}
-		if err := os.WriteFile(h.config.PlayerPath, data, 0o644); err != nil {
-			return fmt.Errorf("save player: %w", err)
-		}
-	}
-	h.player = player
-	return nil
+		current.Generation = player.Generation
+		current.AgitoItemArea = player.AgitoItemArea
+		return nil
+	})
 }

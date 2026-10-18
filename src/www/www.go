@@ -8,13 +8,13 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-	"sync"
 
 	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/flows"
 	"example.com/brave-revival/src/proto/pcommon"
 	"example.com/brave-revival/src/proto/pmaster"
 	"example.com/brave-revival/src/proto/proto"
+	"example.com/brave-revival/src/sync"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -31,9 +31,7 @@ type Handler struct {
 
 	master    *pmaster.All
 	resources config.Resources
-
-	playerLock sync.Mutex
-	player     *proto.StoredData
+	player    sync.Lock[*proto.StoredData]
 }
 
 type handlerKey struct{}
@@ -73,7 +71,7 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 		flows:     &flows.Recorder{},
 		master:    master,
 		resources: resources,
-		player:    player,
+		player:    sync.MakeLock(player),
 	}
 
 	router.Use(middleware.WithValue(handlerKey{}, handler))
@@ -268,9 +266,7 @@ func (h *Handler) ReloadPlayer() error {
 	if err != nil {
 		return err
 	}
-	h.playerLock.Lock()
-	h.player = player
-	h.playerLock.Unlock()
+	h.player.Set(player)
 	return nil
 }
 
@@ -310,36 +306,29 @@ func loadPlayer(path string, master *pmaster.All) (*proto.StoredData, error) {
 }
 
 func (h *Handler) readPlayer[R any](action func(player *proto.StoredData) R) R {
-	h.playerLock.Lock()
-	defer h.playerLock.Unlock()
-	return action(h.player)
+	return h.player.Do1(action)
 }
 
 func (h *Handler) writePlayer[R any](action func(player *proto.StoredData) R) R {
-	locked := true
-	h.playerLock.Lock()
-	defer func() {
-		if locked {
-			h.playerLock.Unlock()
+	playerPath := h.config.PlayerPath
+	res, data, err := h.player.Do3(func(player *proto.StoredData) (R, []byte, error) {
+		player.Generation++
+		result := action(player)
+		if playerPath == "" {
+			return result, nil, nil
 		}
-	}()
-
-	h.player.Generation++
-	result := action(h.player)
-
-	if h.config.PlayerPath != "" {
-		data, err := (protojson.MarshalOptions{Multiline: true}).Marshal(h.player)
-		if err == nil {
-			h.playerLock.Unlock()
-			locked = false
-			if err := os.WriteFile(h.config.PlayerPath, data, 0o644); err != nil {
-				slog.Warn("Failed to write player file", "path", h.config.PlayerPath, "err", err)
-			}
-		} else {
-			slog.Warn("Failed to serialize player", "err", err)
+		data, err := (protojson.MarshalOptions{Multiline: true}).Marshal(player)
+		return result, data, err
+	})
+	if err == nil {
+		err = os.WriteFile(playerPath, data, 0o644)
+		if err != nil {
+			slog.Warn("Failed to write player file", "path", playerPath, "err", err)
 		}
+	} else {
+		slog.Warn("Failed to serialize player", "err", err)
 	}
-	return result
+	return res
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {

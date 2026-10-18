@@ -13,6 +13,7 @@ import (
 
 	"example.com/brave-revival/src/config"
 	"example.com/brave-revival/src/proto/pmaster"
+	"example.com/brave-revival/src/sync"
 	"github.com/stretchr/testify/require"
 )
 
@@ -23,7 +24,7 @@ func TestPlayerPersistence(t *testing.T) {
 	require.NoError(t, err)
 	require.Equal(t, uint64(1), player.Generation)
 
-	handler := &Handler{config: &config.Config{PlayerPath: path}, player: player}
+	handler := &Handler{config: &config.Config{PlayerPath: path}, player: sync.MakeLock(player)}
 	testMutation := func(endpoint string, form url.Values) {
 		t.Helper()
 		r := httptest.NewRequest(http.MethodPost, endpoint, strings.NewReader(form.Encode()))
@@ -66,7 +67,7 @@ func TestPlayerMutationIgnoresSaveFailure(t *testing.T) {
 	master := &pmaster.All{}
 	player, err := loadPlayer("", master)
 	require.NoError(t, err)
-	handler := &Handler{config: &config.Config{PlayerPath: t.TempDir()}, player: player}
+	handler := &Handler{config: &config.Config{PlayerPath: t.TempDir()}, player: sync.MakeLock(player)}
 	r := httptest.NewRequest(http.MethodPost, "/player/change/favorite", strings.NewReader("equipment_id_1=12345"))
 	r.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	r = r.WithContext(context.WithValue(r.Context(), handlerKey{}, handler))
