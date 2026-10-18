@@ -122,12 +122,8 @@ func guildPenalty(w http.ResponseWriter, _ *http.Request) {
 
 func missionGuildWeeklyList(w http.ResponseWriter, r *http.Request) {
 	handler := getHandler(r)
-	handler.masterLock.Lock()
-	anyMissionGroup := handler.master.GuildWeeklyMissionGroup[0].Id
-	handler.masterLock.Unlock()
-
 	mission := &proto.GuildWeeklyMission{
-		MissionGroupId: anyMissionGroup,
+		MissionGroupId: handler.master.GuildWeeklyMissionGroup[0].Id,
 		DayMonday:      "0",
 	}
 	writeProto(w, http.StatusOK, &proto.GuildWeeklyMissionResult{
@@ -161,7 +157,6 @@ func guildDungeonTop(w http.ResponseWriter, r *http.Request) {
 	stageLists := make(map[stageKey]map[uint32]uint32)
 
 	handler := getHandler(r)
-	handler.masterLock.Lock()
 	for _, dungeon := range handler.master.GuildDungeon {
 		key := stageKey{areaID: dungeon.AreaId, difficulty: dungeon.Difficulty}
 		stageLists[key] = make(map[uint32]uint32)
@@ -187,7 +182,6 @@ func guildDungeonTop(w http.ResponseWriter, r *http.Request) {
 			StageList: stageLists[key],
 		}
 	}
-	handler.masterLock.Unlock()
 
 	reply := getHandler(r).readPlayer(func(player *proto.StoredData) *proto.GuildDungeonTop {
 		for _, dungeon := range dungeons {

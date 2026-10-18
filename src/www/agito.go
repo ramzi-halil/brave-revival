@@ -106,7 +106,6 @@ func agitoItemSet(w http.ResponseWriter, r *http.Request) {
 
 func agitoPlayerRecommend(w http.ResponseWriter, r *http.Request) {
 	handler := getHandler(r)
-	handler.masterLock.Lock()
 	var equipments []*pmaster.Equipment
 	for _, equipment := range handler.master.Equipment {
 		if equipment.EquipmentCategory == 1 || equipment.EquipmentCategory == 2 {
@@ -263,7 +262,6 @@ func agitoPlayerRecommend(w http.ResponseWriter, r *http.Request) {
 			},
 		},
 	}
-	handler.masterLock.Unlock()
 
 	writeProto(w, http.StatusOK, reply)
 }
@@ -289,9 +287,7 @@ func agitoItemReceive(w http.ResponseWriter, r *http.Request) {
 	lineupID := u32(r.PostForm.Get("lineup_id"))
 
 	handler := getHandler(r)
-	handler.masterLock.Lock()
 	equipmentID, itemID := findEquipmentAndItemByLineupID(handler.master, lineupID)
-	handler.masterLock.Unlock()
 
 	writeProto(w, http.StatusOK, &proto.AgitoVisitorRewardReceive{
 		StoredData: &proto.StoredData{

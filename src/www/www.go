@@ -29,9 +29,8 @@ type Handler struct {
 	assets []*os.Root
 	flows  *flows.Recorder
 
-	masterLock sync.Mutex
-	master     *pmaster.All
-	resources  config.Resources
+	master    *pmaster.All
+	resources config.Resources
 
 	playerLock sync.Mutex
 	player     *proto.StoredData
@@ -257,21 +256,15 @@ func NewHandler(cfg *config.Config) (*Handler, error) {
 
 func (h *Handler) versionHeaders(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		h.masterLock.Lock()
 		version := h.master.Version[0]
 		w.Header().Set("x-enish-app-version-master", fmt.Sprint(version.Master))
 		w.Header().Set("x-enish-app-version-resource", fmt.Sprint(version.Resource))
-		h.masterLock.Unlock()
 		next.ServeHTTP(w, r)
 	})
 }
 
 func (h *Handler) ReloadPlayer() error {
-	h.masterLock.Lock()
-	master := h.master
-	h.masterLock.Unlock()
-
-	player, err := loadPlayer(h.config.PlayerPath, master)
+	player, err := loadPlayer(h.config.PlayerPath, h.master)
 	if err != nil {
 		return err
 	}
@@ -293,10 +286,8 @@ func (h *Handler) ReloadMaster() error {
 	if err != nil {
 		return err
 	}
-	h.masterLock.Lock()
 	h.master = master
 	h.resources = resources
-	h.masterLock.Unlock()
 	return nil
 }
 
@@ -360,8 +351,6 @@ func (h *Handler) Flows() *flows.Recorder {
 }
 
 func (h *Handler) ResourceHash(platform string, id uint32) (string, bool) {
-	h.masterLock.Lock()
-	defer h.masterLock.Unlock()
 	resources := h.resources[platform]
 	if resources == nil || resources.Resource[id] == nil {
 		return "", false

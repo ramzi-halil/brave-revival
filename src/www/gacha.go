@@ -16,7 +16,6 @@ func gachaPurchase(w http.ResponseWriter, r *http.Request) {
 	mode := r.PostForm.Get("mode")
 
 	handler := getHandler(r)
-	handler.masterLock.Lock()
 	var pool []*pmaster.GachaPool
 	for _, option := range handler.master.GachaOption {
 		if option.Id == gachaId {
@@ -45,7 +44,6 @@ func gachaPurchase(w http.ResponseWriter, r *http.Request) {
 			LimitBreak:      entry.EquipmentLimitBreak,
 		}
 	}
-	handler.masterLock.Unlock()
 
 	writeProto(w, http.StatusOK, &proto.GachaResult{
 		GachaId:   gachaId,

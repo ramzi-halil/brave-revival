@@ -21,8 +21,6 @@ type Unit struct {
 }
 
 func (h *Handler) Units() []Unit {
-	h.masterLock.Lock()
-	defer h.masterLock.Unlock()
 	texts := make(map[uint32]string, len(h.master.TextLang))
 	for _, text := range h.master.TextLang {
 		texts[text.Id] = text.Text

@@ -52,8 +52,6 @@ type AgitoEditorData struct {
 }
 
 func (h *Handler) AgitoEditor() AgitoEditorData {
-	h.masterLock.Lock()
-	defer h.masterLock.Unlock()
 	h.playerLock.Lock()
 	defer h.playerLock.Unlock()
 	data := AgitoEditorData{
@@ -127,8 +125,6 @@ func (h *Handler) AgitoEditor() AgitoEditorData {
 }
 
 func (h *Handler) SaveAgitoEditor(selections []AgitoSelection) error {
-	h.masterLock.Lock()
-	defer h.masterLock.Unlock()
 	areas := make(map[uint32]bool, len(h.master.AgitoItemArea))
 	for _, area := range h.master.AgitoItemArea {
 		areas[area.Id] = true

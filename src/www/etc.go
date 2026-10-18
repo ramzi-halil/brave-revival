@@ -37,8 +37,6 @@ func etc(w http.ResponseWriter, r *http.Request) {
 func masterAll(w http.ResponseWriter, r *http.Request) {
 	handler := getHandler(r)
 	writeProtoStreamed(w, http.StatusOK, func(stream func(pb.Message) error) error {
-		handler.masterLock.Lock()
-		defer handler.masterLock.Unlock()
 		return stream(handler.master)
 	})
 }
@@ -47,8 +45,6 @@ func resourceList(w http.ResponseWriter, r *http.Request) {
 	handler := getHandler(r)
 	platform := chi.URLParam(r, "os")
 	writeProtoStreamed(w, http.StatusOK, func(stream func(pb.Message) error) error {
-		handler.masterLock.Lock()
-		defer handler.masterLock.Unlock()
 		res := handler.resources[platform]
 		w.Header().Set("x-enish-app-resource-cnt", fmt.Sprint(len(res.Resource)))
 		return stream(res)
