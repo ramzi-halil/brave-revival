@@ -20,7 +20,8 @@ import (
 )
 
 func TestFlowViewer(t *testing.T) {
-	h := newHandler(&config.Config{}, tls.Certificate{}, &www.Handler{})
+	h := newHandler(&config.Config{}, tls.Certificate{})
+	h.initializeWWWHandler(&www.Handler{})
 	h.flows = &flows.Recorder{}
 	body, err := pb.Marshal(&proto.AccountAuthorize{Token: "example"})
 	require.NoError(t, err)

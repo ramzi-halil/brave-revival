@@ -385,7 +385,9 @@ func (h *Handler) OpenResourceByHash(hash string) (*os.File, error) {
 			errs = append(errs, err)
 		}
 	}
-	return nil, errors.Join(errs...)
+	err := errors.Join(errs...)
+	slog.Warn("cannot open asset", "err", err)
+	return nil, err
 }
 
 func getHandler(r *http.Request) *Handler {

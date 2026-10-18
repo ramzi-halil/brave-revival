@@ -16,6 +16,7 @@ import (
 	"example.com/brave-revival/src/flows"
 	"example.com/brave-revival/src/www"
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
 const connectTimeout = 15 * time.Second
@@ -37,12 +38,10 @@ type handler struct {
 	router  chi.Router
 }
 
-func newHandler(cfg *config.Config, tlsCert tls.Certificate, wwwHandler *www.Handler) *handler {
+func newHandler(cfg *config.Config, tlsCert tls.Certificate) *handler {
 	h := &handler{
 		config:  cfg,
 		tlsCert: tlsCert,
-		www:     wwwHandler,
-		flows:   wwwHandler.Flows(),
 		router:  chi.NewRouter(),
 	}
 	h.router.Get("/proxy.pac", h.handleProxyPAC)
@@ -66,8 +65,15 @@ func newHandler(cfg *config.Config, tlsCert tls.Certificate, wwwHandler *www.Han
 	h.router.Get("/res/a/{id}/{container}/{clip}", h.handleAnimation)
 	h.router.Put("/reload/player", h.handleReloadPlayer)
 	h.router.Put("/reload/master", h.handleReloadMaster)
+	h.router.Mount("/debug", middleware.Profiler())
 	h.router.NotFound(h.handleNotFound)
 	return h
+}
+
+func (h *handler) initializeWWWHandler(wwwHandler *www.Handler) {
+	h.www = wwwHandler
+	h.flows = wwwHandler.Flows()
+	slog.Info("brave-revival is ready to serve")
 }
 
 func (h *handler) handleProxyPAC(w http.ResponseWriter, r *http.Request) {
@@ -202,15 +208,21 @@ func Run(cfg *config.Config) error {
 		return fmt.Errorf("failed to load self-signed certificate: %w", err)
 	}
 
-	wwwHandler, err := www.NewHandler(cfg)
-	if err != nil {
-		return fmt.Errorf("failed to create www handler: %w", err)
-	}
-
+	handler := newHandler(cfg, tlsCert)
 	server := http.Server{
 		Addr:    netip.AddrPortFrom(cfg.Host, cfg.ProxyPort).String(),
-		Handler: newHandler(cfg, tlsCert, wwwHandler),
+		Handler: handler,
 	}
+
+	go func() {
+		wwwHandler, err := www.NewHandler(cfg)
+		if err != nil {
+			slog.Error("failed to create www handler", "err", err)
+			return
+		}
+		handler.initializeWWWHandler(wwwHandler)
+	}()
+
 	slog.Info("starting proxy server", "addr", server.Addr, "advertise_host", cfg.AdvertiseHost, "proxy_port", cfg.ProxyPort)
 	return server.ListenAndServe()
 }

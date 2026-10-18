@@ -45,7 +45,8 @@ func TestTextureViewer(t *testing.T) {
 	require.NoError(t, os.WriteFile(filepath.Join(assetsDir, "broken-hash"), []byte("UnityFS\x00"), 0o600))
 	wwwHandler, err := www.NewHandler(&config.Config{DBDir: dbDir, AssetsDir: []string{assetsDir}})
 	require.NoError(t, err)
-	h := newHandler(&config.Config{}, tls.Certificate{}, wwwHandler)
+	h := newHandler(&config.Config{}, tls.Certificate{})
+	h.initializeWWWHandler(wwwHandler)
 
 	for _, path := range []string{"io/ios-hash.unity3d", "ios-hash", "an/android-hash.unity3d", "android-hash"} {
 		t.Run(path, func(t *testing.T) {
