@@ -40,6 +40,16 @@ func RunLobby(cfg *config.Config) error {
 		// TODO: fallback to non-join-random-room case.
 		client.Disconnect(DisconnectLogic)
 	})
+	server.HandleOperationRequest(OperationJoinRoom, func(client *Client, request OperationRequest) {
+		slog.Info("Handle join room", "request", request)
+		client.SendOperationResponse(OperationResponse{
+			Code: request.Code,
+			Parameters: Parameters{
+				ParameterAddress:  String(net.JoinHostPort(cfg.AdvertiseHost, "5055")),
+				ParameterRoomName: request.Parameters[ParameterRoomName],
+			},
+		})
+	})
 
 	addr := net.UDPAddrFromAddrPort(netip.AddrPortFrom(cfg.Host, 5055))
 	conn, err := net.ListenUDP("udp", addr)
