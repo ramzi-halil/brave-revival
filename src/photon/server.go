@@ -628,54 +628,11 @@ func (s *Server) handleCommand(client *Client, cmd command) error {
 }
 
 func (s *Server) handleFragment(client *Client, payload []byte) error {
-	if len(payload) < 20 {
-		return protocolError(ErrMalformedPacket, "fragment payload is truncated")
-	}
-	start := binary.BigEndian.Uint32(payload[0:4])
-	count := binary.BigEndian.Uint32(payload[4:8])
-	number := binary.BigEndian.Uint32(payload[8:12])
-	total := binary.BigEndian.Uint32(payload[12:16])
-	offset := binary.BigEndian.Uint32(payload[16:20])
-	content := payload[20:]
-	if count == 0 || number >= count || total > maxMessageSize || count > total || len(content) == 0 || offset > total || uint64(offset)+uint64(len(content)) > uint64(total) {
-		return protocolError(ErrMalformedPacket, "invalid fragment bounds")
-	}
 	client.mu.Lock()
-	set := client.fragments[start]
-	if set == nil {
-		set = &fragmentSet{count: count, total: total, parts: make(map[uint32]fragmentPart)}
-		client.fragments[start] = set
-	}
-	if set.count != count || set.total != total {
-		client.mu.Unlock()
-		return protocolError(ErrMalformedPacket, "inconsistent fragment metadata")
-	}
-	if _, exists := set.parts[number]; !exists {
-		set.parts[number] = fragmentPart{offset: offset, data: append([]byte(nil), content...)}
-		set.received++
-	}
-	if set.received != set.count {
-		client.mu.Unlock()
-		return nil
-	}
-	assembled := make([]byte, set.total)
-	covered := make([]bool, set.total)
-	for _, part := range set.parts {
-		copy(assembled[part.offset:], part.data)
-		for i := part.offset; i < part.offset+uint32(len(part.data)); i++ {
-			if covered[i] {
-				client.mu.Unlock()
-				return protocolError(ErrMalformedPacket, "overlapping fragments")
-			}
-			covered[i] = true
-		}
-	}
-	delete(client.fragments, start)
+	assembled, err := assembleFragment(client.fragments, payload)
 	client.mu.Unlock()
-	for _, present := range covered {
-		if !present {
-			return protocolError(ErrMalformedPacket, "fragment set has gaps")
-		}
+	if err != nil || assembled == nil {
+		return err
 	}
 	return s.handleContent(client, assembled)
 }

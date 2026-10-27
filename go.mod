@@ -9,6 +9,7 @@ require (
 	github.com/pierrec/lz4/v4 v4.1.33
 	github.com/shogo82148/androidbinary v1.0.6
 	github.com/stretchr/testify v1.12.1
+	github.com/xleo1991/tnetstrings v0.0.0-20240610154632-0f106c32eb28
 	golang.org/x/sync v0.24.0
 	google.golang.org/grpc v1.85.0
 	google.golang.org/protobuf v1.36.12
