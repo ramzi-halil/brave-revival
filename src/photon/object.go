@@ -170,7 +170,7 @@ func (v IntegerArray) marshalPhoton(w *objectWriter, _ int) error {
 	}
 	writeUint16(w, uint16(len(v)))
 	for _, n := range v {
-		writeUint32(w, n)
+		writeUint32(w, uint32(n))
 	}
 	return nil
 }
@@ -184,7 +184,7 @@ func (v StringArray) marshalPhoton(w *objectWriter, _ int) error {
 	}
 	writeUint16(w, uint16(len(v)))
 	for _, item := range v {
-		if err := String(item).marshalPhoton(w, 0); err != nil {
+		if err := item.marshalPhoton(w, 0); err != nil {
 			return err
 		}
 	}
@@ -375,7 +375,7 @@ func readObjectOfDescriptor(r *bytes.Reader, descriptor ObjectDescriptor, depth 
 			if err != nil {
 				return nil, err
 			}
-			values[i] = value
+			values[i] = Integer(value)
 		}
 		return values, nil
 	case TypeStringArray:
@@ -389,7 +389,7 @@ func readObjectOfDescriptor(r *bytes.Reader, descriptor ObjectDescriptor, depth 
 			if err != nil {
 				return nil, err
 			}
-			values[i] = string(value)
+			values[i] = String(value)
 		}
 		return values, nil
 	case TypeObjectArray:

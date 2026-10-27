@@ -67,14 +67,14 @@ type Float float32
 type Double float64
 type String string
 type ByteArray []byte
-type IntegerArray []uint32
-type StringArray []string
+type IntegerArray []Integer
+type StringArray []String
 type ObjectArray []Object
 
 type OperationRequest struct {
-	Code       byte
+	Code       byte `xml:"Code,attr"`
 	Parameters Parameters
-	Internal   bool
+	Internal   bool `xml:"Internal,attr,omitempty"`
 }
 
 type OperationResponse struct {
@@ -86,7 +86,7 @@ type OperationResponse struct {
 }
 
 type Event struct {
-	Code       byte
+	Code       byte `xml:"Code,attr"`
 	Parameters Parameters
 }
 
@@ -108,8 +108,8 @@ type Entry struct {
 type Hashtable []Entry
 
 type Dictionary struct {
-	KeyType   ObjectDescriptor
-	ValueType ObjectDescriptor
+	KeyType   ObjectDescriptor `xml:"KeyType,attr"`
+	ValueType ObjectDescriptor `xml:"ValueType,attr"`
 	Entries   []Entry
 }
 
