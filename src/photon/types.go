@@ -95,8 +95,7 @@ type Event struct {
 }
 
 type Custom struct {
-	Code CustomCode
-	Data []byte
+	CustomData
 }
 
 type Array struct {

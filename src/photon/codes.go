@@ -99,9 +99,6 @@ const (
 	EventDebugSettingLoad                   EvCode = 193
 	EventDebugSettingChange                 EvCode = 194
 	EventDebugCharacter                     EvCode = 195
-	EventTestSampleClass                    EvCode = 197
-	EventTestSampleStruct                   EvCode = 198
-	EventTestSampleComposite                EvCode = 199
 	EventCloseConnection                    EvCode = 203
 
 	EventVoiceData EvCode = 202
@@ -203,7 +200,7 @@ const (
 	CustomCodeDropRewardResponse        CustomCode = 17
 	CustomCodeBattleExitResponse        CustomCode = 18
 	CustomCodeTreasureBattleStatus      CustomCode = 19
-	CustomCodePossesionReleaseResponse  CustomCode = 20
+	CustomCodePossessionReleaseResponse CustomCode = 20
 	CustomCodeSwitchResponse            CustomCode = 21
 	CustomCodePassiveInvokeResponse     CustomCode = 22
 	CustomCodeProfile                   CustomCode = 23
@@ -215,9 +212,6 @@ const (
 	CustomCodeGuildFacility             CustomCode = 34
 	CustomCodeRaidStatsResponse         CustomCode = 100
 	CustomCodeRankingRow                CustomCode = 150
-	CustomCodeSampleClass               CustomCode = 253
-	CustomCodeSampleStruct              CustomCode = 254
-	CustomCodeSampleComposite           CustomCode = 255
 )
 
 func (c OpCode) String() string {
@@ -407,12 +401,6 @@ func (c EvCode) String() string {
 		return "DebugSettingChange"
 	case EventDebugCharacter:
 		return "DebugCharacter"
-	case EventTestSampleClass:
-		return "TestSampleClass"
-	case EventTestSampleStruct:
-		return "TestSampleStruct"
-	case EventTestSampleComposite:
-		return "TestSampleComposite"
 	case EventCloseConnection:
 		return "CloseConnection"
 	case EventVoiceData:
@@ -605,8 +593,8 @@ func (c CustomCode) String() string {
 		return "BattleExitResponse"
 	case CustomCodeTreasureBattleStatus:
 		return "TreasureBattleStatus"
-	case CustomCodePossesionReleaseResponse:
-		return "PossesionReleaseResponse"
+	case CustomCodePossessionReleaseResponse:
+		return "PossessionReleaseResponse"
 	case CustomCodeSwitchResponse:
 		return "SwitchResponse"
 	case CustomCodePassiveInvokeResponse:
@@ -629,12 +617,6 @@ func (c CustomCode) String() string {
 		return "RaidStatsResponse"
 	case CustomCodeRankingRow:
 		return "RankingRow"
-	case CustomCodeSampleClass:
-		return "SampleClass"
-	case CustomCodeSampleStruct:
-		return "SampleStruct"
-	case CustomCodeSampleComposite:
-		return "SampleComposite"
 	default:
 		return strconv.Itoa(int(c))
 	}

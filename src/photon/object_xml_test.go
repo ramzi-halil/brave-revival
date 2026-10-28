@@ -33,16 +33,25 @@ func TestObjectMarshalXML(t *testing.T) {
 			`<ObjectArray><String>value</String><Integer>4</Integer><Null></Null><ObjectArray><Boolean>false</Boolean></ObjectArray></ObjectArray>`,
 		},
 		{
-			Custom{Code: 9, Data: []byte{0, 255}},
-			`<Custom Code="SkillUnit">00ff</Custom>`,
+			Custom{CustomData: &WaveResponse{WaveId: 8, SubId: 7}},
+			`<Custom Code="WaveResponse"><![CDATA[{
+  "WaveId": 8,
+  "SubId": 7
+}]]></Custom>`,
 		},
 		{
-			Custom{Code: 9, Data: []byte("ABCD")},
-			`<Custom Code="SkillUnit">41424344</Custom>`,
+			Custom{CustomData: &GuildFacility{Id: 1, Level: 2}},
+			`<Custom Code="GuildFacility"><![CDATA[{
+  "Id": 1,
+  "Level": 2
+}]]></Custom>`,
 		},
 		{
-			Custom{},
-			`<Custom Code="0"></Custom>`,
+			Custom{CustomData: &WaveResponse{}},
+			`<Custom Code="WaveResponse"><![CDATA[{
+  "WaveId": 0,
+  "SubId": 0
+}]]></Custom>`,
 		},
 		{
 			Array{Type: stringType, Values: []Object{String("one"), String("two")}},
@@ -119,11 +128,9 @@ func TestObjectDescriptorMarshalXMLAttr(t *testing.T) {
 		{Integer(0).photonType(), "i"},
 		{Array{}.photonType(), "y"},
 		{Null{}.photonType(), "*"},
-		{Custom{Code: 0}.photonType(), "c0"},
-		{Custom{Code: 9}.photonType(), "c9"},
-		{Custom{Code: 255}.photonType(), "c255"},
+		{Custom{CustomData: &WaveResponse{}}.photonType(), "c14"},
 		{dictionaryType, "Dbs"},
-		{Dictionary{KeyType: Custom{Code: 9}.photonType(), ValueType: dictionaryType}.photonType(), "Dc9Dbs"},
+		{Dictionary{KeyType: Custom{CustomData: &WaveResponse{}}.photonType(), ValueType: dictionaryType}.photonType(), "Dc14Dbs"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.want, func(t *testing.T) {
@@ -133,9 +140,9 @@ func TestObjectDescriptorMarshalXMLAttr(t *testing.T) {
 		})
 	}
 
-	data, err := xml.Marshal(Dictionary{KeyType: Custom{Code: 9}.photonType(), ValueType: dictionaryType})
+	data, err := xml.Marshal(Dictionary{KeyType: Custom{CustomData: &WaveResponse{}}.photonType(), ValueType: dictionaryType})
 	require.NoError(t, err)
-	require.Equal(t, `<Dictionary KeyType="c9" ValueType="Dbs"></Dictionary>`, string(data))
+	require.Equal(t, `<Dictionary KeyType="c14" ValueType="Dbs"></Dictionary>`, string(data))
 }
 
 func TestObjectDescriptorMarshalXMLAttrInvalid(t *testing.T) {

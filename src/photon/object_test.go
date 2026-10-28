@@ -8,7 +8,7 @@ import (
 
 func TestObjectRoundTrip(t *testing.T) {
 	stringType := String("").photonType()
-	customType := Custom{Code: 9}.photonType()
+	customType := Custom{CustomData: &WaveResponse{}}.photonType()
 	values := []Object{
 		Null{},
 		Boolean(true),
@@ -23,12 +23,13 @@ func TestObjectRoundTrip(t *testing.T) {
 		IntegerArray{1, 2, 3},
 		StringArray{"a", "b"},
 		ObjectArray{String("value"), Integer(4), Null{}},
-		Custom{Code: 9, Data: []byte{8, 7}},
+		Custom{CustomData: &WaveResponse{WaveId: 8, SubId: 7}},
+		Custom{CustomData: &GuildFacility{Id: 1, Level: 2}},
 		Array{Type: stringType, Values: []Object{String("one"), String("two")}},
-		Array{Type: customType, Values: []Object{Custom{Code: 9, Data: []byte{1}}}},
+		Array{Type: customType, Values: []Object{Custom{CustomData: &WaveResponse{WaveId: 1}}}},
 		Hashtable{{Key: String("key"), Value: Integer(5)}},
 		Dictionary{KeyType: stringType, ValueType: Integer(0).photonType(), Entries: []Entry{{Key: String("key"), Value: Integer(6)}}},
-		Dictionary{KeyType: stringType, ValueType: customType, Entries: []Entry{{Key: String("key"), Value: Custom{Code: 9, Data: []byte{2}}}}},
+		Dictionary{KeyType: stringType, ValueType: customType, Entries: []Entry{{Key: String("key"), Value: Custom{CustomData: &WaveResponse{WaveId: 2}}}}},
 		OperationRequest{Code: 4, Parameters: Parameters{1: String("request")}},
 		OperationResponse{Code: 5, ReturnCode: -1, DebugMessage: Null{}, Parameters: Parameters{2: Boolean(true)}},
 		Event{Code: 6, Parameters: Parameters{3: Integer(7)}},

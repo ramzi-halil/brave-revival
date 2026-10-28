@@ -4,6 +4,8 @@ import (
 	"cmp"
 	"encoding/hex"
 	"encoding/xml"
+	"encoding/json/v2"
+	"encoding/json/jsontext"
 	"slices"
 	"strconv"
 )
@@ -55,10 +57,14 @@ func (v ObjectArray) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 }
 
 func (v Custom) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	customContent, err := json.Marshal(v.CustomData, jsontext.WithIndent("  "))
+	if err != nil {
+		return err
+	}
 	return e.EncodeElement(struct {
 		Code CustomCode `xml:"Code,attr"`
-		Data string     `xml:",chardata"`
-	}{v.Code, hex.EncodeToString(v.Data)}, start)
+		Data []byte     `xml:",cdata"`
+	}{v.CustomCode(), customContent}, start)
 }
 
 func (v Array) MarshalXML(e *xml.Encoder, start xml.StartElement) error {

@@ -209,14 +209,18 @@ func (v ObjectArray) marshalPhoton(w *objectWriter, depth int) error {
 }
 
 func (v Custom) photonType() ObjectDescriptor {
-	return ObjectDescriptor{Type: TypeCustom, CustomType: v.Code}
+	return ObjectDescriptor{Type: TypeCustom, CustomType: v.CustomCode()}
 }
 func (v Custom) marshalPhoton(w *objectWriter, _ int) error {
-	if len(v.Data) > math.MaxUint16 {
+	data, err := marshalCustomData(v.CustomData)
+	if err != nil {
+		return err
+	}
+	if len(data) > math.MaxUint16 {
 		return ErrMessageTooLarge
 	}
-	writeUint16(w, uint16(len(v.Data)))
-	w.Write(v.Data)
+	writeUint16(w, uint16(len(data)))
+	w.Write(data)
 	return nil
 }
 
@@ -357,7 +361,11 @@ func readObjectOfDescriptor(r *bytes.Reader, descriptor ObjectDescriptor, depth 
 		return String(data), err
 	case TypeCustom:
 		data, err := readShortBytes(r)
-		return Custom{Code: descriptor.CustomType, Data: data}, err
+		if err != nil {
+			return nil, err
+		}
+		customData, err := unmarshalCustomData(descriptor.CustomType, data)
+		return Custom{CustomData: customData}, err
 	case TypeByteArray:
 		n, err := readUint32(r)
 		if err != nil {
