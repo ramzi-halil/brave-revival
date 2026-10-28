@@ -639,3 +639,19 @@ func (c CustomCode) String() string {
 		return strconv.Itoa(int(c))
 	}
 }
+
+func (c OpCode) MarshalText() ([]byte, error) {
+	return []byte(c.String()), nil
+}
+
+func (c EvCode) MarshalText() ([]byte, error) {
+	return []byte(c.String()), nil
+}
+
+func (c ParamCode) MarshalText() ([]byte, error) {
+	return []byte(c.String()), nil
+}
+
+func (c CustomCode) MarshalText() ([]byte, error) {
+	return []byte(c.String()), nil
+}

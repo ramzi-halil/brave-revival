@@ -83,12 +83,12 @@ func (v Hashtable) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 
 func (v Parameters) MarshalXML(e *xml.Encoder, _ xml.StartElement) error {
 	type parameter struct {
-		Code  int
+		Code  ParamCode
 		Value Object
 	}
 	params := make([]parameter, 0, len(v))
 	for code, value := range v {
-		params = append(params, parameter{Code: int(code), Value: value})
+		params = append(params, parameter{Code: code, Value: value})
 	}
 
 	slices.SortFunc(params, func(a, b parameter) int {
@@ -100,7 +100,7 @@ func (v Parameters) MarshalXML(e *xml.Encoder, _ xml.StartElement) error {
 		Attr: []xml.Attr{{Name: xml.Name{Local: "Code"}, Value: ""}},
 	}
 	for _, param := range params {
-		element.Attr[0].Value = strconv.Itoa(param.Code)
+		element.Attr[0].Value = param.Code.String()
 		if err := e.EncodeToken(element); err != nil {
 			return err
 		}

@@ -34,11 +34,11 @@ func TestObjectMarshalXML(t *testing.T) {
 		},
 		{
 			Custom{Code: 9, Data: []byte{0, 255}},
-			`<Custom Code="9">00ff</Custom>`,
+			`<Custom Code="SkillUnit">00ff</Custom>`,
 		},
 		{
 			Custom{Code: 9, Data: []byte("ABCD")},
-			`<Custom Code="9">41424344</Custom>`,
+			`<Custom Code="SkillUnit">41424344</Custom>`,
 		},
 		{
 			Custom{},
@@ -58,7 +58,7 @@ func TestObjectMarshalXML(t *testing.T) {
 		},
 		{
 			OperationRequest{Code: 4, Parameters: Parameters{255: Short(7), 1: String("request")}, Internal: true},
-			`<OperationRequest Code="4" Internal="true"><Parameter Code="1"><String>request</String></Parameter><Parameter Code="255"><Short>7</Short></Parameter></OperationRequest>`,
+			`<OperationRequest Code="4" Internal="true"><Parameter Code="1"><String>request</String></Parameter><Parameter Code="RoomName"><Short>7</Short></Parameter></OperationRequest>`,
 		},
 		{
 			OperationResponse{Code: 5, ReturnCode: -1, DebugMessage: String("denied"), Parameters: Parameters{2: Boolean(true)}},
@@ -66,23 +66,23 @@ func TestObjectMarshalXML(t *testing.T) {
 		},
 		{
 			OperationResponse{},
-			`<OperationResponse Code="0" ReturnCode="0"></OperationResponse>`,
+			`<OperationResponse Code="InitEncryption" ReturnCode="0"></OperationResponse>`,
 		},
 		{
 			OperationRequest{},
-			`<OperationRequest Code="0"></OperationRequest>`,
+			`<OperationRequest Code="InitEncryption"></OperationRequest>`,
 		},
 		{
 			OperationResponse{Internal: true, DebugMessage: Null{}},
-			`<OperationResponse Code="0" ReturnCode="0" Internal="true"></OperationResponse>`,
+			`<OperationResponse Code="InitEncryption" ReturnCode="0" Internal="true"></OperationResponse>`,
 		},
 		{
 			OperationResponse{DebugMessage: String("")},
-			`<OperationResponse Code="0" ReturnCode="0"><DebugMessage><String></String></DebugMessage></OperationResponse>`,
+			`<OperationResponse Code="InitEncryption" ReturnCode="0"><DebugMessage><String></String></DebugMessage></OperationResponse>`,
 		},
 		{
 			Event{Code: 6, Parameters: Parameters{3: Integer(7)}},
-			`<Event Code="6"><Parameter Code="3"><Integer>7</Integer></Parameter></Event>`,
+			`<Event Code="BattleContinue"><Parameter Code="3"><Integer>7</Integer></Parameter></Event>`,
 		},
 		{ByteArray(nil), `<ByteArray></ByteArray>`},
 		{IntegerArray{}, `<IntegerArray></IntegerArray>`},

@@ -60,7 +60,7 @@ func TestWriteMessages(t *testing.T) {
   <OperationRequest Code="4"></OperationRequest>
 </Message>
 <Message From="Server" Timestamp="1970-01-01T00:00:03.25Z">
-  <Event Code="6"></Event>
+  <Event Code="BattleContinue"></Event>
 </Message>
 </Flow>
 `, buf.String())
