@@ -86,7 +86,7 @@ func decodeMessage(content []byte) (Object, error) {
 	if len(content) < 2 || content[0] != 243 {
 		return nil, protocolError(ErrMalformedMessage, "invalid content signature")
 	}
-	messageType := content[1]
+	messageType := MsgCode(content[1])
 	body := content[2:]
 	if messageType&0x80 != 0 {
 		messageType &^= 0x80

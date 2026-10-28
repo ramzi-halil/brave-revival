@@ -62,7 +62,7 @@ func TestServerLifecycleAndMessages(t *testing.T) {
 	initBody := make([]byte, 39)
 	initBody[0], initBody[1] = 1, 6
 	copy(initBody[7:], "LoadBalancing")
-	initContent := append([]byte{243, MessageInit}, initBody...)
+	initContent := append([]byte{243, byte(MessageInit)}, initBody...)
 	writeTestPacket(t, clientConn, packet{
 		peerID: peerID, challenge: challenge,
 		commands: []command{{typeCode: commandReliable, channel: 0, flags: commandFlagReliable, rsn: 1, payload: initContent}},
@@ -71,7 +71,7 @@ func TestServerLifecycleAndMessages(t *testing.T) {
 	require.GreaterOrEqual(t, len(initACK.payload), 4)
 	require.Equal(t, uint32(1), binary.BigEndian.Uint32(initACK.payload[:4]))
 	initResponse := readUntilCommand(t, clientConn, commandReliable)
-	require.Equal(t, []byte{243, MessageInitResponse, 0}, initResponse.payload)
+	require.Equal(t, []byte{243, byte(MessageInitResponse), 0}, initResponse.payload)
 	ackServerCommand(t, clientConn, peerID, challenge, initResponse)
 	var client *Client
 	select {
@@ -96,12 +96,12 @@ func TestServerLifecycleAndMessages(t *testing.T) {
 	require.NoError(t, err)
 	writeTestPacket(t, clientConn, packet{
 		peerID: peerID, challenge: challenge,
-		commands: []command{{typeCode: commandReliable, channel: 0, flags: commandFlagReliable, rsn: 2, payload: append([]byte{243, MessageOperationResponse}, responseBody...)}},
+		commands: []command{{typeCode: commandReliable, channel: 0, flags: commandFlagReliable, rsn: 2, payload: append([]byte{243, byte(MessageOperationResponse)}, responseBody...)}},
 	})
 	_ = readUntilCommand(t, clientConn, commandACK)
 	select {
 	case response := <-responses:
-		require.Equal(t, byte(42), response.Code)
+		require.Equal(t, OpCode(42), response.Code)
 		require.Equal(t, int16(-1), response.ReturnCode)
 		require.Equal(t, String("seen"), response.Parameters[7])
 	case <-time.After(time.Second):
@@ -114,7 +114,7 @@ func TestServerLifecycleAndMessages(t *testing.T) {
 	require.Equal(t, byte(MessageOperation), requestCommand.payload[1])
 	request, err := UnmarshalOperationRequest(requestCommand.payload[2:])
 	require.NoError(t, err)
-	require.Equal(t, byte(8), request.Code)
+	require.Equal(t, OpCode(8), request.Code)
 	require.Equal(t, Integer(9), request.Parameters[1])
 	ackServerCommand(t, clientConn, peerID, challenge, requestCommand)
 
@@ -124,7 +124,7 @@ func TestServerLifecycleAndMessages(t *testing.T) {
 	require.Equal(t, byte(MessageEvent), eventCommand.payload[1])
 	event, err := UnmarshalEvent(eventCommand.payload[2:])
 	require.NoError(t, err)
-	require.Equal(t, byte(3), event.Code)
+	require.Equal(t, EvCode(3), event.Code)
 	require.Equal(t, Boolean(true), event.Parameters[2])
 	ackServerCommand(t, clientConn, peerID, challenge, eventCommand)
 

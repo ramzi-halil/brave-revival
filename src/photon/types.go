@@ -5,37 +5,41 @@ import (
 	"fmt"
 )
 
-const (
-	TypeNull              byte = '*'
-	TypeCustom            byte = 'c'
-	TypeBoolean           byte = 'o'
-	TypeByte              byte = 'b'
-	TypeShort             byte = 'k'
-	TypeInteger           byte = 'i'
-	TypeLong              byte = 'l'
-	TypeFloat             byte = 'f'
-	TypeDouble            byte = 'd'
-	TypeString            byte = 's'
-	TypeEventData         byte = 'e'
-	TypeHashtable         byte = 'h'
-	TypeOperationResponse byte = 'p'
-	TypeOperationRequest  byte = 'q'
-	TypeArray             byte = 'y'
-	TypeStringArray       byte = 'a'
-	TypeByteArray         byte = 'x'
-	TypeIntegerArray      byte = 'n'
-	TypeObjectArray       byte = 'z'
-	TypeDictionary        byte = 'D'
-)
+type TypeCode byte
 
 const (
-	MessageInit                      byte = 0
-	MessageInitResponse              byte = 1
-	MessageOperation                 byte = 2
-	MessageOperationResponse         byte = 3
-	MessageEvent                     byte = 4
-	MessageInternalOperation         byte = 6
-	MessageInternalOperationResponse byte = 7
+	TypeNull              TypeCode = '*'
+	TypeCustom            TypeCode = 'c'
+	TypeBoolean           TypeCode = 'o'
+	TypeByte              TypeCode = 'b'
+	TypeShort             TypeCode = 'k'
+	TypeInteger           TypeCode = 'i'
+	TypeLong              TypeCode = 'l'
+	TypeFloat             TypeCode = 'f'
+	TypeDouble            TypeCode = 'd'
+	TypeString            TypeCode = 's'
+	TypeEventData         TypeCode = 'e'
+	TypeHashtable         TypeCode = 'h'
+	TypeOperationResponse TypeCode = 'p'
+	TypeOperationRequest  TypeCode = 'q'
+	TypeArray             TypeCode = 'y'
+	TypeStringArray       TypeCode = 'a'
+	TypeByteArray         TypeCode = 'x'
+	TypeIntegerArray      TypeCode = 'n'
+	TypeObjectArray       TypeCode = 'z'
+	TypeDictionary        TypeCode = 'D'
+)
+
+type MsgCode byte
+
+const (
+	MessageInit                      MsgCode = 0
+	MessageInitResponse              MsgCode = 1
+	MessageOperation                 MsgCode = 2
+	MessageOperationResponse         MsgCode = 3
+	MessageEvent                     MsgCode = 4
+	MessageInternalOperation         MsgCode = 6
+	MessageInternalOperationResponse MsgCode = 7
 )
 
 const (
@@ -44,8 +48,8 @@ const (
 )
 
 type ObjectDescriptor struct {
-	Type       byte
-	CustomType byte
+	Type       TypeCode
+	CustomType CustomCode
 	KeyType    *ObjectDescriptor
 	ValueType  *ObjectDescriptor
 }
@@ -55,7 +59,7 @@ type Object interface {
 	marshalPhoton(*objectWriter, int) error
 }
 
-type Parameters map[byte]Object
+type Parameters map[ParamCode]Object
 
 type Null struct{}
 type Boolean bool
@@ -72,13 +76,13 @@ type StringArray []String
 type ObjectArray []Object
 
 type OperationRequest struct {
-	Code       byte `xml:"Code,attr"`
+	Code       OpCode `xml:"Code,attr"`
 	Parameters Parameters
 	Internal   bool `xml:"Internal,attr,omitempty"`
 }
 
 type OperationResponse struct {
-	Code         byte
+	Code         OpCode
 	ReturnCode   int16
 	DebugMessage Object
 	Parameters   Parameters
@@ -86,12 +90,12 @@ type OperationResponse struct {
 }
 
 type Event struct {
-	Code       byte `xml:"Code,attr"`
+	Code       EvCode `xml:"Code,attr"`
 	Parameters Parameters
 }
 
 type Custom struct {
-	Code byte
+	Code CustomCode
 	Data []byte
 }
 

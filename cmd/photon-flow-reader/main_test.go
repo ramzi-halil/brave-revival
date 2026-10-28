@@ -27,7 +27,7 @@ func flowPacket(kind byte, rsn uint32, payload []byte) []byte {
 func TestWriteMessages(t *testing.T) {
 	body, err := photon.MarshalOperationRequest(photon.OperationRequest{Code: 4, Parameters: photon.Parameters{}})
 	require.NoError(t, err)
-	content := append([]byte{243, photon.MessageOperation}, body...)
+	content := append([]byte{243, byte(photon.MessageOperation)}, body...)
 	fragment := func(number, offset, end uint32) []byte {
 		payload := make([]byte, 20)
 		for i, value := range []uint32{1, 2, number, uint32(len(content)), offset} {
@@ -43,11 +43,11 @@ func TestWriteMessages(t *testing.T) {
 	require.NoError(t, err)
 	messages := []message{
 		{fromClient: true, content: first, timestamp: 1},
-		{content: flowPacket(6, 1, append([]byte{243, photon.MessageOperationResponse}, response...)), timestamp: 1.25},
+		{content: flowPacket(6, 1, append([]byte{243, byte(photon.MessageOperationResponse)}, response...)), timestamp: 1.25},
 		{fromClient: true, content: first, timestamp: 2},
 		{fromClient: true, content: last, timestamp: 2.5},
 		{fromClient: true, content: last, timestamp: 3},
-		{content: flowPacket(7, 0, append([]byte{0, 0, 0, 1, 243, photon.MessageEvent}, event...)), timestamp: 3.25},
+		{content: flowPacket(7, 0, append([]byte{0, 0, 0, 1, 243, byte(photon.MessageEvent)}, event...)), timestamp: 3.25},
 	}
 	var buf bytes.Buffer
 	require.NoError(t, writeMessages(&buf, messages))
@@ -75,7 +75,7 @@ func TestWriteMessagesErrors(t *testing.T) {
 	writerError := errors.New("write failed")
 	body, err := photon.MarshalEvent(photon.Event{Code: 6})
 	require.NoError(t, err)
-	err = writeMessages(failingWriter{writerError}, []message{{content: flowPacket(6, 1, append([]byte{243, photon.MessageEvent}, body...))}})
+	err = writeMessages(failingWriter{writerError}, []message{{content: flowPacket(6, 1, append([]byte{243, byte(photon.MessageEvent)}, body...))}})
 	require.ErrorIs(t, err, writerError)
 }
 

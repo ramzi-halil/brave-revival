@@ -20,7 +20,7 @@ func (d ObjectDescriptor) appendXMLType(value []byte, depth int) ([]byte, error)
 	if depth > maxObjectDepth {
 		return nil, protocolError(ErrUnsupportedObject, "object nesting is too deep")
 	}
-	value = append(value, d.Type)
+	value = append(value, byte(d.Type))
 	switch d.Type {
 	case TypeCustom:
 		value = strconv.AppendUint(value, uint64(d.CustomType), 10)
@@ -56,8 +56,8 @@ func (v ObjectArray) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 
 func (v Custom) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	return e.EncodeElement(struct {
-		Code byte   `xml:"Code,attr"`
-		Data string `xml:",chardata"`
+		Code CustomCode `xml:"Code,attr"`
+		Data string     `xml:",chardata"`
 	}{v.Code, hex.EncodeToString(v.Data)}, start)
 }
 
@@ -122,7 +122,7 @@ func (v OperationResponse) MarshalXML(e *xml.Encoder, start xml.StartElement) er
 		debug = ObjectArray{v.DebugMessage}
 	}
 	return e.EncodeElement(struct {
-		Code         byte        `xml:"Code,attr"`
+		Code         OpCode      `xml:"Code,attr"`
 		ReturnCode   int16       `xml:"ReturnCode,attr"`
 		DebugMessage ObjectArray `xml:"DebugMessage,omitempty"`
 		Parameters   Parameters

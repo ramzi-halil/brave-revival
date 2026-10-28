@@ -31,9 +31,9 @@ type Server struct {
 	conn             *net.UDPConn
 	clientsByID      map[uint16]*Client
 	clientsByAddress map[string]*Client
-	requestHandlers  map[byte]OperationRequestHandler
-	responseHandlers map[byte]OperationResponseHandler
-	eventHandlers    map[byte]EventHandler
+	requestHandlers  map[OpCode]OperationRequestHandler
+	responseHandlers map[OpCode]OperationResponseHandler
+	eventHandlers    map[EvCode]EventHandler
 	nextPeerID       uint16
 	startedAt        time.Time
 	done             chan struct{}
@@ -122,13 +122,13 @@ func (s *Server) initializeLocked() {
 		s.clientsByAddress = make(map[string]*Client)
 	}
 	if s.requestHandlers == nil {
-		s.requestHandlers = make(map[byte]OperationRequestHandler)
+		s.requestHandlers = make(map[OpCode]OperationRequestHandler)
 	}
 	if s.responseHandlers == nil {
-		s.responseHandlers = make(map[byte]OperationResponseHandler)
+		s.responseHandlers = make(map[OpCode]OperationResponseHandler)
 	}
 	if s.eventHandlers == nil {
-		s.eventHandlers = make(map[byte]EventHandler)
+		s.eventHandlers = make(map[EvCode]EventHandler)
 	}
 	if s.nextPeerID == 0 {
 		s.nextPeerID = 1
@@ -138,7 +138,7 @@ func (s *Server) initializeLocked() {
 	}
 }
 
-func (s *Server) HandleOperationRequest(code byte, handler OperationRequestHandler) {
+func (s *Server) HandleOperationRequest(code OpCode, handler OperationRequestHandler) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.initializeLocked()
@@ -149,7 +149,7 @@ func (s *Server) HandleOperationRequest(code byte, handler OperationRequestHandl
 	}
 }
 
-func (s *Server) HandleOperationResponse(code byte, handler OperationResponseHandler) {
+func (s *Server) HandleOperationResponse(code OpCode, handler OperationResponseHandler) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.initializeLocked()
@@ -160,7 +160,7 @@ func (s *Server) HandleOperationResponse(code byte, handler OperationResponseHan
 	}
 }
 
-func (s *Server) HandleEvent(code byte, handler EventHandler) {
+func (s *Server) HandleEvent(code EvCode, handler EventHandler) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.initializeLocked()
@@ -300,7 +300,7 @@ func (c *Client) SendOperationRequest(request OperationRequest) error {
 	if err != nil {
 		return err
 	}
-	messageType := byte(MessageOperation)
+	messageType := MessageOperation
 	if request.Internal {
 		messageType = MessageInternalOperation
 	}
@@ -312,7 +312,7 @@ func (c *Client) SendOperationResponse(response OperationResponse) error {
 	if err != nil {
 		return err
 	}
-	messageType := byte(MessageOperationResponse)
+	messageType := MessageOperationResponse
 	if response.Internal {
 		messageType = MessageInternalOperationResponse
 	}
@@ -336,10 +336,10 @@ func (c *Client) Disconnect(reason DisconnectReason) error {
 	return err
 }
 
-func (c *Client) sendMessage(messageType byte, body []byte) error {
+func (c *Client) sendMessage(messageType MsgCode, body []byte) error {
 	content := make([]byte, 2+len(body))
 	content[0] = 243
-	content[1] = messageType
+	content[1] = byte(messageType)
 	copy(content[2:], body)
 	return c.sendContent(content)
 }
@@ -641,10 +641,10 @@ func (s *Server) handleContent(client *Client, content []byte) error {
 	if len(content) < 2 || content[0] != 243 {
 		return protocolError(ErrMalformedMessage, "invalid content signature")
 	}
-	messageType := content[1]
+	rawMessageType := content[1]
 	body := content[2:]
-	if messageType&0x80 != 0 {
-		messageType &^= 0x80
+	if rawMessageType&0x80 != 0 {
+		rawMessageType &^= 0x80
 		newBody, err := decryptMessage(body)
 		if err != nil {
 			return err
@@ -652,7 +652,7 @@ func (s *Server) handleContent(client *Client, content []byte) error {
 		body = newBody
 	}
 
-	switch messageType {
+	switch messageType := MsgCode(rawMessageType); messageType {
 	case MessageInit:
 		return s.handleInit(client, body)
 	case MessageOperation, MessageInternalOperation:
@@ -725,7 +725,7 @@ func (s *Server) handleInit(client *Client, body []byte) error {
 	client.initialized = true
 	client.mu.Unlock()
 
-	response := []byte{243, MessageInitResponse, 0}
+	response := []byte{243, byte(MessageInitResponse), 0}
 	var responseObject Object
 	if s.InitResponse != nil {
 		responseObject = s.InitResponse(appID)

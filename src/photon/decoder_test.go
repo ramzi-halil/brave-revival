@@ -13,7 +13,7 @@ import (
 
 func TestPacketDecoderMessages(t *testing.T) {
 	for _, tt := range []struct {
-		messageType byte
+		messageType MsgCode
 		value       Object
 	}{
 		{MessageOperation, OperationRequest{Code: 4, Parameters: Parameters{}}},
@@ -24,7 +24,7 @@ func TestPacketDecoderMessages(t *testing.T) {
 	} {
 		body, err := MarshalObject(tt.value)
 		require.NoError(t, err)
-		content := append([]byte{243, tt.messageType}, body[1:]...)
+		content := append([]byte{243, byte(tt.messageType)}, body[1:]...)
 		for _, encrypted := range []bool{false, true} {
 			payload := content
 			if encrypted {
@@ -34,11 +34,11 @@ func TestPacketDecoderMessages(t *testing.T) {
 				padding := aes.BlockSize - len(content[2:])%aes.BlockSize
 				plain := append(bytes.Clone(content[2:]), bytes.Repeat([]byte{byte(padding)}, padding)...)
 				cipher.NewCBCEncrypter(block, make([]byte, aes.BlockSize)).CryptBlocks(plain, plain)
-				payload = append([]byte{243, tt.messageType | 0x80}, plain...)
+				payload = append([]byte{243, byte(tt.messageType) | 0x80}, plain...)
 			}
 			data, err := marshalPacket(packet{commands: []command{
 				{typeCode: commandACK},
-				{typeCode: commandReliable, rsn: 9, flags: commandFlagReliable, payload: []byte{243, MessageInit}},
+				{typeCode: commandReliable, rsn: 9, flags: commandFlagReliable, payload: []byte{243, byte(MessageInit)}},
 				{typeCode: commandReliable, rsn: 10, flags: commandFlagReliable, payload: payload},
 				{typeCode: commandReliable, rsn: 11, flags: commandFlagReliable, payload: payload},
 			}})
@@ -57,7 +57,7 @@ func TestPacketDecoderMessages(t *testing.T) {
 func TestPacketDecoderFragmentChannels(t *testing.T) {
 	body, err := MarshalEvent(Event{Code: 7})
 	require.NoError(t, err)
-	content := append([]byte{243, MessageEvent}, body...)
+	content := append([]byte{243, byte(MessageEvent)}, body...)
 	var decoder PacketDecoder
 	for i, step := range []struct {
 		channel byte
@@ -89,7 +89,7 @@ func TestPacketDecoderFragmentChannels(t *testing.T) {
 func TestPacketDecoderErrors(t *testing.T) {
 	for _, cmd := range []command{
 		{typeCode: commandReliable},
-		{typeCode: commandReliable, payload: []byte{243, MessageOperation}},
+		{typeCode: commandReliable, payload: []byte{243, byte(MessageOperation)}},
 		{typeCode: commandReliable, payload: []byte{243, 99}},
 		{typeCode: commandUnreliable, payload: []byte{1}},
 		{typeCode: commandFragment, payload: make([]byte, 20)},

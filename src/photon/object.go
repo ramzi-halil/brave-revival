@@ -2,11 +2,12 @@ package photon
 
 import (
 	"bytes"
+	"cmp"
 	"encoding/binary"
 	"fmt"
 	"io"
 	"math"
-	"sort"
+	"slices"
 )
 
 const maxObjectDepth = 64
@@ -33,10 +34,10 @@ func UnmarshalObject(data []byte) (Object, error) {
 }
 
 func (d ObjectDescriptor) write(w *bytes.Buffer) error {
-	w.WriteByte(d.Type)
+	w.WriteByte(byte(d.Type))
 	switch d.Type {
 	case TypeCustom:
-		w.WriteByte(d.CustomType)
+		w.WriteByte(byte(d.CustomType))
 	case TypeDictionary:
 		if d.KeyType == nil || d.ValueType == nil {
 			return protocolError(ErrUnsupportedObject, "dictionary type descriptor is incomplete")
@@ -278,7 +279,7 @@ func (OperationRequest) photonType() ObjectDescriptor {
 	return ObjectDescriptor{Type: TypeOperationRequest}
 }
 func (v OperationRequest) marshalPhoton(w *objectWriter, depth int) error {
-	w.WriteByte(v.Code)
+	w.WriteByte(byte(v.Code))
 	return marshalParameters(w, v.Parameters, depth)
 }
 
@@ -286,7 +287,7 @@ func (OperationResponse) photonType() ObjectDescriptor {
 	return ObjectDescriptor{Type: TypeOperationResponse}
 }
 func (v OperationResponse) marshalPhoton(w *objectWriter, depth int) error {
-	w.WriteByte(v.Code)
+	w.WriteByte(byte(v.Code))
 	writeUint16(w, uint16(v.ReturnCode))
 	if v.DebugMessage == nil {
 		v.DebugMessage = Null{}
@@ -303,7 +304,7 @@ func (v OperationResponse) marshalPhoton(w *objectWriter, depth int) error {
 
 func (Event) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeEventData} }
 func (v Event) marshalPhoton(w *objectWriter, depth int) error {
-	w.WriteByte(v.Code)
+	w.WriteByte(byte(v.Code))
 	return marshalParameters(w, v.Parameters, depth)
 }
 
@@ -475,14 +476,19 @@ func readObjectOfDescriptor(r *bytes.Reader, descriptor ObjectDescriptor, depth 
 }
 
 func readTypeDescriptor(r *bytes.Reader) (ObjectDescriptor, error) {
-	typeCode, err := r.ReadByte()
+	rawTypeCode, err := r.ReadByte()
 	if err != nil {
 		return ObjectDescriptor{}, malformedRead(err)
 	}
+	typeCode := TypeCode(rawTypeCode)
 	descriptor := ObjectDescriptor{Type: typeCode}
 	switch typeCode {
 	case TypeCustom:
-		descriptor.CustomType, err = r.ReadByte()
+		rawCustomType, err := r.ReadByte()
+		if err != nil {
+			return ObjectDescriptor{}, malformedRead(err)
+		}
+		descriptor.CustomType = CustomCode(rawCustomType)
 	case TypeDictionary:
 		keyType, keyErr := readTypeDescriptor(r)
 		if keyErr != nil {
@@ -510,15 +516,22 @@ func marshalParameters(w *objectWriter, parameters Parameters, depth int) error 
 		return ErrMessageTooLarge
 	}
 	writeUint16(w, uint16(len(parameters)))
-	keys := make([]int, 0, len(parameters))
-	for key := range parameters {
-		keys = append(keys, int(key))
+
+	type entry struct {
+		key byte
+		obj Object
 	}
-	sort.Ints(keys)
-	for _, key := range keys {
-		w.WriteByte(byte(key))
-		if err := w.writeObject(parameters[byte(key)], depth+1); err != nil {
-			return fmt.Errorf("parameter %d: %w", key, err)
+	entries := make([]entry, 0, len(parameters))
+	for key, obj := range parameters {
+		entries = append(entries, entry{key: byte(key), obj: obj})
+	}
+	slices.SortFunc(entries, func(a, b entry) int {
+		return cmp.Compare(a.key, b.key)
+	})
+	for _, entry := range entries {
+		w.WriteByte(entry.key)
+		if err := w.writeObject(entry.obj, depth+1); err != nil {
+			return fmt.Errorf("parameter %d: %w", entry.key, err)
 		}
 	}
 	return nil
@@ -531,10 +544,11 @@ func unmarshalParameters(r *bytes.Reader) (Parameters, error) {
 	}
 	parameters := make(Parameters, n)
 	for range n {
-		key, err := r.ReadByte()
+		rawKey, err := r.ReadByte()
 		if err != nil {
 			return nil, malformedRead(err)
 		}
+		key := ParamCode(rawKey)
 		if _, exists := parameters[key]; exists {
 			return nil, protocolError(ErrMalformedMessage, fmt.Sprintf("duplicate parameter %d", key))
 		}
@@ -576,7 +590,7 @@ func readOperationRequest(r *bytes.Reader) (OperationRequest, error) {
 	if err != nil {
 		return OperationRequest{}, err
 	}
-	return OperationRequest{Code: code, Parameters: parameters}, nil
+	return OperationRequest{Code: OpCode(code), Parameters: parameters}, nil
 }
 
 func MarshalOperationResponse(response OperationResponse) ([]byte, error) {
@@ -621,7 +635,7 @@ func readOperationResponse(r *bytes.Reader) (OperationResponse, error) {
 	if err != nil {
 		return OperationResponse{}, err
 	}
-	return OperationResponse{Code: code, ReturnCode: int16(returnCode), DebugMessage: debug, Parameters: parameters}, nil
+	return OperationResponse{Code: OpCode(code), ReturnCode: int16(returnCode), DebugMessage: debug, Parameters: parameters}, nil
 }
 
 func MarshalEvent(event Event) ([]byte, error) {
@@ -654,7 +668,7 @@ func readEvent(r *bytes.Reader) (Event, error) {
 	if err != nil {
 		return Event{}, err
 	}
-	return Event{Code: code, Parameters: parameters}, nil
+	return Event{Code: EvCode(code), Parameters: parameters}, nil
 }
 
 func readShortBytes(r *bytes.Reader) ([]byte, error) {
