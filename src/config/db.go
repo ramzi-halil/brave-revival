@@ -1,9 +1,12 @@
 package config
 
 import (
+	"bytes"
+	"compress/gzip"
 	"encoding/csv"
 	"fmt"
 	"io"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -75,6 +78,22 @@ func LoadResources(dbDir string) (Resources, error) {
 }
 
 func LoadMaster(dbDir string) (*pmaster.All, error) {
+	cachePath := filepath.Join(dbDir, "__all.pb.gz")
+	if cached, err := loadMasterCache(cachePath); err == nil {
+		version := &pmaster.All{}
+		message := version.ProtoReflect()
+		field := message.Descriptor().Fields().ByName("version")
+		if err := loadMasterCSV(filepath.Join(dbDir, "version.csv"), message.Mutable(field).List(), field.Message()); err != nil {
+			slog.Warn("Cannot validate master cache", "err", err)
+		} else if gproto.Equal(version, &pmaster.All{Version: cached.Version}) {
+			slog.Info("Using cached master", "path", cachePath)
+			return cached, nil
+		}
+		slog.Warn("Master cache is outdated", "path", cachePath)
+	} else if !os.IsNotExist(err) {
+		slog.Warn("Cannot load master cache", "path", cachePath, "err", err)
+	}
+
 	all := &pmaster.All{}
 	allMessage := all.ProtoReflect()
 	allFields := allMessage.Descriptor().Fields()
@@ -104,8 +123,49 @@ func LoadMaster(dbDir string) (*pmaster.All, error) {
 	if err := group.Wait(); err != nil {
 		return nil, err
 	}
+	if err := saveMasterCache(cachePath, all); err != nil {
+		slog.Warn("Cannot save master cache", "path", cachePath, "err", err)
+	}
 
 	return all, nil
+}
+
+func loadMasterCache(path string) (*pmaster.All, error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	reader, err := gzip.NewReader(f)
+	if err != nil {
+		return nil, err
+	}
+	defer reader.Close()
+	data, err := io.ReadAll(reader)
+	if err != nil {
+		return nil, err
+	}
+	all := &pmaster.All{}
+	if err := gproto.Unmarshal(data, all); err != nil {
+		return nil, err
+	}
+	return all, nil
+}
+
+func saveMasterCache(path string, all *pmaster.All) error {
+	data, err := gproto.Marshal(all)
+	if err != nil {
+		return err
+	}
+	var compressed bytes.Buffer
+	writer := gzip.NewWriter(&compressed)
+	if _, err := writer.Write(data); err != nil {
+		return err
+	}
+	if err := writer.Close(); err != nil {
+		return err
+	}
+	return os.WriteFile(path, compressed.Bytes(), 0o600)
 }
 
 func loadMasterCSV(path string, rows protoreflect.List, rowDescriptor protoreflect.MessageDescriptor) error {
