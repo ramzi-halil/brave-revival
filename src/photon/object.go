@@ -847,3 +847,36 @@ func malformedReadOrNil(err error) error {
 func protocolError(kind error, detail string) error {
 	return &ProtocolError{Kind: kind, Detail: detail}
 }
+
+const (
+	// Keys used in the ParameterPlayerProperties Hashtable.
+	PlayerKeyBattleState          = String("bst")  // value: Null|Byte
+	PlayerKeyBattleWave           = String("bwav") // value: Null|Byte
+	PlayerKeyTeam                 = String("team") // value: Null
+	PlayerKeyCharacterPresetType  = String("cptp") // value: Null
+	PlayerKeyCharacterPresetId    = String("cpid") // value: Null
+	PlayerKeyCharacterPresetBin   = String("cpbin")
+	PlayerKeyCharacterPresetExtra = String("cpex")
+	PlayerKeyUserId               = Byte(253) // value: String (the player ID, "100")
+	PlayerKeyIsInactive           = Byte(254)
+	PlayerKeyPlayerName           = Byte(255) // value: Null
+
+	// Keys used in the ParameterRoomProperties Hashtable.
+	RoomKeyStageId             = String("stg") // value: Null|Integer (the stage ID)
+	RoomKeyGvG                 = String("gvg")
+	RoomKeyEmptyRoomTTL        = Byte(245) // value: Integer (in milliseconds)
+	RoomKeyPlayerTTL           = Byte(246) // value: Integer
+	RoomKeyExpectedUsers       = Byte(247)
+	RoomKeyMasterClientId      = Byte(248) // value: Integer
+	RoomKeyCleanupCacheOnLeave = Byte(249)
+	RoomKeyPropsListedInLobby  = Byte(250) // value: Array[String]
+	RoomKeyRemoved             = Byte(251)
+	RoomKeyPlayerCount         = Byte(252)
+	RoomKeyIsOpen              = Byte(253) // value: Boolean
+	RoomKeyIsVisible           = Byte(254) // value: Boolean
+	RoomKeyMaxPlayers          = Byte(255) // value: Byte (usually 4)
+
+	BattleStateNone Byte = iota
+	BattleStateReadyInLobby
+	BattleStateBattle
+)
