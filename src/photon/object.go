@@ -12,6 +12,43 @@ import (
 
 const maxObjectDepth = 64
 
+type TypeCode byte
+
+const (
+	TypeNull              TypeCode = '*'
+	TypeCustom            TypeCode = 'c'
+	TypeBoolean           TypeCode = 'o'
+	TypeByte              TypeCode = 'b'
+	TypeShort             TypeCode = 'k'
+	TypeInteger           TypeCode = 'i'
+	TypeLong              TypeCode = 'l'
+	TypeFloat             TypeCode = 'f'
+	TypeDouble            TypeCode = 'd'
+	TypeString            TypeCode = 's'
+	TypeEventData         TypeCode = 'e'
+	TypeHashtable         TypeCode = 'h'
+	TypeOperationResponse TypeCode = 'p'
+	TypeOperationRequest  TypeCode = 'q'
+	TypeArray             TypeCode = 'y'
+	TypeStringArray       TypeCode = 'a'
+	TypeByteArray         TypeCode = 'x'
+	TypeIntegerArray      TypeCode = 'n'
+	TypeObjectArray       TypeCode = 'z'
+	TypeDictionary        TypeCode = 'D'
+)
+
+type ObjectDescriptor struct {
+	Type       TypeCode
+	CustomType CustomCode
+	KeyType    *ObjectDescriptor
+	ValueType  *ObjectDescriptor
+}
+
+type Object interface {
+	photonType() ObjectDescriptor
+	marshalPhoton(*objectWriter, int) error
+}
+
 func MarshalObject(value Object) ([]byte, error) {
 	var buf bytes.Buffer
 	w := objectWriter{Buffer: &buf}
@@ -96,8 +133,12 @@ func (w *objectWriter) writeKnownObject(value Object, expected ObjectDescriptor,
 	return value.marshalPhoton(w, depth)
 }
 
+type Null struct{}
+
 func (Null) photonType() ObjectDescriptor           { return ObjectDescriptor{Type: TypeNull} }
 func (Null) marshalPhoton(*objectWriter, int) error { return nil }
+
+type Boolean bool
 
 func (Boolean) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeBoolean} }
 func (v Boolean) marshalPhoton(w *objectWriter, _ int) error {
@@ -109,8 +150,12 @@ func (v Boolean) marshalPhoton(w *objectWriter, _ int) error {
 	return nil
 }
 
+type Byte uint8
+
 func (Byte) photonType() ObjectDescriptor                 { return ObjectDescriptor{Type: TypeByte} }
 func (v Byte) marshalPhoton(w *objectWriter, _ int) error { return w.WriteByte(byte(v)) }
+
+type Short uint16
 
 func (Short) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeShort} }
 func (v Short) marshalPhoton(w *objectWriter, _ int) error {
@@ -118,11 +163,15 @@ func (v Short) marshalPhoton(w *objectWriter, _ int) error {
 	return nil
 }
 
+type Integer uint32
+
 func (Integer) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeInteger} }
 func (v Integer) marshalPhoton(w *objectWriter, _ int) error {
 	writeUint32(w, uint32(v))
 	return nil
 }
+
+type Long uint64
 
 func (Long) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeLong} }
 func (v Long) marshalPhoton(w *objectWriter, _ int) error {
@@ -130,17 +179,23 @@ func (v Long) marshalPhoton(w *objectWriter, _ int) error {
 	return nil
 }
 
+type Float float32
+
 func (Float) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeFloat} }
 func (v Float) marshalPhoton(w *objectWriter, _ int) error {
 	writeUint32(w, math.Float32bits(float32(v)))
 	return nil
 }
 
+type Double float64
+
 func (Double) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeDouble} }
 func (v Double) marshalPhoton(w *objectWriter, _ int) error {
 	writeUint64(w, math.Float64bits(float64(v)))
 	return nil
 }
+
+type String string
 
 func (String) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeString} }
 func (v String) marshalPhoton(w *objectWriter, _ int) error {
@@ -152,6 +207,8 @@ func (v String) marshalPhoton(w *objectWriter, _ int) error {
 	return nil
 }
 
+type ByteArray []byte
+
 func (ByteArray) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeByteArray} }
 func (v ByteArray) marshalPhoton(w *objectWriter, _ int) error {
 	if len(v) > math.MaxUint32 {
@@ -161,6 +218,8 @@ func (v ByteArray) marshalPhoton(w *objectWriter, _ int) error {
 	w.Write(v)
 	return nil
 }
+
+type IntegerArray []Integer
 
 func (IntegerArray) photonType() ObjectDescriptor {
 	return ObjectDescriptor{Type: TypeIntegerArray}
@@ -175,6 +234,8 @@ func (v IntegerArray) marshalPhoton(w *objectWriter, _ int) error {
 	}
 	return nil
 }
+
+type StringArray []String
 
 func (StringArray) photonType() ObjectDescriptor {
 	return ObjectDescriptor{Type: TypeStringArray}
@@ -192,6 +253,8 @@ func (v StringArray) marshalPhoton(w *objectWriter, _ int) error {
 	return nil
 }
 
+type ObjectArray []Object
+
 func (ObjectArray) photonType() ObjectDescriptor {
 	return ObjectDescriptor{Type: TypeObjectArray}
 }
@@ -206,6 +269,10 @@ func (v ObjectArray) marshalPhoton(w *objectWriter, depth int) error {
 		}
 	}
 	return nil
+}
+
+type Custom struct {
+	CustomData
 }
 
 func (v Custom) photonType() ObjectDescriptor {
@@ -224,6 +291,11 @@ func (v Custom) marshalPhoton(w *objectWriter, _ int) error {
 	return nil
 }
 
+type Array struct {
+	Type   ObjectDescriptor
+	Values []Object
+}
+
 func (Array) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeArray} }
 func (v Array) marshalPhoton(w *objectWriter, depth int) error {
 	if len(v.Values) > math.MaxUint16 {
@@ -240,6 +312,19 @@ func (v Array) marshalPhoton(w *objectWriter, depth int) error {
 	}
 	return nil
 }
+func newArray(values ...Object) Array {
+	return Array{
+		Type:   values[0].photonType(),
+		Values: values,
+	}
+}
+
+type Entry struct {
+	Key   Object
+	Value Object
+}
+
+type Hashtable []Entry
 
 func (Hashtable) photonType() ObjectDescriptor {
 	return ObjectDescriptor{Type: TypeHashtable}
@@ -258,6 +343,12 @@ func (v Hashtable) marshalPhoton(w *objectWriter, depth int) error {
 		}
 	}
 	return nil
+}
+
+type Dictionary struct {
+	KeyType   ObjectDescriptor `xml:"KeyType,attr"`
+	ValueType ObjectDescriptor `xml:"ValueType,attr"`
+	Entries   []Entry
 }
 
 func (v Dictionary) photonType() ObjectDescriptor {
@@ -279,12 +370,28 @@ func (v Dictionary) marshalPhoton(w *objectWriter, depth int) error {
 	return nil
 }
 
+type Parameters map[ParamCode]Object
+
+type OperationRequest struct {
+	Code       OpCode `xml:"Code,attr"`
+	Parameters Parameters
+	Internal   bool `xml:"Internal,attr,omitempty"`
+}
+
 func (OperationRequest) photonType() ObjectDescriptor {
 	return ObjectDescriptor{Type: TypeOperationRequest}
 }
 func (v OperationRequest) marshalPhoton(w *objectWriter, depth int) error {
 	w.WriteByte(byte(v.Code))
 	return marshalParameters(w, v.Parameters, depth)
+}
+
+type OperationResponse struct {
+	Code         OpCode
+	ReturnCode   int16
+	DebugMessage Object
+	Parameters   Parameters
+	Internal     bool
 }
 
 func (OperationResponse) photonType() ObjectDescriptor {
@@ -304,6 +411,11 @@ func (v OperationResponse) marshalPhoton(w *objectWriter, depth int) error {
 		return err
 	}
 	return marshalParameters(w, v.Parameters, depth)
+}
+
+type Event struct {
+	Code       EvCode `xml:"Code,attr"`
+	Parameters Parameters
 }
 
 func (Event) photonType() ObjectDescriptor { return ObjectDescriptor{Type: TypeEventData} }

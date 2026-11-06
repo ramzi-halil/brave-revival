@@ -3,9 +3,9 @@ package photon
 import (
 	"cmp"
 	"encoding/hex"
-	"encoding/xml"
-	"encoding/json/v2"
 	"encoding/json/jsontext"
+	"encoding/json/v2"
+	"encoding/xml"
 	"slices"
 	"strconv"
 )
